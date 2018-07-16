@@ -155,15 +155,12 @@
 		4CDAC17620F4424100B3E7D4 /* Locality */ = {
 			isa = PBXGroup;
 			children = (
-<<<<<<< HEAD
 				8597DAD620FD0DD500BA261A /* Youngmin */,
-=======
 				4CCB516C20FD11D400A55373 /* API Foursquare */,
 				8597DAD220FCFC1E00BA261A /* Models */,
 				8597DAD120FCFC1800BA261A /* Views */,
 				8597DACF20FCFBFD00BA261A /* View Controllers */,
 				8597DACC20FCF68300BA261A /* Storyboards */,
->>>>>>> c51e4a80b3ed88f37f0b6e9ce1e45f4edc383e36
 				4CDAC17720F4424100B3E7D4 /* AppDelegate.h */,
 				4CDAC17820F4424100B3E7D4 /* AppDelegate.m */,
 				4CDAC17A20F4424100B3E7D4 /* ViewController.h */,
@@ -624,11 +621,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-<<<<<<< HEAD
 				PRODUCT_BUNDLE_IDENTIFIER = com.youngmin.Locality;
-=======
-				PRODUCT_BUNDLE_IDENTIFIER = com.locality.ginger;
->>>>>>> c51e4a80b3ed88f37f0b6e9ce1e45f4edc383e36
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -646,11 +639,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-<<<<<<< HEAD
 				PRODUCT_BUNDLE_IDENTIFIER = com.youngmin.Locality;
-=======
-				PRODUCT_BUNDLE_IDENTIFIER = com.locality.ginger;
->>>>>>> c51e4a80b3ed88f37f0b6e9ce1e45f4edc383e36
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
