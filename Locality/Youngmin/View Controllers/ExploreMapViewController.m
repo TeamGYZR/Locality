@@ -8,10 +8,13 @@
 
 #import "ExploreMapViewController.h"
 #import <MapKit/MapKit.h>
+#import <CoreLocation/CoreLocation.h>
 
-@interface ExploreMapViewController () <MKMapViewDelegate>
+@interface ExploreMapViewController () <MKMapViewDelegate, CLLocationManagerDelegate>
 
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;
+@property (weak, nonatomic) IBOutlet UIButton *currentLocationButton;
+@property (strong, nonatomic) CLLocationManager *locationManager;
 
 @end
 
@@ -22,14 +25,42 @@
     // Do any additional setup after loading the view.
     
     self.mapView.delegate = self;
+    self.locationManager.delegate = self;
     
-    MKCoordinateRegion sfRegion = MKCoordinateRegionMake(CLLocationCoordinate2DMake(37.783333, -122.416667), MKCoordinateSpanMake(0.1, 0.1));
-    [self.mapView setRegion:sfRegion animated:false];
+    [self.locationManager requestWhenInUseAuthorization];
+    
+    if(CLLocationManager.locationServicesEnabled)
+    {
+        if(CLLocationManager.authorizationStatus == kCLAuthorizationStatusAuthorizedWhenInUse)
+        {
+            NSLog(@"location usage authorized");
+            
+            self.locationManager.distanceFilter = kCLDistanceFilterNone;
+            self.locationManager.desiredAccuracy = kCLLocationAccuracyBest;
+            
+            [self findCurrentLocation];
+        }
+    }
+    
+    //MKCoordinateRegion sfRegion = MKCoordinateRegionMake(CLLocationCoordinate2DMake(37.783333, -122.416667), MKCoordinateSpanMake(0.1, 0.1));
+    
+    
+    //[self.mapView setRegion:sfRegion animated:false];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+-(void)findCurrentLocation{
+    [self.locationManager startUpdatingLocation];
+}
+
+- (void)locationManager:(CLLocationManager *)manager
+     didUpdateLocations:(NSArray<CLLocation *> *)locations{
+    
+    NSLog(@"lat: %f, long: %f", locations[0].coordinate.latitude, locations[0].coordinate.longitude);
 }
 
 /*

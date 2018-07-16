@@ -18,6 +18,9 @@
 		4CDAC19120F4424100B3E7D4 /* LocalityTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CDAC19020F4424100B3E7D4 /* LocalityTests.m */; };
 		4CDAC19C20F4424100B3E7D4 /* LocalityUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CDAC19B20F4424100B3E7D4 /* LocalityUITests.m */; };
 		8597DACE20FCF69D00BA261A /* YMapView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8597DACD20FCF69D00BA261A /* YMapView.storyboard */; };
+		8597DAD520FCFE3100BA261A /* ExploreMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8597DAD420FCFE3100BA261A /* ExploreMapViewController.m */; };
+		8597DB1620FD162500BA261A /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8597DB1520FD162500BA261A /* MapKit.framework */; };
+		8597DB1820FD1BB400BA261A /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8597DB1720FD1BB400BA261A /* CoreLocation.framework */; };
 		93F8CAE4531E84E7DBB01E8D /* libPods-LocalityTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 85AAA040A6699A174EA32C3D /* libPods-LocalityTests.a */; };
 /* End PBXBuildFile section */
 
@@ -60,6 +63,10 @@
 		7268D2AFC88C24A529B514A5 /* libPods-LocalityUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-LocalityUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8274814A446109AFAE12B326 /* Pods-LocalityTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LocalityTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-LocalityTests/Pods-LocalityTests.release.xcconfig"; sourceTree = "<group>"; };
 		8597DACD20FCF69D00BA261A /* YMapView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = YMapView.storyboard; sourceTree = "<group>"; };
+		8597DAD320FCFE3100BA261A /* ExploreMapViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ExploreMapViewController.h; sourceTree = "<group>"; };
+		8597DAD420FCFE3100BA261A /* ExploreMapViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ExploreMapViewController.m; sourceTree = "<group>"; };
+		8597DB1520FD162500BA261A /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		8597DB1720FD1BB400BA261A /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		85AAA040A6699A174EA32C3D /* libPods-LocalityTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-LocalityTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C01F5B3A004D967BDF2A1867 /* Pods-Locality.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Locality.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Locality/Pods-Locality.debug.xcconfig"; sourceTree = "<group>"; };
 		CB20FD7FBFA0FE7606614E01 /* Pods-LocalityUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LocalityUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-LocalityUITests/Pods-LocalityUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -72,6 +79,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8597DB1820FD1BB400BA261A /* CoreLocation.framework in Frameworks */,
+				8597DB1620FD162500BA261A /* MapKit.framework in Frameworks */,
 				1BE7AFA3980986C9A157CCD2 /* libPods-Locality.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -98,6 +107,8 @@
 		34F1FE65408B949F095464BE /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				8597DB1720FD1BB400BA261A /* CoreLocation.framework */,
+				8597DB1520FD162500BA261A /* MapKit.framework */,
 				5F1B3E5DBABAB3F93F44C75E /* libPods-Locality.a */,
 				85AAA040A6699A174EA32C3D /* libPods-LocalityTests.a */,
 				7268D2AFC88C24A529B514A5 /* libPods-LocalityUITests.a */,
@@ -130,10 +141,7 @@
 		4CDAC17620F4424100B3E7D4 /* Locality */ = {
 			isa = PBXGroup;
 			children = (
-				8597DAD220FCFC1E00BA261A /* Models */,
-				8597DAD120FCFC1800BA261A /* Views */,
-				8597DACF20FCFBFD00BA261A /* View Controllers */,
-				8597DACC20FCF68300BA261A /* Storyboards */,
+				8597DAD620FD0DD500BA261A /* Youngmin */,
 				4CDAC17720F4424100B3E7D4 /* AppDelegate.h */,
 				4CDAC17820F4424100B3E7D4 /* AppDelegate.m */,
 				4CDAC17A20F4424100B3E7D4 /* ViewController.h */,
@@ -176,6 +184,8 @@
 		8597DACF20FCFBFD00BA261A /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				8597DAD320FCFE3100BA261A /* ExploreMapViewController.h */,
+				8597DAD420FCFE3100BA261A /* ExploreMapViewController.m */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -192,6 +202,17 @@
 			children = (
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		8597DAD620FD0DD500BA261A /* Youngmin */ = {
+			isa = PBXGroup;
+			children = (
+				8597DAD220FCFC1E00BA261A /* Models */,
+				8597DAD120FCFC1800BA261A /* Views */,
+				8597DACF20FCFBFD00BA261A /* View Controllers */,
+				8597DACC20FCF68300BA261A /* Storyboards */,
+			);
+			path = Youngmin;
 			sourceTree = "<group>";
 		};
 		8C8E8A8D59518BBCC377DCAC /* Pods */ = {
@@ -399,6 +420,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4CDAC17C20F4424100B3E7D4 /* ViewController.m in Sources */,
+				8597DAD520FCFE3100BA261A /* ExploreMapViewController.m in Sources */,
 				4CDAC18720F4424100B3E7D4 /* main.m in Sources */,
 				4CDAC17920F4424100B3E7D4 /* AppDelegate.m in Sources */,
 			);
@@ -571,13 +593,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = JQJ55SDWUK;
+				DEVELOPMENT_TEAM = 7TGM37S677;
 				INFOPLIST_FILE = Locality/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.gingerdudley13.Locality;
+				PRODUCT_BUNDLE_IDENTIFIER = com.youngmin.Locality;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -589,13 +611,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = JQJ55SDWUK;
+				DEVELOPMENT_TEAM = 7TGM37S677;
 				INFOPLIST_FILE = Locality/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.gingerdudley13.Locality;
+				PRODUCT_BUNDLE_IDENTIFIER = com.youngmin.Locality;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
