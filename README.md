@@ -56,7 +56,7 @@ OPTIONAL:
 [ ] users can view other users pages
 [ ] user can edit their profile- i.e. add a profile picture
 [ ] users can follow other users
-[ ] users can see a map of thier favorited places
+[ ] users can see a map of their favorited places
 
 
 
