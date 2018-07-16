@@ -130,6 +130,9 @@
 		4CDAC17620F4424100B3E7D4 /* Locality */ = {
 			isa = PBXGroup;
 			children = (
+				8597DAD220FCFC1E00BA261A /* Models */,
+				8597DAD120FCFC1800BA261A /* Views */,
+				8597DACF20FCFBFD00BA261A /* View Controllers */,
 				8597DACC20FCF68300BA261A /* Storyboards */,
 				4CDAC17720F4424100B3E7D4 /* AppDelegate.h */,
 				4CDAC17820F4424100B3E7D4 /* AppDelegate.m */,
@@ -168,6 +171,27 @@
 				8597DACD20FCF69D00BA261A /* YMapView.storyboard */,
 			);
 			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		8597DACF20FCFBFD00BA261A /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "View Controllers";
+			sourceTree = "<group>";
+		};
+		8597DAD120FCFC1800BA261A /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		8597DAD220FCFC1E00BA261A /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 		8C8E8A8D59518BBCC377DCAC /* Pods */ = {
