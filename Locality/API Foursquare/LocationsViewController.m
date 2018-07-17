@@ -43,15 +43,17 @@ static NSString *const clientSecret = @"VRCUJCWQYIWBFK212OOGGGU1KD2DKZLYVZZJ0ZUN
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+
     return self.results.count;
+    
+    
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     LocationCell *cell = [tableView dequeueReusableCellWithIdentifier:@"LocationCell" forIndexPath:indexPath];
     //update the table view based on results from the response dictionary
     
-    //[cell updateCellWithLocation:self.results[0][indexPath.row]];
-    [cell updateCellWithLocation:self.results[0][indexPath.row]];
+    [cell updateCellWithLocation:self.results[indexPath.row]];
     
     return cell;
 }
@@ -60,8 +62,15 @@ static NSString *const clientSecret = @"VRCUJCWQYIWBFK212OOGGGU1KD2DKZLYVZZJ0ZUN
 -(void) testerCoordinates{
     //NSNumber *testerLat = 40.7484;
     //NSNumber *testerLong = -73.9857;
-    NSNumber *testerLat = [NSNumber numberWithFloat:40.7484];
-    NSNumber *testerLong = [NSNumber numberWithFloat:-73.9857];
+    
+    //new york  tester coordinates
+    //NSNumber *testerLat = [NSNumber numberWithFloat:40.7484];
+    //NSNumber *testerLong = [NSNumber numberWithFloat:-73.9857];
+    
+    //san francisco tester coordinates
+    NSNumber *testerLat = [NSNumber numberWithFloat:37.7739];
+    NSNumber *testerLong = [NSNumber numberWithFloat:-122.4313];
+    
     [self fetchLocationsWithLatitude:testerLat andLongitude:testerLong];
     
 }
@@ -87,8 +96,7 @@ static NSString *const clientSecret = @"VRCUJCWQYIWBFK212OOGGGU1KD2DKZLYVZZJ0ZUN
             //NSLog(@"response: %@", responseDictionary);
             //using the venue names as the query
             //probably gonna have to include the key for other info inside the results array
-            //self.results = [responseDictionary valueForKeyPath:@"response.venue"];
-            self.results = [responseDictionary valueForKeyPath:@"response.groups.items.venue"];
+            self.results = [responseDictionary valueForKeyPath:@"response.groups.items.venue"][0];
             [self.tableView reloadData];
         }
     }];

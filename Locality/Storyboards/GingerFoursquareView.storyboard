@@ -23,23 +23,55 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="LocationCell" rowHeight="213" id="B4c-bG-DDF" customClass="LocationCell">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="213"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="LocationCell" rowHeight="158" id="B4c-bG-DDF" customClass="LocationCell">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="158"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="B4c-bG-DDF" id="aZ9-UW-c9G">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="212.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="157.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QTO-7P-yS8">
-                                                    <rect key="frame" x="27" y="11" width="236" height="21"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QTO-7P-yS8">
+                                                    <rect key="frame" x="76" y="16" width="42" height="20.5"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="52F-tu-vkb">
+                                                    <rect key="frame" x="8" y="8" width="60" height="60"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="60" id="FGJ-ob-RAU"/>
+                                                        <constraint firstAttribute="height" constant="60" id="mAa-Ky-hSP"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vRA-DU-XyA">
+                                                    <rect key="frame" x="8" y="76" width="42" height="20.5"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Ta-hy-Rbv">
+                                                    <rect key="frame" x="8" y="104.5" width="42" height="45"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstItem="1Ta-hy-Rbv" firstAttribute="top" secondItem="vRA-DU-XyA" secondAttribute="bottom" constant="8" id="1Dd-Q4-sE1"/>
+                                                <constraint firstItem="vRA-DU-XyA" firstAttribute="top" secondItem="52F-tu-vkb" secondAttribute="bottom" constant="8" id="3ta-3r-rF4"/>
+                                                <constraint firstAttribute="bottom" secondItem="1Ta-hy-Rbv" secondAttribute="bottom" constant="8" id="6R7-gU-ZM2"/>
+                                                <constraint firstItem="QTO-7P-yS8" firstAttribute="top" secondItem="aZ9-UW-c9G" secondAttribute="top" constant="16" id="KWA-Qc-y51"/>
+                                                <constraint firstItem="vRA-DU-XyA" firstAttribute="leading" secondItem="aZ9-UW-c9G" secondAttribute="leading" constant="8" id="Ug7-r1-ugx"/>
+                                                <constraint firstItem="52F-tu-vkb" firstAttribute="leading" secondItem="aZ9-UW-c9G" secondAttribute="leading" constant="8" id="V5A-5z-Wmm"/>
+                                                <constraint firstItem="1Ta-hy-Rbv" firstAttribute="leading" secondItem="aZ9-UW-c9G" secondAttribute="leading" constant="8" id="VCl-Bw-wcC"/>
+                                                <constraint firstItem="QTO-7P-yS8" firstAttribute="leading" secondItem="52F-tu-vkb" secondAttribute="trailing" constant="8" id="lKu-be-Pr6"/>
+                                                <constraint firstItem="52F-tu-vkb" firstAttribute="top" secondItem="aZ9-UW-c9G" secondAttribute="top" constant="8" id="zy9-6W-IRZ"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="addressLabel" destination="1Ta-hy-Rbv" id="xtw-8V-09Y"/>
+                                            <outlet property="categoryIcon" destination="52F-tu-vkb" id="j39-NI-B0f"/>
+                                            <outlet property="categoryLabel" destination="vRA-DU-XyA" id="FGM-g6-XmP"/>
                                             <outlet property="nameLabel" destination="QTO-7P-yS8" id="WCx-Kv-aFY"/>
                                         </connections>
                                     </tableViewCell>

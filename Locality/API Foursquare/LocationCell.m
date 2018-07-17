@@ -7,12 +7,16 @@
 //
 
 #import "LocationCell.h"
+#import <AFNetworking/UIImageView+AFNetworking.h>
 
 //adding an interface to link up the table view
 @interface LocationCell()
 
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
 @property (strong, nonatomic) NSDictionary *location;
+@property (weak, nonatomic) IBOutlet UILabel *addressLabel;
+@property (weak, nonatomic) IBOutlet UILabel *categoryLabel;
+@property (weak, nonatomic) IBOutlet UIImageView *categoryIcon;
 
 @end
 
@@ -29,37 +33,26 @@
     // Configure the view for the selected state
 }
 
-//-(void)updateCellWithLocation:(NSArray *)location{
-//    //self.nameLabel.text = location[@"name"];
-//    //NSLog(@"%@", location[@"venue.name"]);
-//    //trying to access the name inside this locations dictionary
-//    //NSLog(@"%@", location[@"venue"]);
-//    //self.location = location[0];
-//    //NSArray *testerArray = location[@"0"][@"name"];
-//    //self.nameLabel.text = testerArray[@"name"];
-//    //NSDictionary *firstLocation = location;
-////    NSLog(@"%@", firstLocation[@"name"]);
-////    self.nameLabel.text = firstLocation[@"name"];
-//
-//    //NSLog(@"%@", location[@"name"]);
-//    //self.nameLabel.text = location[@"name"];
-//
-//}
 
 -(void)updateCellWithLocation:(NSDictionary *)location{
-    //self.nameLabel.text = location[@"name"];
-    //NSLog(@"%@", location[@"venue.name"]);
-    //trying to access the name inside this locations dictionary
-    //NSLog(@"%@", location[@"venue"]);
-    //self.location = location[0];
-    //NSArray *testerArray = location[@"0"][@"name"];
-    //self.nameLabel.text = testerArray[@"name"];
-    //NSDictionary *firstLocation = location;
-    //    NSLog(@"%@", firstLocation[@"name"]);
-    //    self.nameLabel.text = firstLocation[@"name"];
+
+
     
     //NSLog(@"%@", location[@"name"]);
     self.nameLabel.text = location[@"name"];
+    //NSLog(@"%@", location[@"location"][@"formattedAddress"][0]);
+    self.addressLabel.text = location[@"location"][@"formattedAddress"][0];
+    //conditional to check if the categories exist
+//    if () {
+//         NSString *prefix =
+//    }
+    self.categoryLabel.text = location[@"categories"][0][@"name"];
+    NSString *urlPrefix = location[@"categories"][0][@"icon"][@"prefix"];
+    NSString *urlSuffix = location[@"categories"][0][@"icon"][@"suffix"];
+    NSString *urlString = [NSString stringWithFormat:@"%@bg_32%@", urlPrefix, urlSuffix];
+    
+    NSURL *url = [NSURL URLWithString:urlString];
+    [self.categoryIcon setImageWithURL:url];
     
 }
 
