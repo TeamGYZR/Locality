@@ -60,8 +60,6 @@ static NSString *const clientSecret = @"VRCUJCWQYIWBFK212OOGGGU1KD2DKZLYVZZJ0ZUN
 
 //tester function hard coded w the latitude and longitude to send to fetching the results
 -(void) testerCoordinates{
-    //NSNumber *testerLat = 40.7484;
-    //NSNumber *testerLong = -73.9857;
     
     //new york  tester coordinates
     //NSNumber *testerLat = [NSNumber numberWithFloat:40.7484];
@@ -77,9 +75,7 @@ static NSString *const clientSecret = @"VRCUJCWQYIWBFK212OOGGGU1KD2DKZLYVZZJ0ZUN
 //going to want to send a latitude and longitude into this from youngmin- send them as nsnumbers
 -(void)fetchLocationsWithLatitude:(NSNumber *)lat andLongitude:(NSNumber *)longitude{
     NSString *baseURLstring = @"https://api.foursquare.com/v2/venues/explore?";
-    //fix url- authentication failing
-    
-    //NSString *coordinateString = [NSString stringWithFormat:@"client_id=%@&client_secret=%@&v=20141020&ll=%@,%@", clientID, clientSecret, lat, longitude];
+
     NSString *coordinateString = [NSString stringWithFormat:@"client_id=%@&client_secret=%@&v=20180716&ll=%@,%@", clientID, clientSecret, lat, longitude];
     coordinateString = [coordinateString stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
     
@@ -95,7 +91,6 @@ static NSString *const clientSecret = @"VRCUJCWQYIWBFK212OOGGGU1KD2DKZLYVZZJ0ZUN
             //printing out the json data to view the responses based on the specific coordinates
             //NSLog(@"response: %@", responseDictionary);
             //using the venue names as the query
-            //probably gonna have to include the key for other info inside the results array
             self.results = [responseDictionary valueForKeyPath:@"response.groups.items.venue"][0];
             [self.tableView reloadData];
         }
