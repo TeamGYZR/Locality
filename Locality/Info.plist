@@ -23,11 +23,11 @@
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
-	<string>NSLocationAlwaysAndWhenInUseUsageDescription</string>
+	<string>Location services are needed to display the current location and points of interest.</string>
 	<key>NSLocationAlwaysUsageDescription</key>
-	<string>NSLocationWhenInUseUsageDescription</string>
+	<string>Location services are needed to display the current location and points of interest.</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>NSLocationWhenInUseUsageDescription</string>
+	<string>Location services are needed to display the current location and points of interest.</string>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>
