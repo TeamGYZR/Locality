@@ -11,6 +11,7 @@
 		2F308E1C27E4FA2C43F5F955 /* libPods-LocalityUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7268D2AFC88C24A529B514A5 /* libPods-LocalityUITests.a */; };
 		4CCB516A20FD104C00A55373 /* GingerFoursquareView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4CCB516920FD104C00A55373 /* GingerFoursquareView.storyboard */; };
 		4CCB516F20FD19F500A55373 /* LocationsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CCB516E20FD19F500A55373 /* LocationsViewController.m */; };
+		4CCB517220FD4C8700A55373 /* LocationCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CCB517120FD4C8700A55373 /* LocationCell.m */; };
 		4CDAC17920F4424100B3E7D4 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CDAC17820F4424100B3E7D4 /* AppDelegate.m */; };
 		4CDAC17C20F4424100B3E7D4 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CDAC17B20F4424100B3E7D4 /* ViewController.m */; };
 		4CDAC17F20F4424100B3E7D4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4CDAC17D20F4424100B3E7D4 /* Main.storyboard */; };
@@ -45,6 +46,8 @@
 		4CCB516920FD104C00A55373 /* GingerFoursquareView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = GingerFoursquareView.storyboard; sourceTree = "<group>"; };
 		4CCB516D20FD19F500A55373 /* LocationsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LocationsViewController.h; sourceTree = "<group>"; };
 		4CCB516E20FD19F500A55373 /* LocationsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LocationsViewController.m; sourceTree = "<group>"; };
+		4CCB517020FD4C8700A55373 /* LocationCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LocationCell.h; sourceTree = "<group>"; };
+		4CCB517120FD4C8700A55373 /* LocationCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LocationCell.m; sourceTree = "<group>"; };
 		4CDAC17420F4424100B3E7D4 /* Locality.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Locality.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4CDAC17720F4424100B3E7D4 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		4CDAC17820F4424100B3E7D4 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -115,6 +118,8 @@
 			children = (
 				4CCB516D20FD19F500A55373 /* LocationsViewController.h */,
 				4CCB516E20FD19F500A55373 /* LocationsViewController.m */,
+				4CCB517020FD4C8700A55373 /* LocationCell.h */,
+				4CCB517120FD4C8700A55373 /* LocationCell.m */,
 			);
 			path = "API Foursquare";
 			sourceTree = "<group>";
@@ -417,6 +422,7 @@
 			files = (
 				4CDAC17C20F4424100B3E7D4 /* ViewController.m in Sources */,
 				4CDAC18720F4424100B3E7D4 /* main.m in Sources */,
+				4CCB517220FD4C8700A55373 /* LocationCell.m in Sources */,
 				4CDAC17920F4424100B3E7D4 /* AppDelegate.m in Sources */,
 				4CCB516F20FD19F500A55373 /* LocationsViewController.m in Sources */,
 			);
