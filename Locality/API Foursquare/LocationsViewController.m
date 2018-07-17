@@ -8,6 +8,8 @@
 
 #import "LocationsViewController.h"
 #import "LocationCell.h"
+#import "APIManager.h"
+#import "Venue.h"
 
 static NSString *const clientID = @"GCWUZIHYLK1DURPIEVO4HYRNIRUDC2NBKJHEPLE4RFMLQ35A";
 static NSString *const clientSecret = @"VRCUJCWQYIWBFK212OOGGGU1KD2DKZLYVZZJ0ZUNEIBNA5EV";
@@ -70,6 +72,14 @@ static NSString *const clientSecret = @"VRCUJCWQYIWBFK212OOGGGU1KD2DKZLYVZZJ0ZUN
     NSNumber *testerLong = [NSNumber numberWithFloat:-122.4313];
     
     [self fetchLocationsWithLatitude:testerLat andLongitude:testerLong];
+    
+    //testing to see if the objects are initialized correctly
+    //[APIManager fetchLocationsWithLatitude:testerLat andLongitude:testerLong];
+    //APIManager
+    
+    APIManager *apiManager = [[APIManager alloc] init];
+    [apiManager fetchLocationsWithLatitude:testerLat andLongitude:testerLong];
+    
     
 }
 //going to want to send a latitude and longitude into this from youngmin- send them as nsnumbers

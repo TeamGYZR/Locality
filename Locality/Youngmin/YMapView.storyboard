@@ -17,6 +17,16 @@
                     <view key="view" contentMode="scaleToFill" id="hg4-te-UN6">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9NG-Aq-MBn">
+                                <rect key="frame" x="241" y="89" width="105" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="toLocationData"/>
+                                <connections>
+                                    <segue destination="hqG-yd-YmW" kind="presentation" id="4GE-qQ-YFK"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="oca-TK-kyx"/>
                     </view>
@@ -25,6 +35,14 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ss3-Wg-l47" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1068" y="-566.26686656671666"/>
+        </scene>
+        <!--GingerFoursquareView-->
+        <scene sceneID="grm-hN-IIy">
+            <objects>
+                <viewControllerPlaceholder storyboardName="GingerFoursquareView" id="hqG-yd-YmW" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Wut-dq-H5c" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1434" y="-1072"/>
         </scene>
         <!--Explore Map View Controller-->
         <scene sceneID="Wvd-Ps-WIm">
