@@ -16,6 +16,9 @@
 @property (weak, nonatomic) IBOutlet UIButton *currentLocationButton;
 @property (strong, nonatomic) CLLocationManager *locationManager;
 
+//- (void)locationManager:(CLLocationManager *)manager
+//     didUpdateLocations:(NSArray<CLLocation *> *)locations;
+
 @end
 
 @implementation ExploreMapViewController
@@ -25,12 +28,14 @@
     // Do any additional setup after loading the view.
     
     self.mapView.delegate = self;
+    self.locationManager = [[CLLocationManager alloc] init];
     self.locationManager.delegate = self;
     
+
     [self.locationManager requestWhenInUseAuthorization];
     
-    if(CLLocationManager.locationServicesEnabled)
-    {
+    //if(CLLocationManager.locationServicesEnabled)
+   // {
         if(CLLocationManager.authorizationStatus == kCLAuthorizationStatusAuthorizedWhenInUse)
         {
             NSLog(@"location usage authorized");
@@ -40,7 +45,7 @@
             
             [self findCurrentLocation];
         }
-    }
+  //  }
     
     //MKCoordinateRegion sfRegion = MKCoordinateRegionMake(CLLocationCoordinate2DMake(37.783333, -122.416667), MKCoordinateSpanMake(0.1, 0.1));
     
@@ -54,15 +59,31 @@
 }
 
 -(void)findCurrentLocation{
-    [self.locationManager startUpdatingLocation];
+   // [self.locationManager startUpdatingLocation];
+   [self.locationManager requestLocation];
 }
 
-- (void)locationManager:(CLLocationManager *)manager
-     didUpdateLocations:(NSArray<CLLocation *> *)locations{
+-(void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray<CLLocation *> *)locations{
     
-    NSLog(@"lat: %f, long: %f", locations[0].coordinate.latitude, locations[0].coordinate.longitude);
+    CLLocation * currentLocation = [[CLLocation alloc] init];
+    
+    currentLocation = [locations lastObject];
+    
+    NSLog(@"lat: %f, long: %f", currentLocation.coordinate.latitude, currentLocation.coordinate.longitude);
+    
+    MKCoordinateRegion currentRegion = MKCoordinateRegionMake(CLLocationCoordinate2DMake(currentLocation.coordinate.latitude, currentLocation.coordinate.longitude), MKCoordinateSpanMake(0.1, 0.1));
+    
+    
+    [self.mapView setRegion:currentRegion animated:YES];
 }
 
+- (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error{
+    NSLog(@"%@", error);
+}
+
+- (void)locationManager:(CLLocationManager *)manager didFinishDeferredUpdatesWithError:(NSError *)error{
+    NSLog(@"%@", error);
+}
 /*
 #pragma mark - Navigation
 
