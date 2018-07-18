@@ -296,11 +296,7 @@
 				4CDAC17020F4424100B3E7D4 /* Sources */,
 				4CDAC17120F4424100B3E7D4 /* Frameworks */,
 				4CDAC17220F4424100B3E7D4 /* Resources */,
-<<<<<<< HEAD
-				F4078F506A798ED1176F3AA0 /* [CP] Copy Pods Resources */,
-=======
-				6AC4E0C46F5A7105E0BB5DD8 /* [CP] Copy Pods Resources */,
->>>>>>> c5cf666f889bf20938c5d580d0e08840882411f0
+				B8ECAFEC7DF0EE5E1280CBB1 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -441,7 +437,7 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		6AC4E0C46F5A7105E0BB5DD8 /* [CP] Copy Pods Resources */ = {
+		B8ECAFEC7DF0EE5E1280CBB1 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -449,10 +445,12 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Locality/Pods-Locality-resources.sh",
 				"${PODS_CONFIGURATION_BUILD_DIR}/Parse/Parse.bundle",
+				"${PODS_ROOT}/objectiveflickr/BridgeSupport",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/Parse.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/BridgeSupport",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -475,24 +473,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		F4078F506A798ED1176F3AA0 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-Locality/Pods-Locality-resources.sh",
-				"${PODS_ROOT}/objectiveflickr/BridgeSupport",
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/BridgeSupport",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Locality/Pods-Locality-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		FEBE0826960324AA353546BC /* [CP] Check Pods Manifest.lock */ = {
@@ -521,11 +501,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				4CDAC17C20F4424100B3E7D4 /* ViewController.m in Sources */,
-<<<<<<< HEAD
 				A80F646C20FF3BF000C105D0 /* CollectionViewController.m in Sources */,
-=======
 				859A1AA720FF1A1800E13EBC /* VenueAnnotationView.m in Sources */,
->>>>>>> c5cf666f889bf20938c5d580d0e08840882411f0
 				8597DB2220FE7BA200BA261A /* ExploreMapViewController.m in Sources */,
 				859A1AA120FF121300E13EBC /* VenueAnnotation.m in Sources */,
 				4CDAC18720F4424100B3E7D4 /* main.m in Sources */,

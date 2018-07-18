@@ -92,17 +92,12 @@ EOM
   esac
 }
 if [[ "$CONFIGURATION" == "Debug" ]]; then
-<<<<<<< HEAD
+  install_resource "${PODS_CONFIGURATION_BUILD_DIR}/Parse/Parse.bundle"
   install_resource "${PODS_ROOT}/objectiveflickr/BridgeSupport"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
+  install_resource "${PODS_CONFIGURATION_BUILD_DIR}/Parse/Parse.bundle"
   install_resource "${PODS_ROOT}/objectiveflickr/BridgeSupport"
-=======
-  install_resource "${PODS_CONFIGURATION_BUILD_DIR}/Parse/Parse.bundle"
-fi
-if [[ "$CONFIGURATION" == "Release" ]]; then
-  install_resource "${PODS_CONFIGURATION_BUILD_DIR}/Parse/Parse.bundle"
->>>>>>> c5cf666f889bf20938c5d580d0e08840882411f0
 fi
 
 mkdir -p "${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}"
