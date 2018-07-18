@@ -32,6 +32,7 @@
 @property (strong, nonatomic) NSDictionary * result;
 @property (strong, nonatomic) NSString * name;
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionview;
+@property (strong, nonatomic) NSArray * array;
 
 
 @end
