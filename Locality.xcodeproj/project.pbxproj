@@ -11,6 +11,8 @@
 		2F308E1C27E4FA2C43F5F955 /* libPods-LocalityUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7268D2AFC88C24A529B514A5 /* libPods-LocalityUITests.a */; };
 		4CA36B5420FE90340056EB44 /* Venue.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CA36B5320FE90340056EB44 /* Venue.m */; };
 		4CA36B5B20FE9F8A0056EB44 /* APIManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CA36B5A20FE9F8A0056EB44 /* APIManager.m */; };
+		4CA36B5D20FEB20A0056EB44 /* DetailsView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4CA36B5C20FEB20A0056EB44 /* DetailsView.storyboard */; };
+		4CA36B6120FEB5540056EB44 /* DetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CA36B6020FEB5540056EB44 /* DetailsViewController.m */; };
 		4CCB516A20FD104C00A55373 /* GingerFoursquareView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4CCB516920FD104C00A55373 /* GingerFoursquareView.storyboard */; };
 		4CCB516F20FD19F500A55373 /* LocationsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CCB516E20FD19F500A55373 /* LocationsViewController.m */; };
 		4CCB517220FD4C8700A55373 /* LocationCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CCB517120FD4C8700A55373 /* LocationCell.m */; };
@@ -52,6 +54,9 @@
 		4CA36B5320FE90340056EB44 /* Venue.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Venue.m; sourceTree = "<group>"; };
 		4CA36B5920FE9F8A0056EB44 /* APIManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = APIManager.h; sourceTree = "<group>"; };
 		4CA36B5A20FE9F8A0056EB44 /* APIManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = APIManager.m; sourceTree = "<group>"; };
+		4CA36B5C20FEB20A0056EB44 /* DetailsView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DetailsView.storyboard; sourceTree = "<group>"; };
+		4CA36B5F20FEB5540056EB44 /* DetailsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DetailsViewController.h; sourceTree = "<group>"; };
+		4CA36B6020FEB5540056EB44 /* DetailsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DetailsViewController.m; sourceTree = "<group>"; };
 		4CCB516920FD104C00A55373 /* GingerFoursquareView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = GingerFoursquareView.storyboard; sourceTree = "<group>"; };
 		4CCB516D20FD19F500A55373 /* LocationsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LocationsViewController.h; sourceTree = "<group>"; };
 		4CCB516E20FD19F500A55373 /* LocationsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LocationsViewController.m; sourceTree = "<group>"; };
@@ -148,6 +153,15 @@
 			path = API;
 			sourceTree = "<group>";
 		};
+		4CA36B5E20FEB5290056EB44 /* Venue Details */ = {
+			isa = PBXGroup;
+			children = (
+				4CA36B5F20FEB5540056EB44 /* DetailsViewController.h */,
+				4CA36B6020FEB5540056EB44 /* DetailsViewController.m */,
+			);
+			path = "Venue Details";
+			sourceTree = "<group>";
+		};
 		4CCB516C20FD11D400A55373 /* API Foursquare */ = {
 			isa = PBXGroup;
 			children = (
@@ -184,6 +198,7 @@
 		4CDAC17620F4424100B3E7D4 /* Locality */ = {
 			isa = PBXGroup;
 			children = (
+				4CA36B5E20FEB5290056EB44 /* Venue Details */,
 				4CA36B5520FE9C520056EB44 /* API */,
 				4CA36B5120FE90180056EB44 /* Models */,
 				8597DAD620FD0DD500BA261A /* Youngmin */,
@@ -224,6 +239,7 @@
 			isa = PBXGroup;
 			children = (
 				4CCB516920FD104C00A55373 /* GingerFoursquareView.storyboard */,
+				4CA36B5C20FEB20A0056EB44 /* DetailsView.storyboard */,
 			);
 			path = Storyboards;
 			sourceTree = "<group>";
@@ -362,6 +378,7 @@
 				4CDAC18420F4424100B3E7D4 /* LaunchScreen.storyboard in Resources */,
 				4CDAC18120F4424100B3E7D4 /* Assets.xcassets in Resources */,
 				4CDAC17F20F4424100B3E7D4 /* Main.storyboard in Resources */,
+				4CA36B5D20FEB20A0056EB44 /* DetailsView.storyboard in Resources */,
 				4CCB516A20FD104C00A55373 /* GingerFoursquareView.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -468,6 +485,7 @@
 				4CCB517220FD4C8700A55373 /* LocationCell.m in Sources */,
 				4CA36B5B20FE9F8A0056EB44 /* APIManager.m in Sources */,
 				4CDAC17920F4424100B3E7D4 /* AppDelegate.m in Sources */,
+				4CA36B6120FEB5540056EB44 /* DetailsViewController.m in Sources */,
 				4CCB516F20FD19F500A55373 /* LocationsViewController.m in Sources */,
 				8597DB1B20FD50E800BA261A /* ExploreMapViewController.m in Sources */,
 			);

@@ -35,27 +35,15 @@
         if (data) {
             //creating a dictionary to hold the json data
             NSDictionary *responseDictionary = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
-            //printing out the json data to view the responses based on the specific coordinates
-            //NSLog(@"response: %@", responseDictionary);
             //using the venue names as the query
             self.results = [responseDictionary valueForKeyPath:@"response.groups.items.venue"][0];
             
             //set this equal to something else- comes back as an array of objects
             [Venue venuesWithArray:self.results];
             //NSMutableArray *testerArray = [Venue venuesWithArray:self.results];
-            //NSLog(@"%@", testerArray);
-            //NSString *tester = @"tester";
-            //NSLog(@"%@", [Venue venuesWithArray:self.results]);
-            
         }
     }];
     [task resume];
-    
-    //either put this before or after task resume- unsure
-    //NSMutableArray *venue = [Venue venuesWithArray:self.results];
-    
-    //cakking the venues with array function to set all of the objects up!
-    //[Venue venuesWithArray:self.results];
     
 }
 
