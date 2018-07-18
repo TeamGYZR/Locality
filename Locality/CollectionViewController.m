@@ -8,7 +8,8 @@
 
 #import "CollectionViewController.h"
 #import "UIImageView+AFNetworking.h"
-@interface CollectionViewController ()
+#import "ExploreMapViewController.h"
+@interface CollectionViewController ()<UICollectionViewDataSource, UICollectionViewDelegate>
 
 @end
 
@@ -18,6 +19,8 @@
 
 -(void)viewDidLoad {
     [super viewDidLoad];
+    //self.collectionview.dataSource=self;
+    //self.collectionview.delegate=self;
     [self setkey];
     [self fecth];
     
@@ -42,38 +45,11 @@
     self.con=context;
     self.req=request;
 }
-
-//-(NSDictionary *) photodata:(NSString *) string{
-//
-//    NSString * urlstring=[NSString stringWithFormat:@"https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=%@&tags=%@&per_page=10&format=json&nojsoncallback=1", self.Capikey, string];
-//    NSURL* url=[NSURL URLWithString:urlstring];
-//    NSURLRequest *req=[NSURLRequest requestWithURL:url];
-//    NSURLSession * session=[NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration] delegate:nil delegateQueue:[NSOperationQueue mainQueue]];
-//
-//    NSURLSessionDataTask *task = [session dataTaskWithRequest:req completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
-//        if (data) {
-//            self->res = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
-//            NSLog(@"response: %@", self->res);
-//
-//        }
-//    }];
-//
-//    [task resume];
-//
-////    NSString *jsonString = [NSString stringWithContentsOfURL:url encoding:NSUTF8StringEncoding error:nil];
-////
-////    NSData * data=[jsonString dataUsingEncoding:NSUTF8StringEncoding];
-////    NSDictionary * dictionary=[NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
-//     return self->res;
-//
-//}
-
-
 -(void) fecth{
     [self apimanager];
     
     //[self.req callAPIMethodWithGET:@"flickr.photos.getRecent" arguments:[NSDictionary dictionaryWithObjectsAndKeys:@"1", @"per_page", nil]];
-    NSDictionary *dictionary = [NSDictionary dictionaryWithObjectsAndKeys:@"DOG", @"tags", nil];
+    NSDictionary *dictionary = [NSDictionary dictionaryWithObjectsAndKeys:self.name, @"tags", nil];
     [self.req callAPIMethodWithGET:@"flickr.photos.search" arguments:dictionary];
     
 }
@@ -84,15 +60,16 @@
 //    }
     // OFFlickrAPIContext *flickrContext=[[OFFlickrAPIContext alloc] initWithAPIKey:@"595a10deca33ce1b5a7ab291254fb22a" sharedSecret:@"cf18c4e987fb5146"];
     
-   NSLog(@"response: %@", inResponseDictionary);
-    for(int i=0; i<inResponseDictionary.allKeys.count; i++){
-    NSDictionary *photoDict = [[inResponseDictionary valueForKeyPath:@"photos.photo"] objectAtIndex:i];
-    NSURL *staticPhotoURL = [self.con photoSourceURLFromDictionary:photoDict size:OFFlickrSmallSize];
-    NSURL *photoSourcePage = [self.con photoWebPageURLFromDictionary:photoDict];
-    
-    NSLog(@"%@", photoSourcePage);
-    NSLog(@"%@", staticPhotoURL);
-    }
+//   NSLog(@"response: %@", inResponseDictionary);
+//    for(int i=0; i<inResponseDictionary.allKeys.count; i++){
+//    NSDictionary *photoDict = [[inResponseDictionary valueForKeyPath:@"photos.photo"] objectAtIndex:i];
+//    NSURL *staticPhotoURL = [self.con photoSourceURLFromDictionary:photoDict size:OFFlickrSmallSize];
+//    NSURL *photoSourcePage = [self.con photoWebPageURLFromDictionary:photoDict];
+//
+//    NSLog(@"%@", photoSourcePage);
+//    NSLog(@"%@", staticPhotoURL);
+//    }
+    self->res=inResponseDictionary;
     request = nil;
     
 }
@@ -111,6 +88,34 @@
     // Pass the selected object to the new view controller.
 }
 */
+
+
+
+
+
+
+
+
+
+
+
+- (nonnull __kindof UICollectionViewCell *)collectionView:(nonnull UICollectionView *)collectionView cellForItemAtIndexPath:(nonnull NSIndexPath *)indexPath {
+    CollectionViewCell *cell=[collectionView dequeueReusableCellWithReuseIdentifier:@"collectioncell" forIndexPath:indexPath];
+    cell.imagefiled.image=nil;
+    NSDictionary *photoDict = [[self->res valueForKeyPath:@"photos.photo"] objectAtIndex:0];
+    //NSURL *staticPhotoURL = [self.con photoSourceURLFromDictionary:photoDict size:OFFlickrSmallSize];
+    NSURL *photoSourcePage = [self.con photoWebPageURLFromDictionary:photoDict];
+    [cell.imagefiled setImageWithURL:photoSourcePage];
+    
+    
+    return cell;
+    
+    
+}
+
+- (NSInteger)collectionView:(nonnull UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
+    return self->res.allKeys.count;
+}
 
 
 

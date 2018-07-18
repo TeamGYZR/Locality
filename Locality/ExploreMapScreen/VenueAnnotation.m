@@ -7,11 +7,12 @@
 //
 
 #import "VenueAnnotation.h"
-
+#import <Mapkit/Mapkit.h>
+#import <CoreLocation/CoreLocation.h>
 
 @implementation VenueAnnotation
 
--(id)initWithName:(NSString *)name Coordinate:(CLLocationCoordinate2D *)coordinate Address:(NSString *)address AndImage:(UIImage *)image{
+-(id)initWithName:(NSString *)name Coordinate:(CLLocationCoordinate2D )coordinate Address:(NSString *)address AndImage:(UIImage *)image{
     
     self = [super init];
     
@@ -28,6 +29,24 @@
     
     
 }
+
+-(id)initWithVenue:(Venue *)venue{
+    
+    
+    self = [super init];
+    
+    if(self)
+    {
+        _name = venue.name;
+        _coordinate = CLLocationCoordinate2DMake(venue.latitude.doubleValue, venue.longitude.doubleValue);
+        _address = venue.streetAddress;
+        //_image = image;
+    }
+    
+    return self;
+    
+    
+};
 
 -(MKAnnotationView *) annotationView
 {

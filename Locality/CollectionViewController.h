@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import <ObjectiveFlickr/ObjectiveFlickr.h>
+#import "CollectionViewCell.h"
 
 @interface CollectionViewController : UIViewController <OFFlickrAPIRequestDelegate>{
     OFFlickrAPIContext *context;
@@ -29,4 +30,8 @@
 @property (strong,nonatomic) NSString * Capikey;
 @property (strong, nonatomic) NSString * Csharedkey;
 @property (strong, nonatomic) NSDictionary * result;
+@property (strong, nonatomic) NSString * name;
+@property (weak, nonatomic) IBOutlet UICollectionView *collectionview;
+
+
 @end
