@@ -12,6 +12,7 @@
 #import "APIManager.h"
 #import "Venue.h"
 
+
 @interface ExploreMapViewController () <MKMapViewDelegate, CLLocationManagerDelegate>
 
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;
@@ -21,7 +22,7 @@
 //- (void)locationManager:(CLLocationManager *)manager
 //     didUpdateLocations:(NSArray<CLLocation *> *)locations;
 -(void)goToCollection;
-
+@property (strong,nonatomic) NSString * string;
 @end
 
 @implementation ExploreMapViewController
@@ -171,8 +172,10 @@
 
 - (void)mapView:(MKMapView *)mapView annotationView:(MKAnnotationView *)view calloutAccessoryControlTapped:(UIControl *)control
 {
+//    self.data.name= view.annotation.title;
+    self.string=view.annotation.title;
+    [self performSegueWithIdentifier:@"collectionSegue" sender:view.annotation];
     
-    view.annotation; 
     //Here, the annotation tapped can be accessed using view.annotation
 }
 
@@ -197,14 +200,20 @@
 - (void)locationManager:(CLLocationManager *)manager didFinishDeferredUpdatesWithError:(NSError *)error{
     NSLog(@"%@", error);
 }
-/*
+
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
+    if([segue.identifier isEqualToString:@"collectionSegue"]){
+        
+        CollectionViewController * collection=[segue destinationViewController];
+        collection.name=self.string;
+        
+    }
 }
-*/
+
 
 @end
