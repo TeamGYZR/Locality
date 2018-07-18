@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import <MapKit/MapKit.h>
+#import "Venue.h"
 
 @interface VenueAnnotation : NSObject <MKAnnotation>
 
@@ -16,7 +17,10 @@
 @property (strong, nonatomic) NSString * address;
 @property (strong, nonatomic) NSString * name;
 
--(id)initWithName:(NSString *)name Coordinate:(CLLocationCoordinate2D *)coordinate Address:(NSString *)address AndImage:(UIImage *)image;
+-(id)initWithName:(NSString *)name Coordinate:(CLLocationCoordinate2D )coordinate Address:(NSString *)address AndImage:(UIImage *)image;
+
+-(id)initWithVenue:(Venue *)venue;
+
 -(MKAnnotationView *) annotationView; 
 
 
