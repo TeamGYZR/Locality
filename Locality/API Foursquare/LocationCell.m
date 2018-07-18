@@ -54,6 +54,7 @@
     NSURL *url = [NSURL URLWithString:urlString];
     [self.categoryIcon setImageWithURL:url];
     
+    
 }
 
 @end
