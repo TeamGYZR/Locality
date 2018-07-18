@@ -24,6 +24,8 @@
 		8597DB1820FD1BB400BA261A /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8597DB1720FD1BB400BA261A /* CoreLocation.framework */; };
 		8597DB2120FE7BA200BA261A /* YMapView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8597DB1F20FE7BA200BA261A /* YMapView.storyboard */; };
 		8597DB2220FE7BA200BA261A /* ExploreMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8597DB2020FE7BA200BA261A /* ExploreMapViewController.m */; };
+		859A1AA120FF121300E13EBC /* VenueAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 859A1AA020FF121300E13EBC /* VenueAnnotation.m */; };
+		859A1AA720FF1A1800E13EBC /* VenueAnnotationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 859A1AA620FF1A1800E13EBC /* VenueAnnotationView.m */; };
 		93F8CAE4531E84E7DBB01E8D /* libPods-LocalityTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 85AAA040A6699A174EA32C3D /* libPods-LocalityTests.a */; };
 /* End PBXBuildFile section */
 
@@ -75,6 +77,10 @@
 		8597DB1E20FE7B9600BA261A /* ExploreMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExploreMapViewController.h; sourceTree = "<group>"; };
 		8597DB1F20FE7BA200BA261A /* YMapView.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = YMapView.storyboard; sourceTree = "<group>"; };
 		8597DB2020FE7BA200BA261A /* ExploreMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExploreMapViewController.m; sourceTree = "<group>"; };
+		859A1A9F20FF121300E13EBC /* VenueAnnotation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VenueAnnotation.h; sourceTree = "<group>"; };
+		859A1AA020FF121300E13EBC /* VenueAnnotation.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VenueAnnotation.m; sourceTree = "<group>"; };
+		859A1AA520FF1A1800E13EBC /* VenueAnnotationView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VenueAnnotationView.h; sourceTree = "<group>"; };
+		859A1AA620FF1A1800E13EBC /* VenueAnnotationView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VenueAnnotationView.m; sourceTree = "<group>"; };
 		85AAA040A6699A174EA32C3D /* libPods-LocalityTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-LocalityTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C01F5B3A004D967BDF2A1867 /* Pods-Locality.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Locality.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Locality/Pods-Locality.debug.xcconfig"; sourceTree = "<group>"; };
 		CB20FD7FBFA0FE7606614E01 /* Pods-LocalityUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LocalityUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-LocalityUITests/Pods-LocalityUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -205,9 +211,13 @@
 		8597DAD620FD0DD500BA261A /* ExploreMapScreen */ = {
 			isa = PBXGroup;
 			children = (
+				859A1AA520FF1A1800E13EBC /* VenueAnnotationView.h */,
+				859A1AA620FF1A1800E13EBC /* VenueAnnotationView.m */,
 				8597DB2020FE7BA200BA261A /* ExploreMapViewController.m */,
 				8597DB1F20FE7BA200BA261A /* YMapView.storyboard */,
 				8597DB1E20FE7B9600BA261A /* ExploreMapViewController.h */,
+				859A1A9F20FF121300E13EBC /* VenueAnnotation.h */,
+				859A1AA020FF121300E13EBC /* VenueAnnotation.m */,
 			);
 			path = ExploreMapScreen;
 			sourceTree = "<group>";
@@ -418,7 +428,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				4CDAC17C20F4424100B3E7D4 /* ViewController.m in Sources */,
+				859A1AA720FF1A1800E13EBC /* VenueAnnotationView.m in Sources */,
 				8597DB2220FE7BA200BA261A /* ExploreMapViewController.m in Sources */,
+				859A1AA120FF121300E13EBC /* VenueAnnotation.m in Sources */,
 				4CDAC18720F4424100B3E7D4 /* main.m in Sources */,
 				4CCB517220FD4C8700A55373 /* LocationCell.m in Sources */,
 				4CDAC17920F4424100B3E7D4 /* AppDelegate.m in Sources */,

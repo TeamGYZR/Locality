@@ -44,7 +44,11 @@
             self.locationManager.distanceFilter = kCLDistanceFilterNone;
             self.locationManager.desiredAccuracy = kCLLocationAccuracyBest;
             
-            [self findCurrentLocation];
+            //[self findCurrentLocation];
+            self.mapView.showsUserLocation = YES;
+            
+            MKCoordinateRegion sfRegion = MKCoordinateRegionMake(CLLocationCoordinate2DMake(37.783333, -122.416667), MKCoordinateSpanMake(0.1, 0.1));
+            [self.mapView setRegion:sfRegion animated:false];
         }
 
 }
@@ -81,6 +85,7 @@
     annotation.coordinate = pinCoordinates;
     annotation.title = @"Picture!";
     [self.mapView addAnnotation:annotation];
+    //put above in for loop when data is received from api
     
     [self.navigationController popToViewController:self animated:YES];
     self.mapView.showsUserLocation = YES;
@@ -93,6 +98,24 @@
     [self.locationManager requestLocation];
     
 }
+
+- (void)mapView:(MKMapView *)mapView didUpdateUserLocation:(MKUserLocation *)userLocation
+{
+    // Center the map the first time we get a real location change.
+    static dispatch_once_t centerMapFirstTime;
+    
+    if ((userLocation.coordinate.latitude != 0.0) && (userLocation.coordinate.longitude != 0.0)) {
+        dispatch_once(&centerMapFirstTime, ^{
+            [self.mapView setCenterCoordinate:userLocation.coordinate animated:YES];
+        });
+    }
+    
+    NSLog(@"%f, %f", self.mapView.userLocation.coordinate.latitude, self.mapView.userLocation.coordinate.longitude);
+    //send info to api manager
+    
+    
+}
+
 
 -(MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation{
     MKPinAnnotationView * annotationView = (MKPinAnnotationView *) [mapView dequeueReusableAnnotationViewWithIdentifier:@"Pin"];
