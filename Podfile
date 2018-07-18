@@ -8,6 +8,8 @@ target 'Locality' do
   # Pods for Locality
   pod 'AFNetworking'
   pod 'objectiveflickr'
+  pod 'Parse'
+
   target 'LocalityTests' do
     inherit! :search_paths
     # Pods for testing

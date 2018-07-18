@@ -17,6 +17,24 @@
                     <view key="view" contentMode="scaleToFill" id="hg4-te-UN6">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9NG-Aq-MBn">
+                                <rect key="frame" x="241" y="89" width="105" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="toLocationData"/>
+                                <connections>
+                                    <segue destination="hqG-yd-YmW" kind="presentation" id="4GE-qQ-YFK"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fR1-wC-OGv">
+                                <rect key="frame" x="246" y="371" width="95" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="toDetailsPage"/>
+                                <connections>
+                                    <segue destination="0km-K9-MAD" kind="presentation" id="n4H-nx-mp5"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="oca-TK-kyx"/>
                     </view>
@@ -26,6 +44,22 @@
             </objects>
             <point key="canvasLocation" x="1068" y="-566.26686656671666"/>
         </scene>
+        <!--DetailsView-->
+        <scene sceneID="Wtr-r3-aS4">
+            <objects>
+                <viewControllerPlaceholder storyboardName="DetailsView" id="0km-K9-MAD" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="KwU-p1-RuH" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1835" y="-491"/>
+        </scene>
+        <!--GingerFoursquareView-->
+        <scene sceneID="grm-hN-IIy">
+            <objects>
+                <viewControllerPlaceholder storyboardName="GingerFoursquareView" id="hqG-yd-YmW" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Wut-dq-H5c" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1434" y="-1072"/>
+        </scene>
         <!--Explore Map View Controller-->
         <scene sceneID="Wvd-Ps-WIm">
             <objects>
@@ -34,13 +68,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="QqE-Vh-Mea">
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="QqE-Vh-Mea">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </mapView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eci-Ff-ccJ">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eci-Ff-ccJ">
                                 <rect key="frame" x="115" y="556" width="144" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Get Current Location">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
@@ -50,6 +82,16 @@
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="eci-Ff-ccJ" firstAttribute="leading" secondItem="HMA-8S-vxb" secondAttribute="leading" constant="115" id="3h8-8c-ema"/>
+                            <constraint firstItem="HMA-8S-vxb" firstAttribute="trailing" secondItem="eci-Ff-ccJ" secondAttribute="trailing" constant="116" id="82I-VL-Cn2"/>
+                            <constraint firstItem="HMA-8S-vxb" firstAttribute="bottom" secondItem="eci-Ff-ccJ" secondAttribute="bottom" constant="32" id="Mwa-RF-6Gu"/>
+                            <constraint firstItem="QqE-Vh-Mea" firstAttribute="trailing" secondItem="HMA-8S-vxb" secondAttribute="trailing" id="OdZ-Tf-1yX"/>
+                            <constraint firstAttribute="bottom" secondItem="QqE-Vh-Mea" secondAttribute="bottom" id="alA-Lw-m1f"/>
+                            <constraint firstItem="eci-Ff-ccJ" firstAttribute="top" secondItem="HMA-8S-vxb" secondAttribute="top" constant="492" id="dKF-uN-NRf"/>
+                            <constraint firstItem="QqE-Vh-Mea" firstAttribute="leading" secondItem="HMA-8S-vxb" secondAttribute="leading" id="jlp-Ol-BFM"/>
+                            <constraint firstItem="QqE-Vh-Mea" firstAttribute="top" secondItem="VLH-zV-HR3" secondAttribute="top" id="nDE-lE-Ccc"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="HMA-8S-vxb"/>
                     </view>
                     <navigationItem key="navigationItem" id="5Ig-ke-Unh"/>

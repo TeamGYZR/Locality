@@ -9,6 +9,10 @@
 /* Begin PBXBuildFile section */
 		1BE7AFA3980986C9A157CCD2 /* libPods-Locality.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F1B3E5DBABAB3F93F44C75E /* libPods-Locality.a */; };
 		2F308E1C27E4FA2C43F5F955 /* libPods-LocalityUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7268D2AFC88C24A529B514A5 /* libPods-LocalityUITests.a */; };
+		4CA36B5420FE90340056EB44 /* Venue.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CA36B5320FE90340056EB44 /* Venue.m */; };
+		4CA36B5B20FE9F8A0056EB44 /* APIManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CA36B5A20FE9F8A0056EB44 /* APIManager.m */; };
+		4CA36B5D20FEB20A0056EB44 /* DetailsView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4CA36B5C20FEB20A0056EB44 /* DetailsView.storyboard */; };
+		4CA36B6120FEB5540056EB44 /* DetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CA36B6020FEB5540056EB44 /* DetailsViewController.m */; };
 		4CCB516A20FD104C00A55373 /* GingerFoursquareView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4CCB516920FD104C00A55373 /* GingerFoursquareView.storyboard */; };
 		4CCB516F20FD19F500A55373 /* LocationsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CCB516E20FD19F500A55373 /* LocationsViewController.m */; };
 		4CCB517220FD4C8700A55373 /* LocationCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CCB517120FD4C8700A55373 /* LocationCell.m */; };
@@ -24,6 +28,8 @@
 		8597DB1820FD1BB400BA261A /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8597DB1720FD1BB400BA261A /* CoreLocation.framework */; };
 		8597DB2120FE7BA200BA261A /* YMapView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8597DB1F20FE7BA200BA261A /* YMapView.storyboard */; };
 		8597DB2220FE7BA200BA261A /* ExploreMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8597DB2020FE7BA200BA261A /* ExploreMapViewController.m */; };
+		859A1AA120FF121300E13EBC /* VenueAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 859A1AA020FF121300E13EBC /* VenueAnnotation.m */; };
+		859A1AA720FF1A1800E13EBC /* VenueAnnotationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 859A1AA620FF1A1800E13EBC /* VenueAnnotationView.m */; };
 		93F8CAE4531E84E7DBB01E8D /* libPods-LocalityTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 85AAA040A6699A174EA32C3D /* libPods-LocalityTests.a */; };
 		A80F646920FF3BB500C105D0 /* collectionview.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A80F646820FF3BB500C105D0 /* collectionview.storyboard */; };
 		A80F646C20FF3BF000C105D0 /* CollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A80F646B20FF3BF000C105D0 /* CollectionViewController.m */; };
@@ -48,6 +54,13 @@
 
 /* Begin PBXFileReference section */
 		0D954F9A18A334D6109C8DA1 /* Pods-LocalityTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LocalityTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LocalityTests/Pods-LocalityTests.debug.xcconfig"; sourceTree = "<group>"; };
+		4CA36B5220FE90340056EB44 /* Venue.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Venue.h; sourceTree = "<group>"; };
+		4CA36B5320FE90340056EB44 /* Venue.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Venue.m; sourceTree = "<group>"; };
+		4CA36B5920FE9F8A0056EB44 /* APIManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = APIManager.h; sourceTree = "<group>"; };
+		4CA36B5A20FE9F8A0056EB44 /* APIManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = APIManager.m; sourceTree = "<group>"; };
+		4CA36B5C20FEB20A0056EB44 /* DetailsView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DetailsView.storyboard; sourceTree = "<group>"; };
+		4CA36B5F20FEB5540056EB44 /* DetailsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DetailsViewController.h; sourceTree = "<group>"; };
+		4CA36B6020FEB5540056EB44 /* DetailsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DetailsViewController.m; sourceTree = "<group>"; };
 		4CCB516920FD104C00A55373 /* GingerFoursquareView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = GingerFoursquareView.storyboard; sourceTree = "<group>"; };
 		4CCB516D20FD19F500A55373 /* LocationsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LocationsViewController.h; sourceTree = "<group>"; };
 		4CCB516E20FD19F500A55373 /* LocationsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LocationsViewController.m; sourceTree = "<group>"; };
@@ -77,6 +90,10 @@
 		8597DB1E20FE7B9600BA261A /* ExploreMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExploreMapViewController.h; sourceTree = "<group>"; };
 		8597DB1F20FE7BA200BA261A /* YMapView.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = YMapView.storyboard; sourceTree = "<group>"; };
 		8597DB2020FE7BA200BA261A /* ExploreMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExploreMapViewController.m; sourceTree = "<group>"; };
+		859A1A9F20FF121300E13EBC /* VenueAnnotation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VenueAnnotation.h; sourceTree = "<group>"; };
+		859A1AA020FF121300E13EBC /* VenueAnnotation.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VenueAnnotation.m; sourceTree = "<group>"; };
+		859A1AA520FF1A1800E13EBC /* VenueAnnotationView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VenueAnnotationView.h; sourceTree = "<group>"; };
+		859A1AA620FF1A1800E13EBC /* VenueAnnotationView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VenueAnnotationView.m; sourceTree = "<group>"; };
 		85AAA040A6699A174EA32C3D /* libPods-LocalityTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-LocalityTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A80F646820FF3BB500C105D0 /* collectionview.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = collectionview.storyboard; sourceTree = "<group>"; };
 		A80F646A20FF3BF000C105D0 /* CollectionViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CollectionViewController.h; sourceTree = "<group>"; };
@@ -129,6 +146,33 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		4CA36B5120FE90180056EB44 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				4CA36B5220FE90340056EB44 /* Venue.h */,
+				4CA36B5320FE90340056EB44 /* Venue.m */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		4CA36B5520FE9C520056EB44 /* API */ = {
+			isa = PBXGroup;
+			children = (
+				4CA36B5920FE9F8A0056EB44 /* APIManager.h */,
+				4CA36B5A20FE9F8A0056EB44 /* APIManager.m */,
+			);
+			path = API;
+			sourceTree = "<group>";
+		};
+		4CA36B5E20FEB5290056EB44 /* Venue Details */ = {
+			isa = PBXGroup;
+			children = (
+				4CA36B5F20FEB5540056EB44 /* DetailsViewController.h */,
+				4CA36B6020FEB5540056EB44 /* DetailsViewController.m */,
+			);
+			path = "Venue Details";
+			sourceTree = "<group>";
+		};
 		4CCB516C20FD11D400A55373 /* API Foursquare */ = {
 			isa = PBXGroup;
 			children = (
@@ -165,6 +209,9 @@
 		4CDAC17620F4424100B3E7D4 /* Locality */ = {
 			isa = PBXGroup;
 			children = (
+				4CA36B5E20FEB5290056EB44 /* Venue Details */,
+				4CA36B5520FE9C520056EB44 /* API */,
+				4CA36B5120FE90180056EB44 /* Models */,
 				8597DAD620FD0DD500BA261A /* ExploreMapScreen */,
 				4CCB516C20FD11D400A55373 /* API Foursquare */,
 				8597DACC20FCF68300BA261A /* Storyboards */,
@@ -206,6 +253,7 @@
 			isa = PBXGroup;
 			children = (
 				4CCB516920FD104C00A55373 /* GingerFoursquareView.storyboard */,
+				4CA36B5C20FEB20A0056EB44 /* DetailsView.storyboard */,
 			);
 			path = Storyboards;
 			sourceTree = "<group>";
@@ -213,9 +261,13 @@
 		8597DAD620FD0DD500BA261A /* ExploreMapScreen */ = {
 			isa = PBXGroup;
 			children = (
+				859A1AA520FF1A1800E13EBC /* VenueAnnotationView.h */,
+				859A1AA620FF1A1800E13EBC /* VenueAnnotationView.m */,
 				8597DB2020FE7BA200BA261A /* ExploreMapViewController.m */,
 				8597DB1F20FE7BA200BA261A /* YMapView.storyboard */,
 				8597DB1E20FE7B9600BA261A /* ExploreMapViewController.h */,
+				859A1A9F20FF121300E13EBC /* VenueAnnotation.h */,
+				859A1AA020FF121300E13EBC /* VenueAnnotation.m */,
 			);
 			path = ExploreMapScreen;
 			sourceTree = "<group>";
@@ -244,7 +296,11 @@
 				4CDAC17020F4424100B3E7D4 /* Sources */,
 				4CDAC17120F4424100B3E7D4 /* Frameworks */,
 				4CDAC17220F4424100B3E7D4 /* Resources */,
+<<<<<<< HEAD
 				F4078F506A798ED1176F3AA0 /* [CP] Copy Pods Resources */,
+=======
+				6AC4E0C46F5A7105E0BB5DD8 /* [CP] Copy Pods Resources */,
+>>>>>>> c5cf666f889bf20938c5d580d0e08840882411f0
 			);
 			buildRules = (
 			);
@@ -345,6 +401,7 @@
 				4CDAC18420F4424100B3E7D4 /* LaunchScreen.storyboard in Resources */,
 				4CDAC18120F4424100B3E7D4 /* Assets.xcassets in Resources */,
 				4CDAC17F20F4424100B3E7D4 /* Main.storyboard in Resources */,
+				4CA36B5D20FEB20A0056EB44 /* DetailsView.storyboard in Resources */,
 				4CCB516A20FD104C00A55373 /* GingerFoursquareView.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -382,6 +439,24 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		6AC4E0C46F5A7105E0BB5DD8 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Locality/Pods-Locality-resources.sh",
+				"${PODS_CONFIGURATION_BUILD_DIR}/Parse/Parse.bundle",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/Parse.bundle",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Locality/Pods-Locality-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		CA3A329067A4B8000ED09801 /* [CP] Check Pods Manifest.lock */ = {
@@ -446,11 +521,19 @@
 			buildActionMask = 2147483647;
 			files = (
 				4CDAC17C20F4424100B3E7D4 /* ViewController.m in Sources */,
+<<<<<<< HEAD
 				A80F646C20FF3BF000C105D0 /* CollectionViewController.m in Sources */,
+=======
+				859A1AA720FF1A1800E13EBC /* VenueAnnotationView.m in Sources */,
+>>>>>>> c5cf666f889bf20938c5d580d0e08840882411f0
 				8597DB2220FE7BA200BA261A /* ExploreMapViewController.m in Sources */,
+				859A1AA120FF121300E13EBC /* VenueAnnotation.m in Sources */,
 				4CDAC18720F4424100B3E7D4 /* main.m in Sources */,
+				4CA36B5420FE90340056EB44 /* Venue.m in Sources */,
 				4CCB517220FD4C8700A55373 /* LocationCell.m in Sources */,
+				4CA36B5B20FE9F8A0056EB44 /* APIManager.m in Sources */,
 				4CDAC17920F4424100B3E7D4 /* AppDelegate.m in Sources */,
+				4CA36B6120FEB5540056EB44 /* DetailsViewController.m in Sources */,
 				4CCB516F20FD19F500A55373 /* LocationsViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
