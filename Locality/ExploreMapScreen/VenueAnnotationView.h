@@ -8,6 +8,6 @@
 
 #import <MapKit/MapKit.h>
 
-@interface VenueAnnotationView : MKAnnotationView
+@interface VenueAnnotationView : MKPinAnnotationView
 
 @end
