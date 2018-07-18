@@ -10,6 +10,7 @@
 #import <MapKit/MapKit.h>
 #import <CoreLocation/CoreLocation.h>
 #import "APIManager.h"
+#import "Venue.h"
 
 @interface ExploreMapViewController () <MKMapViewDelegate, CLLocationManagerDelegate>
 
@@ -78,6 +79,12 @@
     
     [self.mapView setRegion:currentRegion animated:YES];
     
+    MKPointAnnotation *annotation = [MKPointAnnotation new];
+    CLLocationCoordinate2D pinCoordinates = CLLocationCoordinate2DMake(currentLocation.coordinate.latitude, currentLocation.coordinate.longitude);
+    annotation.coordinate = pinCoordinates;
+    annotation.title = @"Current Location";
+    [self.mapView addAnnotation:annotation];
+    
     
     APIManager *apiManager = [[APIManager alloc] init];
     NSNumber * lat = [NSNumber numberWithDouble:currentLocation.coordinate.latitude];
@@ -85,18 +92,23 @@
     
     [apiManager fetchLocationsWithLatitude:lat andLongitude:lon withCompletionHandler:^(NSArray *array, NSError *errror) {
         NSLog(@"completion ran");
+        
+        for(Venue *venue in array){
+            MKPointAnnotation *annotation = [MKPointAnnotation new];
+            CLLocationCoordinate2D pinCoordinates = CLLocationCoordinate2DMake(venue.latitude.doubleValue, venue.longitude.doubleValue);
+            annotation.coordinate = pinCoordinates;
+            annotation.title = venue.name;
+            [self.mapView addAnnotation:annotation];
+            //put above in for loop when data is received from api
+        }
+        
+        
+        [self.navigationController popToViewController:self animated:YES];
+        self.mapView.showsUserLocation = YES;
     }];
 
 
-    MKPointAnnotation *annotation = [MKPointAnnotation new];
-    CLLocationCoordinate2D pinCoordinates = CLLocationCoordinate2DMake(currentLocation.coordinate.latitude + 0.001, currentLocation.coordinate.longitude + 0.001);
-    annotation.coordinate = pinCoordinates;
-    annotation.title = @"Picture!";
-    [self.mapView addAnnotation:annotation];
-    //put above in for loop when data is received from api
-    
-    [self.navigationController popToViewController:self animated:YES];
-    self.mapView.showsUserLocation = YES;
+
     
     
     
