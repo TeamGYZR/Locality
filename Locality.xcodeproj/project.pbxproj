@@ -26,8 +26,8 @@
 		4CDAC19C20F4424100B3E7D4 /* LocalityUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CDAC19B20F4424100B3E7D4 /* LocalityUITests.m */; };
 		8597DB1620FD162500BA261A /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8597DB1520FD162500BA261A /* MapKit.framework */; };
 		8597DB1820FD1BB400BA261A /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8597DB1720FD1BB400BA261A /* CoreLocation.framework */; };
-		8597DB1B20FD50E800BA261A /* ExploreMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8597DB1920FD50E800BA261A /* ExploreMapViewController.m */; };
-		8597DB1D20FD511500BA261A /* YMapView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8597DB1C20FD511500BA261A /* YMapView.storyboard */; };
+		8597DB2120FE7BA200BA261A /* YMapView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8597DB1F20FE7BA200BA261A /* YMapView.storyboard */; };
+		8597DB2220FE7BA200BA261A /* ExploreMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8597DB2020FE7BA200BA261A /* ExploreMapViewController.m */; };
 		93F8CAE4531E84E7DBB01E8D /* libPods-LocalityTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 85AAA040A6699A174EA32C3D /* libPods-LocalityTests.a */; };
 /* End PBXBuildFile section */
 
@@ -83,9 +83,9 @@
 		8274814A446109AFAE12B326 /* Pods-LocalityTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LocalityTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-LocalityTests/Pods-LocalityTests.release.xcconfig"; sourceTree = "<group>"; };
 		8597DB1520FD162500BA261A /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		8597DB1720FD1BB400BA261A /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
-		8597DB1920FD50E800BA261A /* ExploreMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ExploreMapViewController.m; path = Locality/Youngmin/ExploreMapViewController.m; sourceTree = SOURCE_ROOT; };
-		8597DB1A20FD50E800BA261A /* ExploreMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ExploreMapViewController.h; path = Locality/Youngmin/ExploreMapViewController.h; sourceTree = SOURCE_ROOT; };
-		8597DB1C20FD511500BA261A /* YMapView.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = YMapView.storyboard; path = Locality/Youngmin/YMapView.storyboard; sourceTree = SOURCE_ROOT; };
+		8597DB1E20FE7B9600BA261A /* ExploreMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExploreMapViewController.h; sourceTree = "<group>"; };
+		8597DB1F20FE7BA200BA261A /* YMapView.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = YMapView.storyboard; sourceTree = "<group>"; };
+		8597DB2020FE7BA200BA261A /* ExploreMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExploreMapViewController.m; sourceTree = "<group>"; };
 		85AAA040A6699A174EA32C3D /* libPods-LocalityTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-LocalityTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C01F5B3A004D967BDF2A1867 /* Pods-Locality.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Locality.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Locality/Pods-Locality.debug.xcconfig"; sourceTree = "<group>"; };
 		CB20FD7FBFA0FE7606614E01 /* Pods-LocalityUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LocalityUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-LocalityUITests/Pods-LocalityUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -201,7 +201,7 @@
 				4CA36B5E20FEB5290056EB44 /* Venue Details */,
 				4CA36B5520FE9C520056EB44 /* API */,
 				4CA36B5120FE90180056EB44 /* Models */,
-				8597DAD620FD0DD500BA261A /* Youngmin */,
+				8597DAD620FD0DD500BA261A /* ExploreMapScreen */,
 				4CCB516C20FD11D400A55373 /* API Foursquare */,
 				8597DACC20FCF68300BA261A /* Storyboards */,
 				4CDAC17720F4424100B3E7D4 /* AppDelegate.h */,
@@ -244,14 +244,14 @@
 			path = Storyboards;
 			sourceTree = "<group>";
 		};
-		8597DAD620FD0DD500BA261A /* Youngmin */ = {
+		8597DAD620FD0DD500BA261A /* ExploreMapScreen */ = {
 			isa = PBXGroup;
 			children = (
-				8597DB1A20FD50E800BA261A /* ExploreMapViewController.h */,
-				8597DB1920FD50E800BA261A /* ExploreMapViewController.m */,
-				8597DB1C20FD511500BA261A /* YMapView.storyboard */,
+				8597DB2020FE7BA200BA261A /* ExploreMapViewController.m */,
+				8597DB1F20FE7BA200BA261A /* YMapView.storyboard */,
+				8597DB1E20FE7B9600BA261A /* ExploreMapViewController.h */,
 			);
-			path = Youngmin;
+			path = ExploreMapScreen;
 			sourceTree = "<group>";
 		};
 		8C8E8A8D59518BBCC377DCAC /* Pods */ = {
@@ -374,7 +374,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8597DB1D20FD511500BA261A /* YMapView.storyboard in Resources */,
+				8597DB2120FE7BA200BA261A /* YMapView.storyboard in Resources */,
 				4CDAC18420F4424100B3E7D4 /* LaunchScreen.storyboard in Resources */,
 				4CDAC18120F4424100B3E7D4 /* Assets.xcassets in Resources */,
 				4CDAC17F20F4424100B3E7D4 /* Main.storyboard in Resources */,
@@ -480,6 +480,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4CDAC17C20F4424100B3E7D4 /* ViewController.m in Sources */,
+				8597DB2220FE7BA200BA261A /* ExploreMapViewController.m in Sources */,
 				4CDAC18720F4424100B3E7D4 /* main.m in Sources */,
 				4CA36B5420FE90340056EB44 /* Venue.m in Sources */,
 				4CCB517220FD4C8700A55373 /* LocationCell.m in Sources */,
@@ -487,7 +488,6 @@
 				4CDAC17920F4424100B3E7D4 /* AppDelegate.m in Sources */,
 				4CA36B6120FEB5540056EB44 /* DetailsViewController.m in Sources */,
 				4CCB516F20FD19F500A55373 /* LocationsViewController.m in Sources */,
-				8597DB1B20FD50E800BA261A /* ExploreMapViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

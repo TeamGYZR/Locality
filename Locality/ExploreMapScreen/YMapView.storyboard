@@ -78,6 +78,9 @@
                                 <state key="normal" title="Get Current Location">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <action selector="getCurrentLocationTapped:" destination="4al-vT-iBs" eventType="touchUpInside" id="gR4-Ua-sJf"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
