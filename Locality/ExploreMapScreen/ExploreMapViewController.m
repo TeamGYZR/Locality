@@ -155,27 +155,40 @@
     
     UIButton *collectionButton = [UIButton buttonWithType:UIButtonTypeSystem];
     
-    [collectionButton addTarget:self action:@selector(goToCollection) forControlEvents:UIControlEventTouchUpInside];
-    [collectionButton setTitle:@"Hi" forState:UIControlStateNormal];
+    //[collectionButton addTarget:self action:@selector(goToCollection:) forControlEvents:UIControlEventTouchUpInside];
+    [collectionButton setTitle:@"Next" forState:UIControlStateNormal];
     collectionButton.frame = CGRectMake(0.0, 0.0, 50.0, 50.0);
     [collectionButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     
     
-    [annotationView.rightCalloutAccessoryView addSubview:collectionButton];
+    //[annotationView.rightCalloutAccessoryView addSubview:collectionButton];
     [annotationView.rightCalloutAccessoryView setUserInteractionEnabled:YES];
+    annotationView.rightCalloutAccessoryView = collectionButton;
     
     return annotationView;
     
 }
 
-- (void)makePins{
+- (void)mapView:(MKMapView *)mapView annotationView:(MKAnnotationView *)view calloutAccessoryControlTapped:(UIControl *)control
+{
     
-    
+    view.annotation; 
+    //Here, the annotation tapped can be accessed using view.annotation
 }
 
--(void)goToCollection{
+
+
+
+- (IBAction)goToCollection:(id)sender{
+
     NSLog(@"Went to collection view");
-}
+    
+};
+
+//-(void)goToCollection{
+//
+//    NSLog(@"Went to collection view");
+//}
 
 - (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error{
     NSLog(@"%@", error);
