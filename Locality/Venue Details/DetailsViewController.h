@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Venue.h"
 
 @interface DetailsViewController : UIViewController
+
+@property Venue *venue;
 
 @end

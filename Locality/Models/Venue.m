@@ -8,6 +8,7 @@
 
 #import "Venue.h"
 
+
 @implementation Venue
 
 -(instancetype)initWithDictionary:(NSDictionary *)dictionary{

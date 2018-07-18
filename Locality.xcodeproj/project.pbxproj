@@ -13,6 +13,8 @@
 		4CA36B5B20FE9F8A0056EB44 /* APIManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CA36B5A20FE9F8A0056EB44 /* APIManager.m */; };
 		4CA36B5D20FEB20A0056EB44 /* DetailsView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4CA36B5C20FEB20A0056EB44 /* DetailsView.storyboard */; };
 		4CA36B6120FEB5540056EB44 /* DetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CA36B6020FEB5540056EB44 /* DetailsViewController.m */; };
+		4CA36B6320FFF2FD0056EB44 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4CA36B6220FFF2FD0056EB44 /* Login.storyboard */; };
+		4CA36B6720FFF41D0056EB44 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CA36B6620FFF41D0056EB44 /* LoginViewController.m */; };
 		4CCB516A20FD104C00A55373 /* GingerFoursquareView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4CCB516920FD104C00A55373 /* GingerFoursquareView.storyboard */; };
 		4CCB516F20FD19F500A55373 /* LocationsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CCB516E20FD19F500A55373 /* LocationsViewController.m */; };
 		4CCB517220FD4C8700A55373 /* LocationCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CCB517120FD4C8700A55373 /* LocationCell.m */; };
@@ -61,6 +63,9 @@
 		4CA36B5C20FEB20A0056EB44 /* DetailsView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DetailsView.storyboard; sourceTree = "<group>"; };
 		4CA36B5F20FEB5540056EB44 /* DetailsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DetailsViewController.h; sourceTree = "<group>"; };
 		4CA36B6020FEB5540056EB44 /* DetailsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DetailsViewController.m; sourceTree = "<group>"; };
+		4CA36B6220FFF2FD0056EB44 /* Login.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
+		4CA36B6520FFF41D0056EB44 /* LoginViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
+		4CA36B6620FFF41D0056EB44 /* LoginViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		4CCB516920FD104C00A55373 /* GingerFoursquareView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = GingerFoursquareView.storyboard; sourceTree = "<group>"; };
 		4CCB516D20FD19F500A55373 /* LocationsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LocationsViewController.h; sourceTree = "<group>"; };
 		4CCB516E20FD19F500A55373 /* LocationsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LocationsViewController.m; sourceTree = "<group>"; };
@@ -173,6 +178,15 @@
 			path = "Venue Details";
 			sourceTree = "<group>";
 		};
+		4CA36B6420FFF40C0056EB44 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				4CA36B6520FFF41D0056EB44 /* LoginViewController.h */,
+				4CA36B6620FFF41D0056EB44 /* LoginViewController.m */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
 		4CCB516C20FD11D400A55373 /* API Foursquare */ = {
 			isa = PBXGroup;
 			children = (
@@ -209,6 +223,7 @@
 		4CDAC17620F4424100B3E7D4 /* Locality */ = {
 			isa = PBXGroup;
 			children = (
+				4CA36B6420FFF40C0056EB44 /* Login */,
 				4CA36B5E20FEB5290056EB44 /* Venue Details */,
 				4CA36B5520FE9C520056EB44 /* API */,
 				4CA36B5120FE90180056EB44 /* Models */,
@@ -254,6 +269,7 @@
 			children = (
 				4CCB516920FD104C00A55373 /* GingerFoursquareView.storyboard */,
 				4CA36B5C20FEB20A0056EB44 /* DetailsView.storyboard */,
+				4CA36B6220FFF2FD0056EB44 /* Login.storyboard */,
 			);
 			path = Storyboards;
 			sourceTree = "<group>";
@@ -392,6 +408,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4CA36B6320FFF2FD0056EB44 /* Login.storyboard in Resources */,
 				8597DB2120FE7BA200BA261A /* YMapView.storyboard in Resources */,
 				A80F646920FF3BB500C105D0 /* collectionview.storyboard in Resources */,
 				4CDAC18420F4424100B3E7D4 /* LaunchScreen.storyboard in Resources */,
@@ -502,6 +519,7 @@
 			files = (
 				4CDAC17C20F4424100B3E7D4 /* ViewController.m in Sources */,
 				A80F646C20FF3BF000C105D0 /* CollectionViewController.m in Sources */,
+				4CA36B6720FFF41D0056EB44 /* LoginViewController.m in Sources */,
 				859A1AA720FF1A1800E13EBC /* VenueAnnotationView.m in Sources */,
 				8597DB2220FE7BA200BA261A /* ExploreMapViewController.m in Sources */,
 				859A1AA120FF121300E13EBC /* VenueAnnotation.m in Sources */,
