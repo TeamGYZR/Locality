@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <AFNetworking/UIImageView+AFNetworking.h>
 
 @interface Venue : NSObject
 
@@ -18,6 +19,7 @@
 @property (nonatomic, strong) NSNumber *longitude;
 @property (nonatomic, strong) NSString *streetAddress;
 @property (nonatomic, strong) NSString *idStr;
+@property (nonatomic, strong) NSURL *headerPicURL;
 
 //rename these variables to match up w the type being sent in etc.
 +(NSMutableArray *)venuesWithArray:(NSArray *)dictionaries;

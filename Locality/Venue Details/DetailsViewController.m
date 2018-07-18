@@ -7,6 +7,8 @@
 //
 
 #import "DetailsViewController.h"
+#import <AFNetworking/UIImageView+AFNetworking.h>
+#import "UIImageView+AFNetworking.h"
 
 @interface DetailsViewController ()
 
@@ -14,6 +16,11 @@
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *addressLabel;
 @property (weak, nonatomic) IBOutlet UIButton *favoriteButton;
+
+
+//adding this to test out button image replacement
+@property (nonatomic) BOOL *favorited;
+
 
 
 @end
@@ -31,12 +38,58 @@
     
     //display the specific venue info here- do we want to add in another api? maye=be youngmin could do this to get phone number/ main pic
     
+    
+//    [self.venueImage setImageWithURL:self.venue.headerPicURL];
+//    self.nameLabel.text = self.venue.name;
+//    self.addressLabel.text = self.venue.streetAddress;
+    
+    //set initial favorite button based on users boolean value for the favorite icon
+    //NO -- emptyStar
+    //YES -- star
+//    if (favorited) {
+    //        [self setAnEmptyStar];
+    //
+//    }
+//    else{
+    //        [self setAFilledStar];
+//    }
+    
+    self.favorited = NO;
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+
+- (IBAction)didTapFavorite:(id)sender {
+    
+//    //if user has icon favorited- create a boolean to hold this
+    if (self.favorited) {
+        [self setAnEmptyStar];
+        self.favorited = NO;
+        //do something by changing the value for the users propoerty for favorites
+    }
+    else{
+        [self setAFilledStar];
+        //add this venue to the users profile- add to the object
+        self.favorited = YES;
+    }
+    
+}
+
+-(void)setAFilledStar{
+    UIImage *favoriteButtonImage = [UIImage imageNamed:@"star"];
+    [self.favoriteButton setImage:favoriteButtonImage forState:UIControlStateNormal];
+}
+
+-(void)setAnEmptyStar{
+    UIImage *unfavoriteButtonImage = [UIImage imageNamed:@"emptyStar"];
+    [self.favoriteButton setImage:unfavoriteButtonImage forState:UIControlStateNormal];
+}
+
+
 
 /*
 #pragma mark - Navigation
