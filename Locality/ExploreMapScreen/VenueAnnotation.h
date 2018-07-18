@@ -11,7 +11,7 @@
 
 @interface VenueAnnotation : NSObject <MKAnnotation>
 
-@property (readonly, nonatomic) CLLocationCoordinate2D * coordinate;
+@property (readonly, nonatomic) CLLocationCoordinate2D coordinate;
 @property (strong, nonatomic) UIImage * image;
 @property (strong, nonatomic) NSString * address;
 @property (strong, nonatomic) NSString * name;

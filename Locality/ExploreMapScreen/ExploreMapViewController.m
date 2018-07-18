@@ -18,9 +18,6 @@
 @property (weak, nonatomic) IBOutlet UIButton *currentLocationButton;
 @property (strong, nonatomic) CLLocationManager *locationManager;
 
-//- (void)locationManager:(CLLocationManager *)manager
-//     didUpdateLocations:(NSArray<CLLocation *> *)locations;
--(void)goToCollection;
 
 @end
 
