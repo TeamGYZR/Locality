@@ -9,6 +9,7 @@
 #import "ExploreMapViewController.h"
 #import <MapKit/MapKit.h>
 #import <CoreLocation/CoreLocation.h>
+#import "APIManager.h"
 
 @interface ExploreMapViewController () <MKMapViewDelegate, CLLocationManagerDelegate>
 
@@ -44,11 +45,11 @@
             self.locationManager.distanceFilter = kCLDistanceFilterNone;
             self.locationManager.desiredAccuracy = kCLLocationAccuracyBest;
             
-            //[self findCurrentLocation];
-            self.mapView.showsUserLocation = YES;
+            [self findCurrentLocation];
+            //self.mapView.showsUserLocation = YES;
             
-            MKCoordinateRegion sfRegion = MKCoordinateRegionMake(CLLocationCoordinate2DMake(37.783333, -122.416667), MKCoordinateSpanMake(0.1, 0.1));
-            [self.mapView setRegion:sfRegion animated:false];
+//            MKCoordinateRegion sfRegion = MKCoordinateRegionMake(CLLocationCoordinate2DMake(37.783333, -122.416667), MKCoordinateSpanMake(0.1, 0.1));
+//            [self.mapView setRegion:sfRegion animated:false];
         }
 
 }
@@ -78,8 +79,15 @@
     [self.mapView setRegion:currentRegion animated:YES];
     
     
-    //CLLocationCoordinate2D coordinate = CLLocationCoordinate2DMake(latitude.floatValue, longitude.floatValue);
+    APIManager *apiManager = [[APIManager alloc] init];
+    NSNumber * lat = [NSNumber numberWithDouble:currentLocation.coordinate.latitude];
+    NSNumber * lon = [NSNumber numberWithDouble:currentLocation.coordinate.longitude];
     
+    [apiManager fetchLocationsWithLatitude:lat andLongitude:lon withCompletionHandler:^(NSArray *array, NSError *errror) {
+        NSLog(@"completion ran");
+    }];
+
+
     MKPointAnnotation *annotation = [MKPointAnnotation new];
     CLLocationCoordinate2D pinCoordinates = CLLocationCoordinate2DMake(currentLocation.coordinate.latitude + 0.001, currentLocation.coordinate.longitude + 0.001);
     annotation.coordinate = pinCoordinates;
@@ -89,6 +97,8 @@
     
     [self.navigationController popToViewController:self animated:YES];
     self.mapView.showsUserLocation = YES;
+    
+    
     
     //[self.mapView.userLocation  ]
     

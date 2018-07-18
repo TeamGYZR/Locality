@@ -78,7 +78,7 @@ static NSString *const clientSecret = @"VRCUJCWQYIWBFK212OOGGGU1KD2DKZLYVZZJ0ZUN
     //APIManager
     
     APIManager *apiManager = [[APIManager alloc] init];
-    [apiManager fetchLocationsWithLatitude:testerLat andLongitude:testerLong];
+    //[apiManager fetchLocationsWithLatitude:testerLat andLongitude:testerLong];
     
     
 }

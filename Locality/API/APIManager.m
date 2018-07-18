@@ -17,7 +17,7 @@
 //    
 //}
 
--(void)fetchLocationsWithLatitude:(NSNumber *)lat andLongitude:(NSNumber *)longitude{
+-(void)fetchLocationsWithLatitude:(NSNumber *)lat andLongitude:(NSNumber *)longitude withCompletionHandler:(void (^)(NSArray *, NSError *))completion{
     static NSString *const clientID = @"GCWUZIHYLK1DURPIEVO4HYRNIRUDC2NBKJHEPLE4RFMLQ35A";
     static NSString *const clientSecret = @"VRCUJCWQYIWBFK212OOGGGU1KD2DKZLYVZZJ0ZUNEIBNA5EV";
     
@@ -39,10 +39,15 @@
             self.results = [responseDictionary valueForKeyPath:@"response.groups.items.venue"][0];
             
             //set this equal to something else- comes back as an array of objects
-            [Venue venuesWithArray:self.results];
-            //NSMutableArray *testerArray = [Venue venuesWithArray:self.results];
+            //[Venue venuesWithArray:self.results];
+            NSMutableArray *testerArray = [Venue venuesWithArray:self.results];
+            completion(testerArray, error);
+        }
+        else{
+            completion(nil, error);
         }
     }];
+    
     [task resume];
     
 }
