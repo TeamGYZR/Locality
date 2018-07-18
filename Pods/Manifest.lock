@@ -14,17 +14,21 @@ PODS:
   - AFNetworking/Serialization (3.2.1)
   - AFNetworking/UIKit (3.2.1):
     - AFNetworking/NSURLSession
+  - objectiveflickr (2.0.4)
 
 DEPENDENCIES:
   - AFNetworking
+  - objectiveflickr
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - AFNetworking
+    - objectiveflickr
 
 SPEC CHECKSUMS:
   AFNetworking: b6f891fdfaed196b46c7a83cf209e09697b94057
+  objectiveflickr: aed169dae1eb5a5550ca78f7efd7ccde2e4c26e5
 
-PODFILE CHECKSUM: 85fe26bfc10f81c05c30b69d2c8c9c454281db0f
+PODFILE CHECKSUM: dfc81affe8d2620d4b9c0ab1f2a25411003b6e91
 
 COCOAPODS: 1.5.3

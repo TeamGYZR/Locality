@@ -25,6 +25,8 @@
 		8597DB2120FE7BA200BA261A /* YMapView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8597DB1F20FE7BA200BA261A /* YMapView.storyboard */; };
 		8597DB2220FE7BA200BA261A /* ExploreMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8597DB2020FE7BA200BA261A /* ExploreMapViewController.m */; };
 		93F8CAE4531E84E7DBB01E8D /* libPods-LocalityTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 85AAA040A6699A174EA32C3D /* libPods-LocalityTests.a */; };
+		A80F646920FF3BB500C105D0 /* collectionview.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A80F646820FF3BB500C105D0 /* collectionview.storyboard */; };
+		A80F646C20FF3BF000C105D0 /* CollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A80F646B20FF3BF000C105D0 /* CollectionViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -76,6 +78,9 @@
 		8597DB1F20FE7BA200BA261A /* YMapView.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = YMapView.storyboard; sourceTree = "<group>"; };
 		8597DB2020FE7BA200BA261A /* ExploreMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExploreMapViewController.m; sourceTree = "<group>"; };
 		85AAA040A6699A174EA32C3D /* libPods-LocalityTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-LocalityTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A80F646820FF3BB500C105D0 /* collectionview.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = collectionview.storyboard; sourceTree = "<group>"; };
+		A80F646A20FF3BF000C105D0 /* CollectionViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CollectionViewController.h; sourceTree = "<group>"; };
+		A80F646B20FF3BF000C105D0 /* CollectionViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CollectionViewController.m; sourceTree = "<group>"; };
 		C01F5B3A004D967BDF2A1867 /* Pods-Locality.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Locality.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Locality/Pods-Locality.debug.xcconfig"; sourceTree = "<group>"; };
 		CB20FD7FBFA0FE7606614E01 /* Pods-LocalityUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LocalityUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-LocalityUITests/Pods-LocalityUITests.release.xcconfig"; sourceTree = "<group>"; };
 		EE18AC2B310AFAA5AD0597FC /* Pods-Locality.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Locality.release.xcconfig"; path = "Pods/Target Support Files/Pods-Locality/Pods-Locality.release.xcconfig"; sourceTree = "<group>"; };
@@ -172,6 +177,9 @@
 				4CDAC18220F4424100B3E7D4 /* LaunchScreen.storyboard */,
 				4CDAC18520F4424100B3E7D4 /* Info.plist */,
 				4CDAC18620F4424100B3E7D4 /* main.m */,
+				A80F646820FF3BB500C105D0 /* collectionview.storyboard */,
+				A80F646A20FF3BF000C105D0 /* CollectionViewController.h */,
+				A80F646B20FF3BF000C105D0 /* CollectionViewController.m */,
 			);
 			path = Locality;
 			sourceTree = "<group>";
@@ -236,6 +244,7 @@
 				4CDAC17020F4424100B3E7D4 /* Sources */,
 				4CDAC17120F4424100B3E7D4 /* Frameworks */,
 				4CDAC17220F4424100B3E7D4 /* Resources */,
+				F4078F506A798ED1176F3AA0 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -332,6 +341,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8597DB2120FE7BA200BA261A /* YMapView.storyboard in Resources */,
+				A80F646920FF3BB500C105D0 /* collectionview.storyboard in Resources */,
 				4CDAC18420F4424100B3E7D4 /* LaunchScreen.storyboard in Resources */,
 				4CDAC18120F4424100B3E7D4 /* Assets.xcassets in Resources */,
 				4CDAC17F20F4424100B3E7D4 /* Main.storyboard in Resources */,
@@ -392,6 +402,24 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		F4078F506A798ED1176F3AA0 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Locality/Pods-Locality-resources.sh",
+				"${PODS_ROOT}/objectiveflickr/BridgeSupport",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/BridgeSupport",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Locality/Pods-Locality-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		FEBE0826960324AA353546BC /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -418,6 +446,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4CDAC17C20F4424100B3E7D4 /* ViewController.m in Sources */,
+				A80F646C20FF3BF000C105D0 /* CollectionViewController.m in Sources */,
 				8597DB2220FE7BA200BA261A /* ExploreMapViewController.m in Sources */,
 				4CDAC18720F4424100B3E7D4 /* main.m in Sources */,
 				4CCB517220FD4C8700A55373 /* LocationCell.m in Sources */,
