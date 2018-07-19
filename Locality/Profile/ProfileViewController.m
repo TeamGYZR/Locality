@@ -10,6 +10,8 @@
 
 @interface ProfileViewController ()
 
+@property (weak, nonatomic) IBOutlet UILabel *nameLabel;
+
 @end
 
 @implementation ProfileViewController
@@ -17,12 +19,28 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    //setting the profile's user to the current user
+    self.user = [User currentUser];
+    if (self.user.name == nil) {
+        self.nameLabel.text = self.user.username;
+    }
+    else{
+        self.nameLabel.text = self.user.name;
+    }
+    [self.nameLabel sizeToFit];
+    
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+- (IBAction)didTapEdit:(id)sender {
+    
+}
+
+
 
 /*
 #pragma mark - Navigation

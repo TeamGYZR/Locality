@@ -12,5 +12,6 @@
 @interface User : PFUser <PFSubclassing>
 
 @property (strong, nonatomic) NSString *name;
+//@property PFFile *profilePicture;
 
 @end
