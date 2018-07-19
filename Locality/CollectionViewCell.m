@@ -7,7 +7,24 @@
 //
 
 #import "CollectionViewCell.h"
+#import <AFNetworking/UIImageView+AFNetworking.h>
 
 @implementation CollectionViewCell
+
+
+-(void) setUrl:(NSURL *)url{
+    _url=url;
+    [self setdata];
+}
+
+-(void) setdata{
+
+    [self.imagefiled setImageWithURL:_url];
+    
+    
+}
+
+
+
 
 @end

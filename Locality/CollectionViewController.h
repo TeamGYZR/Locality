@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import <ObjectiveFlickr/ObjectiveFlickr.h>
 #import "CollectionViewCell.h"
+#import "Venue.h"
 
 @interface CollectionViewController : UIViewController <OFFlickrAPIRequestDelegate>{
     OFFlickrAPIContext *context;
@@ -32,6 +33,8 @@
 @property (strong, nonatomic) NSDictionary * result;
 @property (strong, nonatomic) NSString * name;
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionview;
+@property (strong, nonatomic) NSArray * array;
+@property (strong, nonatomic) Venue * venue; 
 
 
 @end

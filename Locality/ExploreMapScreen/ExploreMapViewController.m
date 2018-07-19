@@ -218,6 +218,7 @@
         
         CollectionViewController * collection=[segue destinationViewController];
         collection.name = ((MKPointAnnotation *)sender).title;
+        collection.venue = ((VenueAnnotation * )sender).venue;
         
     }
 }
