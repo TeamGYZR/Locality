@@ -29,6 +29,7 @@
 }
 - (IBAction)didTapSignUp:(id)sender {
     [self registerUser];
+    
 }
 
 - (IBAction)didTapLogin:(id)sender {
@@ -59,6 +60,7 @@
         else{
             NSLog(@"User successfully registered!");
             //segue to the map view? or require user to login with new username and password?
+            [self performSegueWithIdentifier:@"loginSegue" sender:nil];
         }
     }];
 }
@@ -84,6 +86,7 @@
         else{
             NSLog(@"Successfully signed in user!");
             //segue to map view
+            [self performSegueWithIdentifier:@"loginSegue" sender:nil];
         }
     }];
     

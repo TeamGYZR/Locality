@@ -10,6 +10,9 @@
 #import <AFNetworking/UIImageView+AFNetworking.h>
 #import "UIImageView+AFNetworking.h"
 
+//testing out parse user stuff
+#import "Parse.h"
+
 @interface DetailsViewController ()
 
 @property (weak, nonatomic) IBOutlet UIImageView *venueImage;
@@ -53,6 +56,7 @@
 //    else{
     //        [self setAFilledStar];
 //    }
+    //[self setFavorited:NO];
     
     self.favorited = NO;
 }
