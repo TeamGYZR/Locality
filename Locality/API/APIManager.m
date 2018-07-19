@@ -23,7 +23,9 @@
     
     NSString *baseURLstring = @"https://api.foursquare.com/v2/venues/explore?";
     
-    NSString *coordinateString = [NSString stringWithFormat:@"client_id=%@&client_secret=%@&v=20180716&ll=%@,%@", clientID, clientSecret, lat, longitude];
+//    NSString *coordinateString = [NSString stringWithFormat:@"client_id=%@&client_secret=%@&v=20180716&ll=%@,%@", clientID, clientSecret, lat, longitude];
+    //trying to narrow down on popular results
+    NSString *coordinateString = [NSString stringWithFormat:@"client_id=%@&client_secret=%@&v=20180716&ll=%@,%@&section=topPicks", clientID, clientSecret, lat, longitude];
     coordinateString = [coordinateString stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
     
     NSURL *url = [NSURL URLWithString:[baseURLstring stringByAppendingString:coordinateString]];

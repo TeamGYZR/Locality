@@ -26,14 +26,6 @@
                                     <segue destination="hqG-yd-YmW" kind="presentation" id="4GE-qQ-YFK"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fR1-wC-OGv">
-                                <rect key="frame" x="251" y="134" width="95" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="toDetailsPage"/>
-                                <connections>
-                                    <segue destination="0km-K9-MAD" kind="presentation" id="n4H-nx-mp5"/>
-                                </connections>
-                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="We2-iM-TxS">
                                 <rect key="frame" x="117" y="98" width="42" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -151,14 +143,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ym0-xP-k0A" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2922" y="-566"/>
-        </scene>
-        <!--DetailsView-->
-        <scene sceneID="Wtr-r3-aS4">
-            <objects>
-                <viewControllerPlaceholder storyboardName="DetailsView" id="0km-K9-MAD" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="KwU-p1-RuH" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1703" y="-1298"/>
         </scene>
         <!--GingerFoursquareView-->
         <scene sceneID="grm-hN-IIy">
