@@ -10,10 +10,16 @@
 #import <AFNetworking/UIImageView+AFNetworking.h>
 
 @implementation CollectionViewCell
+
+
+-(void) setUrl:(NSURL *)url{
+    _url=url;
+    [self setdata];
+}
+
 -(void) setdata{
-    
-    
-    [self.imagefiled setImageWithURL:self.url];
+
+    [self.imagefiled setImageWithURL:_url];
     
     
 }

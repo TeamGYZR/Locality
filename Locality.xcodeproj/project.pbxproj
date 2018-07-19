@@ -36,6 +36,7 @@
 		A80F646920FF3BB500C105D0 /* collectionview.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A80F646820FF3BB500C105D0 /* collectionview.storyboard */; };
 		A80F646C20FF3BF000C105D0 /* CollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A80F646B20FF3BF000C105D0 /* CollectionViewController.m */; };
 		A814231320FFC60D00C976AE /* CollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A814231220FFC60D00C976AE /* CollectionViewCell.m */; };
+		A81423162101084C00C976AE /* collectionvenue.m in Sources */ = {isa = PBXBuildFile; fileRef = A81423152101084C00C976AE /* collectionvenue.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -106,6 +107,8 @@
 		A80F646B20FF3BF000C105D0 /* CollectionViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CollectionViewController.m; sourceTree = "<group>"; };
 		A814231120FFC60D00C976AE /* CollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CollectionViewCell.h; sourceTree = "<group>"; };
 		A814231220FFC60D00C976AE /* CollectionViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CollectionViewCell.m; sourceTree = "<group>"; };
+		A81423142101084C00C976AE /* collectionvenue.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = collectionvenue.h; sourceTree = "<group>"; };
+		A81423152101084C00C976AE /* collectionvenue.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = collectionvenue.m; sourceTree = "<group>"; };
 		C01F5B3A004D967BDF2A1867 /* Pods-Locality.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Locality.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Locality/Pods-Locality.debug.xcconfig"; sourceTree = "<group>"; };
 		CB20FD7FBFA0FE7606614E01 /* Pods-LocalityUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LocalityUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-LocalityUITests/Pods-LocalityUITests.release.xcconfig"; sourceTree = "<group>"; };
 		EE18AC2B310AFAA5AD0597FC /* Pods-Locality.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Locality.release.xcconfig"; path = "Pods/Target Support Files/Pods-Locality/Pods-Locality.release.xcconfig"; sourceTree = "<group>"; };
@@ -247,6 +250,8 @@
 				A80F646B20FF3BF000C105D0 /* CollectionViewController.m */,
 				A814231120FFC60D00C976AE /* CollectionViewCell.h */,
 				A814231220FFC60D00C976AE /* CollectionViewCell.m */,
+				A81423142101084C00C976AE /* collectionvenue.h */,
+				A81423152101084C00C976AE /* collectionvenue.m */,
 			);
 			path = Locality;
 			sourceTree = "<group>";
@@ -523,6 +528,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4CDAC17C20F4424100B3E7D4 /* ViewController.m in Sources */,
+				A81423162101084C00C976AE /* collectionvenue.m in Sources */,
 				A80F646C20FF3BF000C105D0 /* CollectionViewController.m in Sources */,
 				4CA36B6720FFF41D0056EB44 /* LoginViewController.m in Sources */,
 				859A1AA720FF1A1800E13EBC /* VenueAnnotationView.m in Sources */,

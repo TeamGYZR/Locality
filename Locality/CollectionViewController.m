@@ -9,6 +9,7 @@
 #import "CollectionViewController.h"
 #import "UIImageView+AFNetworking.h"
 #import "ExploreMapViewController.h"
+
 @interface CollectionViewController ()<UICollectionViewDataSource, UICollectionViewDelegate>
 
 @end
@@ -49,7 +50,13 @@
     [self apimanager];
     
     //[self.req callAPIMethodWithGET:@"flickr.photos.getRecent" arguments:[NSDictionary dictionaryWithObjectsAndKeys:@"1", @"per_page", nil]];
-    NSDictionary *dictionary = [NSDictionary dictionaryWithObjectsAndKeys:self.name, @"tags", nil];
+
+//    Venue *ve=[[Venue alloc] init];
+//    NSLog(@"%@", ve.latitude);
+//
+
+    NSDictionary *dictionary = [NSDictionary dictionaryWithObjectsAndKeys:@"50", @"per_page",self.name, @"text", nil];
+    //[self.req callAPIMethodWithGET:@"flickr.photos.getRecent" arguments:dictionary];
     [self.req callAPIMethodWithGET:@"flickr.photos.search" arguments:dictionary];
     
     
@@ -63,17 +70,17 @@
     
   NSLog(@"response: %@", inResponseDictionary);
 //    for(int i=0; i<inResponseDictionary.allKeys.count; i++){
-   NSDictionary *photoDict = [[inResponseDictionary valueForKeyPath:@"photos.photo"] objectAtIndex:0];
-    NSURL *staticPhotoURL = [self.con photoSourceURLFromDictionary:photoDict size:OFFlickrSmallSize];
+  // NSDictionary *photoDict = [[inResponseDictionary valueForKeyPath:@"photos.photo"] objectAtIndex:0];
+    //NSURL *staticPhotoURL = [self.con photoSourceURLFromDictionary:photoDict size:OFFlickrSmallSize];
     //NSURL *photoSourcePage = [self.con photoWebPageURLFromDictionary:photoDict];
 //
    //NSLog(@"%@", photoSourcePage);
     
-  NSLog(@"%@", staticPhotoURL);
+  //NSLog(@"%@", staticPhotoURL);
 //    }
     
     self->res=inResponseDictionary;
-    NSLog(@"just before reloadData");
+ 
     [self.collectionview reloadData];
     request = nil;
     
@@ -107,22 +114,15 @@
 - (nonnull __kindof UICollectionViewCell *)collectionView:(nonnull UICollectionView *)collectionView cellForItemAtIndexPath:(nonnull NSIndexPath *)indexPath {
     NSLog(@"starting reloadData");
     CollectionViewCell *cell=[collectionView dequeueReusableCellWithReuseIdentifier:@"collectioncell" forIndexPath:indexPath];
-    
     NSDictionary *photoDict = [[self->res valueForKeyPath:@"photos.photo"] objectAtIndex:indexPath.item];
-    
-    NSURL *staticPhotoURL = [self.con photoSourceURLFromDictionary:photoDict size:OFFlickrSmallSize];
+   NSURL *staticPhotoURL = [self.con photoSourceURLFromDictionary:photoDict size:OFFlickrSmallSize];
     cell.url=staticPhotoURL;
-
-    
-    //NSLog(@"%@", photoSourcePage);
-    
     return cell;
-    
-    
 }
 
 - (NSInteger)collectionView:(nonnull UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    return self->res.count;
+    
+    return [ self->res[@"photos"][@"perpage"] integerValue];
 }
 
 

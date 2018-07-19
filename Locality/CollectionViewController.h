@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import <ObjectiveFlickr/ObjectiveFlickr.h>
 #import "CollectionViewCell.h"
+#import "Venue.h"
 
 @interface CollectionViewController : UIViewController <OFFlickrAPIRequestDelegate>{
     OFFlickrAPIContext *context;

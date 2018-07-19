@@ -10,6 +10,7 @@
 
 @interface CollectionViewCell : UICollectionViewCell
 @property (weak, nonatomic) IBOutlet UIImageView *imagefiled;
--(void) setdata;
 @property (strong, nonatomic) NSURL * url;
+-(void) setdata;
+
 @end
