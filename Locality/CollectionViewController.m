@@ -52,10 +52,10 @@
     //[self.req callAPIMethodWithGET:@"flickr.photos.getRecent" arguments:[NSDictionary dictionaryWithObjectsAndKeys:@"1", @"per_page", nil]];
 
 //    Venue *ve=[[Venue alloc] init];
-//    NSLog(@"%@", ve.latitude);
+    NSLog(@"%@", self.venue.latitude);
 //
 
-    NSDictionary *dictionary = [NSDictionary dictionaryWithObjectsAndKeys:@"50", @"per_page",self.name, @"text", nil];
+    NSDictionary *dictionary = [NSDictionary dictionaryWithObjectsAndKeys:@"30", @"per_page",self.venue.latitude,@"lat", self.venue.longitude,@"lon", self.name, @"text", nil];
     //[self.req callAPIMethodWithGET:@"flickr.photos.getRecent" arguments:dictionary];
     [self.req callAPIMethodWithGET:@"flickr.photos.search" arguments:dictionary];
     
