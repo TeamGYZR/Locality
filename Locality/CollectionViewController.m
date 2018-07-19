@@ -9,6 +9,7 @@
 #import "CollectionViewController.h"
 #import "UIImageView+AFNetworking.h"
 #import "ExploreMapViewController.h"
+
 @interface CollectionViewController ()<UICollectionViewDataSource, UICollectionViewDelegate>
 
 @end
@@ -19,8 +20,8 @@
 
 -(void)viewDidLoad {
     [super viewDidLoad];
-    //self.collectionview.dataSource=self;
-    //self.collectionview.delegate=self;
+    self.collectionview.dataSource=self;
+    self.collectionview.delegate=self;
     [self setkey];
     [self fecth];
     
@@ -49,8 +50,15 @@
     [self apimanager];
     
     //[self.req callAPIMethodWithGET:@"flickr.photos.getRecent" arguments:[NSDictionary dictionaryWithObjectsAndKeys:@"1", @"per_page", nil]];
-    NSDictionary *dictionary = [NSDictionary dictionaryWithObjectsAndKeys:self.name, @"tags", nil];
+
+//    Venue *ve=[[Venue alloc] init];
+//    NSLog(@"%@", ve.latitude);
+//
+
+    NSDictionary *dictionary = [NSDictionary dictionaryWithObjectsAndKeys:@"50", @"per_page",self.name, @"text", nil];
+    //[self.req callAPIMethodWithGET:@"flickr.photos.getRecent" arguments:dictionary];
     [self.req callAPIMethodWithGET:@"flickr.photos.search" arguments:dictionary];
+    
     
 }
 
@@ -60,16 +68,20 @@
 //    }
     // OFFlickrAPIContext *flickrContext=[[OFFlickrAPIContext alloc] initWithAPIKey:@"595a10deca33ce1b5a7ab291254fb22a" sharedSecret:@"cf18c4e987fb5146"];
     
-//   NSLog(@"response: %@", inResponseDictionary);
+  NSLog(@"response: %@", inResponseDictionary);
 //    for(int i=0; i<inResponseDictionary.allKeys.count; i++){
-//    NSDictionary *photoDict = [[inResponseDictionary valueForKeyPath:@"photos.photo"] objectAtIndex:i];
-//    NSURL *staticPhotoURL = [self.con photoSourceURLFromDictionary:photoDict size:OFFlickrSmallSize];
-//    NSURL *photoSourcePage = [self.con photoWebPageURLFromDictionary:photoDict];
+  // NSDictionary *photoDict = [[inResponseDictionary valueForKeyPath:@"photos.photo"] objectAtIndex:0];
+    //NSURL *staticPhotoURL = [self.con photoSourceURLFromDictionary:photoDict size:OFFlickrSmallSize];
+    //NSURL *photoSourcePage = [self.con photoWebPageURLFromDictionary:photoDict];
 //
-//    NSLog(@"%@", photoSourcePage);
-//    NSLog(@"%@", staticPhotoURL);
+   //NSLog(@"%@", photoSourcePage);
+    
+  //NSLog(@"%@", staticPhotoURL);
 //    }
+    
     self->res=inResponseDictionary;
+ 
+    [self.collectionview reloadData];
     request = nil;
     
 }
@@ -100,21 +112,17 @@
 
 
 - (nonnull __kindof UICollectionViewCell *)collectionView:(nonnull UICollectionView *)collectionView cellForItemAtIndexPath:(nonnull NSIndexPath *)indexPath {
+    NSLog(@"starting reloadData");
     CollectionViewCell *cell=[collectionView dequeueReusableCellWithReuseIdentifier:@"collectioncell" forIndexPath:indexPath];
-    cell.imagefiled.image=nil;
-    NSDictionary *photoDict = [[self->res valueForKeyPath:@"photos.photo"] objectAtIndex:0];
-    //NSURL *staticPhotoURL = [self.con photoSourceURLFromDictionary:photoDict size:OFFlickrSmallSize];
-    NSURL *photoSourcePage = [self.con photoWebPageURLFromDictionary:photoDict];
-    [cell.imagefiled setImageWithURL:photoSourcePage];
-    
-    
+    NSDictionary *photoDict = [[self->res valueForKeyPath:@"photos.photo"] objectAtIndex:indexPath.item];
+   NSURL *staticPhotoURL = [self.con photoSourceURLFromDictionary:photoDict size:OFFlickrSmallSize];
+    cell.url=staticPhotoURL;
     return cell;
-    
-    
 }
 
 - (NSInteger)collectionView:(nonnull UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    return self->res.allKeys.count;
+    
+    return [ self->res[@"photos"][@"perpage"] integerValue];
 }
 
 
