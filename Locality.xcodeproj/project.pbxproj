@@ -563,7 +563,6 @@
 				859A1AA720FF1A1800E13EBC /* VenueAnnotationView.m in Sources */,
 				8597DB2220FE7BA200BA261A /* ExploreMapViewController.m in Sources */,
 				4CA36B6A210109500056EB44 /* User.m in Sources */,
-				851C8719210110D6007C32DD /* User.m in Sources */,
 				859A1AA120FF121300E13EBC /* VenueAnnotation.m in Sources */,
 				4CDAC18720F4424100B3E7D4 /* main.m in Sources */,
 				4CA36B5420FE90340056EB44 /* Venue.m in Sources */,
