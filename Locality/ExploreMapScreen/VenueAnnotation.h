@@ -14,8 +14,9 @@
 
 @property (readonly, nonatomic) CLLocationCoordinate2D coordinate;
 @property (strong, nonatomic) NSURL * imageURL;
-@property (strong, nonatomic) NSString * address;
-@property (strong, nonatomic) NSString * name;
+@property (strong, nonatomic) NSString * subtitle;
+@property (strong, nonatomic) NSString * title;
+@property (strong, nonatomic) Venue * venue;
 
 -(id)initWithName:(NSString *)name Coordinate:(CLLocationCoordinate2D )coordinate Address:(NSString *)address AndImageurl:(NSURL *)imageURL;
 

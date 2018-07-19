@@ -19,10 +19,11 @@
     
     if(self)
     {
-        _name = name;
+        _title = name;
         _coordinate = coordinate;
-        _address = address;
+        _subtitle = address;
         _imageURL = imageURL;
+        _venue = nil; 
     }
     
     return self; 
@@ -38,9 +39,10 @@
     
     if(self)
     {
-        _name = venue.name;
+        _venue = venue; 
+        _title = venue.name;
         _coordinate = CLLocationCoordinate2DMake(venue.latitude.doubleValue, venue.longitude.doubleValue);
-        _address = venue.streetAddress;
+        _subtitle = venue.streetAddress;
         _imageURL = venue.iconURL;
     }
     

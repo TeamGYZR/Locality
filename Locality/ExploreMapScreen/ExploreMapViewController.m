@@ -11,6 +11,8 @@
 #import <CoreLocation/CoreLocation.h>
 #import "APIManager.h"
 #import "Venue.h"
+#import "VenueAnnotation.h"
+#import "UIImageView+AFNetworking.h"
 
 
 @interface ExploreMapViewController () <MKMapViewDelegate, CLLocationManagerDelegate>
@@ -77,10 +79,10 @@
     
     [self.mapView setRegion:currentRegion animated:YES];
     
-    MKPointAnnotation *annotation = [MKPointAnnotation new];
     CLLocationCoordinate2D pinCoordinates = CLLocationCoordinate2DMake(currentLocation.coordinate.latitude, currentLocation.coordinate.longitude);
-    annotation.coordinate = pinCoordinates;
-    annotation.title = @"Current Location";
+    
+    NSURL * currentImageURL = [NSURL URLWithString:@"https://banner2.kisspng.com/20180327/prw/kisspng-emoji-discord-meme-android-imgur-thinking-5ab9e09a302f12.8060406115221310981974.jpg"];
+    VenueAnnotation *annotation = [[VenueAnnotation alloc]  initWithName:@"Current Location" Coordinate:pinCoordinates Address:@"Here" AndImageurl:currentImageURL];
     [self.mapView addAnnotation:annotation];
     
     
@@ -92,17 +94,23 @@
         NSLog(@"completion ran");
         
         for(Venue *venue in array){
-            MKPointAnnotation *annotation = [MKPointAnnotation new];
-            CLLocationCoordinate2D pinCoordinates = CLLocationCoordinate2DMake(venue.latitude.doubleValue, venue.longitude.doubleValue);
-            annotation.coordinate = pinCoordinates;
-            annotation.title = venue.name;
-            [self.mapView addAnnotation:annotation];
+//            MKPointAnnotation *annotation = [MKPointAnnotation new];
+//            CLLocationCoordinate2D pinCoordinates = CLLocationCoordinate2DMake(venue.latitude.doubleValue, venue.longitude.doubleValue);
+//            annotation.coordinate = pinCoordinates;
+//            annotation.title = venue.name;
+//            [self.mapView addAnnotation:annotation];
             //put above in for loop when data is received from api
+            
+            VenueAnnotation *annotation = [[VenueAnnotation alloc] initWithVenue:venue];
+//            CLLocationCoordinate2D pinCoordinates = CLLocationCoordinate2DMake(venue.latitude.doubleValue, venue.longitude.doubleValue);
+//            annotation.coordinate = pinCoordinates;
+//            annotation.title = venue.name;
+            [self.mapView addAnnotation:annotation];
         }
         
         
         [self.navigationController popToViewController:self animated:YES];
-        self.mapView.showsUserLocation = YES;
+        //self.mapView.showsUserLocation = YES;
     }];
 
 
@@ -137,24 +145,26 @@
 }
 
 
--(MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation{
+-(MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(VenueAnnotation *)annotation{
     MKPinAnnotationView * annotationView = (MKPinAnnotationView *) [mapView dequeueReusableAnnotationViewWithIdentifier:@"Pin"];
     
     if(annotationView == nil){
         
         annotationView =[[MKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"Pin"];
         annotationView.canShowCallout = true;
+        //annotationView.frame = CGRectMake(0.0, 0.0, 200.0, 200.0);
+        //annotationView.detailCalloutAccessoryView = [[UIImageView alloc] initWithFrame:CGRectMake(0.0, 0.0, 200.0, 200.0)];
         annotationView.leftCalloutAccessoryView = [[UIImageView alloc] initWithFrame:CGRectMake(0.0, 0.0, 50.0, 50.0)];
-        annotationView.rightCalloutAccessoryView = [[UIImageView alloc] initWithFrame:CGRectMake(0.0, 0.0, 50.0, 50.0)];
+        annotationView.rightCalloutAccessoryView = [[UIView alloc] initWithFrame:CGRectMake(0.0, 0.0, 50.0, 50.0)];
     }
     
-    UIImageView *imageView = (UIImageView*)annotationView.leftCalloutAccessoryView;
-    imageView.image = [UIImage imageNamed:@"frenchfries"];
+    UIImageView *iconView = (UIImageView*)annotationView.leftCalloutAccessoryView;
+    [iconView setImageWithURL:annotation.imageURL];
     
     UIButton *collectionButton = [UIButton buttonWithType:UIButtonTypeSystem];
     
     //[collectionButton addTarget:self action:@selector(goToCollection:) forControlEvents:UIControlEventTouchUpInside];
-    [collectionButton setTitle:@"Next" forState:UIControlStateNormal];
+    [collectionButton setTitle:@"Details" forState:UIControlStateNormal];
     collectionButton.frame = CGRectMake(0.0, 0.0, 50.0, 50.0);
     [collectionButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     
