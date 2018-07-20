@@ -58,6 +58,21 @@
 //    }
     //[self setFavorited:NO];
     
+    [Favorite saveFavoritedVenue:self.venue withCompletion:^(BOOL worked, NSError * _Nullable __strong error){
+        
+        if(error)
+        {
+            NSLog(@"favorite addition did not work :( - %@", error.localizedDescription);
+        }
+        else{
+            [self setAFilledStar];
+            //add this venue to the users profile- add to the object
+            self.favorited = YES;
+            NSLog(@"favorite successfully added :D");
+        }
+        
+    }];
+    
     
     PFQuery *query = [PFQuery queryWithClassName:@"Favorite"];
     query.limit = 1; 
