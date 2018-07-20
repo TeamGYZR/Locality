@@ -16,8 +16,11 @@ The following **required** functionality is complete:
 * [ ] Sign-up/ login buttons segue to explore page 
 * [ ] Incorporate parse to track users and favorites
 * [ ] OPTIONAL: Add profile photo optionally or set default photo
+* [ ] OPTIONAL: Segue to sign-up screen from sign-up button to change profile picture and add email 
+* [ ] OPTIONAL: Add standard profile picture if none is selected
 * [ ] OPTIONAL: “Guest” flow optional
 * [ ] OPTIONAL: slideshow of instagrams top photos
+* [ ] OPTIONAL: polish design of log-in screen 
 
 **Explore Map View**
 * [ ] Display Map view (Apple Map API)

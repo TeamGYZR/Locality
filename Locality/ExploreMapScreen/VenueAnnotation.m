@@ -23,7 +23,8 @@
         _coordinate = coordinate;
         _subtitle = address;
         _imageURL = imageURL;
-        _venue = nil; 
+        _venue = nil;
+        _category = nil;
     }
     
     return self; 
@@ -44,6 +45,7 @@
         _coordinate = CLLocationCoordinate2DMake(venue.latitude.doubleValue, venue.longitude.doubleValue);
         _subtitle = venue.streetAddress;
         _imageURL = venue.iconURL;
+        _category = venue.category; 
     }
     
     return self;

@@ -163,14 +163,23 @@
 //        annotationView.leftCalloutAccessoryView = [[UIImageView alloc] initWithFrame:CGRectMake(0.0, 0.0, 50.0, 50.0)];
 //        annotationView.rightCalloutAccessoryView = [[UIView alloc] initWithFrame:CGRectMake(0.0, 0.0, 50.0, 50.0)];
             }
+        
+        
             VenueAnnotation *venueAnnotation = (VenueAnnotation *)annotation;
+        
+        if([venueAnnotation.category isEqualToString:@"Coffee Shop"]){
+            annotationView.pinTintColor = [UIColor brownColor];
+        }
+        else if([venueAnnotation.category isEqualToString:@"Bakery"]){
+            annotationView.pinTintColor = [UIColor colorWithRed:1.0 green:0.745 blue:0.0 alpha:1];
+        }
             UIImageView *iconView = (UIImageView*)annotationView.leftCalloutAccessoryView;
             [iconView setImageWithURL: venueAnnotation.imageURL];
         
             UIButton *collectionButton = [UIButton buttonWithType:UIButtonTypeSystem];
         
             //[collectionButton addTarget:self action:@selector(goToCollection:) forControlEvents:UIControlEventTouchUpInside];
-            [collectionButton setTitle:@"Details" forState:UIControlStateNormal];
+            [collectionButton setTitle:@"Pics" forState:UIControlStateNormal];
             collectionButton.frame = CGRectMake(0.0, 0.0, 50.0, 50.0);
             [collectionButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
             [annotationView.rightCalloutAccessoryView setUserInteractionEnabled:YES];

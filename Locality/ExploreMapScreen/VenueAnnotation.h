@@ -17,6 +17,7 @@
 @property (strong, nonatomic) NSString * subtitle;
 @property (strong, nonatomic) NSString * title;
 @property (strong, nonatomic) Venue * venue;
+@property (strong, nonatomic) NSString *category; 
 
 -(id)initWithName:(NSString *)name Coordinate:(CLLocationCoordinate2D )coordinate Address:(NSString *)address AndImageurl:(NSURL *)imageURL;
 
