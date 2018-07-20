@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import "Parse.h"
+#import <FBSDKCoreKit/FBSDKCoreKit.h>
 
 @interface AppDelegate ()
 
@@ -24,10 +25,22 @@
         configuration.clientKey = @"myMasterKey";
         configuration.server = @"http://locality-gyzr.herokuapp.com/parse";
     }];
-    
     [Parse initializeWithConfiguration:config];
     
+    [[FBSDKApplicationDelegate sharedInstance] application:application didFinishLaunchingWithOptions:launchOptions];
+    
     return YES;
+}
+
+- (BOOL)application:(UIApplication *)application
+            openURL:(NSURL *)url
+            options:(NSDictionary<UIApplicationOpenURLOptionsKey,id> *)options {
+    
+    BOOL handled = [[FBSDKApplicationDelegate sharedInstance] application:application openURL:url sourceApplication:options[UIApplicationOpenURLOptionsSourceApplicationKey] annotation:options[UIApplicationOpenURLOptionsSourceApplicationKey]
+                    ];
+    //add cutsom stuff here
+    return handled;
+    
 }
 
 

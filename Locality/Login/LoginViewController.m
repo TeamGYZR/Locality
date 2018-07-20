@@ -8,11 +8,14 @@
 
 #import "LoginViewController.h"
 #import "Parse.h"
+#import <FBSDKCoreKit/FBSDKCoreKit.h>
+#import <FBSDKLoginKit/FBSDKLoginKit.h>
 
 @interface LoginViewController ()
 
 @property (weak, nonatomic) IBOutlet UITextField *usernameTextField;
 @property (weak, nonatomic) IBOutlet UITextField *passwordTextField;
+@property (weak, nonatomic) IBOutlet FBSDKLoginButton *facebookLoginButton;
 
 @end
 
@@ -20,7 +23,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    [self.facebookLoginButton sizeToFit];
 }
 
 - (IBAction)didTapSignUp:(id)sender {
@@ -45,8 +48,7 @@
             UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK"
                                                                style:UIAlertActionStyleDefault
                                                              handler:^(UIAlertAction * _Nonnull action) {
-                                                            
-                                                             }];
+                                      }];
             [alert addAction:okAction];
             [self presentViewController:alert animated:YES completion:^{
 
@@ -70,8 +72,7 @@
             UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK"
                                                                style:UIAlertActionStyleDefault
                                                              handler:^(UIAlertAction * _Nonnull action) {
-                                                                 
-                                                             }];
+                                      }];
             [alert addAction:okAction];
             [self presentViewController:alert animated:YES completion:^{
 
