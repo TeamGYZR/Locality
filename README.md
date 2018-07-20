@@ -87,3 +87,14 @@ What mobile features will we leverage in our app?
 
 
 
+## Video Walkthrough
+
+Here's a walkthrough of implemented user stories of milestone 1:
+
+<img src='https://i.imgur.com/poXSAJ7.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+
+GIF created with [LiceCap](http://www.cockos.com/licecap/).
+
+
+
+
