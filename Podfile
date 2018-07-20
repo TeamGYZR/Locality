@@ -11,6 +11,7 @@ target 'Locality' do
   pod 'Parse'
   pod 'ParseUI'
   pod 'FBSDKLoginKit'
+  pod 'ParseFacebookUtils'
 
   target 'LocalityTests' do
     inherit! :search_paths
