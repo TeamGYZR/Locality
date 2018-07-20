@@ -62,66 +62,34 @@
 }
 -(void) fecth{
     [self apimanager];
-    
-    //[self.req callAPIMethodWithGET:@"flickr.photos.getRecent" arguments:[NSDictionary dictionaryWithObjectsAndKeys:@"1", @"per_page", nil]];
-
-//    Venue *ve=[[Venue alloc] init];
     NSLog(@"%@", self.venue.latitude);
-//
-
-    NSDictionary *dictionary = [NSDictionary dictionaryWithObjectsAndKeys:self.venue.latitude,@"lat", self.venue.longitude,@"lon", self.name, @"text",@"relevance",@"sort", nil];
-    //[self.req callAPIMethodWithGET:@"flickr.photos.getRecent" arguments:dictionary];
-    [self.req callAPIMethodWithGET:@"flickr.photos.search" arguments:dictionary];
+NSDictionary *dictionary = [NSDictionary dictionaryWithObjectsAndKeys:self.venue.latitude,@"lat", self.venue.longitude,@"lon", self.name, @"text",@"relevance",@"sort", nil];
+  [self.req callAPIMethodWithGET:@"flickr.photos.search" arguments:dictionary];
     
     
 }
 
-- (void)flickrAPIRequest:(OFFlickrAPIRequest *)inRequest didCompleteWithResponse:(NSDictionary *)inResponseDictionary{
-//    for(NSString *key in inResponseDictionary){
-//        NSLog(@"%@", [inResponseDictionary objectForKey:key]);
-//    }
-    // OFFlickrAPIContext *flickrContext=[[OFFlickrAPIContext alloc] initWithAPIKey:@"595a10deca33ce1b5a7ab291254fb22a" sharedSecret:@"cf18c4e987fb5146"];
-    
-  NSLog(@"response: %@", inResponseDictionary);
-//    for(int i=0; i<inResponseDictionary.allKeys.count; i++){
-  // NSDictionary *photoDict = [[inResponseDictionary valueForKeyPath:@"photos.photo"] objectAtIndex:0];
-    //NSURL *staticPhotoURL = [self.con photoSourceURLFromDictionary:photoDict size:OFFlickrSmallSize];
-    //NSURL *photoSourcePage = [self.con photoWebPageURLFromDictionary:photoDict];
-//
-   //NSLog(@"%@", photoSourcePage);
-    
-  //NSLog(@"%@", staticPhotoURL);
-//    }
-    
-    self->res=inResponseDictionary;
-    //NSString * stringvalue=self->res[@"photos"][@"total"];
-    //self.instger=[stringvalue integerValue];
-    self.arraywithdictionary=[NSMutableArray array];
-    self.arraywithdictionary=self->res[@"photos"][@"photo"];
-    //NSString *baseurl=@"https://farm.staticflikr.com/"
+-(void)flickrAPIRequest:(OFFlickrAPIRequest *)inRequest didCompleteWithResponse:(NSDictionary *)inResponseDictionary{
 
-//    NSDictionary * dictionary=[NSDictionary dictionaryWithObjectsAndKeys:<#(nonnull id), ...#>, nil]
-  //  [self.req callAPIMethodWithGET:@"flickr.photos.getInfo" arguments:]
-   
+    NSLog(@"response: %@", inResponseDictionary);
+self->res=inResponseDictionary;
+   self.arraywithdictionary=[NSMutableArray array];
+    self.arraywithdictionary=self->res[@"photos"][@"photo"];
+    
+    
+    //SETTING THE HEADER PHOTO URL IN THE VENUE TO THE FIRST PHOTO FROM MY COLLLCATION VIEW PHOTO ARRRAY
+NSDictionary *photoDict =[[self->res valueForKeyPath:@"photos.photo"] objectAtIndex:0];
+    NSURL * urlphoto=[self.con photoSourceURLFromDictionary:photoDict size:OFFlickrLargeSize];
+    self.venue.headerPicURL=urlphoto;
+    //SETTING THE HEADER PHOTO URL IN THE VENUE TO THE FIRST PHOTO FROM MY COLLLCATION VIEW PHOTO ARRRAY
     [self.collectionview reloadData];
     request = nil;
     
 }
-
-
 - (void)flickrAPIRequest:(OFFlickrAPIRequest *)inRequest didFailWithError:(NSError *)inError{
     request = nil;
 }
-
-
-
- //In a storyboard-based application, you will often want to do a little preparation before navigation
-
-
-
-
-
-- (nonnull __kindof UICollectionViewCell *)collectionView:(nonnull UICollectionView *)collectionView cellForItemAtIndexPath:(nonnull NSIndexPath *)indexPath {
+-(nonnull __kindof UICollectionViewCell *)collectionView:(nonnull UICollectionView *)collectionView cellForItemAtIndexPath:(nonnull NSIndexPath *)indexPath {
     NSLog(@"starting reloadData");
    CollectionViewCell *cell=[collectionView dequeueReusableCellWithReuseIdentifier:@"collectioncell" forIndexPath:indexPath];
     NSDictionary *photoDict = [[self->res valueForKeyPath:@"photos.photo"] objectAtIndex:indexPath.item];
@@ -135,14 +103,6 @@
 }
 
 - (NSInteger)collectionView:(nonnull UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-//    if(self.instger>[self->res[@"photos"][@"perpage"] integerValue]){
-//        if([self.name isEqualToString:@"Powell Street Cable Car Turnaround"] || [self.name isEqualToString:@"Union Square"]){
-//            return [self->res[@"photos"][@"perpage"] integerValue]-1;
-//        }
-//        return [self->res[@"photos"][@"perpage"] integerValue];
-//    }
-//    else
-//     return self.instger;
     return self.arraywithdictionary.count;
 }
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
