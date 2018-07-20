@@ -110,6 +110,7 @@ NSDictionary *photoDict =[[self->res valueForKeyPath:@"photos.photo"] objectAtIn
     if([segue.identifier isEqualToString:@"detaillsegue"]){
         DetailsViewController *detail=[segue destinationViewController];
         detail.venue=self.venue;
+        
     }
     
     
