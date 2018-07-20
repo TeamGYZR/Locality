@@ -22,7 +22,7 @@
 
 
 //adding this to test out button image replacement
-@property (nonatomic) BOOL *favorited;
+@property (nonatomic) BOOL favorited;
 
 
 
@@ -58,7 +58,26 @@
 //    }
     //[self setFavorited:NO];
     
-    self.favorited = NO;
+    
+    PFQuery *query = [PFQuery queryWithClassName:@"Favorite"];
+    [query whereKey:@"user" equalTo: PFUser.currentUser];
+    [query whereKey:@"venue" equalTo: self.venue];
+    
+    // fetch data asynchronously
+    [query findObjectsInBackgroundWithBlock:^(NSArray *favorite, NSError *error) {
+        if (favorite != nil) {
+            self.favorited = YES;
+            [self setAFilledStar];
+        } else {
+            [self setAnEmptyStar];
+            NSLog(@"Could not delete favorite - %@", error.localizedDescription);
+            self.favorited = NO;
+        }
+    }];
+    
+    
+    
+
 }
 
 - (void)didReceiveMemoryWarning {
@@ -71,15 +90,42 @@
     
 //    //if user has icon favorited- create a boolean to hold this
     if (self.favorited) {
-        [self setAnEmptyStar];
-        self.favorited = NO;
-        //do something by changing the value for the users propoerty for favorites
+        [Favorite removeVenue: (Venue * _Nullable)self.venue withCompletion:^(BOOL worked, NSError * _Nullable __strong error){
+            if(error)
+            {
+                NSLog(@"favorite deletion did not work :( - %@", error.localizedDescription);
+            }
+            else{
+                //do something by changing the value for the users propoerty for favorites
+                [self setAnEmptyStar];
+                self.favorited = NO;
+                NSLog(@"favorite successfully deleted :D");
+            }
+        }];
+        
+   
+
     }
     else{
-        [self setAFilledStar];
-        //add this venue to the users profile- add to the object
-        self.favorited = YES;
+        
+        [Favorite saveFavoritedVenue:self.venue withCompletion:^(BOOL worked, NSError * _Nullable __strong error){
+            
+            if(error)
+            {
+                NSLog(@"favorite addition did not work :( - %@", error.localizedDescription);
+            }
+            else{
+                [self setAFilledStar];
+                //add this venue to the users profile- add to the object
+                self.favorited = YES;
+                NSLog(@"favorite successfully added :D");
+            }
+            
+        }];
+
     }
+    
+    
     
 }
 

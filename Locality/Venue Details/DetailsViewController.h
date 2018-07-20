@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "Venue.h"
-
+#import "Favorite.h"
 @interface DetailsViewController : UIViewController
 
 @property Venue *venue;
