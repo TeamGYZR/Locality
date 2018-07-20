@@ -21,24 +21,16 @@
 - (instancetype)initWithAnnotation:(id<MKAnnotation>)annotation reuseIdentifier:(NSString *)reuseIdentifier {
     self = [super initWithAnnotation:annotation reuseIdentifier:reuseIdentifier];
     
-    if(self == nil){
-        self =[[MKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"Pin"];
+    if(self){
+        self.enabled = YES;
         self.canShowCallout = true;
+        
+        //        //annotationView.frame = CGRectMake(0.0, 0.0, 200.0, 200.0);
+        //        //annotationView.detailCalloutAccessoryView = [[UIImageView alloc] initWithFrame:CGRectMake(0.0, 0.0, 200.0, 200.0)];
         self.leftCalloutAccessoryView = [[UIImageView alloc] initWithFrame:CGRectMake(0.0, 0.0, 50.0, 50.0)];
        self.rightCalloutAccessoryView = [[UIImageView alloc] initWithFrame:CGRectMake(0.0, 0.0, 50.0, 50.0)];
     }
     
-    if (self) {
-        UILabel *label = [[UILabel alloc] init];
-        label.textAlignment = NSTextAlignmentCenter;
-        label.font = [UIFont preferredFontForTextStyle:UIFontTextStyleCallout];
-        label.textColor = [UIColor whiteColor];
-        [self addSubview:label];
-        //self.label = label;
-
-
-        self.opaque = false;
-    }
     return self;
 }
 

@@ -13,6 +13,7 @@
 #import "Venue.h"
 #import "VenueAnnotation.h"
 #import "UIImageView+AFNetworking.h"
+#import "VenueAnnotationView.h"
 
 
 @interface ExploreMapViewController () <MKMapViewDelegate, CLLocationManagerDelegate>
@@ -47,7 +48,7 @@
             self.locationManager.desiredAccuracy = kCLLocationAccuracyBest;
             
             [self findCurrentLocation];
-            //self.mapView.showsUserLocation = YES;
+            self.mapView.showsUserLocation = YES;
             
 //            MKCoordinateRegion sfRegion = MKCoordinateRegionMake(CLLocationCoordinate2DMake(37.783333, -122.416667), MKCoordinateSpanMake(0.1, 0.1));
 //            [self.mapView setRegion:sfRegion animated:false];
@@ -79,11 +80,11 @@
     
     [self.mapView setRegion:currentRegion animated:YES];
     
-    CLLocationCoordinate2D pinCoordinates = CLLocationCoordinate2DMake(currentLocation.coordinate.latitude, currentLocation.coordinate.longitude);
-    
-    NSURL * currentImageURL = [NSURL URLWithString:@"https://banner2.kisspng.com/20180327/prw/kisspng-emoji-discord-meme-android-imgur-thinking-5ab9e09a302f12.8060406115221310981974.jpg"];
-    VenueAnnotation *annotation = [[VenueAnnotation alloc]  initWithName:@"Current Location" Coordinate:pinCoordinates Address:@"Here" AndImageurl:currentImageURL];
-    [self.mapView addAnnotation:annotation];
+//    CLLocationCoordinate2D pinCoordinates = CLLocationCoordinate2DMake(currentLocation.coordinate.latitude, currentLocation.coordinate.longitude);
+//
+//    NSURL * currentImageURL = [NSURL URLWithString:@"https://banner2.kisspng.com/20180327/prw/kisspng-emoji-discord-meme-android-imgur-thinking-5ab9e09a302f12.8060406115221310981974.jpg"];
+//    VenueAnnotation *annotation = [[VenueAnnotation alloc]  initWithName:@"Current Location" Coordinate:pinCoordinates Address:@"Here" AndImageurl:currentImageURL];
+//    [self.mapView addAnnotation:annotation];
     
     
     APIManager *apiManager = [[APIManager alloc] init];
@@ -127,60 +128,81 @@
     
 }
 
-- (void)mapView:(MKMapView *)mapView didUpdateUserLocation:(MKUserLocation *)userLocation
-{
-    // Center the map the first time we get a real location change.
-    static dispatch_once_t centerMapFirstTime;
-    
-    if ((userLocation.coordinate.latitude != 0.0) && (userLocation.coordinate.longitude != 0.0)) {
-        dispatch_once(&centerMapFirstTime, ^{
-            [self.mapView setCenterCoordinate:userLocation.coordinate animated:YES];
-        });
-    }
-    
-    NSLog(@"%f, %f", self.mapView.userLocation.coordinate.latitude, self.mapView.userLocation.coordinate.longitude);
-    //send info to api manager
-    
-    
-}
+//- (void)mapView:(MKMapView *)mapView didUpdateUserLocation:(MKUserLocation *)userLocation
+//{
+//    // Center the map the first time we get a real location change.
+//    static dispatch_once_t centerMapFirstTime;
+//
+//    if ((userLocation.coordinate.latitude != 0.0) && (userLocation.coordinate.longitude != 0.0)) {
+//        dispatch_once(&centerMapFirstTime, ^{
+//            [self.mapView setCenterCoordinate:userLocation.coordinate animated:YES];
+//        });
+//    }
+//
+//    NSLog(@"%f, %f", self.mapView.userLocation.coordinate.latitude, self.mapView.userLocation.coordinate.longitude);
+//    //send info to api manager
+//
+//
+//}
 
 
--(MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(VenueAnnotation *)annotation{
-    MKPinAnnotationView * annotationView = (MKPinAnnotationView *) [mapView dequeueReusableAnnotationViewWithIdentifier:@"Pin"];
+-(MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation{
     
-    if(annotationView == nil){
-        
-        annotationView =[[MKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"Pin"];
+    
+    if([annotation isKindOfClass:[VenueAnnotation class]])
+    {
+   MKPinAnnotationView * annotationView = (MKPinAnnotationView *) [mapView dequeueReusableAnnotationViewWithIdentifier:@"Pin"];
+  
+        if(annotationView == nil){
+//
+
+        annotationView =[[VenueAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"Pin"];
         annotationView.canShowCallout = true;
-        //annotationView.frame = CGRectMake(0.0, 0.0, 200.0, 200.0);
-        //annotationView.detailCalloutAccessoryView = [[UIImageView alloc] initWithFrame:CGRectMake(0.0, 0.0, 200.0, 200.0)];
-        annotationView.leftCalloutAccessoryView = [[UIImageView alloc] initWithFrame:CGRectMake(0.0, 0.0, 50.0, 50.0)];
-        annotationView.rightCalloutAccessoryView = [[UIView alloc] initWithFrame:CGRectMake(0.0, 0.0, 50.0, 50.0)];
+//        //annotationView.frame = CGRectMake(0.0, 0.0, 200.0, 200.0);
+//        //annotationView.detailCalloutAccessoryView = [[UIImageView alloc] initWithFrame:CGRectMake(0.0, 0.0, 200.0, 200.0)];
+//        annotationView.leftCalloutAccessoryView = [[UIImageView alloc] initWithFrame:CGRectMake(0.0, 0.0, 50.0, 50.0)];
+//        annotationView.rightCalloutAccessoryView = [[UIView alloc] initWithFrame:CGRectMake(0.0, 0.0, 50.0, 50.0)];
+            }
+            VenueAnnotation *venueAnnotation = (VenueAnnotation *)annotation;
+            UIImageView *iconView = (UIImageView*)annotationView.leftCalloutAccessoryView;
+            [iconView setImageWithURL: venueAnnotation.imageURL];
+        
+            UIButton *collectionButton = [UIButton buttonWithType:UIButtonTypeSystem];
+        
+            //[collectionButton addTarget:self action:@selector(goToCollection:) forControlEvents:UIControlEventTouchUpInside];
+            [collectionButton setTitle:@"Details" forState:UIControlStateNormal];
+            collectionButton.frame = CGRectMake(0.0, 0.0, 50.0, 50.0);
+            [collectionButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+            [annotationView.rightCalloutAccessoryView setUserInteractionEnabled:YES];
+            annotationView.rightCalloutAccessoryView = collectionButton;
+        
+        return annotationView;
+        
     }
-    
-    UIImageView *iconView = (UIImageView*)annotationView.leftCalloutAccessoryView;
-    [iconView setImageWithURL:annotation.imageURL];
-    
-    UIButton *collectionButton = [UIButton buttonWithType:UIButtonTypeSystem];
-    
-    //[collectionButton addTarget:self action:@selector(goToCollection:) forControlEvents:UIControlEventTouchUpInside];
-    [collectionButton setTitle:@"Details" forState:UIControlStateNormal];
-    collectionButton.frame = CGRectMake(0.0, 0.0, 50.0, 50.0);
-    [collectionButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-    
-    
-    //[annotationView.rightCalloutAccessoryView addSubview:collectionButton];
-    [annotationView.rightCalloutAccessoryView setUserInteractionEnabled:YES];
-    annotationView.rightCalloutAccessoryView = collectionButton;
-    
-    return annotationView;
-    
+//
+//    UIImageView *iconView = (UIImageView*)annotationView.leftCalloutAccessoryView;
+//    [iconView setImageWithURL:annotation.imageURL];
+//
+//    UIButton *collectionButton = [UIButton buttonWithType:UIButtonTypeSystem];
+//
+//    //[collectionButton addTarget:self action:@selector(goToCollection:) forControlEvents:UIControlEventTouchUpInside];
+//    [collectionButton setTitle:@"Details" forState:UIControlStateNormal];
+//    collectionButton.frame = CGRectMake(0.0, 0.0, 50.0, 50.0);
+//    [collectionButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+//
+//
+//    //[annotationView.rightCalloutAccessoryView addSubview:collectionButton];
+//    [annotationView.rightCalloutAccessoryView setUserInteractionEnabled:YES];
+//    annotationView.rightCalloutAccessoryView = collectionButton;
+//
+//    return annotationView;
+//
+    return nil; 
 }
 
 - (void)mapView:(MKMapView *)mapView annotationView:(MKAnnotationView *)view calloutAccessoryControlTapped:(UIControl *)control
 {
-//    self.data.name= view.annotation.title;
-    //self.string=view.annotation.title;
+
     [self performSegueWithIdentifier:@"collectionSegue" sender:view.annotation];
     
     //Here, the annotation tapped can be accessed using view.annotation
@@ -189,16 +211,13 @@
 
 
 
-- (IBAction)goToCollection:(id)sender{
-
-    NSLog(@"Went to collection view");
-    
-};
-
-//-(void)goToCollection{
+//- (IBAction)goToCollection:(id)sender{
 //
 //    NSLog(@"Went to collection view");
-//}
+//
+//};
+
+
 
 - (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error{
     NSLog(@"%@", error);
