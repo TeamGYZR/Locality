@@ -119,6 +119,7 @@
     if([segue.identifier isEqualToString:@"detaillsegue"]){
         DetailsViewController *detail=[segue destinationViewController];
         detail.venue=self.venue;
+        
     }
     
     
