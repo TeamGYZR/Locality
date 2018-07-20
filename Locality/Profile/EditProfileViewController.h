@@ -7,7 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Parse.h"
+#import "User.h"
 
 @interface EditProfileViewController : UIViewController
+
+@property (strong, nonatomic) User *user;
 
 @end
