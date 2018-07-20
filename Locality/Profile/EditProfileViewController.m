@@ -24,12 +24,6 @@
     // Do any additional setup after loading the view.
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
-
 - (IBAction)didTapSave:(id)sender {
     
     //change users name if this is not equal to
@@ -40,10 +34,7 @@
         self.user.name = self.nameTextField.text;
     }
     [self.user saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
-        //have user data save
-        NSLog(@"sgvdkw");
-        //then also dismiss this view controller
-       
+       //save user's data to parse
     }];
     
 }

@@ -18,9 +18,6 @@
 		4CA36B6E21010ADE0056EB44 /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CA36B6D21010ADE0056EB44 /* ProfileViewController.m */; };
 		4CA36B71210112CD0056EB44 /* FavoriteCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CA36B70210112CD0056EB44 /* FavoriteCell.m */; };
 		4CA36B74210128F20056EB44 /* EditProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CA36B73210128F20056EB44 /* EditProfileViewController.m */; };
-		4CCB516A20FD104C00A55373 /* GingerFoursquareView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4CCB516920FD104C00A55373 /* GingerFoursquareView.storyboard */; };
-		4CCB516F20FD19F500A55373 /* LocationsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CCB516E20FD19F500A55373 /* LocationsViewController.m */; };
-		4CCB517220FD4C8700A55373 /* LocationCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CCB517120FD4C8700A55373 /* LocationCell.m */; };
 		4CDAC17920F4424100B3E7D4 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CDAC17820F4424100B3E7D4 /* AppDelegate.m */; };
 		4CDAC17C20F4424100B3E7D4 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CDAC17B20F4424100B3E7D4 /* ViewController.m */; };
 		4CDAC17F20F4424100B3E7D4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4CDAC17D20F4424100B3E7D4 /* Main.storyboard */; };
@@ -78,11 +75,6 @@
 		4CA36B70210112CD0056EB44 /* FavoriteCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FavoriteCell.m; sourceTree = "<group>"; };
 		4CA36B72210128F20056EB44 /* EditProfileViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EditProfileViewController.h; sourceTree = "<group>"; };
 		4CA36B73210128F20056EB44 /* EditProfileViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EditProfileViewController.m; sourceTree = "<group>"; };
-		4CCB516920FD104C00A55373 /* GingerFoursquareView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = GingerFoursquareView.storyboard; sourceTree = "<group>"; };
-		4CCB516D20FD19F500A55373 /* LocationsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LocationsViewController.h; sourceTree = "<group>"; };
-		4CCB516E20FD19F500A55373 /* LocationsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LocationsViewController.m; sourceTree = "<group>"; };
-		4CCB517020FD4C8700A55373 /* LocationCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LocationCell.h; sourceTree = "<group>"; };
-		4CCB517120FD4C8700A55373 /* LocationCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LocationCell.m; sourceTree = "<group>"; };
 		4CDAC17420F4424100B3E7D4 /* Locality.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Locality.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4CDAC17720F4424100B3E7D4 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		4CDAC17820F4424100B3E7D4 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -173,9 +165,9 @@
 			isa = PBXGroup;
 			children = (
 				4CA36B5220FE90340056EB44 /* Venue.h */,
+				4CA36B5320FE90340056EB44 /* Venue.m */,
 				8580000221015FA30022A126 /* User.h */,
 				8580000321015FA30022A126 /* User.m */,
-				4CA36B5320FE90340056EB44 /* Venue.m */,
 				851C871A21014D0E007C32DD /* Favorite.h */,
 				851C871B21014D0E007C32DD /* Favorite.m */,
 			);
@@ -222,17 +214,6 @@
 			path = Profile;
 			sourceTree = "<group>";
 		};
-		4CCB516C20FD11D400A55373 /* API Foursquare */ = {
-			isa = PBXGroup;
-			children = (
-				4CCB516D20FD19F500A55373 /* LocationsViewController.h */,
-				4CCB516E20FD19F500A55373 /* LocationsViewController.m */,
-				4CCB517020FD4C8700A55373 /* LocationCell.h */,
-				4CCB517120FD4C8700A55373 /* LocationCell.m */,
-			);
-			path = "API Foursquare";
-			sourceTree = "<group>";
-		};
 		4CDAC16B20F4424100B3E7D4 = {
 			isa = PBXGroup;
 			children = (
@@ -264,7 +245,6 @@
 				4CA36B5520FE9C520056EB44 /* API */,
 				4CA36B5120FE90180056EB44 /* Models */,
 				8597DAD620FD0DD500BA261A /* ExploreMapScreen */,
-				4CCB516C20FD11D400A55373 /* API Foursquare */,
 				8597DACC20FCF68300BA261A /* Storyboards */,
 				4CDAC17720F4424100B3E7D4 /* AppDelegate.h */,
 				4CDAC17820F4424100B3E7D4 /* AppDelegate.m */,
@@ -305,7 +285,6 @@
 		8597DACC20FCF68300BA261A /* Storyboards */ = {
 			isa = PBXGroup;
 			children = (
-				4CCB516920FD104C00A55373 /* GingerFoursquareView.storyboard */,
 				4CA36B5C20FEB20A0056EB44 /* DetailsView.storyboard */,
 				4CA36B6220FFF2FD0056EB44 /* Login.storyboard */,
 				8597DB1F20FE7BA200BA261A /* YMapView.storyboard */,
@@ -453,7 +432,6 @@
 				4CDAC18120F4424100B3E7D4 /* Assets.xcassets in Resources */,
 				4CDAC17F20F4424100B3E7D4 /* Main.storyboard in Resources */,
 				4CA36B5D20FEB20A0056EB44 /* DetailsView.storyboard in Resources */,
-				4CCB516A20FD104C00A55373 /* GingerFoursquareView.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -571,7 +549,6 @@
 				859A1AA120FF121300E13EBC /* VenueAnnotation.m in Sources */,
 				4CDAC18720F4424100B3E7D4 /* main.m in Sources */,
 				4CA36B5420FE90340056EB44 /* Venue.m in Sources */,
-				4CCB517220FD4C8700A55373 /* LocationCell.m in Sources */,
 				4CA36B5B20FE9F8A0056EB44 /* APIManager.m in Sources */,
 				4CDAC17920F4424100B3E7D4 /* AppDelegate.m in Sources */,
 				4CA36B74210128F20056EB44 /* EditProfileViewController.m in Sources */,
@@ -579,7 +556,6 @@
 				8580000421015FA30022A126 /* User.m in Sources */,
 				851C871C21014D0E007C32DD /* Favorite.m in Sources */,
 				A814231320FFC60D00C976AE /* CollectionViewCell.m in Sources */,
-				4CCB516F20FD19F500A55373 /* LocationsViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

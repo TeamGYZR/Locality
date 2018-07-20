@@ -10,7 +10,6 @@
 
 @interface APIManager : NSObject
 
-//-(void)fetchNearbyVenuesWithCompletion:(void(^)(NSArray *venues, NSError *error))completion;
 @property (strong, nonatomic) NSArray *results;
 
 -(void)fetchLocationsWithLatitude:(NSNumber *)lat andLongitude:(NSNumber *)longitude withCompletionHandler:(void(^)(NSArray *array, NSError *errror))completion;
