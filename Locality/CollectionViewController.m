@@ -9,6 +9,7 @@
 #import "CollectionViewController.h"
 #import "UIImageView+AFNetworking.h"
 #import "ExploreMapViewController.h"
+#import "DetailsViewController.h"
 
 @interface CollectionViewController ()<UICollectionViewDataSource, UICollectionViewDelegate>
 
@@ -55,7 +56,7 @@
     NSLog(@"%@", self.venue.latitude);
 //
 
-    NSDictionary *dictionary = [NSDictionary dictionaryWithObjectsAndKeys:@"30", @"per_page",self.venue.latitude,@"lat", self.venue.longitude,@"lon", self.name, @"text", nil];
+    NSDictionary *dictionary = [NSDictionary dictionaryWithObjectsAndKeys:@"30",@"per_page",self.venue.latitude,@"lat", self.venue.longitude,@"lon", self.name, @"text", nil];
     //[self.req callAPIMethodWithGET:@"flickr.photos.getRecent" arguments:dictionary];
     [self.req callAPIMethodWithGET:@"flickr.photos.search" arguments:dictionary];
     
@@ -91,21 +92,9 @@
     request = nil;
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 
-
-
-
-
+ //In a storyboard-based application, you will often want to do a little preparation before navigation
 
 
 
@@ -113,6 +102,7 @@
 
 - (nonnull __kindof UICollectionViewCell *)collectionView:(nonnull UICollectionView *)collectionView cellForItemAtIndexPath:(nonnull NSIndexPath *)indexPath {
     NSLog(@"starting reloadData");
+  
     CollectionViewCell *cell=[collectionView dequeueReusableCellWithReuseIdentifier:@"collectioncell" forIndexPath:indexPath];
     NSDictionary *photoDict = [[self->res valueForKeyPath:@"photos.photo"] objectAtIndex:indexPath.item];
    NSURL *staticPhotoURL = [self.con photoSourceURLFromDictionary:photoDict size:OFFlickrSmallSize];
@@ -123,6 +113,15 @@
 - (NSInteger)collectionView:(nonnull UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
     
     return [ self->res[@"photos"][@"perpage"] integerValue];
+}
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    
+    if([segue.identifier isEqualToString:@"detaillsegue"]){
+        DetailsViewController *detail=[segue destinationViewController];
+        detail.venue=self.venue;
+    }
+    
+    
 }
 
 

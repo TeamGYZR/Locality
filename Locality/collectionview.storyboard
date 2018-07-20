@@ -39,11 +39,13 @@
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="USQ-0g-HUz">
                                                     <rect key="frame" x="-19" y="-17" width="190" height="171"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <gestureRecognizers/>
                                                 </imageView>
                                             </subviews>
                                         </view>
                                         <connections>
                                             <outlet property="imagefiled" destination="USQ-0g-HUz" id="hdd-y0-TKk"/>
+                                            <segue destination="W6q-Pj-BCE" kind="show" identifier="detaillsegue" id="f5f-i0-vuj"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -59,6 +61,14 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eSY-3T-vt1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1458.4000000000001" y="-521.28935532233891"/>
+        </scene>
+        <!--DetailsView-->
+        <scene sceneID="oc7-Mj-w51">
+            <objects>
+                <viewControllerPlaceholder storyboardName="DetailsView" id="W6q-Pj-BCE" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="eBa-su-izn" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-526" y="-623"/>
         </scene>
     </scenes>
 </document>
