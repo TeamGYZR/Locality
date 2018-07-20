@@ -17,6 +17,7 @@
 
 @implementation CollectionViewController{
     NSDictionary * res;
+   
 }
 
 -(void)viewDidLoad {
@@ -25,9 +26,21 @@
     self.collectionview.delegate=self;
     [self setkey];
     [self fecth];
+    UICollectionViewFlowLayout * layout= (UICollectionViewFlowLayout *) self.collectionview.collectionViewLayout;
+    layout.minimumLineSpacing=3;
+    layout.minimumInteritemSpacing=3;
+    
+    
+    CGFloat posterperline=3;
+    CGFloat width=(self.collectionview.frame.size.width-layout.minimumInteritemSpacing *(posterperline-1))/posterperline;
+    CGFloat height=width;
+    layout.itemSize=CGSizeMake(width, height);
+    
+    
     
     // Do any additional setup after loading the view.
 }
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -56,7 +69,7 @@
     NSLog(@"%@", self.venue.latitude);
 //
 
-    NSDictionary *dictionary = [NSDictionary dictionaryWithObjectsAndKeys:@"30",@"per_page",self.venue.latitude,@"lat", self.venue.longitude,@"lon", self.name, @"text", nil];
+    NSDictionary *dictionary = [NSDictionary dictionaryWithObjectsAndKeys:self.venue.latitude,@"lat", self.venue.longitude,@"lon", self.name, @"text",@"relevance",@"sort", nil];
     //[self.req callAPIMethodWithGET:@"flickr.photos.getRecent" arguments:dictionary];
     [self.req callAPIMethodWithGET:@"flickr.photos.search" arguments:dictionary];
     
@@ -81,7 +94,15 @@
 //    }
     
     self->res=inResponseDictionary;
- 
+    //NSString * stringvalue=self->res[@"photos"][@"total"];
+    //self.instger=[stringvalue integerValue];
+    self.arraywithdictionary=[NSMutableArray array];
+    self.arraywithdictionary=self->res[@"photos"][@"photo"];
+    //NSString *baseurl=@"https://farm.staticflikr.com/"
+
+//    NSDictionary * dictionary=[NSDictionary dictionaryWithObjectsAndKeys:<#(nonnull id), ...#>, nil]
+  //  [self.req callAPIMethodWithGET:@"flickr.photos.getInfo" arguments:]
+   
     [self.collectionview reloadData];
     request = nil;
     
@@ -102,17 +123,27 @@
 
 - (nonnull __kindof UICollectionViewCell *)collectionView:(nonnull UICollectionView *)collectionView cellForItemAtIndexPath:(nonnull NSIndexPath *)indexPath {
     NSLog(@"starting reloadData");
-  
-    CollectionViewCell *cell=[collectionView dequeueReusableCellWithReuseIdentifier:@"collectioncell" forIndexPath:indexPath];
+   CollectionViewCell *cell=[collectionView dequeueReusableCellWithReuseIdentifier:@"collectioncell" forIndexPath:indexPath];
     NSDictionary *photoDict = [[self->res valueForKeyPath:@"photos.photo"] objectAtIndex:indexPath.item];
+    
+    //[[self->res valueForKeyPath:@"photos.photo"] objectAtIndex:indexPath.item];
    NSURL *staticPhotoURL = [self.con photoSourceURLFromDictionary:photoDict size:OFFlickrSmallSize];
+    NSLog(@"%lu", (unsigned long)photoDict.count);
+    
     cell.url=staticPhotoURL;
     return cell;
 }
 
 - (NSInteger)collectionView:(nonnull UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    
-    return [ self->res[@"photos"][@"perpage"] integerValue];
+//    if(self.instger>[self->res[@"photos"][@"perpage"] integerValue]){
+//        if([self.name isEqualToString:@"Powell Street Cable Car Turnaround"] || [self.name isEqualToString:@"Union Square"]){
+//            return [self->res[@"photos"][@"perpage"] integerValue]-1;
+//        }
+//        return [self->res[@"photos"][@"perpage"] integerValue];
+//    }
+//    else
+//     return self.instger;
+    return self.arraywithdictionary.count;
 }
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     
