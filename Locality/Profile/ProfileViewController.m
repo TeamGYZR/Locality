@@ -8,10 +8,13 @@
 
 #import "ProfileViewController.h"
 #import "EditProfileViewController.h"
+//instal parse ui pod to display images from PFFile
+#import "ParseUI/ParseUI.h"
 
 @interface ProfileViewController ()
 
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
+@property (weak, nonatomic) IBOutlet PFImageView *profiePicImageView;
 
 @end
 
@@ -29,7 +32,10 @@
         self.nameLabel.text = self.user.name;
     }
     [self.nameLabel sizeToFit];
-    
+    if (self.user.profilePicture != nil) {
+        self.profiePicImageView.file = self.user.profilePicture;
+        [self.profiePicImageView loadInBackground];
+    }
 }
 
 - (void)didReceiveMemoryWarning {
@@ -37,14 +43,9 @@
     // Dispose of any resources that can be recreated.
 }
 
-//add a refresh controller
-//-(void)refreshData{
-//    
-//}
-
-//- (IBAction)didTapEdit:(id)sender {
-//    //[self performSegueWithIdentifier:@"editProfileSegue" sender:self];
-//}
+-(void)viewWillAppear:(BOOL)animated{
+    [self viewDidLoad];
+}
 
 
 #pragma mark - Navigation

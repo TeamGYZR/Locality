@@ -93,10 +93,16 @@ EOM
 }
 if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_resource "${PODS_CONFIGURATION_BUILD_DIR}/Parse/Parse.bundle"
+  install_resource "${PODS_ROOT}/ParseUI/ParseUI/Resources/Localization/en.lproj"
+  install_resource "${PODS_ROOT}/ParseUI/ParseUI/Resources/Localization/fr.lproj"
+  install_resource "${PODS_ROOT}/ParseUI/ParseUI/Resources/Localization/pt-BR.lproj"
   install_resource "${PODS_ROOT}/objectiveflickr/BridgeSupport"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_resource "${PODS_CONFIGURATION_BUILD_DIR}/Parse/Parse.bundle"
+  install_resource "${PODS_ROOT}/ParseUI/ParseUI/Resources/Localization/en.lproj"
+  install_resource "${PODS_ROOT}/ParseUI/ParseUI/Resources/Localization/fr.lproj"
+  install_resource "${PODS_ROOT}/ParseUI/ParseUI/Resources/Localization/pt-BR.lproj"
   install_resource "${PODS_ROOT}/objectiveflickr/BridgeSupport"
 fi
 

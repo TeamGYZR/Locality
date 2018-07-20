@@ -10,7 +10,7 @@
 #import "Parse.h"
 #import "User.h"
 
-@interface EditProfileViewController : UIViewController
+@interface EditProfileViewController : UIViewController<UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 
 @property (strong, nonatomic) User *user;
 

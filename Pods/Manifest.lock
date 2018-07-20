@@ -20,11 +20,15 @@ PODS:
     - Parse/Core (= 1.17.1)
   - Parse/Core (1.17.1):
     - Bolts/Tasks (~> 1.9)
+  - ParseUI (1.2.0):
+    - Bolts/Tasks (~> 1.3)
+    - Parse (~> 1.9)
 
 DEPENDENCIES:
   - AFNetworking
   - objectiveflickr
   - Parse
+  - ParseUI
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
@@ -32,13 +36,15 @@ SPEC REPOS:
     - Bolts
     - objectiveflickr
     - Parse
+    - ParseUI
 
 SPEC CHECKSUMS:
   AFNetworking: b6f891fdfaed196b46c7a83cf209e09697b94057
   Bolts: ac6567323eac61e203f6a9763667d0f711be34c8
   objectiveflickr: aed169dae1eb5a5550ca78f7efd7ccde2e4c26e5
   Parse: d3edaf8c7c722cb33cb83ba7821d015ae32d362d
+  ParseUI: 2b37a0bc692a3e7666cf0c37b5521dfddd74a1af
 
-PODFILE CHECKSUM: 8c5b752f7f6ec768308afc75bc3dc5ddb2f3fefb
+PODFILE CHECKSUM: 2aab51daf779d8d3598b306f3f4bbc93ffe050e9
 
 COCOAPODS: 1.5.3

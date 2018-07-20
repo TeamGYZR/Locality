@@ -11,5 +11,6 @@
 @implementation User
 
 @dynamic name;
+@dynamic profilePicture;
 
 @end
