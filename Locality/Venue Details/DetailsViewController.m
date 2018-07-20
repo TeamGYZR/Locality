@@ -22,7 +22,7 @@
 
 
 //adding this to test out button image replacement
-@property (nonatomic) BOOL *favorited;
+@property (nonatomic) BOOL favorited;
 
 
 
@@ -33,18 +33,16 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    
-    //view is passed in a specific venue from the photo controller, grid view controller sends over one object w all the info
-    
+
     //maybe the grid view controller can add the first picture to the venue object? as a url
     //then send over this info and display the image attatched to the specific url
     
-    //display the specific venue info here- do we want to add in another api? maye=be youngmin could do this to get phone number/ main pic
+    //[self.venueImage setImageWithURL:self.venue.headerPicURL];
+    self.nameLabel.text = self.venue.name;
+    self.addressLabel.text = self.venue.streetAddress;
     
-    
-//    [self.venueImage setImageWithURL:self.venue.headerPicURL];
-//    self.nameLabel.text = self.venue.name;
-//    self.addressLabel.text = self.venue.streetAddress;
+    //[self.nameLabel sizeToFit];
+    [self.addressLabel sizeToFit];
     
     //set initial favorite button based on users boolean value for the favorite icon
     //NO -- emptyStar
@@ -56,9 +54,45 @@
 //    else{
     //        [self setAFilledStar];
 //    }
-    //[self setFavorited:NO];
     
-    self.favorited = NO;
+    [Favorite saveFavoritedVenue:self.venue withCompletion:^(BOOL worked, NSError * _Nullable __strong error){
+        
+        if(error)
+        {
+            NSLog(@"favorite addition did not work :( - %@", error.localizedDescription);
+        }
+        else{
+            [self setAFilledStar];
+            //add this venue to the users profile- add to the object
+            self.favorited = YES;
+            NSLog(@"favorite successfully added :D");
+        }
+        
+    }];
+    
+    
+    PFQuery *query = [PFQuery queryWithClassName:@"Favorite"];
+    query.limit = 1; 
+    [query whereKey:@"user" equalTo: PFUser.currentUser];
+    [query whereKey:@"venue" equalTo: self.venue];
+    
+    [query includeKeys:@[@"user", @"venue"]];
+    
+    // fetch data asynchronously
+    [query findObjectsInBackgroundWithBlock:^(NSArray *favorite, NSError *error) {
+        if (!favorite) {
+            [self setAnEmptyStar];
+            NSLog(@"Could not delete favorite - %@", error.localizedDescription);
+            self.favorited = NO;
+        } else if(favorite) {
+            self.favorited = YES;
+            [self setAFilledStar];
+        }
+    }];
+    
+    
+    
+
 }
 
 - (void)didReceiveMemoryWarning {
@@ -71,15 +105,42 @@
     
 //    //if user has icon favorited- create a boolean to hold this
     if (self.favorited) {
-        [self setAnEmptyStar];
-        self.favorited = NO;
-        //do something by changing the value for the users propoerty for favorites
+        [Favorite removeVenue: (Venue * _Nullable)self.venue withCompletion:^(BOOL worked, NSError * _Nullable __strong error){
+            if(error)
+            {
+                NSLog(@"favorite deletion did not work :( - %@", error.localizedDescription);
+            }
+            else{
+                //do something by changing the value for the users propoerty for favorites
+                [self setAnEmptyStar];
+                self.favorited = NO;
+                NSLog(@"favorite successfully deleted :D");
+            }
+        }];
+        
+   
+
     }
     else{
-        [self setAFilledStar];
-        //add this venue to the users profile- add to the object
-        self.favorited = YES;
+        
+        [Favorite saveFavoritedVenue:self.venue withCompletion:^(BOOL worked, NSError * _Nullable __strong error){
+            
+            if(error)
+            {
+                NSLog(@"favorite addition did not work :( - %@", error.localizedDescription);
+            }
+            else{
+                [self setAFilledStar];
+                //add this venue to the users profile- add to the object
+                self.favorited = YES;
+                NSLog(@"favorite successfully added :D");
+            }
+            
+        }];
+
     }
+    
+    
     
 }
 

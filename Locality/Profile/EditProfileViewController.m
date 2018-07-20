@@ -7,8 +7,13 @@
 //
 
 #import "EditProfileViewController.h"
+#import "ParseUI/ParseUI.h"
 
 @interface EditProfileViewController ()
+
+@property (weak, nonatomic) IBOutlet UITextField *nameTextField;
+@property (weak, nonatomic) IBOutlet UIImageView *editedProfilePicture;
+
 
 @end
 
@@ -22,6 +27,52 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+
+- (IBAction)didTapSave:(id)sender {
+    
+    //change users name if this is not equal to
+    if ([self.nameTextField.text isEqualToString:@""]) {
+        //dont change the users name
+    }
+    else{
+        self.user.name = self.nameTextField.text;
+    }
+    [self.user saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
+        //have user data save
+        NSLog(@"sgvdkw");
+        //then also dismiss this view controller
+       
+    }];
+    
+}
+
+//letting user add profile picture
+- (IBAction)didTapPicEdit:(id)sender {
+    UIImagePickerController *imagePickerVC = [UIImagePickerController new];
+    imagePickerVC.delegate = self;
+    imagePickerVC.allowsEditing = YES;
+    if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
+        imagePickerVC.sourceType = UIImagePickerControllerSourceTypeCamera;
+    }
+    else{
+        imagePickerVC.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+    }
+    [self presentViewController:imagePickerVC animated:YES completion:nil];
+}
+
+-(void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info{
+    
+    UIImage *editedImage = info[UIImagePickerControllerEditedImage];
+    
+    NSData *imageData = UIImagePNGRepresentation(editedImage);
+    self.user.profilePicture = [PFFile fileWithName:@"image.png" data:imageData];
+    [self dismissViewControllerAnimated:YES completion:^{
+        
+    }];
+    self.editedProfilePicture.image = editedImage;
+    
 }
 
 /*

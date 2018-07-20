@@ -22,7 +22,7 @@
 
 -(id)initWithVenue:(Venue *)venue;
 
-//-(MKAnnotationView *) annotationView; 
+-(MKAnnotationView *) annotationView; 
 
 
 @end
