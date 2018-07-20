@@ -106,8 +106,14 @@ NSDictionary *dictionary = [NSDictionary dictionaryWithObjectsAndKeys:self.venue
     if([segue.identifier isEqualToString:@"detaillsegue"] || [segue.identifier isEqualToString:@"detaillview"] ){
         DetailsViewController *detail=[segue destinationViewController];
         detail.venue=self.venue;
+
         }
-}
+
+    }
+    
+    
+
+
 
 
 

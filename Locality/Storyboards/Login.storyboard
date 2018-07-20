@@ -61,6 +61,11 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QBX-be-5YH" customClass="FBSDKLoginButton">
+                                <rect key="frame" x="164" y="502" width="46" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                            </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vnL-ow-VBo">
                                 <rect key="frame" x="227" y="392" width="38" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -74,6 +79,7 @@
                         <viewLayoutGuide key="safeArea" id="DTM-qj-MVh"/>
                     </view>
                     <connections>
+                        <outlet property="facebookLoginButton" destination="QBX-be-5YH" id="OYJ-eK-InX"/>
                         <outlet property="passwordTextField" destination="Uad-i9-Ike" id="WCu-bV-lLy"/>
                         <outlet property="usernameTextField" destination="G9F-2m-vax" id="uBX-WR-73a"/>
                         <segue destination="NCV-8h-0ve" kind="presentation" identifier="loginSegue" id="kAB-dG-dZd"/>
