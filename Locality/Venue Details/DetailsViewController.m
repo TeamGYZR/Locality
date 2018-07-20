@@ -55,28 +55,12 @@
     //        [self setAFilledStar];
 //    }
     
-    [Favorite saveFavoritedVenue:self.venue withCompletion:^(BOOL worked, NSError * _Nullable __strong error){
-        
-        if(error)
-        {
-            NSLog(@"favorite addition did not work :( - %@", error.localizedDescription);
-        }
-        else{
-            [self setAFilledStar];
-            //add this venue to the users profile- add to the object
-            self.favorited = YES;
-            NSLog(@"favorite successfully added :D");
-        }
-        
-    }];
-    
-    
     PFQuery *query = [PFQuery queryWithClassName:@"Favorite"];
     query.limit = 1; 
     [query whereKey:@"user" equalTo: PFUser.currentUser];
-    [query whereKey:@"venue" equalTo: self.venue];
+    [query whereKey:@"venueID" equalTo: self.venue.idStr];
     
-    [query includeKeys:@[@"user", @"venue"]];
+    [query includeKeys:@[@"user", @"venueID"]];
     
     // fetch data asynchronously
     [query findObjectsInBackgroundWithBlock:^(NSArray *favorite, NSError *error) {

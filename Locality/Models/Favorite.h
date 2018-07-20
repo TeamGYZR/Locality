@@ -14,7 +14,7 @@
 @interface Favorite : PFObject <PFSubclassing>
 
 @property (nonatomic, strong) PFUser * user;
-@property (nonatomic, strong) Venue * venue;
+@property (nonatomic, strong) NSString * venueID;
 
 + (void) saveFavoritedVenue: (Venue * _Nullable)venue withCompletion: (PFBooleanResultBlock  _Nullable)completion;
 
