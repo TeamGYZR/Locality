@@ -11,30 +11,29 @@ The following **required** functionality is complete:
 
 **Login**
 
-* [ ] User can login to their account or create a new account using Parse
-* [ ] Error messages if the user has not entered both an email/ password
-* [ ] Sign-up/ login buttons segue to explore page 
+* [x] User can login to their account or create a new account using Parse
+* [x] Error messages if the user has not entered both an email/ password
+* [x] Sign-up/ login buttons segue to explore page 
 * [ ] Incorporate parse to track users and favorites
-* [ ] OPTIONAL: Add profile photo optionally or set default photo
 * [ ] OPTIONAL: Segue to sign-up screen from sign-up button to change profile picture and add email 
 * [ ] OPTIONAL: Add standard profile picture if none is selected
 * [ ] OPTIONAL: “Guest” flow optional
-* [ ] OPTIONAL: slideshow of instagrams top photos
 * [ ] OPTIONAL: polish design of log-in screen 
 
 **Explore Map View**
-* [ ] Display Map view (Apple Map API)
-* [ ] Get user location permissions
+* [x] Display Map view (Apple Map API)
+* [x] Get user location permissions
 * [ ] OPTIONAL: prompt to enable in Settings if they declined it
-* [ ] Center map view on current location
-* [ ] Display pins based on popular locations pulled from Four Square API
+* [x] Center map view on current location
+* [x] Display pins based on popular locations pulled from Four Square API
 * [ ] Have pins show different colors based on the category the attraction is in (based on Yelp API)
-* [ ] OPTIONAL: Search bar to change user location (Apple Map API, or location api)
-* [ ] Create a tap gesture segue from the pin to the collection view 
-* [ ] OPTIONAL: Tap on pin shows a preview on the information
-* [ ] Display a tab bar to switch between profile/ explore pages
+* [ ] Search bar to change user location (Apple Map API, or location api)
+* [x] Create a tap gesture segue from the pin to the collection view 
+* [x] OPTIONAL: Tap on pin shows a preview on the information
+* [x] Display a tab bar to switch between profile/ explore pages
 * [ ] OPTIONAL: search refinement based on category
 * [ ] OPTIONAL: Tapping on a pin will show a text bubble if other people the user knows have visited that place
+* [ ] OPTIONAL: Polish design, style pin callout with .nib file
 
 **Photo Collection View Page**
 * [ ] Display photos from the place in a collection view
@@ -53,6 +52,7 @@ The following **required** functionality is complete:
 **Profile Page View**
 * [ ] Display in either a collection or table view a list of the user's favorited places
 * [ ] Label for username
+* [ ] OPTIONAL: Add profile photo optionally or set default photo
 * [ ] OPTIONAL:  add headers to the view- maybe sorted by alphabet or by category
 * [ ] OPTIONAL: Add Profile Picture
 * [ ] OPTIONAL: Add a map of their own favorited places in profile page
