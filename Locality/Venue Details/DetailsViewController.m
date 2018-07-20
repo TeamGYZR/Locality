@@ -64,9 +64,8 @@
     
     // fetch data asynchronously
     [query findObjectsInBackgroundWithBlock:^(NSArray *favorite, NSError *error) {
-        if (!favorite) {
+        if ([favorite count] == 0) {
             [self setAnEmptyStar];
-            NSLog(@"Could not delete favorite - %@", error.localizedDescription);
             self.favorited = NO;
         } else if(favorite) {
             self.favorited = YES;
@@ -89,7 +88,7 @@
     
 //    //if user has icon favorited- create a boolean to hold this
     if (self.favorited) {
-        [Favorite removeVenue: (Venue * _Nullable)self.venue withCompletion:^(BOOL worked, NSError * _Nullable __strong error){
+        [Favorite removeVenue:(Venue * _Nullable)self.venue withCompletion:^(BOOL worked, NSError * _Nullable __strong error){
             if(error)
             {
                 NSLog(@"favorite deletion did not work :( - %@", error.localizedDescription);

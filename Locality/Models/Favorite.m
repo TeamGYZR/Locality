@@ -29,7 +29,7 @@
     
 }
 
--(void) removeVenue: (Venue * _Nullable)venue withCompletion: (PFBooleanResultBlock  _Nullable)completion{
++ (void) removeVenue: (Venue * _Nullable)venue withCompletion: (PFBooleanResultBlock  _Nullable)completion{
     
     PFQuery *query = [PFQuery queryWithClassName:@"Favorite"];
     [query whereKey:@"user" equalTo: PFUser.currentUser];
