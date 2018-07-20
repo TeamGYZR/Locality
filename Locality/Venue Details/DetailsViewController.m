@@ -60,18 +60,21 @@
     
     
     PFQuery *query = [PFQuery queryWithClassName:@"Favorite"];
+    query.limit = 1; 
     [query whereKey:@"user" equalTo: PFUser.currentUser];
     [query whereKey:@"venue" equalTo: self.venue];
     
+    [query includeKeys:@[@"user", @"venue"]];
+    
     // fetch data asynchronously
     [query findObjectsInBackgroundWithBlock:^(NSArray *favorite, NSError *error) {
-        if (favorite != nil) {
-            self.favorited = YES;
-            [self setAFilledStar];
-        } else {
+        if (!favorite) {
             [self setAnEmptyStar];
             NSLog(@"Could not delete favorite - %@", error.localizedDescription);
             self.favorited = NO;
+        } else if(favorite) {
+            self.favorited = YES;
+            [self setAFilledStar];
         }
     }];
     

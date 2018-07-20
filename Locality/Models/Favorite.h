@@ -13,8 +13,8 @@
 
 @interface Favorite : PFObject <PFSubclassing>
 
-@property (nonatomic, strong) PFUser * _Nonnull user;
-@property (nonatomic, strong) Venue * _Nonnull venue;
+@property (nonatomic, strong) PFUser * user;
+@property (nonatomic, strong) Venue * venue;
 
 + (void) saveFavoritedVenue: (Venue * _Nullable)venue withCompletion: (PFBooleanResultBlock  _Nullable)completion;
 

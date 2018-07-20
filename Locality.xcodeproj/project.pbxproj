@@ -30,6 +30,7 @@
 		4CDAC19120F4424100B3E7D4 /* LocalityTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CDAC19020F4424100B3E7D4 /* LocalityTests.m */; };
 		4CDAC19C20F4424100B3E7D4 /* LocalityUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CDAC19B20F4424100B3E7D4 /* LocalityUITests.m */; };
 		851C871C21014D0E007C32DD /* Favorite.m in Sources */ = {isa = PBXBuildFile; fileRef = 851C871B21014D0E007C32DD /* Favorite.m */; };
+		8580000421015FA30022A126 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 8580000321015FA30022A126 /* User.m */; };
 		8597DB1620FD162500BA261A /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8597DB1520FD162500BA261A /* MapKit.framework */; };
 		8597DB1820FD1BB400BA261A /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8597DB1720FD1BB400BA261A /* CoreLocation.framework */; };
 		8597DB2120FE7BA200BA261A /* YMapView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8597DB1F20FE7BA200BA261A /* YMapView.storyboard */; };
@@ -101,10 +102,10 @@
 		5F1B3E5DBABAB3F93F44C75E /* libPods-Locality.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Locality.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7268D2AFC88C24A529B514A5 /* libPods-LocalityUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-LocalityUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8274814A446109AFAE12B326 /* Pods-LocalityTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LocalityTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-LocalityTests/Pods-LocalityTests.release.xcconfig"; sourceTree = "<group>"; };
-		851C8717210110CE007C32DD /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
-		851C8718210110D6007C32DD /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
 		851C871A21014D0E007C32DD /* Favorite.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Favorite.h; sourceTree = "<group>"; };
 		851C871B21014D0E007C32DD /* Favorite.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Favorite.m; sourceTree = "<group>"; };
+		8580000221015FA30022A126 /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
+		8580000321015FA30022A126 /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
 		8597DB1520FD162500BA261A /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		8597DB1720FD1BB400BA261A /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		8597DB1E20FE7B9600BA261A /* ExploreMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExploreMapViewController.h; sourceTree = "<group>"; };
@@ -172,9 +173,9 @@
 			isa = PBXGroup;
 			children = (
 				4CA36B5220FE90340056EB44 /* Venue.h */,
+				8580000221015FA30022A126 /* User.h */,
+				8580000321015FA30022A126 /* User.m */,
 				4CA36B5320FE90340056EB44 /* Venue.m */,
-				851C8717210110CE007C32DD /* User.h */,
-				851C8718210110D6007C32DD /* User.m */,
 				851C871A21014D0E007C32DD /* Favorite.h */,
 				851C871B21014D0E007C32DD /* Favorite.m */,
 			);
@@ -569,6 +570,7 @@
 				4CDAC17920F4424100B3E7D4 /* AppDelegate.m in Sources */,
 				4CA36B74210128F20056EB44 /* EditProfileViewController.m in Sources */,
 				4CA36B6120FEB5540056EB44 /* DetailsViewController.m in Sources */,
+				8580000421015FA30022A126 /* User.m in Sources */,
 				851C871C21014D0E007C32DD /* Favorite.m in Sources */,
 				A814231320FFC60D00C976AE /* CollectionViewCell.m in Sources */,
 				4CCB516F20FD19F500A55373 /* LocationsViewController.m in Sources */,
