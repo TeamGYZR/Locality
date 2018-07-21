@@ -33,27 +33,11 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-
-    //maybe the grid view controller can add the first picture to the venue object? as a url
-    //then send over this info and display the image attatched to the specific url
     
-    //[self.venueImage setImageWithURL:self.venue.headerPicURL];
+    [self.venueImage setImageWithURL:self.venue.headerPicURL];
     self.nameLabel.text = self.venue.name;
     self.addressLabel.text = self.venue.streetAddress;
-    
-    //[self.nameLabel sizeToFit];
     [self.addressLabel sizeToFit];
-    
-    //set initial favorite button based on users boolean value for the favorite icon
-    //NO -- emptyStar
-    //YES -- star
-//    if (favorited) {
-    //        [self setAnEmptyStar];
-    //
-//    }
-//    else{
-    //        [self setAFilledStar];
-//    }
     
     PFQuery *query = [PFQuery queryWithClassName:@"Favorite"];
     query.limit = 1; 

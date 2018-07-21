@@ -8,11 +8,14 @@
 
 #import "LoginViewController.h"
 #import "Parse.h"
+#import <FBSDKCoreKit/FBSDKCoreKit.h>
+#import <FBSDKLoginKit/FBSDKLoginKit.h>
 
 @interface LoginViewController ()
 
 @property (weak, nonatomic) IBOutlet UITextField *usernameTextField;
 @property (weak, nonatomic) IBOutlet UITextField *passwordTextField;
+@property (weak, nonatomic) IBOutlet FBSDKLoginButton *facebookLoginButton;
 
 @end
 
@@ -20,13 +23,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    [self.facebookLoginButton sizeToFit];
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
 - (IBAction)didTapSignUp:(id)sender {
     [self registerUser];
     
@@ -49,17 +48,15 @@
             UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK"
                                                                style:UIAlertActionStyleDefault
                                                              handler:^(UIAlertAction * _Nonnull action) {
-                                                            
-                                                             }];
+                                      }];
             [alert addAction:okAction];
             [self presentViewController:alert animated:YES completion:^{
-                // optional code for what happens after the alert controller has finished presenting
+
             }];
             NSLog(@"error signing up User: %@", error.localizedDescription);
         }
         else{
             NSLog(@"User successfully registered!");
-            //segue to the map view? or require user to login with new username and password?
             [self performSegueWithIdentifier:@"loginSegue" sender:nil];
         }
     }];
@@ -75,17 +72,15 @@
             UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK"
                                                                style:UIAlertActionStyleDefault
                                                              handler:^(UIAlertAction * _Nonnull action) {
-                                                                 
-                                                             }];
+                                      }];
             [alert addAction:okAction];
             [self presentViewController:alert animated:YES completion:^{
-                // optional code for what happens after the alert controller has finished presenting
+
             }];
             NSLog(@"error logging in user: %@", error.localizedDescription);
         }
         else{
             NSLog(@"Successfully signed in user!");
-            //segue to map view
             [self performSegueWithIdentifier:@"loginSegue" sender:nil];
         }
     }];

@@ -23,8 +23,6 @@
         self.iconURL = [NSURL URLWithString:urlString];
         
         self.streetAddress = dictionary[@"location"][@"formattedAddress"][0];
-        
-        //warning- numbers might be persnikity depending on their type- nscf number, doubles and nsnumber etc
         self.latitude = dictionary[@"location"][@"lat"];
         self.longitude = dictionary[@"location"][@"lng"];
         self.idStr = dictionary[@"id"];
@@ -34,14 +32,12 @@
 }
 
 //method that returns venue objects when initalized with an array of separate location dictionaries
-
 +(NSMutableArray *)venuesWithArray:(NSArray *)dictionaries{
     NSMutableArray *venues = [NSMutableArray array];
     for (NSDictionary *dictionary in dictionaries) {
         Venue *venue = [[Venue alloc] initWithDictionary:dictionary];
         [venues addObject:venue];
     }
-    //venues = an array of 30 Venue objects
     return venues;
 }
 
