@@ -10,11 +10,14 @@
 #import "EditProfileViewController.h"
 //instal parse ui pod to display images from PFFile
 #import "ParseUI/ParseUI.h"
+#import "APImanager.h"
+#import "FavoriteCell.h"
 
-@interface ProfileViewController ()
+@interface ProfileViewController () <UITableViewDelegate, UITableViewDataSource>
 
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
 @property (weak, nonatomic) IBOutlet PFImageView *profiePicImageView;
+@property (strong, nonatomic) NSArray * favorites;
 
 @end
 
@@ -36,8 +39,25 @@
         self.profiePicImageView.file = self.user.profilePicture;
         [self.profiePicImageView loadInBackground];
     }
+    [self loadFavorites];
 }
 
+-(void)loadFavorites{
+    PFQuery *query = [PFQuery queryWithClassName:@"Favorite"];
+    [query whereKey:@"user" equalTo: self.user];
+    
+    // fetch data asynchronously
+    [query findObjectsInBackgroundWithBlock:^(NSArray *favorites, NSError *error) {
+        if ([favorites count] != 0) {
+            // do something with the array of object returned by the call
+            self.favorites = favorites;
+        } else {
+            NSLog(@"Could not find any favorites - %@", error.localizedDescription);
+        }
+    }];
+    
+    
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -47,6 +67,30 @@
     [self viewDidLoad];
 }
 
+
+-(NSInteger)tableView:(UITableView *) tableView numberOfRowsInSection:(NSInteger)section{
+    return self.favorites.count;
+}
+
+-(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    FavoriteCell *cell = [tableView dequeueReusableCellWithIdentifier:@"FavoriteCell" forIndexPath:indexPath];
+    
+     self.favorites[indexPath.row]
+    cell.post = self.favorites[indexPath.row];
+    
+    UITapGestureRecognizer *singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapDetectedSender:)];
+    singleTap.numberOfTapsRequired = 1;
+    [cell.profileView setUserInteractionEnabled:YES];
+    [cell.profileView addGestureRecognizer:singleTap];
+    
+    
+    
+    return cell;
+    
+    
+    
+}
 
 #pragma mark - Navigation
 

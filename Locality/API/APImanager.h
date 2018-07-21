@@ -14,5 +14,6 @@
 @property (strong, nonatomic) NSArray *results;
 
 -(void)fetchLocationsWithLatitude:(NSNumber *)lat andLongitude:(NSNumber *)longitude withCompletionHandler:(void(^)(NSArray *array, NSError *errror))completion;
+-(void)fetchVenuewithVenueID:(NSString *)venueID; 
 
 @end

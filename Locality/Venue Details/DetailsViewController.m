@@ -68,8 +68,8 @@
             [self setAnEmptyStar];
             self.favorited = NO;
         } else if(favorite) {
-            self.favorited = YES;
             [self setAFilledStar];
+            self.favorited = YES;
         }
     }];
     
