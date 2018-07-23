@@ -14,15 +14,16 @@
 #import "VenueAnnotation.h"
 #import "UIImageView+AFNetworking.h"
 #import "VenueAnnotationView.h"
+#import "ResultsTableViewController.h"
 
 
-@interface ExploreMapViewController () <MKMapViewDelegate, CLLocationManagerDelegate>
+@interface ExploreMapViewController () <MKMapViewDelegate, CLLocationManagerDelegate, UISearchResultsUpdating, UISearchControllerDelegate, UISearchBarDelegate>
 
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;
 @property (weak, nonatomic) IBOutlet UIButton *currentLocationButton;
 @property (strong, nonatomic) CLLocationManager *locationManager;
-//@property (strong,nonatomic) NSString * string;
-
+//@property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
+@property (strong, nonatomic) UISearchController *searchController;
 @end
 
 @implementation ExploreMapViewController
@@ -34,12 +35,38 @@
     self.mapView.delegate = self;
     self.locationManager = [[CLLocationManager alloc] init];
     self.locationManager.delegate = self;
-    
-
     [self.locationManager requestWhenInUseAuthorization];
+    
+    
+    ResultsTableViewController* resultsController = [[ResultsTableViewController alloc] init];
+    self.searchController = [[UISearchController alloc] initWithSearchResultsController:resultsController];
+    
+    self.searchController.searchResultsUpdater = self;
+    
+    // Install the search bar as the table header.
+    //self. = self.searchController.searchBar;
+    
+    //self.searchBar = self.searchController.searchBar; //this may be a problem line
+    
+    self.parentViewController.navigationItem.searchController= self.searchController;
+    
+    [self.searchController.searchBar sizeToFit];
+    // It is usually good to set the presentation context. But what does it do  --o.._..o--
+    
+    //self.searchResultsController.tableView.delegate = self;
+//    self.searchController.delegate = self;
+//    //self.searchController.dimsBackgroundDuringPresentation = YES; // default is YES
+//    self.searchController.searchBar.delegate = self;
+//    
+//    
+//    
+//    self.searchController.obscuresBackgroundDuringPresentation = YES;
+//    self.definesPresentationContext = YES;
     
     if(CLLocationManager.locationServicesEnabled)
     {
+        //[MKUserTrackingButton userTrackingButtonWithMapView:self.mapView];
+        
         if(CLLocationManager.authorizationStatus == kCLAuthorizationStatusAuthorizedWhenInUse)
         {
             NSLog(@"location usage authorized");
@@ -74,7 +101,7 @@
     
     NSLog(@"lat: %f, long: %f", currentLocation.coordinate.latitude, currentLocation.coordinate.longitude);
     
-    MKCoordinateRegion currentRegion = MKCoordinateRegionMake(CLLocationCoordinate2DMake(currentLocation.coordinate.latitude, currentLocation.coordinate.longitude), MKCoordinateSpanMake(0.025, 0.025));
+    MKCoordinateRegion currentRegion = MKCoordinateRegionMake(CLLocationCoordinate2DMake(currentLocation.coordinate.latitude +0.001, currentLocation.coordinate.longitude), MKCoordinateSpanMake(0.025, 0.025));
     
     
     [self.mapView setRegion:currentRegion animated:YES];
@@ -105,6 +132,12 @@
     [self.locationManager requestLocation];
     
 }
+
+- (void)updateSearchResultsForSearchController:(UISearchController *)searchController{
+    
+    NSLog(@"search bar text changed");
+    
+};
 
 
 -(MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation{

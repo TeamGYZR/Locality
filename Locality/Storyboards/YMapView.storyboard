@@ -169,7 +169,7 @@
             </objects>
             <point key="canvasLocation" x="2328.8000000000002" y="-535.68215892053979"/>
         </scene>
-        <!--Explore Map View Controller-->
+        <!--Explore-->
         <scene sceneID="Wvd-Ps-WIm">
             <objects>
                 <viewController id="4al-vT-iBs" customClass="ExploreMapViewController" sceneMemberID="viewController">
@@ -203,7 +203,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="HMA-8S-vxb"/>
                     </view>
-                    <navigationItem key="navigationItem" id="5Ig-ke-Unh"/>
+                    <navigationItem key="navigationItem" title="Explore" id="5Ig-ke-Unh"/>
                     <connections>
                         <outlet property="currentLocationButton" destination="eci-Ff-ccJ" id="ZbO-KU-vM1"/>
                         <outlet property="mapView" destination="QqE-Vh-Mea" id="cwH-4f-vf4"/>
@@ -221,6 +221,34 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vYe-0O-jMG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1906" y="180"/>
+        </scene>
+        <!--Results Table View Controller-->
+        <scene sceneID="t4h-xk-QMS">
+            <objects>
+                <tableViewController id="3nx-vk-SAB" customClass="ResultsTableViewController" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="Ctu-cK-956" customClass="Results">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="6Tn-bE-sWp">
+                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="6Tn-bE-sWp" id="S9g-MU-eFi">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="3nx-vk-SAB" id="iL8-Gw-rn8"/>
+                            <outlet property="delegate" destination="3nx-vk-SAB" id="mvj-GC-xxh"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="D0c-E6-3J5" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1065" y="938"/>
         </scene>
         <!--Profile-->
         <scene sceneID="5BU-hl-RWv">
