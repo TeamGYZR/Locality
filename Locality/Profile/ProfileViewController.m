@@ -14,7 +14,7 @@
 #import "FavoriteCell.h"
 #import "Favorite.h"
 
-@interface ProfileViewController () <UITableViewDelegate, UITableViewDataSource>
+@interface ProfileViewController () <UITableViewDelegate, UITableViewDataSource, FavoriteCellDelegate>
 
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
 @property (weak, nonatomic) IBOutlet PFImageView *profiePicImageView;
@@ -85,11 +85,13 @@
     
     
     Favorite * currentFavorite = self.favorites[indexPath.row];
+    cell.delegate = self; 
     
     [self.apimanager fetchVenuewithVenueName:currentFavorite.venueName Latitude:currentFavorite.latitude Longitude:currentFavorite.longitude withCompletionHandler:^(Venue * venue, NSError * error){
         if(venue){
             NSLog(@"a favorite");
-            
+            cell.venue = venue;
+
             
         }
         else{
@@ -111,6 +113,9 @@
     
     
 }
+
+
+
 
 #pragma mark - Navigation
 
