@@ -7,6 +7,7 @@
 //
 
 #import "FavoriteCell.h"
+#import "APImanager.h"
 
 @implementation FavoriteCell
 
@@ -24,6 +25,15 @@
 }
 
 - (IBAction)didTapFavorite:(id)sender {
+}
+
+- (void)setVenue:(Venue *)venue
+{
+    _venue = venue;
+    
+
+    
+    
 }
 
 @end

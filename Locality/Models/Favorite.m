@@ -11,7 +11,9 @@
 
 @implementation Favorite
 
-@dynamic venueID;
+@dynamic venueName;
+@dynamic latitude;
+@dynamic longitude;
 @dynamic user;
 
 + (nonnull NSString *)parseClassName {
@@ -22,7 +24,9 @@
     
     Favorite *newFavorite = [Favorite new];
     newFavorite.user = PFUser.currentUser;
-    newFavorite.venueID = venue.idStr;
+    newFavorite.venueName = venue.name;
+    newFavorite.latitude = venue.latitude;
+    newFavorite.longitude = venue.longitude;
     
     [newFavorite saveInBackgroundWithBlock:completion];
     
@@ -33,7 +37,7 @@
     
     PFQuery *query = [PFQuery queryWithClassName:@"Favorite"];
     [query whereKey:@"user" equalTo: PFUser.currentUser];
-    [query whereKey:@"venueID" equalTo: venue.idStr];
+    [query whereKey:@"venueName" equalTo: venue.name];
     
     // fetch data asynchronously
     [query findObjectsInBackgroundWithBlock:^(NSArray *favorite, NSError *error) {

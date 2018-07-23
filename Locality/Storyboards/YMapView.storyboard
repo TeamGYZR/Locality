@@ -89,6 +89,7 @@
                     <connections>
                         <outlet property="nameLabel" destination="We2-iM-TxS" id="bcI-97-uF0"/>
                         <outlet property="profiePicImageView" destination="6hB-su-Xan" id="kl0-gB-AeZ"/>
+                        <outlet property="tableView" destination="2aO-0R-fVF" id="oY5-Eo-EDX"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ss3-Wg-l47" userLabel="First Responder" sceneMemberID="firstResponder"/>

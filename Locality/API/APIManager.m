@@ -44,10 +44,10 @@ static NSString *const clientSecret = @"VRCUJCWQYIWBFK212OOGGGU1KD2DKZLYVZZJ0ZUN
     
 }
 
--(void)fetchVenuewithVenueID:(NSString *)venueID{
-    NSString *baseURLstring = @"https://api.foursquare.com/v2/venues/";
+-(void)fetchVenuewithVenueName:(NSString *)venueName Latitude:(NSNumber *)lat Longitude:(NSNumber *)lon withCompletionHandler:(void (^)(Venue *, NSError *))completion{
+    NSString *baseURLstring = @"https://api.foursquare.com/v2/venues/search?";
 
-    NSString *coordinateString = [NSString stringWithFormat:@"client_id=%@&client_secret=%@&v=20180716&ll=%@", clientID, clientSecret, venueID];
+    NSString *coordinateString = [NSString stringWithFormat:@"client_id=%@&client_secret=%@&v=20180716&ll=%@,%@&query=%@", clientID, clientSecret, lat, lon, venueName];
     coordinateString = [coordinateString stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
     
     NSURL *url = [NSURL URLWithString:[baseURLstring stringByAppendingString:coordinateString]];
@@ -60,12 +60,14 @@ static NSString *const clientSecret = @"VRCUJCWQYIWBFK212OOGGGU1KD2DKZLYVZZJ0ZUN
             //creating a dictionary to hold the json data
             NSDictionary *responseDictionary = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
             //using the venue names as the query
-            self.results = [responseDictionary valueForKeyPath:@"response.groups.items.venue"][0];
+            self.results = [responseDictionary valueForKeyPath:@"response.venues"][0];
             
             //set this equal to something else- comes back as an array of objects
-            //[Venue venuesWithArray:self.results];
-            NSMutableArray *testerArray = [Venue venuesWithArray:self.results];
-            completion(testerArray, error);
+
+            //NSMutableArray *testerArray = [Venue venuesWithArray:self.results];
+            Venue * venue = [Venue alloc];
+            venue = [venue initWithDictionary:self.results[0]];
+            completion(venue, error);
         }
         else{
             completion(nil, error);
