@@ -21,12 +21,10 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
 }
 
 - (IBAction)didTapSave:(id)sender {
     
-    //change users name if this is not equal to
     if ([self.nameTextField.text isEqualToString:@""]) {
         //dont change the users name
     }
