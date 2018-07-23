@@ -60,26 +60,6 @@ static NSTimeInterval g_defaultTimeout = 60.0;
 
 static FBSDKErrorConfiguration *g_errorConfiguration;
 
-#if !TARGET_OS_TV
-static FBSDKAccessToken *_CreateExpiredAccessToken(FBSDKAccessToken *accessToken)
-{
-  if (accessToken == nil) {
-    return nil;
-  }
-  if (accessToken.isExpired) {
-    return accessToken;
-  }
-  NSDate *expirationDate = [NSDate dateWithTimeIntervalSinceNow:-1];
-  return [[FBSDKAccessToken alloc] initWithTokenString:accessToken.tokenString
-                                           permissions:accessToken.permissions.allObjects
-                                   declinedPermissions:accessToken.declinedPermissions.allObjects
-                                                 appID:accessToken.appID
-                                                userID:accessToken.userID
-                                        expirationDate:expirationDate
-                                           refreshDate:expirationDate];
-}
-#endif
-
 // ----------------------------------------------------------------------------
 // FBSDKGraphRequestConnectionState
 
@@ -107,7 +87,7 @@ NSURLSessionDataDelegate
 @property (nonatomic, retain) NSMutableArray *requests;
 @property (nonatomic, assign) FBSDKGraphRequestConnectionState state;
 @property (nonatomic, strong) FBSDKLogger *logger;
-@property (nonatomic, assign) uint64_t requestStartTime;
+@property (nonatomic, assign) unsigned long requestStartTime;
 
 @end
 
@@ -463,7 +443,7 @@ NSURLSessionDataDelegate
   NSUInteger bodyLength = [[body data] length] / 1024;
 
   [request setValue:[FBSDKGraphRequestConnection userAgent] forHTTPHeaderField:@"User-Agent"];
-  [request setValue:[body mimeContentType] forHTTPHeaderField:@"Content-Type"];
+  [request setValue:[FBSDKGraphRequestBody mimeContentType] forHTTPHeaderField:@"Content-Type"];
   [request setHTTPShouldHandleCookies:NO];
 
   [self logRequest:request bodyLength:bodyLength bodyLogger:bodyLogger attachmentLogger:attachmentLogger];
@@ -515,8 +495,7 @@ NSURLSessionDataDelegate
 
   NSString *url = [FBSDKGraphRequest serializeURL:baseURL
                                            params:request.parameters
-                                       httpMethod:request.HTTPMethod
-                                         forBatch:forBatch];
+                                       httpMethod:request.HTTPMethod];
   return url;
 }
 
@@ -561,7 +540,7 @@ NSURLSessionDataDelegate
       error = [FBSDKError errorWithCode:FBSDKGraphRequestProtocolMismatchErrorCode
                                 message:@"Unexpected number of results returned from server."];
     } else {
-      [_logger appendFormat:@"Response <#%lu>\nDuration: %llu msec\nSize: %lu kB\nResponse Body:\n%@\n\n",
+      [_logger appendFormat:@"Response <#%lu>\nDuration: %lu msec\nSize: %lu kB\nResponse Body:\n%@\n\n",
        (unsigned long)[_logger loggerSerialNumber],
        [FBSDKInternalUtility currentTimeInMilliseconds] - _requestStartTime,
        (unsigned long)[data length],
@@ -679,7 +658,7 @@ NSURLSessionDataDelegate
                      error:(NSError **)error
 {
   id parsed = nil;
-  if (!(*error) && [utf8 isKindOfClass:[NSString class]]) {
+  if (!(*error)) {
     parsed = [FBSDKInternalUtility objectForJSONString:utf8 error:error];
     // if we fail parse we attempt a re-parse of a modified input to support results in the form "foo=bar", "true", etc.
     // which is shouldn't be necessary since Graph API v2.1.
@@ -761,16 +740,10 @@ NSURLSessionDataDelegate
   };
 
 #if !TARGET_OS_TV
-  void (^clearToken)(NSInteger) = ^(NSInteger errorSubcode){
-    if (metadata.request.flags & FBSDKGraphRequestFlagDoNotInvalidateTokenOnError) {
-      return;
-    }
-    if (errorSubcode == 493) {
-      [FBSDKAccessToken setCurrentAccessToken:_CreateExpiredAccessToken([FBSDKAccessToken currentAccessToken])];
-    } else {
+  void (^clearToken)(void) = ^{
+    if (!(metadata.request.flags & FBSDKGraphRequestFlagDoNotInvalidateTokenOnError)) {
       [FBSDKAccessToken setCurrentAccessToken:nil];
     }
-
   };
 
   FBSDKSystemAccountStoreAdapter *adapter = [FBSDKSystemAccountStoreAdapter sharedInstance];
@@ -795,14 +768,14 @@ NSURLSessionDataDelegate
           [adapter renewSystemAuthorization:^(ACAccountCredentialRenewResult result, NSError *renewError) {
             NSOperationQueue *queue = _delegateQueue ?: [NSOperationQueue mainQueue];
             [queue addOperationWithBlock:^{
-              clearToken(errorSubcode);
+              clearToken();
               finishAndInvokeCompletionHandler();
             }];
           }];
           return;
         }
       }
-      clearToken(errorSubcode);
+      clearToken();
     } else if (errorCode >= 200 && errorCode < 300) {
       // permission error
       [adapter renewSystemAuthorization:^(ACAccountCredentialRenewResult result, NSError *renewError) {

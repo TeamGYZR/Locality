@@ -9,6 +9,7 @@
 #import "AppDelegate.h"
 #import "Parse.h"
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
+#import <ParseFacebookUtils/PFFacebookUtils.h>
 
 @interface AppDelegate ()
 
@@ -27,20 +28,39 @@
     }];
     [Parse initializeWithConfiguration:config];
     
-    [[FBSDKApplicationDelegate sharedInstance] application:application didFinishLaunchingWithOptions:launchOptions];
+    //launch the facebook software
+    //[[FBSDKApplicationDelegate sharedInstance] application:application didFinishLaunchingWithOptions:launchOptions];
+    
+    //[PFFacebookUtils initializeFacebookWithApplicationLaunchOptions:launchOptions];
     
     return YES;
 }
 
+//- (BOOL)application:(UIApplication *)application
+//            openURL:(NSURL *)url
+//  sourceApplication:(NSString *)sourceApplication
+//         annotation:(id)annotation {
+//    return [[FBSDKApplicationDelegate sharedInstance] application:application
+//                                                          openURL:url
+//                                                sourceApplication:sourceApplication
+//                                                       annotation:annotation];
+//}
+
+
+
 - (BOOL)application:(UIApplication *)application
             openURL:(NSURL *)url
             options:(NSDictionary<UIApplicationOpenURLOptionsKey,id> *)options {
-    
+
     BOOL handled = [[FBSDKApplicationDelegate sharedInstance] application:application openURL:url sourceApplication:options[UIApplicationOpenURLOptionsSourceApplicationKey] annotation:options[UIApplicationOpenURLOptionsSourceApplicationKey]
                     ];
     //add cutsom stuff here
     return handled;
-    
+
+}
+
+- (void)applicationDidBecomeActive:(UIApplication *)application {
+    [FBSDKAppEvents activateApp];
 }
 
 
@@ -61,9 +81,9 @@
 }
 
 
-- (void)applicationDidBecomeActive:(UIApplication *)application {
-    // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
-}
+//- (void)applicationDidBecomeActive:(UIApplication *)application {
+//    // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+//}
 
 
 - (void)applicationWillTerminate:(UIApplication *)application {

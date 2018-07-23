@@ -10,8 +10,7 @@ target 'Locality' do
   pod 'objectiveflickr'
   pod 'Parse'
   pod 'ParseUI'
-  pod 'FBSDKLoginKit'
-  pod 'ParseFacebookUtils'
+  pod 'Parse/FacebookUtils'
 
   target 'LocalityTests' do
     inherit! :search_paths
