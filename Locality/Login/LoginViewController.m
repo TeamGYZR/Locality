@@ -11,6 +11,7 @@
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
 #import <FBSDKLoginKit/FBSDKLoginKit.h>
 #import "PFFacebookUtils.h"
+#import "SignUpViewController.h"
 
 @interface LoginViewController ()
 
@@ -28,7 +29,7 @@
 }
 
 - (IBAction)didTapSignUp:(id)sender {
-    [self registerUser];
+    [self performSegueWithIdentifier:@"signUpSegue" sender:nil];
     
 }
 
@@ -36,33 +37,6 @@
     [self loginUser];
 }
 
-
--(void)registerUser{
-    PFUser *newUser = [PFUser user];
-    
-    newUser.username = self.usernameTextField.text;
-    newUser.password = self.passwordTextField.text;
-    
-    [newUser signUpInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
-        if (error) {
-            //have an alert message display the localizedDescription
-            UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Error signing up!" message:(@"%@", error.localizedDescription) preferredStyle:(UIAlertControllerStyleAlert)];
-            UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK"
-                                                               style:UIAlertActionStyleDefault
-                                                             handler:^(UIAlertAction * _Nonnull action) {
-                                      }];
-            [alert addAction:okAction];
-            [self presentViewController:alert animated:YES completion:^{
-
-            }];
-            NSLog(@"error signing up User: %@", error.localizedDescription);
-        }
-        else{
-            NSLog(@"User successfully registered!");
-            [self performSegueWithIdentifier:@"loginSegue" sender:nil];
-        }
-    }];
-}
 
 -(void)loginUser{
     NSString *username = self.usernameTextField.text;

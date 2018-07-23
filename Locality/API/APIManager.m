@@ -66,7 +66,7 @@ static NSString *const clientSecret = @"VRCUJCWQYIWBFK212OOGGGU1KD2DKZLYVZZJ0ZUN
 
             //NSMutableArray *testerArray = [Venue venuesWithArray:self.results];
             Venue * venue = [Venue alloc];
-            venue = [venue initWithDictionary:self.results[0]];
+            venue = [venue initWithDictionary:self.results];
             completion(venue, error);
         }
         else{

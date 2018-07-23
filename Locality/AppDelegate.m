@@ -9,7 +9,6 @@
 #import "AppDelegate.h"
 #import "Parse.h"
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
-
 #import "PFFacebookUtils.h"
 
 @interface AppDelegate ()
