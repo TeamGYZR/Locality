@@ -28,6 +28,11 @@
     }];
     [Parse initializeWithConfiguration:config];
     
+    if (PFUser.currentUser) {
+        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"YMapView" bundle:nil];
+        self.window.rootViewController = [storyboard instantiateViewControllerWithIdentifier:@"MainTabBar"];
+    }
+    
     [PFFacebookUtils initializeFacebookWithApplicationLaunchOptions:launchOptions];
     
     //launch the facebook software

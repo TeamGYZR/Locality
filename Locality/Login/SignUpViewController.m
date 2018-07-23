@@ -79,6 +79,10 @@
         }
     }];
 }
+- (IBAction)didTapCancel:(id)sender {
+    [self performSegueWithIdentifier:@"cancelSegue" sender:nil];
+}
+
 
 
 

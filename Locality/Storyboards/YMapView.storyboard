@@ -97,7 +97,13 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="oca-TK-kyx"/>
                     </view>
-                    <navigationItem key="navigationItem" id="pwb-GX-bOq"/>
+                    <navigationItem key="navigationItem" id="pwb-GX-bOq">
+                        <barButtonItem key="leftBarButtonItem" title="Logout" id="RbV-fW-IHL">
+                            <connections>
+                                <action selector="didTapLogout:" destination="BWE-Cg-hu2" id="dxw-W7-LGa"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="nameLabel" destination="We2-iM-TxS" id="bcI-97-uF0"/>
                         <outlet property="profiePicImageView" destination="6hB-su-Xan" id="kl0-gB-AeZ"/>

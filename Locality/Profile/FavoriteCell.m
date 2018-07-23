@@ -13,17 +13,13 @@
 
 @implementation FavoriteCell
 
-//set-up to do with profile cell: have button to show favorites depending on how the favorites is connected to the user
-
 - (void)awakeFromNib {
     [super awakeFromNib];
-    // Initialization code
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
 
-    // Configure the view for the selected state
 }
 
 - (IBAction)didTapFavorite:(id)sender {
@@ -34,7 +30,6 @@
             NSLog(@"favorite deletion did not work :( - %@", error.localizedDescription);
         }
         else{
-            //do something by changing the value for the users propoerty for favorites
             [self.delegate loadFavorites];
 
             NSLog(@"favorite successfully deleted :D");

@@ -8,11 +8,11 @@
 
 #import "ProfileViewController.h"
 #import "EditProfileViewController.h"
-//instal parse ui pod to display images from PFFile
 #import "ParseUI/ParseUI.h"
 #import "APImanager.h"
 #import "FavoriteCell.h"
 #import "Favorite.h"
+#import "AppDelegate.h"
 
 @interface ProfileViewController () <UITableViewDelegate, UITableViewDataSource, FavoriteCellDelegate>
 
@@ -47,6 +47,16 @@
     self.apimanager = [APIManager new];
     [self loadFavorites];
 }
+
+- (IBAction)didTapLogout:(id)sender {
+    [PFUser logOutInBackgroundWithBlock:^(NSError * _Nullable error) {
+        AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Login" bundle:nil];
+        ProfileViewController *loginViewController = [storyboard instantiateViewControllerWithIdentifier:@"LoginViewController"];
+        appDelegate.window.rootViewController = loginViewController;
+    }];
+}
+
 
 -(void)loadFavorites{
     PFQuery *query = [PFQuery queryWithClassName:@"Favorite"];
