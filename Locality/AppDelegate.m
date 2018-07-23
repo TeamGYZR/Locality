@@ -9,7 +9,8 @@
 #import "AppDelegate.h"
 #import "Parse.h"
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
-#import <ParseFacebookUtils/PFFacebookUtils.h>
+
+#import "PFFacebookUtils.h"
 
 @interface AppDelegate ()
 
@@ -21,32 +22,20 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     ParseClientConfiguration *config = [ParseClientConfiguration   configurationWithBlock:^(id<ParseMutableClientConfiguration> configuration) {
-        
+
         configuration.applicationId = @"myAppId";
         configuration.clientKey = @"myMasterKey";
         configuration.server = @"http://locality-gyzr.herokuapp.com/parse";
     }];
     [Parse initializeWithConfiguration:config];
     
-    //launch the facebook software
-    //[[FBSDKApplicationDelegate sharedInstance] application:application didFinishLaunchingWithOptions:launchOptions];
+    [PFFacebookUtils initializeFacebookWithApplicationLaunchOptions:launchOptions];
     
-    //[PFFacebookUtils initializeFacebookWithApplicationLaunchOptions:launchOptions];
+    //launch the facebook software
+    [[FBSDKApplicationDelegate sharedInstance] application:application didFinishLaunchingWithOptions:launchOptions];
     
     return YES;
 }
-
-//- (BOOL)application:(UIApplication *)application
-//            openURL:(NSURL *)url
-//  sourceApplication:(NSString *)sourceApplication
-//         annotation:(id)annotation {
-//    return [[FBSDKApplicationDelegate sharedInstance] application:application
-//                                                          openURL:url
-//                                                sourceApplication:sourceApplication
-//                                                       annotation:annotation];
-//}
-
-
 
 - (BOOL)application:(UIApplication *)application
             openURL:(NSURL *)url
@@ -54,7 +43,7 @@
 
     BOOL handled = [[FBSDKApplicationDelegate sharedInstance] application:application openURL:url sourceApplication:options[UIApplicationOpenURLOptionsSourceApplicationKey] annotation:options[UIApplicationOpenURLOptionsSourceApplicationKey]
                     ];
-    //add cutsom stuff here
+
     return handled;
 
 }

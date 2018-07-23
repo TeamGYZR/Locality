@@ -10,6 +10,7 @@
 #import "Parse.h"
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
 #import <FBSDKLoginKit/FBSDKLoginKit.h>
+#import "PFFacebookUtils.h"
 
 @interface LoginViewController ()
 
@@ -34,6 +35,7 @@
 - (IBAction)didTapLogin:(id)sender {
     [self loginUser];
 }
+
 
 -(void)registerUser{
     PFUser *newUser = [PFUser user];
@@ -85,6 +87,22 @@
         }
     }];
     
+}
+
+-(void)loginWithFacebook{
+    
+    NSArray *permissions = [NSArray arrayWithObjects:@"email", @"public_profile", nil];
+    [PFFacebookUtils logInInBackgroundWithReadPermissions:permissions block:^(PFUser *user, NSError *error) {
+        if (!user) {
+            NSLog(@"Uh oh. The user cancelled the Facebook login.");
+        } else if (user.isNew) {
+            NSLog(@"User signed up and logged in through Facebook!");
+            [self performSegueWithIdentifier:@"loginSegue" sender:nil];
+        } else {
+            NSLog(@"User logged in through Facebook!");
+            [self performSegueWithIdentifier:@"loginSegue" sender:nil];
+        }
+    }];
 }
 
 /*
