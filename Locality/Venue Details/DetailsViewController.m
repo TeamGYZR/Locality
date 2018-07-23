@@ -124,12 +124,8 @@
 - (IBAction)soundbutton:(id)sender {
     if(!self.speech.isSpeaking){
         AVSpeechUtterance *specchuttternce=[[AVSpeechUtterance alloc] initWithString:self.venue.name];
-        //[specchuttternce setRate:0.9f];
-        //[specchuttternce setVolume:1];
         specchuttternce.rate=0.3;
-        specchuttternce.pitchMultiplier=1.7;
-    
-        specchuttternce.voice=[AVSpeechSynthesisVoice voiceWithLanguage:@"en_US"];
+        specchuttternce.voice=[AVSpeechSynthesisVoice voiceWithLanguage:@"en_GB"];
         self.speech=[[AVSpeechSynthesizer alloc] init];
         [self.speech speakUtterance:specchuttternce];
         
