@@ -14,16 +14,7 @@ PODS:
   - AFNetworking/Serialization (3.2.1)
   - AFNetworking/UIKit (3.2.1):
     - AFNetworking/NSURLSession
-  - Bolts (1.9.0):
-    - Bolts/AppLinks (= 1.9.0)
-    - Bolts/Tasks (= 1.9.0)
-  - Bolts/AppLinks (1.9.0):
-    - Bolts/Tasks
   - Bolts/Tasks (1.9.0)
-  - FBSDKCoreKit (4.34.0):
-    - Bolts (~> 1.7)
-  - FBSDKLoginKit (4.34.0):
-    - FBSDKCoreKit
   - objectiveflickr (2.0.4)
   - Parse (1.17.1):
     - Parse/Core (= 1.17.1)
@@ -35,7 +26,6 @@ PODS:
 
 DEPENDENCIES:
   - AFNetworking
-  - FBSDKLoginKit
   - objectiveflickr
   - Parse
   - ParseUI
@@ -44,8 +34,6 @@ SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - AFNetworking
     - Bolts
-    - FBSDKCoreKit
-    - FBSDKLoginKit
     - objectiveflickr
     - Parse
     - ParseUI
@@ -53,12 +41,10 @@ SPEC REPOS:
 SPEC CHECKSUMS:
   AFNetworking: b6f891fdfaed196b46c7a83cf209e09697b94057
   Bolts: ac6567323eac61e203f6a9763667d0f711be34c8
-  FBSDKCoreKit: 0ff57f093b85c8c9d5aba697d3edf68a8960ce78
-  FBSDKLoginKit: 8c78f57a145afb756e4755e69195ebe08a42466e
   objectiveflickr: aed169dae1eb5a5550ca78f7efd7ccde2e4c26e5
   Parse: d3edaf8c7c722cb33cb83ba7821d015ae32d362d
   ParseUI: 2b37a0bc692a3e7666cf0c37b5521dfddd74a1af
 
-PODFILE CHECKSUM: d6fcbdb1117dc5e459200a34ea3d097ced1d344e
+PODFILE CHECKSUM: 0c84e92e1c797713e2ea6e51db9447d422d7458a
 
 COCOAPODS: 1.5.3

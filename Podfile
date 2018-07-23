@@ -10,7 +10,7 @@ target 'Locality' do
   pod 'objectiveflickr'
   pod 'Parse'
   pod 'ParseUI'
-  pod 'FBSDKLoginKit'
+  
 
   target 'LocalityTests' do
     inherit! :search_paths
