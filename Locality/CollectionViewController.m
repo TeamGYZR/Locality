@@ -35,10 +35,6 @@
     CGFloat width=(self.collectionview.frame.size.width-layout.minimumInteritemSpacing *(posterperline-1))/posterperline;
     CGFloat height=width;
     layout.itemSize=CGSizeMake(width, height);
-    
-    
-    
-    // Do any additional setup after loading the view.
 }
 
 
@@ -72,15 +68,15 @@ NSDictionary *dictionary = [NSDictionary dictionaryWithObjectsAndKeys:self.venue
 -(void)flickrAPIRequest:(OFFlickrAPIRequest *)inRequest didCompleteWithResponse:(NSDictionary *)inResponseDictionary{
 
     NSLog(@"response: %@", inResponseDictionary);
-self->res=inResponseDictionary;
+   self->res=inResponseDictionary;
    self.arraywithdictionary=[NSMutableArray array];
     self.arraywithdictionary=self->res[@"photos"][@"photo"];
     
     
     //SETTING THE HEADER PHOTO URL IN THE VENUE TO THE FIRST PHOTO FROM MY COLLLCATION VIEW PHOTO ARRRAY
-NSDictionary *photoDict =[[self->res valueForKeyPath:@"photos.photo"] objectAtIndex:0];
-    NSURL * urlphoto=[self.con photoSourceURLFromDictionary:photoDict size:OFFlickrLargeSize];
-    self.venue.headerPicURL=urlphoto;
+    NSDictionary *photoDict =[[self->res valueForKeyPath:@"photos.photo"] objectAtIndex:0];
+  NSURL * urlphoto=[self.con photoSourceURLFromDictionary:photoDict size:OFFlickrLargeSize];
+   self.venue.headerPicURL=urlphoto;
     //SETTING THE HEADER PHOTO URL IN THE VENUE TO THE FIRST PHOTO FROM MY COLLLCATION VIEW PHOTO ARRRAY
     [self.collectionview reloadData];
     request = nil;
@@ -94,7 +90,7 @@ NSDictionary *photoDict =[[self->res valueForKeyPath:@"photos.photo"] objectAtIn
    CollectionViewCell *cell=[collectionView dequeueReusableCellWithReuseIdentifier:@"collectioncell" forIndexPath:indexPath];
     NSDictionary *photoDict = [[self->res valueForKeyPath:@"photos.photo"] objectAtIndex:indexPath.item];
     
-    //[[self->res valueForKeyPath:@"photos.photo"] objectAtIndex:indexPath.item];
+  
    NSURL *staticPhotoURL = [self.con photoSourceURLFromDictionary:photoDict size:OFFlickrSmallSize];
     NSLog(@"%lu", (unsigned long)photoDict.count);
     
@@ -105,15 +101,19 @@ NSDictionary *photoDict =[[self->res valueForKeyPath:@"photos.photo"] objectAtIn
 - (NSInteger)collectionView:(nonnull UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
     return self.arraywithdictionary.count;
 }
+
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    
-    if([segue.identifier isEqualToString:@"detaillsegue"]){
+    if([segue.identifier isEqualToString:@"detaillsegue"] || [segue.identifier isEqualToString:@"detaillview"] ){
         DetailsViewController *detail=[segue destinationViewController];
         detail.venue=self.venue;
+
+        }
+
     }
     
     
-}
+
+
 
 
 

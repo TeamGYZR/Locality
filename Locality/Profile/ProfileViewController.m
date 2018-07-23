@@ -10,12 +10,17 @@
 #import "EditProfileViewController.h"
 //instal parse ui pod to display images from PFFile
 #import "ParseUI/ParseUI.h"
+#import "APImanager.h"
+#import "FavoriteCell.h"
+#import "Favorite.h"
 
-@interface ProfileViewController ()
+@interface ProfileViewController () <UITableViewDelegate, UITableViewDataSource>
 
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
 @property (weak, nonatomic) IBOutlet PFImageView *profiePicImageView;
-
+@property (strong, nonatomic) NSArray * favorites;
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (strong, nonatomic) APIManager *apimanager;
 @end
 
 @implementation ProfileViewController
@@ -23,6 +28,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.user = [User currentUser];
+    
+    self.tableView.dataSource = self;
+    self.tableView.delegate = self;
+    
     if (self.user.name == nil) {
         self.nameLabel.text = self.user.username;
     }
@@ -34,12 +43,74 @@
         self.profiePicImageView.file = self.user.profilePicture;
         [self.profiePicImageView loadInBackground];
     }
+    
+    self.apimanager = [APIManager new];
+    [self loadFavorites];
+}
+
+-(void)loadFavorites{
+    PFQuery *query = [PFQuery queryWithClassName:@"Favorite"];
+    [query whereKey:@"user" equalTo: self.user];
+    
+    // fetch data asynchronously
+    [query findObjectsInBackgroundWithBlock:^(NSArray *favorites, NSError *error) {
+        if ([favorites count] != 0) {
+            // do something with the array of object returned by the call
+            self.favorites = favorites;
+            [self.tableView reloadData]; 
+        } else {
+            NSLog(@"Could not find any favorites - %@", error.localizedDescription);
+        }
+    }];
+    
+    
+}
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
 }
 
 -(void)viewWillAppear:(BOOL)animated{
     [self viewDidLoad];
 }
 
+
+-(NSInteger)tableView:(UITableView *) tableView numberOfRowsInSection:(NSInteger)section{
+    return self.favorites.count;
+}
+
+-(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    FavoriteCell *cell = [tableView dequeueReusableCellWithIdentifier:@"FavoriteCell" forIndexPath:indexPath];
+    
+    
+    Favorite * currentFavorite = self.favorites[indexPath.row];
+    
+    [self.apimanager fetchVenuewithVenueName:currentFavorite.venueName Latitude:currentFavorite.latitude Longitude:currentFavorite.longitude withCompletionHandler:^(Venue * venue, NSError * error){
+        if(venue){
+            NSLog(@"a favorite");
+            
+            
+        }
+        else{
+            NSLog(@"no favorites");
+        }
+        
+        
+    }];
+    
+//    UITapGestureRecognizer *singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapDetectedSender:)];
+//    singleTap.numberOfTapsRequired = 1;
+//    [cell.profileView setUserInteractionEnabled:YES];
+//    [cell.profileView addGestureRecognizer:singleTap];
+    
+    
+    
+    return cell;
+    
+    
+    
+}
 
 #pragma mark - Navigation
 
