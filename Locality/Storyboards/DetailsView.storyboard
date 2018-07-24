@@ -156,6 +156,13 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="583"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jmd-7L-ftn">
+                                            <rect key="frame" x="18" y="441" width="42" height="21"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dEB-BX-s8m">
                                             <rect key="frame" x="18" y="490" width="42" height="21"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -175,11 +182,9 @@
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <color key="backgroundColor" name="alternateSelectedControlTextColor" catalog="System" colorSpace="catalog"/>
                                             <state key="normal" title="Add a review"/>
-                                        </button>
-                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YyK-90-tQZ">
-                                            <rect key="frame" x="268" y="242" width="46" height="30"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <state key="normal" title="Button"/>
+                                            <connections>
+                                                <action selector="didTapReview:" destination="oUl-tI-KDa" eventType="touchUpInside" id="siB-ia-1dZ"/>
+                                            </connections>
                                         </button>
                                         <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9m1-DV-zmR">
                                             <rect key="frame" x="303" y="490" width="64" height="64"/>
@@ -189,13 +194,15 @@
                                                 <action selector="didTapFavorite:" destination="oUl-tI-KDa" eventType="touchUpInside" id="jEX-gl-l8b"/>
                                             </connections>
                                         </button>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jmd-7L-ftn">
-                                            <rect key="frame" x="18" y="441" width="42" height="21"/>
+                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YyK-90-tQZ">
+                                            <rect key="frame" x="269" y="249" width="66" height="63"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
+                                            <color key="backgroundColor" name="alternateSelectedControlTextColor" catalog="System" colorSpace="catalog"/>
+                                            <state key="normal" title="Button" image="Voice-512"/>
+                                            <connections>
+                                                <action selector="didTapSpeech:" destination="oUl-tI-KDa" eventType="touchUpInside" id="oEJ-uQ-5eF"/>
+                                            </connections>
+                                        </button>
                                     </subviews>
                                     <connections>
                                         <outlet property="addressLabel" destination="dEB-BX-s8m" id="3mR-qO-OXK"/>
@@ -211,11 +218,12 @@
                     </view>
                     <connections>
                         <outlet property="collectionView" destination="Gaz-cB-L1E" id="jb8-73-saN"/>
+                        <segue destination="hNo-Kl-sil" kind="presentation" identifier="collectionReviewSegue" id="9vp-CP-7ym"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ydw-Md-srv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1884" y="652.62368815592208"/>
+            <point key="canvasLocation" x="788" y="804"/>
         </scene>
         <!--Review View Controller-->
         <scene sceneID="hnk-ju-L2d">
@@ -342,4 +350,7 @@
         <image name="Voice-512" width="216" height="216"/>
         <image name="emptyStar" width="64" height="64"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="9vp-CP-7ym"/>
+    </inferredMetricsTieBreakers>
 </document>

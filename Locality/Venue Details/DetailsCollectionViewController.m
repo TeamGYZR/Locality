@@ -37,6 +37,9 @@
     self.collectionView.dataSource = self;
     
 }
+-(void)viewWillAppear:(BOOL)animated{
+    [self loadComments];
+}
 
 -(NSInteger)collectionView:(nonnull UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
     return self.comments.count;
@@ -124,15 +127,32 @@
     }
 }
 
+- (IBAction)didTapSpeech:(id)sender {
+    if(!self.speech.isSpeaking){
+        AVSpeechUtterance *specchuttternce=[[AVSpeechUtterance alloc] initWithString:self.venue.name];
+        specchuttternce.rate=0.3;
+        specchuttternce.voice=[AVSpeechSynthesisVoice voiceWithLanguage:@"en_GB"];
+        self.speech=[[AVSpeechSynthesizer alloc] init];
+        [self.speech speakUtterance:specchuttternce];
+        
+    }
+}
 
-/*
+- (IBAction)didTapReview:(id)sender {
+    [self performSegueWithIdentifier:@"collectionReviewSegue" sender:nil];
+}
+
+
+
 #pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    if ([segue.identifier isEqualToString:@"collectionReviewSegue"]) {
+        ReviewViewController *review = [segue destinationViewController];
+        review.venue = self.venue;
+    }
+
 }
-*/
+
 
 @end
