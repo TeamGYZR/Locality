@@ -108,12 +108,71 @@
                                     <action selector="didTapPost:" destination="hNo-Kl-sil" eventType="touchUpInside" id="dGi-RH-SH5"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Other Reviews:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FME-b8-fgW">
+                                <rect key="frame" x="39" y="235" width="116" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Dch-gH-EdX">
+                                <rect key="frame" x="0.0" y="269" width="375" height="398"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="CommentCell" rowHeight="92" id="Wbw-Tf-Ke8" customClass="CommentCell">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="92"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Wbw-Tf-Ke8" id="gSE-Ei-Wqn">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="91.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lVa-6Q-UPF">
+                                                    <rect key="frame" x="68" y="27" width="42" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SYa-Px-K3e">
+                                                    <rect key="frame" x="68" y="62.5" width="42" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="bEb-9d-BBO">
+                                                    <rect key="frame" x="16" y="25" width="44" height="48"/>
+                                                    <color key="backgroundColor" red="1" green="0.48899463329999998" blue="0.96381602239999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="44" id="Jq6-hL-xPj"/>
+                                                        <constraint firstAttribute="height" constant="48" id="doV-V2-bSi"/>
+                                                    </constraints>
+                                                </imageView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="bottom" secondItem="SYa-Px-K3e" secondAttribute="bottom" constant="8" id="3UU-LJ-byk"/>
+                                                <constraint firstItem="bEb-9d-BBO" firstAttribute="top" secondItem="gSE-Ei-Wqn" secondAttribute="top" constant="25" id="Y9z-Lo-Kyd"/>
+                                                <constraint firstItem="SYa-Px-K3e" firstAttribute="top" secondItem="lVa-6Q-UPF" secondAttribute="bottom" constant="14.5" id="YcL-jB-ZWm"/>
+                                                <constraint firstItem="lVa-6Q-UPF" firstAttribute="leading" secondItem="bEb-9d-BBO" secondAttribute="trailing" constant="8" id="b4d-Rd-30Z"/>
+                                                <constraint firstItem="SYa-Px-K3e" firstAttribute="leading" secondItem="bEb-9d-BBO" secondAttribute="trailing" constant="8" id="hCn-EU-JYs"/>
+                                                <constraint firstItem="bEb-9d-BBO" firstAttribute="leading" secondItem="gSE-Ei-Wqn" secondAttribute="leading" constant="16" id="hRd-xo-SFS"/>
+                                                <constraint firstItem="lVa-6Q-UPF" firstAttribute="top" secondItem="gSE-Ei-Wqn" secondAttribute="top" constant="27" id="mzT-TE-sla"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="userComment" destination="SYa-Px-K3e" id="Zhg-4O-4ad"/>
+                                            <outlet property="userName" destination="lVa-6Q-UPF" id="1x5-F6-3lI"/>
+                                            <outlet property="userProfilePicture" destination="bEb-9d-BBO" id="aFE-jU-JG0"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="TWl-hH-e2s"/>
                     </view>
                     <connections>
                         <outlet property="commentTextField" destination="WbW-yx-Ypa" id="gum-LI-Zvg"/>
+                        <outlet property="tableView" destination="Dch-gH-EdX" id="ctu-pL-m9D"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eXl-uV-Ovq" userLabel="First Responder" sceneMemberID="firstResponder"/>
