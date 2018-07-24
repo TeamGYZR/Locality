@@ -8,6 +8,7 @@
 
 #import "CommentCell.h"
 #import "APImanager.h"
+#import "Parse.h"
 
 @implementation CommentCell
 
@@ -22,6 +23,10 @@
 -(void)setComment:(Comment *)comment{
     _comment = comment;
     self.userComment.text = comment.commentText;
+    self.userName.text = comment.user.name;
+    self.userProfilePicture.file = comment.user.profilePicture;
+    [self.userProfilePicture loadInBackground];
+    
 }
 
 @end

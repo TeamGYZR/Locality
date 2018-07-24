@@ -9,11 +9,12 @@
 #import <UIKit/UIKit.h>
 #import "Venue.h"
 #import "Comment.h"
+#import "ParseUI/ParseUI.h"
 
 @interface CommentCell : UITableViewCell
 
 @property (strong, nonatomic) Comment *comment;
-@property (weak, nonatomic) IBOutlet UIImageView *userProfilePicture;
+@property (weak, nonatomic) IBOutlet PFImageView *userProfilePicture;
 @property (weak, nonatomic) IBOutlet UILabel *userName;
 @property (weak, nonatomic) IBOutlet UILabel *userComment;
 

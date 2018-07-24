@@ -139,7 +139,7 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="bEb-9d-BBO">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="bEb-9d-BBO" customClass="PFImageView">
                                                     <rect key="frame" x="16" y="25" width="44" height="48"/>
                                                     <color key="backgroundColor" red="1" green="0.48899463329999998" blue="0.96381602239999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                     <constraints>

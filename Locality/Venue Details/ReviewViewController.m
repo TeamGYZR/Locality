@@ -37,6 +37,8 @@
     //searching through parse to locase any objects that are comments
     PFQuery *query = [PFQuery queryWithClassName:@"Comment"];
     [query whereKey:@"venueName" equalTo:self.venue.name];
+    //trying to save the user info in the query
+    [query includeKey:@"user.name"];
     [query findObjectsInBackgroundWithBlock:^(NSArray *comments, NSError *error) {
         if ([comments count] != 0) {
             self.comments = comments;
