@@ -42,7 +42,7 @@
     PFQuery *query = [PFQuery queryWithClassName:@"Favorite"];
     query.limit = 1; 
     [query whereKey:@"user" equalTo: PFUser.currentUser];
-    [query whereKey:@"venueID" equalTo: self.venue.idStr];
+    [query whereKey:@"venueName" equalTo: self.venue.name];
     
     [query includeKeys:@[@"user", @"venueID"]];
     

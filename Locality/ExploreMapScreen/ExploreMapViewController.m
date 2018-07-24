@@ -14,6 +14,7 @@
 #import "VenueAnnotation.h"
 #import "UIImageView+AFNetworking.h"
 #import "VenueAnnotationView.h"
+#import "ResultsTableViewController.h"
 
 
 @interface ExploreMapViewController () <MKMapViewDelegate, CLLocationManagerDelegate>
@@ -21,8 +22,9 @@
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;
 @property (weak, nonatomic) IBOutlet UIButton *currentLocationButton;
 @property (strong, nonatomic) CLLocationManager *locationManager;
-//@property (strong,nonatomic) NSString * string;
-
+@property (strong, nonatomic) UISearchController *searchController;
+@property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
+@property (strong, nonatomic) ResultsTableViewController * resultsController;
 @end
 
 @implementation ExploreMapViewController
@@ -34,12 +36,29 @@
     self.mapView.delegate = self;
     self.locationManager = [[CLLocationManager alloc] init];
     self.locationManager.delegate = self;
-    
-
     [self.locationManager requestWhenInUseAuthorization];
+    
+    
+    self.resultsController = [[ResultsTableViewController alloc] init];
+    self.searchController = [[UISearchController alloc] initWithSearchResultsController:self.resultsController];
+    
+    self.searchController.searchResultsUpdater = self;
+    self.searchController.searchBar.placeholder = @"Henlo!";
+    [self.searchController.searchBar sizeToFit];
+    self.searchBar = self.searchController.searchBar;
+    
+    
+    // we want to be the delegate for our filtered table so didSelectRowAtIndexPath is called for both tables
+    //self.searchResultsController.tableView.delegate = self;
+    self.searchController.delegate = self;
+    self.searchController.dimsBackgroundDuringPresentation = YES; // default is YES
+    self.searchController.searchBar.delegate = self;
+    self.definesPresentationContext = YES;
     
     if(CLLocationManager.locationServicesEnabled)
     {
+        //[MKUserTrackingButton userTrackingButtonWithMapView:self.mapView];
+        
         if(CLLocationManager.authorizationStatus == kCLAuthorizationStatusAuthorizedWhenInUse)
         {
             NSLog(@"location usage authorized");
@@ -74,7 +93,7 @@
     
     NSLog(@"lat: %f, long: %f", currentLocation.coordinate.latitude, currentLocation.coordinate.longitude);
     
-    MKCoordinateRegion currentRegion = MKCoordinateRegionMake(CLLocationCoordinate2DMake(currentLocation.coordinate.latitude, currentLocation.coordinate.longitude), MKCoordinateSpanMake(0.025, 0.025));
+    MKCoordinateRegion currentRegion = MKCoordinateRegionMake(CLLocationCoordinate2DMake(currentLocation.coordinate.latitude +0.001, currentLocation.coordinate.longitude), MKCoordinateSpanMake(0.025, 0.025));
     
     
     [self.mapView setRegion:currentRegion animated:YES];
@@ -105,6 +124,11 @@
     [self.locationManager requestLocation];
     
 }
+
+- (void)updateSearchResultsForSearchController:(UISearchController *)searchController{
+    NSLog(@"search bar text changed OIOIOIO");
+    
+};
 
 
 -(MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation{

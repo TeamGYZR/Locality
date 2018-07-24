@@ -31,6 +31,8 @@
 		4CDAC19120F4424100B3E7D4 /* LocalityTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CDAC19020F4424100B3E7D4 /* LocalityTests.m */; };
 		4CDAC19C20F4424100B3E7D4 /* LocalityUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CDAC19B20F4424100B3E7D4 /* LocalityUITests.m */; };
 		851C871C21014D0E007C32DD /* Favorite.m in Sources */ = {isa = PBXBuildFile; fileRef = 851C871B21014D0E007C32DD /* Favorite.m */; };
+		8550B0A02106916F0009C845 /* ResultsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8550B09F2106916F0009C845 /* ResultsTableViewController.m */; };
+		8550B0A32106D2CA0009C845 /* FavoritesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8550B0A22106D2CA0009C845 /* FavoritesViewController.m */; };
 		8580000421015FA30022A126 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 8580000321015FA30022A126 /* User.m */; };
 		8597DB1620FD162500BA261A /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8597DB1520FD162500BA261A /* MapKit.framework */; };
 		8597DB1820FD1BB400BA261A /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8597DB1720FD1BB400BA261A /* CoreLocation.framework */; };
@@ -109,6 +111,10 @@
 		8274814A446109AFAE12B326 /* Pods-LocalityTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LocalityTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-LocalityTests/Pods-LocalityTests.release.xcconfig"; sourceTree = "<group>"; };
 		851C871A21014D0E007C32DD /* Favorite.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Favorite.h; sourceTree = "<group>"; };
 		851C871B21014D0E007C32DD /* Favorite.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Favorite.m; sourceTree = "<group>"; };
+		8550B09E2106916F0009C845 /* ResultsTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ResultsTableViewController.h; path = Locality/ExploreMapScreen/ResultsTableViewController.h; sourceTree = SOURCE_ROOT; };
+		8550B09F2106916F0009C845 /* ResultsTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = ResultsTableViewController.m; path = Locality/ExploreMapScreen/ResultsTableViewController.m; sourceTree = SOURCE_ROOT; };
+		8550B0A12106D2CA0009C845 /* FavoritesViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FavoritesViewController.h; sourceTree = "<group>"; };
+		8550B0A22106D2CA0009C845 /* FavoritesViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FavoritesViewController.m; sourceTree = "<group>"; };
 		8580000221015FA30022A126 /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
 		8580000321015FA30022A126 /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
 		8597DB1520FD162500BA261A /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
@@ -228,6 +234,8 @@
 		4CA36B6B21010AC40056EB44 /* Profile */ = {
 			isa = PBXGroup;
 			children = (
+				8550B0A12106D2CA0009C845 /* FavoritesViewController.h */,
+				8550B0A22106D2CA0009C845 /* FavoritesViewController.m */,
 				4CA36B6C21010ADE0056EB44 /* ProfileViewController.h */,
 				4CA36B6D21010ADE0056EB44 /* ProfileViewController.m */,
 				4CA36B6F210112CD0056EB44 /* FavoriteCell.h */,
@@ -319,6 +327,8 @@
 		8597DAD620FD0DD500BA261A /* ExploreMapScreen */ = {
 			isa = PBXGroup;
 			children = (
+				8550B09E2106916F0009C845 /* ResultsTableViewController.h */,
+				8550B09F2106916F0009C845 /* ResultsTableViewController.m */,
 				859A1AA520FF1A1800E13EBC /* VenueAnnotationView.h */,
 				859A1AA620FF1A1800E13EBC /* VenueAnnotationView.m */,
 				8597DB2020FE7BA200BA261A /* ExploreMapViewController.m */,
@@ -574,6 +584,8 @@
 				8597DB2220FE7BA200BA261A /* ExploreMapViewController.m in Sources */,
 				859A1AA120FF121300E13EBC /* VenueAnnotation.m in Sources */,
 				4C771D69210665CA0055A90D /* SignUpViewController.m in Sources */,
+				8550B0A02106916F0009C845 /* ResultsTableViewController.m in Sources */,
+				8550B0A32106D2CA0009C845 /* FavoritesViewController.m in Sources */,
 				4CDAC18720F4424100B3E7D4 /* main.m in Sources */,
 				4C771D6F21069E770055A90D /* ReviewViewController.m in Sources */,
 				4CA36B5420FE90340056EB44 /* Venue.m in Sources */,
