@@ -10,6 +10,8 @@
 		1BE7AFA3980986C9A157CCD2 /* libPods-Locality.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F1B3E5DBABAB3F93F44C75E /* libPods-Locality.a */; };
 		2F308E1C27E4FA2C43F5F955 /* libPods-LocalityUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7268D2AFC88C24A529B514A5 /* libPods-LocalityUITests.a */; };
 		4C771D69210665CA0055A90D /* SignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C771D68210665CA0055A90D /* SignUpViewController.m */; };
+		4C771D6C210695100055A90D /* Comment.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C771D6B210695100055A90D /* Comment.m */; };
+		4C771D6F21069E770055A90D /* ReviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C771D6E21069E770055A90D /* ReviewViewController.m */; };
 		4CA36B5420FE90340056EB44 /* Venue.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CA36B5320FE90340056EB44 /* Venue.m */; };
 		4CA36B5B20FE9F8A0056EB44 /* APIManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CA36B5A20FE9F8A0056EB44 /* APIManager.m */; };
 		4CA36B5D20FEB20A0056EB44 /* DetailsView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4CA36B5C20FEB20A0056EB44 /* DetailsView.storyboard */; };
@@ -63,6 +65,10 @@
 		0D954F9A18A334D6109C8DA1 /* Pods-LocalityTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LocalityTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LocalityTests/Pods-LocalityTests.debug.xcconfig"; sourceTree = "<group>"; };
 		4C771D67210665CA0055A90D /* SignUpViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SignUpViewController.h; sourceTree = "<group>"; };
 		4C771D68210665CA0055A90D /* SignUpViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SignUpViewController.m; sourceTree = "<group>"; };
+		4C771D6A210695100055A90D /* Comment.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Comment.h; sourceTree = "<group>"; };
+		4C771D6B210695100055A90D /* Comment.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Comment.m; sourceTree = "<group>"; };
+		4C771D6D21069E770055A90D /* ReviewViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ReviewViewController.h; sourceTree = "<group>"; };
+		4C771D6E21069E770055A90D /* ReviewViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ReviewViewController.m; sourceTree = "<group>"; };
 		4CA36B5220FE90340056EB44 /* Venue.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Venue.h; sourceTree = "<group>"; };
 		4CA36B5320FE90340056EB44 /* Venue.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Venue.m; sourceTree = "<group>"; };
 		4CA36B5920FE9F8A0056EB44 /* APIManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = APIManager.h; sourceTree = "<group>"; };
@@ -177,6 +183,8 @@
 				8580000321015FA30022A126 /* User.m */,
 				851C871A21014D0E007C32DD /* Favorite.h */,
 				851C871B21014D0E007C32DD /* Favorite.m */,
+				4C771D6A210695100055A90D /* Comment.h */,
+				4C771D6B210695100055A90D /* Comment.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -195,6 +203,8 @@
 			children = (
 				4CA36B5F20FEB5540056EB44 /* DetailsViewController.h */,
 				4CA36B6020FEB5540056EB44 /* DetailsViewController.m */,
+				4C771D6D21069E770055A90D /* ReviewViewController.h */,
+				4C771D6E21069E770055A90D /* ReviewViewController.m */,
 			);
 			path = "Venue Details";
 			sourceTree = "<group>";
@@ -560,6 +570,7 @@
 				859A1AA120FF121300E13EBC /* VenueAnnotation.m in Sources */,
 				4C771D69210665CA0055A90D /* SignUpViewController.m in Sources */,
 				4CDAC18720F4424100B3E7D4 /* main.m in Sources */,
+				4C771D6F21069E770055A90D /* ReviewViewController.m in Sources */,
 				4CA36B5420FE90340056EB44 /* Venue.m in Sources */,
 				4CA36B5B20FE9F8A0056EB44 /* APIManager.m in Sources */,
 				4CDAC17920F4424100B3E7D4 /* AppDelegate.m in Sources */,
@@ -568,6 +579,7 @@
 				8580000421015FA30022A126 /* User.m in Sources */,
 				851C871C21014D0E007C32DD /* Favorite.m in Sources */,
 				A814231320FFC60D00C976AE /* CollectionViewCell.m in Sources */,
+				4C771D6C210695100055A90D /* Comment.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
