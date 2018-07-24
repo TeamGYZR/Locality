@@ -7,11 +7,18 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Venue.h"
+#import "Favorite.h"
+#import "ReviewViewController.h"
+#import <AVFoundation/AVFoundation.h>
 
 @interface DetailsHeaderView : UICollectionReusableView
 @property (weak, nonatomic) IBOutlet UIImageView *venueImage;
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *addressLabel;
 @property (weak, nonatomic) IBOutlet UIButton *favoriteButton;
+
+-(void)setAFilledStar;
+-(void)setAnEmptyStar;
 
 @end

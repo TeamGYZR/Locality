@@ -12,11 +12,15 @@
 #import "DetailsHeaderView.h"
 #import "APImanager.h"
 #import "CommentCollectionCell.h"
+#import "UIImageView+AFNetworking.h"
+#import <AFNetworking/UIImageView+AFNetworking.h>
 
 @interface DetailsCollectionViewController () <UICollectionViewDelegate, UICollectionViewDataSource>
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 @property (strong, nonatomic) NSArray *comments;
 @property APIManager *apiManager;
+@property(nonatomic) BOOL favorited;
+@property(strong, nonatomic)DetailsHeaderView *header;
 
 @end
 
@@ -32,8 +36,6 @@
     self.collectionView.delegate = self;
     self.collectionView.dataSource = self;
     
-
-
 }
 
 -(NSInteger)collectionView:(nonnull UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
@@ -63,14 +65,63 @@
 }
 
 -(UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath{
-    DetailsHeaderView *header = nil;
+    //DetailsHeaderView *header = nil;
+    self.header = nil;
     if( kind == UICollectionElementKindSectionHeader){
-        header = [collectionView dequeueReusableSupplementaryViewOfKind:kind withReuseIdentifier:@"DetailsHeaderView" forIndexPath:indexPath];
-        
-        //set up header view based on how the original deails view controller is set up
+        self.header = [collectionView dequeueReusableSupplementaryViewOfKind:kind withReuseIdentifier:@"DetailsHeaderView" forIndexPath:indexPath];
+        [self.header.venueImage setImageWithURL:self.venue.headerPicURL];
+        self.header.nameLabel.text = self.venue.name;
+        self.header.addressLabel.text = self.venue.streetAddress;
+        [self.header.addressLabel sizeToFit];
+        [self.header.nameLabel sizeToFit];
+        PFQuery *query = [PFQuery queryWithClassName:@"Favorite"];
+        query.limit = 1;
+        [query whereKey:@"user" equalTo: PFUser.currentUser];
+        [query whereKey:@"venueName" equalTo: self.venue.name];
+        [query includeKeys:@[@"user", @"venueID"]];
+        [query findObjectsInBackgroundWithBlock:^(NSArray *favorite, NSError *error) {
+            if ([favorite count] == 0) {
+                [self.header setAnEmptyStar];
+                self.favorited = NO;
+            }
+            else if(favorite) {
+                [self.header setAFilledStar];
+                self.favorited = YES;
+            }
+        }];
     }
-    
-    return header;
+    return self.header;
+}
+
+- (IBAction)didTapFavorite:(id)sender {
+    if (self.favorited) {
+        [Favorite removeVenue:(Venue * _Nullable)self.venue withCompletion:^(BOOL worked, NSError * _Nullable __strong error){
+            if(error)
+            {
+                NSLog(@"favorite deletion did not work :( - %@", error.localizedDescription);
+            }
+            else{
+                //do something by changing the value for the users propoerty for favorites
+                [self.header setAnEmptyStar];
+                self.favorited = NO;
+                NSLog(@"favorite successfully deleted :D");
+            }
+        }];
+    }
+    else{
+        [Favorite saveFavoritedVenue:self.venue withCompletion:^(BOOL worked, NSError * _Nullable __strong error){
+            if(error)
+            {
+                NSLog(@"favorite addition did not work :( - %@", error.localizedDescription);
+            }
+            else{
+                [self.header setAFilledStar];
+                //add this venue to the users profile- add to the object
+                self.favorited = YES;
+                NSLog(@"favorite successfully added :D");
+            }
+        }];
+    }
 }
 
 
