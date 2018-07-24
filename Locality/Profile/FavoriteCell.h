@@ -25,4 +25,5 @@
 @property (strong, nonatomic) Venue *venue;
 @property (nonatomic, weak) id<FavoriteCellDelegate> delegate;
 
+
 @end

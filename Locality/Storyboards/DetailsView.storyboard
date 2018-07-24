@@ -52,17 +52,89 @@
                                     <action selector="soundbutton:" destination="sTA-CW-rZ5" eventType="touchUpInside" id="m7C-KX-PnF"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="M0P-Px-vvZ">
+                                <rect key="frame" x="16" y="88" width="93" height="47"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" name="alternateSelectedControlTextColor" catalog="System" colorSpace="catalog"/>
+                                <state key="normal" title="Add a review:"/>
+                                <connections>
+                                    <action selector="didTapReview:" destination="sTA-CW-rZ5" eventType="touchUpInside" id="Dbe-Kl-Snb"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="oFN-mW-BFG"/>
                     </view>
+                    <navigationItem key="navigationItem" id="fkz-mk-J8i"/>
                     <connections>
                         <outlet property="addressLabel" destination="GgI-Oy-VdC" id="hRi-W5-esX"/>
                         <outlet property="favoriteButton" destination="fLN-T7-l9Z" id="iSQ-E4-pU7"/>
                         <outlet property="nameLabel" destination="y9h-6P-xWc" id="qqT-rh-m7O"/>
                         <outlet property="venueImage" destination="LHB-6H-NfF" id="obN-Y0-rgL"/>
+                        <segue destination="hNo-Kl-sil" kind="presentation" identifier="reviewSegue" id="NJF-Bb-118"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XPq-Dn-2JX" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="788" y="-158.77061469265368"/>
+        </scene>
+        <!--Review View Controller-->
+        <scene sceneID="hnk-ju-L2d">
+            <objects>
+                <viewController id="hNo-Kl-sil" customClass="ReviewViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="is3-vl-jMo">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Write your review here:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TfC-hh-nhV">
+                                <rect key="frame" x="39" y="89" width="176" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="WbW-yx-Ypa">
+                                <rect key="frame" x="16" y="146" width="286" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="get-KP-rfa">
+                                <rect key="frame" x="318" y="142" width="41" height="38"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="21"/>
+                                <state key="normal" title="Post"/>
+                                <connections>
+                                    <action selector="didTapPost:" destination="hNo-Kl-sil" eventType="touchUpInside" id="dGi-RH-SH5"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="TWl-hH-e2s"/>
+                    </view>
+                    <connections>
+                        <outlet property="commentTextField" destination="WbW-yx-Ypa" id="gum-LI-Zvg"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="eXl-uV-Ovq" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1711.2" y="-159.67016491754123"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="3y2-Bj-l6w">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="L3h-hD-tYf" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="b6D-fp-63S">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="sTA-CW-rZ5" kind="relationship" relationship="rootViewController" id="1Rw-fK-blb"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="tco-VF-DJw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-151.19999999999999" y="-158.77061469265368"/>
         </scene>

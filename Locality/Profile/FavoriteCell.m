@@ -42,7 +42,7 @@
 {
     _venue = venue;
     self.venueName.text = venue.name;
-    self.venueAddress.text = venue.streetAddress; 
+    self.venueAddress.text = venue.streetAddress;
 }
 
 @end

@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "Venue.h"
 #import "Favorite.h"
+#import "ReviewViewController.h"
 //#import "Speech"
 #import <AVFoundation/AVFoundation.h>
 @interface DetailsViewController : UIViewController
