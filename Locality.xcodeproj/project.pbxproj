@@ -12,6 +12,7 @@
 		4C771D69210665CA0055A90D /* SignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C771D68210665CA0055A90D /* SignUpViewController.m */; };
 		4C771D6C210695100055A90D /* Comment.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C771D6B210695100055A90D /* Comment.m */; };
 		4C771D6F21069E770055A90D /* ReviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C771D6E21069E770055A90D /* ReviewViewController.m */; };
+		4C771D722106A8EF0055A90D /* CommentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C771D712106A8EF0055A90D /* CommentCell.m */; };
 		4CA36B5420FE90340056EB44 /* Venue.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CA36B5320FE90340056EB44 /* Venue.m */; };
 		4CA36B5B20FE9F8A0056EB44 /* APIManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CA36B5A20FE9F8A0056EB44 /* APIManager.m */; };
 		4CA36B5D20FEB20A0056EB44 /* DetailsView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4CA36B5C20FEB20A0056EB44 /* DetailsView.storyboard */; };
@@ -71,6 +72,8 @@
 		4C771D6B210695100055A90D /* Comment.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Comment.m; sourceTree = "<group>"; };
 		4C771D6D21069E770055A90D /* ReviewViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ReviewViewController.h; sourceTree = "<group>"; };
 		4C771D6E21069E770055A90D /* ReviewViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ReviewViewController.m; sourceTree = "<group>"; };
+		4C771D702106A8EF0055A90D /* CommentCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CommentCell.h; sourceTree = "<group>"; };
+		4C771D712106A8EF0055A90D /* CommentCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CommentCell.m; sourceTree = "<group>"; };
 		4CA36B5220FE90340056EB44 /* Venue.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Venue.h; sourceTree = "<group>"; };
 		4CA36B5320FE90340056EB44 /* Venue.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Venue.m; sourceTree = "<group>"; };
 		4CA36B5920FE9F8A0056EB44 /* APIManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = APIManager.h; sourceTree = "<group>"; };
@@ -211,6 +214,8 @@
 				4CA36B6020FEB5540056EB44 /* DetailsViewController.m */,
 				4C771D6D21069E770055A90D /* ReviewViewController.h */,
 				4C771D6E21069E770055A90D /* ReviewViewController.m */,
+				4C771D702106A8EF0055A90D /* CommentCell.h */,
+				4C771D712106A8EF0055A90D /* CommentCell.m */,
 			);
 			path = "Venue Details";
 			sourceTree = "<group>";
@@ -588,6 +593,7 @@
 				4CDAC17920F4424100B3E7D4 /* AppDelegate.m in Sources */,
 				4CA36B74210128F20056EB44 /* EditProfileViewController.m in Sources */,
 				4CA36B6120FEB5540056EB44 /* DetailsViewController.m in Sources */,
+				4C771D722106A8EF0055A90D /* CommentCell.m in Sources */,
 				8580000421015FA30022A126 /* User.m in Sources */,
 				851C871C21014D0E007C32DD /* Favorite.m in Sources */,
 				A814231320FFC60D00C976AE /* CollectionViewCell.m in Sources */,

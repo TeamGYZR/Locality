@@ -58,7 +58,6 @@
     }];
     
     
-    
 
 }
 
@@ -134,8 +133,7 @@
 
 
 - (IBAction)didTapReview:(id)sender {
-    [self performSegueWithIdentifier:@"reviewSegue" sender:nil];
-    
+    [self performSegueWithIdentifier:@"reviewSegue" sender:nil];    
 }
 
 

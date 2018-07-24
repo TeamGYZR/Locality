@@ -20,16 +20,13 @@
     return @"Comment";
 }
 
-
-//this method will be called from inside the details view page- will be passed in the venue of the page, the string of the textfield
 +(void)saveVenueComment:(Venue *)venue withComment:(NSString *)comment withCompletion:(PFBooleanResultBlock)completion{
     Comment *newComment = [Comment new];
-    newComment.user = PFUser.currentUser;
+    newComment.user = User.currentUser;
     newComment.venueName = venue.name;
     newComment.latitude = venue.latitude;
     newComment.longitude = venue.longitude;
     newComment.commentText = comment;
-    
     [newComment saveInBackgroundWithBlock:completion];
 }
 

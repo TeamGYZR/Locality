@@ -7,11 +7,17 @@
 //
 
 #import "ReviewViewController.h"
+#import "CommentCell.h"
+#import "APImanager.h"
 
-@interface ReviewViewController ()
+@interface ReviewViewController ()<UITableViewDelegate, UITableViewDataSource>
 
 @property (weak, nonatomic) IBOutlet UITextField *commentTextField;
 @property (strong, nonatomic) NSString *postedComment;
+@property (strong, nonatomic) NSArray *comments;
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property APIManager *apiManager;
+
 
 @end
 
@@ -19,7 +25,29 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    self.apiManager = [APIManager new];
+    [self loadComments];
+    
+    self.tableView.dataSource = self;
+    self.tableView.delegate = self;
+    
+}
+
+-(void)loadComments{
+    //searching through parse to locase any objects that are comments
+    PFQuery *query = [PFQuery queryWithClassName:@"Comment"];
+    [query whereKey:@"venueName" equalTo:self.venue.name];
+    //trying to save the user info in the query
+    [query includeKey:@"user.name"];
+    [query findObjectsInBackgroundWithBlock:^(NSArray *comments, NSError *error) {
+        if ([comments count] != 0) {
+            self.comments = comments;
+            [self.tableView reloadData];
+        }
+        else{
+            NSLog(@"There are no comments on this post");
+        }
+    }];
 }
 
 - (IBAction)didTapPost:(id)sender {
@@ -36,6 +64,17 @@
     
     [self dismissViewControllerAnimated:YES completion:nil];
 }
+
+-(NSInteger)tableView:(UITableView *) tableView numberOfRowsInSection:(NSInteger)section{
+    return self.comments.count;
+}
+
+-(UITableViewCell *) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    CommentCell *cell = [tableView dequeueReusableCellWithIdentifier:@"CommentCell" forIndexPath:indexPath];
+    cell.comment = self.comments[indexPath.row];
+    return cell;
+}
+
 
 /*
 #pragma mark - Navigation
