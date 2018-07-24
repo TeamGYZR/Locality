@@ -15,6 +15,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *passwordTextField;
 @property (weak, nonatomic) IBOutlet UITextField *usernameTextField;
 @property (strong, nonatomic) NSData *imageData;
+@property (weak, nonatomic) IBOutlet UITextField *emailTextField;
 
 
 @end
@@ -52,6 +53,7 @@
     User *newUser = [User user];
     newUser.username = self.usernameTextField.text;
     newUser.password = self.passwordTextField.text;
+    newUser.email = self.emailTextField.text;
     newUser.name = self.accountNameTextField.text;
     if (!self.imageData) {
         UIImage *defaultProfilePicture = [UIImage imageNamed:@"blankProfileimage"];
