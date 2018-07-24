@@ -17,13 +17,12 @@
 #import "ResultsTableViewController.h"
 
 
-@interface ExploreMapViewController () <MKMapViewDelegate, CLLocationManagerDelegate>
+@interface ExploreMapViewController () <MKMapViewDelegate, CLLocationManagerDelegate, UITableViewDelegate>
 
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;
 @property (weak, nonatomic) IBOutlet UIButton *currentLocationButton;
 @property (strong, nonatomic) CLLocationManager *locationManager;
 @property (strong, nonatomic) UISearchController *searchController;
-@property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
 @property (strong, nonatomic) ResultsTableViewController * resultsController;
 @end
 
@@ -43,18 +42,21 @@
     self.searchController = [[UISearchController alloc] initWithSearchResultsController:self.resultsController];
     
     self.searchController.searchResultsUpdater = self;
-    self.searchController.searchBar.placeholder = @"Henlo!";
+    self.navigationItem.titleView = self.searchController.searchBar;
+    
+    self.searchController.searchBar.placeholder = @"Where to?";
     [self.searchController.searchBar sizeToFit];
-    self.searchBar = self.searchController.searchBar;
+
     
     
     // we want to be the delegate for our filtered table so didSelectRowAtIndexPath is called for both tables
-    //self.searchResultsController.tableView.delegate = self;
+    self.resultsController.tableView.delegate = self;
     self.searchController.delegate = self;
-    self.searchController.dimsBackgroundDuringPresentation = YES; // default is YES
+    self.searchController.obscuresBackgroundDuringPresentation = YES;
     self.searchController.searchBar.delegate = self;
     self.definesPresentationContext = YES;
     
+    self.searchController.hidesNavigationBarDuringPresentation = NO;
     if(CLLocationManager.locationServicesEnabled)
     {
         //[MKUserTrackingButton userTrackingButtonWithMapView:self.mapView];
