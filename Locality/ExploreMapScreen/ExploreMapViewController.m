@@ -17,13 +17,14 @@
 #import "ResultsTableViewController.h"
 
 
-@interface ExploreMapViewController () <MKMapViewDelegate, CLLocationManagerDelegate, UISearchResultsUpdating, UISearchControllerDelegate, UISearchBarDelegate>
+@interface ExploreMapViewController () <MKMapViewDelegate, CLLocationManagerDelegate>
 
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;
 @property (weak, nonatomic) IBOutlet UIButton *currentLocationButton;
 @property (strong, nonatomic) CLLocationManager *locationManager;
-//@property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
 @property (strong, nonatomic) UISearchController *searchController;
+@property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
+@property (strong, nonatomic) ResultsTableViewController * resultsController;
 @end
 
 @implementation ExploreMapViewController
@@ -38,30 +39,21 @@
     [self.locationManager requestWhenInUseAuthorization];
     
     
-    ResultsTableViewController* resultsController = [[ResultsTableViewController alloc] init];
-    self.searchController = [[UISearchController alloc] initWithSearchResultsController:resultsController];
+    self.resultsController = [[ResultsTableViewController alloc] init];
+    self.searchController = [[UISearchController alloc] initWithSearchResultsController:self.resultsController];
     
     self.searchController.searchResultsUpdater = self;
-    
-    // Install the search bar as the table header.
-    //self. = self.searchController.searchBar;
-    
-    //self.searchBar = self.searchController.searchBar; //this may be a problem line
-    
-    self.parentViewController.navigationItem.searchController= self.searchController;
-    
+    self.searchController.searchBar.placeholder = @"Henlo!";
     [self.searchController.searchBar sizeToFit];
-    // It is usually good to set the presentation context. But what does it do  --o.._..o--
+    self.searchBar = self.searchController.searchBar;
     
+    
+    // we want to be the delegate for our filtered table so didSelectRowAtIndexPath is called for both tables
     //self.searchResultsController.tableView.delegate = self;
-//    self.searchController.delegate = self;
-//    //self.searchController.dimsBackgroundDuringPresentation = YES; // default is YES
-//    self.searchController.searchBar.delegate = self;
-//    
-//    
-//    
-//    self.searchController.obscuresBackgroundDuringPresentation = YES;
-//    self.definesPresentationContext = YES;
+    self.searchController.delegate = self;
+    self.searchController.dimsBackgroundDuringPresentation = YES; // default is YES
+    self.searchController.searchBar.delegate = self;
+    self.definesPresentationContext = YES;
     
     if(CLLocationManager.locationServicesEnabled)
     {
@@ -134,8 +126,7 @@
 }
 
 - (void)updateSearchResultsForSearchController:(UISearchController *)searchController{
-    
-    NSLog(@"search bar text changed");
+    NSLog(@"search bar text changed OIOIOIO");
     
 };
 
