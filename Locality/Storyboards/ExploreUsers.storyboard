@@ -30,26 +30,41 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="96.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Gkz-JY-qa2">
-                                                    <rect key="frame" x="15" y="11" width="81" height="76"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Gkz-JY-qa2" customClass="PFImageView">
+                                                    <rect key="frame" x="8" y="8" width="78" height="78"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="78" id="Vnd-hY-HBp"/>
+                                                        <constraint firstAttribute="width" constant="78" id="b3I-Cu-oJq"/>
+                                                    </constraints>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FOs-tW-iTs">
-                                                    <rect key="frame" x="114" y="49" width="45" height="21"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FOs-tW-iTs">
+                                                    <rect key="frame" x="94" y="55.5" width="45" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Username" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TfE-m7-GLp">
-                                                    <rect key="frame" x="104" y="20" width="84" height="21"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Username" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TfE-m7-GLp">
+                                                    <rect key="frame" x="94" y="20" width="84" height="21"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstItem="TfE-m7-GLp" firstAttribute="leading" secondItem="Gkz-JY-qa2" secondAttribute="trailing" constant="8" id="27D-rF-Fz1"/>
+                                                <constraint firstItem="FOs-tW-iTs" firstAttribute="top" secondItem="TfE-m7-GLp" secondAttribute="bottom" constant="14.5" id="6c6-qX-gbW"/>
+                                                <constraint firstItem="TfE-m7-GLp" firstAttribute="top" secondItem="lf0-eW-3lN" secondAttribute="top" constant="20" id="C0M-3r-c8E"/>
+                                                <constraint firstAttribute="bottom" secondItem="FOs-tW-iTs" secondAttribute="bottom" constant="20" symbolic="YES" id="KQG-Lr-pmC"/>
+                                                <constraint firstItem="FOs-tW-iTs" firstAttribute="leading" secondItem="Gkz-JY-qa2" secondAttribute="trailing" constant="8" id="U2b-0b-759"/>
+                                                <constraint firstItem="Gkz-JY-qa2" firstAttribute="leading" secondItem="lf0-eW-3lN" secondAttribute="leading" constant="8" id="WJ6-AD-Bt1"/>
+                                                <constraint firstItem="Gkz-JY-qa2" firstAttribute="top" secondItem="lf0-eW-3lN" secondAttribute="top" constant="8" id="mbH-iB-Mr4"/>
+                                            </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="userName" destination="FOs-tW-iTs" id="bm9-2D-Qyf"/>
+                                            <outlet property="userProfilePicture" destination="Gkz-JY-qa2" id="afm-8z-CNc"/>
+                                            <outlet property="userUsername" destination="TfE-m7-GLp" id="Crv-op-fXH"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>

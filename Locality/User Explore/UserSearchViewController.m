@@ -21,16 +21,25 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
+    [self loadUsers];
+    
 }
+
+-(void)loadUsers{
+    PFQuery *query = [PFUser query];
+    [query orderByDescending:@"createdAt"];
+    [query includeKey:@"user.name"];
+    self.users = [query findObjects];
+}
+
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     return self.users.count;
 }
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     UserCell *cell = [tableView dequeueReusableCellWithIdentifier:@"UserCell"];
-    
+    cell.user = self.users[indexPath.row];
     return cell;
 }
 
