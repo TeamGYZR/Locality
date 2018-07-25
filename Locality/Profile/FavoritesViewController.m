@@ -59,20 +59,21 @@
     
     Favorite * currentFavorite = self.favorites[indexPath.row];
     cell.delegate = self;
+    cell.venue = [[Venue alloc] venueFromDictionary:currentFavorite.venueInfo];
     
-    [self.apimanager fetchVenuewithVenueName:currentFavorite.venueName Latitude:currentFavorite.latitude Longitude:currentFavorite.longitude withCompletionHandler:^(Venue * venue, NSError * error){
-        if(venue){
-            NSLog(@"a favorite");
-            cell.venue = venue;
-            
-            
-        }
-        else{
-            NSLog(@"no favorites");
-        }
-        
-        
-    }];
+//    [self.apimanager fetchVenuewithVenueName:currentFavorite.venueName Latitude:currentFavorite.latitude Longitude:currentFavorite.longitude withCompletionHandler:^(Venue * venue, NSError * error){
+//        if(venue){
+//            NSLog(@"a favorite");
+//            cell.venue = venue;
+//
+//
+//        }
+//        else{
+//            NSLog(@"no favorites");
+//        }
+//
+//
+//    }];
     
     return cell;
 }

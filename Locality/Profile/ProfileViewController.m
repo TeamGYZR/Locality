@@ -25,7 +25,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
 @property (weak, nonatomic) IBOutlet PFImageView *profiePicImageView;
 @property (strong, nonatomic) NSArray * favorites;
-//@property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) APIManager *apimanager;
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;
 @property (strong, nonatomic) CLLocationManager *locationManager;
@@ -103,7 +102,6 @@
     
     
 }
-
 -(void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray<CLLocation *> *)locations{
     
     CLLocation * currentLocation = [[CLLocation alloc] init];
@@ -117,22 +115,11 @@
     
     
     [self.mapView setRegion:currentRegion animated:YES];
-//    NSNumber * lat = [NSNumber numberWithDouble:currentLocation.coordinate.latitude];
-//    NSNumber * lon = [NSNumber numberWithDouble:currentLocation.coordinate.longitude];
 
         for(Favorite *favorite in self.favorites){
-            [self.apimanager fetchVenuewithVenueName:favorite.venueName Latitude:favorite.latitude Longitude:favorite.longitude withCompletionHandler:^(Venue * venue, NSError * error){
-                if(venue){
-                    VenueAnnotation *annotation = [[VenueAnnotation alloc] initWithVenue:venue];
-                    [self.mapView addAnnotation:annotation];
-                    
-                }
-                else{
-                    NSLog(@"no favorites");
-                }
-                
-                
-            }];
+            Venue * venue = [[Venue alloc] venueFromDictionary:favorite.venueInfo];
+            VenueAnnotation *annotation = [[VenueAnnotation alloc] initWithVenue:venue];
+            [self.mapView addAnnotation:annotation];
             
 
         }
