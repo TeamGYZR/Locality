@@ -72,7 +72,7 @@ NSDictionary *dictionary = [NSDictionary dictionaryWithObjectsAndKeys:self.venue
     if(buttonIndex == 0){
         [alertView dismissWithClickedButtonIndex:buttonIndex animated:YES];
     }else{
-          [self performSegueWithIdentifier:@"uploadsegue" sender:nil];
+          [self performSegueWithIdentifier:@"Uploadsegue" sender:nil];
     }
   
 
@@ -123,22 +123,12 @@ NSDictionary *dictionary = [NSDictionary dictionaryWithObjectsAndKeys:self.venue
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-//    if([segue.identifier isEqualToString:@"detaillsegue"] || [segue.identifier isEqualToString:@"detaillview"] ){
-//        DetailsViewController *detail=[segue destinationViewController];
-//        detail.venue=self.venue;
-//        }
     if([segue.identifier isEqualToString:@"detaillsegue"] || [segue.identifier isEqualToString:@"detaillview"] ){
         DetailsCollectionViewController *detail=[segue destinationViewController];
         detail.venue=self.venue;
 
      }
-//    else if([segue.identifier isEqualToString:@"uploadsegue"]){
-//        CollectionViewCell * cell=[[CollectionViewCell alloc] init];
-//        Uploadphotoviewcontroller * upload=[segue destinationViewController];
-//        upload.cells=cell;
-//
-//
-//    }
+
 
 }
 

@@ -45,7 +45,7 @@
                                         </view>
                                         <connections>
                                             <outlet property="imagefiled" destination="USQ-0g-HUz" id="hdd-y0-TKk"/>
-                                            <segue destination="uAA-TO-rE8" kind="show" identifier="uploadsegue" id="jM2-I7-ryP"/>
+                                            <segue destination="W6q-Pj-BCE" kind="show" identifier="detaillsegue" id="kCx-2U-6nI"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -68,6 +68,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="collectionview" destination="R7K-XQ-Ei9" id="DFs-8E-ovA"/>
+                        <segue destination="uAA-TO-rE8" kind="show" identifier="Uploadsegue" id="cS8-KJ-6er"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eSY-3T-vt1" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -136,4 +137,7 @@
     <resources>
         <image name="upload" width="225" height="225"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="kCx-2U-6nI"/>
+    </inferredMetricsTieBreakers>
 </document>
