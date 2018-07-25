@@ -45,7 +45,7 @@
                                         </view>
                                         <connections>
                                             <outlet property="imagefiled" destination="USQ-0g-HUz" id="hdd-y0-TKk"/>
-                                            <segue destination="W6q-Pj-BCE" kind="show" identifier="detaillsegue" id="f5f-i0-vuj"/>
+                                            <segue destination="W6q-Pj-BCE" kind="show" identifier="detaillsegue" id="kCx-2U-6nI"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -68,6 +68,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="collectionview" destination="R7K-XQ-Ei9" id="DFs-8E-ovA"/>
+                        <segue destination="uAA-TO-rE8" kind="show" identifier="Uploadsegue" id="cS8-KJ-6er"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eSY-3T-vt1" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -81,6 +82,38 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eBa-su-izn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="412" y="-623.38830584707648"/>
+        </scene>
+        <!--Uploadphotoviewcontroller-->
+        <scene sceneID="Tkl-Q0-dfi">
+            <objects>
+                <viewController id="uAA-TO-rE8" customClass="Uploadphotoviewcontroller" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="GGy-Yn-TiL">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xLI-Nv-NLV">
+                                <rect key="frame" x="119" y="176" width="127" height="131"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="upload"/>
+                                <connections>
+                                    <action selector="whenuploadtap:" destination="uAA-TO-rE8" eventType="touchUpInside" id="qow-Zo-ZDa"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Upload Photos" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yv2-e8-cLn">
+                                <rect key="frame" x="124" y="315" width="127" height="40"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="1ry-gH-2OD"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="lzR-fl-5od" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1101.5999999999999" y="-71.514242878560722"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="9hz-2R-fo8">
@@ -101,7 +134,10 @@
             <point key="canvasLocation" x="-1458.4000000000001" y="-521.28935532233891"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="upload" width="225" height="225"/>
+    </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="adQ-Rc-Psb"/>
+        <segue reference="kCx-2U-6nI"/>
     </inferredMetricsTieBreakers>
 </document>

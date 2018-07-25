@@ -28,11 +28,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
     self.apiManager = [APIManager new];
-    
     [self loadComments];
-    
     self.collectionView.delegate = self;
     self.collectionView.dataSource = self;
     
@@ -55,6 +52,7 @@
     //searching through parse to locase any objects that are comments
     PFQuery *query = [PFQuery queryWithClassName:@"Comment"];
     [query whereKey:@"venueName" equalTo:self.venue.name];
+    [query orderByDescending:@"createdAt"];
     [query includeKey:@"user.name"];
     [query findObjectsInBackgroundWithBlock:^(NSArray *comments, NSError *error) {
         if ([comments count] != 0) {

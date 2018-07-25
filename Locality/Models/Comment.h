@@ -13,8 +13,6 @@
 
 @interface Comment : PFObject <PFSubclassing>
 
-//maybe make this a user?
-//@property (strong, nonatomic) PFUser *user;
 @property(strong, nonatomic) User *user;
 @property (nonatomic, strong) NSString *venueName;
 @property (nonatomic, strong) NSNumber *latitude;

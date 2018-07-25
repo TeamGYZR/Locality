@@ -32,12 +32,10 @@
         self.user.name = self.nameTextField.text;
     }
     [self.user saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
-       //save user's data to parse
     }];
     
 }
 
-//letting user add profile picture
 - (IBAction)didTapPicEdit:(id)sender {
     UIImagePickerController *imagePickerVC = [UIImagePickerController new];
     imagePickerVC.delegate = self;
