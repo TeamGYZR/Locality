@@ -109,7 +109,6 @@
     
     
 }
-
 -(void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray<CLLocation *> *)locations{
     
     CLLocation * currentLocation = [[CLLocation alloc] init];
@@ -127,18 +126,22 @@
 //    NSNumber * lon = [NSNumber numberWithDouble:currentLocation.coordinate.longitude];
 
         for(Favorite *favorite in self.favorites){
-            [self.apimanager fetchVenuewithVenueName:favorite.venueName Latitude:favorite.latitude Longitude:favorite.longitude withCompletionHandler:^(Venue * venue, NSError * error){
-                if(venue){
-                    VenueAnnotation *annotation = [[VenueAnnotation alloc] initWithVenue:venue];
-                    [self.mapView addAnnotation:annotation];
-                    
-                }
-                else{
-                    NSLog(@"no favorites");
-                }
-                
-                
-            }];
+            Venue * venue = [[Venue alloc] venueFromDictionary:favorite.venueInfo];
+            VenueAnnotation *annotation = [[VenueAnnotation alloc] initWithVenue:venue];
+            [self.mapView addAnnotation:annotation];
+            
+//            [self.apimanager fetchVenuewithVenueName:favorite.venueName Latitude:favorite.latitude Longitude:favorite.longitude withCompletionHandler:^(Venue * venue, NSError * error){
+//                if(venue){
+//                    VenueAnnotation *annotation = [[VenueAnnotation alloc] initWithVenue:venue];
+//                    [self.mapView addAnnotation:annotation];
+//
+//                }
+//                else{
+//                    NSLog(@"no favorites");
+//                }
+//
+//
+//            }];
             
 
         }

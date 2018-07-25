@@ -24,6 +24,9 @@
 
 -(instancetype)initWithDictionary: (NSDictionary *)dictionary;
 
++(NSDictionary *)dictionaryFromVenue:(Venue *)venue;
+
+-(instancetype)venueFromDictionary:(NSDictionary *)dictionary; 
 
 
 @end
