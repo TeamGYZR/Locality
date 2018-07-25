@@ -10,6 +10,7 @@
 #import "UIImageView+AFNetworking.h"
 #import "ExploreMapViewController.h"
 #import "DetailsViewController.h"
+#import "DetailsCollectionViewController.h"
 
 @interface CollectionViewController ()<UICollectionViewDataSource, UICollectionViewDelegate>
 
@@ -103,11 +104,15 @@ NSDictionary *dictionary = [NSDictionary dictionaryWithObjectsAndKeys:self.venue
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+//    if([segue.identifier isEqualToString:@"detaillsegue"] || [segue.identifier isEqualToString:@"detaillview"] ){
+//        DetailsViewController *detail=[segue destinationViewController];
+//        detail.venue=self.venue;
+//        }
     if([segue.identifier isEqualToString:@"detaillsegue"] || [segue.identifier isEqualToString:@"detaillview"] ){
-        DetailsViewController *detail=[segue destinationViewController];
+        DetailsCollectionViewController *detail=[segue destinationViewController];
         detail.venue=self.venue;
-
-        }
+    }
+    
 
     }
     

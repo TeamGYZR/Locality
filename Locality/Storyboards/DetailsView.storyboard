@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="sTA-CW-rZ5">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="oUl-tI-KDa">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -66,9 +66,6 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" name="alternateSelectedControlTextColor" catalog="System" colorSpace="catalog"/>
                                 <state key="normal" title="to collection view"/>
-                                <connections>
-                                    <segue destination="oUl-tI-KDa" kind="presentation" identifier="collectionReviewSegue" id="LvS-ad-GPm"/>
-                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="oFN-mW-BFG"/>
@@ -216,6 +213,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="d9D-if-5Tz"/>
                     </view>
+                    <navigationItem key="navigationItem" id="0Bz-CJ-SiH"/>
                     <connections>
                         <outlet property="collectionView" destination="Gaz-cB-L1E" id="jb8-73-saN"/>
                         <segue destination="hNo-Kl-sil" kind="presentation" identifier="collectionReviewSegue" id="9vp-CP-7ym"/>
@@ -223,7 +221,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ydw-Md-srv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="788" y="804"/>
+            <point key="canvasLocation" x="1071" y="804"/>
         </scene>
         <!--Review View Controller-->
         <scene sceneID="hnk-ju-L2d">
@@ -314,6 +312,15 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7QS-nX-CF3">
+                                <rect key="frame" x="13" y="34" width="53" height="33"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <state key="normal" title="Cancel"/>
+                                <connections>
+                                    <action selector="didTapCancel:" destination="hNo-Kl-sil" eventType="touchUpInside" id="KHc-VA-AwO"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="TWl-hH-e2s"/>
@@ -344,6 +351,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tco-VF-DJw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-151.19999999999999" y="-158.77061469265368"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="A6N-el-e70">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="qAc-wr-Fa0" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="cXB-xE-p6l">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="oUl-tI-KDa" kind="relationship" relationship="rootViewController" id="gdX-2Z-ToU"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="sWC-d1-VL1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="218" y="804"/>
         </scene>
     </scenes>
     <resources>

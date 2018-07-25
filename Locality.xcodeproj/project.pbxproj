@@ -219,8 +219,6 @@
 		4CA36B5E20FEB5290056EB44 /* Venue Details */ = {
 			isa = PBXGroup;
 			children = (
-				4CA36B5F20FEB5540056EB44 /* DetailsViewController.h */,
-				4CA36B6020FEB5540056EB44 /* DetailsViewController.m */,
 				4C771D6D21069E770055A90D /* ReviewViewController.h */,
 				4C771D6E21069E770055A90D /* ReviewViewController.m */,
 				4C771D702106A8EF0055A90D /* CommentCell.h */,
@@ -259,6 +257,15 @@
 				4CA36B73210128F20056EB44 /* EditProfileViewController.m */,
 			);
 			path = Profile;
+			sourceTree = "<group>";
+		};
+		4CB3478D2108D38000BC0C3A /* Old Files */ = {
+			isa = PBXGroup;
+			children = (
+				4CA36B5F20FEB5540056EB44 /* DetailsViewController.h */,
+				4CA36B6020FEB5540056EB44 /* DetailsViewController.m */,
+			);
+			path = "Old Files";
 			sourceTree = "<group>";
 		};
 		4CDAC16B20F4424100B3E7D4 = {
@@ -307,6 +314,7 @@
 				A80F646B20FF3BF000C105D0 /* CollectionViewController.m */,
 				A814231120FFC60D00C976AE /* CollectionViewCell.h */,
 				A814231220FFC60D00C976AE /* CollectionViewCell.m */,
+				4CB3478D2108D38000BC0C3A /* Old Files */,
 			);
 			path = Locality;
 			sourceTree = "<group>";

@@ -68,7 +68,6 @@
 }
 
 -(UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath{
-    //DetailsHeaderView *header = nil;
     self.header = nil;
     if( kind == UICollectionElementKindSectionHeader){
         self.header = [collectionView dequeueReusableSupplementaryViewOfKind:kind withReuseIdentifier:@"DetailsHeaderView" forIndexPath:indexPath];
@@ -141,8 +140,6 @@
 - (IBAction)didTapReview:(id)sender {
     [self performSegueWithIdentifier:@"collectionReviewSegue" sender:nil];
 }
-
-
 
 #pragma mark - Navigation
 
