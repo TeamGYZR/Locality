@@ -14,6 +14,7 @@
 //@dynamic venueName;
 //@dynamic latitude;
 //@dynamic longitude;
+@dynamic venueID; 
 @dynamic user;
 @dynamic venueInfo;
 
@@ -28,6 +29,7 @@
 //    newFavorite.venueName = venue.name;
 //    newFavorite.latitude = venue.latitude;
 //    newFavorite.longitude = venue.longitude;
+    newFavorite.venueID = venue.idStr;
     newFavorite.venueInfo = [Venue dictionaryFromVenue:venue];
     
     [newFavorite saveInBackgroundWithBlock:completion];

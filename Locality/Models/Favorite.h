@@ -17,7 +17,8 @@
 //@property (nonatomic, strong) NSString * venueName;
 //@property (nonatomic, strong) NSNumber * latitude;
 //@property (nonatomic, strong) NSNumber * longitude;
-@property (nonatomic, strong) NSDictionary * venueInfo; 
+@property (nonatomic, strong) NSDictionary * venueInfo;
+@property (nonatomic, strong) NSString * venueID; 
 
 + (void) saveFavoritedVenue: (Venue * _Nullable)venue withCompletion: (PFBooleanResultBlock  _Nullable)completion;
 
