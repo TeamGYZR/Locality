@@ -9,6 +9,7 @@
 #import "DetailsViewController.h"
 #import <AFNetworking/UIImageView+AFNetworking.h>
 #import "UIImageView+AFNetworking.h"
+#import "DetailsCollectionViewController.h"
 
 //testing out parse user stuff
 #import "Parse.h"
@@ -42,7 +43,7 @@
     PFQuery *query = [PFQuery queryWithClassName:@"Favorite"];
     query.limit = 1; 
     [query whereKey:@"user" equalTo: PFUser.currentUser];
-    [query whereKey:@"venueID" equalTo: self.venue.idStr];
+    [query whereKey:@"venueName" equalTo: self.venue.name];
     
     [query includeKeys:@[@"user", @"venueID"]];
     
@@ -56,7 +57,6 @@
             self.favorited = YES;
         }
     }];
-    
     
     
 
@@ -132,14 +132,32 @@
     }
 }
 
-/*
+
+- (IBAction)didTapReview:(id)sender {
+    [self performSegueWithIdentifier:@"reviewSegue" sender:nil];    
+}
+
+- (IBAction)didTapCollectionView:(id)sender {
+    [self performSegueWithIdentifier:@"collectionReviewSegue" sender:nil];
+}
+
+
+
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    if ([segue.identifier isEqualToString:@"reviewSegue"]) {
+        ReviewViewController *review = [segue destinationViewController];
+        review.venue = self.venue;
+    }
+    else if ([segue.identifier isEqualToString:@"collectionReviewSegue"]){
+        DetailsCollectionViewController *detailVC = [segue destinationViewController];
+        detailVC.venue = self.venue;
+        
+    }
+    
 }
-*/
+
 
 @end

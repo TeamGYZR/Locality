@@ -9,9 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "CollectionViewController.h"
 
-@interface ExploreMapViewController : UIViewController
-
-//@property (strong, nonatomic) CollectionViewController * data;
+@interface ExploreMapViewController : UIViewController <UISearchControllerDelegate, UISearchBarDelegate>
 
 
 @end

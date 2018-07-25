@@ -9,7 +9,6 @@
 #import "AppDelegate.h"
 #import "Parse.h"
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
-
 #import "PFFacebookUtils.h"
 
 @interface AppDelegate ()
@@ -28,6 +27,11 @@
         configuration.server = @"http://locality-gyzr.herokuapp.com/parse";
     }];
     [Parse initializeWithConfiguration:config];
+    
+    if (PFUser.currentUser) {
+        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"YMapView" bundle:nil];
+        self.window.rootViewController = [storyboard instantiateViewControllerWithIdentifier:@"MainTabBar"];
+    }
     
     [PFFacebookUtils initializeFacebookWithApplicationLaunchOptions:launchOptions];
     

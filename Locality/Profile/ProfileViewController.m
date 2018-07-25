@@ -8,19 +8,28 @@
 
 #import "ProfileViewController.h"
 #import "EditProfileViewController.h"
-//instal parse ui pod to display images from PFFile
 #import "ParseUI/ParseUI.h"
 #import "APImanager.h"
 #import "FavoriteCell.h"
 #import "Favorite.h"
+#import "AppDelegate.h"
+#import <MapKit/Mapkit.h>
+#import <CoreLocation/CoreLocation.h>
+#import "Venue.h"
+#import "VenueAnnotation.h"
+#import "UIImageView+AFNetworking.h"
+#import "VenueAnnotationView.h"
 
-@interface ProfileViewController () <UITableViewDelegate, UITableViewDataSource>
+@interface ProfileViewController () <FavoriteCellDelegate, MKMapViewDelegate, CLLocationManagerDelegate>
 
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
 @property (weak, nonatomic) IBOutlet PFImageView *profiePicImageView;
 @property (strong, nonatomic) NSArray * favorites;
-@property (weak, nonatomic) IBOutlet UITableView *tableView;
+//@property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) APIManager *apimanager;
+@property (weak, nonatomic) IBOutlet MKMapView *mapView;
+@property (strong, nonatomic) CLLocationManager *locationManager;
+
 @end
 
 @implementation ProfileViewController
@@ -28,9 +37,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.user = [User currentUser];
-    
-    self.tableView.dataSource = self;
-    self.tableView.delegate = self;
     
     if (self.user.name == nil) {
         self.nameLabel.text = self.user.username;
@@ -45,8 +51,40 @@
     }
     
     self.apimanager = [APIManager new];
-    [self loadFavorites];
+    
+    self.mapView.delegate = self;
+    self.locationManager = [[CLLocationManager alloc] init];
+    self.locationManager.delegate = self;
+    
+    if(CLLocationManager.locationServicesEnabled)
+    {
+        //[MKUserTrackingButton userTrackingButtonWithMapView:self.mapView];
+        
+        if(CLLocationManager.authorizationStatus == kCLAuthorizationStatusAuthorizedWhenInUse)
+        {
+            NSLog(@"location usage authorized");
+            
+            self.locationManager.distanceFilter = kCLDistanceFilterNone;
+            self.locationManager.desiredAccuracy = kCLLocationAccuracyBest;
+            
+            [self loadFavorites];
+            //self.mapView.showsUserLocation = YES;
+            
+        }
+        
+    }
+    
 }
+
+- (IBAction)didTapLogout:(id)sender {
+    [PFUser logOutInBackgroundWithBlock:^(NSError * _Nullable error) {
+        AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Login" bundle:nil];
+        ProfileViewController *loginViewController = [storyboard instantiateViewControllerWithIdentifier:@"LoginViewController"];
+        appDelegate.window.rootViewController = loginViewController;
+    }];
+}
+
 
 -(void)loadFavorites{
     PFQuery *query = [PFQuery queryWithClassName:@"Favorite"];
@@ -57,7 +95,7 @@
         if ([favorites count] != 0) {
             // do something with the array of object returned by the call
             self.favorites = favorites;
-            [self.tableView reloadData]; 
+            [self.locationManager requestLocation];
         } else {
             NSLog(@"Could not find any favorites - %@", error.localizedDescription);
         }
@@ -65,6 +103,99 @@
     
     
 }
+
+-(void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray<CLLocation *> *)locations{
+    
+    CLLocation * currentLocation = [[CLLocation alloc] init];
+    
+    currentLocation = [locations lastObject];
+    
+    
+    NSLog(@"lat: %f, long: %f", currentLocation.coordinate.latitude, currentLocation.coordinate.longitude);
+    
+    MKCoordinateRegion currentRegion = MKCoordinateRegionMake(CLLocationCoordinate2DMake(currentLocation.coordinate.latitude, currentLocation.coordinate.longitude), MKCoordinateSpanMake(0.075, 0.075));
+    
+    
+    [self.mapView setRegion:currentRegion animated:YES];
+//    NSNumber * lat = [NSNumber numberWithDouble:currentLocation.coordinate.latitude];
+//    NSNumber * lon = [NSNumber numberWithDouble:currentLocation.coordinate.longitude];
+
+        for(Favorite *favorite in self.favorites){
+            [self.apimanager fetchVenuewithVenueName:favorite.venueName Latitude:favorite.latitude Longitude:favorite.longitude withCompletionHandler:^(Venue * venue, NSError * error){
+                if(venue){
+                    VenueAnnotation *annotation = [[VenueAnnotation alloc] initWithVenue:venue];
+                    [self.mapView addAnnotation:annotation];
+                    
+                }
+                else{
+                    NSLog(@"no favorites");
+                }
+                
+                
+            }];
+            
+
+        }
+
+}
+
+
+-(MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation{
+    
+    
+    if([annotation isKindOfClass:[VenueAnnotation class]])
+    {
+        MKPinAnnotationView * annotationView = (MKPinAnnotationView *) [mapView dequeueReusableAnnotationViewWithIdentifier:@"Pin"];
+        
+        if(annotationView == nil){
+            annotationView =[[VenueAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"Pin"];
+            annotationView.canShowCallout = true;
+        }
+        
+        
+        VenueAnnotation *venueAnnotation = (VenueAnnotation *)annotation;
+        
+        if([venueAnnotation.category isEqualToString:@"Coffee Shop"]){
+            annotationView.pinTintColor = [UIColor brownColor];
+        }
+        else if([venueAnnotation.category isEqualToString:@"Bakery"]){
+            annotationView.pinTintColor = [UIColor colorWithRed:1.0 green:0.745 blue:0.0 alpha:1];
+        }
+        UIImageView *iconView = (UIImageView*)annotationView.leftCalloutAccessoryView;
+        [iconView setImageWithURL: venueAnnotation.imageURL];
+        
+        UIButton *collectionButton = [UIButton buttonWithType:UIButtonTypeCustom];
+        [collectionButton setImage:[UIImage imageNamed:@"star"] forState:UIControlStateNormal];
+        collectionButton.frame = CGRectMake(0.0, 0.0, 25.0, 25.0);
+ 
+        [annotationView.rightCalloutAccessoryView setUserInteractionEnabled:YES];
+        annotationView.rightCalloutAccessoryView = collectionButton;
+        
+        return annotationView;
+        
+    }
+    
+    return nil;
+}
+
+- (void)mapView:(MKMapView *)mapView annotationView:(MKAnnotationView *)view calloutAccessoryControlTapped:(UIControl *)control
+{
+    VenueAnnotation * venueAnnotation = (VenueAnnotation *)view.annotation;
+    [Favorite removeVenue:(Venue * _Nullable)venueAnnotation.venue withCompletion:^(BOOL worked, NSError * _Nullable __strong error){
+        if(error)
+        {
+            NSLog(@"favorite deletion did not work :( - %@", error.localizedDescription);
+        }
+        else{
+            [self.mapView removeAnnotation:view.annotation];
+            [self loadFavorites];
+            NSLog(@"favorite successfully deleted :D");
+        }
+    }];
+    
+}
+
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -74,43 +205,10 @@
     [self viewDidLoad];
 }
 
-
--(NSInteger)tableView:(UITableView *) tableView numberOfRowsInSection:(NSInteger)section{
-    return self.favorites.count;
+- (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error{
+    NSLog(@"%@", error);
 }
 
--(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    FavoriteCell *cell = [tableView dequeueReusableCellWithIdentifier:@"FavoriteCell" forIndexPath:indexPath];
-    
-    
-    Favorite * currentFavorite = self.favorites[indexPath.row];
-    
-    [self.apimanager fetchVenuewithVenueName:currentFavorite.venueName Latitude:currentFavorite.latitude Longitude:currentFavorite.longitude withCompletionHandler:^(Venue * venue, NSError * error){
-        if(venue){
-            NSLog(@"a favorite");
-            
-            
-        }
-        else{
-            NSLog(@"no favorites");
-        }
-        
-        
-    }];
-    
-//    UITapGestureRecognizer *singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapDetectedSender:)];
-//    singleTap.numberOfTapsRequired = 1;
-//    [cell.profileView setUserInteractionEnabled:YES];
-//    [cell.profileView addGestureRecognizer:singleTap];
-    
-    
-    
-    return cell;
-    
-    
-    
-}
 
 #pragma mark - Navigation
 

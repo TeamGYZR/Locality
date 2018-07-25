@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "Venue.h"
 #import "Favorite.h"
+#import "ReviewViewController.h"
 //#import "Speech"
 #import <AVFoundation/AVFoundation.h>
 @interface DetailsViewController : UIViewController
@@ -16,6 +17,7 @@
 
 @property AVSpeechSynthesizer* speech;
 
-@property Venue *venue;
+//@property Venue *venue;
+@property (strong, nonatomic) Venue *venue;
 
 @end

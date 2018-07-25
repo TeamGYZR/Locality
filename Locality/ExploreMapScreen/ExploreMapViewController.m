@@ -14,15 +14,17 @@
 #import "VenueAnnotation.h"
 #import "UIImageView+AFNetworking.h"
 #import "VenueAnnotationView.h"
+#import "ResultsTableViewController.h"
 
 
-@interface ExploreMapViewController () <MKMapViewDelegate, CLLocationManagerDelegate>
+@interface ExploreMapViewController () <MKMapViewDelegate, CLLocationManagerDelegate, UITableViewDelegate>
 
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;
 @property (weak, nonatomic) IBOutlet UIButton *currentLocationButton;
 @property (strong, nonatomic) CLLocationManager *locationManager;
-//@property (strong,nonatomic) NSString * string;
-
+@property (strong, nonatomic) UISearchController *searchController;
+//@property (strong, nonatomic) ResultsTableViewController * resultsController;
+@property (nonatomic) CLLocationCoordinate2D currentLocation;
 @end
 
 @implementation ExploreMapViewController
@@ -34,12 +36,29 @@
     self.mapView.delegate = self;
     self.locationManager = [[CLLocationManager alloc] init];
     self.locationManager.delegate = self;
-    
-
     [self.locationManager requestWhenInUseAuthorization];
     
+
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"YMapView" bundle:[NSBundle mainBundle]];
+    ResultsTableViewController *locationSearchTable = [storyboard instantiateViewControllerWithIdentifier:@"ResultsTable"];
+    self.searchController = [[UISearchController alloc] initWithSearchResultsController:locationSearchTable];
+    self.searchController.searchResultsUpdater = locationSearchTable;
+    
+    locationSearchTable.tableView.delegate = self; 
+    UISearchBar *searchBar = self.searchController.searchBar;
+    [searchBar sizeToFit];
+    searchBar.placeholder = @"Where to?";
+    self.navigationItem.titleView = self.searchController.searchBar;
+    
+
+    self.searchController.obscuresBackgroundDuringPresentation = YES;
+    self.definesPresentationContext = YES;
+    
+    self.searchController.hidesNavigationBarDuringPresentation = NO;
     if(CLLocationManager.locationServicesEnabled)
     {
+        //[MKUserTrackingButton userTrackingButtonWithMapView:self.mapView];
+        
         if(CLLocationManager.authorizationStatus == kCLAuthorizationStatusAuthorizedWhenInUse)
         {
             NSLog(@"location usage authorized");
@@ -71,23 +90,28 @@
     
     currentLocation = [locations lastObject];
     
+    self.currentLocation = CLLocationCoordinate2DMake(currentLocation.coordinate.latitude, currentLocation.coordinate.longitude);
     
-    NSLog(@"lat: %f, long: %f", currentLocation.coordinate.latitude, currentLocation.coordinate.longitude);
+    [self updateMapViewWithCoordinates:self.currentLocation];
+
+}
+
+-(void)updateMapViewWithCoordinates:(CLLocationCoordinate2D)coordinate{
     
-    MKCoordinateRegion currentRegion = MKCoordinateRegionMake(CLLocationCoordinate2DMake(currentLocation.coordinate.latitude, currentLocation.coordinate.longitude), MKCoordinateSpanMake(0.025, 0.025));
+    MKCoordinateRegion currentRegion = MKCoordinateRegionMake(coordinate, MKCoordinateSpanMake(0.025, 0.025));
     
     
     [self.mapView setRegion:currentRegion animated:YES];
     
-
-//    NSURL * currentImageURL = [NSURL URLWithString:@"https://banner2.kisspng.com/20180327/prw/kisspng-emoji-discord-meme-android-imgur-thinking-5ab9e09a302f12.8060406115221310981974.jpg"];
+    
+    //    NSURL * currentImageURL = [NSURL URLWithString:@"https://banner2.kisspng.com/20180327/prw/kisspng-emoji-discord-meme-android-imgur-thinking-5ab9e09a302f12.8060406115221310981974.jpg"];
     // in case we need another dummy emoticon
-
+    
     
     
     APIManager *apiManager = [[APIManager alloc] init];
-    NSNumber * lat = [NSNumber numberWithDouble:currentLocation.coordinate.latitude];
-    NSNumber * lon = [NSNumber numberWithDouble:currentLocation.coordinate.longitude];
+    NSNumber * lat = [NSNumber numberWithDouble:coordinate.latitude];
+    NSNumber * lon = [NSNumber numberWithDouble:coordinate.longitude];
     
     [apiManager fetchLocationsWithLatitude:lat andLongitude:lon withCompletionHandler:^(NSArray *array, NSError *errror) {
         
@@ -100,11 +124,15 @@
         [self.navigationController popToViewController:self animated:YES];
     }];
     
+    
+    
 }
 - (IBAction)getCurrentLocationTapped:(id)sender {
     [self.locationManager requestLocation];
     
 }
+
+
 
 
 -(MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation{
@@ -145,14 +173,6 @@
     return nil; 
 }
 
-- (void)mapView:(MKMapView *)mapView annotationView:(MKAnnotationView *)view calloutAccessoryControlTapped:(UIControl *)control
-{
-
-    [self performSegueWithIdentifier:@"collectionSegue" sender:view.annotation];
-    
-    //Here, the annotation tapped can be accessed using view.annotation
-}
-
 
 - (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error{
     NSLog(@"%@", error);
@@ -161,6 +181,34 @@
 - (void)locationManager:(CLLocationManager *)manager didFinishDeferredUpdatesWithError:(NSError *)error{
     NSLog(@"%@", error);
 }
+
+- (void)mapView:(MKMapView *)mapView annotationView:(MKAnnotationView *)view calloutAccessoryControlTapped:(UIControl *)control
+{
+    [self performSegueWithIdentifier:@"collectionSegue" sender:view.annotation];
+}
+
+- (void)willPresentSearchController:(UISearchController *)searchController{
+    ResultsTableViewController * nextViewController = (ResultsTableViewController *)(searchController.searchResultsController);
+    
+    nextViewController.currentLocation = self.currentLocation;
+    
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    NSLog(@"helo");
+    ResultsTableViewController * resultsController =(ResultsTableViewController *) self.searchController.searchResultsUpdater;
+    MKMapItem * chosenMapItem = resultsController.matchingItems[indexPath.row];
+    
+    [self.searchController dismissViewControllerAnimated:YES completion:^(void){
+        NSLog(@"hehe");
+        [self updateMapViewWithCoordinates:chosenMapItem.placemark.location.coordinate];
+        
+    }];
+    
+    return;
+    
+}
+
 
 #pragma mark - Navigation
 

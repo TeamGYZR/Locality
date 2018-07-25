@@ -21,12 +21,10 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
 }
 
 - (IBAction)didTapSave:(id)sender {
     
-    //change users name if this is not equal to
     if ([self.nameTextField.text isEqualToString:@""]) {
         //dont change the users name
     }
@@ -34,12 +32,10 @@
         self.user.name = self.nameTextField.text;
     }
     [self.user saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
-       //save user's data to parse
     }];
     
 }
 
-//letting user add profile picture
 - (IBAction)didTapPicEdit:(id)sender {
     UIImagePickerController *imagePickerVC = [UIImagePickerController new];
     imagePickerVC.delegate = self;
