@@ -64,13 +64,12 @@
     if (venue) {
         venue.name = dictionary[@"name"];
         venue.category = dictionary[@"category"];
-        venue.iconURL = dictionary[@"iconURL"];
-        
+        venue.iconURL = [NSURL URLWithString:dictionary[@"iconURLString"]];
         venue.streetAddress = dictionary[@"formattedAddress"];
         venue.latitude = dictionary[@"lat"];
         venue.longitude = dictionary[@"lng"];
         venue.idStr = dictionary[@"id"];
-        venue.headerPicURL = dictionary[@"headerURL"];
+        venue.headerPicURL = [NSURL URLWithString:dictionary[@"headerURLString"]];;
         
     }
     return venue;
