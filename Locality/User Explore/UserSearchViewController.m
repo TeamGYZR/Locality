@@ -8,6 +8,7 @@
 
 #import "UserSearchViewController.h"
 #import "UserCell.h"
+#import "ProfileViewController.h"
 
 @interface UserSearchViewController ()<UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate>
 
@@ -27,7 +28,7 @@
     [self loadUsers];
 }
 
--(void)loadUsers{
+- (void)loadUsers{
     PFQuery *query = [PFUser query];
     [query orderByDescending:@"createdAt"];
     [query includeKey:@"user.name"];
@@ -35,24 +36,24 @@
     self.unfilteredUsers = self.users;
 }
 
--(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     return self.users.count;
 }
--(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     UserCell *cell = [tableView dequeueReusableCellWithIdentifier:@"UserCell"];
     cell.user = self.users[indexPath.row];
     return cell;
 }
--(void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText{
+- (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText{
     if (searchText.length != 0) {
         self.users = [self.users filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"(username contains[c] %@)", searchText]];
         [self.tableView reloadData];
     }
 }
--(void)searchBarTextDidBeginEditing:(UISearchBar *)searchBar{
+- (void)searchBarTextDidBeginEditing:(UISearchBar *)searchBar{
     self.searchBar.showsCancelButton = YES;
 }
--(void)searchBarCancelButtonClicked:(UISearchBar *)searchBar{
+- (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar{
     self.searchBar.showsCancelButton = NO;
     self.searchBar.text = @"";
     [self.searchBar resignFirstResponder];
@@ -60,15 +61,17 @@
     [self.tableView reloadData];
 }
 
-
-/*
 #pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    if ([sender isKindOfClass:[UserCell class]]) {
+        UITableViewCell *tappedCell = sender;
+        NSIndexPath *indexPath = [self.tableView indexPathForCell:tappedCell];
+        User *user = self.users[indexPath.row];
+        ProfileViewController *profileViewController = [segue destinationViewController];
+        profileViewController.user = user;
+    }
 }
-*/
+
 
 @end

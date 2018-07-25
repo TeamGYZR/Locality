@@ -19,6 +19,7 @@
 #import "VenueAnnotation.h"
 #import "UIImageView+AFNetworking.h"
 #import "VenueAnnotationView.h"
+#import "FavoritesViewController.h"
 
 @interface ProfileViewController () <FavoriteCellDelegate, MKMapViewDelegate, CLLocationManagerDelegate>
 
@@ -35,7 +36,10 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.user = [User currentUser];
+    
+    if (!self.user) {
+        self.user = [User currentUser];
+    }
     
     if (self.user.name == nil) {
         self.nameLabel.text = self.user.username;
@@ -206,6 +210,10 @@
         self.user = [User currentUser];
         EditProfileViewController *editProfViewController = segue.destinationViewController;
         editProfViewController.user = self.user;
+    }
+    if ([segue.identifier isEqualToString:@"favoriteTableSegue"]) {
+        FavoritesViewController *favoritesViewController = segue.destinationViewController;
+        favoritesViewController.user = self.user;
     }
 }
 
