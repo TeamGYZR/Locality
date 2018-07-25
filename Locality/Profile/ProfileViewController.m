@@ -74,12 +74,6 @@
         
     }
     
-    
-    
-    
-    
-    
-
 }
 
 - (IBAction)didTapLogout:(id)sender {

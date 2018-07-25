@@ -28,11 +28,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
     self.apiManager = [APIManager new];
-    
     [self loadComments];
-    
     self.collectionView.delegate = self;
     self.collectionView.dataSource = self;
     
