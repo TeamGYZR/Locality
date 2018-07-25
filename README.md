@@ -14,7 +14,7 @@ The following **required** functionality is complete:
 * [x] User can login to their account or create a new account using Parse
 * [x] Error messages if the user has not entered both an email/ password
 * [x] Sign-up/ login buttons segue to explore page 
-* [ ] Incorporate parse to track users and favorites
+* [x] Incorporate parse to track users and favorites
 * [ ] OPTIONAL: Segue to sign-up screen from sign-up button to change profile picture and add email 
 * [ ] OPTIONAL: Add standard profile picture if none is selected
 * [ ] OPTIONAL: “Guest” flow optional
@@ -26,8 +26,8 @@ The following **required** functionality is complete:
 * [ ] OPTIONAL: prompt to enable in Settings if they declined it
 * [x] Center map view on current location
 * [x] Display pins based on popular locations pulled from Four Square API
-* [ ] Have pins show different colors based on the category the attraction is in (based on Yelp API)
-* [ ] Search bar to change user location (Apple Map API, or location api)
+* -[ ] Have pins show different colors based on the category the attraction is in (based on Yelp API)-
+* [x] Search bar to change user location (Apple Map API, or location api)
 * [x] Create a tap gesture segue from the pin to the collection view 
 * [x] OPTIONAL: Tap on pin shows a preview on the information
 * [x] Display a tab bar to switch between profile/ explore pages
@@ -40,24 +40,24 @@ The following **required** functionality is complete:
 * [x] Display photos from the place in a collection view
 * [x] Incorporate the Flickr and Fource API to access the photos of the location
 * [x] Tapping on collection view cell will segue to details page
-* [ ] Tapping on details button will segue to details page
+* [x] Tapping on details button will segue to details page
 * [ ] OPTIONAL: Single tap on photo makes it larger, double tap away makes the photo shrink back
 * [ ] OPTIONAL: Use autolayout to fit view to every size
 
 **Details View Page**
-* [ ] Display main photo from the collection 
-* [ ] Display attraction's name, address, distance, rating, phone number
-* [ ] Add favorite button that the user can click to add the place to their profile
-* [ ] OPTIONAL: Add sound to labels so user can hear pronunciation
+* [x] Display main photo from the collection 
+* [x] Display attraction's name, address -distance, rating, phone number-
+* [x] Add favorite button that the user can click to add the place to their profile
+* [x] OPTIONAL: Add sound to labels so user can hear pronunciation
 * [ ] OPTIONAL: Come up with a gesture for localization/accessibility
-* [ ] OPTIONAL: Reviews/Rating section where people can rate comment
+* [x] OPTIONAL: Reviews-/Rating- section where people can -rate- comment
 
 **Profile Page View**
-* [ ] Display in either a collection or table view a list of the user's favorited places
-* [ ] Display user metadata
-* [ ] Add profile photo optionally 
+* [x] Display in either a collection or table view a list of the user's favorited places
+* [x] Display user metadata
+* [x] Add profile photo optionally 
 * [ ] OPTIONAL:  add headers to the view- maybe sorted by alphabet or by category
-* [ ] Add a map of their own favorited places in profile page
+* [x] Add a map of their own favorited places in profile page
 
 **Additional Optional Stories**
 * [ ] Users can view other user profiles
