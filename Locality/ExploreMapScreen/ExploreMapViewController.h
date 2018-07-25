@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "CollectionViewController.h"
 
-@interface ExploreMapViewController : UIViewController <UISearchResultsUpdating, UISearchControllerDelegate, UISearchBarDelegate>
+@interface ExploreMapViewController : UIViewController <UISearchControllerDelegate, UISearchBarDelegate>
 
 
 @end

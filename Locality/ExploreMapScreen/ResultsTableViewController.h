@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <CoreLocation/CoreLocation.h>
 
-@interface ResultsTableViewController : UITableViewController
+@interface ResultsTableViewController : UITableViewController <UISearchResultsUpdating>
 
+@property (nonatomic) CLLocationCoordinate2D currentLocation;
+@property (strong, nonatomic) NSArray * matchingItems;
 @end

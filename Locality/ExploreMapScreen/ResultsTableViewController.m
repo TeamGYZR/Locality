@@ -7,8 +7,12 @@
 //
 
 #import "ResultsTableViewController.h"
+#import <Mapkit/Mapkit.h>
+#import "ResultsViewCell.h"
 
-@interface ResultsTableViewController () <UITableViewDataSource>
+
+
+@interface ResultsTableViewController () <UITableViewDataSource, UITableViewDelegate>
 
 @end
 
@@ -17,11 +21,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
-    
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    self.tableView.dataSource = self;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -30,28 +30,38 @@
 }
 
 //#pragma mark - Table view data source
-//
-//- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-//#warning Incomplete implementation, return the number of sections
-//    return 0;
-//}
+
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-#warning Incomplete implementation, return the number of rows
     
-    return 0;
+    return self.matchingItems.count;
 }
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
     
+    ResultsViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ResultsCell" forIndexPath:indexPath];
+    MKMapItem * result = self.matchingItems[indexPath.row];
+    cell.result = result;
     // Configure the cell...
     
     return cell;
 }
 
-
+- (void)updateSearchResultsForSearchController:(UISearchController *)searchController{
+    
+    NSString *searchBarText = searchController.searchBar.text;
+    MKLocalSearchRequest *request = [[MKLocalSearchRequest alloc] init];
+    request.naturalLanguageQuery = searchBarText;
+    MKCoordinateRegion searchRegion = MKCoordinateRegionMake(self.currentLocation, MKCoordinateSpanMake(3.0, 3.0));
+    request.region = searchRegion;
+    MKLocalSearch *search = [[MKLocalSearch alloc] initWithRequest:request];
+    [search startWithCompletionHandler:^(MKLocalSearchResponse *response, NSError *error) {
+        self.matchingItems = response.mapItems;
+        [self.tableView reloadData];
+    }];
+    
+};
 /*
 // Override to support conditional editing of the table view.
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {

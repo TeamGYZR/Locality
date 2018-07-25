@@ -33,6 +33,7 @@
 		851C871C21014D0E007C32DD /* Favorite.m in Sources */ = {isa = PBXBuildFile; fileRef = 851C871B21014D0E007C32DD /* Favorite.m */; };
 		8550B0A02106916F0009C845 /* ResultsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8550B09F2106916F0009C845 /* ResultsTableViewController.m */; };
 		8550B0A32106D2CA0009C845 /* FavoritesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8550B0A22106D2CA0009C845 /* FavoritesViewController.m */; };
+		8550B0AC2107E4CE0009C845 /* ResultsViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8550B0AA2107E4CE0009C845 /* ResultsViewCell.m */; };
 		8580000421015FA30022A126 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 8580000321015FA30022A126 /* User.m */; };
 		8597DB1620FD162500BA261A /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8597DB1520FD162500BA261A /* MapKit.framework */; };
 		8597DB1820FD1BB400BA261A /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8597DB1720FD1BB400BA261A /* CoreLocation.framework */; };
@@ -115,6 +116,8 @@
 		8550B09F2106916F0009C845 /* ResultsTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = ResultsTableViewController.m; path = Locality/ExploreMapScreen/ResultsTableViewController.m; sourceTree = SOURCE_ROOT; };
 		8550B0A12106D2CA0009C845 /* FavoritesViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FavoritesViewController.h; sourceTree = "<group>"; };
 		8550B0A22106D2CA0009C845 /* FavoritesViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FavoritesViewController.m; sourceTree = "<group>"; };
+		8550B0AA2107E4CE0009C845 /* ResultsViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResultsViewCell.m; sourceTree = "<group>"; };
+		8550B0AB2107E4CE0009C845 /* ResultsViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResultsViewCell.h; sourceTree = "<group>"; };
 		8580000221015FA30022A126 /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
 		8580000321015FA30022A126 /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
 		8597DB1520FD162500BA261A /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
@@ -327,6 +330,8 @@
 		8597DAD620FD0DD500BA261A /* ExploreMapScreen */ = {
 			isa = PBXGroup;
 			children = (
+				8550B0AB2107E4CE0009C845 /* ResultsViewCell.h */,
+				8550B0AA2107E4CE0009C845 /* ResultsViewCell.m */,
 				8550B09E2106916F0009C845 /* ResultsTableViewController.h */,
 				8550B09F2106916F0009C845 /* ResultsTableViewController.m */,
 				859A1AA520FF1A1800E13EBC /* VenueAnnotationView.h */,
@@ -576,6 +581,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4CA36B71210112CD0056EB44 /* FavoriteCell.m in Sources */,
+				8550B0AC2107E4CE0009C845 /* ResultsViewCell.m in Sources */,
 				4CDAC17C20F4424100B3E7D4 /* ViewController.m in Sources */,
 				A80F646C20FF3BF000C105D0 /* CollectionViewController.m in Sources */,
 				4CA36B6E21010ADE0056EB44 /* ProfileViewController.m in Sources */,
