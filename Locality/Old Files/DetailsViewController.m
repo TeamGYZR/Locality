@@ -9,6 +9,7 @@
 #import "DetailsViewController.h"
 #import <AFNetworking/UIImageView+AFNetworking.h>
 #import "UIImageView+AFNetworking.h"
+#import "DetailsCollectionViewController.h"
 
 //testing out parse user stuff
 #import "Parse.h"
@@ -136,6 +137,11 @@
     [self performSegueWithIdentifier:@"reviewSegue" sender:nil];    
 }
 
+- (IBAction)didTapCollectionView:(id)sender {
+    [self performSegueWithIdentifier:@"collectionReviewSegue" sender:nil];
+}
+
+
 
 #pragma mark - Navigation
 
@@ -145,6 +151,12 @@
         ReviewViewController *review = [segue destinationViewController];
         review.venue = self.venue;
     }
+    else if ([segue.identifier isEqualToString:@"collectionReviewSegue"]){
+        DetailsCollectionViewController *detailVC = [segue destinationViewController];
+        detailVC.venue = self.venue;
+        
+    }
+    
 }
 
 

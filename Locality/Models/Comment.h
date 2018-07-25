@@ -21,6 +21,9 @@
 @property (nonatomic, strong) NSNumber *longitude;
 @property (nonatomic, strong) NSString *commentText;
 
+//venue_id
+//venue_blob
+
 +(void) saveVenueComment: (Venue * _Nullable)venue withComment: ( NSString * _Nullable )comment withCompletion:(PFBooleanResultBlock  _Nullable)completion;
 
 

@@ -64,6 +64,9 @@
     
     [self dismissViewControllerAnimated:YES completion:nil];
 }
+- (IBAction)didTapCancel:(id)sender {
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
 
 -(NSInteger)tableView:(UITableView *) tableView numberOfRowsInSection:(NSInteger)section{
     return self.comments.count;

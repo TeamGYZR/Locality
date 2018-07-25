@@ -17,6 +17,7 @@
 
 @property AVSpeechSynthesizer* speech;
 
-@property Venue *venue;
+//@property Venue *venue;
+@property (strong, nonatomic) Venue *venue;
 
 @end
