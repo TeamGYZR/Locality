@@ -9,12 +9,12 @@
 #import "UserSearchViewController.h"
 #import "UserCell.h"
 
-@interface UserSearchViewController ()<UITableViewDelegate, UITableViewDataSource>
+@interface UserSearchViewController ()<UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) NSArray *users;
-
-
+@property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
+@property (strong, nonatomic) NSArray *unfilteredUsers;
 @end
 
 @implementation UserSearchViewController
@@ -23,8 +23,8 @@
     [super viewDidLoad];
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
+    self.searchBar.delegate = self;
     [self loadUsers];
-    
 }
 
 -(void)loadUsers{
@@ -32,6 +32,7 @@
     [query orderByDescending:@"createdAt"];
     [query includeKey:@"user.name"];
     self.users = [query findObjects];
+    self.unfilteredUsers = self.users;
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
@@ -42,6 +43,23 @@
     cell.user = self.users[indexPath.row];
     return cell;
 }
+-(void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText{
+    if (searchText.length != 0) {
+        self.users = [self.users filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"(username contains[c] %@)", searchText]];
+        [self.tableView reloadData];
+    }
+}
+-(void)searchBarTextDidBeginEditing:(UISearchBar *)searchBar{
+    self.searchBar.showsCancelButton = YES;
+}
+-(void)searchBarCancelButtonClicked:(UISearchBar *)searchBar{
+    self.searchBar.showsCancelButton = NO;
+    self.searchBar.text = @"";
+    [self.searchBar resignFirstResponder];
+    self.users = self.unfilteredUsers;
+    [self.tableView reloadData];
+}
+
 
 /*
 #pragma mark - Navigation
