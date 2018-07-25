@@ -10,8 +10,9 @@
 #import "UIImageView+AFNetworking.h"
 #import "ExploreMapViewController.h"
 #import "DetailsViewController.h"
+#import "Uploadphotoviewcontroller.h"
 
-@interface CollectionViewController ()<UICollectionViewDataSource, UICollectionViewDelegate>
+@interface CollectionViewController ()<UICollectionViewDataSource, UICollectionViewDelegate,UIAlertViewDelegate>
 
 @end
 
@@ -59,24 +60,40 @@
 -(void) fecth{
     [self apimanager];
     NSLog(@"%@", self.venue.latitude);
+    //
 NSDictionary *dictionary = [NSDictionary dictionaryWithObjectsAndKeys:self.venue.latitude,@"lat", self.venue.longitude,@"lon", self.name, @"text",@"relevance",@"sort", nil];
   [self.req callAPIMethodWithGET:@"flickr.photos.search" arguments:dictionary];
     
     
 }
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
+    if(buttonIndex == 0){
+        [alertView dismissWithClickedButtonIndex:buttonIndex animated:YES];
+    }else{
+          [self performSegueWithIdentifier:@"uploadsegue" sender:nil];
+    }
+  
+
+}
 
 -(void)flickrAPIRequest:(OFFlickrAPIRequest *)inRequest didCompleteWithResponse:(NSDictionary *)inResponseDictionary{
 
-    NSLog(@"response: %@", inResponseDictionary);
+   NSLog(@"response: %@", inResponseDictionary);
    self->res=inResponseDictionary;
+    
+    if([self->res[@"photos"][@"total"] integerValue] == 0){
+       //upload pictures
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Opps there is no image " message:@"Do you want to upload images" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Upload", nil];
+        [alert show];
+        
+        }else{
    self.arraywithdictionary=[NSMutableArray array];
-    self.arraywithdictionary=self->res[@"photos"][@"photo"];
-    
-    
-    //SETTING THE HEADER PHOTO URL IN THE VENUE TO THE FIRST PHOTO FROM MY COLLLCATION VIEW PHOTO ARRRAY
+   self.arraywithdictionary=self->res[@"photos"][@"photo"];
+  //SETTING THE HEADER PHOTO URL IN THE VENUE TO THE FIRST PHOTO FROM MY COLLLCATION VIEW PHOTO ARRRAY
     NSDictionary *photoDict =[[self->res valueForKeyPath:@"photos.photo"] objectAtIndex:0];
   NSURL * urlphoto=[self.con photoSourceURLFromDictionary:photoDict size:OFFlickrLargeSize];
    self.venue.headerPicURL=urlphoto;
+    }
     //SETTING THE HEADER PHOTO URL IN THE VENUE TO THE FIRST PHOTO FROM MY COLLLCATION VIEW PHOTO ARRRAY
     [self.collectionview reloadData];
     request = nil;
@@ -100,16 +117,23 @@ NSDictionary *dictionary = [NSDictionary dictionaryWithObjectsAndKeys:self.venue
 
 - (NSInteger)collectionView:(nonnull UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
     return self.arraywithdictionary.count;
+    //return self->res[@"photos"][@"total"];
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if([segue.identifier isEqualToString:@"detaillsegue"] || [segue.identifier isEqualToString:@"detaillview"] ){
         DetailsViewController *detail=[segue destinationViewController];
         detail.venue=self.venue;
+     }
+//    else if([segue.identifier isEqualToString:@"uploadsegue"]){
+//        CollectionViewCell * cell=[[CollectionViewCell alloc] init];
+//        Uploadphotoviewcontroller * upload=[segue destinationViewController];
+//        upload.cells=cell;
+//
+//
+//    }
 
-        }
-
-    }
+}
     
     
 

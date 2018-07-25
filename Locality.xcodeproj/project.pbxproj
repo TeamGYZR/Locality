@@ -39,6 +39,7 @@
 		A80F646C20FF3BF000C105D0 /* CollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A80F646B20FF3BF000C105D0 /* CollectionViewController.m */; };
 		A814231320FFC60D00C976AE /* CollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A814231220FFC60D00C976AE /* CollectionViewCell.m */; };
 		A858D2DF21044E7C00637FAD /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A858D2DE21044E7C00637FAD /* AVFoundation.framework */; };
+		A8842AF22106A44F003ECD07 /* Uploadphotoviewcontroller.m in Sources */ = {isa = PBXBuildFile; fileRef = A8842AF12106A44F003ECD07 /* Uploadphotoviewcontroller.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -115,6 +116,8 @@
 		A814231120FFC60D00C976AE /* CollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CollectionViewCell.h; sourceTree = "<group>"; };
 		A814231220FFC60D00C976AE /* CollectionViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CollectionViewCell.m; sourceTree = "<group>"; };
 		A858D2DE21044E7C00637FAD /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		A8842AF02106A44F003ECD07 /* Uploadphotoviewcontroller.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Uploadphotoviewcontroller.h; sourceTree = "<group>"; };
+		A8842AF12106A44F003ECD07 /* Uploadphotoviewcontroller.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Uploadphotoviewcontroller.m; sourceTree = "<group>"; };
 		C01F5B3A004D967BDF2A1867 /* Pods-Locality.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Locality.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Locality/Pods-Locality.debug.xcconfig"; sourceTree = "<group>"; };
 		CB20FD7FBFA0FE7606614E01 /* Pods-LocalityUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LocalityUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-LocalityUITests/Pods-LocalityUITests.release.xcconfig"; sourceTree = "<group>"; };
 		EE18AC2B310AFAA5AD0597FC /* Pods-Locality.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Locality.release.xcconfig"; path = "Pods/Target Support Files/Pods-Locality/Pods-Locality.release.xcconfig"; sourceTree = "<group>"; };
@@ -264,6 +267,8 @@
 				A80F646B20FF3BF000C105D0 /* CollectionViewController.m */,
 				A814231120FFC60D00C976AE /* CollectionViewCell.h */,
 				A814231220FFC60D00C976AE /* CollectionViewCell.m */,
+				A8842AF02106A44F003ECD07 /* Uploadphotoviewcontroller.h */,
+				A8842AF12106A44F003ECD07 /* Uploadphotoviewcontroller.m */,
 			);
 			path = Locality;
 			sourceTree = "<group>";
@@ -481,6 +486,7 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Locality/Pods-Locality-resources.sh",
+				"${PODS_ROOT}/FBSDKCoreKit/FacebookSDKStrings.bundle",
 				"${PODS_CONFIGURATION_BUILD_DIR}/Parse/Parse.bundle",
 				"${PODS_ROOT}/ParseUI/ParseUI/Resources/Localization/en.lproj",
 				"${PODS_ROOT}/ParseUI/ParseUI/Resources/Localization/fr.lproj",
@@ -489,6 +495,7 @@
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/FacebookSDKStrings.bundle",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/Parse.bundle",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/en.lproj",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/fr.lproj",
@@ -547,6 +554,7 @@
 				4CDAC17C20F4424100B3E7D4 /* ViewController.m in Sources */,
 				A80F646C20FF3BF000C105D0 /* CollectionViewController.m in Sources */,
 				4CA36B6E21010ADE0056EB44 /* ProfileViewController.m in Sources */,
+				A8842AF22106A44F003ECD07 /* Uploadphotoviewcontroller.m in Sources */,
 				4CA36B6720FFF41D0056EB44 /* LoginViewController.m in Sources */,
 				859A1AA720FF1A1800E13EBC /* VenueAnnotationView.m in Sources */,
 				8597DB2220FE7BA200BA261A /* ExploreMapViewController.m in Sources */,
