@@ -36,6 +36,7 @@
 		4CDAC19C20F4424100B3E7D4 /* LocalityUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CDAC19B20F4424100B3E7D4 /* LocalityUITests.m */; };
 		4CEF1C352108DC7500C69B15 /* UserSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CEF1C342108DC7500C69B15 /* UserSearchViewController.m */; };
 		4CEF1C382108DCE500C69B15 /* UserCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CEF1C372108DCE500C69B15 /* UserCell.m */; };
+		4CEF1C3E210A479600C69B15 /* UserProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CEF1C3D210A479600C69B15 /* UserProfileViewController.m */; };
 		851C871C21014D0E007C32DD /* Favorite.m in Sources */ = {isa = PBXBuildFile; fileRef = 851C871B21014D0E007C32DD /* Favorite.m */; };
 		8550B0A02106916F0009C845 /* ResultsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8550B09F2106916F0009C845 /* ResultsTableViewController.m */; };
 		8550B0A32106D2CA0009C845 /* FavoritesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8550B0A22106D2CA0009C845 /* FavoritesViewController.m */; };
@@ -126,6 +127,8 @@
 		4CEF1C342108DC7500C69B15 /* UserSearchViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UserSearchViewController.m; sourceTree = "<group>"; };
 		4CEF1C362108DCE500C69B15 /* UserCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UserCell.h; sourceTree = "<group>"; };
 		4CEF1C372108DCE500C69B15 /* UserCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UserCell.m; sourceTree = "<group>"; };
+		4CEF1C3C210A479600C69B15 /* UserProfileViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UserProfileViewController.h; sourceTree = "<group>"; };
+		4CEF1C3D210A479600C69B15 /* UserProfileViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UserProfileViewController.m; sourceTree = "<group>"; };
 		5F1B3E5DBABAB3F93F44C75E /* libPods-Locality.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Locality.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7268D2AFC88C24A529B514A5 /* libPods-LocalityUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-LocalityUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8274814A446109AFAE12B326 /* Pods-LocalityTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LocalityTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-LocalityTests/Pods-LocalityTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -366,6 +369,8 @@
 				4CEF1C342108DC7500C69B15 /* UserSearchViewController.m */,
 				4CEF1C362108DCE500C69B15 /* UserCell.h */,
 				4CEF1C372108DCE500C69B15 /* UserCell.m */,
+				4CEF1C3C210A479600C69B15 /* UserProfileViewController.h */,
+				4CEF1C3D210A479600C69B15 /* UserProfileViewController.m */,
 			);
 			path = "User Explore";
 			sourceTree = "<group>";
@@ -640,6 +645,7 @@
 				8550B0AC2107E4CE0009C845 /* ResultsViewCell.m in Sources */,
 				4CDAC17C20F4424100B3E7D4 /* ViewController.m in Sources */,
 				4CEF1C352108DC7500C69B15 /* UserSearchViewController.m in Sources */,
+				4CEF1C3E210A479600C69B15 /* UserProfileViewController.m in Sources */,
 				4C771D7821079A1A0055A90D /* DetailsHeaderView.m in Sources */,
 				A80F646C20FF3BF000C105D0 /* CollectionViewController.m in Sources */,
 				4CA36B6E21010ADE0056EB44 /* ProfileViewController.m in Sources */,

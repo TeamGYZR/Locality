@@ -1,12 +1,12 @@
 //
-//  ProfileViewController.m
+//  UserProfileViewController.m
 //  Locality
 //
-//  Created by Ginger Dudley on 7/19/18.
+//  Created by Ginger Dudley on 7/26/18.
 //  Copyright © 2018 Ginger Dudley. All rights reserved.
 //
 
-#import "ProfileViewController.h"
+#import "UserProfileViewController.h"
 #import "EditProfileViewController.h"
 #import "ParseUI/ParseUI.h"
 #import "APImanager.h"
@@ -21,7 +21,7 @@
 #import "VenueAnnotationView.h"
 #import "FavoritesViewController.h"
 
-@interface ProfileViewController () <FavoriteCellDelegate, MKMapViewDelegate, CLLocationManagerDelegate>
+@interface UserProfileViewController () <FavoriteCellDelegate, MKMapViewDelegate, CLLocationManagerDelegate>
 
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
 @property (weak, nonatomic) IBOutlet PFImageView *profiePicImageView;
@@ -32,14 +32,14 @@
 
 @end
 
-@implementation ProfileViewController
+@implementation UserProfileViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
     if (!self.user) {
         self.user = [User currentUser];
     }
-    
     if (self.user.name == nil) {
         self.nameLabel.text = self.user.username;
     } else {
@@ -57,42 +57,46 @@
     
     if(CLLocationManager.locationServicesEnabled)
     {
-        //[MKUserTrackingButton userTrackingButtonWithMapView:self.mapView];
         if(CLLocationManager.authorizationStatus == kCLAuthorizationStatusAuthorizedWhenInUse)
         {
             NSLog(@"location usage authorized");
-            
             self.locationManager.distanceFilter = kCLDistanceFilterNone;
             self.locationManager.desiredAccuracy = kCLLocationAccuracyBest;
             [self loadFavorites];
-            //self.mapView.showsUserLocation = YES;
         }
     }
 }
 
-- (IBAction)didTapLogout:(id)sender {
-    [PFUser logOutInBackgroundWithBlock:^(NSError * _Nullable error) {
-        AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
-        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Login" bundle:nil];
-        ProfileViewController *loginViewController = [storyboard instantiateViewControllerWithIdentifier:@"LoginViewController"];
-        appDelegate.window.rootViewController = loginViewController;
+- (IBAction)didTapFollow:(id)sender {
+    User *currentUser = [User currentUser];
+    [currentUser addObject:self.user forKey:@"following"];
+    [currentUser saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
+        if(error){
+            NSLog(@"Failed to save current user's following array %@", error.localizedDescription);
+        } else {
+            NSLog(@"success saving user's following array");
+            NSLog(@"%lu", [currentUser.following count]);
+        }
     }];
+    [currentUser saveInBackground];
+    
 }
 
--(void)loadFavorites{
+- (void) loadFavorites{
     PFQuery *query = [PFQuery queryWithClassName:@"Favorite"];
     [query whereKey:@"user" equalTo: self.user];
     
     // fetch data asynchronously
     [query findObjectsInBackgroundWithBlock:^(NSArray *favorites, NSError *error) {
         if ([favorites count] != 0) {
-            // do something with the array of object returned by the call
             self.favorites = favorites;
             [self.locationManager requestLocation];
         } else {
             NSLog(@"Could not find any favorites - %@", error.localizedDescription);
         }
     }];
+    
+    
 }
 -(void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray<CLLocation *> *)locations{
     
@@ -107,15 +111,15 @@
     
     
     [self.mapView setRegion:currentRegion animated:YES];
-
-        for(Favorite *favorite in self.favorites){
-            Venue * venue = [[Venue alloc] venueFromDictionary:favorite.venueInfo];
-            VenueAnnotation *annotation = [[VenueAnnotation alloc] initWithVenue:venue];
-            [self.mapView addAnnotation:annotation];
-            
-
-        }
-
+    
+    for(Favorite *favorite in self.favorites){
+        Venue * venue = [[Venue alloc] venueFromDictionary:favorite.venueInfo];
+        VenueAnnotation *annotation = [[VenueAnnotation alloc] initWithVenue:venue];
+        [self.mapView addAnnotation:annotation];
+        
+        
+    }
+    
 }
 
 
@@ -146,7 +150,7 @@
         UIButton *collectionButton = [UIButton buttonWithType:UIButtonTypeCustom];
         [collectionButton setImage:[UIImage imageNamed:@"star"] forState:UIControlStateNormal];
         collectionButton.frame = CGRectMake(0.0, 0.0, 25.0, 25.0);
- 
+        
         [annotationView.rightCalloutAccessoryView setUserInteractionEnabled:YES];
         annotationView.rightCalloutAccessoryView = collectionButton;
         
@@ -193,7 +197,7 @@
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-
+    
     if ([segue.identifier isEqualToString:@"editProfileSegue"]) {
         self.user = [User currentUser];
         EditProfileViewController *editProfViewController = segue.destinationViewController;
@@ -207,3 +211,4 @@
 
 
 @end
+
