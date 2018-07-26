@@ -11,10 +11,12 @@
 
 @implementation Favorite
 
-@dynamic venueName;
-@dynamic latitude;
-@dynamic longitude;
+//@dynamic venueName;
+//@dynamic latitude;
+//@dynamic longitude;
+@dynamic venueID; 
 @dynamic user;
+@dynamic venueInfo;
 
 + (nonnull NSString *)parseClassName {
     return @"Favorite";
@@ -24,9 +26,11 @@
     
     Favorite *newFavorite = [Favorite new];
     newFavorite.user = PFUser.currentUser;
-    newFavorite.venueName = venue.name;
-    newFavorite.latitude = venue.latitude;
-    newFavorite.longitude = venue.longitude;
+//    newFavorite.venueName = venue.name;
+//    newFavorite.latitude = venue.latitude;
+//    newFavorite.longitude = venue.longitude;
+    newFavorite.venueID = venue.idStr;
+    newFavorite.venueInfo = [Venue dictionaryFromVenue:venue];
     
     [newFavorite saveInBackgroundWithBlock:completion];
     
@@ -37,11 +41,11 @@
     
     PFQuery *query = [PFQuery queryWithClassName:@"Favorite"];
     [query whereKey:@"user" equalTo: PFUser.currentUser];
-    [query whereKey:@"venueName" equalTo: venue.name];
+    [query whereKey:@"venueID" equalTo: venue.idStr];
     
     // fetch data asynchronously
     [query findObjectsInBackgroundWithBlock:^(NSArray *favorite, NSError *error) {
-        if (favorite != nil) {
+        if (favorite.count != 0) {
             // do something with the array of object returned by the call
             [favorite[0] deleteInBackgroundWithBlock:completion];
         } else {

@@ -56,7 +56,6 @@
     NSData *imageData = UIImagePNGRepresentation(editedImage);
     self.user.profilePicture = [PFFile fileWithName:@"image.png" data:imageData];
     [self dismissViewControllerAnimated:YES completion:^{
-        
     }];
     self.editedProfilePicture.image = editedImage;
     

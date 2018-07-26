@@ -41,6 +41,42 @@
     return venues;
 }
 
++(NSDictionary *)dictionaryFromVenue:(Venue *)venue{
+
+    NSMutableDictionary * dictionary = [NSMutableDictionary new];
+    dictionary[@"name"] = venue.name;
+    dictionary[@"category"] = venue.category;
+    dictionary[@"iconURLString"] = [venue.iconURL absoluteString];
+    dictionary[@"formattedAddress"] = venue.streetAddress;
+    dictionary[@"lat"] = venue.latitude;
+    dictionary[@"lng"] = venue.longitude;
+    dictionary[@"id"] = venue.idStr;
+    dictionary[@"headerURLString"] = [venue.headerPicURL absoluteString];
+    
+    NSDictionary * venueDictionary = [dictionary copy];
+    
+    return venueDictionary;
+}
+
+-(instancetype)venueFromDictionary:(NSDictionary *)dictionary{
+    Venue * venue = [Venue new];
+    
+    if (venue) {
+        venue.name = dictionary[@"name"];
+        venue.category = dictionary[@"category"];
+        venue.iconURL = [NSURL URLWithString:dictionary[@"iconURLString"]];
+        venue.streetAddress = dictionary[@"formattedAddress"];
+        venue.latitude = dictionary[@"lat"];
+        venue.longitude = dictionary[@"lng"];
+        venue.idStr = dictionary[@"id"];
+        venue.headerPicURL = [NSURL URLWithString:dictionary[@"headerURLString"]];;
+        
+    }
+    return venue;
+    
+    
+}
+
 
 
 @end

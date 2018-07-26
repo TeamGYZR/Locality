@@ -43,8 +43,7 @@
         if ([comments count] != 0) {
             self.comments = comments;
             [self.tableView reloadData];
-        }
-        else{
+        }else{
             NSLog(@"There are no comments on this post");
         }
     }];
@@ -53,22 +52,20 @@
 - (IBAction)didTapPost:(id)sender {
     self.postedComment = self.commentTextField.text;
     [Comment saveVenueComment:self.venue withComment:self.postedComment withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
-        if(error)
-        {
+        if (error) {
             NSLog(@"error adding comment - %@", error.localizedDescription);
-        }
-        else{
+        } else {
             NSLog(@"comment successfully added to parse");
+            [self dismissViewControllerAnimated:YES completion:nil];
         }
+        
     }];
-    
-    [self dismissViewControllerAnimated:YES completion:nil];
 }
 - (IBAction)didTapCancel:(id)sender {
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
--(NSInteger)tableView:(UITableView *) tableView numberOfRowsInSection:(NSInteger)section{
+- (NSInteger)tableView:(UITableView *) tableView numberOfRowsInSection:(NSInteger)section{
     return self.comments.count;
 }
 

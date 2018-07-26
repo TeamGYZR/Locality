@@ -12,13 +12,20 @@
 
 - (void)awakeFromNib {
     [super awakeFromNib];
-    // Initialization code
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
+}
 
-    // Configure the view for the selected state
+-(void)setUser:(User *)user{
+    _user = user;
+    self.userName.text = user.name;
+    [self.userName sizeToFit];
+    self.userUsername.text = user.username;
+    [self.userUsername sizeToFit];
+    self.userProfilePicture.file = user.profilePicture;
+    [self.userProfilePicture loadInBackground];
 }
 
 @end

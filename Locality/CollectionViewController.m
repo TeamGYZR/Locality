@@ -24,6 +24,8 @@
    
 }
 
+#pragma mark - UIViewController
+
 -(void)viewDidLoad {
     [super viewDidLoad];
     self.collectionview.dataSource=self;
@@ -46,6 +48,8 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+#pragma mark - Private
 -(void) setkey{
     apikey=@"595a10deca33ce1b5a7ab291254fb22a";
     sharedkey=@"cf18c4e987fb5146";
@@ -69,6 +73,8 @@ NSDictionary *dictionary = [NSDictionary dictionaryWithObjectsAndKeys:self.venue
     
     
 }
+
+#pragma mark - UIAlertViewDelegate
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
     if(buttonIndex == 0){
         [alertView dismissWithClickedButtonIndex:buttonIndex animated:YES];
@@ -79,6 +85,8 @@ NSDictionary *dictionary = [NSDictionary dictionaryWithObjectsAndKeys:self.venue
   
 
 }
+
+#pragma mark - OFAPIRequestDelegate
 
 -(void)flickrAPIRequest:(OFFlickrAPIRequest *)inRequest didCompleteWithResponse:(NSDictionary *)inResponseDictionary{
 
@@ -120,15 +128,10 @@ NSDictionary *dictionary = [NSDictionary dictionaryWithObjectsAndKeys:self.venue
     cell.url=staticPhotoURL;
     return cell;
 }
-
-
-
-
 - (NSInteger)collectionView:(nonnull UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
     return self.arraywithdictionary.count;
     //return self->res[@"photos"][@"total"];
 }
-
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if([segue.identifier isEqualToString:@"detaillsegue"] || [segue.identifier isEqualToString:@"detaillview"] ){
         DetailsCollectionViewController *detail=[segue destinationViewController];
@@ -138,17 +141,4 @@ NSDictionary *dictionary = [NSDictionary dictionaryWithObjectsAndKeys:self.venue
 
 
 }
-
-
-    
-
-
-
-    
-    
-
-
-
-
-
 @end
