@@ -20,10 +20,11 @@
 @interface ExploreMapViewController () <MKMapViewDelegate, CLLocationManagerDelegate, UITableViewDelegate>
 
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;
-@property (weak, nonatomic) IBOutlet UIButton *currentLocationButton;
 @property (strong, nonatomic) CLLocationManager *locationManager;
 @property (strong, nonatomic) UISearchController *searchController;
 //@property (strong, nonatomic) ResultsTableViewController * resultsController;
+@property (weak, nonatomic) IBOutlet UIView *trackingButtonView;
+
 @property (nonatomic) CLLocationCoordinate2D currentLocation;
 @end
 
@@ -57,7 +58,16 @@
     self.searchController.hidesNavigationBarDuringPresentation = NO;
     if(CLLocationManager.locationServicesEnabled)
     {
-        //[MKUserTrackingButton userTrackingButtonWithMapView:self.mapView];
+        MKUserTrackingButton * trackingButton = [MKUserTrackingButton userTrackingButtonWithMapView:self.mapView];
+        
+        trackingButton.layer.backgroundColor = [[UIColor colorWithRed:0.66 green:0 blue:0.66 alpha:1.0] CGColor];
+        trackingButton.layer.borderColor = [[UIColor whiteColor] CGColor];
+        trackingButton.layer.borderWidth = 1;
+        trackingButton.layer.cornerRadius = 5;
+        //trackingButton.translatesAutoresizingMaskIntoConstraints = NO;
+        [self.trackingButtonView addSubview:trackingButton];
+
+        
         
         if(CLLocationManager.authorizationStatus == kCLAuthorizationStatusAuthorizedWhenInUse)
         {
@@ -66,7 +76,7 @@
             self.locationManager.distanceFilter = kCLDistanceFilterNone;
             self.locationManager.desiredAccuracy = kCLLocationAccuracyBest;
             
-            [self findCurrentLocation];
+            [self.locationManager requestLocation];
             self.mapView.showsUserLocation = YES;
             
         }
@@ -77,11 +87,6 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
-}
-
--(void)findCurrentLocation{
-   // [self.locationManager startUpdatingLocation]; // if we want real time updates
-   [self.locationManager requestLocation];
 }
 
 -(void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray<CLLocation *> *)locations{
@@ -121,19 +126,12 @@
             [self.mapView addAnnotation:annotation];
         }
         
-        [self.navigationController popToViewController:self animated:YES];
+       // [self.navigationController popToViewController:self animated:YES];
     }];
     
     
     
 }
-- (IBAction)getCurrentLocationTapped:(id)sender {
-    [self.locationManager requestLocation];
-    
-}
-
-
-
 
 -(MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation{
     
@@ -173,6 +171,11 @@
     return nil; 
 }
 
+- (void)mapView:(MKMapView *)mapView didChangeUserTrackingMode:(MKUserTrackingMode)mode animated:(BOOL)animated{
+    NSLog(@"tracking mode activated");
+    [self.locationManager startUpdatingLocation]; 
+    
+}
 
 - (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error{
     NSLog(@"%@", error);
