@@ -11,13 +11,12 @@
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
 #import "PFFacebookUtils.h"
 
+
 @interface AppDelegate ()
 
 @end
 
 @implementation AppDelegate
-
-
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     ParseClientConfiguration *config = [ParseClientConfiguration   configurationWithBlock:^(id<ParseMutableClientConfiguration> configuration) {
@@ -32,12 +31,10 @@
         UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"YMapView" bundle:nil];
         self.window.rootViewController = [storyboard instantiateViewControllerWithIdentifier:@"MainTabBar"];
     }
-    
     [PFFacebookUtils initializeFacebookWithApplicationLaunchOptions:launchOptions];
-    
     //launch the facebook software
     [[FBSDKApplicationDelegate sharedInstance] application:application didFinishLaunchingWithOptions:launchOptions];
-    
+ 
     return YES;
 }
 

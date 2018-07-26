@@ -8,16 +8,11 @@
 
 #import "FlickrAuthorizationAppDelegate.h"
 
-@implementation FlickrAuthorizationAppDelegate
-NSString *kStoredAuthTokenKeyName = @"FlickrOAuthToken";
-NSString *kStoredAuthTokenSecretKeyName = @"FlickrOAuthTokenSecret";
-
 NSString *kGetAccessTokenStep = @"kGetAccessTokenStep";
 NSString *kCheckTokenStep = @"kCheckTokenStep";
 
 NSString *SRCallbackURLBaseString = @"Locality://auth";
-
-
+@implementation FlickrAuthorizationAppDelegate
 - (OFFlickrAPIRequest *)flickrRequest
 {
     if (!_flickrRequest) {
@@ -67,26 +62,25 @@ NSString *SRCallbackURLBaseString = @"Locality://auth";
     }
     return YES;
 }
-- (OFFlickrAPIContext *)flickrContext
-{
-    if (!_flickrContext) {
-        _flickrContext = [[OFFlickrAPIContext alloc] initWithAPIKey:@"595a10deca33ce1b5a7ab291254fb22a" sharedSecret:@"cf18c4e987fb5146"];
-        
-        NSString *authToken = [[NSUserDefaults standardUserDefaults] objectForKey:kStoredAuthTokenKeyName];
-        NSString *authTokenSecret = [[NSUserDefaults standardUserDefaults] objectForKey:kStoredAuthTokenSecretKeyName];
-        
-        if (([authToken length] > 0) && ([authTokenSecret length] > 0)) {
-            _flickrContext.OAuthToken = authToken;
-            _flickrContext.OAuthTokenSecret = authTokenSecret;
-        }
-    }
+- (OFFlickrAPIContext *)flickrContext{
+    _flickrContext=self.flickrContext;
+    //{
+    //    if (!_flickrContext) {
+    _flickrContext = [[OFFlickrAPIContext alloc] initWithAPIKey:@"64578e39784b1c34163d4c53d924455b" sharedSecret:@"f14090263ea6b80c"];
     
+    //        NSString *authToken = [[NSUserDefaults standardUserDefaults] objectForKey:kStoredAuthTokenKeyName];
+    //        NSString *authTokenSecret = [[NSUserDefaults standardUserDefaults] objectForKey:kStoredAuthTokenSecretKeyName];
+    //
+    //        if (([authToken length] > 0) && ([authTokenSecret length] > 0)) {
+    //            _flickrContext.OAuthToken = authToken;
+    //            _flickrContext.OAuthTokenSecret = authTokenSecret;
+    //        }
+    //    }
+    //
     return _flickrContext;
 }
 + (FlickrAuthorizationAppDelegate *)sharedDelegate
 {
     return (FlickrAuthorizationAppDelegate *)[[UIApplication sharedApplication] delegate];
 }
-
-
 @end
