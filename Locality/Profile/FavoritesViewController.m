@@ -20,9 +20,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
-    self.user = [User currentUser];
-    
+    if (!self.user) {
+        self.user = [User currentUser];
+    }
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
     
@@ -77,9 +77,6 @@
     
     return cell;
 }
-
-
-
 
 
 - (void)didReceiveMemoryWarning {

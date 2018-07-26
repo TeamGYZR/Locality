@@ -373,17 +373,17 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RKR-ih-O0F" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="217" y="1778"/>
+            <point key="canvasLocation" x="-1238" y="1283"/>
         </scene>
         <!--ExploreUsers-->
         <scene sceneID="F8s-cC-siH">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2NC-sC-xht" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewControllerPlaceholder storyboardName="ExploreUsers" id="SNe-eG-Iwg" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="eUI-YD-euz"/>
                 </viewControllerPlaceholder>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="2NC-sC-xht" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1245" y="1822"/>
+            <point key="canvasLocation" x="-236" y="1169"/>
         </scene>
     </scenes>
     <resources>

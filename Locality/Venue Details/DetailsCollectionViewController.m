@@ -35,6 +35,7 @@
     
 }
 -(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
     [self loadComments];
 }
 
@@ -57,6 +58,7 @@
     [query findObjectsInBackgroundWithBlock:^(NSArray *comments, NSError *error) {
         if ([comments count] != 0) {
             self.comments = comments;
+            NSLog(@"loading the posts comments!");
             [self.collectionView reloadData];
         }
         else{
