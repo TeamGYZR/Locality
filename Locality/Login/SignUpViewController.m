@@ -55,6 +55,8 @@
     newUser.password = self.passwordTextField.text;
     newUser.email = self.emailTextField.text;
     newUser.name = self.accountNameTextField.text;
+    
+    
     if (!self.imageData) {
         UIImage *defaultProfilePicture = [UIImage imageNamed:@"blankProfileimage"];
         self.imageData = UIImagePNGRepresentation(defaultProfilePicture);
