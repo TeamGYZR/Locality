@@ -8,10 +8,10 @@
 
 #import "Uploadphotoviewcontroller.h"
 #import "FlickrAuthorizationAppDelegate.h"
+#import "AppDelegate.h"
 NSString *kFetchRequestTokenStep = @"kFetchRequestTokenStep";
-NSString *kGetUserInfoStep = @"kGetUserInfoStep";
-NSString *kSetImagePropertiesStep = @"kSetImagePropertiesStep";
-NSString *kUploadImageStep = @"kUploadImageStep";
+NSString *kStoredAuthTokenKeyName = @"FlickrOAuthToken";
+NSString *kStoredAuthTokenSecretKeyName = @"FlickrOAuthTokenSecret";
 
 @interface Uploadphotoviewcontroller ()<UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 
@@ -23,15 +23,16 @@ NSString *kUploadImageStep = @"kUploadImageStep";
     [super viewDidLoad];
     // Do any additional setup after loading the view.
 }
- 
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
 - (IBAction)whenuploadtap:(id)sender {
-    _flickrRequest.sessionInfo = kFetchRequestTokenStep;
-    [_flickrRequest fetchOAuthRequestTokenWithCallbackURL:[NSURL URLWithString:SRCallbackURLBaseString]];
-    
+    self.flickrRequest.sessionInfo = kFetchRequestTokenStep;
+    [self.flickrRequest fetchOAuthRequestTokenWithCallbackURL:[NSURL URLWithString:SRCallbackURLBaseString]];
+
+    /*
     UIImagePickerController *imagePickerVC = [UIImagePickerController new];
     imagePickerVC.delegate = self;
     if([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]){
@@ -42,38 +43,55 @@ NSString *kUploadImageStep = @"kUploadImageStep";
     }
     
     [self presentViewController:imagePickerVC animated:YES completion:nil];
-    
+    */
 }
 
-- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info {
-    UIImage *originalImage = info[UIImagePickerControllerOriginalImage];
-   [self dismissViewControllerAnimated:YES completion:^{
-        NSInputStream *imageStream = [NSInputStream inputStreamWithData: UIImageJPEGRepresentation(originalImage, 0.9)];
-        BOOL check= [self->_flickrRequest uploadImageStream:imageStream suggestedFilename:@"Foobar.jpg" MIMEType:@"image/jpeg" arguments:[NSDictionary dictionaryWithObjectsAndKeys:@"1", @"is_public", nil]];
-        NSLog(@"Bool value: %d",check);
-    NSDictionary * uploaddic=[NSDictionary dictionaryWithObjectsAndKeys:self.Capikey,@"api_key ",nil];
-       [self->_flickrRequest callAPIMethodWithGET:@"flickr.people.getUploadStatus"  arguments:uploaddic];
-        
-    }];
-    
-}
-- (void)flickrAPIRequest:(OFFlickrAPIRequest *)inRequest didObtainOAuthRequestToken:(NSString *)inRequestToken secret:(NSString *)inSecret
-{
-    [FlickrAuthorizationAppDelegate sharedDelegate].flickrContext.OAuthToken = inRequestToken;
-    [FlickrAuthorizationAppDelegate sharedDelegate].flickrContext.OAuthTokenSecret = inSecret;
-    
-    NSURL *authURL = [[FlickrAuthorizationAppDelegate sharedDelegate].flickrContext userAuthorizationURLWithRequestToken:inRequestToken requestedPermission:OFFlickrWritePermission];
-    [[UIApplication sharedApplication] openURL:authURL];
-}
+//- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info {
+//    UIImage *originalImage = info[UIImagePickerControllerOriginalImage];
+//   [self dismissViewControllerAnimated:YES completion:^{
+//        NSInputStream *imageStream = [NSInputStream inputStreamWithData: UIImageJPEGRepresentation(originalImage, 0.9)];
+//        BOOL check= [self->_flickrRequest uploadImageStream:imageStream suggestedFilename:@"Foobar.jpg" MIMEType:@"image/jpeg" arguments:[NSDictionary dictionaryWithObjectsAndKeys:@"1", @"is_public", nil]];
+//        NSLog(@"Bool value: %d",check);
+//    NSDictionary * uploaddic=[NSDictionary dictionaryWithObjectsAndKeys:self.Capikey,@"api_key ",nil];
+//       [self->_flickrRequest callAPIMethodWithGET:@"flickr.people.getUploadStatus"  arguments:uploaddic];
+//
+//    }];
+//
+//}
 - (OFFlickrAPIRequest *)flickrRequest
 {
     if (!_flickrRequest) {
-        _flickrRequest = [[OFFlickrAPIRequest alloc] initWithAPIContext:[FlickrAuthorizationAppDelegate sharedDelegate].flickrContext];
+        _flickrRequest = [[OFFlickrAPIRequest alloc] initWithAPIContext:self.flickrContext];
         _flickrRequest.delegate = self;
         _flickrRequest.requestTimeoutInterval = 60.0;
     }
+    //[flickrapi sharedDelegate].flickrRequest=_flickrRequest;
     
     return _flickrRequest;
+}
+- (void)flickrAPIRequest:(OFFlickrAPIRequest *)inRequest didObtainOAuthRequestToken:(NSString *)inRequestToken secret:(NSString *)inSecret
+{
+    // these two lines are important
+    self.flickrContext.OAuthToken = inRequestToken;
+    self.flickrContext.OAuthTokenSecret = inSecret;
+    
+    NSURL *authURL = [self.flickrContext userAuthorizationURLWithRequestToken:inRequestToken requestedPermission:OFFlickrWritePermission];
+    [[UIApplication sharedApplication] openURL:authURL];
+}
+- (OFFlickrAPIContext *)flickrContext
+{
+    if (!_flickrContext) {
+        _flickrContext = [[OFFlickrAPIContext alloc] initWithAPIKey:@"64578e39784b1c34163d4c53d924455b" sharedSecret:@"f14090263ea6b80c"];
+        
+        NSString *authToken = [[NSUserDefaults standardUserDefaults] objectForKey:kStoredAuthTokenKeyName];
+        NSString *authTokenSecret = [[NSUserDefaults standardUserDefaults] objectForKey:kStoredAuthTokenSecretKeyName];
+        
+        if (([authToken length] > 0) && ([authTokenSecret length] > 0)) {
+            _flickrContext.OAuthToken = authToken;
+            _flickrContext.OAuthTokenSecret = authTokenSecret;
+        }
+    }
+    return _flickrContext;
 }
 
 /*
