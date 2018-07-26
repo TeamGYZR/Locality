@@ -10,7 +10,7 @@
 #import "Venue.h"
 
 static NSString *const clientID = @"GCWUZIHYLK1DURPIEVO4HYRNIRUDC2NBKJHEPLE4RFMLQ35A";
-static NSString *const clientSecret = @"VRCUJCWQYIWBFK212OOGGGU1KD2DKZLYVZZJ0ZUNEIBNA5EV";
+static NSString *const clientSecret = @"F5I5YVNQ21JOCWYWQEYMXM3ZN5W1YS2YBPLDERW4W42BRZTL";
 
 @implementation APIManager
 
