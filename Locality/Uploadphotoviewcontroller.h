@@ -11,13 +11,11 @@
 #import <ObjectiveFlickr/ObjectiveFlickr.h>
 
 
-@interface Uploadphotoviewcontroller : UIViewController <OFFlickrAPIRequestDelegate>
+@interface Uploadphotoviewcontroller : UIViewController <UIApplicationDelegate, OFFlickrAPIRequestDelegate>
 @property CollectionViewCell * cells;
-@property (strong,nonatomic) NSString * Capikey;
-@property (strong, nonatomic) NSString * Csharedkey;
-@property (strong,nonatomic) OFFlickrAPIContext * cons;
-@property (strong,nonatomic) OFFlickrAPIRequest *flickrRequest;
 
+@property (strong,nonatomic) OFFlickrAPIRequest *flickrRequest;
+@property (strong, nonatomic) OFFlickrAPIContext *flickrContext;
 
 
 @end
