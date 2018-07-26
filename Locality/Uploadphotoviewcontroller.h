@@ -13,12 +13,10 @@
 
 @interface Uploadphotoviewcontroller : UIViewController <OFFlickrAPIRequestDelegate>
 @property CollectionViewCell * cells;
-@property (strong,nonatomic) OFFlickrAPIContext * con;
-@property (strong, nonatomic) OFFlickrAPIRequest *req;
 @property (strong,nonatomic) NSString * Capikey;
 @property (strong, nonatomic) NSString * Csharedkey;
 @property (strong,nonatomic) OFFlickrAPIContext * cons;
-@property (strong, nonatomic) OFFlickrAPIRequest *reqs;
+@property (strong,nonatomic) OFFlickrAPIRequest *flickrRequest;
 
 
 

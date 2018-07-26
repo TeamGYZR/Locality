@@ -223,24 +223,15 @@
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="QqE-Vh-Mea">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </mapView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eci-Ff-ccJ">
-                                <rect key="frame" x="115" y="556" width="144" height="30"/>
-                                <state key="normal" title="Get Current Location">
-                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
-                                <connections>
-                                    <action selector="getCurrentLocationTapped:" destination="4al-vT-iBs" eventType="touchUpInside" id="gR4-Ua-sJf"/>
-                                </connections>
-                            </button>
+                            <view alpha="0.25" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bVJ-Tp-DFC">
+                                <rect key="frame" x="319" y="555" width="40" height="40"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="eci-Ff-ccJ" firstAttribute="leading" secondItem="HMA-8S-vxb" secondAttribute="leading" constant="115" id="3h8-8c-ema"/>
-                            <constraint firstItem="HMA-8S-vxb" firstAttribute="trailing" secondItem="eci-Ff-ccJ" secondAttribute="trailing" constant="116" id="82I-VL-Cn2"/>
-                            <constraint firstItem="HMA-8S-vxb" firstAttribute="bottom" secondItem="eci-Ff-ccJ" secondAttribute="bottom" constant="32" id="Mwa-RF-6Gu"/>
                             <constraint firstItem="QqE-Vh-Mea" firstAttribute="trailing" secondItem="HMA-8S-vxb" secondAttribute="trailing" id="OdZ-Tf-1yX"/>
                             <constraint firstAttribute="bottom" secondItem="QqE-Vh-Mea" secondAttribute="bottom" id="alA-Lw-m1f"/>
-                            <constraint firstItem="eci-Ff-ccJ" firstAttribute="top" secondItem="HMA-8S-vxb" secondAttribute="top" constant="492" id="dKF-uN-NRf"/>
                             <constraint firstItem="QqE-Vh-Mea" firstAttribute="leading" secondItem="HMA-8S-vxb" secondAttribute="leading" id="jlp-Ol-BFM"/>
                             <constraint firstItem="QqE-Vh-Mea" firstAttribute="top" secondItem="VLH-zV-HR3" secondAttribute="top" id="nDE-lE-Ccc"/>
                         </constraints>
@@ -248,8 +239,8 @@
                     </view>
                     <navigationItem key="navigationItem" id="5Ig-ke-Unh"/>
                     <connections>
-                        <outlet property="currentLocationButton" destination="eci-Ff-ccJ" id="ZbO-KU-vM1"/>
                         <outlet property="mapView" destination="QqE-Vh-Mea" id="cwH-4f-vf4"/>
+                        <outlet property="trackingButtonView" destination="bVJ-Tp-DFC" id="HIX-ZW-ORz"/>
                         <segue destination="GLA-UG-syO" kind="show" identifier="collectionSegue" id="HHs-of-cVz"/>
                     </connections>
                 </viewController>

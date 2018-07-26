@@ -53,6 +53,7 @@
 		A814231320FFC60D00C976AE /* CollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A814231220FFC60D00C976AE /* CollectionViewCell.m */; };
 		A858D2DF21044E7C00637FAD /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A858D2DE21044E7C00637FAD /* AVFoundation.framework */; };
 		A8842AF22106A44F003ECD07 /* Uploadphotoviewcontroller.m in Sources */ = {isa = PBXBuildFile; fileRef = A8842AF12106A44F003ECD07 /* Uploadphotoviewcontroller.m */; };
+		A8F8E7E2210951CF00684142 /* FlickrAuthorizationAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A8F8E7E1210951CF00684142 /* FlickrAuthorizationAppDelegate.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -156,6 +157,8 @@
 		A858D2DE21044E7C00637FAD /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		A8842AF02106A44F003ECD07 /* Uploadphotoviewcontroller.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Uploadphotoviewcontroller.h; sourceTree = "<group>"; };
 		A8842AF12106A44F003ECD07 /* Uploadphotoviewcontroller.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Uploadphotoviewcontroller.m; sourceTree = "<group>"; };
+		A8F8E7E0210951CF00684142 /* FlickrAuthorizationAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FlickrAuthorizationAppDelegate.h; sourceTree = "<group>"; };
+		A8F8E7E1210951CF00684142 /* FlickrAuthorizationAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FlickrAuthorizationAppDelegate.m; sourceTree = "<group>"; };
 		C01F5B3A004D967BDF2A1867 /* Pods-Locality.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Locality.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Locality/Pods-Locality.debug.xcconfig"; sourceTree = "<group>"; };
 		CB20FD7FBFA0FE7606614E01 /* Pods-LocalityUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LocalityUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-LocalityUITests/Pods-LocalityUITests.release.xcconfig"; sourceTree = "<group>"; };
 		EE18AC2B310AFAA5AD0597FC /* Pods-Locality.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Locality.release.xcconfig"; path = "Pods/Target Support Files/Pods-Locality/Pods-Locality.release.xcconfig"; sourceTree = "<group>"; };
@@ -331,6 +334,8 @@
 				A814231220FFC60D00C976AE /* CollectionViewCell.m */,
 				A8842AF02106A44F003ECD07 /* Uploadphotoviewcontroller.h */,
 				A8842AF12106A44F003ECD07 /* Uploadphotoviewcontroller.m */,
+				A8F8E7E0210951CF00684142 /* FlickrAuthorizationAppDelegate.h */,
+				A8F8E7E1210951CF00684142 /* FlickrAuthorizationAppDelegate.m */,
 				4CB3478D2108D38000BC0C3A /* Old Files */,
 			);
 			path = Locality;
@@ -630,6 +635,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A8F8E7E2210951CF00684142 /* FlickrAuthorizationAppDelegate.m in Sources */,
 				4CA36B71210112CD0056EB44 /* FavoriteCell.m in Sources */,
 				8550B0AC2107E4CE0009C845 /* ResultsViewCell.m in Sources */,
 				4CDAC17C20F4424100B3E7D4 /* ViewController.m in Sources */,

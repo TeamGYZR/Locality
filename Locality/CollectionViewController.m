@@ -14,6 +14,7 @@
 #import "DetailsCollectionViewController.h"
 
 
+
 @interface CollectionViewController ()<UICollectionViewDataSource, UICollectionViewDelegate,UIAlertViewDelegate>
 
 @end
@@ -78,6 +79,7 @@ NSDictionary *dictionary = [NSDictionary dictionaryWithObjectsAndKeys:self.venue
     if(buttonIndex == 0){
         [alertView dismissWithClickedButtonIndex:buttonIndex animated:YES];
     }else{
+       
           [self performSegueWithIdentifier:@"Uploadsegue" sender:nil];
     }
   
@@ -109,9 +111,11 @@ NSDictionary *dictionary = [NSDictionary dictionaryWithObjectsAndKeys:self.venue
     request = nil;
     
 }
+
 - (void)flickrAPIRequest:(OFFlickrAPIRequest *)inRequest didFailWithError:(NSError *)inError{
     request = nil;
 }
+
 -(nonnull __kindof UICollectionViewCell *)collectionView:(nonnull UICollectionView *)collectionView cellForItemAtIndexPath:(nonnull NSIndexPath *)indexPath {
     NSLog(@"starting reloadData");
    CollectionViewCell *cell=[collectionView dequeueReusableCellWithReuseIdentifier:@"collectioncell" forIndexPath:indexPath];
@@ -124,16 +128,10 @@ NSDictionary *dictionary = [NSDictionary dictionaryWithObjectsAndKeys:self.venue
     cell.url=staticPhotoURL;
     return cell;
 }
-
-#pragma mark - UICollectionViewDelegate
-
 - (NSInteger)collectionView:(nonnull UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
     return self.arraywithdictionary.count;
     //return self->res[@"photos"][@"total"];
 }
-
-#pragma mark - UIStoryboard
-
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if([segue.identifier isEqualToString:@"detaillsegue"] || [segue.identifier isEqualToString:@"detaillview"] ){
         DetailsCollectionViewController *detail=[segue destinationViewController];
@@ -143,16 +141,4 @@ NSDictionary *dictionary = [NSDictionary dictionaryWithObjectsAndKeys:self.venue
 
 
 }
-
-    
-
-
-
-    
-    
-
-
-
-
-
 @end
