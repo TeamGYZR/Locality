@@ -178,9 +178,9 @@
             NSLog(@"favorite deletion did not work :( - %@", error.localizedDescription);
         }
         else{
+            NSLog(@"favorite successfully deleted :D");
             [self.mapView removeAnnotation:view.annotation];
             [self loadFavorites];
-            NSLog(@"favorite successfully deleted :D");
         }
     }];
     

@@ -79,7 +79,7 @@
         PFQuery *query = [PFQuery queryWithClassName:@"Favorite"];
         query.limit = 1;
         [query whereKey:@"user" equalTo: PFUser.currentUser];
-        [query whereKey:@"venueName" equalTo: self.venue.name];
+        [query whereKey:@"venueID" equalTo: self.venue.idStr];
         [query includeKeys:@[@"user", @"venueID"]];
         [query findObjectsInBackgroundWithBlock:^(NSArray *favorite, NSError *error) {
             if ([favorite count] == 0) {
