@@ -77,27 +77,27 @@
 #pragma mark - IBAction
 
 - (IBAction)didTapFollow:(id)sender {
-    User *currentUser = [User currentUser];
-    [currentUser addObject:self.user forKey:@"following"];
-    [currentUser saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
-        if(error){
-            NSLog(@"Failed to save current user's following array %@", error.localizedDescription);
-        } else {
-            NSLog(@"success saving user's following array");
-            NSLog(@"%lu", [currentUser.following count]);
-        }
-    }];
-    [currentUser saveInBackground];
-    
-    //create a new follow object and then add both of the users to this object
-    [Follow saveFollow:currentUser withFollowee:self.user withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
-        if (error) {
-            NSLog(@"error adding follow -%@", error.localizedDescription);
-        } else{
-            NSLog(@"follow successfully added");
-            //change the view of the button
-        }
-    }];
+//    User *currentUser = [User currentUser];
+//    [currentUser addObject:self.user forKey:@"following"];
+//    [currentUser saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
+//        if(error){
+//            NSLog(@"Failed to save current user's following array %@", error.localizedDescription);
+//        } else {
+//            NSLog(@"success saving user's following array");
+//            //NSLog(@"%lu", [currentUser.following count]);
+//        }
+//    }];
+//    [currentUser saveInBackground];
+//    
+//    //create a new follow object and then add both of the users to this object
+//    [Follow saveFollow:currentUser withFollowee:self.user withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
+//        if (error) {
+//            NSLog(@"error adding follow -%@", error.localizedDescription);
+//        } else{
+//            NSLog(@"follow successfully added");
+//            //change the view of the button
+//        }
+//    }];
 }
 
 #pragma mark - Fetching Data

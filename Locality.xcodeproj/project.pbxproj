@@ -38,6 +38,8 @@
 		4CEF1C41210A786D00C69B15 /* Follow.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CEF1C40210A786D00C69B15 /* Follow.m */; };
 		4CEF1C43210B8B6500C69B15 /* Interstitial.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4CEF1C42210B8B6500C69B15 /* Interstitial.storyboard */; };
 		4CEF1C45210BA96500C69B15 /* ResultsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CEF1C44210BA96500C69B15 /* ResultsTableViewController.m */; };
+		4CEF1C4D210BAB9800C69B15 /* Itenerary.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CEF1C4C210BAB9800C69B15 /* Itenerary.m */; };
+		4CEF1C50210BAE5600C69B15 /* Path.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CEF1C4F210BAE5600C69B15 /* Path.m */; };
 		851C871C21014D0E007C32DD /* Favorite.m in Sources */ = {isa = PBXBuildFile; fileRef = 851C871B21014D0E007C32DD /* Favorite.m */; };
 		8544B98D210BACB00028D43F /* VerificationSignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8544B98C210BACB00028D43F /* VerificationSignUpViewController.m */; };
 		8544B990210BAD370028D43F /* DetailSignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8544B98F210BAD370028D43F /* DetailSignUpViewController.m */; };
@@ -137,6 +139,10 @@
 		4CEF1C42210B8B6500C69B15 /* Interstitial.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Interstitial.storyboard; sourceTree = "<group>"; };
 		4CEF1C44210BA96500C69B15 /* ResultsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResultsTableViewController.m; sourceTree = "<group>"; };
 		4CEF1C46210BA97000C69B15 /* ResultsTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ResultsTableViewController.h; sourceTree = "<group>"; };
+		4CEF1C4B210BAB9800C69B15 /* Itenerary.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Itenerary.h; sourceTree = "<group>"; };
+		4CEF1C4C210BAB9800C69B15 /* Itenerary.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Itenerary.m; sourceTree = "<group>"; };
+		4CEF1C4E210BAE5600C69B15 /* Path.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Path.h; sourceTree = "<group>"; };
+		4CEF1C4F210BAE5600C69B15 /* Path.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Path.m; sourceTree = "<group>"; };
 		5F1B3E5DBABAB3F93F44C75E /* libPods-Locality.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Locality.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7268D2AFC88C24A529B514A5 /* libPods-LocalityUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-LocalityUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8274814A446109AFAE12B326 /* Pods-LocalityTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LocalityTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-LocalityTests/Pods-LocalityTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -153,8 +159,8 @@
 		8550B0A22106D2CA0009C845 /* FavoritesViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FavoritesViewController.m; sourceTree = "<group>"; };
 		8550B0AA2107E4CE0009C845 /* ResultsViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResultsViewCell.m; sourceTree = "<group>"; };
 		8550B0AB2107E4CE0009C845 /* ResultsViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResultsViewCell.h; sourceTree = "<group>"; };
-		8580000221015FA30022A126 /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
-		8580000321015FA30022A126 /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
+		8580000221015FA30022A126 /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = User.h; path = "../Old Files/Models/User.h"; sourceTree = "<group>"; };
+		8580000321015FA30022A126 /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = User.m; path = "../Old Files/Models/User.m"; sourceTree = "<group>"; };
 		8597DB1520FD162500BA261A /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		8597DB1720FD1BB400BA261A /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		8597DB1E20FE7B9600BA261A /* ExploreMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExploreMapViewController.h; sourceTree = "<group>"; };
@@ -233,8 +239,6 @@
 			children = (
 				4CA36B5220FE90340056EB44 /* Venue.h */,
 				4CA36B5320FE90340056EB44 /* Venue.m */,
-				8580000221015FA30022A126 /* User.h */,
-				8580000321015FA30022A126 /* User.m */,
 				851C871A21014D0E007C32DD /* Favorite.h */,
 				851C871B21014D0E007C32DD /* Favorite.m */,
 				4C771D6A210695100055A90D /* Comment.h */,
@@ -351,6 +355,7 @@
 			isa = PBXGroup;
 			children = (
 				8544B993210BBE4A0028D43F /* Path Deets */,
+				4CEF1C47210BAAEF00C69B15 /* Models */,
 				4CA36B6420FFF40C0056EB44 /* Login */,
 				4CA36B5520FE9C520056EB44 /* API */,
 				8597DACC20FCF68300BA261A /* Storyboards */,
@@ -407,6 +412,19 @@
 				8544B995210BBE630028D43F /* PathDetailsViewController.m */,
 			);
 			path = "Path Deets";
+            sourceTree = "<group>";
+        };
+		4CEF1C47210BAAEF00C69B15 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				8580000221015FA30022A126 /* User.h */,
+				8580000321015FA30022A126 /* User.m */,
+				4CEF1C4B210BAB9800C69B15 /* Itenerary.h */,
+				4CEF1C4C210BAB9800C69B15 /* Itenerary.m */,
+				4CEF1C4E210BAE5600C69B15 /* Path.h */,
+				4CEF1C4F210BAE5600C69B15 /* Path.m */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 		8597DACC20FCF68300BA261A /* Storyboards */ = {
@@ -698,11 +716,13 @@
 				8550B0A32106D2CA0009C845 /* FavoritesViewController.m in Sources */,
 				4CDAC18720F4424100B3E7D4 /* main.m in Sources */,
 				4C771D6F21069E770055A90D /* ReviewViewController.m in Sources */,
+				4CEF1C50210BAE5600C69B15 /* Path.m in Sources */,
 				4CA36B5420FE90340056EB44 /* Venue.m in Sources */,
 				4CA36B5B20FE9F8A0056EB44 /* APIManager.m in Sources */,
 				8544B996210BBE630028D43F /* PathDetailsViewController.m in Sources */,
 				4C771D752107999F0055A90D /* DetailsCollectionViewController.m in Sources */,
 				4CDAC17920F4424100B3E7D4 /* AppDelegate.m in Sources */,
+				4CEF1C4D210BAB9800C69B15 /* Itenerary.m in Sources */,
 				4CA36B74210128F20056EB44 /* EditProfileViewController.m in Sources */,
 				4C771D7B21079A690055A90D /* CommentCollectionCell.m in Sources */,
 				4CA36B6120FEB5540056EB44 /* DetailsViewController.m in Sources */,

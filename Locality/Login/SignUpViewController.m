@@ -55,7 +55,7 @@
     newUser.password = self.passwordTextField.text;
     newUser.email = self.emailTextField.text;
     newUser.name = self.accountNameTextField.text;
-    newUser.following = [[NSMutableArray alloc] init];
+    //newUser.following = [[NSMutableArray alloc] init];
     [newUser saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
         if(error){
             NSLog(@"Failed to save following array %@", error.localizedDescription);
@@ -63,7 +63,7 @@
             NSLog(@"success saving following array");
         }
     }];
-    newUser.followers = [[NSMutableArray alloc] init];
+    //newUser.followers = [[NSMutableArray alloc] init];
     [newUser saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
         if(error){
             NSLog(@"Failed to save followers array %@", error.localizedDescription);
