@@ -87,10 +87,10 @@
             </objects>
             <point key="canvasLocation" x="-527.20000000000005" y="62.518740629685162"/>
         </scene>
-        <!--Profile View Controller-->
+        <!--User Profile View Controller-->
         <scene sceneID="KN9-Ij-1Tg">
             <objects>
-                <viewController id="1UP-xT-J9w" customClass="ProfileViewController" sceneMemberID="viewController">
+                <viewController id="1UP-xT-J9w" customClass="UserProfileViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="HdF-MW-Uka">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -102,6 +102,16 @@
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dUV-lk-W24">
                                 <rect key="frame" x="0.0" y="64" width="375" height="150"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QWz-qe-YxG">
+                                        <rect key="frame" x="236" y="120" width="44" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" title="Follow"/>
+                                        <connections>
+                                            <action selector="didTapFollow:" destination="1UP-xT-J9w" eventType="touchUpInside" id="DKY-FD-AO5"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
                                 <color key="backgroundColor" white="1" alpha="0.60627140410000002" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Ginger Dudley" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Ua-9j-Sov">
@@ -177,9 +187,6 @@
                                                         <constraint firstAttribute="height" constant="28" id="rMU-9j-AAz"/>
                                                     </constraints>
                                                     <state key="normal" image="star"/>
-                                                    <connections>
-                                                        <action selector="didTapFavorite:" destination="u3E-Sa-KcI" eventType="touchUpInside" id="eIO-M0-gy9"/>
-                                                    </connections>
                                                 </button>
                                             </subviews>
                                             <constraints>

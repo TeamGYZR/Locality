@@ -55,8 +55,23 @@
     newUser.password = self.passwordTextField.text;
     newUser.email = self.emailTextField.text;
     newUser.name = self.accountNameTextField.text;
-    
-    
+    newUser.following = [[NSMutableArray alloc] init];
+    [newUser saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
+        if(error){
+            NSLog(@"Failed to save following array %@", error.localizedDescription);
+        } else {
+            NSLog(@"success saving following array");
+        }
+    }];
+    newUser.followers = [[NSMutableArray alloc] init];
+    [newUser saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
+        if(error){
+            NSLog(@"Failed to save followers array %@", error.localizedDescription);
+        } else {
+            NSLog(@"success saving follower array");
+        }
+    }];
+
     if (!self.imageData) {
         UIImage *defaultProfilePicture = [UIImage imageNamed:@"blankProfileimage"];
         self.imageData = UIImagePNGRepresentation(defaultProfilePicture);
