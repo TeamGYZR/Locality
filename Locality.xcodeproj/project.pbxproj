@@ -54,6 +54,8 @@
 		A814231320FFC60D00C976AE /* CollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A814231220FFC60D00C976AE /* CollectionViewCell.m */; };
 		A858D2DF21044E7C00637FAD /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A858D2DE21044E7C00637FAD /* AVFoundation.framework */; };
 		A8842AF22106A44F003ECD07 /* Uploadphotoviewcontroller.m in Sources */ = {isa = PBXBuildFile; fileRef = A8842AF12106A44F003ECD07 /* Uploadphotoviewcontroller.m */; };
+		A8E26415210BB430002C0992 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A8E26414210BB430002C0992 /* HomeViewController.m */; };
+		A8E26419210BB48C002C0992 /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A8E26418210BB48C002C0992 /* Home.storyboard */; };
 		A8F8E7E2210951CF00684142 /* FlickrAuthorizationAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A8F8E7E1210951CF00684142 /* FlickrAuthorizationAppDelegate.m */; };
 /* End PBXBuildFile section */
 
@@ -160,6 +162,9 @@
 		A858D2DE21044E7C00637FAD /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		A8842AF02106A44F003ECD07 /* Uploadphotoviewcontroller.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Uploadphotoviewcontroller.h; sourceTree = "<group>"; };
 		A8842AF12106A44F003ECD07 /* Uploadphotoviewcontroller.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Uploadphotoviewcontroller.m; sourceTree = "<group>"; };
+		A8E26413210BB430002C0992 /* HomeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
+		A8E26414210BB430002C0992 /* HomeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeViewController.m; sourceTree = "<group>"; };
+		A8E26418210BB48C002C0992 /* Home.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Home.storyboard; sourceTree = "<group>"; };
 		A8F8E7E0210951CF00684142 /* FlickrAuthorizationAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FlickrAuthorizationAppDelegate.h; sourceTree = "<group>"; };
 		A8F8E7E1210951CF00684142 /* FlickrAuthorizationAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FlickrAuthorizationAppDelegate.m; sourceTree = "<group>"; };
 		C01F5B3A004D967BDF2A1867 /* Pods-Locality.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Locality.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Locality/Pods-Locality.debug.xcconfig"; sourceTree = "<group>"; };
@@ -341,6 +346,8 @@
 				4CDAC18620F4424100B3E7D4 /* main.m */,
 				A8F8E7E0210951CF00684142 /* FlickrAuthorizationAppDelegate.h */,
 				A8F8E7E1210951CF00684142 /* FlickrAuthorizationAppDelegate.m */,
+				A8E26413210BB430002C0992 /* HomeViewController.h */,
+				A8E26414210BB430002C0992 /* HomeViewController.m */,
 				4CB3478D2108D38000BC0C3A /* Old Files */,
 			);
 			path = Locality;
@@ -382,6 +389,7 @@
 			children = (
 				4CA36B6220FFF2FD0056EB44 /* Login.storyboard */,
 				4CEF1C42210B8B6500C69B15 /* Interstitial.storyboard */,
+				A8E26418210BB48C002C0992 /* Home.storyboard */,
 			);
 			path = Storyboards;
 			sourceTree = "<group>";
@@ -526,6 +534,7 @@
 				4CA36B6320FFF2FD0056EB44 /* Login.storyboard in Resources */,
 				8597DB2120FE7BA200BA261A /* YMapView.storyboard in Resources */,
 				A80F646920FF3BB500C105D0 /* collectionview.storyboard in Resources */,
+				A8E26419210BB48C002C0992 /* Home.storyboard in Resources */,
 				4CDAC18420F4424100B3E7D4 /* LaunchScreen.storyboard in Resources */,
 				4CEF1C43210B8B6500C69B15 /* Interstitial.storyboard in Resources */,
 				4CDAC18120F4424100B3E7D4 /* Assets.xcassets in Resources */,
@@ -657,6 +666,7 @@
 				4CEF1C41210A786D00C69B15 /* Follow.m in Sources */,
 				4CEF1C382108DCE500C69B15 /* UserCell.m in Sources */,
 				4CEF1C45210BA96500C69B15 /* ResultsTableViewController.m in Sources */,
+				A8E26415210BB430002C0992 /* HomeViewController.m in Sources */,
 				8550B0A32106D2CA0009C845 /* FavoritesViewController.m in Sources */,
 				4CDAC18720F4424100B3E7D4 /* main.m in Sources */,
 				4C771D6F21069E770055A90D /* ReviewViewController.m in Sources */,
