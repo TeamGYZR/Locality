@@ -10,8 +10,6 @@
 
 @implementation Path
 
-//@dynamic xCoordinate;
-//@dynamic yCoordinate;
 @dynamic coordinates;
 
 + (nonnull NSString *)parseClassName {
