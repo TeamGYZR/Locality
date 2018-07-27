@@ -17,6 +17,7 @@
 @end
 
 @implementation AppDelegate
+
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     ParseClientConfiguration *config = [ParseClientConfiguration   configurationWithBlock:^(id<ParseMutableClientConfiguration> configuration) {
@@ -28,8 +29,8 @@
     [Parse initializeWithConfiguration:config];
     
     if (PFUser.currentUser) {
-        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"YMapView" bundle:nil];
-        self.window.rootViewController = [storyboard instantiateViewControllerWithIdentifier:@"MainTabBar"];
+        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Home" bundle:nil];
+        self.window.rootViewController = [storyboard instantiateViewControllerWithIdentifier:@"HomeView"];
     }
     [PFFacebookUtils initializeFacebookWithApplicationLaunchOptions:launchOptions];
     //launch the facebook software

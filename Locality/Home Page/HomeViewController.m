@@ -7,22 +7,89 @@
 //
 
 #import "HomeViewController.h"
+#import "Parse.h"
+#import "PathCell.h"
 
-@interface HomeViewController ()
+@interface HomeViewController () <UICollectionViewDelegate, UICollectionViewDataSource>
+
+@property (strong, nonatomic) NSArray *paths;
+@property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 
 @end
 
 @implementation HomeViewController
 
+#pragma mark - View Controller
+
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    [self loadPathsWithCategory:@"Foodie"];
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+#pragma mark - IBAction
+
+- (IBAction)didTapFoodie:(id)sender {
+    [self loadPathsWithCategory:@"Foodie"];
 }
+
+- (IBAction)didTapEntertainment:(id)sender {
+    [self loadPathsWithCategory:@"Entertainment"];
+}
+
+- (IBAction)didTapNature:(id)sender {
+    [self loadPathsWithCategory:@"Nature"];
+}
+
+#pragma mark- Parse Query
+
+- (void) loadPathsWithCategory:(NSString *)category{
+    PFQuery *query = [PFQuery queryWithClassName:@"Itenerary"];
+    [query whereKey:@"category" equalTo:category];
+    //this might not be necessary
+    [query includeKey:@"path"];
+    [query includeKey:@"creator"];
+    [query findObjectsInBackgroundWithBlock:^(NSArray *paths, NSError *error){
+        if (error) {
+            NSLog(@"error loading paths from Parse");
+        } else {
+            self.paths = paths;
+        }
+    }];
+    
+}
+
+#pragma mark - UICollectionView
+
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
+    return self.paths.count;
+}
+
+- (nonnull __kindof UICollectionViewCell *)collectionView:(nonnull UICollectionView *)collectionView cellForItemAtIndexPath:(nonnull NSIndexPath *)indexPath{
+    PathCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"PathCell" forIndexPath:indexPath];
+    cell.itenerary = self.paths[indexPath.item];
+    return cell;
+}
+-(void) photoFecth{
+    self.apiKey = @"595a10deca33ce1b5a7ab291254fb22a";
+    self.sharedKey = @"cf18c4e987fb5146";
+    self.context = [[OFFlickrAPIContext alloc]
+                  initWithAPIKey:self.apiKey sharedSecret:self.sharedKey];
+    self.request=[[OFFlickrAPIRequest alloc] initWithAPIContext:self.context];
+    [self.request setDelegate:self];
+  NSDictionary *dictionary = [NSDictionary dictionaryWithObjectsAndKeys:@
+                              "San francisco", @"text",nil];
+    [self.request callAPIMethodWithGET:@"flickr.photos.search" arguments:dictionary];
+}
+- (void)flickrAPIRequest:(OFFlickrAPIRequest *)inRequest didCompleteWithResponse:(NSDictionary *)inResponseDictionary{
+  NSLog(@"response: %@", inResponseDictionary);
+    
+    
+}
+- (void)flickrAPIRequest:(OFFlickrAPIRequest *)inRequest didFailWithError:(NSError *)inError{
+    self.request=nil;
+}
+
+
 
 /*
 #pragma mark - Navigation
