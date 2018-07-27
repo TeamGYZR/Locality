@@ -12,13 +12,14 @@
 #import <FBSDKLoginKit/FBSDKLoginKit.h>
 #import "PFFacebookUtils.h"
 #import "SignUpViewController.h"
+#import <CoreLocation/CoreLocation.h>
 
 @interface LoginViewController ()
 
 @property (weak, nonatomic) IBOutlet UITextField *usernameTextField;
 @property (weak, nonatomic) IBOutlet UITextField *passwordTextField;
 @property (weak, nonatomic) IBOutlet FBSDKLoginButton *facebookLoginButton;
-
+//@property 
 @end
 
 @implementation LoginViewController

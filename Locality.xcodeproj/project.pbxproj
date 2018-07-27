@@ -45,6 +45,7 @@
 		8544B990210BAD370028D43F /* DetailSignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8544B98F210BAD370028D43F /* DetailSignUpViewController.m */; };
 		8544B992210BBE040028D43F /* PathDetail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8544B991210BBE040028D43F /* PathDetail.storyboard */; };
 		8544B996210BBE630028D43F /* PathDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8544B995210BBE630028D43F /* PathDetailsViewController.m */; };
+		8544B999210BC2DB0028D43F /* InterstitialViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8544B998210BC2DB0028D43F /* InterstitialViewController.m */; };
 		8550B0A32106D2CA0009C845 /* FavoritesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8550B0A22106D2CA0009C845 /* FavoritesViewController.m */; };
 		8550B0AC2107E4CE0009C845 /* ResultsViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8550B0AA2107E4CE0009C845 /* ResultsViewCell.m */; };
 		8580000421015FA30022A126 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 8580000321015FA30022A126 /* User.m */; };
@@ -155,6 +156,8 @@
 		8544B991210BBE040028D43F /* PathDetail.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PathDetail.storyboard; sourceTree = "<group>"; };
 		8544B994210BBE630028D43F /* PathDetailsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PathDetailsViewController.h; sourceTree = "<group>"; };
 		8544B995210BBE630028D43F /* PathDetailsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PathDetailsViewController.m; sourceTree = "<group>"; };
+		8544B997210BC2DB0028D43F /* InterstitialViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = InterstitialViewController.h; sourceTree = "<group>"; };
+		8544B998210BC2DB0028D43F /* InterstitialViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = InterstitialViewController.m; sourceTree = "<group>"; };
 		8550B0A12106D2CA0009C845 /* FavoritesViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FavoritesViewController.h; sourceTree = "<group>"; };
 		8550B0A22106D2CA0009C845 /* FavoritesViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FavoritesViewController.m; sourceTree = "<group>"; };
 		8550B0AA2107E4CE0009C845 /* ResultsViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResultsViewCell.m; sourceTree = "<group>"; };
@@ -294,6 +297,8 @@
 		4CA36B6420FFF40C0056EB44 /* Login */ = {
 			isa = PBXGroup;
 			children = (
+				8544B997210BC2DB0028D43F /* InterstitialViewController.h */,
+				8544B998210BC2DB0028D43F /* InterstitialViewController.m */,
 				8544B98B210BACB00028D43F /* VerificationSignUpViewController.h */,
 				8544B98C210BACB00028D43F /* VerificationSignUpViewController.m */,
 				8544B98E210BAD370028D43F /* DetailSignUpViewController.h */,
@@ -413,15 +418,6 @@
 			path = "User Explore";
 			sourceTree = "<group>";
 		};
-		8544B993210BBE4A0028D43F /* Path Deets */ = {
-			isa = PBXGroup;
-			children = (
-				8544B994210BBE630028D43F /* PathDetailsViewController.h */,
-				8544B995210BBE630028D43F /* PathDetailsViewController.m */,
-			);
-			path = "Path Deets";
-            sourceTree = "<group>";
-        };
 		4CEF1C47210BAAEF00C69B15 /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -433,6 +429,15 @@
 				4CEF1C4F210BAE5600C69B15 /* Path.m */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		8544B993210BBE4A0028D43F /* Path Deets */ = {
+			isa = PBXGroup;
+			children = (
+				8544B994210BBE630028D43F /* PathDetailsViewController.h */,
+				8544B995210BBE630028D43F /* PathDetailsViewController.m */,
+			);
+			path = "Path Deets";
 			sourceTree = "<group>";
 		};
 		8597DACC20FCF68300BA261A /* Storyboards */ = {
@@ -703,6 +708,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A8F8E7E2210951CF00684142 /* FlickrAuthorizationAppDelegate.m in Sources */,
+				8544B999210BC2DB0028D43F /* InterstitialViewController.m in Sources */,
 				4CA36B71210112CD0056EB44 /* FavoriteCell.m in Sources */,
 				8550B0AC2107E4CE0009C845 /* ResultsViewCell.m in Sources */,
 				4CEF1C352108DC7500C69B15 /* UserSearchViewController.m in Sources */,
