@@ -24,6 +24,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self loadPathsWithCategory:@"Foodie"];
+    [self photoFecth];
 }
 
 #pragma mark - IBAction
@@ -79,9 +80,14 @@
   NSDictionary *dictionary = [NSDictionary dictionaryWithObjectsAndKeys:@
                               "San francisco", @"text",nil];
     [self.request callAPIMethodWithGET:@"flickr.photos.search" arguments:dictionary];
+    
 }
 - (void)flickrAPIRequest:(OFFlickrAPIRequest *)inRequest didCompleteWithResponse:(NSDictionary *)inResponseDictionary{
   NSLog(@"response: %@", inResponseDictionary);
+    self.photoResponseDictionary=inResponseDictionary;
+   NSDictionary *photoDict =self.photoResponseDictionary[@"photos"][@"photo"];
+   NSURL * urlphoto=[self.context photoSourceURLFromDictionary:photoDict size:OFFlickrSmallSize];
+//    NSLog(@"%@", urlphoto);
     
     
 }
