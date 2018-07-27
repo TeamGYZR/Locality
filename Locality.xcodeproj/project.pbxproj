@@ -413,15 +413,6 @@
 			path = "User Explore";
 			sourceTree = "<group>";
 		};
-		8544B993210BBE4A0028D43F /* Path Deets */ = {
-			isa = PBXGroup;
-			children = (
-				8544B994210BBE630028D43F /* PathDetailsViewController.h */,
-				8544B995210BBE630028D43F /* PathDetailsViewController.m */,
-			);
-			path = "Path Deets";
-            sourceTree = "<group>";
-        };
 		4CEF1C47210BAAEF00C69B15 /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -433,6 +424,15 @@
 				4CEF1C4F210BAE5600C69B15 /* Path.m */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		8544B993210BBE4A0028D43F /* Path Deets */ = {
+			isa = PBXGroup;
+			children = (
+				8544B994210BBE630028D43F /* PathDetailsViewController.h */,
+				8544B995210BBE630028D43F /* PathDetailsViewController.m */,
+			);
+			path = "Path Deets";
 			sourceTree = "<group>";
 		};
 		8597DACC20FCF68300BA261A /* Storyboards */ = {

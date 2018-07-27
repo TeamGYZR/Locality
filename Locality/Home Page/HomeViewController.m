@@ -23,6 +23,27 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+-(void) photoFecth{
+    self.apiKey = @"595a10deca33ce1b5a7ab291254fb22a";
+    self.sharedKey = @"cf18c4e987fb5146";
+    self.context = [[OFFlickrAPIContext alloc]
+                  initWithAPIKey:self.apiKey sharedSecret:self.sharedKey];
+    self.request=[[OFFlickrAPIRequest alloc] initWithAPIContext:self.context];
+    [self.request setDelegate:self];
+  NSDictionary *dictionary = [NSDictionary dictionaryWithObjectsAndKeys:@
+                              "San francisco", @"text",nil];
+    [self.request callAPIMethodWithGET:@"flickr.photos.search" arguments:dictionary];
+}
+- (void)flickrAPIRequest:(OFFlickrAPIRequest *)inRequest didCompleteWithResponse:(NSDictionary *)inResponseDictionary{
+  NSLog(@"response: %@", inResponseDictionary);
+    
+    
+}
+- (void)flickrAPIRequest:(OFFlickrAPIRequest *)inRequest didFailWithError:(NSError *)inError{
+    self.request=nil;
+}
+
+
 
 /*
 #pragma mark - Navigation

@@ -7,7 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <ObjectiveFlickr/ObjectiveFlickr.h>
 
-@interface HomeViewController : UIViewController
+@interface HomeViewController : UIViewController<OFFlickrAPIRequestDelegate>
+@property (weak, nonatomic) IBOutlet UIImageView *imageView;
+@property (strong,nonatomic) OFFlickrAPIContext *context;
+@property (strong, nonatomic) OFFlickrAPIRequest *request;
+@property (strong, nonatomic) NSString *apiKey;
+@property (strong,nonatomic) NSString *sharedKey;
 
 @end
