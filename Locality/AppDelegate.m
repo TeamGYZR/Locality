@@ -29,8 +29,8 @@
     [Parse initializeWithConfiguration:config];
     
     if (PFUser.currentUser) {
-        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"YMapView" bundle:nil];
-        self.window.rootViewController = [storyboard instantiateViewControllerWithIdentifier:@"MainTabBar"];
+        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Home" bundle:nil];
+        self.window.rootViewController = [storyboard instantiateViewControllerWithIdentifier:@"HomeView"];
     }
     [PFFacebookUtils initializeFacebookWithApplicationLaunchOptions:launchOptions];
     //launch the facebook software
