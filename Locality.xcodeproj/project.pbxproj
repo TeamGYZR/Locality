@@ -44,6 +44,8 @@
 		851C871C21014D0E007C32DD /* Favorite.m in Sources */ = {isa = PBXBuildFile; fileRef = 851C871B21014D0E007C32DD /* Favorite.m */; };
 		8544B98D210BACB00028D43F /* VerificationSignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8544B98C210BACB00028D43F /* VerificationSignUpViewController.m */; };
 		8544B990210BAD370028D43F /* DetailSignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8544B98F210BAD370028D43F /* DetailSignUpViewController.m */; };
+		8544B992210BBE040028D43F /* PathDetail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8544B991210BBE040028D43F /* PathDetail.storyboard */; };
+		8544B996210BBE630028D43F /* PathDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8544B995210BBE630028D43F /* PathDetailsViewController.m */; };
 		8550B0A32106D2CA0009C845 /* FavoritesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8550B0A22106D2CA0009C845 /* FavoritesViewController.m */; };
 		8550B0AC2107E4CE0009C845 /* ResultsViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8550B0AA2107E4CE0009C845 /* ResultsViewCell.m */; };
 		8580000421015FA30022A126 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 8580000321015FA30022A126 /* User.m */; };
@@ -153,6 +155,9 @@
 		8544B98C210BACB00028D43F /* VerificationSignUpViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VerificationSignUpViewController.m; sourceTree = "<group>"; };
 		8544B98E210BAD370028D43F /* DetailSignUpViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DetailSignUpViewController.h; sourceTree = "<group>"; };
 		8544B98F210BAD370028D43F /* DetailSignUpViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DetailSignUpViewController.m; sourceTree = "<group>"; };
+		8544B991210BBE040028D43F /* PathDetail.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PathDetail.storyboard; sourceTree = "<group>"; };
+		8544B994210BBE630028D43F /* PathDetailsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PathDetailsViewController.h; sourceTree = "<group>"; };
+		8544B995210BBE630028D43F /* PathDetailsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PathDetailsViewController.m; sourceTree = "<group>"; };
 		8550B0A12106D2CA0009C845 /* FavoritesViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FavoritesViewController.h; sourceTree = "<group>"; };
 		8550B0A22106D2CA0009C845 /* FavoritesViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FavoritesViewController.m; sourceTree = "<group>"; };
 		8550B0AA2107E4CE0009C845 /* ResultsViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResultsViewCell.m; sourceTree = "<group>"; };
@@ -363,6 +368,7 @@
 		4CDAC17620F4424100B3E7D4 /* Locality */ = {
 			isa = PBXGroup;
 			children = (
+				8544B993210BBE4A0028D43F /* Path Deets */,
 				4C51C939210BC106007B389F /* Home Page */,
 				4CEF1C47210BAAEF00C69B15 /* Models */,
 				4CA36B6420FFF40C0056EB44 /* Login */,
@@ -412,6 +418,15 @@
 			path = "User Explore";
 			sourceTree = "<group>";
 		};
+		8544B993210BBE4A0028D43F /* Path Deets */ = {
+			isa = PBXGroup;
+			children = (
+				8544B994210BBE630028D43F /* PathDetailsViewController.h */,
+				8544B995210BBE630028D43F /* PathDetailsViewController.m */,
+			);
+			path = "Path Deets";
+            sourceTree = "<group>";
+        };
 		4CEF1C47210BAAEF00C69B15 /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -431,6 +446,7 @@
 				4CA36B6220FFF2FD0056EB44 /* Login.storyboard */,
 				4CEF1C42210B8B6500C69B15 /* Interstitial.storyboard */,
 				A8E26418210BB48C002C0992 /* Home.storyboard */,
+				8544B991210BBE040028D43F /* PathDetail.storyboard */,
 			);
 			path = Storyboards;
 			sourceTree = "<group>";
@@ -576,6 +592,7 @@
 				8597DB2120FE7BA200BA261A /* YMapView.storyboard in Resources */,
 				A80F646920FF3BB500C105D0 /* collectionview.storyboard in Resources */,
 				A8E26419210BB48C002C0992 /* Home.storyboard in Resources */,
+				8544B992210BBE040028D43F /* PathDetail.storyboard in Resources */,
 				4CDAC18420F4424100B3E7D4 /* LaunchScreen.storyboard in Resources */,
 				4CEF1C43210B8B6500C69B15 /* Interstitial.storyboard in Resources */,
 				4CDAC18120F4424100B3E7D4 /* Assets.xcassets in Resources */,
@@ -716,6 +733,7 @@
 				4CEF1C50210BAE5600C69B15 /* Path.m in Sources */,
 				4CA36B5420FE90340056EB44 /* Venue.m in Sources */,
 				4CA36B5B20FE9F8A0056EB44 /* APIManager.m in Sources */,
+				8544B996210BBE630028D43F /* PathDetailsViewController.m in Sources */,
 				4C771D752107999F0055A90D /* DetailsCollectionViewController.m in Sources */,
 				4CDAC17920F4424100B3E7D4 /* AppDelegate.m in Sources */,
 				4CEF1C4D210BAB9800C69B15 /* Itenerary.m in Sources */,
