@@ -9,6 +9,7 @@
 #import "InterstitialViewController.h"
 #import <MapKit/MapKit.h>
 #import <CoreLocation/CoreLocation.h>
+#import "LoginViewController.h"
 
 @interface InterstitialViewController () <CLLocationManagerDelegate>
 @property (strong, nonatomic) CLLocationManager *locationManager;
@@ -59,7 +60,9 @@
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
     if([[segue identifier] isEqualToString:@"segueToLogin"]){
-        
+        LoginViewController *logInViewController =[segue destinationViewController];
+        logInViewController.lat = [NSNumber numberWithDouble:self.currentLocation.latitude];
+        logInViewController.lon = [NSNumber numberWithDouble:self.currentLocation.longitude];
         
     }
 }

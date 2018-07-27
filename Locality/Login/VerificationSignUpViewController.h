@@ -9,5 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface VerificationSignUpViewController : UIViewController
-
+@property (strong, nonatomic) NSNumber *lat;
+@property (strong, nonatomic) NSNumber *lon;
 @end
