@@ -41,6 +41,8 @@
 		4CEF1C4D210BAB9800C69B15 /* Itenerary.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CEF1C4C210BAB9800C69B15 /* Itenerary.m */; };
 		4CEF1C50210BAE5600C69B15 /* Path.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CEF1C4F210BAE5600C69B15 /* Path.m */; };
 		851C871C21014D0E007C32DD /* Favorite.m in Sources */ = {isa = PBXBuildFile; fileRef = 851C871B21014D0E007C32DD /* Favorite.m */; };
+		8544B98D210BACB00028D43F /* VerificationSignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8544B98C210BACB00028D43F /* VerificationSignUpViewController.m */; };
+		8544B990210BAD370028D43F /* DetailSignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8544B98F210BAD370028D43F /* DetailSignUpViewController.m */; };
 		8550B0A32106D2CA0009C845 /* FavoritesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8550B0A22106D2CA0009C845 /* FavoritesViewController.m */; };
 		8550B0AC2107E4CE0009C845 /* ResultsViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8550B0AA2107E4CE0009C845 /* ResultsViewCell.m */; };
 		8580000421015FA30022A126 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 8580000321015FA30022A126 /* User.m */; };
@@ -56,6 +58,8 @@
 		A814231320FFC60D00C976AE /* CollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A814231220FFC60D00C976AE /* CollectionViewCell.m */; };
 		A858D2DF21044E7C00637FAD /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A858D2DE21044E7C00637FAD /* AVFoundation.framework */; };
 		A8842AF22106A44F003ECD07 /* Uploadphotoviewcontroller.m in Sources */ = {isa = PBXBuildFile; fileRef = A8842AF12106A44F003ECD07 /* Uploadphotoviewcontroller.m */; };
+		A8E26415210BB430002C0992 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A8E26414210BB430002C0992 /* HomeViewController.m */; };
+		A8E26419210BB48C002C0992 /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A8E26418210BB48C002C0992 /* Home.storyboard */; };
 		A8F8E7E2210951CF00684142 /* FlickrAuthorizationAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A8F8E7E1210951CF00684142 /* FlickrAuthorizationAppDelegate.m */; };
 /* End PBXBuildFile section */
 
@@ -142,6 +146,10 @@
 		8274814A446109AFAE12B326 /* Pods-LocalityTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LocalityTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-LocalityTests/Pods-LocalityTests.release.xcconfig"; sourceTree = "<group>"; };
 		851C871A21014D0E007C32DD /* Favorite.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Favorite.h; sourceTree = "<group>"; };
 		851C871B21014D0E007C32DD /* Favorite.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Favorite.m; sourceTree = "<group>"; };
+		8544B98B210BACB00028D43F /* VerificationSignUpViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VerificationSignUpViewController.h; sourceTree = "<group>"; };
+		8544B98C210BACB00028D43F /* VerificationSignUpViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VerificationSignUpViewController.m; sourceTree = "<group>"; };
+		8544B98E210BAD370028D43F /* DetailSignUpViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DetailSignUpViewController.h; sourceTree = "<group>"; };
+		8544B98F210BAD370028D43F /* DetailSignUpViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DetailSignUpViewController.m; sourceTree = "<group>"; };
 		8550B0A12106D2CA0009C845 /* FavoritesViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FavoritesViewController.h; sourceTree = "<group>"; };
 		8550B0A22106D2CA0009C845 /* FavoritesViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FavoritesViewController.m; sourceTree = "<group>"; };
 		8550B0AA2107E4CE0009C845 /* ResultsViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResultsViewCell.m; sourceTree = "<group>"; };
@@ -166,6 +174,9 @@
 		A858D2DE21044E7C00637FAD /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		A8842AF02106A44F003ECD07 /* Uploadphotoviewcontroller.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Uploadphotoviewcontroller.h; sourceTree = "<group>"; };
 		A8842AF12106A44F003ECD07 /* Uploadphotoviewcontroller.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Uploadphotoviewcontroller.m; sourceTree = "<group>"; };
+		A8E26413210BB430002C0992 /* HomeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
+		A8E26414210BB430002C0992 /* HomeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeViewController.m; sourceTree = "<group>"; };
+		A8E26418210BB48C002C0992 /* Home.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Home.storyboard; sourceTree = "<group>"; };
 		A8F8E7E0210951CF00684142 /* FlickrAuthorizationAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FlickrAuthorizationAppDelegate.h; sourceTree = "<group>"; };
 		A8F8E7E1210951CF00684142 /* FlickrAuthorizationAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FlickrAuthorizationAppDelegate.m; sourceTree = "<group>"; };
 		C01F5B3A004D967BDF2A1867 /* Pods-Locality.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Locality.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Locality/Pods-Locality.debug.xcconfig"; sourceTree = "<group>"; };
@@ -269,6 +280,10 @@
 		4CA36B6420FFF40C0056EB44 /* Login */ = {
 			isa = PBXGroup;
 			children = (
+				8544B98B210BACB00028D43F /* VerificationSignUpViewController.h */,
+				8544B98C210BACB00028D43F /* VerificationSignUpViewController.m */,
+				8544B98E210BAD370028D43F /* DetailSignUpViewController.h */,
+				8544B98F210BAD370028D43F /* DetailSignUpViewController.m */,
 				4CA36B6520FFF41D0056EB44 /* LoginViewController.h */,
 				4CA36B6620FFF41D0056EB44 /* LoginViewController.m */,
 				4C771D67210665CA0055A90D /* SignUpViewController.h */,
@@ -346,6 +361,8 @@
 				4CDAC18620F4424100B3E7D4 /* main.m */,
 				A8F8E7E0210951CF00684142 /* FlickrAuthorizationAppDelegate.h */,
 				A8F8E7E1210951CF00684142 /* FlickrAuthorizationAppDelegate.m */,
+				A8E26413210BB430002C0992 /* HomeViewController.h */,
+				A8E26414210BB430002C0992 /* HomeViewController.m */,
 				4CB3478D2108D38000BC0C3A /* Old Files */,
 			);
 			path = Locality;
@@ -400,6 +417,7 @@
 			children = (
 				4CA36B6220FFF2FD0056EB44 /* Login.storyboard */,
 				4CEF1C42210B8B6500C69B15 /* Interstitial.storyboard */,
+				A8E26418210BB48C002C0992 /* Home.storyboard */,
 			);
 			path = Storyboards;
 			sourceTree = "<group>";
@@ -544,6 +562,7 @@
 				4CA36B6320FFF2FD0056EB44 /* Login.storyboard in Resources */,
 				8597DB2120FE7BA200BA261A /* YMapView.storyboard in Resources */,
 				A80F646920FF3BB500C105D0 /* collectionview.storyboard in Resources */,
+				A8E26419210BB48C002C0992 /* Home.storyboard in Resources */,
 				4CDAC18420F4424100B3E7D4 /* LaunchScreen.storyboard in Resources */,
 				4CEF1C43210B8B6500C69B15 /* Interstitial.storyboard in Resources */,
 				4CDAC18120F4424100B3E7D4 /* Assets.xcassets in Resources */,
@@ -667,6 +686,7 @@
 				A80F646C20FF3BF000C105D0 /* CollectionViewController.m in Sources */,
 				4CA36B6E21010ADE0056EB44 /* ProfileViewController.m in Sources */,
 				A8842AF22106A44F003ECD07 /* Uploadphotoviewcontroller.m in Sources */,
+				8544B990210BAD370028D43F /* DetailSignUpViewController.m in Sources */,
 				4CA36B6720FFF41D0056EB44 /* LoginViewController.m in Sources */,
 				859A1AA720FF1A1800E13EBC /* VenueAnnotationView.m in Sources */,
 				8597DB2220FE7BA200BA261A /* ExploreMapViewController.m in Sources */,
@@ -675,6 +695,7 @@
 				4CEF1C41210A786D00C69B15 /* Follow.m in Sources */,
 				4CEF1C382108DCE500C69B15 /* UserCell.m in Sources */,
 				4CEF1C45210BA96500C69B15 /* ResultsTableViewController.m in Sources */,
+				A8E26415210BB430002C0992 /* HomeViewController.m in Sources */,
 				8550B0A32106D2CA0009C845 /* FavoritesViewController.m in Sources */,
 				4CDAC18720F4424100B3E7D4 /* main.m in Sources */,
 				4C771D6F21069E770055A90D /* ReviewViewController.m in Sources */,
@@ -691,6 +712,7 @@
 				8580000421015FA30022A126 /* User.m in Sources */,
 				851C871C21014D0E007C32DD /* Favorite.m in Sources */,
 				A814231320FFC60D00C976AE /* CollectionViewCell.m in Sources */,
+				8544B98D210BACB00028D43F /* VerificationSignUpViewController.m in Sources */,
 				4C771D6C210695100055A90D /* Comment.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

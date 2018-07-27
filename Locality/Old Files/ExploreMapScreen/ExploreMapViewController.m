@@ -73,7 +73,7 @@
         {
             NSLog(@"location usage authorized");
             
-            self.locationManager.distanceFilter = kCLDistanceFilterNone;
+            self.locationManager.distanceFilter = 10;
             self.locationManager.desiredAccuracy = kCLLocationAccuracyBest;
             
             [self.locationManager requestLocation];
@@ -113,21 +113,25 @@
     // in case we need another dummy emoticon
     
     
-    
-    APIManager *apiManager = [[APIManager alloc] init];
-    NSNumber * lat = [NSNumber numberWithDouble:coordinate.latitude];
-    NSNumber * lon = [NSNumber numberWithDouble:coordinate.longitude];
-    
-    [apiManager fetchLocationsWithLatitude:lat andLongitude:lon withCompletionHandler:^(NSArray *array, NSError *errror) {
-        
-        NSLog(@"completion ran");
-        for(Venue *venue in array){
-            VenueAnnotation *annotation = [[VenueAnnotation alloc] initWithVenue:venue];
-            [self.mapView addAnnotation:annotation];
-        }
-        
-       // [self.navigationController popToViewController:self animated:YES];
-    }];
+//
+//    APIManager *apiManager = [[APIManager alloc] init];
+//    NSNumber * lat = [NSNumber numberWithDouble:coordinate.latitude];
+//    NSNumber * lon = [NSNumber numberWithDouble:coordinate.longitude];
+//
+//    [apiManager fetchLocationsWithLatitude:lat andLongitude:lon withCompletionHandler:^(NSArray *array, NSError *error) {
+//            if (array) {
+//                NSLog(@"venues fetched");
+//                for(Venue *venue in array){
+//                    VenueAnnotation *annotation = [[VenueAnnotation alloc] initWithVenue:venue];
+//                    [self.mapView addAnnotation:annotation];
+//                }
+//            }
+//            else if (error) {
+//                NSLog(@"venue fetch unsuccessful, error - %@", error.localizedDescription);
+//            }
+//
+//       // [self.navigationController popToViewController:self animated:YES];
+//    }];
     
     
     
@@ -173,16 +177,20 @@
 
 - (void)mapView:(MKMapView *)mapView didChangeUserTrackingMode:(MKUserTrackingMode)mode animated:(BOOL)animated{
     NSLog(@"tracking mode activated");
+    
+//    self.locationManager.distanceFilter = 500;
+//    self.locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters;
+    
     [self.locationManager startUpdatingLocation]; 
     
 }
 
 - (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error{
-    NSLog(@"%@", error);
+    NSLog(@"THERE WAS AN ERROR - %@", error);
 }
 
 - (void)locationManager:(CLLocationManager *)manager didFinishDeferredUpdatesWithError:(NSError *)error{
-    NSLog(@"%@", error);
+    NSLog(@"THERE WAS AN ERROR - %@", error);
 }
 
 - (void)mapView:(MKMapView *)mapView annotationView:(MKAnnotationView *)view calloutAccessoryControlTapped:(UIControl *)control
