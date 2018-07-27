@@ -234,6 +234,15 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		4C51C939210BC106007B389F /* Home Page */ = {
+			isa = PBXGroup;
+			children = (
+				A8E26413210BB430002C0992 /* HomeViewController.h */,
+				A8E26414210BB430002C0992 /* HomeViewController.m */,
+			);
+			path = "Home Page";
+			sourceTree = "<group>";
+		};
 		4CA36B5120FE90180056EB44 /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -355,6 +364,7 @@
 			isa = PBXGroup;
 			children = (
 				8544B993210BBE4A0028D43F /* Path Deets */,
+				4C51C939210BC106007B389F /* Home Page */,
 				4CEF1C47210BAAEF00C69B15 /* Models */,
 				4CA36B6420FFF40C0056EB44 /* Login */,
 				4CA36B5520FE9C520056EB44 /* API */,
@@ -367,8 +377,6 @@
 				4CDAC18620F4424100B3E7D4 /* main.m */,
 				A8F8E7E0210951CF00684142 /* FlickrAuthorizationAppDelegate.h */,
 				A8F8E7E1210951CF00684142 /* FlickrAuthorizationAppDelegate.m */,
-				A8E26413210BB430002C0992 /* HomeViewController.h */,
-				A8E26414210BB430002C0992 /* HomeViewController.m */,
 				4CB3478D2108D38000BC0C3A /* Old Files */,
 			);
 			path = Locality;
