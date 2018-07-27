@@ -12,7 +12,7 @@
 
 @interface HomeViewController () <UICollectionViewDelegate, UICollectionViewDataSource>
 
-@property (strong, nonatomic) NSArray *paths;
+@property (strong, nonatomic) NSArray *iteneraries;
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 
 @end
@@ -24,6 +24,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self loadPathsWithCategory:@"Foodie"];
+    [self photoFecth];
 }
 
 #pragma mark - IBAction
@@ -40,7 +41,7 @@
     [self loadPathsWithCategory:@"Nature"];
 }
 
-#pragma mark- Parse Query
+#pragma mark - Parse Query
 
 - (void) loadPathsWithCategory:(NSString *)category{
     PFQuery *query = [PFQuery queryWithClassName:@"Itenerary"];
@@ -48,11 +49,11 @@
     //this might not be necessary
     [query includeKey:@"path"];
     [query includeKey:@"creator"];
-    [query findObjectsInBackgroundWithBlock:^(NSArray *paths, NSError *error){
+    [query findObjectsInBackgroundWithBlock:^(NSArray *iteneraries, NSError *error){
         if (error) {
             NSLog(@"error loading paths from Parse");
         } else {
-            self.paths = paths;
+            self.iteneraries = iteneraries;
         }
     }];
     
@@ -61,12 +62,12 @@
 #pragma mark - UICollectionView
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
-    return self.paths.count;
+    return self.iteneraries.count;
 }
 
 - (nonnull __kindof UICollectionViewCell *)collectionView:(nonnull UICollectionView *)collectionView cellForItemAtIndexPath:(nonnull NSIndexPath *)indexPath{
     PathCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"PathCell" forIndexPath:indexPath];
-    cell.itenerary = self.paths[indexPath.item];
+    cell.itenerary = self.iteneraries[indexPath.item];
     return cell;
 }
 -(void) photoFecth{
@@ -79,9 +80,14 @@
   NSDictionary *dictionary = [NSDictionary dictionaryWithObjectsAndKeys:@
                               "San francisco", @"text",nil];
     [self.request callAPIMethodWithGET:@"flickr.photos.search" arguments:dictionary];
+    
 }
 - (void)flickrAPIRequest:(OFFlickrAPIRequest *)inRequest didCompleteWithResponse:(NSDictionary *)inResponseDictionary{
   NSLog(@"response: %@", inResponseDictionary);
+    self.photoResponseDictionary=inResponseDictionary;
+   NSDictionary *photoDict =self.photoResponseDictionary[@"photos"][@"photo"];
+   NSURL * urlphoto=[self.context photoSourceURLFromDictionary:photoDict size:OFFlickrSmallSize];
+//    NSLog(@"%@", urlphoto);
     
     
 }
