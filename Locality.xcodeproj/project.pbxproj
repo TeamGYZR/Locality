@@ -27,8 +27,6 @@
 		4CA36B74210128F20056EB44 /* EditProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CA36B73210128F20056EB44 /* EditProfileViewController.m */; };
 		4CB3478F2108D95500BC0C3A /* ExploreUsers.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4CB3478E2108D95500BC0C3A /* ExploreUsers.storyboard */; };
 		4CDAC17920F4424100B3E7D4 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CDAC17820F4424100B3E7D4 /* AppDelegate.m */; };
-		4CDAC17C20F4424100B3E7D4 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CDAC17B20F4424100B3E7D4 /* ViewController.m */; };
-		4CDAC17F20F4424100B3E7D4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4CDAC17D20F4424100B3E7D4 /* Main.storyboard */; };
 		4CDAC18120F4424100B3E7D4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4CDAC18020F4424100B3E7D4 /* Assets.xcassets */; };
 		4CDAC18420F4424100B3E7D4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4CDAC18220F4424100B3E7D4 /* LaunchScreen.storyboard */; };
 		4CDAC18720F4424100B3E7D4 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CDAC18620F4424100B3E7D4 /* main.m */; };
@@ -38,8 +36,9 @@
 		4CEF1C382108DCE500C69B15 /* UserCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CEF1C372108DCE500C69B15 /* UserCell.m */; };
 		4CEF1C3E210A479600C69B15 /* UserProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CEF1C3D210A479600C69B15 /* UserProfileViewController.m */; };
 		4CEF1C41210A786D00C69B15 /* Follow.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CEF1C40210A786D00C69B15 /* Follow.m */; };
+		4CEF1C43210B8B6500C69B15 /* Interstitial.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4CEF1C42210B8B6500C69B15 /* Interstitial.storyboard */; };
+		4CEF1C45210BA96500C69B15 /* ResultsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CEF1C44210BA96500C69B15 /* ResultsTableViewController.m */; };
 		851C871C21014D0E007C32DD /* Favorite.m in Sources */ = {isa = PBXBuildFile; fileRef = 851C871B21014D0E007C32DD /* Favorite.m */; };
-		8550B0A02106916F0009C845 /* ResultsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8550B09F2106916F0009C845 /* ResultsTableViewController.m */; };
 		8550B0A32106D2CA0009C845 /* FavoritesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8550B0A22106D2CA0009C845 /* FavoritesViewController.m */; };
 		8550B0AC2107E4CE0009C845 /* ResultsViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8550B0AA2107E4CE0009C845 /* ResultsViewCell.m */; };
 		8580000421015FA30022A126 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 8580000321015FA30022A126 /* User.m */; };
@@ -111,9 +110,6 @@
 		4CDAC17420F4424100B3E7D4 /* Locality.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Locality.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4CDAC17720F4424100B3E7D4 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		4CDAC17820F4424100B3E7D4 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		4CDAC17A20F4424100B3E7D4 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		4CDAC17B20F4424100B3E7D4 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
-		4CDAC17E20F4424100B3E7D4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		4CDAC18020F4424100B3E7D4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4CDAC18320F4424100B3E7D4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4CDAC18520F4424100B3E7D4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -132,13 +128,14 @@
 		4CEF1C3D210A479600C69B15 /* UserProfileViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UserProfileViewController.m; sourceTree = "<group>"; };
 		4CEF1C3F210A786D00C69B15 /* Follow.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Follow.h; sourceTree = "<group>"; };
 		4CEF1C40210A786D00C69B15 /* Follow.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Follow.m; sourceTree = "<group>"; };
+		4CEF1C42210B8B6500C69B15 /* Interstitial.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Interstitial.storyboard; sourceTree = "<group>"; };
+		4CEF1C44210BA96500C69B15 /* ResultsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResultsTableViewController.m; sourceTree = "<group>"; };
+		4CEF1C46210BA97000C69B15 /* ResultsTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ResultsTableViewController.h; sourceTree = "<group>"; };
 		5F1B3E5DBABAB3F93F44C75E /* libPods-Locality.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Locality.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7268D2AFC88C24A529B514A5 /* libPods-LocalityUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-LocalityUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8274814A446109AFAE12B326 /* Pods-LocalityTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LocalityTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-LocalityTests/Pods-LocalityTests.release.xcconfig"; sourceTree = "<group>"; };
 		851C871A21014D0E007C32DD /* Favorite.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Favorite.h; sourceTree = "<group>"; };
 		851C871B21014D0E007C32DD /* Favorite.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Favorite.m; sourceTree = "<group>"; };
-		8550B09E2106916F0009C845 /* ResultsTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ResultsTableViewController.h; path = Locality/ExploreMapScreen/ResultsTableViewController.h; sourceTree = SOURCE_ROOT; };
-		8550B09F2106916F0009C845 /* ResultsTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = ResultsTableViewController.m; path = Locality/ExploreMapScreen/ResultsTableViewController.m; sourceTree = SOURCE_ROOT; };
 		8550B0A12106D2CA0009C845 /* FavoritesViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FavoritesViewController.h; sourceTree = "<group>"; };
 		8550B0A22106D2CA0009C845 /* FavoritesViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FavoritesViewController.m; sourceTree = "<group>"; };
 		8550B0AA2107E4CE0009C845 /* ResultsViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResultsViewCell.m; sourceTree = "<group>"; };
@@ -244,6 +241,13 @@
 		4CA36B5E20FEB5290056EB44 /* Venue Details */ = {
 			isa = PBXGroup;
 			children = (
+				A80F646820FF3BB500C105D0 /* collectionview.storyboard */,
+				A80F646A20FF3BF000C105D0 /* CollectionViewController.h */,
+				A80F646B20FF3BF000C105D0 /* CollectionViewController.m */,
+				A814231120FFC60D00C976AE /* CollectionViewCell.h */,
+				A814231220FFC60D00C976AE /* CollectionViewCell.m */,
+				A8842AF02106A44F003ECD07 /* Uploadphotoviewcontroller.h */,
+				A8842AF12106A44F003ECD07 /* Uploadphotoviewcontroller.m */,
 				4C771D6D21069E770055A90D /* ReviewViewController.h */,
 				4C771D6E21069E770055A90D /* ReviewViewController.m */,
 				4C771D702106A8EF0055A90D /* CommentCell.h */,
@@ -287,6 +291,14 @@
 		4CB3478D2108D38000BC0C3A /* Old Files */ = {
 			isa = PBXGroup;
 			children = (
+				4CEF1C322108DC2600C69B15 /* User Explore */,
+				4CA36B6B21010AC40056EB44 /* Profile */,
+				4CA36B5120FE90180056EB44 /* Models */,
+				8597DAD620FD0DD500BA261A /* ExploreMapScreen */,
+				4CA36B5C20FEB20A0056EB44 /* DetailsView.storyboard */,
+				8597DB1F20FE7BA200BA261A /* YMapView.storyboard */,
+				4CB3478E2108D95500BC0C3A /* ExploreUsers.storyboard */,
+				4CA36B5E20FEB5290056EB44 /* Venue Details */,
 				4CA36B5F20FEB5540056EB44 /* DetailsViewController.h */,
 				4CA36B6020FEB5540056EB44 /* DetailsViewController.m */,
 			);
@@ -318,30 +330,15 @@
 		4CDAC17620F4424100B3E7D4 /* Locality */ = {
 			isa = PBXGroup;
 			children = (
-				4CEF1C322108DC2600C69B15 /* User Explore */,
-				4CA36B6B21010AC40056EB44 /* Profile */,
 				4CA36B6420FFF40C0056EB44 /* Login */,
-				4CA36B5E20FEB5290056EB44 /* Venue Details */,
 				4CA36B5520FE9C520056EB44 /* API */,
-				4CA36B5120FE90180056EB44 /* Models */,
-				8597DAD620FD0DD500BA261A /* ExploreMapScreen */,
 				8597DACC20FCF68300BA261A /* Storyboards */,
 				4CDAC17720F4424100B3E7D4 /* AppDelegate.h */,
 				4CDAC17820F4424100B3E7D4 /* AppDelegate.m */,
-				4CDAC17A20F4424100B3E7D4 /* ViewController.h */,
-				4CDAC17B20F4424100B3E7D4 /* ViewController.m */,
-				4CDAC17D20F4424100B3E7D4 /* Main.storyboard */,
 				4CDAC18020F4424100B3E7D4 /* Assets.xcassets */,
 				4CDAC18220F4424100B3E7D4 /* LaunchScreen.storyboard */,
 				4CDAC18520F4424100B3E7D4 /* Info.plist */,
 				4CDAC18620F4424100B3E7D4 /* main.m */,
-				A80F646820FF3BB500C105D0 /* collectionview.storyboard */,
-				A80F646A20FF3BF000C105D0 /* CollectionViewController.h */,
-				A80F646B20FF3BF000C105D0 /* CollectionViewController.m */,
-				A814231120FFC60D00C976AE /* CollectionViewCell.h */,
-				A814231220FFC60D00C976AE /* CollectionViewCell.m */,
-				A8842AF02106A44F003ECD07 /* Uploadphotoviewcontroller.h */,
-				A8842AF12106A44F003ECD07 /* Uploadphotoviewcontroller.m */,
 				A8F8E7E0210951CF00684142 /* FlickrAuthorizationAppDelegate.h */,
 				A8F8E7E1210951CF00684142 /* FlickrAuthorizationAppDelegate.m */,
 				4CB3478D2108D38000BC0C3A /* Old Files */,
@@ -383,10 +380,8 @@
 		8597DACC20FCF68300BA261A /* Storyboards */ = {
 			isa = PBXGroup;
 			children = (
-				4CA36B5C20FEB20A0056EB44 /* DetailsView.storyboard */,
 				4CA36B6220FFF2FD0056EB44 /* Login.storyboard */,
-				8597DB1F20FE7BA200BA261A /* YMapView.storyboard */,
-				4CB3478E2108D95500BC0C3A /* ExploreUsers.storyboard */,
+				4CEF1C42210B8B6500C69B15 /* Interstitial.storyboard */,
 			);
 			path = Storyboards;
 			sourceTree = "<group>";
@@ -396,8 +391,8 @@
 			children = (
 				8550B0AB2107E4CE0009C845 /* ResultsViewCell.h */,
 				8550B0AA2107E4CE0009C845 /* ResultsViewCell.m */,
-				8550B09E2106916F0009C845 /* ResultsTableViewController.h */,
-				8550B09F2106916F0009C845 /* ResultsTableViewController.m */,
+				4CEF1C46210BA97000C69B15 /* ResultsTableViewController.h */,
+				4CEF1C44210BA96500C69B15 /* ResultsTableViewController.m */,
 				859A1AA520FF1A1800E13EBC /* VenueAnnotationView.h */,
 				859A1AA620FF1A1800E13EBC /* VenueAnnotationView.m */,
 				8597DB2020FE7BA200BA261A /* ExploreMapViewController.m */,
@@ -532,8 +527,8 @@
 				8597DB2120FE7BA200BA261A /* YMapView.storyboard in Resources */,
 				A80F646920FF3BB500C105D0 /* collectionview.storyboard in Resources */,
 				4CDAC18420F4424100B3E7D4 /* LaunchScreen.storyboard in Resources */,
+				4CEF1C43210B8B6500C69B15 /* Interstitial.storyboard in Resources */,
 				4CDAC18120F4424100B3E7D4 /* Assets.xcassets in Resources */,
-				4CDAC17F20F4424100B3E7D4 /* Main.storyboard in Resources */,
 				4CA36B5D20FEB20A0056EB44 /* DetailsView.storyboard in Resources */,
 				4CB3478F2108D95500BC0C3A /* ExploreUsers.storyboard in Resources */,
 			);
@@ -648,7 +643,6 @@
 				A8F8E7E2210951CF00684142 /* FlickrAuthorizationAppDelegate.m in Sources */,
 				4CA36B71210112CD0056EB44 /* FavoriteCell.m in Sources */,
 				8550B0AC2107E4CE0009C845 /* ResultsViewCell.m in Sources */,
-				4CDAC17C20F4424100B3E7D4 /* ViewController.m in Sources */,
 				4CEF1C352108DC7500C69B15 /* UserSearchViewController.m in Sources */,
 				4CEF1C3E210A479600C69B15 /* UserProfileViewController.m in Sources */,
 				4C771D7821079A1A0055A90D /* DetailsHeaderView.m in Sources */,
@@ -661,8 +655,8 @@
 				859A1AA120FF121300E13EBC /* VenueAnnotation.m in Sources */,
 				4C771D69210665CA0055A90D /* SignUpViewController.m in Sources */,
 				4CEF1C41210A786D00C69B15 /* Follow.m in Sources */,
-				8550B0A02106916F0009C845 /* ResultsTableViewController.m in Sources */,
 				4CEF1C382108DCE500C69B15 /* UserCell.m in Sources */,
+				4CEF1C45210BA96500C69B15 /* ResultsTableViewController.m in Sources */,
 				8550B0A32106D2CA0009C845 /* FavoritesViewController.m in Sources */,
 				4CDAC18720F4424100B3E7D4 /* main.m in Sources */,
 				4C771D6F21069E770055A90D /* ReviewViewController.m in Sources */,
@@ -713,14 +707,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		4CDAC17D20F4424100B3E7D4 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				4CDAC17E20F4424100B3E7D4 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		4CDAC18220F4424100B3E7D4 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
