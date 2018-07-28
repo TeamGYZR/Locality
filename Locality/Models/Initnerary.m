@@ -1,14 +1,14 @@
 //
-//  Itenerary.m
+//  Initnerary.m
 //  Locality
 //
 //  Created by Ginger Dudley on 7/27/18.
 //  Copyright © 2018 Ginger Dudley. All rights reserved.
 //
 
-#import "Itenerary.h"
+#import "Initnerary.h"
 
-@implementation Itenerary
+@implementation Initnerary
 
 @dynamic name;
 @dynamic creator;
@@ -19,7 +19,7 @@
 @dynamic distanceFromFirstPinnedLocation;
 
 + (nonnull NSString *)parseClassName {
-    return @"Itenerary";
+    return @"Itinerary";
 }
 
 @end
