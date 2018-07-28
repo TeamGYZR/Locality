@@ -7,10 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "Itenerary.h"
+#import "Itinerary.h"
 
 @interface PathCell : UICollectionViewCell
 
-@property (strong, nonatomic) Itenerary *itenerary;
+@property (strong, nonatomic) Itinerary *itinerary;
 
 @end

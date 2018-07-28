@@ -10,6 +10,8 @@
 		1BE7AFA3980986C9A157CCD2 /* libPods-Locality.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F1B3E5DBABAB3F93F44C75E /* libPods-Locality.a */; };
 		2F308E1C27E4FA2C43F5F955 /* libPods-LocalityUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7268D2AFC88C24A529B514A5 /* libPods-LocalityUITests.a */; };
 		4C51C93C210BC990007B389F /* PathCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C51C93B210BC990007B389F /* PathCell.m */; };
+		4C51C940210BE353007B389F /* pinnedLocations.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C51C93F210BE353007B389F /* pinnedLocations.m */; };
+		4C51C946210BEE7D007B389F /* Itinerary.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C51C945210BEE7D007B389F /* Itinerary.m */; };
 		4C771D69210665CA0055A90D /* SignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C771D68210665CA0055A90D /* SignUpViewController.m */; };
 		4C771D6C210695100055A90D /* Comment.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C771D6B210695100055A90D /* Comment.m */; };
 		4C771D6F21069E770055A90D /* ReviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C771D6E21069E770055A90D /* ReviewViewController.m */; };
@@ -39,13 +41,13 @@
 		4CEF1C41210A786D00C69B15 /* Follow.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CEF1C40210A786D00C69B15 /* Follow.m */; };
 		4CEF1C43210B8B6500C69B15 /* Interstitial.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4CEF1C42210B8B6500C69B15 /* Interstitial.storyboard */; };
 		4CEF1C45210BA96500C69B15 /* ResultsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CEF1C44210BA96500C69B15 /* ResultsTableViewController.m */; };
-		4CEF1C4D210BAB9800C69B15 /* Itenerary.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CEF1C4C210BAB9800C69B15 /* Itenerary.m */; };
 		4CEF1C50210BAE5600C69B15 /* Path.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CEF1C4F210BAE5600C69B15 /* Path.m */; };
 		851C871C21014D0E007C32DD /* Favorite.m in Sources */ = {isa = PBXBuildFile; fileRef = 851C871B21014D0E007C32DD /* Favorite.m */; };
 		8544B98D210BACB00028D43F /* VerificationSignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8544B98C210BACB00028D43F /* VerificationSignUpViewController.m */; };
 		8544B990210BAD370028D43F /* DetailSignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8544B98F210BAD370028D43F /* DetailSignUpViewController.m */; };
 		8544B992210BBE040028D43F /* PathDetail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8544B991210BBE040028D43F /* PathDetail.storyboard */; };
 		8544B996210BBE630028D43F /* PathDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8544B995210BBE630028D43F /* PathDetailsViewController.m */; };
+		8544B999210BC2DB0028D43F /* InterstitialViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8544B998210BC2DB0028D43F /* InterstitialViewController.m */; };
 		8550B0A32106D2CA0009C845 /* FavoritesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8550B0A22106D2CA0009C845 /* FavoritesViewController.m */; };
 		8550B0AC2107E4CE0009C845 /* ResultsViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8550B0AA2107E4CE0009C845 /* ResultsViewCell.m */; };
 		8580000421015FA30022A126 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 8580000321015FA30022A126 /* User.m */; };
@@ -87,6 +89,10 @@
 		0D954F9A18A334D6109C8DA1 /* Pods-LocalityTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LocalityTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LocalityTests/Pods-LocalityTests.debug.xcconfig"; sourceTree = "<group>"; };
 		4C51C93A210BC990007B389F /* PathCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PathCell.h; sourceTree = "<group>"; };
 		4C51C93B210BC990007B389F /* PathCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PathCell.m; sourceTree = "<group>"; };
+		4C51C93E210BE353007B389F /* pinnedLocations.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = pinnedLocations.h; sourceTree = "<group>"; };
+		4C51C93F210BE353007B389F /* pinnedLocations.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = pinnedLocations.m; sourceTree = "<group>"; };
+		4C51C944210BEE7D007B389F /* Itinerary.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Itinerary.h; sourceTree = "<group>"; };
+		4C51C945210BEE7D007B389F /* Itinerary.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Itinerary.m; sourceTree = "<group>"; };
 		4C771D67210665CA0055A90D /* SignUpViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SignUpViewController.h; sourceTree = "<group>"; };
 		4C771D68210665CA0055A90D /* SignUpViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SignUpViewController.m; sourceTree = "<group>"; };
 		4C771D6A210695100055A90D /* Comment.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Comment.h; sourceTree = "<group>"; };
@@ -142,8 +148,6 @@
 		4CEF1C42210B8B6500C69B15 /* Interstitial.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Interstitial.storyboard; sourceTree = "<group>"; };
 		4CEF1C44210BA96500C69B15 /* ResultsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResultsTableViewController.m; sourceTree = "<group>"; };
 		4CEF1C46210BA97000C69B15 /* ResultsTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ResultsTableViewController.h; sourceTree = "<group>"; };
-		4CEF1C4B210BAB9800C69B15 /* Itenerary.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Itenerary.h; sourceTree = "<group>"; };
-		4CEF1C4C210BAB9800C69B15 /* Itenerary.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Itenerary.m; sourceTree = "<group>"; };
 		4CEF1C4E210BAE5600C69B15 /* Path.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Path.h; sourceTree = "<group>"; };
 		4CEF1C4F210BAE5600C69B15 /* Path.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Path.m; sourceTree = "<group>"; };
 		5F1B3E5DBABAB3F93F44C75E /* libPods-Locality.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Locality.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -158,6 +162,8 @@
 		8544B991210BBE040028D43F /* PathDetail.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PathDetail.storyboard; sourceTree = "<group>"; };
 		8544B994210BBE630028D43F /* PathDetailsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PathDetailsViewController.h; sourceTree = "<group>"; };
 		8544B995210BBE630028D43F /* PathDetailsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PathDetailsViewController.m; sourceTree = "<group>"; };
+		8544B997210BC2DB0028D43F /* InterstitialViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = InterstitialViewController.h; sourceTree = "<group>"; };
+		8544B998210BC2DB0028D43F /* InterstitialViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = InterstitialViewController.m; sourceTree = "<group>"; };
 		8550B0A12106D2CA0009C845 /* FavoritesViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FavoritesViewController.h; sourceTree = "<group>"; };
 		8550B0A22106D2CA0009C845 /* FavoritesViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FavoritesViewController.m; sourceTree = "<group>"; };
 		8550B0AA2107E4CE0009C845 /* ResultsViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResultsViewCell.m; sourceTree = "<group>"; };
@@ -248,6 +254,15 @@
 			path = "Home Page";
 			sourceTree = "<group>";
 		};
+		4C51C93D210BE316007B389F /* Dummy Data */ = {
+			isa = PBXGroup;
+			children = (
+				4C51C93E210BE353007B389F /* pinnedLocations.h */,
+				4C51C93F210BE353007B389F /* pinnedLocations.m */,
+			);
+			path = "Dummy Data";
+			sourceTree = "<group>";
+		};
 		4CA36B5120FE90180056EB44 /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -299,6 +314,8 @@
 		4CA36B6420FFF40C0056EB44 /* Login */ = {
 			isa = PBXGroup;
 			children = (
+				8544B997210BC2DB0028D43F /* InterstitialViewController.h */,
+				8544B998210BC2DB0028D43F /* InterstitialViewController.m */,
 				8544B98B210BACB00028D43F /* VerificationSignUpViewController.h */,
 				8544B98C210BACB00028D43F /* VerificationSignUpViewController.m */,
 				8544B98E210BAD370028D43F /* DetailSignUpViewController.h */,
@@ -368,6 +385,7 @@
 		4CDAC17620F4424100B3E7D4 /* Locality */ = {
 			isa = PBXGroup;
 			children = (
+				4C51C93D210BE316007B389F /* Dummy Data */,
 				8544B993210BBE4A0028D43F /* Path Deets */,
 				4C51C939210BC106007B389F /* Home Page */,
 				4CEF1C47210BAAEF00C69B15 /* Models */,
@@ -423,10 +441,10 @@
 			children = (
 				8580000221015FA30022A126 /* User.h */,
 				8580000321015FA30022A126 /* User.m */,
-				4CEF1C4B210BAB9800C69B15 /* Itenerary.h */,
-				4CEF1C4C210BAB9800C69B15 /* Itenerary.m */,
 				4CEF1C4E210BAE5600C69B15 /* Path.h */,
 				4CEF1C4F210BAE5600C69B15 /* Path.m */,
+				4C51C944210BEE7D007B389F /* Itinerary.h */,
+				4C51C945210BEE7D007B389F /* Itinerary.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -708,6 +726,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A8F8E7E2210951CF00684142 /* FlickrAuthorizationAppDelegate.m in Sources */,
+				8544B999210BC2DB0028D43F /* InterstitialViewController.m in Sources */,
 				4CA36B71210112CD0056EB44 /* FavoriteCell.m in Sources */,
 				8550B0AC2107E4CE0009C845 /* ResultsViewCell.m in Sources */,
 				4CEF1C352108DC7500C69B15 /* UserSearchViewController.m in Sources */,
@@ -736,7 +755,6 @@
 				8544B996210BBE630028D43F /* PathDetailsViewController.m in Sources */,
 				4C771D752107999F0055A90D /* DetailsCollectionViewController.m in Sources */,
 				4CDAC17920F4424100B3E7D4 /* AppDelegate.m in Sources */,
-				4CEF1C4D210BAB9800C69B15 /* Itenerary.m in Sources */,
 				4CA36B74210128F20056EB44 /* EditProfileViewController.m in Sources */,
 				4C771D7B21079A690055A90D /* CommentCollectionCell.m in Sources */,
 				4CA36B6120FEB5540056EB44 /* DetailsViewController.m in Sources */,
@@ -745,6 +763,8 @@
 				851C871C21014D0E007C32DD /* Favorite.m in Sources */,
 				A814231320FFC60D00C976AE /* CollectionViewCell.m in Sources */,
 				8544B98D210BACB00028D43F /* VerificationSignUpViewController.m in Sources */,
+				4C51C946210BEE7D007B389F /* Itinerary.m in Sources */,
+				4C51C940210BE353007B389F /* pinnedLocations.m in Sources */,
 				4C771D6C210695100055A90D /* Comment.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

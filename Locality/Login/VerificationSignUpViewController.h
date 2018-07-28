@@ -9,5 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface VerificationSignUpViewController : UIViewController
-
+@property (nonatomic) double lat;
+@property (nonatomic) double lon;
 @end

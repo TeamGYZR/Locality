@@ -8,6 +8,7 @@
 
 #import "DetailSignUpViewController.h"
 #import "User.h"
+#import "HomeViewController.h"
 
 @interface DetailSignUpViewController ()
 @property (weak, nonatomic) IBOutlet UITextField *accountNameField;
@@ -70,14 +71,19 @@
     }];
 }
 
-/*
+
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
+    if([[segue identifier] isEqualToString:@"segueToCategories"]){
+        UINavigationController *navigationController = [segue destinationViewController];
+        HomeViewController *homeController = (HomeViewController*)navigationController.topViewController;
+        homeController.currentLocation = CLLocationCoordinate2DMake(self.lat, self.lon);
+    }
 }
-*/
+
 
 @end

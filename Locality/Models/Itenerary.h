@@ -10,6 +10,7 @@
 #import "Parse.h"
 #import "User.h"
 #import "Path.h"
+#import <CoreLocation/CoreLocation.h>
 
 @interface Itenerary : PFObject <PFSubclassing>
 
@@ -17,8 +18,8 @@
 @property (strong, nonatomic) User *creator;
 @property (strong, nonatomic) NSString *pathDescription;
 @property (strong, nonatomic) NSString *category;
-@property (strong, nonatomic) NSArray *pinnedLocations;
+@property (strong, nonatomic) NSMutableArray *pinnedLocations;
 @property (strong, nonatomic) Path *path;
-
+@property (strong, nonatomic) NSNumber *distanceFromFirstPinnedLocation;
 
 @end

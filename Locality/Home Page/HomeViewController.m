@@ -9,11 +9,13 @@
 #import "HomeViewController.h"
 #import "Parse.h"
 #import "PathCell.h"
+#import "math.h"
 
 @interface HomeViewController () <UICollectionViewDelegate, UICollectionViewDataSource>
 
-@property (strong, nonatomic) NSArray *iteneraries;
+@property (strong, nonatomic) NSArray *itineraries;
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
+//@property (strong, nonatomic) CLLocation *currentCoordinateLocation;
 
 @end
 
@@ -53,7 +55,7 @@
         if (error) {
             NSLog(@"error loading paths from Parse");
         } else {
-            self.iteneraries = iteneraries;
+            self.itineraries = iteneraries;
         }
     }];
     
@@ -62,14 +64,19 @@
 #pragma mark - UICollectionView
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
-    return self.iteneraries.count;
+    return self.itineraries.count;
 }
 
 - (nonnull __kindof UICollectionViewCell *)collectionView:(nonnull UICollectionView *)collectionView cellForItemAtIndexPath:(nonnull NSIndexPath *)indexPath{
     PathCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"PathCell" forIndexPath:indexPath];
-    cell.itenerary = self.iteneraries[indexPath.item];
+    cell.itinerary = self.itineraries[indexPath.item];
     return cell;
 }
+
+#pragma mark - Private Methods
+
+
+#pragma mark - Flickr Request
 -(void) photoFecth{
     self.apiKey = @"595a10deca33ce1b5a7ab291254fb22a";
     self.sharedKey = @"cf18c4e987fb5146";

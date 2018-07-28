@@ -69,7 +69,9 @@
     if([segue.identifier isEqualToString:@"successfulSignup"]){
         
         DetailSignUpViewController * detailSignUpViewController =[segue destinationViewController];
-        detailSignUpViewController.currentUser = self.currentUser; 
+        detailSignUpViewController.currentUser = self.currentUser;
+        detailSignUpViewController.lat = self.lat;
+        detailSignUpViewController.lon = self.lon;
         
     }
 }
