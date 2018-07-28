@@ -72,21 +72,13 @@
                         <outlet property="facebookLoginButton" destination="QBX-be-5YH" id="OYJ-eK-InX"/>
                         <outlet property="passwordTextField" destination="Uad-i9-Ike" id="WCu-bV-lLy"/>
                         <outlet property="usernameTextField" destination="G9F-2m-vax" id="uBX-WR-73a"/>
-                        <segue destination="NCV-8h-0ve" kind="presentation" identifier="loginSegue" id="kAB-dG-dZd"/>
                         <segue destination="6sG-rx-OZY" kind="presentation" identifier="signUpSegue" id="BJm-Ba-JPs"/>
+                        <segue destination="XTU-j5-ayd" kind="show" identifier="loginSegue" id="qen-9C-OUk"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NeP-DI-xIP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="101.59999999999999" y="-19.340329835082461"/>
-        </scene>
-        <!--YMapView-->
-        <scene sceneID="DsU-v0-ZRc">
-            <objects>
-                <viewControllerPlaceholder storyboardName="YMapView" id="NCV-8h-0ve" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="omx-6o-r4c" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1068" y="648"/>
         </scene>
         <!--Verification Sign Up View Controller-->
         <scene sceneID="NYe-O2-wKu">
@@ -289,7 +281,6 @@
                                 <state key="normal" title="Sign-Up"/>
                                 <connections>
                                     <action selector="didTapSignup:" destination="008-GC-pTa" eventType="touchUpInside" id="NAT-HP-jIv"/>
-                                    <segue destination="NCV-8h-0ve" kind="presentation" identifier="successfulSignup" id="sfI-rB-HD4"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FR8-pg-ieD">
@@ -345,6 +336,6 @@
         <image name="gradient" width="100" height="200"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="kAB-dG-dZd"/>
+        <segue reference="qen-9C-OUk"/>
     </inferredMetricsTieBreakers>
 </document>

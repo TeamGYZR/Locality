@@ -11,6 +11,6 @@
 @interface DetailSignUpViewController : UIViewController <UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 
 @property (strong, nonatomic) User *currentUser; 
-@property (strong, nonatomic) NSNumber *lat;
-@property (strong, nonatomic) NSNumber *lon;
+@property (nonatomic) double lat;
+@property (nonatomic) double lon;
 @end
