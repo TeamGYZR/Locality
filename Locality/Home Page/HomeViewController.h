@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import <ObjectiveFlickr/ObjectiveFlickr.h>
 #import <CoreLocation/CoreLocation.h>
+#import "User.h"
 
 @interface HomeViewController : UIViewController<OFFlickrAPIRequestDelegate>
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
