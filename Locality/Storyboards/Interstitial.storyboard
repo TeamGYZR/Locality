@@ -10,10 +10,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Interstitial View Controller-->
         <scene sceneID="kBh-ll-pNL">
             <objects>
-                <viewController id="QRq-tD-nKQ" sceneMemberID="viewController">
+                <viewController id="QRq-tD-nKQ" customClass="InterstitialViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="kxq-Tk-YVN">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -35,13 +35,16 @@
                                 <color key="backgroundColor" red="0.97429201227993889" green="0.97273087832317329" blue="1" alpha="0.60472601232394363" colorSpace="custom" customColorSpace="displayP3"/>
                                 <state key="normal" title="Continue"/>
                                 <connections>
-                                    <segue destination="IEF-XV-Cnk" kind="show" id="D1q-l3-Rp2"/>
+                                    <action selector="didTapContinue:" destination="QRq-tD-nKQ" eventType="touchUpInside" id="Ujh-vt-tZH"/>
                                 </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="hyM-iX-rmo"/>
                     </view>
+                    <connections>
+                        <segue destination="IEF-XV-Cnk" kind="show" identifier="segueToLogin" id="PJX-Rv-Moc"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gAe-eE-kDf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

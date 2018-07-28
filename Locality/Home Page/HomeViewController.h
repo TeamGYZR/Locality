@@ -16,6 +16,8 @@
 @property (strong, nonatomic) OFFlickrAPIRequest *request;
 @property (strong, nonatomic) NSString *apiKey;
 @property (strong,nonatomic) NSString *sharedKey;
+@property (strong, nonatomic) NSDictionary * photoResponseDictionary;
 @property (nonatomic) CLLocationCoordinate2D currentLocation;
+
 
 @end

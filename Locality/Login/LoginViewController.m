@@ -12,13 +12,16 @@
 #import <FBSDKLoginKit/FBSDKLoginKit.h>
 #import "PFFacebookUtils.h"
 #import "SignUpViewController.h"
+#import "VerificationSignUpViewController.h"
+#import "HomeViewController.h"
+#import <CoreLocation/CoreLocation.h>
+
 
 @interface LoginViewController ()
 
 @property (weak, nonatomic) IBOutlet UITextField *usernameTextField;
 @property (weak, nonatomic) IBOutlet UITextField *passwordTextField;
 @property (weak, nonatomic) IBOutlet FBSDKLoginButton *facebookLoginButton;
-
 @end
 
 @implementation LoginViewController
@@ -79,15 +82,25 @@
     }];
 }
 
-/*
+
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
+    if([[segue identifier] isEqualToString:@"loginSegue"]){
+        UINavigationController *navigationController = [segue destinationViewController];
+        HomeViewController *homeController = (HomeViewController*)navigationController.topViewController;
+        homeController.currentLocation = CLLocationCoordinate2DMake(self.lat, self.lon); 
+    }
+    if([[segue identifier] isEqualToString:@"signUpSegue"]){
+        VerificationSignUpViewController *signUpViewController =[segue destinationViewController];
+        signUpViewController.lat = self.lat;
+        signUpViewController.lon = self.lon;
+    }
 }
-*/
+
 
 - (IBAction)usernameTextField:(id)sender {
 }
