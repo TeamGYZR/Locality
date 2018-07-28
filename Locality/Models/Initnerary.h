@@ -1,5 +1,5 @@
 //
-//  Itenerary.h
+//  Initnerary.h
 //  Locality
 //
 //  Created by Ginger Dudley on 7/27/18.
@@ -12,7 +12,7 @@
 #import "Path.h"
 #import <CoreLocation/CoreLocation.h>
 
-@interface Itenerary : PFObject <PFSubclassing>
+@interface Initnerary : PFObject <PFSubclassing>
 
 @property (strong, nonatomic) NSString *name;
 @property (strong, nonatomic) User *creator;
