@@ -9,6 +9,10 @@
 #import "PathDetailsViewController.h"
 
 @interface PathDetailsViewController ()
+@property (weak, nonatomic) IBOutlet UILabel *pathNameLabel;
+@property (weak, nonatomic) IBOutlet UILabel *pathDescriptionLabel;
+@property (weak, nonatomic) IBOutlet UIImageView *userProfileImage;
+@property (weak, nonatomic) IBOutlet UILabel *userNameLabel;
 
 @end
 
