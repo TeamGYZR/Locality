@@ -9,7 +9,8 @@
 #import <UIKit/UIKit.h>
 #import <Parse/Parse.h>
 #import "User.h"
-
+#import "Itinerary.h"
+#import "ParseUI/ParseUI.h"
 @interface PathDetailsViewController : UIViewController
-
+@property (strong, nonatomic) Itinerary * itinerary; 
 @end
