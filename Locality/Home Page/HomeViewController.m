@@ -11,6 +11,8 @@
 #import "PathCell.h"
 #import "math.h"
 
+
+
 @interface HomeViewController () <UICollectionViewDelegate, UICollectionViewDataSource>
 
 @property (strong, nonatomic) NSArray *itineraries;
@@ -84,19 +86,17 @@
                   initWithAPIKey:self.apiKey sharedSecret:self.sharedKey];
     self.request=[[OFFlickrAPIRequest alloc] initWithAPIContext:self.context];
     [self.request setDelegate:self];
-  NSDictionary *dictionary = [NSDictionary dictionaryWithObjectsAndKeys:@
-                              "San francisco", @"text",nil];
+  NSDictionary *dictionary = [NSDictionary dictionaryWithObjectsAndKeys:@"San francisco", @"text",@"relevance",@"sort",nil];
     [self.request callAPIMethodWithGET:@"flickr.photos.search" arguments:dictionary];
-    
 }
 - (void)flickrAPIRequest:(OFFlickrAPIRequest *)inRequest didCompleteWithResponse:(NSDictionary *)inResponseDictionary{
   NSLog(@"response: %@", inResponseDictionary);
     self.photoResponseDictionary=inResponseDictionary;
-   NSDictionary *photoDict =self.photoResponseDictionary[@"photos"][@"photo"];
-   NSURL * urlphoto=[self.context photoSourceURLFromDictionary:photoDict size:OFFlickrSmallSize];
-//    NSLog(@"%@", urlphoto);
     
-    
+    for(int i=0; i<100; i++){
+    NSDictionary *photoDict =[[self.photoResponseDictionary valueForKeyPath:@"photos.photo"] objectAtIndex:i];
+   NSLog(@"%@", [self.context photoSourceURLFromDictionary:photoDict size:OFFlickrLargeSize]);
+    }
 }
 - (void)flickrAPIRequest:(OFFlickrAPIRequest *)inRequest didFailWithError:(NSError *)inError{
     self.request=nil;

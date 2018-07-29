@@ -7,7 +7,7 @@
 //
 
 #import "DetailSignUpViewController.h"
-#import "User.h"
+//#import "User.h"
 #import "HomeViewController.h"
 
 @interface DetailSignUpViewController ()
