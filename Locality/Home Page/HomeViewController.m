@@ -11,7 +11,7 @@
 #import "PathCell.h"
 #import "math.h"
 #import "Itinerary.h"
-//#import "User.h"
+#import "User.h"
 
 
 
@@ -101,6 +101,7 @@
 - (void) dummyItinerary{
     Itinerary *itinerary = [Itinerary new];
     itinerary.name = @"ginger";
+    itinerary.creator = [User currentUser];
     itinerary.pathDescription = @"this is a great path";
     itinerary.category = @"Foodie";
     NSDictionary *dictionary = [NSDictionary dictionaryWithObjectsAndKeys:@"37.8199", @"latitude", @"122.4783", @"longitude" , nil];
