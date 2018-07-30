@@ -1,5 +1,5 @@
 //
-//  LCMapView.h
+//  LCPathDetailViewController.h
 //  Locality
 //
 //  Created by Youngmin Shin on 7/30/18.
@@ -7,10 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <MapKit/MapKit.h>
 
-@interface LCMapView : UIView
-
-- (void)initWithMap;
+@interface LCPathDetailViewController : UIViewController
 
 @end

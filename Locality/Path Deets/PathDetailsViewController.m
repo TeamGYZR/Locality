@@ -14,6 +14,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *userNameLabel;
 @property (weak, nonatomic) IBOutlet PFImageView *userProfileImageView;
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;
+//@property (weak, nonatomic) IBOutlet LCMapView *lcMapView;
 @property (strong, nonatomic) CLLocationManager *locationManager;
 @property (nonatomic) CLLocation *currentLocation;
 @property (strong, nonatomic) NSMutableArray *pathCoordinates;
@@ -34,6 +35,12 @@
         [self.userProfileImageView loadInBackground];
     }
     //pinnedLocations is dictionary, pathCoordinates is CGPoints in Strings
+    //[self.lcMapView initWithMap];
+    //self.lcMapView.mapView.delegate = self;
+    
+    self.mapView.userInteractionEnabled = YES;
+    self.mapView.zoomEnabled = NO;
+    self.mapView.scrollEnabled = NO; 
     self.mapView.delegate = self;
     self.locationManager = [[CLLocationManager alloc] init];
     self.locationManager.delegate = self;
@@ -67,6 +74,7 @@
         [self.mapView addOverlay:self.polyline];
         [self.mapView setNeedsDisplay];
     }
+    NSUInteger numPins = [self.itinerary.pinnedLocations count];
     
     
 }

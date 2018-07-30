@@ -14,6 +14,7 @@
 #import "Path.h"
 #import <CoreLocation/CoreLocation.h>
 #import <MapKit/MapKit.h>
+#import "LCMapView.h"
 
 @interface PathDetailsViewController : UIViewController
 @property (strong, nonatomic) Itinerary * itinerary; 

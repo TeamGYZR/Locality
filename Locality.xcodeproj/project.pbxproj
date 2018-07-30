@@ -45,6 +45,7 @@
 		4CEF1C45210BA96500C69B15 /* ResultsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CEF1C44210BA96500C69B15 /* ResultsTableViewController.m */; };
 		4CEF1C50210BAE5600C69B15 /* Path.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CEF1C4F210BAE5600C69B15 /* Path.m */; };
 		851C871C21014D0E007C32DD /* Favorite.m in Sources */ = {isa = PBXBuildFile; fileRef = 851C871B21014D0E007C32DD /* Favorite.m */; };
+		852FB5C7210FD38A003AC70A /* LCPathDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 852FB5C6210FD38A003AC70A /* LCPathDetailViewController.m */; };
 		8544B98D210BACB00028D43F /* VerificationSignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8544B98C210BACB00028D43F /* VerificationSignUpViewController.m */; };
 		8544B990210BAD370028D43F /* DetailSignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8544B98F210BAD370028D43F /* DetailSignUpViewController.m */; };
 		8544B992210BBE040028D43F /* PathDetail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8544B991210BBE040028D43F /* PathDetail.storyboard */; };
@@ -163,6 +164,8 @@
 		8274814A446109AFAE12B326 /* Pods-LocalityTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LocalityTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-LocalityTests/Pods-LocalityTests.release.xcconfig"; sourceTree = "<group>"; };
 		851C871A21014D0E007C32DD /* Favorite.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Favorite.h; sourceTree = "<group>"; };
 		851C871B21014D0E007C32DD /* Favorite.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Favorite.m; sourceTree = "<group>"; };
+		852FB5C5210FD38A003AC70A /* LCPathDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LCPathDetailViewController.h; sourceTree = "<group>"; };
+		852FB5C6210FD38A003AC70A /* LCPathDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LCPathDetailViewController.m; sourceTree = "<group>"; };
 		8544B98B210BACB00028D43F /* VerificationSignUpViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VerificationSignUpViewController.h; sourceTree = "<group>"; };
 		8544B98C210BACB00028D43F /* VerificationSignUpViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VerificationSignUpViewController.m; sourceTree = "<group>"; };
 		8544B98E210BAD370028D43F /* DetailSignUpViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DetailSignUpViewController.h; sourceTree = "<group>"; };
@@ -477,6 +480,8 @@
 		8544B993210BBE4A0028D43F /* Path Deets */ = {
 			isa = PBXGroup;
 			children = (
+				852FB5C5210FD38A003AC70A /* LCPathDetailViewController.h */,
+				852FB5C6210FD38A003AC70A /* LCPathDetailViewController.m */,
 				8544B99C210E58AB0028D43F /* TestPathsViewController.h */,
 				8544B99D210E58AB0028D43F /* TestPathsViewController.m */,
 				8544B994210BBE630028D43F /* PathDetailsViewController.h */,
@@ -780,6 +785,7 @@
 				4CEF1C45210BA96500C69B15 /* ResultsTableViewController.m in Sources */,
 				A8E26415210BB430002C0992 /* HomeViewController.m in Sources */,
 				8550B0A32106D2CA0009C845 /* FavoritesViewController.m in Sources */,
+				852FB5C7210FD38A003AC70A /* LCPathDetailViewController.m in Sources */,
 				4CDAC18720F4424100B3E7D4 /* main.m in Sources */,
 				4C771D6F21069E770055A90D /* ReviewViewController.m in Sources */,
 				4CEF1C50210BAE5600C69B15 /* Path.m in Sources */,

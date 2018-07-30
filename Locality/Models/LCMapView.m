@@ -8,7 +8,17 @@
 
 #import "LCMapView.h"
 
-@implementation LCMapView
+@implementation LCMapView {
+    MKMapView *mapView;
+}
+
+-(void)initWithMap{
+    mapView.userInteractionEnabled = YES;
+    mapView.zoomEnabled = NO;
+    mapView.scrollEnabled = NO;
+    [self addSubview:mapView];
+}
+
 
 /*
 // Only override drawRect: if you perform custom drawing.
