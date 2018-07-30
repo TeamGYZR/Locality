@@ -11,6 +11,10 @@
 #import "User.h"
 #import "Itinerary.h"
 #import "ParseUI/ParseUI.h"
+#import "Path.h"
+#import <CoreLocation/CoreLocation.h>
+#import <MapKit/MapKit.h>
+
 @interface PathDetailsViewController : UIViewController
 @property (strong, nonatomic) Itinerary * itinerary; 
 @end

@@ -54,6 +54,14 @@
                                     <action selector="didTapTest:" destination="eax-T2-hSg" eventType="touchUpInside" id="kYo-fz-ha8"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j0m-Je-cUt">
+                                <rect key="frame" x="251" y="208" width="91" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="To PathDetail"/>
+                                <connections>
+                                    <segue destination="8ZZ-xA-ON3" kind="show" identifier="seguePathDetail" id="vid-xE-SUu"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="O66-gO-qZz"/>
@@ -65,6 +73,14 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QhS-Sc-d16" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="196" y="124.58770614692655"/>
+        </scene>
+        <!--PathDetail-->
+        <scene sceneID="naZ-Ba-FkQ">
+            <objects>
+                <viewControllerPlaceholder storyboardName="PathDetail" id="8ZZ-xA-ON3" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5Bk-12-a8R" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="796" y="116"/>
         </scene>
     </scenes>
 </document>

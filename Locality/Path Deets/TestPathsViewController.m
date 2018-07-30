@@ -13,6 +13,7 @@
 #import <ParseUI/ParseUI.h>
 #import "Itinerary.h"
 #import "Path.h"
+#import "PathDetailsViewController.h"
 
 @interface TestPathsViewController () <MKMapViewDelegate, CLLocationManagerDelegate>
 
@@ -22,6 +23,7 @@
 @property (strong, nonatomic) NSMutableArray *pathCoordinates;
 @property (nonatomic, retain) MKPolyline* polyline;
 @property (strong, nonatomic) NSMutableArray *pinCoordinates;
+@property (strong, nonatomic) Itinerary *fetchedItinerary;
 //@property (strong, nonatomic) const CLLocationCoordinate2D *coordinatesForPath;
 
 @end
@@ -51,15 +53,8 @@
 -(void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray<CLLocation *> *)locations{
     CLLocation * currentLocation = [[CLLocation alloc] init];
     self.currentLocation = [locations lastObject];
-    
-    //self.currentLocation = CLLocationCoordinate2DMake(currentLocation.coordinate.latitude, currentLocation.coordinate.longitude);
-    //MKMapPoint currentMapPoint = MKMapPointForCoordinate(currentLocation.coordinate);
-    //NSString *coordinate = NSStringFromCGPoint(CGPointMake(currentLocation.coordinate.longitude, currentLocation.coordinate.latitude));
     [self.pathCoordinates addObject:self.currentLocation];
     [self drawPath];
-    //MKCoordinateRegion currentRegion = MKCoordinateRegionMake(self.currentLocation, MKCoordinateSpanMake(0.025, 0.025));
-    //[self.mapView setRegion:currentRegion animated:YES];
-    
 }
 
 -(void)drawPath{
@@ -173,20 +168,26 @@
 
 - (IBAction)didTapTest:(id)sender {
     PFQuery *query = [PFQuery queryWithClassName:@"Itinerary"];
-    [query getObjectInBackgroundWithId:@"OP2D165hMC" block:^(PFObject *testPath, NSError *error) {
+    [query getObjectInBackgroundWithId:@"kV0fiIbrI9" block:^(PFObject *testItinerary, NSError *error) {
         // Do something with the returned PFObject in the gameScore variable.
-        NSLog(@"%@", testPath);
+        self.fetchedItinerary = (Itinerary *)testItinerary;
     }];
 }
 
-/*
+
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
+    if([[segue identifier] isEqualToString:@"seguePathDetail"]){
+        UINavigationController *navigationController = [segue destinationViewController];
+        PathDetailsViewController *pathDetailsController = (PathDetailsViewController*)navigationController.topViewController;
+        pathDetailsController.itinerary = self.fetchedItinerary;
+        
+    }
 }
-*/
+
 
 @end
