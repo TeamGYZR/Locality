@@ -107,8 +107,7 @@
         createdItinerary.pinnedLocations[i] = test;
     }
     
-    Path * createdPath = [[Path alloc] init];
-    createdPath.coordinates = [[NSArray alloc] init];
+    createdItinerary.paths = [[NSArray alloc] init];
     NSMutableArray *testArray = [[NSMutableArray alloc] init];
     NSUInteger numPoints = [self.pathCoordinates count];
     for (int i = 0; i < numPoints; i++)
@@ -120,7 +119,7 @@
         testArray[i] = test;
     }
     
-    createdPath.coordinates = [testArray copy];
+    createdItinerary.paths = [testArray copy];
     //createdItinerary.paths = createdPath;
     [createdItinerary saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error){
         if(succeeded){
@@ -168,7 +167,7 @@
 
 - (IBAction)didTapTest:(id)sender {
     PFQuery *query = [PFQuery queryWithClassName:@"Itinerary"];
-    [query getObjectInBackgroundWithId:@"kV0fiIbrI9" block:^(PFObject *testItinerary, NSError *error) {
+    [query getObjectInBackgroundWithId:@"GoRk92zoCw" block:^(PFObject *testItinerary, NSError *error) {
         // Do something with the returned PFObject in the gameScore variable.
         self.fetchedItinerary = (Itinerary *)testItinerary;
     }];

@@ -18,7 +18,7 @@
 @property (nonatomic) CLLocation *currentLocation;
 @property (strong, nonatomic) NSMutableArray *pathCoordinates;
 @property (nonatomic, retain) MKPolyline* polyline;
-@property (strong, nonatomic) NSMutableArray *pinCoordinates; 
+@property (strong, nonatomic) NSMutableArray *pinCoordinates;
 @end
 
 @implementation PathDetailsViewController
@@ -51,13 +51,13 @@
 
 
 -(void)drawPath{
-    NSUInteger numPoints = [self.itinerary.path.coordinates count];
+    NSUInteger numPoints = [self.itinerary.paths count];
     if (numPoints > 1)
     {
         CLLocationCoordinate2D* coords = malloc(numPoints * sizeof(CLLocationCoordinate2D));
         for (int i = 0; i < numPoints; i++)
         {
-            NSString* current = [self.pathCoordinates objectAtIndex:i];
+            NSString* current = [self.itinerary.paths objectAtIndex:i];
             CGPoint currentPoint = CGPointFromString(current);
             coords[i] = CLLocationCoordinate2DMake(currentPoint.x, currentPoint.y);
         }
