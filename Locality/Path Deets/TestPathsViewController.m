@@ -121,7 +121,7 @@
     }
     
     createdPath.coordinates = [testArray copy];
-    createdItinerary.path = createdPath;
+    //createdItinerary.paths = createdPath;
     [createdItinerary saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error){
         if(succeeded){
             NSLog(@"succeeded!");

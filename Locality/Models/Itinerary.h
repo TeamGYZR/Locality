@@ -19,7 +19,7 @@
 @property (strong, nonatomic) NSString *pathDescription;
 @property (strong, nonatomic) NSString *category;
 @property (strong, nonatomic) NSMutableArray *pinnedLocations;
-@property (strong, nonatomic) Path *path;
+@property (strong, nonnull) NSArray *paths;
 @property (strong, nonatomic) NSNumber *distanceFromFirstPinnedLocation;
 
 @end
