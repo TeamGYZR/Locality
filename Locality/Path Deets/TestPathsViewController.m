@@ -141,6 +141,7 @@
     annotation.title = @"Location";
     [self.mapView addAnnotation:annotation];
     [self.pinCoordinates addObject:self.currentLocation];
+    [self.pathCoordinates addObject:self.currentLocation];
     //NSLog(@"huh?");
 }
 
