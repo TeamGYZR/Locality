@@ -21,6 +21,7 @@
 		4C771D7B21079A690055A90D /* CommentCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C771D7A21079A690055A90D /* CommentCollectionCell.m */; };
 		4C81D0D9210F7C8800064DBB /* CreateYourOwn.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4C81D0D8210F7C8800064DBB /* CreateYourOwn.storyboard */; };
 		4C81D0DD210F7FDE00064DBB /* CreateYourOwnViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C81D0DC210F7FDE00064DBB /* CreateYourOwnViewController.m */; };
+		4C81D0E0210FC66B00064DBB /* PathFinalizationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C81D0DF210FC66B00064DBB /* PathFinalizationViewController.m */; };
 		4CA36B5420FE90340056EB44 /* Venue.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CA36B5320FE90340056EB44 /* Venue.m */; };
 		4CA36B5B20FE9F8A0056EB44 /* APIManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CA36B5A20FE9F8A0056EB44 /* APIManager.m */; };
 		4CA36B5D20FEB20A0056EB44 /* DetailsView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4CA36B5C20FEB20A0056EB44 /* DetailsView.storyboard */; };
@@ -116,6 +117,8 @@
 		4C81D0D8210F7C8800064DBB /* CreateYourOwn.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CreateYourOwn.storyboard; sourceTree = "<group>"; };
 		4C81D0DB210F7FDE00064DBB /* CreateYourOwnViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CreateYourOwnViewController.h; sourceTree = "<group>"; };
 		4C81D0DC210F7FDE00064DBB /* CreateYourOwnViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CreateYourOwnViewController.m; sourceTree = "<group>"; };
+		4C81D0DE210FC66B00064DBB /* PathFinalizationViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PathFinalizationViewController.h; sourceTree = "<group>"; };
+		4C81D0DF210FC66B00064DBB /* PathFinalizationViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PathFinalizationViewController.m; sourceTree = "<group>"; };
 		4CA36B5220FE90340056EB44 /* Venue.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Venue.h; sourceTree = "<group>"; };
 		4CA36B5320FE90340056EB44 /* Venue.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Venue.m; sourceTree = "<group>"; };
 		4CA36B5920FE9F8A0056EB44 /* APIManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = APIManager.h; sourceTree = "<group>"; };
@@ -284,6 +287,8 @@
 			children = (
 				4C81D0DB210F7FDE00064DBB /* CreateYourOwnViewController.h */,
 				4C81D0DC210F7FDE00064DBB /* CreateYourOwnViewController.m */,
+				4C81D0DE210FC66B00064DBB /* PathFinalizationViewController.h */,
+				4C81D0DF210FC66B00064DBB /* PathFinalizationViewController.m */,
 			);
 			path = "Create Your Own";
 			sourceTree = "<group>";
@@ -781,6 +786,7 @@
 				4C771D69210665CA0055A90D /* SignUpViewController.m in Sources */,
 				4CEF1C41210A786D00C69B15 /* Follow.m in Sources */,
 				4C51C93C210BC990007B389F /* PathCell.m in Sources */,
+				4C81D0E0210FC66B00064DBB /* PathFinalizationViewController.m in Sources */,
 				4CEF1C382108DCE500C69B15 /* UserCell.m in Sources */,
 				4CEF1C45210BA96500C69B15 /* ResultsTableViewController.m in Sources */,
 				A8E26415210BB430002C0992 /* HomeViewController.m in Sources */,
