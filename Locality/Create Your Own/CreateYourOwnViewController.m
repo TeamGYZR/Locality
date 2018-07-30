@@ -22,6 +22,7 @@
 @property (strong, nonatomic) NSMutableArray *pathCoordinates;
 @property (strong, nonatomic) NSMutableArray *pinCoordinates;
 @property (nonatomic, retain) MKPolyline *polyline;
+@property (strong, nonatomic) Itinerary *itineraryDraft;
 
 
 
@@ -53,18 +54,110 @@
 }
 
 - (void)drawPath{
-    NSUInteger numPoints = [self.pathCoordinates count];
-    if (numPoints > 1) {
+    NSUInteger pointsCount = [self.pathCoordinates count];
+    if (pointsCount > 1) {
         if (self.polyline) {
             [self.mapView removeOverlay:self.polyline];
         }
-        CLLocationCoordinate2D *coords = malloc(numPoints * sizeof(CLLocationCoordinate2D));
-        for (int i = 0; i < numPoints; i++) {
+        CLLocationCoordinate2D *coordinates = malloc(pointsCount * sizeof(CLLocationCoordinate2D));
+        for (int i = 0; i < pointsCount; i++) {
             CLLocation *current = [self.pathCoordinates objectAtIndex:i];
-            coords[i] = current.coordinate;
+            coordinates[i] = current.coordinate;
         }
+        self.polyline = [MKPolyline polylineWithCoordinates:coordinates count:pointsCount];
+        free(coordinates);
+        [self.mapView addOverlay:self.polyline];
+        [self.mapView setNeedsDisplay];
+    }
+}
+
+- (MKOverlayRenderer *)mapView:(MKMapView *)mapView rendererForOverlay:(id<MKOverlay>)overlay{
+    if ([overlay isKindOfClass:[MKPolyline class]]) {
+        MKPolylineRenderer *pathRenderer = [[MKPolylineRenderer alloc] initWithPolyline:overlay];
+        pathRenderer.fillColor = [[UIColor blackColor] colorWithAlphaComponent:0.3];
+        pathRenderer.strokeColor = [[UIColor blueColor] colorWithAlphaComponent:0.7];
+        pathRenderer.lineWidth = 3;
+        return pathRenderer;
+    }
+    return nil;
+}
+
+#pragma mark - IBActions
+
+//call this function once the user has clicked start on the alert controller
+- (IBAction)didTapStartPath:(id)sender {
+    [self.mapView setUserTrackingMode:MKUserTrackingModeFollow animated:YES];
+    [self.locationManager startUpdatingLocation];
+}
+
+- (IBAction)didTapAddPin:(id)sender {
+    //add alert view controller to confirm that the user wanted to add the location, then continue- have an addPin method
+    MKPointAnnotation *annotation = [MKPointAnnotation new];
+    annotation.coordinate = self.currentLocation.coordinate;
+    annotation.title = @"Location";
+    [self.mapView addAnnotation:annotation];
+    [self.pinCoordinates addObject:self.currentLocation];
+    [self.pathCoordinates addObject:self.currentLocation];
+}
+
+- (IBAction)didTapDone:(id)sender {
+    NSString *cgPointString = nil;
+    [self.locationManager stopUpdatingLocation];
+    self.itineraryDraft = [[Itinerary alloc] init];
+    self.itineraryDraft.name = @"test";
+    self.itineraryDraft.creator = [User currentUser];
+    self.itineraryDraft.category = @"tester category";
+    //self.itineraryDraft = [[Itinerary alloc] init];
+    self.itineraryDraft.paths = [[NSArray alloc] init];
+    self.itineraryDraft.pinnedLocations = [[NSMutableArray alloc] init];
+    NSMutableArray *holderArray = [[NSMutableArray alloc] init];
+    NSUInteger pinsCount = [self.pinCoordinates count];
+    for (int i = 0; i < pinsCount; i++) {
+        CLLocation *currentPin = [self.pinCoordinates objectAtIndex:i];
+        NSString *latitudeString = [[NSNumber numberWithDouble:currentPin.coordinate.latitude] stringValue];
+        NSString *longitudeString = [[NSNumber numberWithDouble:currentPin.coordinate.longitude] stringValue];
+        NSDictionary *dictionary = [NSDictionary dictionaryWithObjectsAndKeys:latitudeString, @"latitude", longitudeString, @"longitude", nil];
+        [self.itineraryDraft.pinnedLocations addObject:dictionary];
     }
     
+    [self.itineraryDraft saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
+        if (error) {
+            NSLog(@"Error saving pins to Parse: %@", error);
+        }
+        else{
+            NSLog(@"Success saving pins to Parse");
+        }
+    }];
+    
+
+    
+    NSUInteger pathsCount = [self.pathCoordinates count];
+    for (int i = 0; i < pathsCount; i++) {
+        CLLocation *currentPin = [self.pathCoordinates objectAtIndex:i];
+        CGPoint coordinatePoint = CGPointMake(currentPin.coordinate.latitude, currentPin.coordinate.longitude);
+        cgPointString = NSStringFromCGPoint(coordinatePoint);
+        holderArray[i] = cgPointString;
+    }
+    self.itineraryDraft.paths = [holderArray copy];
+    
+    [self.itineraryDraft saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
+        if (error) {
+            NSLog(@"Error saving paths to Parse: %@", error);
+        }
+        else{
+            NSLog(@"Success saving paths to Parse");
+        }
+    }];
+}
+
+#pragma mark - Error Handling
+
+- (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error{
+    NSLog(@"There was an error with the current location manager: %@", error);
+}
+
+- (void)locationManager:(CLLocationManager *)manager didFinishDeferredUpdatesWithError:(NSError *)error{
+    NSLog(@"Error - locations updates will no longer be deferred: %@", error);
 }
 
 /*
