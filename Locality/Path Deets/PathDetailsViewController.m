@@ -11,8 +11,8 @@
 @interface PathDetailsViewController ()
 @property (weak, nonatomic) IBOutlet UILabel *pathNameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *pathDescriptionLabel;
-@property (weak, nonatomic) IBOutlet UIImageView *userProfileImage;
 @property (weak, nonatomic) IBOutlet UILabel *userNameLabel;
+@property (weak, nonatomic) IBOutlet PFImageView *userProfileImageView;
 
 @end
 
@@ -21,6 +21,15 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    self.pathNameLabel.text = self.itinerary.name;
+    self.pathDescriptionLabel.text = self.itinerary.description;
+    self.userNameLabel.text = self.itinerary.creator.name; 
+    if (self.itinerary.creator.profilePicture != nil) {
+        self.userProfileImageView.file = self.itinerary.creator.profilePicture;
+        [self.userProfileImageView loadInBackground];
+    }
+    
+    
 }
 
 - (void)didReceiveMemoryWarning {

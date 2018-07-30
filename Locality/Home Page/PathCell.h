@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "Itinerary.h"
+#import "User.h"
 
 @interface PathCell : UICollectionViewCell
 
