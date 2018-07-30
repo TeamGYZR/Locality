@@ -48,6 +48,8 @@
 		8544B992210BBE040028D43F /* PathDetail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8544B991210BBE040028D43F /* PathDetail.storyboard */; };
 		8544B996210BBE630028D43F /* PathDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8544B995210BBE630028D43F /* PathDetailsViewController.m */; };
 		8544B999210BC2DB0028D43F /* InterstitialViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8544B998210BC2DB0028D43F /* InterstitialViewController.m */; };
+		8544B99B210E48420028D43F /* TestPath.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8544B99A210E48420028D43F /* TestPath.storyboard */; };
+		8544B99E210E58AB0028D43F /* TestPathsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8544B99D210E58AB0028D43F /* TestPathsViewController.m */; };
 		8550B0A32106D2CA0009C845 /* FavoritesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8550B0A22106D2CA0009C845 /* FavoritesViewController.m */; };
 		8550B0AC2107E4CE0009C845 /* ResultsViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8550B0AA2107E4CE0009C845 /* ResultsViewCell.m */; };
 		8597DB1620FD162500BA261A /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8597DB1520FD162500BA261A /* MapKit.framework */; };
@@ -164,6 +166,9 @@
 		8544B995210BBE630028D43F /* PathDetailsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PathDetailsViewController.m; sourceTree = "<group>"; };
 		8544B997210BC2DB0028D43F /* InterstitialViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = InterstitialViewController.h; sourceTree = "<group>"; };
 		8544B998210BC2DB0028D43F /* InterstitialViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = InterstitialViewController.m; sourceTree = "<group>"; };
+		8544B99A210E48420028D43F /* TestPath.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = TestPath.storyboard; sourceTree = "<group>"; };
+		8544B99C210E58AB0028D43F /* TestPathsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TestPathsViewController.h; sourceTree = "<group>"; };
+		8544B99D210E58AB0028D43F /* TestPathsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TestPathsViewController.m; sourceTree = "<group>"; };
 		8550B0A12106D2CA0009C845 /* FavoritesViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FavoritesViewController.h; sourceTree = "<group>"; };
 		8550B0A22106D2CA0009C845 /* FavoritesViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FavoritesViewController.m; sourceTree = "<group>"; };
 		8550B0AA2107E4CE0009C845 /* ResultsViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResultsViewCell.m; sourceTree = "<group>"; };
@@ -452,6 +457,8 @@
 		8544B993210BBE4A0028D43F /* Path Deets */ = {
 			isa = PBXGroup;
 			children = (
+				8544B99C210E58AB0028D43F /* TestPathsViewController.h */,
+				8544B99D210E58AB0028D43F /* TestPathsViewController.m */,
 				8544B994210BBE630028D43F /* PathDetailsViewController.h */,
 				8544B995210BBE630028D43F /* PathDetailsViewController.m */,
 			);
@@ -461,6 +468,7 @@
 		8597DACC20FCF68300BA261A /* Storyboards */ = {
 			isa = PBXGroup;
 			children = (
+				8544B99A210E48420028D43F /* TestPath.storyboard */,
 				4CA36B6220FFF2FD0056EB44 /* Login.storyboard */,
 				4CEF1C42210B8B6500C69B15 /* Interstitial.storyboard */,
 				A8E26418210BB48C002C0992 /* Home.storyboard */,
@@ -616,6 +624,7 @@
 				4CDAC18120F4424100B3E7D4 /* Assets.xcassets in Resources */,
 				4CA36B5D20FEB20A0056EB44 /* DetailsView.storyboard in Resources */,
 				4CB3478F2108D95500BC0C3A /* ExploreUsers.storyboard in Resources */,
+				8544B99B210E48420028D43F /* TestPath.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -730,6 +739,7 @@
 				4CA36B71210112CD0056EB44 /* FavoriteCell.m in Sources */,
 				8550B0AC2107E4CE0009C845 /* ResultsViewCell.m in Sources */,
 				4CEF1C352108DC7500C69B15 /* UserSearchViewController.m in Sources */,
+				8544B99E210E58AB0028D43F /* TestPathsViewController.m in Sources */,
 				4CEF1C3E210A479600C69B15 /* UserProfileViewController.m in Sources */,
 				4C771D7821079A1A0055A90D /* DetailsHeaderView.m in Sources */,
 				A80F646C20FF3BF000C105D0 /* CollectionViewController.m in Sources */,
