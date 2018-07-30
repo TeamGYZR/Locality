@@ -96,6 +96,10 @@
             }
         }];
     }
+    NSSortDescriptor *sortDescriptor;
+    sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"distanceFromFirstPinnedLocation" ascending:YES];
+    self.itineraries = [self.itineraries sortedArrayUsingDescriptors:@[sortDescriptor]];
+    
 }
 
 - (void) dummyItinerary{
@@ -104,7 +108,7 @@
     itinerary.creator = [User currentUser];
     itinerary.pathDescription = @"this is a great path";
     itinerary.category = @"Foodie";
-    NSDictionary *dictionary = [NSDictionary dictionaryWithObjectsAndKeys:@"37.8199", @"latitude", @"122.4783", @"longitude" , nil];
+    NSDictionary *dictionary = [NSDictionary dictionaryWithObjectsAndKeys:@"50.8199", @"latitude", @"122.4783", @"longitude" , nil];
     itinerary.pinnedLocations = [NSMutableArray arrayWithObjects:dictionary, nil];
     itinerary.distanceFromFirstPinnedLocation = nil;
     [itinerary saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
