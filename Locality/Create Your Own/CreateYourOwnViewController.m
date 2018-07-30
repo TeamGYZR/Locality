@@ -13,6 +13,7 @@
 #import <ParseUI/ParseUI.h>
 #import "Itinerary.h"
 #import "Path.h"
+#import "PathFinalizationViewController.h"
 
 @interface CreateYourOwnViewController () <MKMapViewDelegate, CLLocationManagerDelegate>
 
@@ -23,8 +24,6 @@
 @property (strong, nonatomic) NSMutableArray *pinCoordinates;
 @property (nonatomic, retain) MKPolyline *polyline;
 @property (strong, nonatomic) Itinerary *itineraryDraft;
-
-
 
 @end
 
@@ -101,16 +100,18 @@
 }
 
 - (IBAction)didTapDone:(id)sender {
-    NSString *cgPointString = nil;
     [self.locationManager stopUpdatingLocation];
     self.itineraryDraft = [[Itinerary alloc] init];
-    self.itineraryDraft.name = @"test";
+    self.itineraryDraft.name = @"segue tester";
     self.itineraryDraft.creator = [User currentUser];
     self.itineraryDraft.category = @"tester category";
-    //self.itineraryDraft = [[Itinerary alloc] init];
-    self.itineraryDraft.paths = [[NSArray alloc] init];
+    [self addPins];
+}
+
+#pragma mark - Private Methods
+
+- (void)addPins{
     self.itineraryDraft.pinnedLocations = [[NSMutableArray alloc] init];
-    NSMutableArray *holderArray = [[NSMutableArray alloc] init];
     NSUInteger pinsCount = [self.pinCoordinates count];
     for (int i = 0; i < pinsCount; i++) {
         CLLocation *currentPin = [self.pinCoordinates objectAtIndex:i];
@@ -119,18 +120,21 @@
         NSDictionary *dictionary = [NSDictionary dictionaryWithObjectsAndKeys:latitudeString, @"latitude", longitudeString, @"longitude", nil];
         [self.itineraryDraft.pinnedLocations addObject:dictionary];
     }
-    
     [self.itineraryDraft saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
         if (error) {
             NSLog(@"Error saving pins to Parse: %@", error);
         }
         else{
             NSLog(@"Success saving pins to Parse");
+            [self addPaths];
         }
     }];
-    
+}
 
-    
+- (void)addPaths{
+    NSString *cgPointString = nil;
+    self.itineraryDraft.paths = [[NSArray alloc] init];
+    NSMutableArray *holderArray = [[NSMutableArray alloc] init];
     NSUInteger pathsCount = [self.pathCoordinates count];
     for (int i = 0; i < pathsCount; i++) {
         CLLocation *currentPin = [self.pathCoordinates objectAtIndex:i];
@@ -139,13 +143,13 @@
         holderArray[i] = cgPointString;
     }
     self.itineraryDraft.paths = [holderArray copy];
-    
     [self.itineraryDraft saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
         if (error) {
             NSLog(@"Error saving paths to Parse: %@", error);
         }
         else{
             NSLog(@"Success saving paths to Parse");
+            [self performSegueWithIdentifier:@"doneSegue" sender:nil];
         }
     }];
 }
@@ -160,14 +164,15 @@
     NSLog(@"Error - locations updates will no longer be deferred: %@", error);
 }
 
-/*
+
 #pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    if ([segue.identifier isEqualToString:@"doneSegue"]) {
+        PathFinalizationViewController *pathFinalizationVC = [segue destinationViewController];
+        pathFinalizationVC.itinerary = self.itineraryDraft;
+    }
 }
-*/
+
 
 @end
