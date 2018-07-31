@@ -34,19 +34,28 @@
                                 </prototypes>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="x8x-Ou-yYw">
-                                <rect key="frame" x="16" y="131" width="46" height="30"/>
+                                <rect key="frame" x="16" y="131" width="47" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
+                                <state key="normal" title="Foodie"/>
+                                <connections>
+                                    <action selector="didTapFoodie:" destination="yY6-fb-adc" eventType="touchUpInside" id="xP0-QC-H1V"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Hd-Cb-suP">
-                                <rect key="frame" x="164" y="131" width="46" height="30"/>
+                                <rect key="frame" x="139" y="131" width="97" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
+                                <state key="normal" title="Entertainment"/>
+                                <connections>
+                                    <action selector="didTapEntertainment:" destination="yY6-fb-adc" eventType="touchUpInside" id="AZU-XQ-Dpo"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iiU-l1-YUV">
-                                <rect key="frame" x="313" y="131" width="46" height="30"/>
+                                <rect key="frame" x="313" y="131" width="47" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
+                                <state key="normal" title="Nature"/>
+                                <connections>
+                                    <action selector="didTapNature:" destination="yY6-fb-adc" eventType="touchUpInside" id="lQr-lC-jBr"/>
+                                </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dh9-U7-GPc">
                                 <rect key="frame" x="0.0" y="44" width="375" height="84"/>
@@ -56,7 +65,13 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="Of1-DP-sed"/>
                     </view>
-                    <navigationItem key="navigationItem" id="xRL-MH-Lgh"/>
+                    <navigationItem key="navigationItem" id="xRL-MH-Lgh">
+                        <barButtonItem key="rightBarButtonItem" title="Create Path" id="0jv-wZ-B18">
+                            <connections>
+                                <segue destination="ftd-6l-hoH" kind="show" identifier="createSegue" id="n0T-1c-N9u"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="imageView" destination="dh9-U7-GPc" id="YiR-TJ-sbe"/>
                     </connections>
@@ -65,10 +80,18 @@
             </objects>
             <point key="canvasLocation" x="168.80000000000001" y="-1157.2713643178411"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--CreateYourOwn-->
+        <scene sceneID="XTF-zi-Mag">
+            <objects>
+                <viewControllerPlaceholder storyboardName="CreateYourOwn" id="ftd-6l-hoH" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="22u-Vc-Vaw" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="778" y="-1131"/>
+        </scene>
+        <!--initialView-->
         <scene sceneID="Xub-PX-jfs">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="QaF-JU-SEw" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="initialView" title="initialView" automaticallyAdjustsScrollViewInsets="NO" id="QaF-JU-SEw" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="2zc-Pp-s9J">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>

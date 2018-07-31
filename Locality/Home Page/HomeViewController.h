@@ -17,7 +17,8 @@
 @interface HomeViewController : UIViewController<OFFlickrAPIRequestDelegate>
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
 @property (strong,nonatomic) OFFlickrAPIContext *context;
-@property (strong, nonatomic) OFFlickrAPIRequest *request;
+@property (strong, nonatomic) OFFlickrAPIRequest *request1;
+@property (strong, nonatomic) OFFlickrAPIRequest *request2;
 @property (strong, nonatomic) NSString *apiKey;
 @property (strong,nonatomic) NSString *sharedKey;
 @property (strong, nonatomic) NSDictionary * photoResponseDictionary;
