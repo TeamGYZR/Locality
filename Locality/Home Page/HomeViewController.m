@@ -46,6 +46,22 @@
     [self loadPathsWithCategory:@"Nature"];
 }
 
+- (IBAction)didTapCreatePath:(id)sender {
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Start New Path?" message:nil preferredStyle:(UIAlertControllerStyleAlert)];
+    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+    }];
+    UIAlertAction *continueAction = [UIAlertAction actionWithTitle:@"Let's Go!" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        [self performSegueWithIdentifier:@"createSegue" sender:nil];
+    }];
+    [alert addAction:cancelAction];
+    [alert addAction:continueAction];
+    [self presentViewController:alert animated:YES completion:^{
+        
+    }];
+    
+}
+
+
 #pragma mark - Parse Query
 
 - (void) loadPathsWithCategory:(NSString *)category{
