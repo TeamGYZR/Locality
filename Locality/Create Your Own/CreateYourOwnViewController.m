@@ -91,19 +91,25 @@
 
 - (IBAction)didTapAddPin:(id)sender {
     //add alert view controller to confirm that the user wanted to add the location, then continue- have an addPin method
-    MKPointAnnotation *annotation = [MKPointAnnotation new];
-    annotation.coordinate = self.currentLocation.coordinate;
-    annotation.title = @"Location";
-    [self.mapView addAnnotation:annotation];
-    [self.pinCoordinates addObject:self.currentLocation];
-    [self.pathCoordinates addObject:self.currentLocation];
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Add Pin?" message:nil preferredStyle:(UIAlertControllerStyleAlert)];
+    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        
+    }];
+    UIAlertAction *continueAction = [UIAlertAction actionWithTitle:@"Add" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        [self addPinToMapView];
+    }];
+    [alert addAction:cancelAction];
+    [alert addAction:continueAction];
+    [self presentViewController:alert animated:YES completion:^{
+        
+    }];
 }
 
 - (IBAction)didTapDone:(id)sender {
     [self.locationManager stopUpdatingLocation];
     self.itineraryDraft = [[Itinerary alloc] init];
     self.itineraryDraft.creator = [User currentUser];
-    [self addPins];
+    [self addPinsToParse];
 }
 
 - (IBAction)didTapCancel:(id)sender {
@@ -112,7 +118,16 @@
 
 #pragma mark - Private Methods
 
-- (void)addPins{
+- (void)addPinToMapView{
+    MKPointAnnotation *annotation = [MKPointAnnotation new];
+    annotation.coordinate = self.currentLocation.coordinate;
+    annotation.title = @"Location";
+    [self.mapView addAnnotation:annotation];
+    [self.pinCoordinates addObject:self.currentLocation];
+    [self.pathCoordinates addObject:self.currentLocation];
+}
+
+- (void)addPinsToParse{
     self.itineraryDraft.pinnedLocations = [[NSMutableArray alloc] init];
     NSUInteger pinsCount = [self.pinCoordinates count];
     for (int i = 0; i < pinsCount; i++) {
@@ -128,12 +143,12 @@
         }
         else{
             NSLog(@"Success saving pins to Parse");
-            [self addPaths];
+            [self addPathsToParse];
         }
     }];
 }
 
-- (void)addPaths{
+- (void)addPathsToParse{
     NSString *cgPointString = nil;
     self.itineraryDraft.paths = [[NSArray alloc] init];
     NSMutableArray *holderArray = [[NSMutableArray alloc] init];

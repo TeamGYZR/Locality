@@ -28,7 +28,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    //[self dummyItinerary];
     [self loadPathsWithCategory:@"Foodie"];
     //[self photoFecth];
 }
@@ -46,6 +45,22 @@
 - (IBAction)didTapNature:(id)sender {
     [self loadPathsWithCategory:@"Nature"];
 }
+
+- (IBAction)didTapCreatePath:(id)sender {
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Start New Path?" message:nil preferredStyle:(UIAlertControllerStyleAlert)];
+    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+    }];
+    UIAlertAction *continueAction = [UIAlertAction actionWithTitle:@"Let's Go!" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        [self performSegueWithIdentifier:@"createSegue" sender:nil];
+    }];
+    [alert addAction:cancelAction];
+    [alert addAction:continueAction];
+    [self presentViewController:alert animated:YES completion:^{
+        
+    }];
+    
+}
+
 
 #pragma mark - Parse Query
 
@@ -102,25 +117,6 @@
     self.itineraries = [self.itineraries sortedArrayUsingDescriptors:@[sortDescriptor]];
     
 }
-
-- (void) dummyItinerary{
-    Itinerary *itinerary = [Itinerary new];
-    itinerary.name = @"ginger";
-    itinerary.creator = [User currentUser];
-    itinerary.pathDescription = @"this is a great path";
-    itinerary.category = @"Foodie";
-    NSDictionary *dictionary = [NSDictionary dictionaryWithObjectsAndKeys:@"50.8199", @"latitude", @"122.4783", @"longitude" , nil];
-    itinerary.pinnedLocations = [NSMutableArray arrayWithObjects:dictionary, nil];
-    itinerary.distanceFromFirstPinnedLocation = nil;
-    [itinerary saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
-        if (error) {
-            NSLog(@"error saving itinerary to parse");
-        } else {
-            NSLog(@"success saving itinerary to parse");
-        }
-    }];
-}
-
 
 #pragma mark - Flickr Request
 -(void) photoFecth{
