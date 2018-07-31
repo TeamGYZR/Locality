@@ -130,15 +130,17 @@
                                     <action selector="didTapPost:" destination="qmT-8e-wbo" eventType="touchUpInside" id="wSV-2q-0lS"/>
                                 </connections>
                             </button>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="gic-eh-ioj">
-                                <rect key="frame" x="0.0" y="275" width="375" height="306"/>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zBa-l2-rri" customClass="LCMapView">
+                                <rect key="frame" x="0.0" y="297" width="375" height="286"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </mapView>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="r7m-RQ-emE"/>
                     </view>
                     <connections>
+                        <outlet property="LCMapView" destination="zBa-l2-rri" id="tRp-fy-8Sl"/>
                         <outlet property="categoryController" destination="UFO-yD-pYU" id="wvH-qU-tqI"/>
                         <outlet property="itineraryDescription" destination="10s-j0-N9m" id="exP-Mx-hDH"/>
                         <outlet property="itineraryTitle" destination="py5-wM-uVf" id="V8p-Xw-h3C"/>
