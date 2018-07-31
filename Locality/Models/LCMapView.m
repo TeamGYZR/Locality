@@ -19,6 +19,21 @@
     [self addSubview:mapView];
 }
 
+- (MKOverlayRenderer *)mapView:(MKMapView *)mapView
+            rendererForOverlay:(id<MKOverlay>)overlay{
+    if ([overlay isKindOfClass:[MKPolyline class]])
+    {
+        MKPolylineRenderer *pathRenderer = [[MKPolylineRenderer alloc] initWithPolyline:overlay];
+        
+        pathRenderer.fillColor = [[UIColor blackColor] colorWithAlphaComponent:0.2];
+        pathRenderer.strokeColor = [[UIColor blueColor] colorWithAlphaComponent:0.7];
+        pathRenderer.lineWidth = 3;
+        
+        return pathRenderer;
+    }
+    return nil;
+}
+
 
 /*
 // Only override drawRect: if you perform custom drawing.
