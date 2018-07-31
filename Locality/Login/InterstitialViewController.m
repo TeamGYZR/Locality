@@ -11,9 +11,8 @@
 #import <CoreLocation/CoreLocation.h>
 #import "LoginViewController.h"
 
-@interface InterstitialViewController () <CLLocationManagerDelegate>
+@interface InterstitialViewController () 
 @property (strong, nonatomic) CLLocationManager *locationManager;
-@property (nonatomic) CLLocationCoordinate2D currentLocation;
 @end
 
 @implementation InterstitialViewController
@@ -29,21 +28,12 @@
 }
 
 - (IBAction)didTapContinue:(id)sender {
-    NSLog(@"hello");
     self.locationManager = [[CLLocationManager alloc] init];
-    self.locationManager.delegate = self;
     [self.locationManager requestWhenInUseAuthorization];
     if(CLLocationManager.locationServicesEnabled){
-        [self.locationManager requestLocation];
+        [self performSegueWithIdentifier:@"segueToLogin" sender:nil];
     }
-}
 
--(void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray<CLLocation *> *)locations{
-    NSLog(@"location found!");
-    CLLocation * currentLocation = [[CLLocation alloc] init];
-    currentLocation = [locations lastObject];
-    self.currentLocation = CLLocationCoordinate2DMake(currentLocation.coordinate.latitude, currentLocation.coordinate.longitude);
-    [self performSegueWithIdentifier:@"segueToLogin" sender:nil];
 }
 
 - (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error{
@@ -61,13 +51,6 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
-    if([[segue identifier] isEqualToString:@"segueToLogin"]){
-        NSLog(@"about to send");
-        LoginViewController *logInViewController =[segue destinationViewController];
-        logInViewController.lat = self.currentLocation.latitude;
-        logInViewController.lon = self.currentLocation.longitude;
-        
-    }
 }
 
 

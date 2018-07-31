@@ -36,9 +36,10 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (id)mapViewType{
-    return self;
+- (IBAction)didTapBack:(id)sender {
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
+
 /*
 #pragma mark - Navigation
 
