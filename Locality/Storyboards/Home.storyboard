@@ -91,13 +91,17 @@
                     <navigationItem key="navigationItem" id="xRL-MH-Lgh">
                         <barButtonItem key="rightBarButtonItem" title="Create Path" id="0jv-wZ-B18">
                             <connections>
-                                <segue destination="ftd-6l-hoH" kind="show" identifier="createSegue" id="n0T-1c-N9u"/>
+                                <action selector="didTapCreatePath:" destination="yY6-fb-adc" id="Wsc-3o-Vaq"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="imageView" destination="dh9-U7-GPc" id="YiR-TJ-sbe"/>
+<<<<<<< HEAD
                         <outlet property="tableView" destination="osb-fg-JPY" id="eaZ-wY-3Gs"/>
+=======
+                        <segue destination="ftd-6l-hoH" kind="show" identifier="createSegue" id="QYy-81-vMB"/>
+>>>>>>> 41e8df80ae458a38b827ad61240b980c6cb8d4ce
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="am0-dH-P53" userLabel="First Responder" sceneMemberID="firstResponder"/>

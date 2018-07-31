@@ -51,6 +51,22 @@
     [self loadPathsWithCategory:@"Nature"];
 }
 
+- (IBAction)didTapCreatePath:(id)sender {
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Start New Path?" message:nil preferredStyle:(UIAlertControllerStyleAlert)];
+    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+    }];
+    UIAlertAction *continueAction = [UIAlertAction actionWithTitle:@"Let's Go!" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        [self performSegueWithIdentifier:@"createSegue" sender:nil];
+    }];
+    [alert addAction:cancelAction];
+    [alert addAction:continueAction];
+    [self presentViewController:alert animated:YES completion:^{
+        
+    }];
+    
+}
+
+
 #pragma mark - Parse Query
 
 - (void) loadPathsWithCategory:(NSString *)category{
@@ -93,7 +109,6 @@
     sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"distanceFromFirstPinnedLocation" ascending:YES];
     self.itineraries = [self.itineraries sortedArrayUsingDescriptors:@[sortDescriptor]];
 }
-
 - (void) dummyItinerary{
     Itinerary *itinerary = [Itinerary new];
     itinerary.name = @"ginger";
@@ -125,8 +140,6 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     return 400;
 }
-
-
 #pragma mark - Flickr Request
 -(void) photoFecth{
     self.apiKey = @"595a10deca33ce1b5a7ab291254fb22a";

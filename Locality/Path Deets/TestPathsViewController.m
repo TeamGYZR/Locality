@@ -167,8 +167,10 @@
 
 - (IBAction)didTapTest:(id)sender {
     PFQuery *query = [PFQuery queryWithClassName:@"Itinerary"];
-    [query getObjectInBackgroundWithId:@"GoRk92zoCw" block:^(PFObject *testItinerary, NSError *error) {
+    [query includeKeys:@[@"creator", @"createdAt"]];
+    [query getObjectInBackgroundWithId:@"TeaICYP70d" block:^(PFObject *testItinerary, NSError *error) {
         // Do something with the returned PFObject in the gameScore variable.
+        
         self.fetchedItinerary = (Itinerary *)testItinerary;
     }];
 }
