@@ -12,9 +12,7 @@
 #import "math.h"
 #import "Itinerary.h"
 #import "User.h"
-
-
-
+#import <ParseUI/ParseUI.h>
 @interface HomeViewController () <UITableViewDelegate, UITableViewDataSource>
 
 @property (strong, nonatomic) NSArray *itineraries;
@@ -64,10 +62,7 @@
     }];
     
 }
-
-
 #pragma mark - Parse Query
-
 - (void) loadPathsWithCategory:(NSString *)category{
     PFQuery *query = [PFQuery queryWithClassName:@"Itinerary"];
     [query whereKey:@"category" equalTo:category];
@@ -79,7 +74,7 @@
         } else {
             self.itineraries = iteneraries;
             [self sortItenerariesByDistance];
-            //[self.tableView reloadData];
+            [self.tableView reloadData];
         }
     }];
 }

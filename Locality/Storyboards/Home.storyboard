@@ -30,10 +30,10 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="470.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="IVu-4h-QqI">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="IVu-4h-QqI" customClass="PFImageView">
                                                     <rect key="frame" x="0.0" y="0.0" width="138" height="85"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <color key="backgroundColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pC1-RA-p2s">
                                                     <rect key="frame" x="136" y="0.0" width="239" height="85"/>
@@ -50,7 +50,7 @@
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="pathMapView" destination="Mdl-Ld-LJW" id="TRn-db-Ume"/>
-                                            <outlet property="profileImageView" destination="IVu-4h-QqI" id="UM8-T6-QZj"/>
+                                            <outlet property="profileImageView" destination="IVu-4h-QqI" id="Hta-W3-yaT"/>
                                             <outlet property="profileNameField" destination="pC1-RA-p2s" id="Cjt-jX-tFM"/>
                                         </connections>
                                     </tableViewCell>
