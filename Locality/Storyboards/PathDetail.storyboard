@@ -52,6 +52,14 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="exP-u6-R3O">
+                                <rect key="frame" x="261" y="245" width="114" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Test LCMapView"/>
+                                <connections>
+                                    <segue destination="0ts-4q-7bh" kind="show" identifier="segueToTest" id="G0n-C6-soh"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="D2D-RO-NBi"/>
@@ -77,22 +85,27 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wBI-ul-a47" customClass="LCMapView">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wBI-ul-a47" customClass="LCMapView">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" red="0.81635773239999998" green="0.43530432759999999" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="wBI-ul-a47" firstAttribute="leading" secondItem="rB2-Vc-BFI" secondAttribute="leading" id="B2B-Ef-BxG"/>
+                            <constraint firstItem="wBI-ul-a47" firstAttribute="trailing" secondItem="rB2-Vc-BFI" secondAttribute="trailing" id="Gjw-bu-Rxw"/>
+                            <constraint firstItem="wBI-ul-a47" firstAttribute="bottom" secondItem="rB2-Vc-BFI" secondAttribute="bottom" id="Zmn-Ox-aSU"/>
+                            <constraint firstItem="wBI-ul-a47" firstAttribute="top" secondItem="7nx-jv-YeL" secondAttribute="top" id="dRH-JX-crL"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="rB2-Vc-BFI"/>
                     </view>
                     <connections>
-                        <outlet property="lcMapView" destination="wBI-ul-a47" id="O8L-7J-bEa"/>
+                        <outlet property="lcMapView" destination="wBI-ul-a47" id="fD4-YJ-ep4"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7se-L0-P8L" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1029.5999999999999" y="816.34182908545733"/>
+            <point key="canvasLocation" x="1031" y="858"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="nwB-GE-a9T">

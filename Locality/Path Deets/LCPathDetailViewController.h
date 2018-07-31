@@ -7,7 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Itinerary.h"
+#import <Parse/Parse.h>
 
 @interface LCPathDetailViewController : UIViewController
+
+@property (strong, nonatomic) Itinerary *itinerary;
 
 @end

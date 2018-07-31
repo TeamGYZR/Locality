@@ -9,8 +9,9 @@
 #import "LCPathDetailViewController.h"
 #import "LCMapView.h"
 
-@interface LCPathDetailViewController ()
-@property (weak, nonatomic) IBOutlet UIView *lcMapView;
+@interface LCPathDetailViewController () <LCMapViewDelegate>
+@property (weak, nonatomic) IBOutlet LCMapView *lcMapView;
+
 
 @end
 
@@ -18,7 +19,11 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    self.lcMapView.itinerary = self.itinerary;
+    self.lcMapView.delegate = self;
+    [self.lcMapView initWithMap];
+    
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -26,6 +31,9 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (id)mapViewType{
+    return self;
+}
 /*
 #pragma mark - Navigation
 

@@ -7,6 +7,7 @@
 //
 
 #import "PathDetailsViewController.h"
+#import "LCPathDetailViewController.h"
 
 @interface PathDetailsViewController ()<MKMapViewDelegate, CLLocationManagerDelegate>
 @property (weak, nonatomic) IBOutlet UILabel *pathNameLabel;
@@ -124,6 +125,12 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
+    
+    if([[segue identifier] isEqualToString:@"segueToTest"]){
+        LCPathDetailViewController * lcpathController = [segue destinationViewController];
+        lcpathController.itinerary = self.itinerary; 
+        
+    }
 }
 
 

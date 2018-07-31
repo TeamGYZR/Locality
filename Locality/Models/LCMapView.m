@@ -7,16 +7,68 @@
 //
 
 #import "LCMapView.h"
+#import "LCPathDetailViewController.h"
+
+@interface LCMapView()<MKMapViewDelegate, CLLocationManagerDelegate>
+
+@end
 
 @implementation LCMapView {
     MKMapView *mapView;
+    CLLocationManager *locationManager;
 }
 
 -(void)initWithMap{
+    mapView = [[MKMapView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height)];
+    mapView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     mapView.userInteractionEnabled = YES;
-    mapView.zoomEnabled = NO;
-    mapView.scrollEnabled = NO;
+    mapView.delegate = self;
+    if([[[self.delegate mapViewType] class] isKindOfClass:[LCPathDetailViewController class]]){
+        mapView.zoomEnabled = YES;
+        mapView.scrollEnabled = YES;
+        mapView.showsUserLocation = YES;
+    }
     [self addSubview:mapView];
+    locationManager = [[CLLocationManager alloc] init];
+    locationManager.delegate = self;
+    [locationManager requestLocation];
+}
+
+-(void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray<CLLocation *> *)locations{
+    self.currentLocation = [locations lastObject];
+    NSString* center = [self.itinerary.paths objectAtIndex:(self.itinerary.paths.count/2)];
+    CGPoint centerPoint = CGPointFromString(center);
+    MKCoordinateRegion currentRegion = MKCoordinateRegionMake(CLLocationCoordinate2DMake(centerPoint.x, centerPoint.y), MKCoordinateSpanMake(0.025, 0.025));
+    [mapView setRegion:currentRegion animated:YES];
+    [self drawPath];
+}
+
+-(void)drawPath{
+    NSUInteger numPoints = [self.itinerary.paths count];
+    if (numPoints > 1)
+    {
+        CLLocationCoordinate2D* coords = malloc(numPoints * sizeof(CLLocationCoordinate2D));
+        for (int i = 0; i < numPoints; i++)
+        {
+            NSString* current = [self.itinerary.paths objectAtIndex:i];
+            CGPoint currentPoint = CGPointFromString(current);
+            coords[i] = CLLocationCoordinate2DMake(currentPoint.x, currentPoint.y);
+        }
+        self.polyline = [MKPolyline polylineWithCoordinates:coords count:numPoints];
+        free(coords);
+        
+        [mapView addOverlay:self.polyline];
+        [mapView setNeedsDisplay];
+    }
+    
+    NSUInteger numPins = [self.itinerary.pinnedLocations count];
+    for(int i = 0; i< numPins; i++){
+        MKPointAnnotation *annotation = [MKPointAnnotation new];
+        annotation.coordinate = CLLocationCoordinate2DMake([self.itinerary.pinnedLocations[i][@"latitude"] doubleValue], [self.itinerary.pinnedLocations[i][@"longitude"] doubleValue]);
+        annotation.title = @"Location";
+        [mapView addAnnotation:annotation];
+    }
+    
 }
 
 - (MKOverlayRenderer *)mapView:(MKMapView *)mapView
@@ -24,17 +76,21 @@
     if ([overlay isKindOfClass:[MKPolyline class]])
     {
         MKPolylineRenderer *pathRenderer = [[MKPolylineRenderer alloc] initWithPolyline:overlay];
-        
         pathRenderer.fillColor = [[UIColor blackColor] colorWithAlphaComponent:0.2];
         pathRenderer.strokeColor = [[UIColor blueColor] colorWithAlphaComponent:0.7];
         pathRenderer.lineWidth = 3;
-        
         return pathRenderer;
     }
     return nil;
 }
 
+- (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error{
+    NSLog(@"THERE WAS AN ERROR - %@", error);
+}
 
+- (void)locationManager:(CLLocationManager *)manager didFinishDeferredUpdatesWithError:(NSError *)error{
+    NSLog(@"THERE WAS AN ERROR - %@", error);
+}
 /*
 // Only override drawRect: if you perform custom drawing.
 // An empty implementation adversely affects performance during animation.

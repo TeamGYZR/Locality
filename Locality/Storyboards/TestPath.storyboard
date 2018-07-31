@@ -47,17 +47,17 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ISH-m2-NM1">
-                                <rect key="frame" x="281" y="170" width="30" height="30"/>
+                                <rect key="frame" x="281" y="145" width="30" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Test"/>
                                 <connections>
                                     <action selector="didTapTest:" destination="eax-T2-hSg" eventType="touchUpInside" id="kYo-fz-ha8"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j0m-Je-cUt">
-                                <rect key="frame" x="251" y="208" width="91" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j0m-Je-cUt">
+                                <rect key="frame" x="287" y="183" width="30" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="To PathDetail"/>
+                                <state key="normal" image="Tea"/>
                                 <connections>
                                     <segue destination="8ZZ-xA-ON3" kind="show" identifier="seguePathDetail" id="vid-xE-SUu"/>
                                 </connections>
@@ -83,4 +83,7 @@
             <point key="canvasLocation" x="796" y="116"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="Tea" width="47" height="40"/>
+    </resources>
 </document>
