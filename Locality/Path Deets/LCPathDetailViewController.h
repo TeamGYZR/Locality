@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "Itinerary.h"
 #import <Parse/Parse.h>
+#import <ParseUI/ParseUI.h>
 
 @interface LCPathDetailViewController : UIViewController
 

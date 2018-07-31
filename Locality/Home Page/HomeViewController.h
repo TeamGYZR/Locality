@@ -25,7 +25,7 @@
 @property (strong, nonatomic) NSDictionary * photoResponseDictionary;
 @property (nonatomic) CLLocationCoordinate2D currentLocation;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
-
+@property NSTimeInterval timeoutInterval;
 
 
 @end

@@ -8,6 +8,7 @@
 
 #import "PathCell.h"
 
+
 @implementation PathCell
 
 - (void)awakeFromNib {
@@ -19,6 +20,15 @@
     [super setSelected:selected animated:animated];
 
     // Configure the view for the selected state
+}
+- (PFImageView *)profileImageView{
+    _profileImageView.file=self.user.profilePicture;
+    [_profileImageView loadInBackground];
+    return _profileImageView;
+}
+- (UILabel *)profileNameField{
+    _profileNameField.text=self.itinerary.name;
+    return _profileNameField;
 }
 
 @end
