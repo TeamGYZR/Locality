@@ -34,7 +34,7 @@
     [self loadPathsWithCategory:@"Foodie"];
     //self.tableView.rowHeight=UITableViewAutomaticDimension;
     
-    //[self photoFecth];
+    [self photoFecth];
 }
 
 #pragma mark - IBAction
@@ -161,10 +161,11 @@
     self.photoResponseDictionary=inResponseDictionary;
     }
     NSString * string;
-    for(int i=0; i<100; i++){
+    for(int i=0; i<10; i++){
      string=self.photoResponseDictionary[@"photos"][@"photo"][i][@"id"];
         NSDictionary *dictionary = [NSDictionary dictionaryWithObjectsAndKeys:self.apiKey, @"api_key",string, @"photo_id",nil];
       bool boo=[self.request2 callAPIMethodWithGET:@"flickr.photos.getFavorites" arguments:dictionary];
+        //self.timeoutInterval=10;
         //NSLog(@"%@", inResponseDictionary[@"photo"][@"total"]);
         NSLog(@"%d", boo);
         //NSLog(@"%@", inResponseDictionary);

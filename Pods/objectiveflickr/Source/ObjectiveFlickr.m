@@ -488,11 +488,11 @@ typedef unsigned int NSUInteger;
 
 - (BOOL)callAPIMethodWithGET:(NSString *)inMethodName arguments:(NSDictionary *)inArguments
 {
-//    if ([HTTPRequest isRunning]) {
-//        return NO;
-//    }
+    if ([HTTPRequest isRunning]) {
+        return NO;
+    }
     
-    // combine the parameters 
+    // combine the parameters
 	NSMutableDictionary *newArgs = inArguments ? [NSMutableDictionary dictionaryWithDictionary:inArguments] : [NSMutableDictionary dictionary];
 	[newArgs setObject:inMethodName forKey:@"method"];	
 
