@@ -20,6 +20,15 @@
 #pragma mark - View Controller
 - (void)viewDidLoad {
     [super viewDidLoad];
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismissKeyboard)];
+    [self.view addGestureRecognizer:tap];
+}
+
+#pragma mark - Private Methods
+
+- (void)dismissKeyboard{
+    [self.itineraryTitle resignFirstResponder];
+    [self.itineraryDescription resignFirstResponder];
 }
 
 #pragma mark - IBActions
@@ -34,6 +43,9 @@
             NSLog(@"Error saving Path info to Parse");
         } else{
             NSLog(@"Successfulyy saved path to Parse");
+            [self dismissViewControllerAnimated:YES completion:^{
+                
+            }];
         }
     }];
 }

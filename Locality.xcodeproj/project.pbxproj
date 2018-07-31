@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		1BE7AFA3980986C9A157CCD2 /* libPods-Locality.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F1B3E5DBABAB3F93F44C75E /* libPods-Locality.a */; };
 		2F308E1C27E4FA2C43F5F955 /* libPods-LocalityUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7268D2AFC88C24A529B514A5 /* libPods-LocalityUITests.a */; };
-		4C51C93C210BC990007B389F /* PathCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C51C93B210BC990007B389F /* PathCell.m */; };
 		4C51C940210BE353007B389F /* pinnedLocations.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C51C93F210BE353007B389F /* pinnedLocations.m */; };
 		4C51C946210BEE7D007B389F /* Itinerary.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C51C945210BEE7D007B389F /* Itinerary.m */; };
 		4C771D69210665CA0055A90D /* SignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C771D68210665CA0055A90D /* SignUpViewController.m */; };
@@ -70,6 +69,7 @@
 		A858D2DF21044E7C00637FAD /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A858D2DE21044E7C00637FAD /* AVFoundation.framework */; };
 		A8842AF22106A44F003ECD07 /* Uploadphotoviewcontroller.m in Sources */ = {isa = PBXBuildFile; fileRef = A8842AF12106A44F003ECD07 /* Uploadphotoviewcontroller.m */; };
 		A8BF41C7210C110E001DAB81 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = A8BF41C6210C110E001DAB81 /* User.m */; };
+		A8BF41CA2110B1CE001DAB81 /* PathCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A8BF41C92110B1CE001DAB81 /* PathCell.m */; };
 		A8E26415210BB430002C0992 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A8E26414210BB430002C0992 /* HomeViewController.m */; };
 		A8E26419210BB48C002C0992 /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A8E26418210BB48C002C0992 /* Home.storyboard */; };
 		A8F8E7E2210951CF00684142 /* FlickrAuthorizationAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A8F8E7E1210951CF00684142 /* FlickrAuthorizationAppDelegate.m */; };
@@ -94,8 +94,6 @@
 
 /* Begin PBXFileReference section */
 		0D954F9A18A334D6109C8DA1 /* Pods-LocalityTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LocalityTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LocalityTests/Pods-LocalityTests.debug.xcconfig"; sourceTree = "<group>"; };
-		4C51C93A210BC990007B389F /* PathCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PathCell.h; sourceTree = "<group>"; };
-		4C51C93B210BC990007B389F /* PathCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PathCell.m; sourceTree = "<group>"; };
 		4C51C93E210BE353007B389F /* pinnedLocations.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = pinnedLocations.h; sourceTree = "<group>"; };
 		4C51C93F210BE353007B389F /* pinnedLocations.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = pinnedLocations.m; sourceTree = "<group>"; };
 		4C51C944210BEE7D007B389F /* Itinerary.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Itinerary.h; sourceTree = "<group>"; };
@@ -207,6 +205,8 @@
 		A8842AF12106A44F003ECD07 /* Uploadphotoviewcontroller.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Uploadphotoviewcontroller.m; sourceTree = "<group>"; };
 		A8BF41C5210C110E001DAB81 /* User.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
 		A8BF41C6210C110E001DAB81 /* User.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
+		A8BF41C82110B1CE001DAB81 /* PathCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PathCell.h; sourceTree = "<group>"; };
+		A8BF41C92110B1CE001DAB81 /* PathCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PathCell.m; sourceTree = "<group>"; };
 		A8E26413210BB430002C0992 /* HomeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
 		A8E26414210BB430002C0992 /* HomeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeViewController.m; sourceTree = "<group>"; };
 		A8E26418210BB48C002C0992 /* Home.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Home.storyboard; sourceTree = "<group>"; };
@@ -267,8 +267,8 @@
 			children = (
 				A8E26413210BB430002C0992 /* HomeViewController.h */,
 				A8E26414210BB430002C0992 /* HomeViewController.m */,
-				4C51C93A210BC990007B389F /* PathCell.h */,
-				4C51C93B210BC990007B389F /* PathCell.m */,
+				A8BF41C82110B1CE001DAB81 /* PathCell.h */,
+				A8BF41C92110B1CE001DAB81 /* PathCell.m */,
 			);
 			path = "Home Page";
 			sourceTree = "<group>";
@@ -785,7 +785,6 @@
 				859A1AA120FF121300E13EBC /* VenueAnnotation.m in Sources */,
 				4C771D69210665CA0055A90D /* SignUpViewController.m in Sources */,
 				4CEF1C41210A786D00C69B15 /* Follow.m in Sources */,
-				4C51C93C210BC990007B389F /* PathCell.m in Sources */,
 				4C81D0E0210FC66B00064DBB /* PathFinalizationViewController.m in Sources */,
 				4CEF1C382108DCE500C69B15 /* UserCell.m in Sources */,
 				4CEF1C45210BA96500C69B15 /* ResultsTableViewController.m in Sources */,
@@ -799,6 +798,7 @@
 				4CA36B5B20FE9F8A0056EB44 /* APIManager.m in Sources */,
 				8544B996210BBE630028D43F /* PathDetailsViewController.m in Sources */,
 				4C771D752107999F0055A90D /* DetailsCollectionViewController.m in Sources */,
+				A8BF41CA2110B1CE001DAB81 /* PathCell.m in Sources */,
 				4CDAC17920F4424100B3E7D4 /* AppDelegate.m in Sources */,
 				4CA36B74210128F20056EB44 /* EditProfileViewController.m in Sources */,
 				4C771D7B21079A690055A90D /* CommentCollectionCell.m in Sources */,
