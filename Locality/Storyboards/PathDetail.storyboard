@@ -20,7 +20,7 @@
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fnK-CW-HBW" customClass="LCMapView">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" red="1" green="0.9878943966" blue="0.95581895319999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             </view>
                             <view alpha="0.45000000000000001" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Eg3-iJ-lpq">
                                 <rect key="frame" x="0.0" y="63" width="375" height="174"/>
@@ -62,7 +62,13 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="D2D-RO-NBi"/>
                     </view>
-                    <navigationItem key="navigationItem" id="8sE-tU-VGp"/>
+                    <navigationItem key="navigationItem" id="8sE-tU-VGp">
+                        <barButtonItem key="leftBarButtonItem" title="Back" id="krf-2U-nhg">
+                            <connections>
+                                <action selector="didTapBack:" destination="YfQ-gI-n7T" id="aTq-Tw-o3a"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="lcMapView" destination="fnK-CW-HBW" id="pIP-E7-BS0"/>
                         <outlet property="pathDescriptionLabel" destination="YPr-eY-2pG" id="lSb-R1-v54"/>

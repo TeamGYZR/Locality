@@ -67,11 +67,8 @@
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller
     if([segue.identifier isEqualToString:@"successfulSignup"]){
-        
         DetailSignUpViewController * detailSignUpViewController =[segue destinationViewController];
         detailSignUpViewController.currentUser = self.currentUser;
-        detailSignUpViewController.lat = self.lat;
-        detailSignUpViewController.lon = self.lon;
         
     }
 }

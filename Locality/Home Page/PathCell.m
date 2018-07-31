@@ -21,8 +21,19 @@
 
     // Configure the view for the selected state
 }
+- (void)setItinerary:(Itinerary *)itinerary{
+    _itinerary = itinerary;
+    self.pathNameField.text = itinerary.name;
+    self.pathDescriptionField.text = itinerary.pathDescription;
+    self.profileNameField.text = itinerary.creator.name;
+    self.profileImageView.file = self.itinerary.creator.profilePicture;
+    [self.profileImageView loadInBackground];
+    [self.lcMapView initWithItinerary:itinerary isStatic:YES];
+}
+
+
 - (PFImageView *)profileImageView{
-    _profileImageView.file=self.user.profilePicture;
+    _profileImageView.file=self.itinerary.creator.profilePicture;
     [_profileImageView loadInBackground];
     return _profileImageView;
 }
