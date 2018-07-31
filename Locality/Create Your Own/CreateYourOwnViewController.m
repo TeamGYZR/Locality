@@ -186,7 +186,8 @@
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.identifier isEqualToString:@"doneSegue"]) {
-        PathFinalizationViewController *pathFinalizationVC = [segue destinationViewController];
+        UINavigationController *navigationController = [segue destinationViewController];
+        PathFinalizationViewController *pathFinalizationVC = (PathFinalizationViewController *)navigationController.topViewController;
         pathFinalizationVC.itinerary = self.itineraryDraft;
     }
 }

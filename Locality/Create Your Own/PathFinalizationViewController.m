@@ -7,11 +7,15 @@
 //
 
 #import "PathFinalizationViewController.h"
+#import "LCMapView.h"
+#import "CreateYourOwnViewController.h"
 
 @interface PathFinalizationViewController ()
 @property (weak, nonatomic) IBOutlet UITextField *itineraryTitle;
 @property (weak, nonatomic) IBOutlet UITextField *itineraryDescription;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *categoryController;
+@property (weak, nonatomic) IBOutlet LCMapView *LCMapView;
+@property (strong, nonatomic) CreateYourOwnViewController *createYourOwn;
 
 @end
 
@@ -22,6 +26,8 @@
     [super viewDidLoad];
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismissKeyboard)];
     [self.view addGestureRecognizer:tap];
+    [self.LCMapView initWithItinerary:self.itinerary isStatic:NO];
+    
 }
 
 #pragma mark - Private Methods
@@ -43,10 +49,13 @@
             NSLog(@"Error saving Path info to Parse");
         } else{
             NSLog(@"Successfulyy saved path to Parse");
-            [self dismissViewControllerAnimated:YES completion:^{
-                
-            }];
+            [self performSegueWithIdentifier:@"cyoToHomeSegue" sender:nil];
         }
+    }];
+}
+
+- (IBAction)didTapBack:(id)sender {
+    [self dismissViewControllerAnimated:YES completion:^{
     }];
 }
 
