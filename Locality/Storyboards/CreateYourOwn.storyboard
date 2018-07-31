@@ -30,14 +30,22 @@
                                     <action selector="didTapStartPath:" destination="cTa-YV-odr" eventType="touchUpInside" id="2R6-ny-SpK"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="X92-CV-xAl">
+                                <rect key="frame" x="289" y="96" width="53" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Add Pin"/>
+                                <connections>
+                                    <action selector="didTapAddPin:" destination="cTa-YV-odr" eventType="touchUpInside" id="o65-uz-bW3"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="gOo-5U-0Ck"/>
                     </view>
                     <navigationItem key="navigationItem" id="6X8-Tw-P5y">
-                        <barButtonItem key="leftBarButtonItem" title="Add Pin" id="XsX-0f-FME">
+                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="XsX-0f-FME">
                             <connections>
-                                <action selector="didTapAddPin:" destination="cTa-YV-odr" id="38P-fY-nOc"/>
+                                <action selector="didTapCancel:" destination="cTa-YV-odr" id="TIz-fp-vkx"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Done" id="frB-6M-vHP">

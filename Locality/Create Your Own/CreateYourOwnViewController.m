@@ -106,6 +106,10 @@
     [self addPins];
 }
 
+- (IBAction)didTapCancel:(id)sender {
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
 #pragma mark - Private Methods
 
 - (void)addPins{
