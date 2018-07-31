@@ -7,6 +7,7 @@
 //
 
 #import "PathDetailsViewController.h"
+#import "LCPathDetailViewController.h"
 
 @interface PathDetailsViewController ()<MKMapViewDelegate, CLLocationManagerDelegate>
 @property (weak, nonatomic) IBOutlet UILabel *pathNameLabel;
@@ -14,6 +15,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *userNameLabel;
 @property (weak, nonatomic) IBOutlet PFImageView *userProfileImageView;
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;
+//@property (weak, nonatomic) IBOutlet LCMapView *lcMapView;
 @property (strong, nonatomic) CLLocationManager *locationManager;
 @property (nonatomic) CLLocation *currentLocation;
 @property (strong, nonatomic) NSMutableArray *pathCoordinates;
@@ -34,6 +36,12 @@
         [self.userProfileImageView loadInBackground];
     }
     //pinnedLocations is dictionary, pathCoordinates is CGPoints in Strings
+    //[self.lcMapView initWithMap];
+    //self.lcMapView.mapView.delegate = self;
+    
+    self.mapView.userInteractionEnabled = YES;
+    self.mapView.zoomEnabled = NO;
+    self.mapView.scrollEnabled = NO; 
     self.mapView.delegate = self;
     self.locationManager = [[CLLocationManager alloc] init];
     self.locationManager.delegate = self;
@@ -68,6 +76,14 @@
         [self.mapView setNeedsDisplay];
     }
     
+    NSUInteger numPins = [self.itinerary.pinnedLocations count];
+    for(int i = 0; i< numPins; i++){
+        MKPointAnnotation *annotation = [MKPointAnnotation new];
+        annotation.coordinate = CLLocationCoordinate2DMake([self.itinerary.pinnedLocations[i][@"latitude"] doubleValue], [self.itinerary.pinnedLocations[i][@"longitude"] doubleValue]);
+        annotation.title = @"Location";
+        [self.mapView addAnnotation:annotation];
+        
+    }
     
 }
 
@@ -109,6 +125,12 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
+    
+    if([[segue identifier] isEqualToString:@"segueToTest"]){
+        LCPathDetailViewController * lcpathController = [segue destinationViewController];
+        lcpathController.itinerary = self.itinerary; 
+        
+    }
 }
 
 

@@ -13,6 +13,7 @@
 #import "PathCell.h"
 #import "math.h"
 #import "User.h"
+#import <MapKit/MapKit.h>
 
 @interface HomeViewController : UIViewController<OFFlickrAPIRequestDelegate>
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
@@ -23,6 +24,8 @@
 @property (strong,nonatomic) NSString *sharedKey;
 @property (strong, nonatomic) NSDictionary * photoResponseDictionary;
 @property (nonatomic) CLLocationCoordinate2D currentLocation;
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
+
 
 
 @end
