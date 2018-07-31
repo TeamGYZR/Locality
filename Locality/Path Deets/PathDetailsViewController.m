@@ -74,8 +74,15 @@
         [self.mapView addOverlay:self.polyline];
         [self.mapView setNeedsDisplay];
     }
-    NSUInteger numPins = [self.itinerary.pinnedLocations count];
     
+    NSUInteger numPins = [self.itinerary.pinnedLocations count];
+    for(int i = 0; i< numPins; i++){
+        MKPointAnnotation *annotation = [MKPointAnnotation new];
+        annotation.coordinate = CLLocationCoordinate2DMake([self.itinerary.pinnedLocations[i][@"latitude"] doubleValue], [self.itinerary.pinnedLocations[i][@"longitude"] doubleValue]);
+        annotation.title = @"Location";
+        [self.mapView addAnnotation:annotation];
+        
+    }
     
 }
 
