@@ -383,6 +383,8 @@
 				4CA36B5C20FEB20A0056EB44 /* DetailsView.storyboard */,
 				8597DB1F20FE7BA200BA261A /* YMapView.storyboard */,
 				4CB3478E2108D95500BC0C3A /* ExploreUsers.storyboard */,
+				8544B994210BBE630028D43F /* PathDetailsViewController.h */,
+				8544B995210BBE630028D43F /* PathDetailsViewController.m */,
 				4CA36B5E20FEB5290056EB44 /* Venue Details */,
 				4CA36B5F20FEB5540056EB44 /* DetailsViewController.h */,
 				4CA36B6020FEB5540056EB44 /* DetailsViewController.m */,
@@ -489,8 +491,6 @@
 				852FB5C6210FD38A003AC70A /* LCPathDetailViewController.m */,
 				8544B99C210E58AB0028D43F /* TestPathsViewController.h */,
 				8544B99D210E58AB0028D43F /* TestPathsViewController.m */,
-				8544B994210BBE630028D43F /* PathDetailsViewController.h */,
-				8544B995210BBE630028D43F /* PathDetailsViewController.m */,
 			);
 			path = "Path Deets";
 			sourceTree = "<group>";
