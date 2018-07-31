@@ -128,22 +128,44 @@
     self.sharedKey = @"cf18c4e987fb5146";
     self.context = [[OFFlickrAPIContext alloc]
                   initWithAPIKey:self.apiKey sharedSecret:self.sharedKey];
-    self.request=[[OFFlickrAPIRequest alloc] initWithAPIContext:self.context];
-    [self.request setDelegate:self];
+    self.request1=[[OFFlickrAPIRequest alloc] initWithAPIContext:self.context];
+    [self.request1 setDelegate:self];
+    self.request2=[[OFFlickrAPIRequest alloc] initWithAPIContext:self.context];
+    [self.request2 setDelegate:self];
   NSDictionary *dictionary = [NSDictionary dictionaryWithObjectsAndKeys:@"San francisco", @"text",@"relevance",@"sort",nil];
-    [self.request callAPIMethodWithGET:@"flickr.photos.search" arguments:dictionary];
+    [self.request1 callAPIMethodWithGET:@"flickr.photos.search" arguments:dictionary];
 }
+
 - (void)flickrAPIRequest:(OFFlickrAPIRequest *)inRequest didCompleteWithResponse:(NSDictionary *)inResponseDictionary{
-  NSLog(@"response: %@", inResponseDictionary);
+    NSInteger * largestInteger=0;
+    if(inRequest==self.request1){
+  //NSLog(@"response: %@", inResponseDictionary);
     self.photoResponseDictionary=inResponseDictionary;
-    
-    for(int i=0; i<100; i++){
-    NSDictionary *photoDict =[[self.photoResponseDictionary valueForKeyPath:@"photos.photo"] objectAtIndex:i];
-   NSLog(@"%@", [self.context photoSourceURLFromDictionary:photoDict size:OFFlickrLargeSize]);
     }
+    NSString * string;
+    for(int i=0; i<100; i++){
+     string=self.photoResponseDictionary[@"photos"][@"photo"][i][@"id"];
+        NSDictionary *dictionary = [NSDictionary dictionaryWithObjectsAndKeys:self.apiKey, @"api_key",string, @"photo_id",nil];
+      bool boo=[self.request2 callAPIMethodWithGET:@"flickr.photos.getFavorites" arguments:dictionary];
+        //NSLog(@"%@", inResponseDictionary[@"photo"][@"total"]);
+        NSLog(@"%d", boo);
+        //NSLog(@"%@", inResponseDictionary);
+    //NSLog(@"%@", string);
+      }
+//    if(inRequest==self.request2){
+//        NSLog(@"%@", inResponseDictionary);
+//    }
+    
+
 }
+
+
+
+
+
 - (void)flickrAPIRequest:(OFFlickrAPIRequest *)inRequest didFailWithError:(NSError *)inError{
-    self.request=nil;
+    self.request1=nil;
+    self.request2=nil;
 }
 
 
