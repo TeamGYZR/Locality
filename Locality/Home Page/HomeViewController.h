@@ -14,6 +14,9 @@
 #import "math.h"
 #import "User.h"
 #import <MapKit/MapKit.h>
+#import <CoreLocation/CoreLocation.h>
+
+
 
 @interface HomeViewController : UIViewController<OFFlickrAPIRequestDelegate>
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
@@ -25,7 +28,8 @@
 @property (strong, nonatomic) NSDictionary * photoResponseDictionary;
 @property (nonatomic) CLLocationCoordinate2D currentLocation;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
-@property NSTimeInterval timeoutInterval;
+@property (nonatomic, strong) CLGeocoder *geoCoder;
+
 
 
 @end

@@ -13,6 +13,7 @@
 #import "Itinerary.h"
 #import "User.h"
 #import <ParseUI/ParseUI.h>
+
 @interface HomeViewController () <UITableViewDelegate, UITableViewDataSource>
 
 @property (strong, nonatomic) NSArray *itineraries;
@@ -30,7 +31,6 @@
     self.tableView.delegate=self;
     [self loadPathsWithCategory:@"Foodie"];
     //self.tableView.rowHeight=UITableViewAutomaticDimension;
-    
     [self photoFecth];
 }
 
@@ -78,7 +78,6 @@
         }
     }];
 }
-
 #pragma mark - Private Methods
 - (void) sortItenerariesByDistance{
     for (int i = 0; i < self.itineraries.count; i++) {
@@ -90,7 +89,6 @@
         CLLocationDistance distance = [currentLocation distanceFromLocation:venueLocation];
         self.itineraries[i][@"distanceFromFirstPinnedLocation"] = [NSNumber numberWithDouble:distance];
         //NSLog(@"%@", self.itineraries[i][@"distanceFromFirstPinnedLocation"]);
-        
         [self.itineraries[i] saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
             if (error) {
                 NSLog(@"error saving distance to parse");
@@ -128,15 +126,23 @@
     [self.request1 setDelegate:self];
     self.request2=[[OFFlickrAPIRequest alloc] initWithAPIContext:self.context];
     [self.request2 setDelegate:self];
-  NSDictionary *dictionary = [NSDictionary dictionaryWithObjectsAndKeys:@"San francisco", @"text",@"relevance",@"sort",nil];
-    [self.request1 callAPIMethodWithGET:@"flickr.photos.search" arguments:dictionary];
+    CLLocation *location = [[CLLocation alloc] initWithLatitude:self.currentLocation.latitude longitude:self.currentLocation.longitude];
+    [self.geoCoder reverseGeocodeLocation:location completionHandler:^(NSArray<CLPlacemark *> * _Nullable placemarks, NSError * _Nullable error) {
+        NSLog(@"hey");
+    }];
+// NSDictionary *dictionary = [NSDictionary dictionaryWithObjectsAndKeys:forLat,@"lat",forLon,@"lon", @"relevance",@"sort",nil];
+//    [self.request1 callAPIMethodWithGET:@"flickr.photos.search" arguments:dictionary];
 }
-
 - (void)flickrAPIRequest:(OFFlickrAPIRequest *)inRequest didCompleteWithResponse:(NSDictionary *)inResponseDictionary{
-    NSInteger * largestInteger=0;
     if(inRequest==self.request1){
   //NSLog(@"response: %@", inResponseDictionary);
-    self.photoResponseDictionary=inResponseDictionary;
+        for(int i=0; i<100; i++){
+        NSDictionary *photoDict = [[inResponseDictionary valueForKeyPath:@"photos.photo"] objectAtIndex:i];
+        //NSURL *staticPhotoURL = [self.context photoSourceURLFromDictionary:photoDict size:OFFlickrSmallSize];
+            NSURL *photoSourcePage = [self.context photoWebPageURLFromDictionary:photoDict];
+            NSLog(@"%@", photoSourcePage);
+        }
+      self.photoResponseDictionary=inResponseDictionary;
     }
     NSString * string;
     for(int i=0; i<10; i++){
@@ -145,7 +151,7 @@
       bool boo=[self.request2 callAPIMethodWithGET:@"flickr.photos.getFavorites" arguments:dictionary];
         //self.timeoutInterval=10;
         //NSLog(@"%@", inResponseDictionary[@"photo"][@"total"]);
-        NSLog(@"%d", boo);
+        //NSLog(@"%d", boo);
         //NSLog(@"%@", inResponseDictionary);
     //NSLog(@"%@", string);
       }
