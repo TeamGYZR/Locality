@@ -102,9 +102,7 @@
 - (IBAction)didTapDone:(id)sender {
     [self.locationManager stopUpdatingLocation];
     self.itineraryDraft = [[Itinerary alloc] init];
-    self.itineraryDraft.name = @"segue tester";
     self.itineraryDraft.creator = [User currentUser];
-    self.itineraryDraft.category = @"tester category";
     [self addPins];
 }
 
