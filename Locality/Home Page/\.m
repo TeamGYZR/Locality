@@ -15,10 +15,10 @@
 
 
 
-@interface HomeViewController () <UITableViewDelegate, UITableViewDataSource>
+@interface HomeViewController () <UICollectionViewDelegate, UICollectionViewDataSource>
 
 @property (strong, nonatomic) NSArray *itineraries;
-
+@property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 
 @end
 
@@ -28,12 +28,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    //[self dummyItinerary];
-    self.tableView.dataSource=self;
-    self.tableView.delegate=self;
+    [self dummyItinerary];
     [self loadPathsWithCategory:@"Foodie"];
-    //self.tableView.rowHeight=UITableViewAutomaticDimension;
-    
     //[self photoFecth];
 }
 
@@ -64,12 +60,24 @@
         } else {
             self.itineraries = iteneraries;
             [self sortItenerariesByDistance];
-            [self.tableView reloadData];
         }
     }];
 }
 
+#pragma mark - UICollectionView
+
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
+    return self.itineraries.count;
+}
+
+- (nonnull __kindof UICollectionViewCell *)collectionView:(nonnull UICollectionView *)collectionView cellForItemAtIndexPath:(nonnull NSIndexPath *)indexPath{
+    PathCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"PathCell" forIndexPath:indexPath];
+    cell.itinerary = self.itineraries[indexPath.item];
+    return cell;
+}
+
 #pragma mark - Private Methods
+
 - (void) sortItenerariesByDistance{
     for (int i = 0; i < self.itineraries.count; i++) {
         CLLocationCoordinate2D venueCoordinate;
@@ -79,8 +87,7 @@
         CLLocation *venueLocation = [[CLLocation alloc] initWithLatitude:venueCoordinate.latitude longitude:venueCoordinate.longitude];
         CLLocationDistance distance = [currentLocation distanceFromLocation:venueLocation];
         self.itineraries[i][@"distanceFromFirstPinnedLocation"] = [NSNumber numberWithDouble:distance];
-        //NSLog(@"%@", self.itineraries[i][@"distanceFromFirstPinnedLocation"]);
-        
+        NSLog(@"%@", self.itineraries[i][@"distanceFromFirstPinnedLocation"]);
         [self.itineraries[i] saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
             if (error) {
                 NSLog(@"error saving distance to parse");
@@ -92,6 +99,7 @@
     NSSortDescriptor *sortDescriptor;
     sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"distanceFromFirstPinnedLocation" ascending:YES];
     self.itineraries = [self.itineraries sortedArrayUsingDescriptors:@[sortDescriptor]];
+    
 }
 
 - (void) dummyItinerary{
@@ -110,20 +118,6 @@
             NSLog(@"success saving itinerary to parse");
         }
     }];
-}
-#pragma mark - UItableView
-- (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
-    PathCell * cell=[tableView dequeueReusableCellWithIdentifier:@"PathCell" forIndexPath:indexPath];
-    cell.itinerary=self.itineraries[indexPath.row];
-    return cell;
-}
-
-- (NSInteger)tableView:(nonnull UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return self.itineraries.count;
-    //return 20;
-}
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return 400;
 }
 
 
@@ -160,7 +154,14 @@
 //    if(inRequest==self.request2){
 //        NSLog(@"%@", inResponseDictionary);
 //    }
+    
+
 }
+
+
+
+
+
 - (void)flickrAPIRequest:(OFFlickrAPIRequest *)inRequest didFailWithError:(NSError *)inError{
     self.request1=nil;
     self.request2=nil;
@@ -177,11 +178,5 @@
     // Pass the selected object to the new view controller.
 }
 */
-
-
-
-
-
-
 
 @end
