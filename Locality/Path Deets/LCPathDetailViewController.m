@@ -11,14 +11,23 @@
 
 @interface LCPathDetailViewController ()
 @property (weak, nonatomic) IBOutlet LCMapView *lcMapView;
-
-
+@property (weak, nonatomic) IBOutlet UILabel *pathNameLabel;
+@property (weak, nonatomic) IBOutlet UILabel *pathDescriptionLabel;
+@property (weak, nonatomic) IBOutlet PFImageView *userProfileImageView;
+@property (weak, nonatomic) IBOutlet UILabel *userNameLabel;
 @end
 
 @implementation LCPathDetailViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.pathNameLabel.text = self.itinerary.name;
+    self.pathDescriptionLabel.text = self.itinerary.pathDescription;
+    self.userNameLabel.text = self.itinerary.creator.name;
+    if (self.itinerary.creator.profilePicture != nil) {
+        self.userProfileImageView.file = self.itinerary.creator.profilePicture;
+        [self.userProfileImageView loadInBackground];
+    }
     [self.lcMapView initWithItinerary:self.itinerary isStatic:NO];
 }
 

@@ -29,6 +29,7 @@
 }
 
 - (IBAction)didTapContinue:(id)sender {
+    NSLog(@"hello");
     self.locationManager = [[CLLocationManager alloc] init];
     self.locationManager.delegate = self;
     [self.locationManager requestWhenInUseAuthorization];
@@ -38,6 +39,7 @@
 }
 
 -(void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray<CLLocation *> *)locations{
+    NSLog(@"location found!");
     CLLocation * currentLocation = [[CLLocation alloc] init];
     currentLocation = [locations lastObject];
     self.currentLocation = CLLocationCoordinate2DMake(currentLocation.coordinate.latitude, currentLocation.coordinate.longitude);
@@ -60,6 +62,7 @@
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
     if([[segue identifier] isEqualToString:@"segueToLogin"]){
+        NSLog(@"about to send");
         LoginViewController *logInViewController =[segue destinationViewController];
         logInViewController.lat = self.currentLocation.latitude;
         logInViewController.lon = self.currentLocation.longitude;
