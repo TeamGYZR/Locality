@@ -30,10 +30,10 @@
                                     <action selector="didTapStartPath:" destination="cTa-YV-odr" eventType="touchUpInside" id="2R6-ny-SpK"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="X92-CV-xAl">
-                                <rect key="frame" x="289" y="96" width="53" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="X92-CV-xAl">
+                                <rect key="frame" x="327" y="80" width="32" height="39"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Add Pin"/>
+                                <state key="normal" image="Add location"/>
                                 <connections>
                                     <action selector="didTapAddPin:" destination="cTa-YV-odr" eventType="touchUpInside" id="o65-uz-bW3"/>
                                 </connections>
@@ -167,4 +167,7 @@
             <point key="canvasLocation" x="29.600000000000001" y="175.86206896551727"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="Add location" width="37" height="44"/>
+    </resources>
 </document>
