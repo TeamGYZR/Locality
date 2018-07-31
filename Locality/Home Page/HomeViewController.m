@@ -28,7 +28,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    //[self dummyItinerary];
     self.tableView.dataSource=self;
     self.tableView.delegate=self;
     [self loadPathsWithCategory:@"Foodie"];
@@ -80,7 +79,7 @@
         } else {
             self.itineraries = iteneraries;
             [self sortItenerariesByDistance];
-            [self.tableView reloadData];
+            //[self.tableView reloadData];
         }
     }];
 }
@@ -109,24 +108,8 @@
     sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"distanceFromFirstPinnedLocation" ascending:YES];
     self.itineraries = [self.itineraries sortedArrayUsingDescriptors:@[sortDescriptor]];
 }
-- (void) dummyItinerary{
-    Itinerary *itinerary = [Itinerary new];
-    itinerary.name = @"ginger";
-    itinerary.creator = [User currentUser];
-    itinerary.pathDescription = @"this is a great path";
-    itinerary.category = @"Foodie";
-    NSDictionary *dictionary = [NSDictionary dictionaryWithObjectsAndKeys:@"50.8199", @"latitude", @"122.4783", @"longitude" , nil];
-    itinerary.pinnedLocations = [NSMutableArray arrayWithObjects:dictionary, nil];
-    itinerary.distanceFromFirstPinnedLocation = nil;
-    [itinerary saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
-        if (error) {
-            NSLog(@"error saving itinerary to parse");
-        } else {
-            NSLog(@"success saving itinerary to parse");
-        }
-    }];
-}
-#pragma mark - UItableView
+
+#pragma mark - UITableView
 - (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
     PathCell * cell=[tableView dequeueReusableCellWithIdentifier:@"PathCell" forIndexPath:indexPath];
     cell.itinerary=self.itineraries[indexPath.row];
