@@ -9,7 +9,7 @@
 #import "LCPathDetailViewController.h"
 #import "LCMapView.h"
 
-@interface LCPathDetailViewController () <LCMapViewDelegate>
+@interface LCPathDetailViewController ()
 @property (weak, nonatomic) IBOutlet LCMapView *lcMapView;
 
 
@@ -19,11 +19,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.lcMapView.itinerary = self.itinerary;
-    self.lcMapView.delegate = self;
-    [self.lcMapView initWithMap];
-    
-    
+    [self.lcMapView initWithItinerary:self.itinerary isStatic:NO];
 }
 
 - (void)didReceiveMemoryWarning {

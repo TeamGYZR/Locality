@@ -10,7 +10,9 @@
 #import "LCPathDetailViewController.h"
 
 @interface LCMapView()<MKMapViewDelegate, CLLocationManagerDelegate>
-
+@property (strong, nonatomic) Itinerary *itinerary;
+@property (strong, nonatomic) CLLocation *currentLocation;
+@property (strong, nonatomic) MKPolyline *polyline;
 @end
 
 @implementation LCMapView {
@@ -18,19 +20,18 @@
     CLLocationManager *locationManager;
 }
 
--(void)initWithMap{
+-(void)initWithItinerary:(Itinerary *)itinerary isStatic:(BOOL)move{
     mapView = [[MKMapView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height)];
     mapView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     mapView.userInteractionEnabled = YES;
     mapView.delegate = self;
-    if([[[self.delegate mapViewType] class] isKindOfClass:[LCPathDetailViewController class]]){
-        mapView.zoomEnabled = YES;
-        mapView.scrollEnabled = YES;
-        mapView.showsUserLocation = YES;
-    }
+    mapView.zoomEnabled = !move;
+    mapView.scrollEnabled = !move;
+    mapView.showsUserLocation = !move;
     [self addSubview:mapView];
     locationManager = [[CLLocationManager alloc] init];
     locationManager.delegate = self;
+    self.itinerary = itinerary;
     [locationManager requestLocation];
 }
 
@@ -38,7 +39,7 @@
     self.currentLocation = [locations lastObject];
     NSString* center = [self.itinerary.paths objectAtIndex:(self.itinerary.paths.count/2)];
     CGPoint centerPoint = CGPointFromString(center);
-    MKCoordinateRegion currentRegion = MKCoordinateRegionMake(CLLocationCoordinate2DMake(centerPoint.x, centerPoint.y), MKCoordinateSpanMake(0.025, 0.025));
+    MKCoordinateRegion currentRegion = MKCoordinateRegionMake(CLLocationCoordinate2DMake(centerPoint.x, centerPoint.y), MKCoordinateSpanMake(0.020, 0.020));
     [mapView setRegion:currentRegion animated:YES];
     [self drawPath];
 }
