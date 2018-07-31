@@ -19,6 +19,9 @@
 		4C771D752107999F0055A90D /* DetailsCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C771D742107999F0055A90D /* DetailsCollectionViewController.m */; };
 		4C771D7821079A1A0055A90D /* DetailsHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C771D7721079A1A0055A90D /* DetailsHeaderView.m */; };
 		4C771D7B21079A690055A90D /* CommentCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C771D7A21079A690055A90D /* CommentCollectionCell.m */; };
+		4C81D0D9210F7C8800064DBB /* CreateYourOwn.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4C81D0D8210F7C8800064DBB /* CreateYourOwn.storyboard */; };
+		4C81D0DD210F7FDE00064DBB /* CreateYourOwnViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C81D0DC210F7FDE00064DBB /* CreateYourOwnViewController.m */; };
+		4C81D0E0210FC66B00064DBB /* PathFinalizationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C81D0DF210FC66B00064DBB /* PathFinalizationViewController.m */; };
 		4CA36B5420FE90340056EB44 /* Venue.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CA36B5320FE90340056EB44 /* Venue.m */; };
 		4CA36B5B20FE9F8A0056EB44 /* APIManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CA36B5A20FE9F8A0056EB44 /* APIManager.m */; };
 		4CA36B5D20FEB20A0056EB44 /* DetailsView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4CA36B5C20FEB20A0056EB44 /* DetailsView.storyboard */; };
@@ -48,6 +51,9 @@
 		8544B992210BBE040028D43F /* PathDetail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8544B991210BBE040028D43F /* PathDetail.storyboard */; };
 		8544B996210BBE630028D43F /* PathDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8544B995210BBE630028D43F /* PathDetailsViewController.m */; };
 		8544B999210BC2DB0028D43F /* InterstitialViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8544B998210BC2DB0028D43F /* InterstitialViewController.m */; };
+		8544B99B210E48420028D43F /* TestPath.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8544B99A210E48420028D43F /* TestPath.storyboard */; };
+		8544B99E210E58AB0028D43F /* TestPathsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8544B99D210E58AB0028D43F /* TestPathsViewController.m */; };
+		8544B9A1210FAE260028D43F /* LCMapView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8544B9A0210FAE260028D43F /* LCMapView.m */; };
 		8550B0A32106D2CA0009C845 /* FavoritesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8550B0A22106D2CA0009C845 /* FavoritesViewController.m */; };
 		8550B0AC2107E4CE0009C845 /* ResultsViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8550B0AA2107E4CE0009C845 /* ResultsViewCell.m */; };
 		8597DB1620FD162500BA261A /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8597DB1520FD162500BA261A /* MapKit.framework */; };
@@ -107,6 +113,11 @@
 		4C771D7721079A1A0055A90D /* DetailsHeaderView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DetailsHeaderView.m; sourceTree = "<group>"; };
 		4C771D7921079A690055A90D /* CommentCollectionCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CommentCollectionCell.h; sourceTree = "<group>"; };
 		4C771D7A21079A690055A90D /* CommentCollectionCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CommentCollectionCell.m; sourceTree = "<group>"; };
+		4C81D0D8210F7C8800064DBB /* CreateYourOwn.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CreateYourOwn.storyboard; sourceTree = "<group>"; };
+		4C81D0DB210F7FDE00064DBB /* CreateYourOwnViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CreateYourOwnViewController.h; sourceTree = "<group>"; };
+		4C81D0DC210F7FDE00064DBB /* CreateYourOwnViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CreateYourOwnViewController.m; sourceTree = "<group>"; };
+		4C81D0DE210FC66B00064DBB /* PathFinalizationViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PathFinalizationViewController.h; sourceTree = "<group>"; };
+		4C81D0DF210FC66B00064DBB /* PathFinalizationViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PathFinalizationViewController.m; sourceTree = "<group>"; };
 		4CA36B5220FE90340056EB44 /* Venue.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Venue.h; sourceTree = "<group>"; };
 		4CA36B5320FE90340056EB44 /* Venue.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Venue.m; sourceTree = "<group>"; };
 		4CA36B5920FE9F8A0056EB44 /* APIManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = APIManager.h; sourceTree = "<group>"; };
@@ -164,6 +175,11 @@
 		8544B995210BBE630028D43F /* PathDetailsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PathDetailsViewController.m; sourceTree = "<group>"; };
 		8544B997210BC2DB0028D43F /* InterstitialViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = InterstitialViewController.h; sourceTree = "<group>"; };
 		8544B998210BC2DB0028D43F /* InterstitialViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = InterstitialViewController.m; sourceTree = "<group>"; };
+		8544B99A210E48420028D43F /* TestPath.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = TestPath.storyboard; sourceTree = "<group>"; };
+		8544B99C210E58AB0028D43F /* TestPathsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TestPathsViewController.h; sourceTree = "<group>"; };
+		8544B99D210E58AB0028D43F /* TestPathsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TestPathsViewController.m; sourceTree = "<group>"; };
+		8544B99F210FAE260028D43F /* LCMapView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LCMapView.h; sourceTree = "<group>"; };
+		8544B9A0210FAE260028D43F /* LCMapView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LCMapView.m; sourceTree = "<group>"; };
 		8550B0A12106D2CA0009C845 /* FavoritesViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FavoritesViewController.h; sourceTree = "<group>"; };
 		8550B0A22106D2CA0009C845 /* FavoritesViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FavoritesViewController.m; sourceTree = "<group>"; };
 		8550B0AA2107E4CE0009C845 /* ResultsViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResultsViewCell.m; sourceTree = "<group>"; };
@@ -261,6 +277,17 @@
 				4C51C93F210BE353007B389F /* pinnedLocations.m */,
 			);
 			path = "Dummy Data";
+			sourceTree = "<group>";
+		};
+		4C81D0DA210F7FA500064DBB /* Create Your Own */ = {
+			isa = PBXGroup;
+			children = (
+				4C81D0DB210F7FDE00064DBB /* CreateYourOwnViewController.h */,
+				4C81D0DC210F7FDE00064DBB /* CreateYourOwnViewController.m */,
+				4C81D0DE210FC66B00064DBB /* PathFinalizationViewController.h */,
+				4C81D0DF210FC66B00064DBB /* PathFinalizationViewController.m */,
+			);
+			path = "Create Your Own";
 			sourceTree = "<group>";
 		};
 		4CA36B5120FE90180056EB44 /* Models */ = {
@@ -385,6 +412,7 @@
 		4CDAC17620F4424100B3E7D4 /* Locality */ = {
 			isa = PBXGroup;
 			children = (
+				4C81D0DA210F7FA500064DBB /* Create Your Own */,
 				4C51C93D210BE316007B389F /* Dummy Data */,
 				8544B993210BBE4A0028D43F /* Path Deets */,
 				4C51C939210BC106007B389F /* Home Page */,
@@ -445,6 +473,8 @@
 				4CEF1C4F210BAE5600C69B15 /* Path.m */,
 				4C51C944210BEE7D007B389F /* Itinerary.h */,
 				4C51C945210BEE7D007B389F /* Itinerary.m */,
+				8544B99F210FAE260028D43F /* LCMapView.h */,
+				8544B9A0210FAE260028D43F /* LCMapView.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -452,6 +482,8 @@
 		8544B993210BBE4A0028D43F /* Path Deets */ = {
 			isa = PBXGroup;
 			children = (
+				8544B99C210E58AB0028D43F /* TestPathsViewController.h */,
+				8544B99D210E58AB0028D43F /* TestPathsViewController.m */,
 				8544B994210BBE630028D43F /* PathDetailsViewController.h */,
 				8544B995210BBE630028D43F /* PathDetailsViewController.m */,
 			);
@@ -461,10 +493,12 @@
 		8597DACC20FCF68300BA261A /* Storyboards */ = {
 			isa = PBXGroup;
 			children = (
+				8544B99A210E48420028D43F /* TestPath.storyboard */,
 				4CA36B6220FFF2FD0056EB44 /* Login.storyboard */,
 				4CEF1C42210B8B6500C69B15 /* Interstitial.storyboard */,
 				A8E26418210BB48C002C0992 /* Home.storyboard */,
 				8544B991210BBE040028D43F /* PathDetail.storyboard */,
+				4C81D0D8210F7C8800064DBB /* CreateYourOwn.storyboard */,
 			);
 			path = Storyboards;
 			sourceTree = "<group>";
@@ -608,6 +642,7 @@
 			files = (
 				4CA36B6320FFF2FD0056EB44 /* Login.storyboard in Resources */,
 				8597DB2120FE7BA200BA261A /* YMapView.storyboard in Resources */,
+				4C81D0D9210F7C8800064DBB /* CreateYourOwn.storyboard in Resources */,
 				A80F646920FF3BB500C105D0 /* collectionview.storyboard in Resources */,
 				A8E26419210BB48C002C0992 /* Home.storyboard in Resources */,
 				8544B992210BBE040028D43F /* PathDetail.storyboard in Resources */,
@@ -616,6 +651,7 @@
 				4CDAC18120F4424100B3E7D4 /* Assets.xcassets in Resources */,
 				4CA36B5D20FEB20A0056EB44 /* DetailsView.storyboard in Resources */,
 				4CB3478F2108D95500BC0C3A /* ExploreUsers.storyboard in Resources */,
+				8544B99B210E48420028D43F /* TestPath.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -730,6 +766,7 @@
 				4CA36B71210112CD0056EB44 /* FavoriteCell.m in Sources */,
 				8550B0AC2107E4CE0009C845 /* ResultsViewCell.m in Sources */,
 				4CEF1C352108DC7500C69B15 /* UserSearchViewController.m in Sources */,
+				8544B99E210E58AB0028D43F /* TestPathsViewController.m in Sources */,
 				4CEF1C3E210A479600C69B15 /* UserProfileViewController.m in Sources */,
 				4C771D7821079A1A0055A90D /* DetailsHeaderView.m in Sources */,
 				A80F646C20FF3BF000C105D0 /* CollectionViewController.m in Sources */,
@@ -744,6 +781,7 @@
 				4C771D69210665CA0055A90D /* SignUpViewController.m in Sources */,
 				4CEF1C41210A786D00C69B15 /* Follow.m in Sources */,
 				4C51C93C210BC990007B389F /* PathCell.m in Sources */,
+				4C81D0E0210FC66B00064DBB /* PathFinalizationViewController.m in Sources */,
 				4CEF1C382108DCE500C69B15 /* UserCell.m in Sources */,
 				4CEF1C45210BA96500C69B15 /* ResultsTableViewController.m in Sources */,
 				A8E26415210BB430002C0992 /* HomeViewController.m in Sources */,
@@ -759,8 +797,10 @@
 				4CA36B74210128F20056EB44 /* EditProfileViewController.m in Sources */,
 				4C771D7B21079A690055A90D /* CommentCollectionCell.m in Sources */,
 				4CA36B6120FEB5540056EB44 /* DetailsViewController.m in Sources */,
+				4C81D0DD210F7FDE00064DBB /* CreateYourOwnViewController.m in Sources */,
 				4C771D722106A8EF0055A90D /* CommentCell.m in Sources */,
 				851C871C21014D0E007C32DD /* Favorite.m in Sources */,
+				8544B9A1210FAE260028D43F /* LCMapView.m in Sources */,
 				A814231320FFC60D00C976AE /* CollectionViewCell.m in Sources */,
 				8544B98D210BACB00028D43F /* VerificationSignUpViewController.m in Sources */,
 				4C51C946210BEE7D007B389F /* Itinerary.m in Sources */,

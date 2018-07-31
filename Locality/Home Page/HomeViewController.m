@@ -10,6 +10,8 @@
 #import "Parse.h"
 #import "PathCell.h"
 #import "math.h"
+#import "Itinerary.h"
+#import "User.h"
 
 
 
@@ -17,7 +19,6 @@
 
 @property (strong, nonatomic) NSArray *itineraries;
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
-//@property (strong, nonatomic) CLLocation *currentCoordinateLocation;
 
 @end
 
@@ -27,8 +28,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self dummyItinerary];
     [self loadPathsWithCategory:@"Foodie"];
-    [self photoFecth];
+    //[self photoFecth];
 }
 
 #pragma mark - IBAction
@@ -48,9 +50,8 @@
 #pragma mark - Parse Query
 
 - (void) loadPathsWithCategory:(NSString *)category{
-    PFQuery *query = [PFQuery queryWithClassName:@"Itenerary"];
+    PFQuery *query = [PFQuery queryWithClassName:@"Itinerary"];
     [query whereKey:@"category" equalTo:category];
-    //this might not be necessary
     [query includeKey:@"path"];
     [query includeKey:@"creator"];
     [query findObjectsInBackgroundWithBlock:^(NSArray *iteneraries, NSError *error){
@@ -58,9 +59,9 @@
             NSLog(@"error loading paths from Parse");
         } else {
             self.itineraries = iteneraries;
+            [self sortItenerariesByDistance];
         }
     }];
-    
 }
 
 #pragma mark - UICollectionView
@@ -76,6 +77,48 @@
 }
 
 #pragma mark - Private Methods
+
+- (void) sortItenerariesByDistance{
+    for (int i = 0; i < self.itineraries.count; i++) {
+        CLLocationCoordinate2D venueCoordinate;
+        venueCoordinate.latitude = [self.itineraries[i][@"pinnedLocations"][0][@"latitude"] doubleValue];
+        venueCoordinate.longitude = [self.itineraries[i][@"pinnedLocations"][0][@"longitude"] doubleValue];
+        CLLocation *currentLocation = [[CLLocation alloc] initWithLatitude:self.currentLocation.latitude longitude:self.currentLocation.longitude];
+        CLLocation *venueLocation = [[CLLocation alloc] initWithLatitude:venueCoordinate.latitude longitude:venueCoordinate.longitude];
+        CLLocationDistance distance = [currentLocation distanceFromLocation:venueLocation];
+        self.itineraries[i][@"distanceFromFirstPinnedLocation"] = [NSNumber numberWithDouble:distance];
+        NSLog(@"%@", self.itineraries[i][@"distanceFromFirstPinnedLocation"]);
+        [self.itineraries[i] saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
+            if (error) {
+                NSLog(@"error saving distance to parse");
+            } else {
+                NSLog(@"success saving distance to parse");
+            }
+        }];
+    }
+    NSSortDescriptor *sortDescriptor;
+    sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"distanceFromFirstPinnedLocation" ascending:YES];
+    self.itineraries = [self.itineraries sortedArrayUsingDescriptors:@[sortDescriptor]];
+    
+}
+
+- (void) dummyItinerary{
+    Itinerary *itinerary = [Itinerary new];
+    itinerary.name = @"ginger";
+    itinerary.creator = [User currentUser];
+    itinerary.pathDescription = @"this is a great path";
+    itinerary.category = @"Foodie";
+    NSDictionary *dictionary = [NSDictionary dictionaryWithObjectsAndKeys:@"50.8199", @"latitude", @"122.4783", @"longitude" , nil];
+    itinerary.pinnedLocations = [NSMutableArray arrayWithObjects:dictionary, nil];
+    itinerary.distanceFromFirstPinnedLocation = nil;
+    [itinerary saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
+        if (error) {
+            NSLog(@"error saving itinerary to parse");
+        } else {
+            NSLog(@"success saving itinerary to parse");
+        }
+    }];
+}
 
 
 #pragma mark - Flickr Request

@@ -15,7 +15,7 @@
 @dynamic pathDescription;
 @dynamic category;
 @dynamic pinnedLocations;
-@dynamic path;
+@dynamic paths;
 @dynamic distanceFromFirstPinnedLocation;
 
 + (nonnull NSString *)parseClassName {

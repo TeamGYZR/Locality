@@ -54,8 +54,7 @@
 
     self.searchController.obscuresBackgroundDuringPresentation = YES;
     self.definesPresentationContext = YES;
-    
-    self.searchController.hidesNavigationBarDuringPresentation = NO;
+self.searchController.hidesNavigationBarDuringPresentation = NO;
     if(CLLocationManager.locationServicesEnabled)
     {
         MKUserTrackingButton * trackingButton = [MKUserTrackingButton userTrackingButtonWithMapView:self.mapView];
