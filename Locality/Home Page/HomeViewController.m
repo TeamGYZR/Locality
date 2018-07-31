@@ -28,7 +28,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self dummyItinerary];
+    //[self dummyItinerary];
     [self loadPathsWithCategory:@"Foodie"];
     //[self photoFecth];
 }
@@ -87,7 +87,8 @@
         CLLocation *venueLocation = [[CLLocation alloc] initWithLatitude:venueCoordinate.latitude longitude:venueCoordinate.longitude];
         CLLocationDistance distance = [currentLocation distanceFromLocation:venueLocation];
         self.itineraries[i][@"distanceFromFirstPinnedLocation"] = [NSNumber numberWithDouble:distance];
-        NSLog(@"%@", self.itineraries[i][@"distanceFromFirstPinnedLocation"]);
+        //NSLog(@"%@", self.itineraries[i][@"distanceFromFirstPinnedLocation"]);
+        
         [self.itineraries[i] saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
             if (error) {
                 NSLog(@"error saving distance to parse");
