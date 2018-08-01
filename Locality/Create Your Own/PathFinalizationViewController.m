@@ -11,12 +11,14 @@
 #import "CreateYourOwnViewController.h"
 #import "PinCell.h"
 
-@interface PathFinalizationViewController () <UITableViewDelegate, UITableViewDataSource>
+@interface PathFinalizationViewController () <UITableViewDelegate, UITableViewDataSource, PinCellDelegate>
 @property (weak, nonatomic) IBOutlet UITextField *itineraryTitle;
 @property (weak, nonatomic) IBOutlet UITextField *itineraryDescription;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *categoryController;
 @property (weak, nonatomic) IBOutlet LCMapView *LCMapView;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
+
 
 
 @end
@@ -40,6 +42,12 @@
     [self.itineraryDescription resignFirstResponder];
 }
 
+- (void)textNameDidChange:(PinCell *)passedCell{
+
+    int cellIndex = [passedCell.pinIndex intValue];
+    [self.itinerary.pinnedLocations[cellIndex] setObject:passedCell.nameChange forKey:@"name"];
+}
+
 #pragma mark - IBActions
 
 - (IBAction)didTapPost:(id)sender {
@@ -47,6 +55,8 @@
     self.itinerary.pathDescription = self.itineraryDescription.text;
     NSArray *categories = @[@"Foodie", @"Entertainment", @"Nature"];
     self.itinerary.category = categories[self.categoryController.selectedSegmentIndex];
+    [self.tableView reloadData];
+    [self.itinerary setObject:self.itinerary.pinnedLocations forKey:@"pinnedLocations"];// = this.iterary.pinned;
     [self.itinerary saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
         if (error) {
             NSLog(@"Error saving Path info to Parse");
@@ -71,6 +81,13 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     PinCell *cell = [tableView dequeueReusableCellWithIdentifier:@"PinCell" forIndexPath:indexPath];
     cell.pinNumberLabel.text = [[NSNumber numberWithInt:(indexPath.row+1)] stringValue];
+    cell.pinIndex = [NSNumber numberWithInt:(indexPath.row)];
+    if (self.itinerary.pinnedLocations[indexPath.row][@"name"]) {
+        cell.nameTextField.text = self.itinerary.pinnedLocations[indexPath.row][@"name"];
+    }
+    cell.pinDelegate = self;
+    cell.nameTextField.delegate = cell;
+
     return cell;
 }
 
