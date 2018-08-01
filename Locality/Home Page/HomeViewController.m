@@ -14,6 +14,7 @@
 #import "User.h"
 #import <ParseUI/ParseUI.h>
 #import "LCPathDetailViewController.h"
+#import <AFNetworking/UIImageView+AFNetworking.h>
 
 
 @interface HomeViewController () <UITableViewDelegate, UITableViewDataSource, CLLocationManagerDelegate>
@@ -157,7 +158,6 @@ NSDictionary *dictionary = [NSDictionary dictionaryWithObjectsAndKeys:self.cityN
     if([inResponseDictionary[@"photos"][@"photo"][i][@"views"] integerValue]>thirdLargestView){
           thirdLargestView=[inResponseDictionary[@"photos"][@"photo"][i][@"views"] integerValue];
           save3=i;
-          //[arrayOfIndexsForLargestPhotoViews arrayByAddingObject:[NSNumber numberWithInteger:i]];
       }
       if([inResponseDictionary[@"photos"][@"photo"][i][@"views"] integerValue]>secondLargestView){
           thirdLargestView=secondLargestView;
@@ -181,23 +181,40 @@ NSDictionary *dictionary = [NSDictionary dictionaryWithObjectsAndKeys:self.cityN
                [arrayOfPhotoUrl addObject:[NSURL URLWithString:string]];
                NSLog(@"%@", staticPhotoURL);
           }
-        
-      
+          NSString *urlStr1 =[NSString stringWithFormat:@"%@", arrayOfPhotoUrl[0]];
+          NSURL *firstImageUrl=[NSURL URLWithString:urlStr1];
+          UIImage * image1=[UIImage imageWithData:[NSData dataWithContentsOfURL:firstImageUrl]];
+          NSString *urlStr2 =[NSString stringWithFormat:@"%@", arrayOfPhotoUrl[0]];
+          NSURL *secondImageUrl=[NSURL URLWithString:urlStr2];
+          UIImage * image2=[UIImage imageWithData:[NSData dataWithContentsOfURL:secondImageUrl]];
+          NSString *urlStr3 =[NSString stringWithFormat:@"%@", arrayOfPhotoUrl[0]];
+          NSURL *thirdImageUrl=[NSURL URLWithString:urlStr3];
+          UIImage * image3=[UIImage imageWithData:[NSData dataWithContentsOfURL:thirdImageUrl]];
+          self.labefiled.text=self.cityName;
+          [self firstImageView:image1 secondImageView:image2 thirdImageView:image3];
           self.photoResponseDictionary=inResponseDictionary;
-          
     }
 }
-
 
 - (void)flickrAPIRequest:(OFFlickrAPIRequest *)inRequest didFailWithError:(NSError *)inError{
     self.request1=nil;
     self.request2=nil;
 }
+#pragma mark - HeaderImageAnimation
+-(void)firstImageView:(UIImage*)firstImage secondImageView:(UIImage*)secondImage thirdImageView:(UIImage*)thirdImage{
+    NSMutableArray *images = [[NSMutableArray alloc]init];
+    [images addObject:firstImage];
+    [images addObject:secondImage];
+    [images addObject:thirdImage];
+    self.imageView.animationImages=[images copy];
+    self.imageView.animationDuration=1;
+    [self.imageView startAnimating];
+}
+
 #pragma mark - Location Manager
 -(void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray<CLLocation *> *)locations{
     CLLocation *currentLocation = [locations lastObject];
     self.currentLocation = CLLocationCoordinate2DMake(currentLocation.coordinate.latitude, currentLocation.coordinate.longitude);
-    [self loadPathsWithCategory:@"Foodie"];
     CLLocation *location =[[CLLocation alloc] initWithLatitude:self.currentLocation.latitude longitude:self.currentLocation.longitude];
     [self reverseGeocode:location];
    

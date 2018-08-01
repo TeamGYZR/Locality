@@ -31,7 +31,8 @@
 @property (nonatomic, strong) CLGeocoder *geoCoder;
 - (void)reverseGeocode:(CLLocation *)location;
 @property (strong, nonatomic) NSString *cityName;
-
+@property (weak, nonatomic) IBOutlet UILabel *labefiled;
+-(void)firstImageView:(UIImage*)firstImage secondImageView:(UIImage*)secondImage thirdImageView:(UIImage*)thirdImage;
 
 
 @end
