@@ -13,11 +13,14 @@
 #import "Itinerary.h"
 #import "User.h"
 #import <ParseUI/ParseUI.h>
+#import "LCPathDetailViewController.h"
 
-@interface HomeViewController () <UITableViewDelegate, UITableViewDataSource>
+
+@interface HomeViewController () <UITableViewDelegate, UITableViewDataSource, CLLocationManagerDelegate>
+
 
 @property (strong, nonatomic) NSArray *itineraries;
-
+@property (strong, nonatomic) CLLocationManager *locationManager;
 
 @end
 
@@ -29,10 +32,18 @@
     [super viewDidLoad];
     self.tableView.dataSource=self;
     self.tableView.delegate=self;
+
     [self loadPathsWithCategory:@"Foodie"];
     //self.tableView.rowHeight=UITableViewAutomaticDimension;
     CLLocation *location = [[CLLocation alloc] initWithLatitude:self.currentLocation.latitude longitude:self.currentLocation.longitude];
     [self reverseGeocode:location];
+
+    self.locationManager = [[CLLocationManager alloc] init];
+    self.locationManager.delegate = self;
+    if(CLLocationManager.locationServicesEnabled){
+        [self.locationManager requestLocation];
+    }
+
 }
 - (void)reverseGeocode:(CLLocation *)location{
 
@@ -158,23 +169,33 @@ NSDictionary *dictionary = [NSDictionary dictionaryWithObjectsAndKeys:self.cityN
     self.request1=nil;
     self.request2=nil;
 }
+#pragma mark - Location Manager
+-(void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray<CLLocation *> *)locations{
+    CLLocation *currentLocation = [locations lastObject];
+    self.currentLocation = CLLocationCoordinate2DMake(currentLocation.coordinate.latitude, currentLocation.coordinate.longitude);
+    [self loadPathsWithCategory:@"Foodie"];
+    [self photoFecth];
+}
+- (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error{
+    NSLog(@"THERE WAS AN ERROR - %@", error);
+}
+
+- (void)locationManager:(CLLocationManager *)manager didFinishDeferredUpdatesWithError:(NSError *)error{
+    NSLog(@"THERE WAS AN ERROR - %@", error);
+}
 
 
-
-/*
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    if([[segue identifier] isEqualToString:@"segueToDetails"]){
+        PathCell * tappedCell = sender;
+        NSIndexPath * indexPath = [self.tableView indexPathForCell:tappedCell];
+        Itinerary * detailItinerary = self.itineraries[indexPath.row];
+        UINavigationController *navigationController = [segue destinationViewController];
+        LCPathDetailViewController *pathDetailsController = (LCPathDetailViewController*)navigationController.topViewController;
+        pathDetailsController.itinerary = detailItinerary;
+    }
 }
-*/
-
-
-
-
-
-
-
 @end

@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		1BE7AFA3980986C9A157CCD2 /* libPods-Locality.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F1B3E5DBABAB3F93F44C75E /* libPods-Locality.a */; };
 		2F308E1C27E4FA2C43F5F955 /* libPods-LocalityUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7268D2AFC88C24A529B514A5 /* libPods-LocalityUITests.a */; };
+		4C17BCA92111179900F74677 /* PinCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C17BCA82111179900F74677 /* PinCell.m */; };
 		4C51C940210BE353007B389F /* pinnedLocations.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C51C93F210BE353007B389F /* pinnedLocations.m */; };
 		4C51C946210BEE7D007B389F /* Itinerary.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C51C945210BEE7D007B389F /* Itinerary.m */; };
 		4C771D69210665CA0055A90D /* SignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C771D68210665CA0055A90D /* SignUpViewController.m */; };
@@ -94,6 +95,8 @@
 
 /* Begin PBXFileReference section */
 		0D954F9A18A334D6109C8DA1 /* Pods-LocalityTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LocalityTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LocalityTests/Pods-LocalityTests.debug.xcconfig"; sourceTree = "<group>"; };
+		4C17BCA72111179900F74677 /* PinCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PinCell.h; sourceTree = "<group>"; };
+		4C17BCA82111179900F74677 /* PinCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PinCell.m; sourceTree = "<group>"; };
 		4C51C93E210BE353007B389F /* pinnedLocations.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = pinnedLocations.h; sourceTree = "<group>"; };
 		4C51C93F210BE353007B389F /* pinnedLocations.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = pinnedLocations.m; sourceTree = "<group>"; };
 		4C51C944210BEE7D007B389F /* Itinerary.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Itinerary.h; sourceTree = "<group>"; };
@@ -289,6 +292,8 @@
 				4C81D0DC210F7FDE00064DBB /* CreateYourOwnViewController.m */,
 				4C81D0DE210FC66B00064DBB /* PathFinalizationViewController.h */,
 				4C81D0DF210FC66B00064DBB /* PathFinalizationViewController.m */,
+				4C17BCA72111179900F74677 /* PinCell.h */,
+				4C17BCA82111179900F74677 /* PinCell.m */,
 			);
 			path = "Create Your Own";
 			sourceTree = "<group>";
@@ -782,6 +787,7 @@
 				4CA36B6720FFF41D0056EB44 /* LoginViewController.m in Sources */,
 				859A1AA720FF1A1800E13EBC /* VenueAnnotationView.m in Sources */,
 				8597DB2220FE7BA200BA261A /* ExploreMapViewController.m in Sources */,
+				4C17BCA92111179900F74677 /* PinCell.m in Sources */,
 				859A1AA120FF121300E13EBC /* VenueAnnotation.m in Sources */,
 				4C771D69210665CA0055A90D /* SignUpViewController.m in Sources */,
 				4CEF1C41210A786D00C69B15 /* Follow.m in Sources */,

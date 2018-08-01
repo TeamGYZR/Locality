@@ -8,12 +8,16 @@
 
 #import "PathFinalizationViewController.h"
 #import "LCMapView.h"
+#import "CreateYourOwnViewController.h"
+#import "PinCell.h"
 
-@interface PathFinalizationViewController ()
+@interface PathFinalizationViewController () <UITableViewDelegate, UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UITextField *itineraryTitle;
 @property (weak, nonatomic) IBOutlet UITextField *itineraryDescription;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *categoryController;
 @property (weak, nonatomic) IBOutlet LCMapView *LCMapView;
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
+
 
 @end
 
@@ -24,8 +28,9 @@
     [super viewDidLoad];
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismissKeyboard)];
     [self.view addGestureRecognizer:tap];
+    self.tableView.delegate = self;
+    self.tableView.dataSource = self;
     [self.LCMapView initWithItinerary:self.itinerary isStatic:NO];
-    
 }
 
 #pragma mark - Private Methods
@@ -47,11 +52,26 @@
             NSLog(@"Error saving Path info to Parse");
         } else{
             NSLog(@"Successfulyy saved path to Parse");
-            [self dismissViewControllerAnimated:YES completion:^{
-                
-            }];
+            [self performSegueWithIdentifier:@"cyoToHomeSegue" sender:nil];
         }
     }];
+}
+
+- (IBAction)didTapBack:(id)sender {
+    [self dismissViewControllerAnimated:YES completion:^{
+    }];
+}
+
+#pragma mark - UITableView
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    return self.itinerary.pinnedLocations.count;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    PinCell *cell = [tableView dequeueReusableCellWithIdentifier:@"PinCell" forIndexPath:indexPath];
+    cell.pinNumberLabel.text = [[NSNumber numberWithInt:(indexPath.row+1)] stringValue];
+    return cell;
 }
 
 /*

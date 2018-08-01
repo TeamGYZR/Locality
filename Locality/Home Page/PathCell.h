@@ -11,12 +11,14 @@
 #import "User.h"
 #import <MapKit/MapKit.h>
 #import <ParseUI/ParseUI.h>
+#import "LCMapView.h"
 
 @interface PathCell : UITableViewCell
 @property (strong, nonatomic) Itinerary * itinerary;
 @property (weak, nonatomic) IBOutlet PFImageView *profileImageView;
-
 @property (weak, nonatomic) IBOutlet UILabel *profileNameField;
-@property (weak, nonatomic) IBOutlet MKMapView *pathMapView;
-@property (strong,nonatomic) User * user;
+@property (weak, nonatomic) IBOutlet UILabel *pathNameField;
+@property (weak, nonatomic) IBOutlet UILabel *pathDescriptionField;
+@property (weak, nonatomic) IBOutlet LCMapView *lcMapView;
+
 @end
