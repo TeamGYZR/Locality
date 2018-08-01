@@ -390,6 +390,9 @@
 				4CB3478E2108D95500BC0C3A /* ExploreUsers.storyboard */,
 				8544B994210BBE630028D43F /* PathDetailsViewController.h */,
 				8544B995210BBE630028D43F /* PathDetailsViewController.m */,
+				8544B99C210E58AB0028D43F /* TestPathsViewController.h */,
+				8544B99D210E58AB0028D43F /* TestPathsViewController.m */,
+				8544B99A210E48420028D43F /* TestPath.storyboard */,
 				4CA36B5E20FEB5290056EB44 /* Venue Details */,
 				4CA36B5F20FEB5540056EB44 /* DetailsViewController.h */,
 				4CA36B6020FEB5540056EB44 /* DetailsViewController.m */,
@@ -494,8 +497,6 @@
 			children = (
 				852FB5C5210FD38A003AC70A /* LCPathDetailViewController.h */,
 				852FB5C6210FD38A003AC70A /* LCPathDetailViewController.m */,
-				8544B99C210E58AB0028D43F /* TestPathsViewController.h */,
-				8544B99D210E58AB0028D43F /* TestPathsViewController.m */,
 			);
 			path = "Path Deets";
 			sourceTree = "<group>";
@@ -503,7 +504,6 @@
 		8597DACC20FCF68300BA261A /* Storyboards */ = {
 			isa = PBXGroup;
 			children = (
-				8544B99A210E48420028D43F /* TestPath.storyboard */,
 				4CA36B6220FFF2FD0056EB44 /* Login.storyboard */,
 				4CEF1C42210B8B6500C69B15 /* Interstitial.storyboard */,
 				A8E26418210BB48C002C0992 /* Home.storyboard */,
