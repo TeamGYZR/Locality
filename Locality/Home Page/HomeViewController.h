@@ -29,6 +29,8 @@
 @property (nonatomic) CLLocationCoordinate2D currentLocation;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic, strong) CLGeocoder *geoCoder;
+- (void)reverseGeocode:(CLLocation *)location;
+@property (strong, nonatomic) NSString *cityName;
 
 
 

@@ -31,9 +31,24 @@
     self.tableView.delegate=self;
     [self loadPathsWithCategory:@"Foodie"];
     //self.tableView.rowHeight=UITableViewAutomaticDimension;
-    [self photoFecth];
+    CLLocation *location = [[CLLocation alloc] initWithLatitude:self.currentLocation.latitude longitude:self.currentLocation.longitude];
+    [self reverseGeocode:location];
 }
+- (void)reverseGeocode:(CLLocation *)location{
 
+    if (!self.geoCoder){
+        self.geoCoder = [[CLGeocoder alloc] init];
+    }
+  [self.geoCoder reverseGeocodeLocation:location preferredLocale:nil completionHandler:^(NSArray<CLPlacemark *> * _Nullable placemarks, NSError * _Nullable error){
+      if(placemarks){
+          CLPlacemark * placemark=[placemarks firstObject];
+          self.cityName = placemark.locality;
+        [self photoFecth];
+     }else{
+          //handle error
+     }
+    }];
+}
 #pragma mark - IBAction
 
 - (IBAction)didTapFoodie:(id)sender {
@@ -58,9 +73,7 @@
     [alert addAction:cancelAction];
     [alert addAction:continueAction];
     [self presentViewController:alert animated:YES completion:^{
-        
-    }];
-    
+   }];
 }
 #pragma mark - Parse Query
 - (void) loadPathsWithCategory:(NSString *)category{
@@ -126,15 +139,11 @@
     [self.request1 setDelegate:self];
     self.request2=[[OFFlickrAPIRequest alloc] initWithAPIContext:self.context];
     [self.request2 setDelegate:self];
-    CLLocation *location = [[CLLocation alloc] initWithLatitude:self.currentLocation.latitude longitude:self.currentLocation.longitude];
-    [self.geoCoder reverseGeocodeLocation:location completionHandler:^(NSArray<CLPlacemark *> * _Nullable placemarks, NSError * _Nullable error) {
-        NSLog(@"hey");
-    }];
-// NSDictionary *dictionary = [NSDictionary dictionaryWithObjectsAndKeys:forLat,@"lat",forLon,@"lon", @"relevance",@"sort",nil];
-//    [self.request1 callAPIMethodWithGET:@"flickr.photos.search" arguments:dictionary];
+NSDictionary *dictionary = [NSDictionary dictionaryWithObjectsAndKeys:self.cityName,@"text", @"relevance",@"sort",@"views","extras",nil];
+  [self.request1 callAPIMethodWithGET:@"flickr.photos.search" arguments:dictionary];
 }
 - (void)flickrAPIRequest:(OFFlickrAPIRequest *)inRequest didCompleteWithResponse:(NSDictionary *)inResponseDictionary{
-    if(inRequest==self.request1){
+   if(inRequest==self.request1){
   //NSLog(@"response: %@", inResponseDictionary);
         for(int i=0; i<100; i++){
         NSDictionary *photoDict = [[inResponseDictionary valueForKeyPath:@"photos.photo"] objectAtIndex:i];
@@ -144,20 +153,6 @@
         }
       self.photoResponseDictionary=inResponseDictionary;
     }
-    NSString * string;
-    for(int i=0; i<10; i++){
-     string=self.photoResponseDictionary[@"photos"][@"photo"][i][@"id"];
-        NSDictionary *dictionary = [NSDictionary dictionaryWithObjectsAndKeys:self.apiKey, @"api_key",string, @"photo_id",nil];
-      bool boo=[self.request2 callAPIMethodWithGET:@"flickr.photos.getFavorites" arguments:dictionary];
-        //self.timeoutInterval=10;
-        //NSLog(@"%@", inResponseDictionary[@"photo"][@"total"]);
-        //NSLog(@"%d", boo);
-        //NSLog(@"%@", inResponseDictionary);
-    //NSLog(@"%@", string);
-      }
-//    if(inRequest==self.request2){
-//        NSLog(@"%@", inResponseDictionary);
-//    }
 }
 - (void)flickrAPIRequest:(OFFlickrAPIRequest *)inRequest didFailWithError:(NSError *)inError{
     self.request1=nil;
