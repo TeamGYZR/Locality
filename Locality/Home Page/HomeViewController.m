@@ -32,18 +32,13 @@
     [super viewDidLoad];
     self.tableView.dataSource=self;
     self.tableView.delegate=self;
-
-    [self loadPathsWithCategory:@"Foodie"];
+  [self loadPathsWithCategory:@"Foodie"];
     //self.tableView.rowHeight=UITableViewAutomaticDimension;
-    CLLocation *location = [[CLLocation alloc] initWithLatitude:self.currentLocation.latitude longitude:self.currentLocation.longitude];
-    [self reverseGeocode:location];
-
-    self.locationManager = [[CLLocationManager alloc] init];
+   self.locationManager = [[CLLocationManager alloc] init];
     self.locationManager.delegate = self;
     if(CLLocationManager.locationServicesEnabled){
         [self.locationManager requestLocation];
     }
-
 }
 - (void)reverseGeocode:(CLLocation *)location{
 
@@ -150,21 +145,53 @@
     [self.request1 setDelegate:self];
     self.request2=[[OFFlickrAPIRequest alloc] initWithAPIContext:self.context];
     [self.request2 setDelegate:self];
-NSDictionary *dictionary = [NSDictionary dictionaryWithObjectsAndKeys:self.cityName,@"text", @"relevance",@"sort",@"views","extras",nil];
+NSDictionary *dictionary = [NSDictionary dictionaryWithObjectsAndKeys:self.cityName,@"text", @"relevance",@"sort",@"views",@"extras", nil];
   [self.request1 callAPIMethodWithGET:@"flickr.photos.search" arguments:dictionary];
 }
 - (void)flickrAPIRequest:(OFFlickrAPIRequest *)inRequest didCompleteWithResponse:(NSDictionary *)inResponseDictionary{
-   if(inRequest==self.request1){
-  //NSLog(@"response: %@", inResponseDictionary);
-        for(int i=0; i<100; i++){
-        NSDictionary *photoDict = [[inResponseDictionary valueForKeyPath:@"photos.photo"] objectAtIndex:i];
-        //NSURL *staticPhotoURL = [self.context photoSourceURLFromDictionary:photoDict size:OFFlickrSmallSize];
-            NSURL *photoSourcePage = [self.context photoWebPageURLFromDictionary:photoDict];
-            NSLog(@"%@", photoSourcePage);
-        }
-      self.photoResponseDictionary=inResponseDictionary;
+    NSInteger currentLargestView=[inResponseDictionary[@"photos"][@"photo"][1][@"views"] integerValue];
+    NSInteger secondLargestView=[inResponseDictionary[@"photos"][@"photo"][0][@"views"] integerValue];
+    NSInteger thirdLargestView=0;
+    NSMutableArray *arrayOfIndexsForLargestPhotoViews=[[NSMutableArray alloc] init];
+    NSMutableArray * arrayOfPhotoUrl=[[NSMutableArray alloc] init];
+    int save1 = 0,save2 = 0,save3 = 0;
+      if(inRequest==self.request1){
+   for(int i=0; i<100; i++){
+    if([inResponseDictionary[@"photos"][@"photo"][i][@"views"] integerValue]>thirdLargestView){
+          thirdLargestView=[inResponseDictionary[@"photos"][@"photo"][i][@"views"] integerValue];
+          save3=i;
+          //[arrayOfIndexsForLargestPhotoViews arrayByAddingObject:[NSNumber numberWithInteger:i]];
+      }
+      if([inResponseDictionary[@"photos"][@"photo"][i][@"views"] integerValue]>secondLargestView){
+          thirdLargestView=secondLargestView;
+          secondLargestView=[inResponseDictionary[@"photos"][@"photo"][i][@"views"] integerValue];
+          save2=i;
+      }
+      if([inResponseDictionary[@"photos"][@"photo"][i][@"views"] integerValue]>currentLargestView){
+          secondLargestView=currentLargestView;
+          currentLargestView=[inResponseDictionary[@"photos"][@"photo"][i][@"views"] integerValue];
+          save1=i;
+      }
+        
+    }
+           [arrayOfIndexsForLargestPhotoViews addObject:[NSNumber numberWithInteger:save1]];
+           [arrayOfIndexsForLargestPhotoViews addObject:[NSNumber numberWithInteger:save2]];
+           [arrayOfIndexsForLargestPhotoViews addObject:[NSNumber numberWithInteger:save3]];
+           for(int i=0; i<arrayOfIndexsForLargestPhotoViews.count; i++){
+              NSDictionary *photoDict = [[inResponseDictionary valueForKeyPath:@"photos.photo"] objectAtIndex:[arrayOfIndexsForLargestPhotoViews[i]integerValue]];
+              NSURL *staticPhotoURL = [self.context photoSourceURLFromDictionary:photoDict size:OFFlickrMediumSize];
+               NSString * string=[staticPhotoURL absoluteString];
+               [arrayOfPhotoUrl addObject:[NSURL URLWithString:string]];
+               NSLog(@"%@", staticPhotoURL);
+          }
+        
+      
+          self.photoResponseDictionary=inResponseDictionary;
+          
     }
 }
+
+
 - (void)flickrAPIRequest:(OFFlickrAPIRequest *)inRequest didFailWithError:(NSError *)inError{
     self.request1=nil;
     self.request2=nil;
@@ -174,7 +201,9 @@ NSDictionary *dictionary = [NSDictionary dictionaryWithObjectsAndKeys:self.cityN
     CLLocation *currentLocation = [locations lastObject];
     self.currentLocation = CLLocationCoordinate2DMake(currentLocation.coordinate.latitude, currentLocation.coordinate.longitude);
     [self loadPathsWithCategory:@"Foodie"];
-    [self photoFecth];
+    CLLocation *location =[[CLLocation alloc] initWithLatitude:self.currentLocation.latitude longitude:self.currentLocation.longitude];
+    [self reverseGeocode:location];
+   
 }
 - (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error{
     NSLog(@"THERE WAS AN ERROR - %@", error);
@@ -183,8 +212,6 @@ NSDictionary *dictionary = [NSDictionary dictionaryWithObjectsAndKeys:self.cityN
 - (void)locationManager:(CLLocationManager *)manager didFinishDeferredUpdatesWithError:(NSError *)error{
     NSLog(@"THERE WAS AN ERROR - %@", error);
 }
-
-
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
