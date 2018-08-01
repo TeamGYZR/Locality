@@ -14,11 +14,13 @@
 #import "User.h"
 #import <ParseUI/ParseUI.h>
 #import "LCPathDetailViewController.h"
+#import "MBProgressHUD.h"
+
 @interface HomeViewController () <UITableViewDelegate, UITableViewDataSource, CLLocationManagerDelegate>
 
 @property (strong, nonatomic) NSArray *itineraries;
 @property (strong, nonatomic) CLLocationManager *locationManager;
-
+@property (strong, nonatomic) MBProgressHUD * hud;
 @end
 
 @implementation HomeViewController
@@ -32,6 +34,7 @@
     self.locationManager = [[CLLocationManager alloc] init];
     self.locationManager.delegate = self;
     if(CLLocationManager.locationServicesEnabled){
+        self.hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
         [self.locationManager requestLocation];
     }
 }
@@ -164,6 +167,7 @@
     self.currentLocation = CLLocationCoordinate2DMake(currentLocation.coordinate.latitude, currentLocation.coordinate.longitude);
     [self loadPathsWithCategory:@"Foodie"];
     [self photoFecth];
+    [self.hud hideAnimated:YES];
 }
 - (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error{
     NSLog(@"THERE WAS AN ERROR - %@", error);

@@ -11,7 +11,7 @@
 #import <CoreLocation/CoreLocation.h>
 #import "LoginViewController.h"
 
-@interface InterstitialViewController () 
+@interface InterstitialViewController () <CLLocationManagerDelegate>
 @property (strong, nonatomic) CLLocationManager *locationManager;
 @end
 
@@ -29,10 +29,8 @@
 
 - (IBAction)didTapContinue:(id)sender {
     self.locationManager = [[CLLocationManager alloc] init];
+    self.locationManager.delegate = self; 
     [self.locationManager requestWhenInUseAuthorization];
-    if(CLLocationManager.locationServicesEnabled){
-        [self performSegueWithIdentifier:@"segueToLogin" sender:nil];
-    }
 
 }
 
@@ -42,6 +40,13 @@
 
 - (void)locationManager:(CLLocationManager *)manager didFinishDeferredUpdatesWithError:(NSError *)error{
     NSLog(@"THERE WAS AN ERROR - %@", error);
+}
+- (void)locationManager:(CLLocationManager *)manager didChangeAuthorizationStatus:(CLAuthorizationStatus)status{
+    if(CLLocationManager.locationServicesEnabled){
+        if(CLLocationManager.authorizationStatus == kCLAuthorizationStatusAuthorizedWhenInUse){
+            [self performSegueWithIdentifier:@"segueToLogin" sender:nil];
+        }
+    }
 }
 
 
