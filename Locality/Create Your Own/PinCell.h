@@ -8,14 +8,23 @@
 
 #import <UIKit/UIKit.h>
 #import "Itinerary.h"
+#import "PathFinalizationViewController.h"
 
-@interface PinCell : UITableViewCell
+@protocol PinCellDelegate
+
+- (void)textNameDidChange:(id)passedCell;
+
+@end
+
+@interface PinCell : UITableViewCell 
 
 @property (weak, nonatomic) IBOutlet UITextField *nameTextField;
 @property (weak, nonatomic) IBOutlet UILabel *pinNumberLabel;
 @property (strong, nonatomic) Itinerary *itinerary;
-//@property (nonatomic) NSInteger pinIndex;
 @property (strong, nonatomic) NSNumber *pinIndex;
-//@property (weak, nonatomic) NSDictionary *pinnedLocationDictionary;
+@property (strong, nonatomic) NSString *nameChange;
+
+@property(weak, nonatomic) id<UITextFieldDelegate> delegate;
+@property (weak, nonatomic)id<PinCellDelegate> pinDelegate;
 
 @end
