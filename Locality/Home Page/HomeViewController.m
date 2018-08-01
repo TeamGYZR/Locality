@@ -123,17 +123,14 @@
 
 #pragma mark - UITableView
 - (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
-    PathCell * cell=[tableView dequeueReusableCellWithIdentifier:@"PathCell" forIndexPath:indexPath];
-    cell.itinerary=self.itineraries[indexPath.row];
+    PathCell *cell = [tableView dequeueReusableCellWithIdentifier:@"PathCell" forIndexPath:indexPath];
+    cell.itinerary = self.itineraries[indexPath.row];
     return cell;
 }
 
 - (NSInteger)tableView:(nonnull UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return self.itineraries.count;
     //return 20;
-}
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return 400;
 }
 #pragma mark - Flickr Request
 -(void) photoFecth{

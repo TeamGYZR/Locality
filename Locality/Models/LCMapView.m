@@ -18,6 +18,7 @@
 @implementation LCMapView {
     MKMapView *mapView;
     CLLocationManager *locationManager;
+    BOOL isStatic;
 }
 
 -(void)initWithItinerary:(Itinerary *)itinerary isStatic:(BOOL)move{
@@ -25,9 +26,10 @@
     mapView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     mapView.userInteractionEnabled = YES;
     mapView.delegate = self;
-    mapView.zoomEnabled = !move;
-    mapView.scrollEnabled = !move;
-    mapView.showsUserLocation = !move;
+    isStatic = move;
+    mapView.zoomEnabled = !isStatic;
+    mapView.scrollEnabled = !isStatic;
+    mapView.showsUserLocation = !isStatic;
     [self addSubview:mapView];
     locationManager = [[CLLocationManager alloc] init];
     locationManager.delegate = self;
@@ -39,8 +41,8 @@
     self.currentLocation = [locations lastObject];
     NSString* center = [self.itinerary.paths objectAtIndex:(self.itinerary.paths.count/2)];
     CGPoint centerPoint = CGPointFromString(center);
-    MKCoordinateRegion currentRegion = MKCoordinateRegionMake(CLLocationCoordinate2DMake(centerPoint.x, centerPoint.y), MKCoordinateSpanMake(0.020, 0.020));
-    [mapView setRegion:currentRegion animated:YES];
+    MKCoordinateRegion currentRegion = MKCoordinateRegionMake(CLLocationCoordinate2DMake(centerPoint.x, centerPoint.y), MKCoordinateSpanMake(0.025, 0.025));
+    [mapView setRegion:currentRegion animated:!isStatic];
     [self drawPath];
 }
 
