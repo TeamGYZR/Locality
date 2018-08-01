@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "Itinerary.h"
+#import "PinCell.h"
 
 @interface PathFinalizationViewController : UIViewController
 
