@@ -32,7 +32,7 @@
     [self.view addGestureRecognizer:tap];
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
-    [self.LCMapView initWithItinerary:self.itinerary isStatic:NO];
+    [self.LCMapView configureWithItinerary:self.itinerary isStatic:NO];
 }
 
 #pragma mark - Private Methods

@@ -21,7 +21,15 @@
     BOOL isStatic;
 }
 
--(void)initWithItinerary:(Itinerary *)itinerary isStatic:(BOOL)move{
+-(instancetype)initWithCoder:(NSCoder *)aDecoder{
+    self = [super initWithCoder:aDecoder];
+    if(self){
+        return self;
+    }
+    return nil;
+}
+
+-(void)configureWithItinerary:(Itinerary *)itinerary isStatic:(BOOL)move{
     mapView = [[MKMapView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height)];
     mapView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     mapView.userInteractionEnabled = YES;
@@ -30,10 +38,10 @@
     mapView.zoomEnabled = !isStatic;
     mapView.scrollEnabled = !isStatic;
     mapView.showsUserLocation = !isStatic;
-    [self addSubview:mapView];
     locationManager = [[CLLocationManager alloc] init];
     locationManager.delegate = self;
     self.itinerary = itinerary;
+    [self addSubview:mapView];
     [locationManager requestLocation];
 }
 
@@ -94,6 +102,13 @@
 - (void)locationManager:(CLLocationManager *)manager didFinishDeferredUpdatesWithError:(NSError *)error{
     NSLog(@"THERE WAS AN ERROR - %@", error);
 }
+
+//-(void)layoutSubviews{
+//    mapView = [[MKMapView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height)];
+//    mapView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+//    mapView.userInteractionEnabled = YES;
+//    mapView.delegate = self;
+//}
 /*
 // Only override drawRect: if you perform custom drawing.
 // An empty implementation adversely affects performance during animation.

@@ -18,11 +18,10 @@
 #import <AFNetworking/UIImageView+AFNetworking.h>
 
 @interface HomeViewController () <UITableViewDelegate, UITableViewDataSource, CLLocationManagerDelegate>
-
-
 @property (strong, nonatomic) NSArray *itineraries;
 @property (strong, nonatomic) CLLocationManager *locationManager;
 @property (strong, nonatomic) MBProgressHUD * hud;
+@property (strong, nonatomic) UISearchController *searchController;
 @end
 
 @implementation HomeViewController
@@ -33,9 +32,18 @@
     [super viewDidLoad];
     self.tableView.dataSource=self;
     self.tableView.delegate=self;
-  [self loadPathsWithCategory:@"Foodie"];
+    [self loadPathsWithCategory:@"Foodie"];
     //self.tableView.rowHeight=UITableViewAutomaticDimension;
-   self.locationManager = [[CLLocationManager alloc] init];
+    
+    UISearchBar *searchBar = self.searchController.searchBar;
+    [searchBar sizeToFit];
+    searchBar.placeholder = @"Search for specific place";
+    self.navigationItem.titleView = self.searchController.searchBar;
+    self.searchController.obscuresBackgroundDuringPresentation = YES;
+    self.definesPresentationContext = YES;
+    self.searchController.hidesNavigationBarDuringPresentation = NO;
+    
+    self.locationManager = [[CLLocationManager alloc] init];
     self.locationManager.delegate = self;
     if(CLLocationManager.locationServicesEnabled){
         self.hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];

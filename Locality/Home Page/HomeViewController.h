@@ -18,7 +18,7 @@
 
 
 
-@interface HomeViewController : UIViewController<OFFlickrAPIRequestDelegate>
+@interface HomeViewController : UIViewController<OFFlickrAPIRequestDelegate, UISearchControllerDelegate, UISearchBarDelegate>
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
 @property (strong,nonatomic) OFFlickrAPIContext *context;
 @property (strong, nonatomic) OFFlickrAPIRequest *request1;
