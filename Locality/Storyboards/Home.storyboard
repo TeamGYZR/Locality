@@ -115,7 +115,9 @@
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Hd-Cb-suP">
                                 <rect key="frame" x="113" y="199" width="142" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Entertainment"/>
+                                <state key="normal" title="Entertainment">
+                                    <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
                                 <connections>
                                     <action selector="didTapEntertainment:" destination="yY6-fb-adc" eventType="touchUpInside" id="AZU-XQ-Dpo"/>
                                 </connections>
@@ -134,7 +136,9 @@
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iiU-l1-YUV">
                                 <rect key="frame" x="257" y="199" width="118" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Nature"/>
+                                <state key="normal" title="Nature">
+                                    <color key="titleColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
                                 <connections>
                                     <action selector="didTapNature:" destination="yY6-fb-adc" eventType="touchUpInside" id="lQr-lC-jBr"/>
                                 </connections>
@@ -151,8 +155,11 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="entertainmentButton" destination="0Hd-Cb-suP" id="olu-E0-28V"/>
+                        <outlet property="foodieButton" destination="x8x-Ou-yYw" id="dTK-rp-lr2"/>
                         <outlet property="imageView" destination="dh9-U7-GPc" id="YiR-TJ-sbe"/>
                         <outlet property="labefiled" destination="PyZ-NW-wZ3" id="fcK-iZ-MKZ"/>
+                        <outlet property="natureButton" destination="iiU-l1-YUV" id="tdd-0x-adV"/>
                         <outlet property="tableView" destination="osb-fg-JPY" id="eaZ-wY-3Gs"/>
                         <segue destination="ftd-6l-hoH" kind="show" identifier="createSegue" id="QYy-81-vMB"/>
                     </connections>

@@ -22,6 +22,10 @@
 @property (strong, nonatomic) CLLocationManager *locationManager;
 @property (strong, nonatomic) MBProgressHUD * hud;
 @property (strong, nonatomic) UISearchController *searchController;
+@property (weak, nonatomic) IBOutlet UIButton *foodieButton;
+@property (weak, nonatomic) IBOutlet UIButton *entertainmentButton;
+@property (weak, nonatomic) IBOutlet UIButton *natureButton;
+
 @end
 
 @implementation HomeViewController
@@ -69,14 +73,23 @@
 
 - (IBAction)didTapFoodie:(id)sender {
     [self loadPathsWithCategory:@"Foodie"];
+    [self.foodieButton setTitleColor:[UIColor colorWithRed:0 green:0.478431 blue:1 alpha:1] forState:UIControlStateNormal];
+    [self.entertainmentButton setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
+    [self.natureButton setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
 }
 
 - (IBAction)didTapEntertainment:(id)sender {
     [self loadPathsWithCategory:@"Entertainment"];
+    [self.entertainmentButton setTitleColor:[UIColor colorWithRed:0 green:0.478431 blue:1 alpha:1] forState:UIControlStateNormal];
+    [self.foodieButton setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
+    [self.natureButton setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
 }
 
 - (IBAction)didTapNature:(id)sender {
     [self loadPathsWithCategory:@"Nature"];
+    [self.natureButton setTitleColor:[UIColor colorWithRed:0 green:0.478431 blue:1 alpha:1] forState:UIControlStateNormal];
+    [self.entertainmentButton setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
+    [self.foodieButton setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
 }
 
 - (IBAction)didTapCreatePath:(id)sender {
