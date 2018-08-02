@@ -14,12 +14,12 @@
 
 @interface Itinerary : PFObject <PFSubclassing>
 
-@property (strong, nonatomic) NSString *name;
-@property (strong, nonatomic) User *creator;
-@property (strong, nonatomic) NSString *pathDescription;
-@property (strong, nonatomic) NSString *category;
-@property (strong, nonatomic) NSMutableArray *pinnedLocations;
+@property (strong, nonatomic) NSString * _Nullable name;
+@property (strong, nonatomic) User * _Nullable creator;
+@property (strong, nonatomic) NSString * _Nullable pathDescription;
+@property (strong, nonatomic) NSString * _Nullable category;
+@property (strong, nonatomic) NSMutableArray * _Nullable pinnedLocations;
 @property (strong, nonnull) NSArray *paths;
-@property (strong, nonatomic) NSNumber *distanceFromFirstPinnedLocation;
+@property (strong, nonatomic) NSNumber * _Nullable distanceFromFirstPinnedLocation;
 
 @end

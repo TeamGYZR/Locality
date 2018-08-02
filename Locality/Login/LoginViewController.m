@@ -82,6 +82,12 @@
     }];
 }
 
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
+    UITouch * touch = [touches anyObject];
+    if(touch.phase == UITouchPhaseBegan) {
+        [[self view] endEditing:TRUE];
+    }
+}
 
 #pragma mark - Navigation
 
