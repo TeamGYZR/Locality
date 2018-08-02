@@ -18,6 +18,10 @@
     self.nameTextField.delegate = delegate;
 }
 
+- (void)textFieldDidBeginEditing:(UITextField *)textField{
+    [self.pinDelegate userTappedTextField];
+}
+
 - (void)textFieldDidEndEditing:(UITextField *)textField{
     self.nameChange = self.nameTextField.text;
     [self.pinDelegate textNameDidChange:self];
