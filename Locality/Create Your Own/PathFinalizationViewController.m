@@ -52,7 +52,7 @@
     [UIView animateWithDuration:0.4 animations:^{
         [self.LCMapView setFrame:CGRectMake(0, 0, self.createYourOwnView.bounds.size.width, self.LCMapView.bounds.size.height)];
         [self.tableView setFrame:CGRectMake(0, self.LCMapView.bounds.size.height, self.tableView.bounds.size.width, 135)];
-        [self.upButton setFrame:CGRectMake(183, 0, 21, 26)];
+        [self.upButton setFrame:CGRectMake(174, 0, 44, 44)];
     }];
 }
 
@@ -84,7 +84,7 @@
     [UIView animateWithDuration:0.4 animations:^{
         [self.LCMapView setFrame:CGRectMake(0, 138, self.createYourOwnView.bounds.size.width, self.LCMapView.bounds.size.height)];
         [self.tableView setFrame:CGRectMake(0, 374, self.tableView.bounds.size.width, 229)];
-        [self.upButton setFrame:CGRectMake(183, -16, 21, 26)];
+        [self.upButton setFrame:CGRectMake(175, -41, 44, 44)];
         [self.view endEditing:YES];
     }];
 }
