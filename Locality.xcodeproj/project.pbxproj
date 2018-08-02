@@ -63,6 +63,7 @@
 		8597DB2220FE7BA200BA261A /* ExploreMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8597DB2020FE7BA200BA261A /* ExploreMapViewController.m */; };
 		859A1AA120FF121300E13EBC /* VenueAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 859A1AA020FF121300E13EBC /* VenueAnnotation.m */; };
 		859A1AA720FF1A1800E13EBC /* VenueAnnotationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 859A1AA620FF1A1800E13EBC /* VenueAnnotationView.m */; };
+		85CCE6F921127F22004727E2 /* PlacesSearchTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 85CCE6F821127F22004727E2 /* PlacesSearchTableViewController.m */; };
 		93F8CAE4531E84E7DBB01E8D /* libPods-LocalityTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 85AAA040A6699A174EA32C3D /* libPods-LocalityTests.a */; };
 		A80F646920FF3BB500C105D0 /* collectionview.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A80F646820FF3BB500C105D0 /* collectionview.storyboard */; };
 		A80F646C20FF3BF000C105D0 /* CollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A80F646B20FF3BF000C105D0 /* CollectionViewController.m */; };
@@ -198,6 +199,8 @@
 		859A1AA520FF1A1800E13EBC /* VenueAnnotationView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VenueAnnotationView.h; sourceTree = "<group>"; };
 		859A1AA620FF1A1800E13EBC /* VenueAnnotationView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VenueAnnotationView.m; sourceTree = "<group>"; };
 		85AAA040A6699A174EA32C3D /* libPods-LocalityTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-LocalityTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		85CCE6F721127F22004727E2 /* PlacesSearchTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PlacesSearchTableViewController.h; sourceTree = "<group>"; };
+		85CCE6F821127F22004727E2 /* PlacesSearchTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PlacesSearchTableViewController.m; sourceTree = "<group>"; };
 		A80F646820FF3BB500C105D0 /* collectionview.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = collectionview.storyboard; sourceTree = "<group>"; };
 		A80F646A20FF3BF000C105D0 /* CollectionViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CollectionViewController.h; sourceTree = "<group>"; };
 		A80F646B20FF3BF000C105D0 /* CollectionViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CollectionViewController.m; sourceTree = "<group>"; };
@@ -268,6 +271,8 @@
 		4C51C939210BC106007B389F /* Home Page */ = {
 			isa = PBXGroup;
 			children = (
+				85CCE6F721127F22004727E2 /* PlacesSearchTableViewController.h */,
+				85CCE6F821127F22004727E2 /* PlacesSearchTableViewController.m */,
 				A8E26413210BB430002C0992 /* HomeViewController.h */,
 				A8E26414210BB430002C0992 /* HomeViewController.m */,
 				A8BF41C82110B1CE001DAB81 /* PathCell.h */,
@@ -806,6 +811,7 @@
 				4C771D752107999F0055A90D /* DetailsCollectionViewController.m in Sources */,
 				A8BF41CA2110B1CE001DAB81 /* PathCell.m in Sources */,
 				4CDAC17920F4424100B3E7D4 /* AppDelegate.m in Sources */,
+				85CCE6F921127F22004727E2 /* PlacesSearchTableViewController.m in Sources */,
 				4CA36B74210128F20056EB44 /* EditProfileViewController.m in Sources */,
 				4C771D7B21079A690055A90D /* CommentCollectionCell.m in Sources */,
 				4CA36B6120FEB5540056EB44 /* DetailsViewController.m in Sources */,

@@ -13,5 +13,5 @@
 #import "User.h"
 
 @interface LCMapView : UIView
-- (void)initWithItinerary:(Itinerary *)itinerary isStatic:(BOOL)move;
+- (void)configureWithItinerary:(Itinerary *)itinerary isStatic:(BOOL)move;
 @end
