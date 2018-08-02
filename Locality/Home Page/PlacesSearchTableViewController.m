@@ -7,7 +7,8 @@
 //
 
 #import "PlacesSearchTableViewController.h"
-
+#import "PathCell.h"
+#import "Itinerary.h"
 @interface PlacesSearchTableViewController ()
 
 @end
@@ -31,16 +32,48 @@
 
 #pragma mark - Table view data source
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-#warning Incomplete implementation, return the number of sections
-    return 0;
-}
+//- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+//#warning Incomplete implementation, return the number of sections
+//    return 0;
+//}
+
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-#warning Incomplete implementation, return the number of rows
-    return 0;
+    
+    return self.matchingItems.count;
 }
 
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+   PathCell *cell = [tableView dequeueReusableCellWithIdentifier:@"PathCell" forIndexPath:indexPath];
+    Itinerary * result = self.matchingItems[indexPath.row];
+    cell.itinerary = result;
+    return cell;
+}
+
+- (void)updateSearchResultsForSearchController:(UISearchController *)searchController{
+    
+    NSString *searchText = searchController.searchBar.text;
+    if (searchText.length != 0) {
+        
+        NSPredicate *predicate = [NSPredicate predicateWithBlock:^BOOL(NSDictionary *evaluatedObject, NSDictionary *bindings) {
+            NSMutableArray * pins = evaluatedObject[@"pinnedLocations"];
+            for(NSDictionary * pin in pins){
+                if([pin[@"name"] containsString:searchText]){
+                    return YES;
+                }
+            }
+            return NO;
+        }];
+        self.matchingItems = [self.itineraries filteredArrayUsingPredicate:predicate];
+    }
+    else {
+        self.matchingItems = nil;
+    }
+    [self.tableView reloadData];
+    
+};
 /*
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
