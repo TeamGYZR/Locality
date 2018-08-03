@@ -16,6 +16,7 @@
 #import "LCPathDetailViewController.h"
 #import "MBProgressHUD.h"
 #import <AFNetworking/UIImageView+AFNetworking.h>
+#import "PlacesSearchTableViewController.h"
 
 @interface HomeViewController () <UITableViewDelegate, UITableViewDataSource, CLLocationManagerDelegate>
 @property (strong, nonatomic) NSArray *itineraries;
@@ -25,6 +26,8 @@
 @property (weak, nonatomic) IBOutlet UIButton *foodieButton;
 @property (weak, nonatomic) IBOutlet UIButton *entertainmentButton;
 @property (weak, nonatomic) IBOutlet UIButton *natureButton;
+@property (weak, nonatomic) IBOutlet UIView *searchBarView;
+@property (strong, nonatomic) PlacesSearchTableViewController *searchTableViewController;
 
 @end
 
@@ -38,11 +41,17 @@
     self.tableView.delegate=self;
     [self loadPathsWithCategory:@"Foodie"];
     //self.tableView.rowHeight=UITableViewAutomaticDimension;
-    
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Home" bundle:[NSBundle mainBundle]];
+    PlacesSearchTableViewController *pathsSearchTable = [storyboard instantiateViewControllerWithIdentifier:@"ResultsTable"];
+    self.searchController = [[UISearchController alloc] initWithSearchResultsController:pathsSearchTable];
+    self.searchController.searchResultsUpdater = pathsSearchTable;
+    pathsSearchTable.tableView.delegate = self;
+    pathsSearchTable.itineraries = nil;
+    self.searchTableViewController = pathsSearchTable;
     UISearchBar *searchBar = self.searchController.searchBar;
     [searchBar sizeToFit];
-    searchBar.placeholder = @"Search for specific place";
-    self.navigationItem.titleView = self.searchController.searchBar;
+    searchBar.placeholder = @"Search by pins";
+    [self.searchBarView addSubview:self.searchController.searchBar];
     self.searchController.obscuresBackgroundDuringPresentation = YES;
     self.definesPresentationContext = YES;
     self.searchController.hidesNavigationBarDuringPresentation = NO;
@@ -62,8 +71,8 @@
   [self.geoCoder reverseGeocodeLocation:location preferredLocale:nil completionHandler:^(NSArray<CLPlacemark *> * _Nullable placemarks, NSError * _Nullable error){
       if(placemarks){
           CLPlacemark * placemark=[placemarks firstObject];
-          self.cityName = placemark.locality;
-        [self photoFecth];
+          self.labefiled.text = placemark.locality;
+        //[self photoFecth];
      }else{
           //handle error
      }
@@ -116,6 +125,7 @@
         } else {
             self.itineraries = iteneraries;
             [self sortItenerariesByDistance];
+            self.searchTableViewController.itineraries = self.itineraries; 
             [self.tableView reloadData];
         }
     }];
@@ -240,7 +250,8 @@ NSDictionary *dictionary = [NSDictionary dictionaryWithObjectsAndKeys:self.cityN
     CLLocation *location =[[CLLocation alloc] initWithLatitude:self.currentLocation.latitude longitude:self.currentLocation.longitude];
     [self reverseGeocode:location];
     [self loadPathsWithCategory:@"Foodie"];
-    [self photoFecth];
+    self.imageView.image = [UIImage imageNamed:@"menlopark"];
+    //[self photoFecth];
     [self.hud hideAnimated:YES];
 }
 - (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error{

@@ -10,5 +10,6 @@
 #import <CoreLocation/CoreLocation.h>
 
 @interface PlacesSearchTableViewController : UITableViewController <UISearchResultsUpdating>
-
+@property (strong, nonatomic) NSArray *matchingItems;
+@property (strong, nonatomic) NSArray *itineraries;
 @end
