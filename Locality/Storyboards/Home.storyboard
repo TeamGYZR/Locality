@@ -30,7 +30,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="156.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ra0-4F-OWh" customClass="LCMapView">
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ra0-4F-OWh" customClass="PFImageView">
                                                     <rect key="frame" x="0.0" y="0.0" width="375" height="157"/>
                                                     <color key="backgroundColor" red="0.1137254902" green="0.73085043910000003" blue="0.92941176469999998" alpha="1" colorSpace="calibratedRGB"/>
                                                 </view>
@@ -92,7 +92,7 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="lcMapView" destination="Ra0-4F-OWh" id="Cfo-ET-ra5"/>
+                                            <outlet property="mapViewImage" destination="Ra0-4F-OWh" id="79a-co-oUx"/>
                                             <outlet property="pathDescriptionField" destination="Spi-tZ-sLK" id="Tgf-a5-gCL"/>
                                             <outlet property="pathNameField" destination="S7X-PT-Ova" id="cGA-88-JJh"/>
                                             <outlet property="profileImageView" destination="jOz-bV-egI" id="enG-c3-lsD"/>
@@ -190,7 +190,7 @@
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="156.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9z0-9T-NVi" customClass="LCMapView">
+                                        <view clipsSubviews="YES" contentMode="scaleAspectFill" translatesAutoresizingMaskIntoConstraints="NO" id="9z0-9T-NVi" customClass="LCMapView">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="157"/>
                                             <color key="backgroundColor" red="0.1137254902" green="0.73085043910000003" blue="0.92941176469999998" alpha="1" colorSpace="calibratedRGB"/>
                                         </view>
@@ -252,7 +252,6 @@
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <outlet property="lcMapView" destination="9z0-9T-NVi" id="8na-lq-0cI"/>
                                     <outlet property="pathDescriptionField" destination="ejp-tK-cEq" id="NUX-mY-6Zq"/>
                                     <outlet property="pathNameField" destination="Rvf-0R-kBH" id="H5l-iJ-uiU"/>
                                     <outlet property="profileImageView" destination="bSJ-dj-nQf" id="k7f-CE-b3z"/>

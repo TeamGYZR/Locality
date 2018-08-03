@@ -17,6 +17,7 @@
 @dynamic pinnedLocations;
 @dynamic paths;
 @dynamic distanceFromFirstPinnedLocation;
+@dynamic mapImageFile;
 
 + (nonnull NSString *)parseClassName {
     return @"Itinerary";

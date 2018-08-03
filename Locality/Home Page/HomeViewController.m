@@ -29,6 +29,8 @@
 @property (weak, nonatomic) IBOutlet UIView *searchBarView;
 @property (strong, nonatomic) PlacesSearchTableViewController *searchTableViewController;
 
+
+
 @end
 
 @implementation HomeViewController
@@ -133,7 +135,6 @@
         } else {
             self.itineraries = iteneraries;
             [self sortItenerariesByDistance];
-            self.searchTableViewController.itineraries = self.itineraries; 
             [self.tableView reloadData];
         }
     }];
