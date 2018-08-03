@@ -21,8 +21,7 @@
 @interface HomeViewController : UIViewController<OFFlickrAPIRequestDelegate, UISearchControllerDelegate, UISearchBarDelegate>
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
 @property (strong,nonatomic) OFFlickrAPIContext *context;
-@property (strong, nonatomic) OFFlickrAPIRequest *request1;
-@property (strong, nonatomic) OFFlickrAPIRequest *request2;
+@property (strong, nonatomic) OFFlickrAPIRequest *request;
 @property (strong, nonatomic) NSString *apiKey;
 @property (strong,nonatomic) NSString *sharedKey;
 @property (strong, nonatomic) NSDictionary * photoResponseDictionary;
@@ -32,7 +31,12 @@
 - (void)reverseGeocode:(CLLocation *)location;
 @property (strong, nonatomic) NSString *cityName;
 @property (weak, nonatomic) IBOutlet UILabel *labefiled;
--(void)firstImageView:(UIImage*)firstImage secondImageView:(UIImage*)secondImage thirdImageView:(UIImage*)thirdImage;
+-(void) photoFecth;
+- (void) loadPathsWithCategory:(NSString *)category;
+@property  UIImage * image1;
+@property  UIImage * image2;
+@property UIImage * image3;
+
 
 
 @end
