@@ -14,14 +14,20 @@
 #import "User.h"
 #import <ParseUI/ParseUI.h>
 #import "LCPathDetailViewController.h"
+#import "MBProgressHUD.h"
 #import <AFNetworking/UIImageView+AFNetworking.h>
-
+#import "PlacesSearchTableViewController.h"
 
 @interface HomeViewController () <UITableViewDelegate, UITableViewDataSource, CLLocationManagerDelegate>
-
-
 @property (strong, nonatomic) NSArray *itineraries;
 @property (strong, nonatomic) CLLocationManager *locationManager;
+@property (strong, nonatomic) MBProgressHUD * hud;
+@property (strong, nonatomic) UISearchController *searchController;
+@property (weak, nonatomic) IBOutlet UIButton *foodieButton;
+@property (weak, nonatomic) IBOutlet UIButton *entertainmentButton;
+@property (weak, nonatomic) IBOutlet UIButton *natureButton;
+@property (weak, nonatomic) IBOutlet UIView *searchBarView;
+@property (strong, nonatomic) PlacesSearchTableViewController *searchTableViewController;
 
 @end
 
@@ -35,9 +41,25 @@
     [self loadPathsWithCategory:@"Foodie"];
     self.labefiled.alpha=0;
     //self.tableView.rowHeight=UITableViewAutomaticDimension;
+    //self.tableView.rowHeight=UITableViewAutomaticDimension;
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Home" bundle:[NSBundle mainBundle]];
+    PlacesSearchTableViewController *pathsSearchTable = [storyboard instantiateViewControllerWithIdentifier:@"ResultsTable"];
+    self.searchController = [[UISearchController alloc] initWithSearchResultsController:pathsSearchTable];
+    self.searchController.searchResultsUpdater = pathsSearchTable;
+    pathsSearchTable.tableView.delegate = self;
+    pathsSearchTable.itineraries = nil;
+    self.searchTableViewController = pathsSearchTable;
+    UISearchBar *searchBar = self.searchController.searchBar;
+    [searchBar sizeToFit];
+    searchBar.placeholder = @"Search by pins";
+    [self.searchBarView addSubview:self.searchController.searchBar];
+    self.searchController.obscuresBackgroundDuringPresentation = YES;
+    self.definesPresentationContext = YES;
+    self.searchController.hidesNavigationBarDuringPresentation = NO;
     self.locationManager = [[CLLocationManager alloc] init];
     self.locationManager.delegate = self;
     if(CLLocationManager.locationServicesEnabled){
+        self.hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
         [self.locationManager requestLocation];
     }
 }
@@ -54,20 +76,37 @@
         }else{
             //handle error
         }
-    }];
+  [self.geoCoder reverseGeocodeLocation:location preferredLocale:nil completionHandler:^(NSArray<CLPlacemark *> * _Nullable placemarks, NSError * _Nullable error){
+      if(placemarks){
+          CLPlacemark * placemark=[placemarks firstObject];
+          self.labefiled.text = placemark.locality;
+        //[self photoFecth];
+     }else{
+          //handle error
+     }
+}];
 }
 #pragma mark - IBAction
 
 - (IBAction)didTapFoodie:(id)sender {
     [self loadPathsWithCategory:@"Foodie"];
+    [self.foodieButton setTitleColor:[UIColor colorWithRed:0 green:0.478431 blue:1 alpha:1] forState:UIControlStateNormal];
+    [self.entertainmentButton setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
+    [self.natureButton setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
 }
 
 - (IBAction)didTapEntertainment:(id)sender {
     [self loadPathsWithCategory:@"Entertainment"];
+    [self.entertainmentButton setTitleColor:[UIColor colorWithRed:0 green:0.478431 blue:1 alpha:1] forState:UIControlStateNormal];
+    [self.foodieButton setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
+    [self.natureButton setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
 }
 
 - (IBAction)didTapNature:(id)sender {
     [self loadPathsWithCategory:@"Nature"];
+    [self.natureButton setTitleColor:[UIColor colorWithRed:0 green:0.478431 blue:1 alpha:1] forState:UIControlStateNormal];
+    [self.entertainmentButton setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
+    [self.foodieButton setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
 }
 
 - (IBAction)didTapCreatePath:(id)sender {
@@ -94,6 +133,7 @@
         } else {
             self.itineraries = iteneraries;
             [self sortItenerariesByDistance];
+            self.searchTableViewController.itineraries = self.itineraries; 
             [self.tableView reloadData];
         }
     }];
@@ -187,7 +227,10 @@
     self.currentLocation = CLLocationCoordinate2DMake(currentLocation.coordinate.latitude, currentLocation.coordinate.longitude);
     CLLocation *location =[[CLLocation alloc] initWithLatitude:self.currentLocation.latitude longitude:self.currentLocation.longitude];
     [self reverseGeocode:location];
-    
+    [self loadPathsWithCategory:@"Foodie"];
+    self.imageView.image = [UIImage imageNamed:@"menlopark"];
+    //[self photoFecth];
+    [self.hud hideAnimated:YES];
 }
 - (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error{
     NSLog(@"THERE WAS AN ERROR - %@", error);

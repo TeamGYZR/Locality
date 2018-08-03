@@ -11,7 +11,8 @@ target 'Locality' do
   pod 'Parse'
   pod 'ParseUI'
   pod 'Parse/FacebookUtils'
-
+  pod 'MBProgressHUD'
+  
   target 'LocalityTests' do
     inherit! :search_paths
     # Pods for testing

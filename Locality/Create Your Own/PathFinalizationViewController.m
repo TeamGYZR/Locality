@@ -18,8 +18,8 @@
 @property (weak, nonatomic) IBOutlet LCMapView *LCMapView;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
-
-
+@property (strong, nonatomic) IBOutlet UIView *createYourOwnView;
+@property (weak, nonatomic) IBOutlet UIButton *upButton;
 
 @end
 
@@ -32,7 +32,7 @@
     [self.view addGestureRecognizer:tap];
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
-    [self.LCMapView initWithItinerary:self.itinerary isStatic:NO];
+    [self.LCMapView configureWithItinerary:self.itinerary isStatic:NO];
 }
 
 #pragma mark - Private Methods
@@ -48,6 +48,14 @@
     [self.itinerary.pinnedLocations[cellIndex] setObject:passedCell.nameChange forKey:@"name"];
 }
 
+- (void)userTappedTextField{
+    [UIView animateWithDuration:0.4 animations:^{
+        [self.LCMapView setFrame:CGRectMake(0, 0, self.createYourOwnView.bounds.size.width, self.LCMapView.bounds.size.height)];
+        [self.tableView setFrame:CGRectMake(0, self.LCMapView.bounds.size.height, self.tableView.bounds.size.width, 135)];
+        [self.upButton setFrame:CGRectMake(174, 0, 44, 44)];
+    }];
+}
+
 #pragma mark - IBActions
 
 - (IBAction)didTapPost:(id)sender {
@@ -56,7 +64,7 @@
     NSArray *categories = @[@"Foodie", @"Entertainment", @"Nature"];
     self.itinerary.category = categories[self.categoryController.selectedSegmentIndex];
     [self.tableView reloadData];
-    [self.itinerary setObject:self.itinerary.pinnedLocations forKey:@"pinnedLocations"];// = this.iterary.pinned;
+    [self.itinerary setObject:self.itinerary.pinnedLocations forKey:@"pinnedLocations"];
     [self.itinerary saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
         if (error) {
             NSLog(@"Error saving Path info to Parse");
@@ -69,6 +77,15 @@
 
 - (IBAction)didTapBack:(id)sender {
     [self dismissViewControllerAnimated:YES completion:^{
+    }];
+}
+
+- (IBAction)didTapUpButton:(id)sender {
+    [UIView animateWithDuration:0.4 animations:^{
+        [self.LCMapView setFrame:CGRectMake(0, 138, self.createYourOwnView.bounds.size.width, self.LCMapView.bounds.size.height)];
+        [self.tableView setFrame:CGRectMake(0, 374, self.tableView.bounds.size.width, 229)];
+        [self.upButton setFrame:CGRectMake(175, -41, 44, 44)];
+        [self.view endEditing:YES];
     }];
 }
 

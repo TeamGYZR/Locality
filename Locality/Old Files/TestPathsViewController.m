@@ -19,9 +19,9 @@
 
 @property (strong, nonatomic) CLLocationManager *locationManager;
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;
-@property (nonatomic) CLLocation *currentLocation;
+@property (strong, nonatomic) CLLocation *currentLocation;
 @property (strong, nonatomic) NSMutableArray *pathCoordinates;
-@property (nonatomic, retain) MKPolyline* polyline;
+@property (nonatomic, strong) MKPolyline *polyline;
 @property (strong, nonatomic) NSMutableArray *pinCoordinates;
 @property (strong, nonatomic) Itinerary *fetchedItinerary;
 //@property (strong, nonatomic) const CLLocationCoordinate2D *coordinatesForPath;

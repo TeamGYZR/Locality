@@ -28,7 +28,7 @@
         self.userProfileImageView.file = self.itinerary.creator.profilePicture;
         [self.userProfileImageView loadInBackground];
     }
-    [self.lcMapView initWithItinerary:self.itinerary isStatic:NO];
+    [self.lcMapView configureWithItinerary:self.itinerary isStatic:NO];
 }
 
 - (void)didReceiveMemoryWarning {

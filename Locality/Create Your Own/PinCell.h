@@ -13,6 +13,8 @@
 @protocol PinCellDelegate
 
 - (void)textNameDidChange:(id)passedCell;
+//animating screen once text field is tapped
+- (void)userTappedTextField;
 
 @end
 

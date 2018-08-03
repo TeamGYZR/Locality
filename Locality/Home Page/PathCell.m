@@ -28,18 +28,8 @@
     self.profileNameField.text = itinerary.creator.name;
     self.profileImageView.file = self.itinerary.creator.profilePicture;
     [self.profileImageView loadInBackground];
-    [self.lcMapView initWithItinerary:itinerary isStatic:YES];
+    [self.lcMapView configureWithItinerary:itinerary isStatic:YES];
 }
 
-
-- (PFImageView *)profileImageView{
-    _profileImageView.file=self.itinerary.creator.profilePicture;
-    [_profileImageView loadInBackground];
-    return _profileImageView;
-}
-- (UILabel *)profileNameField{
-    _profileNameField.text=self.itinerary.name;
-    return _profileNameField;
-}
 
 @end

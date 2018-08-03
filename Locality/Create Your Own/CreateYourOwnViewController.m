@@ -44,6 +44,12 @@
     self.locationManager.desiredAccuracy = kCLLocationAccuracyBest;
 }
 
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    [self.mapView setUserTrackingMode:MKUserTrackingModeFollow animated:YES];
+    [self.locationManager startUpdatingLocation];
+}
+
 #pragma mark - Location Updates
 
 - (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray<CLLocation *> *)locations{
@@ -82,12 +88,6 @@
 }
 
 #pragma mark - IBActions
-
-//call this function once the user has clicked start on the alert controller
-- (IBAction)didTapStartPath:(id)sender {
-    [self.mapView setUserTrackingMode:MKUserTrackingModeFollow animated:YES];
-    [self.locationManager startUpdatingLocation];
-}
 
 - (IBAction)didTapAddPin:(id)sender {
     //add alert view controller to confirm that the user wanted to add the location, then continue- have an addPin method
