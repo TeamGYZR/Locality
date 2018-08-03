@@ -63,6 +63,8 @@
     [mapSubView.layer renderInContext:context];
     UIImage *snapshotImage = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
+    NSData *imageData = UIImagePNGRepresentation(snapshotImage);
+    self.itinerary.mapImageFile = [PFFile fileWithName:@"image.png" data:imageData];
     
     //self.testerImageview.image = snapshotImage;
      
