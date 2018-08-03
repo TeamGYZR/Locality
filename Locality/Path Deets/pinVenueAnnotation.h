@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import <MapKit/MapKit.h>
+#import "ItineraryPin.h"
 
 @interface pinVenueAnnotation : NSObject <MKAnnotation>
 
@@ -15,6 +16,7 @@
 @property (strong, nonatomic) NSString *title;
 
 - (id)initWithDictionary:(NSDictionary *)dictionary;
+- (id)initWithItineraryPin:(Itinerary *)itineraryPin; 
 - (MKAnnotationView *)annotationView;
 
 @end

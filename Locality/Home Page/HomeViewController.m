@@ -55,8 +55,7 @@
     [searchBar sizeToFit];
     searchBar.placeholder = @"Search by pins";
     searchBar.delegate = self;
-    //searchBar.barTintColor = [UIColor colorWithRed:0.96078 green:1.0 blue:0.8039 alpha:0.5];
-    //[self.searchBarView addSubview:self.searchController.searchBar];
+    searchBar.barTintColor = [UIColor colorWithRed:0.96078 green:1.0 blue:0.8039 alpha:0.5];
     self.navigationItem.titleView = self.searchController.searchBar;
     self.searchController.obscuresBackgroundDuringPresentation = YES;
     self.definesPresentationContext = YES;
@@ -78,6 +77,7 @@
       if(placemarks){
           CLPlacemark * placemark=[placemarks firstObject];
           self.labefiled.text = placemark.locality;
+          [self.hud hideAnimated:YES];
         //[self photoFecth];
      }else{
           //handle error
@@ -132,7 +132,6 @@
             self.itineraries = iteneraries;
             [self sortItenerariesByDistance];
             [self.tableView reloadData];
-            [self.hud hideAnimated:YES];
         }
     }];
 }
@@ -293,7 +292,7 @@ NSDictionary *dictionary = [NSDictionary dictionaryWithObjectsAndKeys:self.cityN
     self.searchController.searchBar.text = @"";
     [self.tableView reloadData];
     [self.searchController.searchBar resignFirstResponder];
-    self.navigationItem.rightBarButtonItem = self.createPathBarButton; 
+    self.navigationItem.rightBarButtonItem = self.createPathBarButton;
 }
 #pragma mark - Navigation
 

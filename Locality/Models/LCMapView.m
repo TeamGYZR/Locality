@@ -74,11 +74,22 @@
         [mapView setNeedsDisplay];
     }
     
-    NSUInteger numPins = [self.itinerary.pinnedLocations count];
-    for(int i = 0; i< numPins; i++){
-        pinVenueAnnotation *pinAnnotation = [[pinVenueAnnotation alloc] initWithDictionary:self.itinerary.pinnedLocations[i]];
-        [mapView addAnnotation:pinAnnotation];
-    }
+    PFQuery *query = [PFQuery queryWithClassName:@"ItineraryPin"];
+    [query whereKey:@"itinerary" equalTo:self.itinerary];
+    [query includeKey:@"pinPicture"];
+    [query findObjectsInBackgroundWithBlock:^(NSArray *itineraryPins, NSError *error){
+        if (error) {
+            NSLog(@"error loading pins from Parse");
+        } else {
+            NSUInteger numPins = [itineraryPins count];
+            for(int i = 0; i< numPins; i++){
+                pinVenueAnnotation *pinAnnotation = [[pinVenueAnnotation alloc] initWithDictionary:self.itinerary.pinnedLocations[i]];
+                [self->mapView addAnnotation:pinAnnotation];
+            }
+        }
+    }];
+    
+   
 }
 
 - (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation{

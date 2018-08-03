@@ -49,6 +49,7 @@
 		4CEF1C50210BAE5600C69B15 /* Path.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CEF1C4F210BAE5600C69B15 /* Path.m */; };
 		851C871C21014D0E007C32DD /* Favorite.m in Sources */ = {isa = PBXBuildFile; fileRef = 851C871B21014D0E007C32DD /* Favorite.m */; };
 		852FB5C7210FD38A003AC70A /* LCPathDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 852FB5C6210FD38A003AC70A /* LCPathDetailViewController.m */; };
+		853A48C2211517C6005BCDEF /* ItineraryPin.m in Sources */ = {isa = PBXBuildFile; fileRef = 853A48C1211517C6005BCDEF /* ItineraryPin.m */; };
 		8544B98D210BACB00028D43F /* VerificationSignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8544B98C210BACB00028D43F /* VerificationSignUpViewController.m */; };
 		8544B990210BAD370028D43F /* DetailSignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8544B98F210BAD370028D43F /* DetailSignUpViewController.m */; };
 		8544B992210BBE040028D43F /* PathDetail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8544B991210BBE040028D43F /* PathDetail.storyboard */; };
@@ -177,6 +178,8 @@
 		851C871B21014D0E007C32DD /* Favorite.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Favorite.m; sourceTree = "<group>"; };
 		852FB5C5210FD38A003AC70A /* LCPathDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LCPathDetailViewController.h; sourceTree = "<group>"; };
 		852FB5C6210FD38A003AC70A /* LCPathDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LCPathDetailViewController.m; sourceTree = "<group>"; };
+		853A48C0211517C6005BCDEF /* ItineraryPin.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ItineraryPin.h; sourceTree = "<group>"; };
+		853A48C1211517C6005BCDEF /* ItineraryPin.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ItineraryPin.m; sourceTree = "<group>"; };
 		8544B98B210BACB00028D43F /* VerificationSignUpViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VerificationSignUpViewController.h; sourceTree = "<group>"; };
 		8544B98C210BACB00028D43F /* VerificationSignUpViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VerificationSignUpViewController.m; sourceTree = "<group>"; };
 		8544B98E210BAD370028D43F /* DetailSignUpViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DetailSignUpViewController.h; sourceTree = "<group>"; };
@@ -392,6 +395,8 @@
 		4CB3478D2108D38000BC0C3A /* Old Files */ = {
 			isa = PBXGroup;
 			children = (
+				4CEF1C4E210BAE5600C69B15 /* Path.h */,
+				4CEF1C4F210BAE5600C69B15 /* Path.m */,
 				4CEF1C322108DC2600C69B15 /* User Explore */,
 				4CA36B6B21010AC40056EB44 /* Profile */,
 				4CA36B5120FE90180056EB44 /* Models */,
@@ -493,12 +498,12 @@
 			children = (
 				A8BF41C5210C110E001DAB81 /* User.h */,
 				A8BF41C6210C110E001DAB81 /* User.m */,
-				4CEF1C4E210BAE5600C69B15 /* Path.h */,
-				4CEF1C4F210BAE5600C69B15 /* Path.m */,
 				4C51C944210BEE7D007B389F /* Itinerary.h */,
 				4C51C945210BEE7D007B389F /* Itinerary.m */,
 				8544B99F210FAE260028D43F /* LCMapView.h */,
 				8544B9A0210FAE260028D43F /* LCMapView.m */,
+				853A48C0211517C6005BCDEF /* ItineraryPin.h */,
+				853A48C1211517C6005BCDEF /* ItineraryPin.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -787,6 +792,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A8F8E7E2210951CF00684142 /* FlickrAuthorizationAppDelegate.m in Sources */,
+				853A48C2211517C6005BCDEF /* ItineraryPin.m in Sources */,
 				8544B999210BC2DB0028D43F /* InterstitialViewController.m in Sources */,
 				4CA36B71210112CD0056EB44 /* FavoriteCell.m in Sources */,
 				8550B0AC2107E4CE0009C845 /* ResultsViewCell.m in Sources */,
