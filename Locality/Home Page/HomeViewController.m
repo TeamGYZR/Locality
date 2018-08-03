@@ -125,7 +125,6 @@
         } else {
             self.itineraries = iteneraries;
             [self sortItenerariesByDistance];
-            self.searchTableViewController.itineraries = self.itineraries; 
             [self.tableView reloadData];
         }
     }];
