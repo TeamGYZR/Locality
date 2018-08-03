@@ -78,7 +78,6 @@
     }
     newUser.profilePicture = [PFFile fileWithName:@"image.png" data:self.imageData];
     
-    
     [newUser signUpInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
         if (error) {
             UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Error signing up!" message:(@"%@",error.localizedDescription) preferredStyle:(UIAlertControllerStyleAlert)];

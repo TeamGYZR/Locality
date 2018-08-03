@@ -56,6 +56,18 @@
     }];
 }
 
+- (void)takeSnapshot{
+    UIView *mapSubView = self.LCMapView;
+    UIGraphicsBeginImageContextWithOptions(mapSubView.bounds.size, YES, 0.0f);
+    CGContextRef context = UIGraphicsGetCurrentContext();
+    [mapSubView.layer renderInContext:context];
+    UIImage *snapshotImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    //self.testerImageview.image = snapshotImage;
+     
+}
+
 #pragma mark - IBActions
 
 - (IBAction)didTapPost:(id)sender {
@@ -64,6 +76,8 @@
     NSArray *categories = @[@"Foodie", @"Entertainment", @"Nature"];
     self.itinerary.category = categories[self.categoryController.selectedSegmentIndex];
     [self.tableView reloadData];
+    //snapchotting the image to later save to parse??
+    [self takeSnapshot];
     [self.itinerary setObject:self.itinerary.pinnedLocations forKey:@"pinnedLocations"];
     [self.itinerary saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
         if (error) {
