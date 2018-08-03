@@ -24,15 +24,15 @@
 @property (strong, nonatomic) NSMutableArray *pinCoordinates;
 @property (nonatomic, retain) MKPolyline *polyline;
 @property (strong, nonatomic) Itinerary *itineraryDraft;
+@property (strong, nonatomic) NSData *imageData;
 
 @end
 
 @implementation CreateYourOwnViewController
-
 #pragma mark - View Controller
-
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.progressView.alpha=0;
     self.mapView.delegate = self;
     self.locationManager = [[CLLocationManager alloc] init];
     self.locationManager.delegate = self;
@@ -88,18 +88,43 @@
 }
 
 #pragma mark - IBActions
-
 - (IBAction)didTapAddPin:(id)sender {
     //add alert view controller to confirm that the user wanted to add the location, then continue- have an addPin method
     UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Add Pin?" message:nil preferredStyle:(UIAlertControllerStyleAlert)];
     UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         
     }];
+    
     UIAlertAction *continueAction = [UIAlertAction actionWithTitle:@"Add" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+       
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Do you want to add info about it?" message:nil preferredStyle:(UIAlertControllerStyleAlert)];
+        UIAlertAction *infoAction = [UIAlertAction actionWithTitle:@"Add Info" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            //UIView *messageView = [[UIView alloc] init];
+            self.progressView=[[UIView alloc] init];
+            CGRect viewBounds = self.view.bounds;
+          self.progressView.frame = CGRectMake((viewBounds.size.width / 2)-179.5, viewBounds.size.height/2-150, 350, 250);
+           self.progressView.autoresizingMask = UIViewAutoresizingFlexibleTopMargin|UIViewAutoresizingFlexibleLeftMargin|UIViewAutoresizingFlexibleRightMargin;
+            self.progressView.backgroundColor = [UIColor whiteColor];
+            self.progressView.layer.cornerRadius = 8.0;
+            self.progressView.layer.shadowOffset = CGSizeZero;
+            self.progressView.layer.shadowOpacity = 0.5;
+            //[overlayView addSubview:messageView];
+            [self.view addSubview:self.progressView];
+         }];
+       UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+           }];
+        
+        [alert addAction:infoAction];
+        [alert addAction:cancelAction];
+        [self presentViewController:alert animated:YES completion:^{
+            
+        }];
         [self addPinToMapView];
+       
     }];
-    [alert addAction:cancelAction];
+    
     [alert addAction:continueAction];
+    [alert addAction:cancelAction];
     [self presentViewController:alert animated:YES completion:^{
         
     }];
@@ -114,6 +139,22 @@
 
 - (IBAction)didTapCancel:(id)sender {
     [self dismissViewControllerAnimated:YES completion:nil];
+}
+- (IBAction)didTapAddPhoto:(id)sender {
+    UIImagePickerController *imagePicker = [UIImagePickerController new];
+    imagePicker.delegate = self;
+    imagePicker.allowsEditing = YES;
+    if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
+        imagePicker.sourceType = UIImagePickerControllerSourceTypeCamera;
+    }
+    else{
+        imagePicker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+    }
+    [self presentViewController:imagePicker animated: YES completion:nil];
+}
+
+- (IBAction)didtapDone:(id)sender {
+    self.progressView.alpha=0;
 }
 
 #pragma mark - Private Methods
@@ -172,7 +213,11 @@
         }
     }];
 }
-
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info{
+    UIImage *pinneddeditedPicture = info[UIImagePickerControllerEditedImage];
+    self.imageData = UIImagePNGRepresentation(pinneddeditedPicture);
+    
+}
 #pragma mark - Error Handling
 
 - (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error{
@@ -182,10 +227,7 @@
 - (void)locationManager:(CLLocationManager *)manager didFinishDeferredUpdatesWithError:(NSError *)error{
     NSLog(@"Error - locations updates will no longer be deferred: %@", error);
 }
-
-
 #pragma mark - Navigation
-
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.identifier isEqualToString:@"doneSegue"]) {
         UINavigationController *navigationController = [segue destinationViewController];

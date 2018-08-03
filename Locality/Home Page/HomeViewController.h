@@ -31,6 +31,8 @@
 - (void)reverseGeocode:(CLLocation *)location;
 @property (strong, nonatomic) NSString *cityName;
 @property (weak, nonatomic) IBOutlet UILabel *labefiled;
+-(void) photoFecth;
+- (void) loadPathsWithCategory:(NSString *)category;
 @property  UIImage * image1;
 @property  UIImage * image2;
 @property UIImage * image3;

@@ -29,8 +29,6 @@
 @property (weak, nonatomic) IBOutlet UIView *searchBarView;
 @property (strong, nonatomic) PlacesSearchTableViewController *searchTableViewController;
 
-
-
 @end
 
 @implementation HomeViewController
@@ -66,7 +64,6 @@
     }
 }
 - (void)reverseGeocode:(CLLocation *)location{
-    
     if (!self.geoCoder){
         self.geoCoder = [[CLGeocoder alloc] init];
     }
@@ -78,24 +75,25 @@
         }else{
             //handle error
         }
-  [self.geoCoder reverseGeocodeLocation:location preferredLocale:nil completionHandler:^(NSArray<CLPlacemark *> * _Nullable placemarks, NSError * _Nullable error){
-      if(placemarks){
-          CLPlacemark * placemark=[placemarks firstObject];
-          self.labefiled.text = placemark.locality;
-        //[self photoFecth];
-     }else{
-          //handle error
-     }
-}];
+        [self.geoCoder reverseGeocodeLocation:location preferredLocale:nil completionHandler:^(NSArray<CLPlacemark *> * _Nullable placemarks, NSError * _Nullable error){
+            if(placemarks){
+                CLPlacemark * placemark=[placemarks firstObject];
+                self.labefiled.text = placemark.locality;
+                //[self photoFecth];
+            }else{
+                //handle error
+            }
+        }];
+    }];
 }
 #pragma mark - IBAction
-
-- (IBAction)didTapFoodie:(id)sender {
+- (IBAction)didTapFoodie:(id)sender{
     [self loadPathsWithCategory:@"Foodie"];
     [self.foodieButton setTitleColor:[UIColor colorWithRed:0 green:0.478431 blue:1 alpha:1] forState:UIControlStateNormal];
     [self.entertainmentButton setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
     [self.natureButton setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
 }
+     
 
 - (IBAction)didTapEntertainment:(id)sender {
     [self loadPathsWithCategory:@"Entertainment"];
@@ -222,6 +220,7 @@
 - (void)flickrAPIRequest:(OFFlickrAPIRequest *)inRequest didFailWithError:(NSError *)inError{
     self.request=nil;
 }
+
 #pragma mark - Location Manager
 -(void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray<CLLocation *> *)locations{
     CLLocation *currentLocation = [locations lastObject];
@@ -254,3 +253,6 @@
     }
 }
 @end
+     
+     
+    
