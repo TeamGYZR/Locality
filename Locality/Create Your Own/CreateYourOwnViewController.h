@@ -8,6 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-@interface CreateYourOwnViewController : UIViewController
+@interface CreateYourOwnViewController : UIViewController<UIImagePickerControllerDelegate, UINavigationControllerDelegate>
+
+@property IBOutlet UIView *progressView;
+@property (weak, nonatomic) IBOutlet UIButton *addPhoto;
 
 @end

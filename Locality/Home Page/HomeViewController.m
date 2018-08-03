@@ -26,22 +26,22 @@
 @property (weak, nonatomic) IBOutlet UIButton *foodieButton;
 @property (weak, nonatomic) IBOutlet UIButton *entertainmentButton;
 @property (weak, nonatomic) IBOutlet UIButton *natureButton;
-@property (weak, nonatomic) IBOutlet UIView *searchBarView;
+//@property (weak, nonatomic) IBOutlet UIView *searchBarView;
 @property (strong, nonatomic) PlacesSearchTableViewController *searchTableViewController;
-
-
+@property (strong, nonatomic) IBOutlet UIBarButtonItem *createPathBarButton;
 
 @end
 
 @implementation HomeViewController
 
 #pragma mark - View Controller
-
-- (void)viewDidLoad {
+-(void)viewDidLoad {
     [super viewDidLoad];
     self.tableView.dataSource=self;
     self.tableView.delegate=self;
     [self loadPathsWithCategory:@"Foodie"];
+    self.labefiled.alpha=0;
+    //self.tableView.rowHeight=UITableViewAutomaticDimension;
     //self.tableView.rowHeight=UITableViewAutomaticDimension;
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Home" bundle:[NSBundle mainBundle]];
     PlacesSearchTableViewController *pathsSearchTable = [storyboard instantiateViewControllerWithIdentifier:@"ResultsTable"];
@@ -53,11 +53,13 @@
     UISearchBar *searchBar = self.searchController.searchBar;
     [searchBar sizeToFit];
     searchBar.placeholder = @"Search by pins";
-    [self.searchBarView addSubview:self.searchController.searchBar];
+    searchBar.delegate = self;
+    //searchBar.barTintColor = [UIColor colorWithRed:0.96078 green:1.0 blue:0.8039 alpha:0.5];
+    //[self.searchBarView addSubview:self.searchController.searchBar];
+    self.navigationItem.titleView = self.searchController.searchBar;
     self.searchController.obscuresBackgroundDuringPresentation = YES;
     self.definesPresentationContext = YES;
     self.searchController.hidesNavigationBarDuringPresentation = NO;
-    
     self.locationManager = [[CLLocationManager alloc] init];
     self.locationManager.delegate = self;
     if(CLLocationManager.locationServicesEnabled){
@@ -66,28 +68,36 @@
     }
 }
 - (void)reverseGeocode:(CLLocation *)location{
-
     if (!self.geoCoder){
         self.geoCoder = [[CLGeocoder alloc] init];
     }
-  [self.geoCoder reverseGeocodeLocation:location preferredLocale:nil completionHandler:^(NSArray<CLPlacemark *> * _Nullable placemarks, NSError * _Nullable error){
-      if(placemarks){
-          CLPlacemark * placemark=[placemarks firstObject];
-          self.labefiled.text = placemark.locality;
-        //[self photoFecth];
-     }else{
-          //handle error
-     }
+    [self.geoCoder reverseGeocodeLocation:location preferredLocale:nil completionHandler:^(NSArray<CLPlacemark *> * _Nullable placemarks, NSError * _Nullable error){
+        if(placemarks){
+            CLPlacemark * placemark=[placemarks firstObject];
+            self.cityName = placemark.locality;
+            [self photoFecth];
+        }else{
+            //handle error
+        }
+        [self.geoCoder reverseGeocodeLocation:location preferredLocale:nil completionHandler:^(NSArray<CLPlacemark *> * _Nullable placemarks, NSError * _Nullable error){
+            if(placemarks){
+                CLPlacemark * placemark=[placemarks firstObject];
+                self.labefiled.text = placemark.locality;
+                //[self photoFecth];
+            }else{
+                //handle error
+            }
+        }];
     }];
 }
 #pragma mark - IBAction
-
-- (IBAction)didTapFoodie:(id)sender {
+- (IBAction)didTapFoodie:(id)sender{
     [self loadPathsWithCategory:@"Foodie"];
     [self.foodieButton setTitleColor:[UIColor colorWithRed:0 green:0.478431 blue:1 alpha:1] forState:UIControlStateNormal];
     [self.entertainmentButton setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
     [self.natureButton setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
 }
+     
 
 - (IBAction)didTapEntertainment:(id)sender {
     [self loadPathsWithCategory:@"Entertainment"];
@@ -113,7 +123,7 @@
     [alert addAction:cancelAction];
     [alert addAction:continueAction];
     [self presentViewController:alert animated:YES completion:^{
-   }];
+    }];
 }
 #pragma mark - Parse Query
 - (void) loadPathsWithCategory:(NSString *)category{
@@ -128,6 +138,7 @@
             self.itineraries = iteneraries;
             [self sortItenerariesByDistance];
             [self.tableView reloadData];
+            [self.hud hideAnimated:YES];
         }
     }];
 }
@@ -166,82 +177,56 @@
     return self.itineraries.count;
     //return 20;
 }
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+}
 #pragma mark - Flickr Request
 -(void) photoFecth{
     self.apiKey = @"595a10deca33ce1b5a7ab291254fb22a";
     self.sharedKey = @"cf18c4e987fb5146";
     self.context = [[OFFlickrAPIContext alloc]
-                  initWithAPIKey:self.apiKey sharedSecret:self.sharedKey];
-    self.request1=[[OFFlickrAPIRequest alloc] initWithAPIContext:self.context];
-    [self.request1 setDelegate:self];
-    self.request2=[[OFFlickrAPIRequest alloc] initWithAPIContext:self.context];
-    [self.request2 setDelegate:self];
-NSDictionary *dictionary = [NSDictionary dictionaryWithObjectsAndKeys:self.cityName,@"text", @"relevance",@"sort",@"views",@"extras", nil];
-  [self.request1 callAPIMethodWithGET:@"flickr.photos.search" arguments:dictionary];
+                    initWithAPIKey:self.apiKey sharedSecret:self.sharedKey];
+    self.request=[[OFFlickrAPIRequest alloc] initWithAPIContext:self.context];
+    [self.request setDelegate:self];
+   NSDictionary *dictionary = [NSDictionary dictionaryWithObjectsAndKeys:self.cityName,@"text", @"relevance",@"sort",@"views",@"extras", nil];
+    [self.request callAPIMethodWithGET:@"flickr.photos.search" arguments:dictionary];
 }
-- (void)flickrAPIRequest:(OFFlickrAPIRequest *)inRequest didCompleteWithResponse:(NSDictionary *)inResponseDictionary{
-    NSInteger currentLargestView=[inResponseDictionary[@"photos"][@"photo"][1][@"views"] integerValue];
-    NSInteger secondLargestView=[inResponseDictionary[@"photos"][@"photo"][0][@"views"] integerValue];
-    NSInteger thirdLargestView=0;
-    NSMutableArray *arrayOfIndexsForLargestPhotoViews=[[NSMutableArray alloc] init];
-    NSMutableArray * arrayOfPhotoUrl=[[NSMutableArray alloc] init];
-    int save1 = 0,save2 = 0,save3 = 0;
-      if(inRequest==self.request1){
-   for(int i=0; i<100; i++){
-    if([inResponseDictionary[@"photos"][@"photo"][i][@"views"] integerValue]>thirdLargestView){
-          thirdLargestView=[inResponseDictionary[@"photos"][@"photo"][i][@"views"] integerValue];
-          save3=i;
-      }
-      if([inResponseDictionary[@"photos"][@"photo"][i][@"views"] integerValue]>secondLargestView){
-          thirdLargestView=secondLargestView;
-          secondLargestView=[inResponseDictionary[@"photos"][@"photo"][i][@"views"] integerValue];
-          save2=i;
-      }
-      if([inResponseDictionary[@"photos"][@"photo"][i][@"views"] integerValue]>currentLargestView){
-          secondLargestView=currentLargestView;
-          currentLargestView=[inResponseDictionary[@"photos"][@"photo"][i][@"views"] integerValue];
-          save1=i;
-      }
-        
-    }
-           [arrayOfIndexsForLargestPhotoViews addObject:[NSNumber numberWithInteger:save1]];
-           [arrayOfIndexsForLargestPhotoViews addObject:[NSNumber numberWithInteger:save2]];
-           [arrayOfIndexsForLargestPhotoViews addObject:[NSNumber numberWithInteger:save3]];
-           for(int i=0; i<arrayOfIndexsForLargestPhotoViews.count; i++){
-              NSDictionary *photoDict = [[inResponseDictionary valueForKeyPath:@"photos.photo"] objectAtIndex:[arrayOfIndexsForLargestPhotoViews[i]integerValue]];
-              NSURL *staticPhotoURL = [self.context photoSourceURLFromDictionary:photoDict size:OFFlickrMediumSize];
-               NSString * string=[staticPhotoURL absoluteString];
-               [arrayOfPhotoUrl addObject:[NSURL URLWithString:string]];
-               NSLog(@"%@", staticPhotoURL);
-          }
-          NSString *urlStr1 =[NSString stringWithFormat:@"%@", arrayOfPhotoUrl[0]];
-          NSURL *firstImageUrl=[NSURL URLWithString:urlStr1];
-          UIImage * image1=[UIImage imageWithData:[NSData dataWithContentsOfURL:firstImageUrl]];
-          NSString *urlStr2 =[NSString stringWithFormat:@"%@", arrayOfPhotoUrl[0]];
-          NSURL *secondImageUrl=[NSURL URLWithString:urlStr2];
-          UIImage * image2=[UIImage imageWithData:[NSData dataWithContentsOfURL:secondImageUrl]];
-          NSString *urlStr3 =[NSString stringWithFormat:@"%@", arrayOfPhotoUrl[0]];
-          NSURL *thirdImageUrl=[NSURL URLWithString:urlStr3];
-          UIImage * image3=[UIImage imageWithData:[NSData dataWithContentsOfURL:thirdImageUrl]];
-          self.labefiled.text=self.cityName;
-          [self firstImageView:image1 secondImageView:image2 thirdImageView:image3];
-          self.photoResponseDictionary=inResponseDictionary;
+-(void)flickrAPIRequest:(OFFlickrAPIRequest *)inRequest didCompleteWithResponse:(NSDictionary *)inResponseDictionary{
+    NSInteger currentLargestView=0;
+    int IndexForTheLargestViewedPhoto=0;
+    if (inRequest==self.request){
+        for (int i=0; i<100; i++){
+            if([inResponseDictionary[@"photos"][@"photo"][i][@"views"] integerValue]>currentLargestView){
+                currentLargestView=[inResponseDictionary[@"photos"][@"photo"][i][@"views"] integerValue];
+                IndexForTheLargestViewedPhoto=i;
+            }
+            
+        }
+            NSDictionary *photoDict = [[inResponseDictionary valueForKeyPath:@"photos.photo"] objectAtIndex:IndexForTheLargestViewedPhoto];
+            NSURL *staticPhotoURL = [self.context photoSourceURLFromDictionary:photoDict size:OFFlickrMediumSize];
+            NSLog(@"%@", staticPhotoURL);
+       
+        [self.imageView setImageWithURLRequest:[NSURLRequest requestWithURL:staticPhotoURL] placeholderImage:[UIImage imageNamed:@"placeHolderImage"] success:^(NSURLRequest * _Nonnull request, NSHTTPURLResponse * _Nullable response, UIImage * _Nonnull image) {
+            self.imageView.alpha = 0.0;
+            self.imageView.image = image;
+            [UIView animateWithDuration:0.25
+                             animations:^{
+                                 self.imageView.alpha = 1.0;
+                                 self.labefiled.alpha=1;
+                                 self.labefiled.text=self.cityName;
+                                 
+                              }];
+          }failure:^(NSURLRequest *request, NSHTTPURLResponse * _Nullable response, NSError *error){
+            if(error){
+                self.imageView.image=[UIImage imageNamed:@"placeHolderImage"];
+            }
+        }];
+        self.photoResponseDictionary=inResponseDictionary;
     }
 }
 
 - (void)flickrAPIRequest:(OFFlickrAPIRequest *)inRequest didFailWithError:(NSError *)inError{
-    self.request1=nil;
-    self.request2=nil;
-}
-#pragma mark - HeaderImageAnimation
--(void)firstImageView:(UIImage*)firstImage secondImageView:(UIImage*)secondImage thirdImageView:(UIImage*)thirdImage{
-    NSMutableArray *images = [[NSMutableArray alloc]init];
-    [images addObject:firstImage];
-    [images addObject:secondImage];
-    [images addObject:thirdImage];
-    self.imageView.animationImages=[images copy];
-    self.imageView.animationDuration=1;
-    [self.imageView startAnimating];
+    self.request=nil;
 }
 
 #pragma mark - Location Manager
@@ -253,7 +238,6 @@ NSDictionary *dictionary = [NSDictionary dictionaryWithObjectsAndKeys:self.cityN
     [self loadPathsWithCategory:@"Foodie"];
     self.imageView.image = [UIImage imageNamed:@"menlopark"];
     //[self photoFecth];
-    [self.hud hideAnimated:YES];
 }
 - (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error{
     NSLog(@"THERE WAS AN ERROR - %@", error);
@@ -261,6 +245,32 @@ NSDictionary *dictionary = [NSDictionary dictionaryWithObjectsAndKeys:self.cityN
 
 - (void)locationManager:(CLLocationManager *)manager didFinishDeferredUpdatesWithError:(NSError *)error{
     NSLog(@"THERE WAS AN ERROR - %@", error);
+}
+
+#pragma mark - Search Controller Delegate
+
+- (void)didPresentSearchController:(UISearchController *)searchController{
+    CGRect createPathFrame = self.createPathBarButton.accessibilityFrame;
+    createPathFrame.origin.x += 60;
+    [UIView animateWithDuration:1.0 animations:^{
+        self.navigationItem.rightBarButtonItem.accessibilityFrame = createPathFrame; 
+    }];
+    
+}
+
+#pragma mark - Search Bar Delegate
+- (void)searchBarTextDidBeginEditing:(UISearchBar *)searchBar{
+    [UIView animateWithDuration:1.5 animations:^{
+        self.navigationItem.rightBarButtonItem = nil;
+    }];
+
+}
+- (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar
+{
+    self.searchController.searchBar.text = @"";
+    [self.tableView reloadData];
+    [self.searchController.searchBar resignFirstResponder];
+    self.navigationItem.rightBarButtonItem = self.createPathBarButton; 
 }
 #pragma mark - Navigation
 
@@ -276,3 +286,6 @@ NSDictionary *dictionary = [NSDictionary dictionaryWithObjectsAndKeys:self.cityN
     }
 }
 @end
+     
+     
+    
