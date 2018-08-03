@@ -18,83 +18,71 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="150" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="osb-fg-JPY">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="282" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="osb-fg-JPY">
                                 <rect key="frame" x="0.0" y="237" width="375" height="430"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" red="0.95902747479999995" green="1" blue="0.80267276139999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="PathCell" rowHeight="157" id="br1-gT-nE4" customClass="PathCell">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="157"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="PathCell" rowHeight="282" id="br1-gT-nE4" customClass="PathCell">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="282"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="br1-gT-nE4" id="lxE-LU-myx">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="156.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="281.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ra0-4F-OWh" customClass="PFImageView">
-                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="157"/>
-                                                    <color key="backgroundColor" red="0.1137254902" green="0.73085043910000003" blue="0.92941176469999998" alpha="1" colorSpace="calibratedRGB"/>
-                                                </view>
-                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VFV-Qa-PL4">
-                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="86.5"/>
+                                                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VFV-Qa-PL4">
+                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="281"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <subviews>
-                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jOz-bV-egI" customClass="PFImageView">
-                                                            <rect key="frame" x="19" y="50.5" width="26" height="26"/>
-                                                            <color key="backgroundColor" white="1" alpha="0.70395440919999996" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                            <constraints>
-                                                                <constraint firstAttribute="width" constant="26" id="Ra7-EN-IFt"/>
-                                                                <constraint firstAttribute="height" constant="26" id="dAS-EN-4qL"/>
-                                                            </constraints>
+                                                        <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jOz-bV-egI" customClass="PFImageView">
+                                                            <rect key="frame" x="14" y="83" width="26" height="26"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                            <color key="backgroundColor" red="1" green="0.97387387020000005" blue="0.71572926849999996" alpha="0.31006528249999998" colorSpace="custom" customColorSpace="displayP3"/>
                                                         </view>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Spi-tZ-sLK">
-                                                            <rect key="frame" x="101" y="50.5" width="37.5" height="18"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" fixedFrame="YES" text="Path Description" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Spi-tZ-sLK">
+                                                            <rect key="frame" x="33" y="41" width="331" height="38"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                            <fontDescription key="fontDescription" name="KohinoorBangla-Regular" family="Kohinoor Bangla" pointSize="15"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S7X-PT-Ova">
-                                                            <rect key="frame" x="14" y="5" width="350" height="35.5"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Path Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S7X-PT-Ova">
+                                                            <rect key="frame" x="14" y="5" width="350" height="36"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                            <fontDescription key="fontDescription" name="KohinoorBangla-Regular" family="Kohinoor Bangla" pointSize="22"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HT9-kf-aW1">
-                                                            <rect key="frame" x="48" y="50.5" width="38" height="18"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HT9-kf-aW1">
+                                                            <rect key="frame" x="48" y="87" width="316" height="18"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                            <fontDescription key="fontDescription" name="KohinoorBangla-Regular" family="Kohinoor Bangla" pointSize="13"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ra0-4F-OWh" customClass="PFImageView">
+                                                            <rect key="frame" x="18" y="117" width="342" height="116"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                            <color key="backgroundColor" red="0.60080752199999998" green="0.79725902270000004" blue="0.96867066619999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                        </view>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Pins include:" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pfd-gB-Eh0">
+                                                            <rect key="frame" x="18" y="241" width="342" height="32"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                            <fontDescription key="fontDescription" name="KohinoorBangla-Regular" family="Kohinoor Bangla" pointSize="13"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                     </subviews>
-                                                    <color key="backgroundColor" red="1" green="0.9878943966" blue="0.95581895319999999" alpha="0.5" colorSpace="custom" customColorSpace="displayP3"/>
-                                                    <constraints>
-                                                        <constraint firstItem="HT9-kf-aW1" firstAttribute="leading" secondItem="jOz-bV-egI" secondAttribute="trailing" constant="3" id="1hI-7X-u9j"/>
-                                                        <constraint firstItem="S7X-PT-Ova" firstAttribute="leading" secondItem="VFV-Qa-PL4" secondAttribute="leading" constant="14" id="Huc-fz-vbv"/>
-                                                        <constraint firstAttribute="bottom" secondItem="jOz-bV-egI" secondAttribute="bottom" constant="10" id="IEQ-iZ-tgb"/>
-                                                        <constraint firstItem="Spi-tZ-sLK" firstAttribute="top" secondItem="jOz-bV-egI" secondAttribute="top" id="IkH-Hp-Ayc"/>
-                                                        <constraint firstItem="S7X-PT-Ova" firstAttribute="top" secondItem="VFV-Qa-PL4" secondAttribute="top" constant="5" id="NKG-L6-GSm"/>
-                                                        <constraint firstItem="Spi-tZ-sLK" firstAttribute="leading" secondItem="HT9-kf-aW1" secondAttribute="trailing" constant="15" id="RpN-dh-zWf"/>
-                                                        <constraint firstItem="jOz-bV-egI" firstAttribute="top" secondItem="S7X-PT-Ova" secondAttribute="bottom" constant="10" id="ZuH-Dc-wi8"/>
-                                                        <constraint firstAttribute="trailing" secondItem="S7X-PT-Ova" secondAttribute="trailing" constant="11" id="aUK-vc-wsv"/>
-                                                        <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Spi-tZ-sLK" secondAttribute="trailing" constant="10" id="gMO-KQ-1N3"/>
-                                                        <constraint firstItem="HT9-kf-aW1" firstAttribute="top" secondItem="jOz-bV-egI" secondAttribute="top" id="p8X-uY-EJD"/>
-                                                        <constraint firstItem="jOz-bV-egI" firstAttribute="leading" secondItem="VFV-Qa-PL4" secondAttribute="leading" constant="19" id="sFc-ZO-VAq"/>
-                                                    </constraints>
+                                                    <color key="backgroundColor" red="0.95902747479999995" green="1" blue="0.80267276139999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                 </view>
                                             </subviews>
-                                            <constraints>
-                                                <constraint firstAttribute="trailing" secondItem="VFV-Qa-PL4" secondAttribute="trailing" id="2uM-1I-lTp"/>
-                                                <constraint firstItem="VFV-Qa-PL4" firstAttribute="leading" secondItem="lxE-LU-myx" secondAttribute="leading" id="LEy-iQ-ArW"/>
-                                                <constraint firstItem="Ra0-4F-OWh" firstAttribute="leading" secondItem="lxE-LU-myx" secondAttribute="leading" id="TUN-Xv-dgc"/>
-                                                <constraint firstAttribute="bottom" secondItem="Ra0-4F-OWh" secondAttribute="bottom" id="XV4-2G-EH7"/>
-                                                <constraint firstAttribute="bottom" secondItem="VFV-Qa-PL4" secondAttribute="bottom" constant="70" id="aht-ga-1Tz"/>
-                                                <constraint firstItem="VFV-Qa-PL4" firstAttribute="top" secondItem="lxE-LU-myx" secondAttribute="top" id="bcY-nk-uD5"/>
-                                                <constraint firstItem="Ra0-4F-OWh" firstAttribute="top" secondItem="lxE-LU-myx" secondAttribute="top" id="cM1-Kc-RR5"/>
-                                                <constraint firstAttribute="trailing" secondItem="Ra0-4F-OWh" secondAttribute="trailing" id="zot-Qs-I67"/>
-                                            </constraints>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" red="1" green="0.97387387020000005" blue="0.71572926849999996" alpha="0.5" colorSpace="custom" customColorSpace="displayP3"/>
                                         <connections>
                                             <outlet property="mapViewImage" destination="Ra0-4F-OWh" id="79a-co-oUx"/>
                                             <outlet property="pathDescriptionField" destination="Spi-tZ-sLK" id="Tgf-a5-gCL"/>
                                             <outlet property="pathNameField" destination="S7X-PT-Ova" id="cGA-88-JJh"/>
+                                            <outlet property="pinNames" destination="Pfd-gB-Eh0" id="Hs9-4L-tnP"/>
                                             <outlet property="profileImageView" destination="jOz-bV-egI" id="enG-c3-lsD"/>
                                             <outlet property="profileNameField" destination="HT9-kf-aW1" id="T6C-bQ-3zg"/>
                                             <segue destination="0dM-kz-OnY" kind="show" identifier="segueToDetails" id="1KH-BW-5eO"/>
@@ -137,9 +125,8 @@
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="W0k-a3-bEd">
-                                <rect key="frame" x="0.0" y="63" width="375" height="37"/>
+                                <rect key="frame" x="0.0" y="63" width="375" height="27"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PyZ-NW-wZ3">
                                 <rect key="frame" x="0.0" y="153" width="375" height="21"/>
@@ -149,7 +136,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" red="0.95902747481828821" green="1" blue="0.80267276142099608" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <viewLayoutGuide key="safeArea" id="Of1-DP-sed"/>
                     </view>
                     <navigationItem key="navigationItem" id="xRL-MH-Lgh">
@@ -178,84 +165,73 @@
         <scene sceneID="ogI-Li-hHV">
             <objects>
                 <tableViewController storyboardIdentifier="ResultsTable" id="vJ4-Rp-soP" customClass="PlacesSearchTableViewController" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="HfR-Ze-CDj">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="282" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="HfR-Ze-CDj">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="PathCell" rowHeight="157" id="0Be-ta-VVZ" customClass="PathCell">
-                                <rect key="frame" x="0.0" y="28" width="375" height="157"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="PathCell" rowHeight="282" id="9wr-vm-U3b" customClass="PathCell">
+                                <rect key="frame" x="0.0" y="28" width="375" height="282"/>
                                 <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="0Be-ta-VVZ" id="uEc-Z0-SnA">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="156.5"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="9wr-vm-U3b" id="isD-sq-18z">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="281.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <view clipsSubviews="YES" contentMode="scaleAspectFill" translatesAutoresizingMaskIntoConstraints="NO" id="9z0-9T-NVi" customClass="LCMapView">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="157"/>
-                                            <color key="backgroundColor" red="0.1137254902" green="0.73085043910000003" blue="0.92941176469999998" alpha="1" colorSpace="calibratedRGB"/>
-                                        </view>
-                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DGs-JZ-I0L">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="86.5"/>
+                                        <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XjL-Mh-ZRt">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="281"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <subviews>
-                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bSJ-dj-nQf" customClass="PFImageView">
-                                                    <rect key="frame" x="19" y="50.5" width="26" height="26"/>
-                                                    <color key="backgroundColor" white="1" alpha="0.70395440919999996" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" constant="26" id="LgU-tR-aX7"/>
-                                                        <constraint firstAttribute="height" constant="26" id="mQS-Gg-Z3S"/>
-                                                    </constraints>
+                                                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FqA-Xp-7BD" customClass="PFImageView">
+                                                    <rect key="frame" x="14" y="83" width="26" height="26"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <color key="backgroundColor" red="1" green="0.97387387020000005" blue="0.71572926849999996" alpha="0.31006528249999998" colorSpace="custom" customColorSpace="displayP3"/>
                                                 </view>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ejp-tK-cEq">
-                                                    <rect key="frame" x="101" y="50.5" width="37.5" height="18"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" fixedFrame="YES" text="Path Description" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uCW-6i-rQW">
+                                                    <rect key="frame" x="33" y="41" width="331" height="38"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" name="KohinoorBangla-Regular" family="Kohinoor Bangla" pointSize="15"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rvf-0R-kBH">
-                                                    <rect key="frame" x="14" y="5" width="350" height="35.5"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Path Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CbS-yU-PDk">
+                                                    <rect key="frame" x="14" y="5" width="350" height="36"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" name="KohinoorBangla-Regular" family="Kohinoor Bangla" pointSize="22"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gfQ-N0-Xf5">
-                                                    <rect key="frame" x="48" y="50.5" width="38" height="18"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7mO-Qu-JBu">
+                                                    <rect key="frame" x="48" y="87" width="316" height="18"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" name="KohinoorBangla-Regular" family="Kohinoor Bangla" pointSize="13"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HV5-XU-EaC" customClass="PFImageView">
+                                                    <rect key="frame" x="18" y="117" width="342" height="116"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <color key="backgroundColor" red="0.60080752199999998" green="0.79725902270000004" blue="0.96867066619999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                </view>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Pins include:" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OqU-NC-7yN">
+                                                    <rect key="frame" x="18" y="241" width="342" height="32"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" name="KohinoorBangla-Regular" family="Kohinoor Bangla" pointSize="13"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
-                                            <color key="backgroundColor" red="1" green="0.9878943966" blue="0.95581895319999999" alpha="0.5" colorSpace="custom" customColorSpace="displayP3"/>
-                                            <constraints>
-                                                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="ejp-tK-cEq" secondAttribute="trailing" constant="10" id="0TF-ea-wS2"/>
-                                                <constraint firstItem="bSJ-dj-nQf" firstAttribute="leading" secondItem="DGs-JZ-I0L" secondAttribute="leading" constant="19" id="6kA-yb-z32"/>
-                                                <constraint firstItem="bSJ-dj-nQf" firstAttribute="top" secondItem="Rvf-0R-kBH" secondAttribute="bottom" constant="10" id="A8e-Ba-G6O"/>
-                                                <constraint firstItem="gfQ-N0-Xf5" firstAttribute="leading" secondItem="bSJ-dj-nQf" secondAttribute="trailing" constant="3" id="BMp-hh-ow3"/>
-                                                <constraint firstItem="gfQ-N0-Xf5" firstAttribute="top" secondItem="bSJ-dj-nQf" secondAttribute="top" id="HHS-NT-ceu"/>
-                                                <constraint firstItem="ejp-tK-cEq" firstAttribute="top" secondItem="bSJ-dj-nQf" secondAttribute="top" id="X9L-04-ILY"/>
-                                                <constraint firstAttribute="bottom" secondItem="bSJ-dj-nQf" secondAttribute="bottom" constant="10" id="fQz-Zk-kkJ"/>
-                                                <constraint firstItem="Rvf-0R-kBH" firstAttribute="top" secondItem="DGs-JZ-I0L" secondAttribute="top" constant="5" id="fiQ-Zz-v3m"/>
-                                                <constraint firstItem="Rvf-0R-kBH" firstAttribute="leading" secondItem="DGs-JZ-I0L" secondAttribute="leading" constant="14" id="fmg-Ts-zzp"/>
-                                                <constraint firstAttribute="trailing" secondItem="Rvf-0R-kBH" secondAttribute="trailing" constant="11" id="g19-jh-zhX"/>
-                                                <constraint firstItem="ejp-tK-cEq" firstAttribute="leading" secondItem="gfQ-N0-Xf5" secondAttribute="trailing" constant="15" id="iIG-jy-x3y"/>
-                                            </constraints>
+                                            <color key="backgroundColor" red="0.95902747479999995" green="1" blue="0.80267276139999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         </view>
                                     </subviews>
-                                    <constraints>
-                                        <constraint firstItem="9z0-9T-NVi" firstAttribute="leading" secondItem="uEc-Z0-SnA" secondAttribute="leading" id="Dlp-9J-hhm"/>
-                                        <constraint firstAttribute="bottom" secondItem="DGs-JZ-I0L" secondAttribute="bottom" constant="70" id="T8t-oy-ayC"/>
-                                        <constraint firstAttribute="trailing" secondItem="9z0-9T-NVi" secondAttribute="trailing" id="YbM-fZ-QoJ"/>
-                                        <constraint firstAttribute="trailing" secondItem="DGs-JZ-I0L" secondAttribute="trailing" id="aKQ-9l-I4H"/>
-                                        <constraint firstItem="DGs-JZ-I0L" firstAttribute="top" secondItem="uEc-Z0-SnA" secondAttribute="top" id="aOz-3M-oU0"/>
-                                        <constraint firstAttribute="bottom" secondItem="9z0-9T-NVi" secondAttribute="bottom" id="dLF-2K-QSn"/>
-                                        <constraint firstItem="9z0-9T-NVi" firstAttribute="top" secondItem="uEc-Z0-SnA" secondAttribute="top" id="oYB-NE-C7m"/>
-                                        <constraint firstItem="DGs-JZ-I0L" firstAttribute="leading" secondItem="uEc-Z0-SnA" secondAttribute="leading" id="qJK-N3-Ctx"/>
-                                    </constraints>
                                 </tableViewCellContentView>
+                                <color key="backgroundColor" red="1" green="0.97387387020000005" blue="0.71572926849999996" alpha="0.5" colorSpace="custom" customColorSpace="displayP3"/>
                                 <connections>
-                                    <outlet property="pathDescriptionField" destination="ejp-tK-cEq" id="NUX-mY-6Zq"/>
-                                    <outlet property="pathNameField" destination="Rvf-0R-kBH" id="H5l-iJ-uiU"/>
-                                    <outlet property="profileImageView" destination="bSJ-dj-nQf" id="k7f-CE-b3z"/>
-                                    <outlet property="profileNameField" destination="gfQ-N0-Xf5" id="v2M-lK-qvZ"/>
+                                    <outlet property="mapViewImage" destination="HV5-XU-EaC" id="J8V-ZW-jqZ"/>
+                                    <outlet property="pathDescriptionField" destination="uCW-6i-rQW" id="KpE-dA-5Vb"/>
+                                    <outlet property="pathNameField" destination="CbS-yU-PDk" id="tvc-zC-3l9"/>
+                                    <outlet property="pinNames" destination="OqU-NC-7yN" id="AoP-zS-gI1"/>
+                                    <outlet property="profileImageView" destination="FqA-Xp-7BD" id="yWR-8V-fjG"/>
+                                    <outlet property="profileNameField" destination="7mO-Qu-JBu" id="3iL-JZ-SZ7"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -267,7 +243,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fJ5-pW-Nqu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="188" y="-273"/>
+            <point key="canvasLocation" x="188" y="-273.01349325337333"/>
         </scene>
         <!--PathDetail-->
         <scene sceneID="Uxq-0H-oLb">
