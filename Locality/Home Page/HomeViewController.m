@@ -26,8 +26,9 @@
 @property (weak, nonatomic) IBOutlet UIButton *foodieButton;
 @property (weak, nonatomic) IBOutlet UIButton *entertainmentButton;
 @property (weak, nonatomic) IBOutlet UIButton *natureButton;
-@property (weak, nonatomic) IBOutlet UIView *searchBarView;
+//@property (weak, nonatomic) IBOutlet UIView *searchBarView;
 @property (strong, nonatomic) PlacesSearchTableViewController *searchTableViewController;
+@property (strong, nonatomic) IBOutlet UIBarButtonItem *createPathBarButton;
 
 @end
 
@@ -52,7 +53,10 @@
     UISearchBar *searchBar = self.searchController.searchBar;
     [searchBar sizeToFit];
     searchBar.placeholder = @"Search by pins";
-    [self.searchBarView addSubview:self.searchController.searchBar];
+    searchBar.delegate = self;
+    //searchBar.barTintColor = [UIColor colorWithRed:0.96078 green:1.0 blue:0.8039 alpha:0.5];
+    //[self.searchBarView addSubview:self.searchController.searchBar];
+    self.navigationItem.titleView = self.searchController.searchBar;
     self.searchController.obscuresBackgroundDuringPresentation = YES;
     self.definesPresentationContext = YES;
     self.searchController.hidesNavigationBarDuringPresentation = NO;
@@ -134,6 +138,7 @@
             self.itineraries = iteneraries;
             [self sortItenerariesByDistance];
             [self.tableView reloadData];
+            [self.hud hideAnimated:YES];
         }
     }];
 }
@@ -171,6 +176,9 @@
 - (NSInteger)tableView:(nonnull UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return self.itineraries.count;
     //return 20;
+}
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 #pragma mark - Flickr Request
 -(void) photoFecth{
@@ -230,7 +238,6 @@
     [self loadPathsWithCategory:@"Foodie"];
     self.imageView.image = [UIImage imageNamed:@"menlopark"];
     //[self photoFecth];
-    [self.hud hideAnimated:YES];
 }
 - (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error{
     NSLog(@"THERE WAS AN ERROR - %@", error);
@@ -238,6 +245,32 @@
 
 - (void)locationManager:(CLLocationManager *)manager didFinishDeferredUpdatesWithError:(NSError *)error{
     NSLog(@"THERE WAS AN ERROR - %@", error);
+}
+
+#pragma mark - Search Controller Delegate
+
+- (void)didPresentSearchController:(UISearchController *)searchController{
+    CGRect createPathFrame = self.createPathBarButton.accessibilityFrame;
+    createPathFrame.origin.x += 60;
+    [UIView animateWithDuration:1.0 animations:^{
+        self.navigationItem.rightBarButtonItem.accessibilityFrame = createPathFrame; 
+    }];
+    
+}
+
+#pragma mark - Search Bar Delegate
+- (void)searchBarTextDidBeginEditing:(UISearchBar *)searchBar{
+    [UIView animateWithDuration:1.5 animations:^{
+        self.navigationItem.rightBarButtonItem = nil;
+    }];
+
+}
+- (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar
+{
+    self.searchController.searchBar.text = @"";
+    [self.tableView reloadData];
+    [self.searchController.searchBar resignFirstResponder];
+    self.navigationItem.rightBarButtonItem = self.createPathBarButton; 
 }
 #pragma mark - Navigation
 

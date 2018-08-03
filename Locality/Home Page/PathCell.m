@@ -35,6 +35,15 @@
         }
         self.mapViewImage.image = [UIImage imageWithData:data];
     }];
+    NSString *pinNames = @"Pins include: ";
+    for(int i = 0; i < [itinerary.pinnedLocations count]; i++){
+        if(itinerary.pinnedLocations[i][@"name"]){
+        pinNames = [pinNames stringByAppendingString:[itinerary.pinnedLocations[i][@"name"] stringByAppendingString:@", "]] ;
+        }
+    }
+    NSUInteger fixedLength = [pinNames length] - 2;
+    NSString *fixedPinNames = [pinNames substringToIndex:fixedLength];
+    self.pinNames.text = fixedPinNames;
 }
 
 
