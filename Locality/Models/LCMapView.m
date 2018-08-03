@@ -8,6 +8,8 @@
 
 #import "LCMapView.h"
 #import "LCPathDetailViewController.h"
+#import "pinVenueAnnotation.h"
+#import "pinVenueAnnotationView.h"
 
 @interface LCMapView()<MKMapViewDelegate, CLLocationManagerDelegate>
 @property (strong, nonatomic) Itinerary *itinerary;
@@ -74,12 +76,21 @@
     
     NSUInteger numPins = [self.itinerary.pinnedLocations count];
     for(int i = 0; i< numPins; i++){
-        MKPointAnnotation *annotation = [MKPointAnnotation new];
-        annotation.coordinate = CLLocationCoordinate2DMake([self.itinerary.pinnedLocations[i][@"latitude"] doubleValue], [self.itinerary.pinnedLocations[i][@"longitude"] doubleValue]);
-        annotation.title = @"Location";
-        [mapView addAnnotation:annotation];
+        pinVenueAnnotation *pinAnnotation = [[pinVenueAnnotation alloc] initWithDictionary:self.itinerary.pinnedLocations[i]];
+        [mapView addAnnotation:pinAnnotation];
     }
-    
+}
+
+- (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation{
+    if ([annotation isKindOfClass:[pinVenueAnnotation class]]) {
+        pinVenueAnnotationView *annotationView = (pinVenueAnnotationView *)[mapView dequeueReusableAnnotationViewWithIdentifier:@"PlacePin"];
+        if (annotationView == nil) {
+            annotationView = [[pinVenueAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"PlacePin"];
+            annotationView.canShowCallout = true;
+        }
+        return annotationView;
+    }
+    return nil;
 }
 
 - (MKOverlayRenderer *)mapView:(MKMapView *)mapView

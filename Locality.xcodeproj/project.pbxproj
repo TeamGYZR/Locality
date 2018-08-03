@@ -10,6 +10,8 @@
 		1BE7AFA3980986C9A157CCD2 /* libPods-Locality.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F1B3E5DBABAB3F93F44C75E /* libPods-Locality.a */; };
 		2F308E1C27E4FA2C43F5F955 /* libPods-LocalityUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7268D2AFC88C24A529B514A5 /* libPods-LocalityUITests.a */; };
 		4C17BCA92111179900F74677 /* PinCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C17BCA82111179900F74677 /* PinCell.m */; };
+		4C33B9B921138B5E00C72F4E /* pinVenueAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C33B9B821138B5E00C72F4E /* pinVenueAnnotation.m */; };
+		4C33B9BC21138D5900C72F4E /* pinVenueAnnotationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C33B9BB21138D5900C72F4E /* pinVenueAnnotationView.m */; };
 		4C51C940210BE353007B389F /* pinnedLocations.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C51C93F210BE353007B389F /* pinnedLocations.m */; };
 		4C51C946210BEE7D007B389F /* Itinerary.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C51C945210BEE7D007B389F /* Itinerary.m */; };
 		4C771D69210665CA0055A90D /* SignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C771D68210665CA0055A90D /* SignUpViewController.m */; };
@@ -98,6 +100,10 @@
 		0D954F9A18A334D6109C8DA1 /* Pods-LocalityTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LocalityTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LocalityTests/Pods-LocalityTests.debug.xcconfig"; sourceTree = "<group>"; };
 		4C17BCA72111179900F74677 /* PinCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PinCell.h; sourceTree = "<group>"; };
 		4C17BCA82111179900F74677 /* PinCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PinCell.m; sourceTree = "<group>"; };
+		4C33B9B721138B5E00C72F4E /* pinVenueAnnotation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = pinVenueAnnotation.h; sourceTree = "<group>"; };
+		4C33B9B821138B5E00C72F4E /* pinVenueAnnotation.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = pinVenueAnnotation.m; sourceTree = "<group>"; };
+		4C33B9BA21138D5900C72F4E /* pinVenueAnnotationView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = pinVenueAnnotationView.h; sourceTree = "<group>"; };
+		4C33B9BB21138D5900C72F4E /* pinVenueAnnotationView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = pinVenueAnnotationView.m; sourceTree = "<group>"; };
 		4C51C93E210BE353007B389F /* pinnedLocations.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = pinnedLocations.h; sourceTree = "<group>"; };
 		4C51C93F210BE353007B389F /* pinnedLocations.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = pinnedLocations.m; sourceTree = "<group>"; };
 		4C51C944210BEE7D007B389F /* Itinerary.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Itinerary.h; sourceTree = "<group>"; };
@@ -502,6 +508,10 @@
 			children = (
 				852FB5C5210FD38A003AC70A /* LCPathDetailViewController.h */,
 				852FB5C6210FD38A003AC70A /* LCPathDetailViewController.m */,
+				4C33B9B721138B5E00C72F4E /* pinVenueAnnotation.h */,
+				4C33B9B821138B5E00C72F4E /* pinVenueAnnotation.m */,
+				4C33B9BA21138D5900C72F4E /* pinVenueAnnotationView.h */,
+				4C33B9BB21138D5900C72F4E /* pinVenueAnnotationView.m */,
 			);
 			path = "Path Deets";
 			sourceTree = "<group>";
@@ -784,6 +794,7 @@
 				8544B99E210E58AB0028D43F /* TestPathsViewController.m in Sources */,
 				4CEF1C3E210A479600C69B15 /* UserProfileViewController.m in Sources */,
 				4C771D7821079A1A0055A90D /* DetailsHeaderView.m in Sources */,
+				4C33B9B921138B5E00C72F4E /* pinVenueAnnotation.m in Sources */,
 				A80F646C20FF3BF000C105D0 /* CollectionViewController.m in Sources */,
 				A8BF41C7210C110E001DAB81 /* User.m in Sources */,
 				4CA36B6E21010ADE0056EB44 /* ProfileViewController.m in Sources */,
@@ -818,6 +829,7 @@
 				4C81D0DD210F7FDE00064DBB /* CreateYourOwnViewController.m in Sources */,
 				4C771D722106A8EF0055A90D /* CommentCell.m in Sources */,
 				851C871C21014D0E007C32DD /* Favorite.m in Sources */,
+				4C33B9BC21138D5900C72F4E /* pinVenueAnnotationView.m in Sources */,
 				8544B9A1210FAE260028D43F /* LCMapView.m in Sources */,
 				A814231320FFC60D00C976AE /* CollectionViewCell.m in Sources */,
 				8544B98D210BACB00028D43F /* VerificationSignUpViewController.m in Sources */,
