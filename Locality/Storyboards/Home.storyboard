@@ -40,9 +40,9 @@
                                                             <color key="backgroundColor" red="1" green="0.97387387020000005" blue="0.71572926849999996" alpha="0.31006528249999998" colorSpace="custom" customColorSpace="displayP3"/>
                                                         </view>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" fixedFrame="YES" text="Path Description" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Spi-tZ-sLK">
-                                                            <rect key="frame" x="33" y="41" width="331" height="38"/>
+                                                            <rect key="frame" x="33" y="37" width="331" height="46"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                            <fontDescription key="fontDescription" name="KohinoorBangla-Regular" family="Kohinoor Bangla" pointSize="15"/>
+                                                            <fontDescription key="fontDescription" name="KohinoorBangla-Regular" family="Kohinoor Bangla" pointSize="13"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
@@ -124,15 +124,11 @@
                                     <action selector="didTapNature:" destination="yY6-fb-adc" eventType="touchUpInside" id="lQr-lC-jBr"/>
                                 </connections>
                             </button>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="W0k-a3-bEd">
-                                <rect key="frame" x="0.0" y="63" width="375" height="27"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PyZ-NW-wZ3">
-                                <rect key="frame" x="0.0" y="153" width="375" height="21"/>
+                                <rect key="frame" x="0.0" y="127" width="375" height="47"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" name="KohinoorBangla-Regular" family="Kohinoor Bangla" pointSize="34"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
@@ -147,12 +143,12 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="createPathBarButton" destination="0jv-wZ-B18" id="FVH-dv-bhQ"/>
                         <outlet property="entertainmentButton" destination="0Hd-Cb-suP" id="olu-E0-28V"/>
                         <outlet property="foodieButton" destination="x8x-Ou-yYw" id="dTK-rp-lr2"/>
                         <outlet property="imageView" destination="dh9-U7-GPc" id="YiR-TJ-sbe"/>
                         <outlet property="labefiled" destination="PyZ-NW-wZ3" id="fcK-iZ-MKZ"/>
                         <outlet property="natureButton" destination="iiU-l1-YUV" id="tdd-0x-adV"/>
-                        <outlet property="searchBarView" destination="W0k-a3-bEd" id="8Tx-u6-VrI"/>
                         <outlet property="tableView" destination="osb-fg-JPY" id="eaZ-wY-3Gs"/>
                         <segue destination="ftd-6l-hoH" kind="show" identifier="createSegue" id="QYy-81-vMB"/>
                     </connections>
@@ -187,9 +183,9 @@
                                                     <color key="backgroundColor" red="1" green="0.97387387020000005" blue="0.71572926849999996" alpha="0.31006528249999998" colorSpace="custom" customColorSpace="displayP3"/>
                                                 </view>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" fixedFrame="YES" text="Path Description" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uCW-6i-rQW">
-                                                    <rect key="frame" x="33" y="41" width="331" height="38"/>
+                                                    <rect key="frame" x="33" y="37" width="331" height="42"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" name="KohinoorBangla-Regular" family="Kohinoor Bangla" pointSize="15"/>
+                                                    <fontDescription key="fontDescription" name="KohinoorBangla-Regular" family="Kohinoor Bangla" pointSize="13"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
