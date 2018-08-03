@@ -46,7 +46,6 @@
         
     }];
     self.profilePicture.image = editedPicture;
-    
 }
 
 - (IBAction)didTapSignup:(id)sender {
