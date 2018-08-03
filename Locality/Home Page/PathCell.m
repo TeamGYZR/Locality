@@ -28,7 +28,13 @@
     self.profileNameField.text = itinerary.creator.name;
     self.profileImageView.file = self.itinerary.creator.profilePicture;
     [self.profileImageView loadInBackground];
-    [self.lcMapView configureWithItinerary:itinerary isStatic:YES];
+    PFFile *holderFile = self.itinerary.mapImageFile;
+    [holderFile getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
+        if (!data) {
+            return NSLog(@"%@", error);
+        }
+        self.mapViewImage.image = [UIImage imageWithData:data];
+    }];
 }
 
 

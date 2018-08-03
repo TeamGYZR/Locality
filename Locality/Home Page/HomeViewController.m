@@ -29,6 +29,8 @@
 @property (weak, nonatomic) IBOutlet UIView *searchBarView;
 @property (strong, nonatomic) PlacesSearchTableViewController *searchTableViewController;
 
+
+
 @end
 
 @implementation HomeViewController

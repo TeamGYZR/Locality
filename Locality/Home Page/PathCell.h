@@ -20,5 +20,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *pathNameField;
 @property (weak, nonatomic) IBOutlet UILabel *pathDescriptionField;
 @property (weak, nonatomic) IBOutlet LCMapView *lcMapView;
+@property (weak, nonatomic) IBOutlet PFImageView *mapViewImage;
 
 @end
