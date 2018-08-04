@@ -20,6 +20,8 @@
 @property (nonatomic) int currentPhotoIndex;
 @property (weak, nonatomic) IBOutlet UIView *headerView;
 @property (weak, nonatomic) IBOutlet UIImageView *uiImageView;
+@property (weak, nonatomic) IBOutlet UIPageControl *pageControl;
+
 
 @end
 
@@ -44,6 +46,7 @@
     leftSwipe.direction = UISwipeGestureRecognizerDirectionLeft;
     [self.slideBarView addGestureRecognizer:leftSwipe];
     [self.slideBarView addGestureRecognizer:rightSwipe];
+    self.pageControl.numberOfPages = ([self.photosForSlideshow count] + 1);
     self.currentPhotoIndex = 0;
 }
 
@@ -65,6 +68,7 @@
 - (void)rightSwipe{
     if (self.currentPhotoIndex != 0) {
         self.currentPhotoIndex --;
+        self.pageControl.currentPage --;
     }
     if (self.currentPhotoIndex == 0) {
         [self.lcMapView configureWithItinerary:self.itinerary isStatic:NO];
@@ -76,6 +80,7 @@
         [self.view bringSubviewToFront:self.pathDescriptionLabel];
     } else {
         [self.view bringSubviewToFront:self.uiImageView];
+        [self.view bringSubviewToFront:self.slideBarView];
         [UIView transitionWithView:self.uiImageView duration:1 options:UIViewAnimationOptionTransitionCrossDissolve animations:^{
             self.uiImageView.image = self.photosForSlideshow[self.currentPhotoIndex - 1];
         } completion:^(BOOL finished) {
@@ -85,8 +90,10 @@
 - (void)leftSwipe{
     if (self.currentPhotoIndex != [self.photosForSlideshow count]) {
         self.currentPhotoIndex ++;
+        self.pageControl.currentPage ++;
     }
     [self.view bringSubviewToFront:self.uiImageView];
+    [self.view bringSubviewToFront:self.slideBarView];
     [UIView transitionWithView:self.uiImageView duration:1 options:UIViewAnimationOptionTransitionCrossDissolve animations:^{
         self.uiImageView.image = self.photosForSlideshow[self.currentPhotoIndex - 1];
     } completion:^(BOOL finished) {
@@ -100,6 +107,7 @@
     [self.photosForSlideshow addObject:[UIImage imageNamed:@"golgenGate"]];
     [self.photosForSlideshow addObject:[UIImage imageNamed:@"centralpark"]];
     [self.photosForSlideshow addObject:[UIImage imageNamed:@"frenchfries"]];
+    [self.photosForSlideshow addObject:[UIImage imageNamed:@"macaroons"]];
 }
 
 
