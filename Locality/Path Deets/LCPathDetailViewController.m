@@ -8,6 +8,7 @@
 
 #import "LCPathDetailViewController.h"
 #import "LCMapView.h"
+#import "User.h"
 
 @interface LCPathDetailViewController ()
 @property (weak, nonatomic) IBOutlet LCMapView *lcMapView;
@@ -39,8 +40,9 @@
     self.pathDescriptionLabel.text = self.itinerary.pathDescription;
     self.userNameLabel.text = self.itinerary.creator.name;
     self.viewLabel.text = [NSString stringWithFormat:@"%lu", [self.itinerary.uniqueUserViews count]];
-    if(![self.itinerary.uniqueUserViews containsObject:[PFUser currentUser]]){
-        [self.itinerary addObject:[PFUser currentUser] forKey:@"uniqueUserViews"];
+    User *currentUser = (User *)[PFUser currentUser];
+    if(![[self.itinerary.uniqueUserViews copy] containsObject:currentUser.name]){
+        [self.itinerary addObject:currentUser.name forKey:@"uniqueUserViews"];
         [self.itinerary saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error){
             NSLog(@"user has been saved");
         }];
