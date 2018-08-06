@@ -12,7 +12,6 @@
 
 @dynamic name;
 @dynamic profilePicture;
-//@dynamic followers;
-//@dynamic following;
+@dynamic favoritedPaths;
 
 @end
