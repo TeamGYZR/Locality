@@ -14,6 +14,7 @@
 #import "Itinerary.h"
 #import "Path.h"
 #import "PathFinalizationViewController.h"
+#import "ItineraryPin.h"
 
 @interface CreateYourOwnViewController () <MKMapViewDelegate, CLLocationManagerDelegate>
 
@@ -25,7 +26,7 @@
 @property (nonatomic, retain) MKPolyline *polyline;
 @property (strong, nonatomic) Itinerary *itineraryDraft;
 @property (strong, nonatomic) NSData *imageData;
-
+@property (strong, nonatomic) NSMutableArray *pinInfo;
 @end
 
 @implementation CreateYourOwnViewController
@@ -175,20 +176,15 @@
         CLLocation *currentPin = [self.pinCoordinates objectAtIndex:i];
         NSString *latitudeString = [[NSNumber numberWithDouble:currentPin.coordinate.latitude] stringValue];
         NSString *longitudeString = [[NSNumber numberWithDouble:currentPin.coordinate.longitude] stringValue];
-        //NSDictionary *dictionary = [NSDictionary dictionaryWithObjectsAndKeys:latitudeString, @"latitude", longitudeString, @"longitude", @"", @"name", nil];
-        //NSMutableDictionary *dictionary = [NSMutableDictionary dictionaryWithObjectsAndKeys:latitudeString, @"latitude", longitudeString, @"longitude", @"", @"name", nil];
-        NSMutableDictionary *dictionary = [NSMutableDictionary dictionaryWithObjectsAndKeys:latitudeString, @"latitude", longitudeString, @"longitude", nil];
+//        //NSDictionary *dictionary = [NSDictionary dictionaryWithObjectsAndKeys:latitudeString, @"latitude", longitudeString, @"longitude", @"", @"name", nil];
+//        //NSMutableDictionary *dictionary = [NSMutableDictionary dictionaryWithObjectsAndKeys:latitudeString, @"latitude", longitudeString, @"longitude", @"", @"name", nil];
+        PFFile *pinTestPicture = [ItineraryPin getPFFileFromImage:[UIImage imageNamed:@"centralpark"]];
+        NSMutableDictionary *dictionary = [NSMutableDictionary dictionaryWithObjectsAndKeys:latitudeString, @"latitude", longitudeString, @"longitude", pinTestPicture, @"pictureData", nil];
         [self.itineraryDraft.pinnedLocations addObject:dictionary];
     }
-    [self.itineraryDraft saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
-        if (error) {
-            NSLog(@"Error saving pins to Parse: %@", error);
-        }
-        else{
-            NSLog(@"Success saving pins to Parse");
-            [self addPathsToParse];
-        }
-    }];
+    [self addPathsToParse];
+
+    
 }
 
 - (void)addPathsToParse{
@@ -203,15 +199,16 @@
         holderArray[i] = cgPointString;
     }
     self.itineraryDraft.paths = [holderArray copy];
-    [self.itineraryDraft saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
-        if (error) {
-            NSLog(@"Error saving paths to Parse: %@", error);
-        }
-        else{
-            NSLog(@"Success saving paths to Parse");
-            [self performSegueWithIdentifier:@"doneSegue" sender:nil];
-        }
-    }];
+//    [self.itineraryDraft saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
+//        if (error) {
+//            NSLog(@"Error saving paths to Parse: %@", error);
+//        }
+//        else{
+//            NSLog(@"Success saving paths to Parse");
+//            [self performSegueWithIdentifier:@"doneSegue" sender:nil];
+//        }
+//    }];
+    [self performSegueWithIdentifier:@"doneSegue" sender:nil];
 }
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info{
     UIImage *pinneddeditedPicture = info[UIImagePickerControllerEditedImage];
@@ -233,6 +230,7 @@
         UINavigationController *navigationController = [segue destinationViewController];
         PathFinalizationViewController *pathFinalizationVC = (PathFinalizationViewController *)navigationController.topViewController;
         pathFinalizationVC.itinerary = self.itineraryDraft;
+        pathFinalizationVC.pinInfo = self.pinInfo; 
     }
 }
 

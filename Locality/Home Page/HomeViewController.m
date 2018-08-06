@@ -66,6 +66,7 @@
         [self.locationManager requestLocation];
     }
 }
+
 - (void)reverseGeocode:(CLLocation *)location{
     if (!self.geoCoder){
         self.geoCoder = [[CLGeocoder alloc] init];
@@ -84,7 +85,7 @@
 #pragma mark - IBAction
 - (IBAction)didTapFoodie:(id)sender{
     [self loadPathsWithCategory:@"Foodie"];
-    [self.foodieButton setTitleColor:[UIColor colorWithRed:0 green:0.478431 blue:1 alpha:1] forState:UIControlStateNormal];
+    [self.foodieButton setTitleColor:[UIColor colorWithRed:0 green:0.2 blue:0.453 alpha:1] forState:UIControlStateNormal];
     [self.entertainmentButton setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
     [self.natureButton setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
 }
@@ -92,14 +93,14 @@
 
 - (IBAction)didTapEntertainment:(id)sender {
     [self loadPathsWithCategory:@"Entertainment"];
-    [self.entertainmentButton setTitleColor:[UIColor colorWithRed:0 green:0.478431 blue:1 alpha:1] forState:UIControlStateNormal];
+    [self.entertainmentButton setTitleColor:[UIColor colorWithRed:0 green:0.2 blue:0.453 alpha:1] forState:UIControlStateNormal];
     [self.foodieButton setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
     [self.natureButton setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
 }
 
 - (IBAction)didTapNature:(id)sender {
     [self loadPathsWithCategory:@"Nature"];
-    [self.natureButton setTitleColor:[UIColor colorWithRed:0 green:0.478431 blue:1 alpha:1] forState:UIControlStateNormal];
+    [self.natureButton setTitleColor:[UIColor colorWithRed:0 green:0.2 blue:0.453 alpha:1] forState:UIControlStateNormal];
     [self.entertainmentButton setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
     [self.foodieButton setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
 }

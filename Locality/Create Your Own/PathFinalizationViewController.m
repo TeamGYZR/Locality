@@ -86,6 +86,9 @@
             NSLog(@"Error saving Path info to Parse");
         } else{
             NSLog(@"Successfulyy saved path to Parse");
+            for(int i = 0; i < [self.pinInfo count]; i++){
+                [self.pinInfo[i] saveInBackground];
+            }
             [self performSegueWithIdentifier:@"cyoToHomeSegue" sender:nil];
         }
     }];

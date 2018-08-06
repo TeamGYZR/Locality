@@ -16,7 +16,7 @@
 @property (strong, nonatomic) NSString *title;
 
 - (id)initWithDictionary:(NSDictionary *)dictionary;
-- (id)initWithItineraryPin:(Itinerary *)itineraryPin; 
+- (id)initWithItineraryPin:(Itinerary *)itineraryPin;
 - (MKAnnotationView *)annotationView;
 
 @end

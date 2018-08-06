@@ -13,5 +13,6 @@
 @interface PathFinalizationViewController : UIViewController
 
 @property (strong, nonatomic) Itinerary *itinerary;
+@property (strong, nonatomic) NSMutableArray *pinInfo;
 
 @end

@@ -52,7 +52,7 @@
     NSString* center = [self.itinerary.paths objectAtIndex:(self.itinerary.paths.count/2)];
     CGPoint centerPoint = CGPointFromString(center);
     MKCoordinateRegion currentRegion = MKCoordinateRegionMake(CLLocationCoordinate2DMake(centerPoint.x, centerPoint.y), MKCoordinateSpanMake(0.025, 0.025));
-    [mapView setRegion:currentRegion animated:!isStatic];
+    [mapView setRegion:currentRegion animated:NO];
     [self drawPath];
 }
 
@@ -74,20 +74,25 @@
         [mapView setNeedsDisplay];
     }
     
-    PFQuery *query = [PFQuery queryWithClassName:@"ItineraryPin"];
-    [query whereKey:@"itinerary" equalTo:self.itinerary];
-    [query includeKey:@"pinPicture"];
-    [query findObjectsInBackgroundWithBlock:^(NSArray *itineraryPins, NSError *error){
-        if (error) {
-            NSLog(@"error loading pins from Parse");
-        } else {
-            NSUInteger numPins = [itineraryPins count];
-            for(int i = 0; i< numPins; i++){
-                pinVenueAnnotation *pinAnnotation = [[pinVenueAnnotation alloc] initWithDictionary:self.itinerary.pinnedLocations[i]];
-                [self->mapView addAnnotation:pinAnnotation];
-            }
-        }
-    }];
+//    PFQuery *query = [PFQuery queryWithClassName:@"ItineraryPin"];
+//    [query whereKey:@"itinerary" equalTo:self.itinerary];
+//    [query includeKey:@"pinPicture"];
+//    [query findObjectsInBackgroundWithBlock:^(NSArray *itineraryPins, NSError *error){
+//        if (error) {
+//            NSLog(@"error loading pins from Parse");
+//        } else {
+//            NSUInteger numPins = [itineraryPins count];
+//            for(int i = 0; i< numPins; i++){
+//                pinVenueAnnotation *pinAnnotation = [[pinVenueAnnotation alloc] initWithDictionary:self.itinerary.pinnedLocations[i]];
+//                [self->mapView addAnnotation:pinAnnotation];
+//            }
+//        }
+//    }];
+    NSUInteger numPins = [self.itinerary.pinnedLocations count];
+    for(int i = 0; i< numPins; i++){
+        pinVenueAnnotation *pinAnnotation = [[pinVenueAnnotation alloc] initWithDictionary:self.itinerary.pinnedLocations[i]];
+        [mapView addAnnotation:pinAnnotation];
+    }
     
    
 }

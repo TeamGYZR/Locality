@@ -6,6 +6,7 @@
 //  Copyright © 2018 Ginger Dudley. All rights reserved.
 //
 
+#import "PFObject.h"
 #import <Foundation/Foundation.h>
 #import <Parse/Parse.h>
 #import "Itinerary.h"
@@ -19,4 +20,7 @@
 @property (strong, nonatomic) PFFile *pinPicture;
 @property (strong, nonatomic) NSString *pinDescription;
 
++ (void)postPinWithName:(NSString *)name withLatitude:(NSNumber *)latitude withLongitude:(NSNumber *)longitude withPicture:(UIImage *)picture withCompletion: (PFBooleanResultBlock  _Nullable)completion;
+
++ (PFFile *)getPFFileFromImage: (UIImage * _Nullable)image;
 @end
