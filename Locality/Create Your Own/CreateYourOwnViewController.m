@@ -96,37 +96,14 @@
     }];
     
     UIAlertAction *continueAction = [UIAlertAction actionWithTitle:@"Add" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-       
-        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Do you want to add info about it?" message:nil preferredStyle:(UIAlertControllerStyleAlert)];
-        UIAlertAction *infoAction = [UIAlertAction actionWithTitle:@"Add Info" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-            //UIView *messageView = [[UIView alloc] init];
-            self.progressView=[[UIView alloc] init];
-            CGRect viewBounds = self.view.bounds;
-          self.progressView.frame = CGRectMake((viewBounds.size.width / 2)-179.5, viewBounds.size.height/2-150, 350, 250);
-           self.progressView.autoresizingMask = UIViewAutoresizingFlexibleTopMargin|UIViewAutoresizingFlexibleLeftMargin|UIViewAutoresizingFlexibleRightMargin;
-            self.progressView.backgroundColor = [UIColor whiteColor];
-            self.progressView.layer.cornerRadius = 8.0;
-            self.progressView.layer.shadowOffset = CGSizeZero;
-            self.progressView.layer.shadowOpacity = 0.5;
-            //[overlayView addSubview:messageView];
-            [self.view addSubview:self.progressView];
-         }];
-       UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-           }];
-        
-        [alert addAction:infoAction];
-        [alert addAction:cancelAction];
-        [self presentViewController:alert animated:YES completion:^{
-            
-        }];
+       //self.progressView=[[UIView alloc] init];
+    self.addpininfoview=[[AddPinInfoView alloc] init];
+            [self.view addSubview:self.addpininfoview];
         [self addPinToMapView];
-       
-    }];
-    
+       }];
     [alert addAction:continueAction];
     [alert addAction:cancelAction];
     [self presentViewController:alert animated:YES completion:^{
-        
     }];
 }
 
@@ -139,18 +116,6 @@
 
 - (IBAction)didTapCancel:(id)sender {
     [self dismissViewControllerAnimated:YES completion:nil];
-}
-- (IBAction)didTapAddPhoto:(id)sender {
-    UIImagePickerController *imagePicker = [UIImagePickerController new];
-    imagePicker.delegate = self;
-    imagePicker.allowsEditing = YES;
-    if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
-        imagePicker.sourceType = UIImagePickerControllerSourceTypeCamera;
-    }
-    else{
-        imagePicker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
-    }
-    [self presentViewController:imagePicker animated: YES completion:nil];
 }
 
 - (IBAction)didtapDone:(id)sender {
@@ -216,8 +181,8 @@
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info{
     UIImage *pinneddeditedPicture = info[UIImagePickerControllerEditedImage];
     self.imageData = UIImagePNGRepresentation(pinneddeditedPicture);
-    
 }
+
 #pragma mark - Error Handling
 
 - (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error{

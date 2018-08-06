@@ -70,6 +70,8 @@
 		A80F646920FF3BB500C105D0 /* collectionview.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A80F646820FF3BB500C105D0 /* collectionview.storyboard */; };
 		A80F646C20FF3BF000C105D0 /* CollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A80F646B20FF3BF000C105D0 /* CollectionViewController.m */; };
 		A814231320FFC60D00C976AE /* CollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A814231220FFC60D00C976AE /* CollectionViewCell.m */; };
+		A831941C2115377B00CE7744 /* AddPinInfoView.m in Sources */ = {isa = PBXBuildFile; fileRef = A831941B2115377B00CE7744 /* AddPinInfoView.m */; };
+		A831941E21153D3400CE7744 /* PinInfoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A831941D21153D3400CE7744 /* PinInfoView.xib */; };
 		A858D2DF21044E7C00637FAD /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A858D2DE21044E7C00637FAD /* AVFoundation.framework */; };
 		A8842AF22106A44F003ECD07 /* Uploadphotoviewcontroller.m in Sources */ = {isa = PBXBuildFile; fileRef = A8842AF12106A44F003ECD07 /* Uploadphotoviewcontroller.m */; };
 		A8BF41C7210C110E001DAB81 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = A8BF41C6210C110E001DAB81 /* User.m */; };
@@ -212,6 +214,9 @@
 		A80F646B20FF3BF000C105D0 /* CollectionViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CollectionViewController.m; sourceTree = "<group>"; };
 		A814231120FFC60D00C976AE /* CollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CollectionViewCell.h; sourceTree = "<group>"; };
 		A814231220FFC60D00C976AE /* CollectionViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CollectionViewCell.m; sourceTree = "<group>"; };
+		A831941A2115377B00CE7744 /* AddPinInfoView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AddPinInfoView.h; sourceTree = "<group>"; };
+		A831941B2115377B00CE7744 /* AddPinInfoView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AddPinInfoView.m; sourceTree = "<group>"; };
+		A831941D21153D3400CE7744 /* PinInfoView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PinInfoView.xib; sourceTree = "<group>"; };
 		A858D2DE21044E7C00637FAD /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		A8842AF02106A44F003ECD07 /* Uploadphotoviewcontroller.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Uploadphotoviewcontroller.h; sourceTree = "<group>"; };
 		A8842AF12106A44F003ECD07 /* Uploadphotoviewcontroller.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Uploadphotoviewcontroller.m; sourceTree = "<group>"; };
@@ -305,6 +310,9 @@
 				4C81D0DF210FC66B00064DBB /* PathFinalizationViewController.m */,
 				4C17BCA72111179900F74677 /* PinCell.h */,
 				4C17BCA82111179900F74677 /* PinCell.m */,
+				A831941A2115377B00CE7744 /* AddPinInfoView.h */,
+				A831941B2115377B00CE7744 /* AddPinInfoView.m */,
+				A831941D21153D3400CE7744 /* PinInfoView.xib */,
 			);
 			path = "Create Your Own";
 			sourceTree = "<group>";
@@ -666,6 +674,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4CA36B6320FFF2FD0056EB44 /* Login.storyboard in Resources */,
+				A831941E21153D3400CE7744 /* PinInfoView.xib in Resources */,
 				8597DB2120FE7BA200BA261A /* YMapView.storyboard in Resources */,
 				4C81D0D9210F7C8800064DBB /* CreateYourOwn.storyboard in Resources */,
 				A80F646920FF3BB500C105D0 /* collectionview.storyboard in Resources */,
@@ -790,6 +799,7 @@
 				8544B999210BC2DB0028D43F /* InterstitialViewController.m in Sources */,
 				4CA36B71210112CD0056EB44 /* FavoriteCell.m in Sources */,
 				8550B0AC2107E4CE0009C845 /* ResultsViewCell.m in Sources */,
+				A831941C2115377B00CE7744 /* AddPinInfoView.m in Sources */,
 				4CEF1C352108DC7500C69B15 /* UserSearchViewController.m in Sources */,
 				8544B99E210E58AB0028D43F /* TestPathsViewController.m in Sources */,
 				4CEF1C3E210A479600C69B15 /* UserProfileViewController.m in Sources */,
