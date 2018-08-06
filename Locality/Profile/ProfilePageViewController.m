@@ -19,6 +19,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *userName;
 @property (nonatomic, strong) User *user;
 @property (weak, nonatomic) IBOutlet LCMapView *lcMapView;
+//@property (strong, nonatomic) NSArray *fa
 
 
 @end
@@ -38,7 +39,24 @@
     [self.userName sizeToFit];
     self.profilePicture.file = self.user.profilePicture;
     [self.profilePicture loadInBackground];
-    
+}
+
+- (void)viewWillAppear:(BOOL)animated{
+    [self queryForFavorites];
+}
+
+#pragma mark - Private Methods
+- (void)queryForFavorites{
+    PFQuery *query = [PFQuery queryWithClassName:@"PathFavorite"];
+    [query whereKey:@"user" equalTo:PFUser.currentUser];
+    [query includeKeys:@[@"user", @"itinerary"]];
+    [query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable favorites, NSError * _Nullable error) {
+        if (error) {
+            NSLog(@"error loading current user favorites");
+        } else{
+            [self.lcMapView configureWithFavoritedPaths:favorites];
+        }
+    }];
 }
 
 #pragma mark - IB Actions

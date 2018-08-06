@@ -123,7 +123,7 @@
     PFQuery *query = [PFQuery queryWithClassName:@"PathFavorite"];
     [query whereKey:@"user" equalTo:PFUser.currentUser];
     [query whereKey:@"itinerary" equalTo:self.itinerary];
-    //query include keys??
+    [query includeKeys:@[@"user", @"itinerary"]];
     [query getFirstObjectInBackgroundWithBlock:^(PFObject * _Nullable pathFavorite, NSError * _Nullable error) {
         if (error) {
             NSLog(@"error fetching favorite from parse");
