@@ -31,6 +31,9 @@
 @property (strong, nonatomic) Itinerary *itineraryDraft;
 @property (strong, nonatomic) NSData *imageData;
 @property (strong, nonatomic) NSMutableArray *pinInfo;
+@property (nonatomic) CFTimeInterval startTime;
+@property (nonatomic) CFTimeInterval endTime;
+
 @end
 
 @implementation CreateYourOwnViewController
@@ -53,6 +56,7 @@
     [super viewWillAppear:animated];
     [self.mapView setUserTrackingMode:MKUserTrackingModeFollow animated:YES];
     [self.locationManager startUpdatingLocation];
+    self.startTime = CACurrentMediaTime();
 }
 
 #pragma mark - Location Updates
@@ -139,6 +143,15 @@
     [self.locationManager stopUpdatingLocation];
     self.itineraryDraft = [[Itinerary alloc] init];
     self.itineraryDraft.creator = [User currentUser];
+    self.endTime = CACurrentMediaTime() - self.startTime;
+    long minutes = floor(self.endTime/60);
+    long seconds = round(self.endTime - (minutes * 60));
+    if(seconds < 10){
+    self.itineraryDraft.timeStamp = [NSString stringWithFormat:@"%lu:0%lu", minutes, seconds];
+    }
+    else{
+    self.itineraryDraft.timeStamp = [NSString stringWithFormat:@"%lu:%lu", minutes, seconds];
+    }
     [self addPinsToParse];
 }
 
