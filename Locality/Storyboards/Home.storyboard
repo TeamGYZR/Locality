@@ -228,6 +228,7 @@
                                     <outlet property="pinNames" destination="OqU-NC-7yN" id="AoP-zS-gI1"/>
                                     <outlet property="profileImageView" destination="FqA-Xp-7BD" id="yWR-8V-fjG"/>
                                     <outlet property="profileNameField" destination="7mO-Qu-JBu" id="3iL-JZ-SZ7"/>
+                                    <segue destination="SM7-ZE-klK" kind="show" identifier="searchToPath" id="6WW-qW-d2q"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -240,6 +241,14 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fJ5-pW-Nqu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="188" y="-273.01349325337333"/>
+        </scene>
+        <!--PathDetail-->
+        <scene sceneID="NTG-AL-Lbo">
+            <objects>
+                <viewControllerPlaceholder storyboardName="PathDetail" id="SM7-ZE-klK" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hNb-yw-AbT" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="813" y="-244"/>
         </scene>
         <!--PathDetail-->
         <scene sceneID="Uxq-0H-oLb">
