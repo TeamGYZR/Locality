@@ -269,17 +269,17 @@
                         <outlet property="scrollView" destination="ewl-Df-VIC" id="AX2-iv-Dc7"/>
                         <outlet property="tableView" destination="2Up-cJ-eR0" id="jCd-Cp-4UR"/>
                         <outlet property="upButton" destination="lf8-uf-T6q" id="Xg7-uK-gcJ"/>
-                        <segue destination="S9F-Qt-d8p" kind="show" identifier="cyoToHomeSegue" id="Qlj-R5-ode"/>
+                        <segue destination="S9F-Qt-d8p" kind="presentation" identifier="cyoToHomeSegue" id="Qlj-R5-ode"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kRZ-YN-x0N" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2887.1999999999998" y="186.65667166416793"/>
         </scene>
-        <!--Home-->
+        <!--tabBarController-->
         <scene sceneID="lPB-Uu-ZIK">
             <objects>
-                <viewControllerPlaceholder storyboardName="Home" id="S9F-Qt-d8p" sceneMemberID="viewController"/>
+                <viewControllerPlaceholder storyboardName="Home" referencedIdentifier="tabBarController" id="S9F-Qt-d8p" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jpR-4T-Nvv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3715" y="203"/>
