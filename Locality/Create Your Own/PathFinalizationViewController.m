@@ -33,6 +33,7 @@
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     [self.LCMapView configureWithItinerary:self.itinerary isStatic:NO showCurrentLocation:NO];
+    //NSDictionary *attributesForSegControl = 
     
 }
 
