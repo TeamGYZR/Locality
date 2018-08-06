@@ -16,6 +16,7 @@
 		4C51C946210BEE7D007B389F /* Itinerary.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C51C945210BEE7D007B389F /* Itinerary.m */; };
 		4C6EBBFF2118CF52000BA46B /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4C6EBBFE2118CF52000BA46B /* Profile.storyboard */; };
 		4C6EBC032118CF94000BA46B /* ProfilePageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C6EBC022118CF94000BA46B /* ProfilePageViewController.m */; };
+		4C6EBC092118EA95000BA46B /* PathFavorite.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C6EBC082118EA95000BA46B /* PathFavorite.m */; };
 		4C771D69210665CA0055A90D /* SignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C771D68210665CA0055A90D /* SignUpViewController.m */; };
 		4C771D6C210695100055A90D /* Comment.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C771D6B210695100055A90D /* Comment.m */; };
 		4C771D6F21069E770055A90D /* ReviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C771D6E21069E770055A90D /* ReviewViewController.m */; };
@@ -121,6 +122,8 @@
 		4C6EBBFE2118CF52000BA46B /* Profile.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Profile.storyboard; sourceTree = "<group>"; };
 		4C6EBC012118CF94000BA46B /* ProfilePageViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProfilePageViewController.h; sourceTree = "<group>"; };
 		4C6EBC022118CF94000BA46B /* ProfilePageViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProfilePageViewController.m; sourceTree = "<group>"; };
+		4C6EBC072118EA95000BA46B /* PathFavorite.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PathFavorite.h; sourceTree = "<group>"; };
+		4C6EBC082118EA95000BA46B /* PathFavorite.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PathFavorite.m; sourceTree = "<group>"; };
 		4C771D67210665CA0055A90D /* SignUpViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SignUpViewController.h; sourceTree = "<group>"; };
 		4C771D68210665CA0055A90D /* SignUpViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SignUpViewController.m; sourceTree = "<group>"; };
 		4C771D6A210695100055A90D /* Comment.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Comment.h; sourceTree = "<group>"; };
@@ -540,6 +543,8 @@
 				4C51C945210BEE7D007B389F /* Itinerary.m */,
 				8544B99F210FAE260028D43F /* LCMapView.h */,
 				8544B9A0210FAE260028D43F /* LCMapView.m */,
+				4C6EBC072118EA95000BA46B /* PathFavorite.h */,
+				4C6EBC082118EA95000BA46B /* PathFavorite.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -883,6 +888,7 @@
 				851C871C21014D0E007C32DD /* Favorite.m in Sources */,
 				4C33B9BC21138D5900C72F4E /* pinVenueAnnotationView.m in Sources */,
 				8544B9A1210FAE260028D43F /* LCMapView.m in Sources */,
+				4C6EBC092118EA95000BA46B /* PathFavorite.m in Sources */,
 				A814231320FFC60D00C976AE /* CollectionViewCell.m in Sources */,
 				8544B98D210BACB00028D43F /* VerificationSignUpViewController.m in Sources */,
 				4C51C946210BEE7D007B389F /* Itinerary.m in Sources */,

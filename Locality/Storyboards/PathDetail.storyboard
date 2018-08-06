@@ -51,6 +51,14 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <color key="backgroundColor" red="1" green="0.9878943966" blue="0.95581895319999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dJ4-fi-VuN">
+                                <rect key="frame" x="15" y="555" width="50" height="51"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="emptyStar"/>
+                                <connections>
+                                    <action selector="didTapFavorite:" destination="YfQ-gI-n7T" eventType="touchUpInside" id="qyW-Kr-lpZ"/>
+                                </connections>
+                            </button>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="i0k-8E-Ppq">
                                 <rect key="frame" x="0.0" y="610" width="375" height="61"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -153,6 +161,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="favoriteButton" destination="dJ4-fi-VuN" id="PL7-Qz-TUt"/>
                         <outlet property="headerView" destination="Eg3-iJ-lpq" id="a4f-5Q-ign"/>
                         <outlet property="lcMapView" destination="fnK-CW-HBW" id="pIP-E7-BS0"/>
                         <outlet property="pageControl" destination="zlN-qP-p8e" id="RR4-Ud-130"/>
@@ -193,6 +202,7 @@
     </scenes>
     <resources>
         <image name="blankProfileimage" width="720" height="720"/>
+        <image name="emptyStar" width="64" height="64"/>
         <image name="if_eye_226579" width="256" height="256"/>
     </resources>
 </document>

@@ -13,7 +13,6 @@
 
 @property (strong, nonatomic) NSString *name;
 @property PFFile *profilePicture;
-//@property (strong, nonatomic) NSMutableArray *followers;
-//@property (strong, nonatomic) NSMutableArray *following;
+@property (strong, nonatomic) NSMutableArray *favoritedPaths;
 
 @end

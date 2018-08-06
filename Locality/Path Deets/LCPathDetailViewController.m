@@ -25,6 +25,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *pinDescriptionLabel;
 @property (weak, nonatomic) IBOutlet UIButton *startButton;
 @property (strong, nonatomic) IBOutlet UILabel *viewLabel;
+@property (weak, nonatomic) IBOutlet UIButton *favoriteButton;
+
 
 @end
 
@@ -74,6 +76,11 @@
         [self leftSwipe];
     }
 }
+- (IBAction)didTapFavorite:(id)sender {
+    UIImage *favoriteButtonImage = [UIImage imageNamed:@"star"];
+    [self.favoriteButton setImage:favoriteButtonImage forState:UIControlStateNormal];
+}
+
 
 #pragma mark - Handling Swipe Gestures
 - (void)rightSwipe{
