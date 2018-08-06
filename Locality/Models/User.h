@@ -13,6 +13,5 @@
 
 @property (strong, nonatomic) NSString *name;
 @property PFFile *profilePicture;
-@property (strong, nonatomic) NSMutableArray *favoritedPaths;
 
 @end

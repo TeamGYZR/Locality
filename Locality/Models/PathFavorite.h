@@ -9,10 +9,15 @@
 #import "PFObject.h"
 #import "User.h"
 #import "Itinerary.h"
+#import "Parse.h"
 
-@interface PathFavorite : PFObject
+@interface PathFavorite : PFObject <PFSubclassing>
 
 @property(strong, nonatomic) User *user;
 @property (strong, nonatomic) Itinerary *itinerary;
+
++ (void)saveFavoritedPath:(Itinerary *_Nullable)itinerary withCompletion:(PFBooleanResultBlock _Nullable)completion;
+
++(void)removeFavoritedPath:(Itinerary * _Nullable)itinerary withCompletion:(PFBooleanResultBlock _Nullable)completion;
 
 @end

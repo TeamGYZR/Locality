@@ -12,6 +12,5 @@
 
 @dynamic name;
 @dynamic profilePicture;
-@dynamic favoritedPaths;
 
 @end
