@@ -112,6 +112,13 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Y0-m7-oxW">
+                                        <rect key="frame" x="279" y="99" width="65" height="22"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" name="Dosis-Regular" family="Dosis" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="0.4454997859589041" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
@@ -171,6 +178,7 @@
                         <outlet property="pinTitleLabel" destination="JkV-P5-Ajh" id="dqG-Wu-kfj"/>
                         <outlet property="slideBarView" destination="i0k-8E-Ppq" id="pa4-pR-eH6"/>
                         <outlet property="startButton" destination="y5g-DC-h4o" id="n75-Jh-mcf"/>
+                        <outlet property="timeStampLabel" destination="7Y0-m7-oxW" id="CJr-f0-4fC"/>
                         <outlet property="uiImageView" destination="scV-cc-at7" id="Vka-0y-HxV"/>
                         <outlet property="userNameLabel" destination="4vO-Gt-SUK" id="aBf-0N-NVt"/>
                         <outlet property="userProfileImageView" destination="bfP-ec-I1T" id="I6K-G9-q2E"/>
