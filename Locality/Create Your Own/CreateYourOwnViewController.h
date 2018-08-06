@@ -16,6 +16,8 @@
 @property (strong, nonatomic)  AddPinInfoView * addpininfoview;
 @property (weak, nonatomic) IBOutlet MKMapView *createPathMapView;
 @property (weak, nonatomic) IBOutlet UIView *viewOverMapView;
+@property (strong, nonatomic) IBOutlet UITapGestureRecognizer *tapBehindGesture;
+
 
 
 

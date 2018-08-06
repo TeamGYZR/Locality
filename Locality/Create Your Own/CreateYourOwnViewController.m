@@ -37,6 +37,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.viewOverMapView.alpha=0;
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismissView)];
+    [self.view addGestureRecognizer:tap];
     self.progressView.alpha=0;
     self.mapView.delegate = self;
     self.locationManager = [[CLLocationManager alloc] init];
@@ -48,13 +50,17 @@
     self.locationManager.distanceFilter = 5;
     self.locationManager.desiredAccuracy = kCLLocationAccuracyBest;
 }
-
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     [self.mapView setUserTrackingMode:MKUserTrackingModeFollow animated:YES];
     [self.locationManager startUpdatingLocation];
 }
-
+-(void) dismissView{
+    [UIView beginAnimations:nil context:nil];
+    [UIView setAnimationDuration:1];
+    [self.addpininfoview setAlpha:0.0];
+    [self.viewOverMapView setAlpha:0.0];
+}
 #pragma mark - Location Updates
 
 - (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray<CLLocation *> *)locations{
