@@ -54,8 +54,7 @@
     [searchBar sizeToFit];
     searchBar.placeholder = @"Search by pins";
     searchBar.delegate = self;
-    //searchBar.barTintColor = [UIColor colorWithRed:0.96078 green:1.0 blue:0.8039 alpha:0.5];
-    //[self.searchBarView addSubview:self.searchController.searchBar];
+    searchBar.barTintColor = [UIColor colorWithRed:0.96078 green:1.0 blue:0.8039 alpha:0.5];
     self.navigationItem.titleView = self.searchController.searchBar;
     self.searchController.obscuresBackgroundDuringPresentation = YES;
     self.definesPresentationContext = YES;
@@ -67,33 +66,26 @@
         [self.locationManager requestLocation];
     }
 }
+
 - (void)reverseGeocode:(CLLocation *)location{
     if (!self.geoCoder){
         self.geoCoder = [[CLGeocoder alloc] init];
     }
-    [self.geoCoder reverseGeocodeLocation:location preferredLocale:nil completionHandler:^(NSArray<CLPlacemark *> * _Nullable placemarks, NSError * _Nullable error){
-        if(placemarks){
-            CLPlacemark * placemark=[placemarks firstObject];
-            self.cityName = placemark.locality;
-            [self photoFecth];
-        }else{
-            //handle error
-        }
-        [self.geoCoder reverseGeocodeLocation:location preferredLocale:nil completionHandler:^(NSArray<CLPlacemark *> * _Nullable placemarks, NSError * _Nullable error){
-            if(placemarks){
-                CLPlacemark * placemark=[placemarks firstObject];
-                self.labefiled.text = placemark.locality;
-                //[self photoFecth];
-            }else{
-                //handle error
-            }
-        }];
-    }];
+  [self.geoCoder reverseGeocodeLocation:location preferredLocale:nil completionHandler:^(NSArray<CLPlacemark *> * _Nullable placemarks, NSError * _Nullable error){
+      if(placemarks){
+          CLPlacemark * placemark=[placemarks firstObject];
+          self.labefiled.text = placemark.locality;
+          [self.hud hideAnimated:YES];
+        //[self photoFecth];
+     }else{
+          //handle error
+     }
+  }];
 }
 #pragma mark - IBAction
 - (IBAction)didTapFoodie:(id)sender{
     [self loadPathsWithCategory:@"Foodie"];
-    [self.foodieButton setTitleColor:[UIColor colorWithRed:0 green:0.478431 blue:1 alpha:1] forState:UIControlStateNormal];
+    [self.foodieButton setTitleColor:[UIColor colorWithRed:0 green:0.2 blue:0.453 alpha:1] forState:UIControlStateNormal];
     [self.entertainmentButton setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
     [self.natureButton setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
 }
@@ -101,14 +93,14 @@
 
 - (IBAction)didTapEntertainment:(id)sender {
     [self loadPathsWithCategory:@"Entertainment"];
-    [self.entertainmentButton setTitleColor:[UIColor colorWithRed:0 green:0.478431 blue:1 alpha:1] forState:UIControlStateNormal];
+    [self.entertainmentButton setTitleColor:[UIColor colorWithRed:0 green:0.2 blue:0.453 alpha:1] forState:UIControlStateNormal];
     [self.foodieButton setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
     [self.natureButton setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
 }
 
 - (IBAction)didTapNature:(id)sender {
     [self loadPathsWithCategory:@"Nature"];
-    [self.natureButton setTitleColor:[UIColor colorWithRed:0 green:0.478431 blue:1 alpha:1] forState:UIControlStateNormal];
+    [self.natureButton setTitleColor:[UIColor colorWithRed:0 green:0.2 blue:0.453 alpha:1] forState:UIControlStateNormal];
     [self.entertainmentButton setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
     [self.foodieButton setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
 }
@@ -138,7 +130,6 @@
             self.itineraries = iteneraries;
             [self sortItenerariesByDistance];
             [self.tableView reloadData];
-            [self.hud hideAnimated:YES];
         }
     }];
 }
@@ -191,6 +182,7 @@
    NSDictionary *dictionary = [NSDictionary dictionaryWithObjectsAndKeys:self.cityName,@"text", @"relevance",@"sort",@"views",@"extras", nil];
     [self.request callAPIMethodWithGET:@"flickr.photos.search" arguments:dictionary];
 }
+
 -(void)flickrAPIRequest:(OFFlickrAPIRequest *)inRequest didCompleteWithResponse:(NSDictionary *)inResponseDictionary{
     NSInteger currentLargestView=0;
     int IndexForTheLargestViewedPhoto=0;
@@ -270,7 +262,7 @@
     self.searchController.searchBar.text = @"";
     [self.tableView reloadData];
     [self.searchController.searchBar resignFirstResponder];
-    self.navigationItem.rightBarButtonItem = self.createPathBarButton; 
+    self.navigationItem.rightBarButtonItem = self.createPathBarButton;
 }
 #pragma mark - Navigation
 

@@ -9,6 +9,17 @@
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="Dosis-Light.ttf">
+            <string>Dosis-Light</string>
+        </array>
+        <array key="Dosis-Regular.ttf">
+            <string>Dosis-Regular</string>
+        </array>
+        <array key="Dosis-SemiBold.ttf">
+            <string>Dosis-SemiBold</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--Path Detail View Controller-->
         <scene sceneID="08G-DU-xtg">
@@ -18,61 +29,129 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fnK-CW-HBW" customClass="LCMapView">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="scV-cc-at7">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                                <color key="backgroundColor" red="1" green="0.9878943966" blue="0.95581895319999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                            </view>
-                            <view alpha="0.45000000000000001" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Eg3-iJ-lpq">
-                                <rect key="frame" x="0.0" y="63" width="375" height="174"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Path Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tRB-RC-YXt">
-                                <rect key="frame" x="16" y="86" width="94" height="23"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="19"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Description" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YPr-eY-2pG">
-                                <rect key="frame" x="16" y="111" width="343" height="51"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="blankProfileimage" translatesAutoresizingMaskIntoConstraints="NO" id="bfP-ec-I1T" customClass="PFImageView">
-                                <rect key="frame" x="16" y="170" width="55" height="54"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4vO-Gt-SUK">
-                                <rect key="frame" x="79" y="170" width="280" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Path Description" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5c7-gG-br9">
+                                <rect key="frame" x="16" y="532" width="127" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Path Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JkV-P5-Ajh">
+                                <rect key="frame" x="16" y="490" width="72" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fnK-CW-HBW" customClass="LCMapView">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <color key="backgroundColor" red="1" green="0.9878943966" blue="0.95581895319999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            </view>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="i0k-8E-Ppq">
+                                <rect key="frame" x="0.0" y="610" width="375" height="61"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <pageControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="zlN-qP-p8e">
+                                        <rect key="frame" x="104" y="8" width="167" height="37"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="pageIndicatorTintColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="currentPageIndicatorTintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </pageControl>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="0.7096720950704225" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <gestureRecognizers/>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Eg3-iJ-lpq">
+                                <rect key="frame" x="0.0" y="64" width="375" height="175"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4vO-Gt-SUK">
+                                        <rect key="frame" x="65" y="138" width="300" height="19"/>
+                                        <fontDescription key="fontDescription" name="Dosis-Light" family="Dosis" pointSize="15"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Description" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YPr-eY-2pG">
+                                        <rect key="frame" x="15" y="40.5" width="350" height="79.5"/>
+                                        <fontDescription key="fontDescription" name="Dosis-Regular" family="Dosis" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="blankProfileimage" translatesAutoresizingMaskIntoConstraints="NO" id="bfP-ec-I1T" customClass="PFImageView">
+                                        <rect key="frame" x="15" y="125" width="45" height="45"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="45" id="UwN-Yw-opF"/>
+                                            <constraint firstAttribute="height" constant="45" id="wkd-3o-abh"/>
+                                        </constraints>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Path Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tRB-RC-YXt">
+                                        <rect key="frame" x="8" y="8" width="105" height="30.5"/>
+                                        <fontDescription key="fontDescription" name="Dosis-SemiBold" family="Dosis" pointSize="24"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="0.4454997859589041" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="4vO-Gt-SUK" firstAttribute="leading" secondItem="bfP-ec-I1T" secondAttribute="trailing" constant="5" id="1H2-9T-e4g"/>
+                                    <constraint firstItem="bfP-ec-I1T" firstAttribute="top" secondItem="YPr-eY-2pG" secondAttribute="bottom" constant="5" id="9xX-BN-mL9"/>
+                                    <constraint firstAttribute="trailing" secondItem="4vO-Gt-SUK" secondAttribute="trailing" constant="10" id="BVQ-bV-D9P"/>
+                                    <constraint firstItem="tRB-RC-YXt" firstAttribute="leading" secondItem="Eg3-iJ-lpq" secondAttribute="leading" constant="8" id="CLt-b9-YG3"/>
+                                    <constraint firstAttribute="height" constant="175" id="FZm-wU-gTn"/>
+                                    <constraint firstAttribute="bottom" secondItem="4vO-Gt-SUK" secondAttribute="bottom" constant="18" id="M6k-FA-iUc"/>
+                                    <constraint firstItem="bfP-ec-I1T" firstAttribute="leading" secondItem="Eg3-iJ-lpq" secondAttribute="leading" constant="15" id="Nne-rV-TTN"/>
+                                    <constraint firstItem="tRB-RC-YXt" firstAttribute="top" secondItem="Eg3-iJ-lpq" secondAttribute="top" constant="8" id="RMw-s4-Sgg"/>
+                                    <constraint firstAttribute="bottom" secondItem="bfP-ec-I1T" secondAttribute="bottom" constant="5" id="WLT-t6-WLA"/>
+                                    <constraint firstItem="YPr-eY-2pG" firstAttribute="leading" secondItem="Eg3-iJ-lpq" secondAttribute="leading" constant="15" id="i1t-IW-bHp"/>
+                                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="tRB-RC-YXt" secondAttribute="trailing" constant="10" id="mZU-lI-pYm"/>
+                                    <constraint firstAttribute="trailing" secondItem="YPr-eY-2pG" secondAttribute="trailing" constant="10" id="u63-RF-lPC"/>
+                                    <constraint firstItem="YPr-eY-2pG" firstAttribute="top" secondItem="tRB-RC-YXt" secondAttribute="bottom" constant="2" id="yGb-bw-ITL"/>
+                                </constraints>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="y5g-DC-h4o">
+                                <rect key="frame" x="260" y="570" width="105" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.61175759881932212" green="1" blue="0.5846854583434995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <fontDescription key="fontDescription" type="system" weight="thin" pointSize="15"/>
+                                <state key="normal" title="Start This Path">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="fnK-CW-HBW" firstAttribute="leading" secondItem="D2D-RO-NBi" secondAttribute="leading" id="17Q-G8-L5a"/>
                             <constraint firstItem="fnK-CW-HBW" firstAttribute="top" secondItem="8HS-nu-lcR" secondAttribute="top" id="1Ux-Df-3Kp"/>
                             <constraint firstItem="fnK-CW-HBW" firstAttribute="trailing" secondItem="D2D-RO-NBi" secondAttribute="trailing" id="8WZ-Qk-IkX"/>
+                            <constraint firstItem="Eg3-iJ-lpq" firstAttribute="leading" secondItem="D2D-RO-NBi" secondAttribute="leading" id="aVb-Z9-g7K"/>
+                            <constraint firstItem="Eg3-iJ-lpq" firstAttribute="trailing" secondItem="D2D-RO-NBi" secondAttribute="trailing" id="b9s-H8-Y5j"/>
+                            <constraint firstItem="Eg3-iJ-lpq" firstAttribute="top" secondItem="D2D-RO-NBi" secondAttribute="top" id="qmf-UQ-dqK"/>
                             <constraint firstItem="fnK-CW-HBW" firstAttribute="bottom" secondItem="D2D-RO-NBi" secondAttribute="bottom" id="rsN-QI-N5N"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="D2D-RO-NBi"/>
                     </view>
                     <navigationItem key="navigationItem" id="8sE-tU-VGp">
                         <barButtonItem key="leftBarButtonItem" title="Back" id="krf-2U-nhg">
+                            <color key="tintColor" red="0.0" green="0.32852089410000002" blue="0.57488495110000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>
                                 <action selector="didTapBack:" destination="YfQ-gI-n7T" id="aTq-Tw-o3a"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="headerView" destination="Eg3-iJ-lpq" id="a4f-5Q-ign"/>
                         <outlet property="lcMapView" destination="fnK-CW-HBW" id="pIP-E7-BS0"/>
+                        <outlet property="pageControl" destination="zlN-qP-p8e" id="RR4-Ud-130"/>
                         <outlet property="pathDescriptionLabel" destination="YPr-eY-2pG" id="lSb-R1-v54"/>
                         <outlet property="pathNameLabel" destination="tRB-RC-YXt" id="A5Q-RD-NII"/>
+                        <outlet property="pinDescriptionLabel" destination="5c7-gG-br9" id="rSg-IP-m4G"/>
+                        <outlet property="pinTitleLabel" destination="JkV-P5-Ajh" id="dqG-Wu-kfj"/>
+                        <outlet property="slideBarView" destination="i0k-8E-Ppq" id="pa4-pR-eH6"/>
+                        <outlet property="startButton" destination="y5g-DC-h4o" id="n75-Jh-mcf"/>
+                        <outlet property="uiImageView" destination="scV-cc-at7" id="Vka-0y-HxV"/>
                         <outlet property="userNameLabel" destination="4vO-Gt-SUK" id="aBf-0N-NVt"/>
                         <outlet property="userProfileImageView" destination="bfP-ec-I1T" id="I6K-G9-q2E"/>
                     </connections>
