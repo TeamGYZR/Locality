@@ -24,7 +24,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *pinTitleLabel;
 @property (weak, nonatomic) IBOutlet UILabel *pinDescriptionLabel;
 @property (weak, nonatomic) IBOutlet UIButton *startButton;
-
+@property (strong, nonatomic) IBOutlet UILabel *viewLabel;
 
 @end
 
@@ -36,6 +36,14 @@
     self.pathNameLabel.text = self.itinerary.name;
     self.pathDescriptionLabel.text = self.itinerary.pathDescription;
     self.userNameLabel.text = self.itinerary.creator.name;
+    self.viewLabel.text = [NSString stringWithFormat:@"%lu", [self.itinerary.uniqueUserViews count]];
+    if(![self.itinerary.uniqueUserViews containsObject:[PFUser currentUser]]){
+        [self.itinerary addObject:[PFUser currentUser] forKey:@"uniqueUserViews"];
+        [self.itinerary saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error){
+            NSLog(@"user has been saved");
+        }];
+    }
+    
     if (self.itinerary.creator.profilePicture != nil) {
         self.userProfileImageView.file = self.itinerary.creator.profilePicture;
         [self.userProfileImageView loadInBackground];

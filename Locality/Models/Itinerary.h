@@ -22,5 +22,6 @@
 @property (strong, nonnull) NSArray *paths;
 @property (strong, nonatomic) NSNumber * _Nullable distanceFromFirstPinnedLocation;
 @property (strong, nonatomic) PFFile  * _Nullable mapImageFile;
+@property (strong, nonatomic) NSMutableArray * _Nullable uniqueUserViews;
 
 @end

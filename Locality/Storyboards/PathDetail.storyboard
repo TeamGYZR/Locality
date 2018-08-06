@@ -93,6 +93,17 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="if_eye_226579" translatesAutoresizingMaskIntoConstraints="NO" id="51O-of-Zyx">
+                                        <rect key="frame" x="279" y="134" width="27" height="26"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="10" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2HF-Fx-RwW">
+                                        <rect key="frame" x="330" y="136" width="14" height="22"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" name="Dosis-Regular" family="Dosis" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="0.4454997859589041" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
@@ -154,6 +165,7 @@
                         <outlet property="uiImageView" destination="scV-cc-at7" id="Vka-0y-HxV"/>
                         <outlet property="userNameLabel" destination="4vO-Gt-SUK" id="aBf-0N-NVt"/>
                         <outlet property="userProfileImageView" destination="bfP-ec-I1T" id="I6K-G9-q2E"/>
+                        <outlet property="viewLabel" destination="2HF-Fx-RwW" id="Erq-Js-bAw"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qV2-d9-nnB" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -181,5 +193,6 @@
     </scenes>
     <resources>
         <image name="blankProfileimage" width="720" height="720"/>
+        <image name="if_eye_226579" width="256" height="256"/>
     </resources>
 </document>
