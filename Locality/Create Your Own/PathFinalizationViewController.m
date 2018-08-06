@@ -78,6 +78,7 @@
     [self.tableView reloadData];
     [self takeSnapshot];
     [self.itinerary setObject:self.itinerary.pinnedLocations forKey:@"pinnedLocations"];
+    self.itinerary.uniqueUserViews = [[NSMutableArray alloc] init]; 
     [self.itinerary saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
         if (error) {
             NSLog(@"Error saving Path info to Parse");
