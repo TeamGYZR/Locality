@@ -16,6 +16,10 @@
 #import "PathFinalizationViewController.h"
 #import "ItineraryPin.h"
 
+//trying to get different pins to display on the map
+#import "pinVenueAnnotation.h"
+#import "pinVenueAnnotationView.h"
+
 @interface CreateYourOwnViewController () <MKMapViewDelegate, CLLocationManagerDelegate>
 
 @property (strong, nonatomic) CLLocationManager *locationManager;
@@ -167,6 +171,18 @@
     [self.mapView addAnnotation:annotation];
     [self.pinCoordinates addObject:self.currentLocation];
     [self.pathCoordinates addObject:self.currentLocation];
+}
+
+- (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation{
+    if ([annotation isKindOfClass:[MKPointAnnotation class]]) {
+        pinVenueAnnotationView *annotationView = (pinVenueAnnotationView *)[mapView dequeueReusableAnnotationViewWithIdentifier:@"PlacePin"];
+        if (annotationView == nil) {
+            annotationView = [[pinVenueAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"PlacePin"];
+            annotationView.canShowCallout = true;
+        }
+        return annotationView;
+    }
+    return nil;
 }
 
 - (void)addPinsToParse{

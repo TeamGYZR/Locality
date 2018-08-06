@@ -182,6 +182,7 @@
    NSDictionary *dictionary = [NSDictionary dictionaryWithObjectsAndKeys:self.cityName,@"text", @"relevance",@"sort",@"views",@"extras", nil];
     [self.request callAPIMethodWithGET:@"flickr.photos.search" arguments:dictionary];
 }
+
 -(void)flickrAPIRequest:(OFFlickrAPIRequest *)inRequest didCompleteWithResponse:(NSDictionary *)inResponseDictionary{
     NSInteger currentLargestView=0;
     int IndexForTheLargestViewedPhoto=0;

@@ -20,6 +20,11 @@
 @property (nonatomic) int currentPhotoIndex;
 @property (weak, nonatomic) IBOutlet UIView *headerView;
 @property (weak, nonatomic) IBOutlet UIImageView *uiImageView;
+@property (weak, nonatomic) IBOutlet UIPageControl *pageControl;
+@property (weak, nonatomic) IBOutlet UILabel *pinTitleLabel;
+@property (weak, nonatomic) IBOutlet UILabel *pinDescriptionLabel;
+@property (weak, nonatomic) IBOutlet UIButton *startButton;
+
 
 @end
 
@@ -35,7 +40,7 @@
         self.userProfileImageView.file = self.itinerary.creator.profilePicture;
         [self.userProfileImageView loadInBackground];
     }
-    [self.lcMapView configureWithItinerary:self.itinerary isStatic:NO];
+    [self.lcMapView configureWithItinerary:self.itinerary isStatic:NO showCurrentLocation:YES];
     [self seedTesterImageArray];
     
     UISwipeGestureRecognizer *leftSwipe = [[UISwipeGestureRecognizer alloc]initWithTarget:self action:@selector(swipeHandler:)];
@@ -44,6 +49,7 @@
     leftSwipe.direction = UISwipeGestureRecognizerDirectionLeft;
     [self.slideBarView addGestureRecognizer:leftSwipe];
     [self.slideBarView addGestureRecognizer:rightSwipe];
+    self.pageControl.numberOfPages = ([self.photosForSlideshow count] + 1);
     self.currentPhotoIndex = 0;
 }
 
@@ -65,17 +71,22 @@
 - (void)rightSwipe{
     if (self.currentPhotoIndex != 0) {
         self.currentPhotoIndex --;
+        self.pageControl.currentPage --;
     }
     if (self.currentPhotoIndex == 0) {
-        [self.lcMapView configureWithItinerary:self.itinerary isStatic:NO];
+        [self.lcMapView configureWithItinerary:self.itinerary isStatic:NO showCurrentLocation:YES];
         [self.view bringSubviewToFront:self.lcMapView];
         [self.view bringSubviewToFront:self.slideBarView];
         [self.view bringSubviewToFront:self.headerView];
         [self.view bringSubviewToFront:self.pathNameLabel];
         [self.view bringSubviewToFront:self.userProfileImageView];
         [self.view bringSubviewToFront:self.pathDescriptionLabel];
+        [self.view bringSubviewToFront:self.startButton];
     } else {
         [self.view bringSubviewToFront:self.uiImageView];
+        [self.view bringSubviewToFront:self.slideBarView];
+        [self.view bringSubviewToFront:self.pinTitleLabel];
+        [self.view bringSubviewToFront:self.pinDescriptionLabel];
         [UIView transitionWithView:self.uiImageView duration:1 options:UIViewAnimationOptionTransitionCrossDissolve animations:^{
             self.uiImageView.image = self.photosForSlideshow[self.currentPhotoIndex - 1];
         } completion:^(BOOL finished) {
@@ -85,8 +96,12 @@
 - (void)leftSwipe{
     if (self.currentPhotoIndex != [self.photosForSlideshow count]) {
         self.currentPhotoIndex ++;
+        self.pageControl.currentPage ++;
     }
     [self.view bringSubviewToFront:self.uiImageView];
+    [self.view bringSubviewToFront:self.slideBarView];
+    [self.view bringSubviewToFront:self.pinTitleLabel];
+    [self.view bringSubviewToFront:self.pinDescriptionLabel];
     [UIView transitionWithView:self.uiImageView duration:1 options:UIViewAnimationOptionTransitionCrossDissolve animations:^{
         self.uiImageView.image = self.photosForSlideshow[self.currentPhotoIndex - 1];
     } completion:^(BOOL finished) {
@@ -100,6 +115,7 @@
     [self.photosForSlideshow addObject:[UIImage imageNamed:@"golgenGate"]];
     [self.photosForSlideshow addObject:[UIImage imageNamed:@"centralpark"]];
     [self.photosForSlideshow addObject:[UIImage imageNamed:@"frenchfries"]];
+    [self.photosForSlideshow addObject:[UIImage imageNamed:@"macaroons"]];
 }
 
 
