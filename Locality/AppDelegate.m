@@ -30,7 +30,7 @@
     
     if (PFUser.currentUser) {
         UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Home" bundle:nil];
-        self.window.rootViewController = [storyboard instantiateViewControllerWithIdentifier:@"initialView"];
+        self.window.rootViewController = [storyboard instantiateViewControllerWithIdentifier:@"tabBarController"];
     }
     [PFFacebookUtils initializeFacebookWithApplicationLaunchOptions:launchOptions];
     //launch the facebook software

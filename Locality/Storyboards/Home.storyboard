@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="QaF-JU-SEw">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="GCO-4E-NRT">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -32,7 +32,7 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="322" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="osb-fg-JPY">
                                 <rect key="frame" x="0.0" y="237" width="375" height="430"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.95902747479999995" green="1" blue="0.80267276139999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <color key="backgroundColor" red="0.65269931940110093" green="0.77950507614213205" blue="0.4624351194512159" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="PathCell" rowHeight="322" id="br1-gT-nE4" customClass="PathCell">
                                         <rect key="frame" x="0.0" y="28" width="375" height="322"/>
@@ -288,10 +288,56 @@
             </objects>
             <point key="canvasLocation" x="778" y="-1131"/>
         </scene>
+        <!--tabBarController-->
+        <scene sceneID="nR3-i8-XDA">
+            <objects>
+                <tabBarController storyboardIdentifier="tabBarController" title="tabBarController" id="GCO-4E-NRT" sceneMemberID="viewController">
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="7Z7-cG-njv">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="QaF-JU-SEw" kind="relationship" relationship="viewControllers" id="wme-za-GXZ"/>
+                        <segue destination="kBd-Kq-BTW" kind="relationship" relationship="viewControllers" id="mZC-ag-rG7"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3lj-c2-xpf" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-2007" y="-1370"/>
+        </scene>
+        <!--Profile-->
+        <scene sceneID="8ro-FC-V5D">
+            <objects>
+                <navigationController id="kBd-Kq-BTW" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Profile" id="8xF-VB-Xs7"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="2kX-7b-ciR">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="oaC-0K-dFU" kind="relationship" relationship="rootViewController" id="aVh-Om-ZXE"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="DQB-0u-O9s" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-2007" y="-645"/>
+        </scene>
+        <!--Profile-->
+        <scene sceneID="Xhm-OB-iRU">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Profile" id="oaC-0K-dFU" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="qLc-0x-LBt"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gRY-LA-pqT" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-985" y="-560"/>
+        </scene>
         <!--initialView-->
         <scene sceneID="Xub-PX-jfs">
             <objects>
                 <navigationController storyboardIdentifier="initialView" title="initialView" automaticallyAdjustsScrollViewInsets="NO" id="QaF-JU-SEw" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Explore" id="861-ET-Htc" userLabel="Explore"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="2zc-Pp-s9J">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>

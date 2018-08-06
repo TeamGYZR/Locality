@@ -8,6 +8,9 @@
 
 #import "LCPathDetailViewController.h"
 #import "LCMapView.h"
+#import "Parse.h"
+#import "PathFavorite.h"
+#import "User.h"
 
 @interface LCPathDetailViewController ()
 @property (weak, nonatomic) IBOutlet LCMapView *lcMapView;
@@ -24,6 +27,9 @@
 @property (weak, nonatomic) IBOutlet UILabel *pinTitleLabel;
 @property (weak, nonatomic) IBOutlet UILabel *pinDescriptionLabel;
 @property (weak, nonatomic) IBOutlet UIButton *startButton;
+@property (strong, nonatomic) IBOutlet UILabel *viewLabel;
+@property (weak, nonatomic) IBOutlet UIButton *favoriteButton;
+@property (nonatomic) BOOL favorited;
 
 
 @end
@@ -36,12 +42,23 @@
     self.pathNameLabel.text = self.itinerary.name;
     self.pathDescriptionLabel.text = self.itinerary.pathDescription;
     self.userNameLabel.text = self.itinerary.creator.name;
+    self.viewLabel.text = [NSString stringWithFormat:@"%lu", [self.itinerary.uniqueUserViews count]];
+    User *currentUser = (User *)[PFUser currentUser];
+    if(![[self.itinerary.uniqueUserViews copy] containsObject:currentUser.name]){
+        [self.itinerary addObject:currentUser.name forKey:@"uniqueUserViews"];
+        [self.itinerary saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error){
+            NSLog(@"user has been saved");
+        }];
+    }
+    
     if (self.itinerary.creator.profilePicture != nil) {
         self.userProfileImageView.file = self.itinerary.creator.profilePicture;
         [self.userProfileImageView loadInBackground];
     }
     [self.lcMapView configureWithItinerary:self.itinerary isStatic:NO showCurrentLocation:YES];
     [self seedTesterImageArray];
+    //query to get path favorite object
+    [self queryForPathFavorite];
     
     UISwipeGestureRecognizer *leftSwipe = [[UISwipeGestureRecognizer alloc]initWithTarget:self action:@selector(swipeHandler:)];
     UISwipeGestureRecognizer *rightSwipe = [[UISwipeGestureRecognizer alloc]initWithTarget:self action:@selector(swipeHandler:)];
@@ -66,6 +83,61 @@
         [self leftSwipe];
     }
 }
+- (IBAction)didTapFavorite:(id)sender {
+    if (self.favorited) {
+        [PathFavorite removeFavoritedPath:(Itinerary * _Nullable)self.itinerary withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
+            if (error) {
+                NSLog(@"error removing path");
+            } else{
+                [self setAnEmptyStar];
+                self.favorited = NO;
+                NSLog(@"successfully unfavorited path");
+            }
+        }];
+    } else {
+        [PathFavorite saveFavoritedPath:(Itinerary * _Nullable)self.itinerary withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
+            if (error) {
+                NSLog(@"error favoriting path");
+            } else{
+                [self setAFilledStar];
+                self.favorited = YES;
+                NSLog(@"succesfully favorited path");
+            }
+        }];
+    }
+}
+
+#pragma mark - Handling Favorites
+
+-(void)setAFilledStar{
+    UIImage *favoriteButtonImage = [UIImage imageNamed:@"star"];
+    [self.favoriteButton setImage:favoriteButtonImage forState:UIControlStateNormal];
+}
+
+-(void)setAnEmptyStar{
+    UIImage *unfavoriteButtonImage = [UIImage imageNamed:@"emptyStar"];
+    [self.favoriteButton setImage:unfavoriteButtonImage forState:UIControlStateNormal];
+}
+
+- (void)queryForPathFavorite{
+    PFQuery *query = [PFQuery queryWithClassName:@"PathFavorite"];
+    [query whereKey:@"user" equalTo:PFUser.currentUser];
+    [query whereKey:@"itinerary" equalTo:self.itinerary];
+    //query include keys??
+    [query getFirstObjectInBackgroundWithBlock:^(PFObject * _Nullable pathFavorite, NSError * _Nullable error) {
+        if (error) {
+            NSLog(@"error fetching favorite from parse");
+        } else if (pathFavorite){
+            [self setAFilledStar];
+            self.favorited = YES;
+        } else {
+            [self setAnEmptyStar];
+            self.favorited = NO;
+        }
+    }];
+}
+
+
 
 #pragma mark - Handling Swipe Gestures
 - (void)rightSwipe{
@@ -82,6 +154,7 @@
         [self.view bringSubviewToFront:self.userProfileImageView];
         [self.view bringSubviewToFront:self.pathDescriptionLabel];
         [self.view bringSubviewToFront:self.startButton];
+        [self.view bringSubviewToFront:self.favoriteButton];
     } else {
         [self.view bringSubviewToFront:self.uiImageView];
         [self.view bringSubviewToFront:self.slideBarView];
