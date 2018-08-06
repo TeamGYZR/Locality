@@ -21,6 +21,9 @@
 @property (weak, nonatomic) IBOutlet UIView *headerView;
 @property (weak, nonatomic) IBOutlet UIImageView *uiImageView;
 @property (weak, nonatomic) IBOutlet UIPageControl *pageControl;
+@property (weak, nonatomic) IBOutlet UILabel *pinTitleLabel;
+@property (weak, nonatomic) IBOutlet UILabel *pinDescriptionLabel;
+@property (weak, nonatomic) IBOutlet UIButton *startButton;
 
 
 @end
@@ -78,9 +81,12 @@
         [self.view bringSubviewToFront:self.pathNameLabel];
         [self.view bringSubviewToFront:self.userProfileImageView];
         [self.view bringSubviewToFront:self.pathDescriptionLabel];
+        [self.view bringSubviewToFront:self.startButton];
     } else {
         [self.view bringSubviewToFront:self.uiImageView];
         [self.view bringSubviewToFront:self.slideBarView];
+        [self.view bringSubviewToFront:self.pinTitleLabel];
+        [self.view bringSubviewToFront:self.pinDescriptionLabel];
         [UIView transitionWithView:self.uiImageView duration:1 options:UIViewAnimationOptionTransitionCrossDissolve animations:^{
             self.uiImageView.image = self.photosForSlideshow[self.currentPhotoIndex - 1];
         } completion:^(BOOL finished) {
@@ -94,6 +100,8 @@
     }
     [self.view bringSubviewToFront:self.uiImageView];
     [self.view bringSubviewToFront:self.slideBarView];
+    [self.view bringSubviewToFront:self.pinTitleLabel];
+    [self.view bringSubviewToFront:self.pinDescriptionLabel];
     [UIView transitionWithView:self.uiImageView duration:1 options:UIViewAnimationOptionTransitionCrossDissolve animations:^{
         self.uiImageView.image = self.photosForSlideshow[self.currentPhotoIndex - 1];
     } completion:^(BOOL finished) {
