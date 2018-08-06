@@ -37,7 +37,7 @@
         self.userProfileImageView.file = self.itinerary.creator.profilePicture;
         [self.userProfileImageView loadInBackground];
     }
-    [self.lcMapView configureWithItinerary:self.itinerary isStatic:NO];
+    [self.lcMapView configureWithItinerary:self.itinerary isStatic:NO showCurrentLocation:YES];
     [self seedTesterImageArray];
     
     UISwipeGestureRecognizer *leftSwipe = [[UISwipeGestureRecognizer alloc]initWithTarget:self action:@selector(swipeHandler:)];
@@ -71,7 +71,7 @@
         self.pageControl.currentPage --;
     }
     if (self.currentPhotoIndex == 0) {
-        [self.lcMapView configureWithItinerary:self.itinerary isStatic:NO];
+        [self.lcMapView configureWithItinerary:self.itinerary isStatic:NO showCurrentLocation:YES];
         [self.view bringSubviewToFront:self.lcMapView];
         [self.view bringSubviewToFront:self.slideBarView];
         [self.view bringSubviewToFront:self.headerView];

@@ -32,7 +32,8 @@
     [self.view addGestureRecognizer:tap];
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
-    [self.LCMapView configureWithItinerary:self.itinerary isStatic:NO];
+    [self.LCMapView configureWithItinerary:self.itinerary isStatic:NO showCurrentLocation:NO];
+    
 }
 
 #pragma mark - Private Methods
@@ -65,9 +66,6 @@
     UIGraphicsEndImageContext();
     NSData *imageData = UIImagePNGRepresentation(snapshotImage);
     self.itinerary.mapImageFile = [PFFile fileWithName:@"image.png" data:imageData];
-    
-    //self.testerImageview.image = snapshotImage;
-     
 }
 
 #pragma mark - IBActions
@@ -78,7 +76,6 @@
     NSArray *categories = @[@"Foodie", @"Entertainment", @"Nature"];
     self.itinerary.category = categories[self.categoryController.selectedSegmentIndex];
     [self.tableView reloadData];
-    //snapchotting the image to later save to parse??
     [self takeSnapshot];
     [self.itinerary setObject:self.itinerary.pinnedLocations forKey:@"pinnedLocations"];
     [self.itinerary saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {

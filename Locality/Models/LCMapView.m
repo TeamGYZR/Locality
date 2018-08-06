@@ -31,7 +31,7 @@
     return nil;
 }
 
--(void)configureWithItinerary:(Itinerary *)itinerary isStatic:(BOOL)move{
+-(void)configureWithItinerary:(Itinerary *)itinerary isStatic:(BOOL)move showCurrentLocation:(BOOL)showCurrent{
     mapView = [[MKMapView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height)];
     mapView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     mapView.userInteractionEnabled = YES;
@@ -39,7 +39,7 @@
     isStatic = move;
     mapView.zoomEnabled = !isStatic;
     mapView.scrollEnabled = !isStatic;
-    mapView.showsUserLocation = !isStatic;
+    mapView.showsUserLocation = showCurrent;
     locationManager = [[CLLocationManager alloc] init];
     locationManager.delegate = self;
     self.itinerary = itinerary;
