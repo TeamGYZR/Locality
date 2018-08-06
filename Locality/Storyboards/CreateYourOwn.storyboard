@@ -37,6 +37,11 @@
                                     <action selector="didTapAddPin:" destination="cTa-YV-odr" eventType="touchUpInside" id="o65-uz-bW3"/>
                                 </connections>
                             </button>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DMb-aF-wSn">
+                                <rect key="frame" x="0.0" y="66" width="375" height="601"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="gOo-5U-0Ck"/>
@@ -56,7 +61,9 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="mapView" destination="VXO-VP-8yd" id="YBI-MJ-tza"/>
+                        <outlet property="createPathMapView" destination="VXO-VP-8yd" id="Hto-rv-YIu"/>
+                        <outlet property="mapView" destination="VXO-VP-8yd" id="tuV-N1-Bub"/>
+                        <outlet property="viewOverMapView" destination="DMb-aF-wSn" id="eZP-mp-1Bp"/>
                         <segue destination="CXL-bh-smc" kind="show" identifier="doneSegue" id="wtc-OO-h4G"/>
                     </connections>
                 </viewController>

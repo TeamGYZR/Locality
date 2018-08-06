@@ -8,12 +8,16 @@
 
 #import <UIKit/UIKit.h>
 #import "AddPinInfoView.h"
-
+#import <MapKit/MapKit.h>
 @interface CreateYourOwnViewController : UIViewController<UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 
 @property IBOutlet UIView *progressView;
 @property (weak, nonatomic) IBOutlet UIButton *addPhoto;
 @property (strong, nonatomic)  AddPinInfoView * addpininfoview;
+@property (weak, nonatomic) IBOutlet MKMapView *createPathMapView;
+@property (weak, nonatomic) IBOutlet UIView *viewOverMapView;
+
+
 
 
 @end

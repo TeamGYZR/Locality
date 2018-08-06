@@ -12,9 +12,8 @@
 @property (strong, nonatomic) IBOutlet UIView *pinInfoCustomView;
 @property (weak, nonatomic) IBOutlet UITextField *pinNameField;
 @property (weak, nonatomic) IBOutlet UITextField *pinDescriptionField;
-@property (strong, nonatomic) UIViewController * controller;
 @property (weak, nonatomic) IBOutlet UIImageView *pinImageView;
-
+@property (strong, nonatomic) UIViewController * controller;
 -(void) customnInt;
 
 @end

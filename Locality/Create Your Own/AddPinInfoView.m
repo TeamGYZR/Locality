@@ -20,7 +20,7 @@
     }
     return self;
 }
-- (IBAction)didTapCameraButton:(id)sender {
+- (IBAction)didTapCameraButton:(id)sender{
     UIImagePickerController *imagePicker = [UIImagePickerController new];
     imagePicker.delegate = self;
     imagePicker.allowsEditing = YES;
@@ -30,7 +30,12 @@
     else{
         imagePicker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
     }
-    [self.controller presentViewController:imagePicker animated: YES completion:nil];
+    UIViewController *yourCurrentViewController = [UIApplication sharedApplication].keyWindow.rootViewController;
+    while (yourCurrentViewController.presentedViewController)
+    {
+    yourCurrentViewController = yourCurrentViewController.presentedViewController;
+    }
+    [yourCurrentViewController presentViewController:imagePicker animated:YES completion:nil];
 }
 -(void) customnInt{
     [[NSBundle mainBundle] loadNibNamed:@"PinInfoView" owner:self options:nil];
@@ -47,5 +52,18 @@
     }
     return NO;
 }
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info{
+    UIImage *pinneddeditedPicture = info[UIImagePickerControllerEditedImage];
+    UIViewController *yourCurrentViewController = [UIApplication sharedApplication].keyWindow.rootViewController;
+    while (yourCurrentViewController.presentedViewController)
+    {
+        yourCurrentViewController = yourCurrentViewController.presentedViewController;
+    }
+    [yourCurrentViewController dismissViewControllerAnimated:YES completion:^{
+        NSLog(@"dismmising");
+    }];
+    self.pinImageView.image=pinneddeditedPicture;
+}
+
 
 @end
