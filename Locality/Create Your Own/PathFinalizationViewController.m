@@ -10,6 +10,7 @@
 #import "LCMapView.h"
 #import "CreateYourOwnViewController.h"
 #import "PinCell.h"
+#import "MBProgressHUD.h"
 
 @interface PathFinalizationViewController () <UITableViewDelegate, UITableViewDataSource, PinCellDelegate>
 @property (weak, nonatomic) IBOutlet UITextField *itineraryTitle;
@@ -20,7 +21,7 @@
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (strong, nonatomic) IBOutlet UIView *createYourOwnView;
 @property (weak, nonatomic) IBOutlet UIButton *upButton;
-
+@property (strong, nonatomic) MBProgressHUD *hud; 
 @end
 
 @implementation PathFinalizationViewController
@@ -71,6 +72,9 @@
 #pragma mark - IBActions
 
 - (IBAction)didTapPost:(id)sender {
+    self.hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    self.hud.label.text = @"Uploading path...";
+    self.hud.contentColor = [UIColor colorWithRed:0 green:0.2 blue:0.453 alpha:1];
     self.itinerary.name = self.itineraryTitle.text;
     self.itinerary.pathDescription = self.itineraryDescription.text;
     NSArray *categories = @[@"Foodie", @"Entertainment", @"Nature"];
@@ -84,9 +88,7 @@
             NSLog(@"Error saving Path info to Parse");
         } else{
             NSLog(@"Successfulyy saved path to Parse");
-            for(int i = 0; i < [self.pinInfo count]; i++){
-                [self.pinInfo[i] saveInBackground];
-            }
+            [self.hud hideAnimated:YES];
             [self performSegueWithIdentifier:@"cyoToHomeSegue" sender:nil];
         }
     }];
