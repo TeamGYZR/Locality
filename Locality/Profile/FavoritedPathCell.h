@@ -14,5 +14,6 @@
 @property (strong, nonatomic) Itinerary *itinerary;
 @property (weak, nonatomic) IBOutlet UILabel *pathTitle;
 @property (weak, nonatomic) IBOutlet UILabel *pathDescription;
+@property (weak, nonatomic) IBOutlet UIImageView *categoryImageView;
 
 @end

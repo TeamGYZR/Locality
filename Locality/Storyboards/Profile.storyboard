@@ -38,7 +38,7 @@
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CyG-yK-LHc">
                                                     <rect key="frame" x="72" y="8" width="43" height="20"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
-                                                    <nil key="textColor"/>
+                                                    <color key="textColor" red="0.0" green="0.32852089410000002" blue="0.57488495110000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bF7-i2-avh">
@@ -47,11 +47,20 @@
                                                         <constraint firstAttribute="width" constant="288" id="io6-Uz-RmL"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <nil key="textColor"/>
+                                                    <color key="textColor" red="0.0" green="0.32852089410000002" blue="0.57488495110000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Qec-Gm-tev">
+                                                    <rect key="frame" x="8" y="8" width="49" height="49"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="49" id="ZUX-ge-TGc"/>
+                                                        <constraint firstAttribute="height" constant="49" id="qQr-VE-RBQ"/>
+                                                    </constraints>
+                                                </imageView>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstItem="Qec-Gm-tev" firstAttribute="top" secondItem="8PW-AD-e0Q" secondAttribute="top" constant="8" id="0wG-ra-Qrn"/>
+                                                <constraint firstItem="Qec-Gm-tev" firstAttribute="leading" secondItem="8PW-AD-e0Q" secondAttribute="leading" constant="8" id="IGP-4X-nQP"/>
                                                 <constraint firstItem="CyG-yK-LHc" firstAttribute="leading" secondItem="8PW-AD-e0Q" secondAttribute="leading" constant="72" id="M4i-nz-Ym0"/>
                                                 <constraint firstItem="CyG-yK-LHc" firstAttribute="top" secondItem="8PW-AD-e0Q" secondAttribute="top" constant="8" id="RHb-4v-O3d"/>
                                                 <constraint firstAttribute="bottom" secondItem="bF7-i2-avh" secondAttribute="bottom" constant="8" id="i2r-Qx-vBK"/>
@@ -61,6 +70,7 @@
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" red="0.69928407434409534" green="1" blue="0.89725271396127837" alpha="0.38134096746575341" colorSpace="custom" customColorSpace="displayP3"/>
                                         <connections>
+                                            <outlet property="categoryImageView" destination="Qec-Gm-tev" id="pAC-T8-1S3"/>
                                             <outlet property="pathDescription" destination="bF7-i2-avh" id="ZdT-pb-84H"/>
                                             <outlet property="pathTitle" destination="CyG-yK-LHc" id="5sl-vG-h3J"/>
                                         </connections>
