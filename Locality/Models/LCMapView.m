@@ -77,6 +77,9 @@
         CGPoint centerPoint = CGPointFromString(center);
         MKCoordinateRegion currentRegion = MKCoordinateRegionMake(CLLocationCoordinate2DMake(centerPoint.x, centerPoint.y), MKCoordinateSpanMake(0.025, 0.025));
         [mapView setRegion:currentRegion animated:NO];
+    } else {
+        MKCoordinateRegion currentRegion = MKCoordinateRegionMake(CLLocationCoordinate2DMake(self.currentLocation.coordinate.latitude, self.currentLocation.coordinate.longitude), MKCoordinateSpanMake(0.7, 0.7));
+        [mapView setRegion:currentRegion animated:NO];
     }
     if (!self.favoritedPaths) {
         [self drawPathForItinerary:self.itinerary];
