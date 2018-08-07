@@ -14,7 +14,7 @@
 #import "Path.h"
 #import "PathFinalizationViewController.h"
 #import "ItineraryPin.h"
-
+#import "AddPinInfoView.h"
 //trying to get different pins to display on the map
 #import "pinVenueAnnotation.h"
 #import "pinVenueAnnotationView.h"
@@ -32,7 +32,7 @@
 @property (strong, nonatomic) NSMutableArray *pinInfo;
 @property (nonatomic) CFTimeInterval startTime;
 @property (nonatomic) CFTimeInterval endTime;
-
+@property (strong, nonatomic)  AddPinInfoView * addpininfoview;
 @end
 
 @implementation CreateYourOwnViewController
@@ -60,13 +60,13 @@
     self.startTime = CACurrentMediaTime();
 }
 -(void) dismissView{
-    [UIView beginAnimations:nil context:nil];
+    [UIView beginAnimations:@"FadeIn" context:nil];
     [UIView setAnimationDuration:1];
     [self.addpininfoview setAlpha:0.0];
     [self.viewOverMapView setAlpha:0.0];
+    [UIView commitAnimations];
 }
 #pragma mark - Location Updates
-
 - (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray<CLLocation *> *)locations{
     self.currentLocation = [locations lastObject];
     [self.pathCoordinates addObject:self.currentLocation];
@@ -109,20 +109,16 @@
     UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         
     }];
-    
     UIAlertAction *continueAction = [UIAlertAction actionWithTitle:@"Add" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-       //self.progressView=[[UIView alloc] init];
-       
       self.addpininfoview=[[AddPinInfoView alloc] init];
        [self.addpininfoview setAlpha:0.0];
        [self.view addSubview:self.addpininfoview];
-        [UIView beginAnimations:nil context:nil];
-      [UIView setAnimationDuration:1];
+        [UIView beginAnimations:@"FadeIn" context:nil];
+        [UIView setAnimationDelegate:self];
+        [UIView setAnimationDuration:1];
        [self.addpininfoview setAlpha:1.0];
         self.viewOverMapView.alpha=0.8;
-       // [self.createPathMapView setAlpha:0];
-        //self.view.backgroundColor=[UIColor blackColor];
-       [UIView commitAnimations];
+      [UIView commitAnimations];
       [self addPinToMapView];
        }];
     [alert addAction:continueAction];
@@ -130,7 +126,6 @@
     [self presentViewController:alert animated:YES completion:^{
     }];
 }
-
 - (IBAction)didTapDone:(id)sender {
     [self.locationManager stopUpdatingLocation];
     self.itineraryDraft = [[Itinerary alloc] init];
@@ -188,12 +183,10 @@
 //        //NSDictionary *dictionary = [NSDictionary dictionaryWithObjectsAndKeys:latitudeString, @"latitude", longitudeString, @"longitude", @"", @"name", nil];
 //        //NSMutableDictionary *dictionary = [NSMutableDictionary dictionaryWithObjectsAndKeys:latitudeString, @"latitude", longitudeString, @"longitude", @"", @"name", nil];
         PFFile *pinTestPicture = [ItineraryPin getPFFileFromImage:[UIImage imageNamed:@"centralpark"]];
-        NSMutableDictionary *dictionary = [NSMutableDictionary dictionaryWithObjectsAndKeys:latitudeString, @"latitude", longitudeString, @"longitude", pinTestPicture, @"pictureData", nil];
+        NSMutableDictionary *dictionary = [NSMutableDictionary dictionaryWithObjectsAndKeys:latitudeString, @"latitude", longitudeString, @"longitude", pinTestPicture, @"pilnjnbnjkttedcnvjfhibbubrhllchdjdihcdjenbgvrucjucbbcnrufikvifntljctureData", nil];
         [self.itineraryDraft.pinnedLocations addObject:dictionary];
     }
     [self addPathsToParse];
-
-    
 }
 
 - (void)addPathsToParse{
