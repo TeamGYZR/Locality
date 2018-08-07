@@ -90,8 +90,8 @@
                                 <rect key="frame" x="0.0" y="64" width="375" height="156"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="e1A-1w-4dC" customClass="PFImageView">
-                                        <rect key="frame" x="8" y="24" width="93" height="101"/>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="e1A-1w-4dC">
+                                        <rect key="frame" x="8" y="24" width="95" height="95"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bob-ZV-sw9">
@@ -124,7 +124,7 @@
                     <connections>
                         <outlet property="fullName" destination="bob-ZV-sw9" id="2px-SW-gVC"/>
                         <outlet property="lcMapView" destination="g7D-ac-RRD" id="bgJ-kD-9nJ"/>
-                        <outlet property="profilePicture" destination="e1A-1w-4dC" id="Qwp-MA-yba"/>
+                        <outlet property="profilePicture" destination="e1A-1w-4dC" id="btK-yv-McE"/>
                         <outlet property="tableView" destination="TWT-eZ-fJN" id="Nyg-hE-lc9"/>
                         <outlet property="userName" destination="54w-JL-pgx" id="PD4-Ny-e1C"/>
                     </connections>
