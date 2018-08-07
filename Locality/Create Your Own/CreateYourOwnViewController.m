@@ -209,15 +209,6 @@
         holderArray[i] = cgPointString;
     }
     self.itineraryDraft.paths = [holderArray copy];
-//    [self.itineraryDraft saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
-//        if (error) {
-//            NSLog(@"Error saving paths to Parse: %@", error);
-//        }
-//        else{
-//            NSLog(@"Success saving paths to Parse");
-//            [self performSegueWithIdentifier:@"doneSegue" sender:nil];
-//        }
-//    }];
     [self performSegueWithIdentifier:@"doneSegue" sender:nil];
 }
 
