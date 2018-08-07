@@ -24,6 +24,7 @@
 		4C771D752107999F0055A90D /* DetailsCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C771D742107999F0055A90D /* DetailsCollectionViewController.m */; };
 		4C771D7821079A1A0055A90D /* DetailsHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C771D7721079A1A0055A90D /* DetailsHeaderView.m */; };
 		4C771D7B21079A690055A90D /* CommentCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C771D7A21079A690055A90D /* CommentCollectionCell.m */; };
+		4C7C6C9D211A06C50057A3EF /* FavoritedPathCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C7C6C9C211A06C50057A3EF /* FavoritedPathCell.m */; };
 		4C81D0D9210F7C8800064DBB /* CreateYourOwn.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4C81D0D8210F7C8800064DBB /* CreateYourOwn.storyboard */; };
 		4C81D0DD210F7FDE00064DBB /* CreateYourOwnViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C81D0DC210F7FDE00064DBB /* CreateYourOwnViewController.m */; };
 		4C81D0E0210FC66B00064DBB /* PathFinalizationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C81D0DF210FC66B00064DBB /* PathFinalizationViewController.m */; };
@@ -141,6 +142,8 @@
 		4C771D7721079A1A0055A90D /* DetailsHeaderView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DetailsHeaderView.m; sourceTree = "<group>"; };
 		4C771D7921079A690055A90D /* CommentCollectionCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CommentCollectionCell.h; sourceTree = "<group>"; };
 		4C771D7A21079A690055A90D /* CommentCollectionCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CommentCollectionCell.m; sourceTree = "<group>"; };
+		4C7C6C9B211A06C50057A3EF /* FavoritedPathCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FavoritedPathCell.h; sourceTree = "<group>"; };
+		4C7C6C9C211A06C50057A3EF /* FavoritedPathCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FavoritedPathCell.m; sourceTree = "<group>"; };
 		4C81D0D8210F7C8800064DBB /* CreateYourOwn.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CreateYourOwn.storyboard; sourceTree = "<group>"; };
 		4C81D0DB210F7FDE00064DBB /* CreateYourOwnViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CreateYourOwnViewController.h; sourceTree = "<group>"; };
 		4C81D0DC210F7FDE00064DBB /* CreateYourOwnViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CreateYourOwnViewController.m; sourceTree = "<group>"; };
@@ -334,6 +337,8 @@
 			children = (
 				4C6EBC012118CF94000BA46B /* ProfilePageViewController.h */,
 				4C6EBC022118CF94000BA46B /* ProfilePageViewController.m */,
+				4C7C6C9B211A06C50057A3EF /* FavoritedPathCell.h */,
+				4C7C6C9C211A06C50057A3EF /* FavoritedPathCell.m */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -886,6 +891,7 @@
 				8550B0A32106D2CA0009C845 /* FavoritesViewController.m in Sources */,
 				852FB5C7210FD38A003AC70A /* LCPathDetailViewController.m in Sources */,
 				4CDAC18720F4424100B3E7D4 /* main.m in Sources */,
+				4C7C6C9D211A06C50057A3EF /* FavoritedPathCell.m in Sources */,
 				4C771D6F21069E770055A90D /* ReviewViewController.m in Sources */,
 				4CEF1C50210BAE5600C69B15 /* Path.m in Sources */,
 				4CA36B5420FE90340056EB44 /* Venue.m in Sources */,
