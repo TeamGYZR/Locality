@@ -126,8 +126,8 @@
       [UIView commitAnimations];
       [self addPinToMapView];
        }];
-    [alert addAction:continueAction];
     [alert addAction:cancelAction];
+    [alert addAction:continueAction];
     [self presentViewController:alert animated:YES completion:^{
     }];
 }
