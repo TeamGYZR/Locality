@@ -14,7 +14,12 @@
 #import "Path.h"
 #import "PathFinalizationViewController.h"
 #import "ItineraryPin.h"
+
 #import "AddPinInfoView.h"
+
+#import "CLLocationManagerSingleton.h"
+
+
 //trying to get different pins to display on the map
 #import "pinVenueAnnotation.h"
 #import "pinVenueAnnotationView.h"
@@ -44,7 +49,7 @@
     [self.view addGestureRecognizer:tap];
     self.progressView.alpha=0;
     self.mapView.delegate = self;
-    self.locationManager = [[CLLocationManager alloc] init];
+    self.locationManager = [CLLocationManagerSingleton sharedSingleton].locationManager;
     self.locationManager.delegate = self;
     [self.locationManager requestWhenInUseAuthorization];
     self.pathCoordinates = [[NSMutableArray alloc] init];

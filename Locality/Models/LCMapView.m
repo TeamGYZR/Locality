@@ -10,11 +10,13 @@
 #import "LCPathDetailViewController.h"
 #import "pinVenueAnnotation.h"
 #import "pinVenueAnnotationView.h"
+#import "CLLocationManagerSingleton.h"
 
 @interface LCMapView()<MKMapViewDelegate, CLLocationManagerDelegate>
 @property (strong, nonatomic) Itinerary *itinerary;
 @property (strong, nonatomic) CLLocation *currentLocation;
 @property (strong, nonatomic) MKPolyline *polyline;
+@property (strong, nonatomic) NSMutableArray *favoritedPaths;
 @end
 
 @implementation LCMapView {
@@ -31,6 +33,8 @@
     return nil;
 }
 
+#pragma mark - Public Methods
+
 -(void)configureWithItinerary:(Itinerary *)itinerary isStatic:(BOOL)move showCurrentLocation:(BOOL)showCurrent{
     mapView = [[MKMapView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height)];
     mapView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
@@ -40,30 +44,61 @@
     mapView.zoomEnabled = !isStatic;
     mapView.scrollEnabled = !isStatic;
     mapView.showsUserLocation = showCurrent;
-    locationManager = [[CLLocationManager alloc] init];
+    locationManager = [CLLocationManagerSingleton sharedSingleton].locationManager;
     locationManager.delegate = self;
     self.itinerary = itinerary;
     [self addSubview:mapView];
     [locationManager requestLocation];
 }
 
--(void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray<CLLocation *> *)locations{
-    self.currentLocation = [locations lastObject];
-    NSString* center = [self.itinerary.paths objectAtIndex:(self.itinerary.paths.count/2)];
-    CGPoint centerPoint = CGPointFromString(center);
-    MKCoordinateRegion currentRegion = MKCoordinateRegionMake(CLLocationCoordinate2DMake(centerPoint.x, centerPoint.y), MKCoordinateSpanMake(0.025, 0.025));
-    [mapView setRegion:currentRegion animated:NO];
-    [self drawPath];
+- (void)configureWithFavoritedPaths:(NSArray *)favoritedPaths{
+    self.favoritedPaths = [[NSMutableArray alloc] init];
+    mapView = [[MKMapView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height)];
+    mapView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+    mapView.userInteractionEnabled = YES;
+    mapView.delegate = self;
+    mapView.zoomEnabled = YES;
+    mapView.scrollEnabled = YES;
+    mapView.showsUserLocation = YES;
+    locationManager = [[CLLocationManager alloc] init];
+    locationManager.delegate = self;
+    [self addSubview:mapView];
+    [locationManager requestLocation];
+    for (int i = 0; i < [favoritedPaths count]; i++) {
+        [self.favoritedPaths addObject:favoritedPaths[i][@"itinerary"]];
+    }
+    
 }
 
--(void)drawPath{
-    NSUInteger numPoints = [self.itinerary.paths count];
+#pragma mark - Private Methods
+-(void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray<CLLocation *> *)locations{
+    self.currentLocation = [locations lastObject];
+    if (self.itinerary) {
+        NSString* center = [self.itinerary.paths objectAtIndex:(self.itinerary.paths.count/2)];
+        CGPoint centerPoint = CGPointFromString(center);
+        MKCoordinateRegion currentRegion = MKCoordinateRegionMake(CLLocationCoordinate2DMake(centerPoint.x, centerPoint.y), MKCoordinateSpanMake(0.025, 0.025));
+        [mapView setRegion:currentRegion animated:NO];
+    } else {
+        MKCoordinateRegion currentRegion = MKCoordinateRegionMake(CLLocationCoordinate2DMake(self.currentLocation.coordinate.latitude, self.currentLocation.coordinate.longitude), MKCoordinateSpanMake(0.7, 0.7));
+        [mapView setRegion:currentRegion animated:NO];
+    }
+    if (!self.favoritedPaths) {
+        [self drawPathForItinerary:self.itinerary];
+    }
+    for (int i = 0; i < [self.favoritedPaths count]; i++) {
+        Itinerary *itinerary = self.favoritedPaths[i];
+         [self drawPathForItinerary:itinerary];
+    }
+}
+
+-(void)drawPathForItinerary:(Itinerary *)itinerary{
+    NSUInteger numPoints = [itinerary.paths count];
     if (numPoints > 1)
     {
         CLLocationCoordinate2D* coords = malloc(numPoints * sizeof(CLLocationCoordinate2D));
         for (int i = 0; i < numPoints; i++)
         {
-            NSString* current = [self.itinerary.paths objectAtIndex:i];
+            NSString* current = [itinerary.paths objectAtIndex:i];
             CGPoint currentPoint = CGPointFromString(current);
             coords[i] = CLLocationCoordinate2DMake(currentPoint.x, currentPoint.y);
         }
@@ -72,29 +107,14 @@
         
         [mapView addOverlay:self.polyline];
         [mapView setNeedsDisplay];
+        
     }
     
-//    PFQuery *query = [PFQuery queryWithClassName:@"ItineraryPin"];
-//    [query whereKey:@"itinerary" equalTo:self.itinerary];
-//    [query includeKey:@"pinPicture"];
-//    [query findObjectsInBackgroundWithBlock:^(NSArray *itineraryPins, NSError *error){
-//        if (error) {
-//            NSLog(@"error loading pins from Parse");
-//        } else {
-//            NSUInteger numPins = [itineraryPins count];
-//            for(int i = 0; i< numPins; i++){
-//                pinVenueAnnotation *pinAnnotation = [[pinVenueAnnotation alloc] initWithDictionary:self.itinerary.pinnedLocations[i]];
-//                [self->mapView addAnnotation:pinAnnotation];
-//            }
-//        }
-//    }];
-    NSUInteger numPins = [self.itinerary.pinnedLocations count];
+    NSUInteger numPins = [itinerary.pinnedLocations count];
     for(int i = 0; i< numPins; i++){
-        pinVenueAnnotation *pinAnnotation = [[pinVenueAnnotation alloc] initWithDictionary:self.itinerary.pinnedLocations[i]];
+        pinVenueAnnotation *pinAnnotation = [[pinVenueAnnotation alloc] initWithDictionary:itinerary.pinnedLocations[i]];
         [mapView addAnnotation:pinAnnotation];
     }
-    
-   
 }
 
 - (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation{
@@ -130,18 +150,5 @@
     NSLog(@"THERE WAS AN ERROR - %@", error);
 }
 
-//-(void)layoutSubviews{
-//    mapView = [[MKMapView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height)];
-//    mapView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-//    mapView.userInteractionEnabled = YES;
-//    mapView.delegate = self;
-//}
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect {
-    // Drawing code
-}
-*/
 
 @end

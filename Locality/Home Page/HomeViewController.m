@@ -17,6 +17,7 @@
 #import "MBProgressHUD.h"
 #import <AFNetworking/UIImageView+AFNetworking.h>
 #import "PlacesSearchTableViewController.h"
+#import "CLLocationManagerSingleton.h"
 
 @interface HomeViewController () <UITableViewDelegate, UITableViewDataSource, CLLocationManagerDelegate>
 @property (strong, nonatomic) NSArray *itineraries;
@@ -26,7 +27,6 @@
 @property (weak, nonatomic) IBOutlet UIButton *foodieButton;
 @property (weak, nonatomic) IBOutlet UIButton *entertainmentButton;
 @property (weak, nonatomic) IBOutlet UIButton *natureButton;
-//@property (weak, nonatomic) IBOutlet UIView *searchBarView;
 @property (strong, nonatomic) PlacesSearchTableViewController *searchTableViewController;
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *createPathBarButton;
 
@@ -54,15 +54,17 @@
     [searchBar sizeToFit];
     searchBar.placeholder = @"Search by pins";
     searchBar.delegate = self;
-    searchBar.barTintColor = [UIColor colorWithRed:0.96078 green:1.0 blue:0.8039 alpha:0.5];
+    //searchBar.barTintColor = [UIColor colorWithRed:0.96078 green:1.0 blue:0.8039 alpha:0.5];
     self.navigationItem.titleView = self.searchController.searchBar;
     self.searchController.obscuresBackgroundDuringPresentation = YES;
     self.definesPresentationContext = YES;
     self.searchController.hidesNavigationBarDuringPresentation = NO;
-    self.locationManager = [[CLLocationManager alloc] init];
+    self.locationManager = [CLLocationManagerSingleton sharedSingleton].locationManager;
     self.locationManager.delegate = self;
     if(CLLocationManager.locationServicesEnabled){
         self.hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+        self.hud.label.text = @"Fetching paths...";
+        self.hud.contentColor = [UIColor colorWithRed:0 green:0.2 blue:0.453 alpha:1];
         [self.locationManager requestLocation];
     }
 }
@@ -75,6 +77,7 @@
       if(placemarks){
           CLPlacemark * placemark=[placemarks firstObject];
           self.labefiled.text = placemark.locality;
+          self.labefiled.alpha=1;
           [self.hud hideAnimated:YES];
         //[self photoFecth];
      }else{

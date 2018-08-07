@@ -296,6 +296,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="barTintColor" red="0.73842910559999997" green="0.99209137469999997" blue="0.931113564" alpha="0.49550513699999998" colorSpace="custom" customColorSpace="displayP3"/>
                     </tabBar>
                     <connections>
                         <segue destination="QaF-JU-SEw" kind="relationship" relationship="viewControllers" id="wme-za-GXZ"/>
@@ -314,6 +315,7 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="2kX-7b-ciR">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="0.73842910559999997" green="0.99209137469999997" blue="0.931113564" alpha="0.49550513699999998" colorSpace="custom" customColorSpace="displayP3"/>
                     </navigationBar>
                     <connections>
                         <segue destination="oaC-0K-dFU" kind="relationship" relationship="rootViewController" id="aVh-Om-ZXE"/>
@@ -342,6 +344,7 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="2zc-Pp-s9J">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="0.73842910560197439" green="0.99209137469999997" blue="0.93111356404129064" alpha="0.49550513699999998" colorSpace="custom" customColorSpace="displayP3"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
