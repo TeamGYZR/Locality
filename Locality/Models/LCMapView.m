@@ -10,6 +10,7 @@
 #import "LCPathDetailViewController.h"
 #import "pinVenueAnnotation.h"
 #import "pinVenueAnnotationView.h"
+#import "CLLocationManagerSingleton.h"
 
 @interface LCMapView()<MKMapViewDelegate, CLLocationManagerDelegate>
 @property (strong, nonatomic) Itinerary *itinerary;
@@ -43,7 +44,7 @@
     mapView.zoomEnabled = !isStatic;
     mapView.scrollEnabled = !isStatic;
     mapView.showsUserLocation = showCurrent;
-    locationManager = [[CLLocationManager alloc] init];
+    locationManager = [CLLocationManagerSingleton sharedSingleton].locationManager;
     locationManager.delegate = self;
     self.itinerary = itinerary;
     [self addSubview:mapView];
