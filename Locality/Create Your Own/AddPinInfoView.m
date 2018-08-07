@@ -7,9 +7,8 @@
 //
 
 #import "AddPinInfoView.h"
-
+//#import "CreateYourOwnViewController.h"
 @implementation AddPinInfoView
-
 // Only override drawRect: if you perform custom drawing.
 // An empty implementation adversely affects performance during animation.
 - (instancetype)initWithFrame:(CGRect)frame{
@@ -64,6 +63,18 @@
     }];
     self.pinImageView.image=pinneddeditedPicture;
 }
+- (IBAction)didTapCancel:(id)sender{
+    self.createPath=[[CreateYourOwnViewController alloc]init];
+    [UIView beginAnimations:nil context:nil];
+    [UIView setAnimationDuration:1];
+    [self.pinInfoCustomView setAlpha:0.0];
+   [self.createPath.viewOverMapView setAlpha:0.0]; //couldn't dimiss the view, help???
+}
+- (IBAction)didTapShare:(id)sender {
+    
+
+}
+
 
 
 @end

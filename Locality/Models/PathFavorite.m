@@ -27,6 +27,7 @@
 + (void)removeFavoritedPath:(Itinerary *)itinerary withCompletion:(PFBooleanResultBlock)completion{
     PFQuery *query = [PFQuery queryWithClassName:@"PathFavorite"];
     [query whereKey:@"user" equalTo: PFUser.currentUser];
+    [query whereKey:@"itinerary" equalTo:itinerary];
     [query getFirstObjectInBackgroundWithBlock:^(PFObject * _Nullable object, NSError * _Nullable error) {
         if (error) {
             NSLog(@"error unfavoriting path");

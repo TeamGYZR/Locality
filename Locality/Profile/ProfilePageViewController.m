@@ -11,16 +11,22 @@
 #import "User.h"
 #import "ParseUI/ParseUI.h"
 #import "AppDelegate.h"
+#import "FavoritedPathCell.h"
 
-@interface ProfilePageViewController ()
+
+@interface ProfilePageViewController () <UITableViewDelegate, UITableViewDataSource>
 
 
-@property (weak, nonatomic) IBOutlet PFImageView *profilePicture;
+@property (weak, nonatomic) IBOutlet UIImageView *profilePicture;
+//@property (weak, nonatomic) IBOutlet PFImageView *profilePicture;
 @property (weak, nonatomic) IBOutlet UILabel *fullName;
 @property (weak, nonatomic) IBOutlet UILabel *userName;
 @property (nonatomic, strong) User *user;
 @property (weak, nonatomic) IBOutlet LCMapView *lcMapView;
-//@property (strong, nonatomic) NSArray *fa
+@property (strong, nonatomic) NSArray *favoritedPaths;
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (nonatomic) BOOL showFavorites;
+
 
 
 @end
@@ -38,12 +44,15 @@
     [self.fullName sizeToFit];
     self.userName.text = self.user.username;
     [self.userName sizeToFit];
-    self.profilePicture.file = self.user.profilePicture;
-    [self.profilePicture loadInBackground];
+    [self loadProfilePicture];
+    self.tableView.dataSource = self;
+    self.tableView.delegate = self;
 }
 
 - (void)viewWillAppear:(BOOL)animated{
     [self queryForFavorites];
+    [self.tableView setFrame:CGRectMake(0, self.view.bounds.size.height, self.tableView.bounds.size.width, self.tableView.bounds.size.height)];
+    self.showFavorites = NO;
 }
 
 #pragma mark - Private Methods
@@ -55,9 +64,23 @@
         if (error) {
             NSLog(@"error loading current user favorites");
         } else{
+            self.favoritedPaths = [[NSArray alloc] initWithArray:favorites];
             [self.lcMapView configureWithFavoritedPaths:favorites];
         }
     }];
+}
+
+- (void)loadProfilePicture{
+    PFFile *imageFile = self.user.profilePicture;
+    [imageFile getDataInBackgroundWithBlock:^(NSData * _Nullable data, NSError * _Nullable error) {
+        if (error) {
+            NSLog(@"error retrieving profile picture data");
+        } else {
+            self.profilePicture.image = [UIImage imageWithData:data];
+        }
+    }];
+    self.profilePicture.layer.cornerRadius = self.profilePicture.frame.size.width / 2;
+    self.profilePicture.clipsToBounds = YES;
 }
 
 #pragma mark - IB Actions
@@ -70,6 +93,31 @@
     }];
 }
 
+- (IBAction)didTapSavedPaths:(id)sender {
+    if (self.showFavorites) {
+        [UIView animateWithDuration:0.4 animations:^{
+            [self.tableView setFrame:CGRectMake(0, self.view.bounds.size.height, self.tableView.bounds.size.width, self.tableView.bounds.size.height)];
+            self.showFavorites = NO;
+        }];
+    } else{
+        [self.tableView reloadData];
+        [UIView animateWithDuration:0.4 animations:^{
+            [self.tableView setFrame:CGRectMake(0, 432, 375, 235)];
+        }];
+        self.showFavorites = YES;
+    }
+}
+
+#pragma mark - UITableView Methods
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    return self.favoritedPaths.count;
+}
+- (nonnull UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    FavoritedPathCell *cell = [tableView dequeueReusableCellWithIdentifier:@"FavoritedPathCell" forIndexPath:indexPath];
+    cell.itinerary = self.favoritedPaths[indexPath.row][@"itinerary"];
+    return cell;
+}
 
 /*
 #pragma mark - Navigation

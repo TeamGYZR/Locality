@@ -68,6 +68,9 @@
                             <state key="normal" title="Share">
                                 <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </state>
+                            <connections>
+                                <action selector="didTapShare:" destination="-1" eventType="touchUpInside" id="jTM-Aw-fIp"/>
+                            </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="afb-M8-jgv">
                             <rect key="frame" x="8" y="21" width="77" height="30"/>
@@ -75,6 +78,9 @@
                             <state key="normal" title="Cancel">
                                 <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </state>
+                            <connections>
+                                <action selector="didTapCancel:" destination="-1" eventType="touchUpInside" id="655-IV-vCJ"/>
+                            </connections>
                         </button>
                         <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="Description..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3cU-GK-A9X">
                             <rect key="frame" x="144" y="127" width="191" height="123"/>
