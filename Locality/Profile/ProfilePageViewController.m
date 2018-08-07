@@ -17,7 +17,8 @@
 @interface ProfilePageViewController () <UITableViewDelegate, UITableViewDataSource>
 
 
-@property (weak, nonatomic) IBOutlet PFImageView *profilePicture;
+@property (weak, nonatomic) IBOutlet UIImageView *profilePicture;
+//@property (weak, nonatomic) IBOutlet PFImageView *profilePicture;
 @property (weak, nonatomic) IBOutlet UILabel *fullName;
 @property (weak, nonatomic) IBOutlet UILabel *userName;
 @property (nonatomic, strong) User *user;
@@ -43,8 +44,7 @@
     [self.fullName sizeToFit];
     self.userName.text = self.user.username;
     [self.userName sizeToFit];
-    self.profilePicture.file = self.user.profilePicture;
-    [self.profilePicture loadInBackground];
+    [self loadProfilePicture];
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
 }
@@ -68,6 +68,19 @@
             [self.lcMapView configureWithFavoritedPaths:favorites];
         }
     }];
+}
+
+- (void)loadProfilePicture{
+    PFFile *imageFile = self.user.profilePicture;
+    [imageFile getDataInBackgroundWithBlock:^(NSData * _Nullable data, NSError * _Nullable error) {
+        if (error) {
+            NSLog(@"error retrieving profile picture data");
+        } else {
+            self.profilePicture.image = [UIImage imageWithData:data];
+        }
+    }];
+    self.profilePicture.layer.cornerRadius = self.profilePicture.frame.size.width / 2;
+    self.profilePicture.clipsToBounds = YES;
 }
 
 #pragma mark - IB Actions
