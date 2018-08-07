@@ -29,6 +29,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *startButton;
 @property (strong, nonatomic) IBOutlet UILabel *viewLabel;
 @property (weak, nonatomic) IBOutlet UIButton *favoriteButton;
+@property (strong, nonatomic) IBOutlet UILabel *timeStampLabel;
 @property (nonatomic) BOOL favorited;
 
 
@@ -50,7 +51,9 @@
             NSLog(@"user has been saved");
         }];
     }
-    
+    if(self.itinerary.timeStamp){
+        self.timeStampLabel.text = self.itinerary.timeStamp; 
+    }
     if (self.itinerary.creator.profilePicture != nil) {
         self.userProfileImageView.file = self.itinerary.creator.profilePicture;
         [self.userProfileImageView loadInBackground];
