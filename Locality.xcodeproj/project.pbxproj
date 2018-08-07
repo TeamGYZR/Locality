@@ -63,6 +63,7 @@
 		8544B9A1210FAE260028D43F /* LCMapView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8544B9A0210FAE260028D43F /* LCMapView.m */; };
 		8550B0A32106D2CA0009C845 /* FavoritesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8550B0A22106D2CA0009C845 /* FavoritesViewController.m */; };
 		8550B0AC2107E4CE0009C845 /* ResultsViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8550B0AA2107E4CE0009C845 /* ResultsViewCell.m */; };
+		85526A0A2119EBC8003B0ED9 /* CLLocationManagerSingleton.m in Sources */ = {isa = PBXBuildFile; fileRef = 85526A092119EBC8003B0ED9 /* CLLocationManagerSingleton.m */; };
 		8593ADF02118A9B700124B93 /* Dosis-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8593ADE92118A9B600124B93 /* Dosis-Bold.ttf */; };
 		8593ADF12118A9B700124B93 /* Dosis-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8593ADEA2118A9B600124B93 /* Dosis-ExtraBold.ttf */; };
 		8593ADF22118A9B700124B93 /* Dosis-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8593ADEB2118A9B700124B93 /* Dosis-Light.ttf */; };
@@ -215,6 +216,8 @@
 		8550B0A22106D2CA0009C845 /* FavoritesViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FavoritesViewController.m; sourceTree = "<group>"; };
 		8550B0AA2107E4CE0009C845 /* ResultsViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResultsViewCell.m; sourceTree = "<group>"; };
 		8550B0AB2107E4CE0009C845 /* ResultsViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResultsViewCell.h; sourceTree = "<group>"; };
+		85526A082119EBC8003B0ED9 /* CLLocationManagerSingleton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CLLocationManagerSingleton.h; sourceTree = "<group>"; };
+		85526A092119EBC8003B0ED9 /* CLLocationManagerSingleton.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CLLocationManagerSingleton.m; sourceTree = "<group>"; };
 		8593ADE92118A9B600124B93 /* Dosis-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Dosis-Bold.ttf"; path = "Dosis/Dosis-Bold.ttf"; sourceTree = "<group>"; };
 		8593ADEA2118A9B600124B93 /* Dosis-ExtraBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Dosis-ExtraBold.ttf"; path = "Dosis/Dosis-ExtraBold.ttf"; sourceTree = "<group>"; };
 		8593ADEB2118A9B700124B93 /* Dosis-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Dosis-Light.ttf"; path = "Dosis/Dosis-Light.ttf"; sourceTree = "<group>"; };
@@ -553,6 +556,8 @@
 				8544B9A0210FAE260028D43F /* LCMapView.m */,
 				4C6EBC072118EA95000BA46B /* PathFavorite.h */,
 				4C6EBC082118EA95000BA46B /* PathFavorite.m */,
+				85526A082119EBC8003B0ED9 /* CLLocationManagerSingleton.h */,
+				85526A092119EBC8003B0ED9 /* CLLocationManagerSingleton.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -889,6 +894,7 @@
 				4C771D752107999F0055A90D /* DetailsCollectionViewController.m in Sources */,
 				A8BF41CA2110B1CE001DAB81 /* PathCell.m in Sources */,
 				4CDAC17920F4424100B3E7D4 /* AppDelegate.m in Sources */,
+				85526A0A2119EBC8003B0ED9 /* CLLocationManagerSingleton.m in Sources */,
 				85CCE6F921127F22004727E2 /* PlacesSearchTableViewController.m in Sources */,
 				4CA36B74210128F20056EB44 /* EditProfileViewController.m in Sources */,
 				4C771D7B21079A690055A90D /* CommentCollectionCell.m in Sources */,
