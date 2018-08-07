@@ -10,6 +10,7 @@
 #import "LCMapView.h"
 #import "User.h"
 #import "ParseUI/ParseUI.h"
+#import "AppDelegate.h"
 
 @interface ProfilePageViewController ()
 
@@ -61,7 +62,12 @@
 
 #pragma mark - IB Actions
 - (void)onTapLogout:(UIBarButtonItem *)logoutButton{
-    
+    [PFUser logOutInBackgroundWithBlock:^(NSError * _Nullable error) {
+        AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Login" bundle:nil];
+        ProfilePageViewController *loginViewController = [storyboard instantiateViewControllerWithIdentifier:@"LoginViewController"];
+        appDelegate.window.rootViewController = loginViewController;
+    }];
 }
 
 
