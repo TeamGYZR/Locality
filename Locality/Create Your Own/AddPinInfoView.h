@@ -11,8 +11,7 @@
 
 @protocol AddPinInfoViewDelegate
 -(void)didTapViewCancel;
--(void)didTapViewShare;
-@property (strong, nonatomic) UIImage * imageByTheUser;
+-(void)didTapViewShareWithImage:(UIImage *)pinImage withName:(NSString *)pinName withDescription:(NSString *)pinDescription;
 @property bool  check;
 @end
 
@@ -23,6 +22,7 @@
 @property (weak, nonatomic) IBOutlet UIImageView *pinImageView;
 @property (weak, nonatomic) IBOutlet UIButton *cancelButton;
 @property (nonatomic,weak) id<AddPinInfoViewDelegate> delegate;
+@property (strong, nonatomic) UIImage *pinneddeditedPicture;
 -(void) didTappedCancel;
 -(void) customnInt;
 
