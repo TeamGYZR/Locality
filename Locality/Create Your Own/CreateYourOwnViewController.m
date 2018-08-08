@@ -35,6 +35,9 @@
 @property (nonatomic) CFTimeInterval startTime;
 @property (nonatomic) CFTimeInterval endTime;
 @property (strong, nonatomic)  AddPinInfoView * addpininfoview;
+@property (strong, nonatomic) UIImage *pinImage;
+@property (strong, nonatomic) NSString *pinName;
+@property (strong, nonatomic) NSString *pinDescription;
 @end
 
 @implementation CreateYourOwnViewController
@@ -181,11 +184,15 @@
     NSString *latitudeString = [[NSNumber numberWithDouble:currentPin.coordinate.latitude] stringValue];
     NSString *longitudeString = [[NSNumber numberWithDouble:currentPin.coordinate.longitude] stringValue];
     PFFile *pictureData = nil;
-    if(imageByTheUser){
-        pictureData = [ItineraryPin getPFFileFromImage:imageByTheUser];
+    if(self.pinImage){
+        pictureData = [ItineraryPin getPFFileFromImage:self.pinImage];
     }
     NSMutableDictionary *dictionary = [NSMutableDictionary dictionaryWithObjectsAndKeys:latitudeString, @"latitude", longitudeString, @"longitude", pictureData, @"pictureData", nil];
     [self.itineraryDraft.pinnedLocations addObject:dictionary];
+    if (self.pinName) {
+        [self.itineraryDraft.pinnedLocations[pinsCount] setObject:self.pinName forKey:@"name"];
+    }
+    
 }
 
 -(void)addPathsToParse{
@@ -208,17 +215,20 @@
     self.imageData = UIImagePNGRepresentation(pinneddeditedPicture);
 }
 
-#pragma mark - Public Methods
+#pragma mark - Delegate Methods
 - (void)didTapViewCancel{
     [self dismissView];
 }
--(void) didTapViewShare{
+
+-(void) didTapViewShareWithImage:(UIImage *)pinImage withName:(NSString *)pinName withDescription:(NSString *)pinDescription{
+    self.pinImage = pinImage;
+    self.pinName = pinName;
+    self.pinDescription = pinDescription;
     [self dismissView];
 }
 
 #pragma mark - Error Handling
-
-- (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error{
+-(void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error{
     NSLog(@"There was an error with the current location manager: %@", error);
 }
 
@@ -231,13 +241,7 @@
         UINavigationController *navigationController = [segue destinationViewController];
         PathFinalizationViewController *pathFinalizationVC = (PathFinalizationViewController *)navigationController.topViewController;
         pathFinalizationVC.itinerary = self.itineraryDraft;
-        pathFinalizationVC.pinInfo = self.pinInfo; 
+        pathFinalizationVC.pinInfo = self.pinInfo;
     }
 }
-
-
-@synthesize imageByTheUser;
-
-@synthesize check;
-
 @end
