@@ -15,8 +15,6 @@
 @interface LCPathDetailViewController ()
 @property (weak, nonatomic) IBOutlet LCMapView *lcMapView;
 @property (weak, nonatomic) IBOutlet UILabel *pathNameLabel;
-@property (weak, nonatomic) IBOutlet UILabel *pathDescriptionLabel;
-@property (weak, nonatomic) IBOutlet PFImageView *userProfileImageView;
 @property (weak, nonatomic) IBOutlet UILabel *userNameLabel;
 @property (strong, nonatomic) NSMutableArray *photosForSlideshow;
 @property (weak, nonatomic) IBOutlet UIView *slideBarView;
@@ -31,6 +29,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *favoriteButton;
 @property (strong, nonatomic) IBOutlet UILabel *timeStampLabel;
 @property (nonatomic) BOOL favorited;
+@property (weak, nonatomic) IBOutlet UITextView *descriptionTextView;
 
 
 @end
@@ -41,7 +40,13 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.pathNameLabel.text = self.itinerary.name;
-    self.pathDescriptionLabel.text = self.itinerary.pathDescription;
+    [self.pathNameLabel sizeToFit];
+    self.descriptionTextView.text = self.itinerary.pathDescription;
+    self.descriptionTextView.layer.cornerRadius = 10.0f;
+    self.descriptionTextView.layer.borderWidth = 2.0;
+    self.descriptionTextView.layer.borderColor = [UIColor colorWithRed:.1843 green:.28235 blue:.34509 alpha:.7].CGColor;
+    self.descriptionTextView.clipsToBounds= YES;
+    
     self.userNameLabel.text = self.itinerary.creator.name;
     self.viewLabel.text = [NSString stringWithFormat:@"%lu", [self.itinerary.uniqueUserViews count]];
     User *currentUser = (User *)[PFUser currentUser];
@@ -54,13 +59,8 @@
     if(self.itinerary.timeStamp){
         self.timeStampLabel.text = self.itinerary.timeStamp; 
     }
-    if (self.itinerary.creator.profilePicture != nil) {
-        self.userProfileImageView.file = self.itinerary.creator.profilePicture;
-        [self.userProfileImageView loadInBackground];
-    }
     [self.lcMapView configureWithItinerary:self.itinerary isStatic:NO showCurrentLocation:YES];
     [self seedTesterImageArray];
-    //query to get path favorite object
     [self queryForPathFavorite];
     
     UISwipeGestureRecognizer *leftSwipe = [[UISwipeGestureRecognizer alloc]initWithTarget:self action:@selector(swipeHandler:)];
@@ -113,12 +113,12 @@
 #pragma mark - Handling Favorites
 
 -(void)setAFilledStar{
-    UIImage *favoriteButtonImage = [UIImage imageNamed:@"star"];
+    UIImage *favoriteButtonImage = [UIImage imageNamed:@"filledBlueStar"];
     [self.favoriteButton setImage:favoriteButtonImage forState:UIControlStateNormal];
 }
 
 -(void)setAnEmptyStar{
-    UIImage *unfavoriteButtonImage = [UIImage imageNamed:@"emptyStar"];
+    UIImage *unfavoriteButtonImage = [UIImage imageNamed:@"emptyBlueStar"];
     [self.favoriteButton setImage:unfavoriteButtonImage forState:UIControlStateNormal];
 }
 
@@ -154,8 +154,6 @@
         [self.view bringSubviewToFront:self.slideBarView];
         [self.view bringSubviewToFront:self.headerView];
         [self.view bringSubviewToFront:self.pathNameLabel];
-        [self.view bringSubviewToFront:self.userProfileImageView];
-        [self.view bringSubviewToFront:self.pathDescriptionLabel];
         [self.view bringSubviewToFront:self.startButton];
         [self.view bringSubviewToFront:self.favoriteButton];
     } else {
