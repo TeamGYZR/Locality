@@ -202,8 +202,6 @@
     [self addPathsToParse];
 }
 
-
-
 - (void)addPathsToParse{
     NSString *cgPointString = nil;
     self.itineraryDraft.paths = [[NSArray alloc] init];
