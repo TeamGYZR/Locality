@@ -29,7 +29,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="scV-cc-at7">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="scV-cc-at7" customClass="PFImageView">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
@@ -169,12 +169,12 @@
                         <outlet property="lcMapView" destination="fnK-CW-HBW" id="pIP-E7-BS0"/>
                         <outlet property="pageControl" destination="zlN-qP-p8e" id="RR4-Ud-130"/>
                         <outlet property="pathNameLabel" destination="tRB-RC-YXt" id="A5Q-RD-NII"/>
+                        <outlet property="pfImageView" destination="scV-cc-at7" id="7es-bJ-IUb"/>
                         <outlet property="pinDescriptionLabel" destination="5c7-gG-br9" id="rSg-IP-m4G"/>
                         <outlet property="pinTitleLabel" destination="JkV-P5-Ajh" id="dqG-Wu-kfj"/>
                         <outlet property="slideBarView" destination="i0k-8E-Ppq" id="pa4-pR-eH6"/>
                         <outlet property="startButton" destination="y5g-DC-h4o" id="n75-Jh-mcf"/>
                         <outlet property="timeStampLabel" destination="7Y0-m7-oxW" id="CJr-f0-4fC"/>
-                        <outlet property="uiImageView" destination="scV-cc-at7" id="Vka-0y-HxV"/>
                         <outlet property="userNameLabel" destination="4vO-Gt-SUK" id="aBf-0N-NVt"/>
                         <outlet property="viewLabel" destination="2HF-Fx-RwW" id="Erq-Js-bAw"/>
                     </connections>
