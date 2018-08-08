@@ -175,9 +175,7 @@
     }
     return nil;
 }
-
-
-- (void)addPinsToParse{
+-(void)addPinsToParse{
     NSUInteger pinsCount = [self.pinCoordinates count]-1;
     CLLocation *currentPin = [self.pinCoordinates objectAtIndex:pinsCount];
     NSString *latitudeString = [[NSNumber numberWithDouble:currentPin.coordinate.latitude] stringValue];
