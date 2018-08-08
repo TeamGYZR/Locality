@@ -8,7 +8,7 @@
 
 #import "LCPathDetailViewController.h"
 #import "LCMapView.h"
-#import "Parse.h"
+#import "Parse.h"             
 #import "PathFavorite.h"
 #import "User.h"
 
@@ -30,12 +30,9 @@
 @property (strong, nonatomic) IBOutlet UILabel *timeStampLabel;
 @property (nonatomic) BOOL favorited;
 @property (weak, nonatomic) IBOutlet UITextView *descriptionTextView;
-
-
 @end
 
 @implementation LCPathDetailViewController
-
 #pragma mark - Navigation Controller
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -139,9 +136,6 @@
         }
     }];
 }
-
-
-
 #pragma mark - Handling Swipe Gestures
 - (void)rightSwipe{
     if (self.currentPhotoIndex != 0) {
@@ -181,23 +175,15 @@
     } completion:^(BOOL finished) {
     }];
 }
-
 #pragma mark - Image Array Seeder
-
-- (void)seedTesterImageArray{
+-(void)seedTesterImageArray{
     self.photosForSlideshow = [[NSMutableArray alloc] init];
     [self.photosForSlideshow addObject:[UIImage imageNamed:@"golgenGate"]];
     [self.photosForSlideshow addObject:[UIImage imageNamed:@"centralpark"]];
     [self.photosForSlideshow addObject:[UIImage imageNamed:@"frenchfries"]];
     [self.photosForSlideshow addObject:[UIImage imageNamed:@"macaroons"]];
 }
-
-
-//- (void)
-
-
 #pragma mark - Navigation
-
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     // Get the new view controller using [segue destinationViewController].

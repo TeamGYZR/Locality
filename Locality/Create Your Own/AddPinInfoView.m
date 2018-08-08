@@ -7,10 +7,7 @@
 //
 
 #import "AddPinInfoView.h"
-//#import "CreateYourOwnViewController.h"
 @implementation AddPinInfoView
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
 - (instancetype)initWithFrame:(CGRect)frame{
   self=[super initWithFrame:frame];
 
@@ -18,11 +15,6 @@
         [self customnInt];
     }
     return self;
-}
-- (void)setDelegate:(id<AddPinInfoViewDelegate>)delegate{
-      _delegate=delegate;
-    //[self didTappedCancel];
-//   [self.delegate didTapViewCancel:self.delegate];
 }
 -(IBAction)didTapCameraButton:(id)sender{
     UIImagePickerController *imagePicker = [UIImagePickerController new];
@@ -47,9 +39,6 @@
     self.pinInfoCustomView.layer.shadowOpacity=0.8;
    self.pinInfoCustomView.frame=self.bounds;
     [self addSubview:self.pinInfoCustomView];
-   
-   // [self.cancelButton addTarget:self.delegate action:@selector(didTappedCancel) forControlEvents:UIControlEventTouchUpInside];
-//    [self setDelegate:_delegate];
 }
 - (BOOL)pointInside:(CGPoint)point withEvent:(UIEvent *)event{
     for (UIView * view in [self subviews]) {
@@ -71,17 +60,7 @@
     }];
     self.pinImageView.image=pinneddeditedPicture;
     self.delegate.imageByTheUser=pinneddeditedPicture;
-    self.delegate.check=true;
 }
-//- (IBAction)didTapCancel:(id)sender{
-//    self.createPath=(CreateYourOwnViewController*)[UIApplication sharedApplication].keyWindow.superview;
-//    //self.createPath=[[CreateYourOwnViewController alloc]init];
-//    [UIView beginAnimations:@"FadeOut" context:nil];
-//    [UIView setAnimationDuration:1];
-//    [self.pinInfoCustomView setAlpha:0.0];
-//    [self.createPath.viewOverMapView setAlpha:0.0]; //couldn't dimiss the view, help???
-//    [UIView commitAnimations];
-//}
 - (void)didTappedCancel{
     [self.delegate didTapViewCancel];
 }

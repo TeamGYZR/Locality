@@ -13,9 +13,7 @@
 -(void)didTapViewCancel;
 -(void)didTapViewShare;
 @property (strong, nonatomic) UIImage * imageByTheUser;
-@property bool  check;
 @end
-
 @interface AddPinInfoView : UIView<UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 @property (strong, nonatomic) IBOutlet UIView *pinInfoCustomView;
 @property (weak, nonatomic) IBOutlet UITextField *pinNameField;
