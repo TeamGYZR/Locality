@@ -18,7 +18,6 @@
 
 
 @property (weak, nonatomic) IBOutlet UIImageView *profilePicture;
-//@property (weak, nonatomic) IBOutlet PFImageView *profilePicture;
 @property (weak, nonatomic) IBOutlet UILabel *fullName;
 @property (weak, nonatomic) IBOutlet UILabel *userName;
 @property (nonatomic, strong) User *user;
@@ -26,8 +25,6 @@
 @property (strong, nonatomic) NSArray *favoritedPaths;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic) BOOL showFavorites;
-
-
 
 @end
 

@@ -36,10 +36,12 @@
 #pragma mark - Public Methods
 
 -(void)configureWithItinerary:(Itinerary *)itinerary isStatic:(BOOL)move showCurrentLocation:(BOOL)showCurrent{
+    //move
     mapView = [[MKMapView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height)];
     mapView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     mapView.userInteractionEnabled = YES;
     mapView.delegate = self;
+    //keep
     isStatic = move;
     mapView.zoomEnabled = !isStatic;
     mapView.scrollEnabled = !isStatic;
@@ -47,11 +49,13 @@
     locationManager = [CLLocationManagerSingleton sharedSingleton].locationManager;
     locationManager.delegate = self;
     self.itinerary = itinerary;
+    //move
     [self addSubview:mapView];
+    //stay w location manager
     [locationManager requestLocation];
 }
 
-- (void)configureWithFavoritedPaths:(NSArray *)favoritedPaths{
+- (void)configureWithFavoritedPaths:(NSArray<Itinerary *> *)favoritedPaths{
     self.favoritedPaths = [[NSMutableArray alloc] init];
     mapView = [[MKMapView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height)];
     mapView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
@@ -84,10 +88,11 @@
     }
     if (!self.favoritedPaths) {
         [self drawPathForItinerary:self.itinerary];
-    }
-    for (int i = 0; i < [self.favoritedPaths count]; i++) {
-        Itinerary *itinerary = self.favoritedPaths[i];
-         [self drawPathForItinerary:itinerary];
+    } else{
+        for (int i = 0; i < [self.favoritedPaths count]; i++) {
+            Itinerary *itinerary = self.favoritedPaths[i];
+            [self drawPathForItinerary:itinerary];
+        }
     }
 }
 

@@ -26,7 +26,7 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="TWT-eZ-fJN">
                                 <rect key="frame" x="0.0" y="432" width="375" height="235"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" red="0.87843137250000003" green="0.98431372549999996" blue="0.98823529409999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="FavoritedPathCell" rowHeight="77" id="EKH-vt-aIz" customClass="FavoritedPathCell">
                                         <rect key="frame" x="0.0" y="28" width="375" height="77"/>
@@ -68,7 +68,7 @@
                                                 <constraint firstItem="bF7-i2-avh" firstAttribute="leading" secondItem="8PW-AD-e0Q" secondAttribute="leading" constant="72" id="oMm-aN-nTh"/>
                                             </constraints>
                                         </tableViewCellContentView>
-                                        <color key="backgroundColor" red="0.69928407434409534" green="1" blue="0.89725271396127837" alpha="0.38134096746575341" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <color key="backgroundColor" red="0.8862745098" green="0.90980392160000001" blue="0.89411764709999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <connections>
                                             <outlet property="categoryImageView" destination="Qec-Gm-tev" id="pAC-T8-1S3"/>
                                             <outlet property="pathDescription" destination="bF7-i2-avh" id="ZdT-pb-84H"/>

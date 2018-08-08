@@ -188,7 +188,7 @@
 //        //NSDictionary *dictionary = [NSDictionary dictionaryWithObjectsAndKeys:latitudeString, @"latitude", longitudeString, @"longitude", @"", @"name", nil];
 //        //NSMutableDictionary *dictionary = [NSMutableDictionary dictionaryWithObjectsAndKeys:latitudeString, @"latitude", longitudeString, @"longitude", @"", @"name", nil];
         PFFile *pinTestPicture = [ItineraryPin getPFFileFromImage:[UIImage imageNamed:@"centralpark"]];
-        NSMutableDictionary *dictionary = [NSMutableDictionary dictionaryWithObjectsAndKeys:latitudeString, @"latitude", longitudeString, @"longitude", pinTestPicture, @"pilnjnbnjkttedcnvjfhibbubrhllchdjdihcdjenbgvrucjucbbcnrufikvifntljctureData", nil];
+        NSMutableDictionary *dictionary = [NSMutableDictionary dictionaryWithObjectsAndKeys:latitudeString, @"latitude", longitudeString, @"longitude", pinTestPicture, @"pictureData", nil];
         [self.itineraryDraft.pinnedLocations addObject:dictionary];
     }
     [self addPathsToParse];
