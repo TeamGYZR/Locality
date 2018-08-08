@@ -65,31 +65,12 @@
     [locationManager requestLocation];
 }
 
-//- (void)configureWithFavoritedPaths:(NSArray<Itinerary *> *)favoritedPaths{
-//    self.favoritedPaths = [[NSMutableArray alloc] init];
-//    mapView = [[MKMapView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height)];
-//    mapView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-//    mapView.userInteractionEnabled = YES;
-//    mapView.delegate = self;
-//    mapView.zoomEnabled = YES;
-//    mapView.scrollEnabled = YES;
-//    mapView.showsUserLocation = YES;
-//    locationManager = [[CLLocationManager alloc] init];
-//    locationManager.delegate = self;
-//    [self addSubview:mapView];
-//    //[self drawMapWithArray];
-//    [locationManager requestLocation];
-////    for (int i = 0; i < [favoritedPaths count]; i++) {
-////        [self.favoritedPaths addObject:favoritedPaths[i][@"itinerary"]];
-////    }
-//
-//}
-
 -(void)testDirectionsWithItinerary:(Itinerary *)itinerary{
     self.itineraries = @[itinerary];
     [self addSubview:mapView];
     MKDirectionsRequest *request = [[MKDirectionsRequest alloc] init];
-    //request.source = self.currentLocation;
+    request.source = [MKMapItem mapItemForCurrentLocation];
+    //request.destination =
     [self drawMapWithArray];
 }
 
