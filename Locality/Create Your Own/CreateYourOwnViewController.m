@@ -18,9 +18,6 @@
 #import "AddPinInfoView.h"
 
 #import "CLLocationManagerSingleton.h"
-
-
-//trying to get different pins to display on the map
 #import "pinVenueAnnotation.h"
 #import "pinVenueAnnotationView.h"
 
@@ -57,7 +54,6 @@
     self.mapView.showsUserLocation = YES;
     self.locationManager.distanceFilter = 5;
     self.locationManager.desiredAccuracy = kCLLocationAccuracyBest;
-    //[self didTapViewCancel];
 }
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
@@ -115,23 +111,22 @@
 
 #pragma mark - IBActions
 - (IBAction)didTapAddPin:(id)sender {
-    //add alert view controller to confirm that the user wanted to add the location, then continue- have an addPin method
     UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Add Pin?" message:nil preferredStyle:(UIAlertControllerStyleAlert)];
     UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         
     }];
     UIAlertAction *continueAction = [UIAlertAction actionWithTitle:@"Add" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-      self.addpininfoview=[[AddPinInfoView alloc] init];
-      self.addpininfoview.delegate=self;
-       [self.addpininfoview setAlpha:0.0];
-       [self.view addSubview:self.addpininfoview];
+        self.addpininfoview=[[AddPinInfoView alloc] init];
+        self.addpininfoview.delegate=self;
+        [self.addpininfoview setAlpha:0.0];
+        [self.view addSubview:self.addpininfoview];
         [UIView beginAnimations:@"FadeIn" context:nil];
         [UIView setAnimationDelegate:self];
         [UIView setAnimationDuration:1];
-       [self.addpininfoview setAlpha:1.0];
+        [self.addpininfoview setAlpha:1.0];
         self.viewOverMapView.alpha=0.8;
-      [UIView commitAnimations];
-      [self addPinToMapView];
+        [UIView commitAnimations];
+        [self addPinToMapView];
        }];
     [alert addAction:cancelAction];
     [alert addAction:continueAction];
@@ -140,7 +135,6 @@
 }
 - (IBAction)didTapDone:(id)sender {
     [self.locationManager stopUpdatingLocation];
-    //self.itineraryDraft = [[Itinerary alloc] init];
     self.itineraryDraft.creator = [User currentUser];
     self.endTime = CACurrentMediaTime() - self.startTime;
     long minutes = floor(self.endTime/60);
@@ -151,7 +145,6 @@
     else{
     self.itineraryDraft.timeStamp = [NSString stringWithFormat:@"%lu:%lu", minutes, seconds];
     }
-    //[self addPinsToParse];
     [self addPathsToParse];
 }
 
@@ -217,6 +210,14 @@
     self.imageData = UIImagePNGRepresentation(pinneddeditedPicture);
 }
 
+#pragma mark - Public Methods
+- (void)didTapViewCancel{
+    [self dismissView];
+}
+-(void) didTapViewShare{
+    [self dismissView];
+}
+
 #pragma mark - Error Handling
 
 - (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error{
@@ -234,14 +235,6 @@
         pathFinalizationVC.itinerary = self.itineraryDraft;
         pathFinalizationVC.pinInfo = self.pinInfo; 
     }
-}
-- (void)didTapViewCancel{
-    [self addPinsToParse];
-    [self dismissView];
-}
--(void) didTapViewShare{
-   [self addPinsToParse];
-    [self dismissView];
 }
 
 
