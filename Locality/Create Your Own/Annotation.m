@@ -10,6 +10,7 @@
 
 @implementation Annotation
 
+
 @synthesize coordinate;
 
 @end
