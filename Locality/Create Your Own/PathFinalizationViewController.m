@@ -12,7 +12,7 @@
 #import "PinCell.h"
 #import "MBProgressHUD.h"
 
-@interface PathFinalizationViewController () <UITableViewDelegate, UITableViewDataSource, PinCellDelegate>
+@interface PathFinalizationViewController () <UITableViewDelegate, UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UITextField *itineraryTitle;
 @property (weak, nonatomic) IBOutlet UITextField *itineraryDescription;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *categoryController;
