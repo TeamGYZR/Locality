@@ -44,8 +44,9 @@
 #pragma mark - View Controller
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.itineraryDraft = [[Itinerary alloc]init];
+    self.itineraryDraft.pinnedLocations = [[NSMutableArray alloc] init];
     self.viewOverMapView.alpha=0;
-   self.progressView.alpha=0;
     self.mapView.delegate = self;
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismissView)];
     [self.viewOverMapView addGestureRecognizer:tap];
@@ -74,6 +75,7 @@
     [self.addpininfoview setAlpha:0.0];
     [self.viewOverMapView setAlpha:0.0];
     [UIView commitAnimations];
+    [self addPinsToParse];
 }
 #pragma mark - Location Updates
 - (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray<CLLocation *> *)locations{
@@ -138,7 +140,7 @@
 }
 - (IBAction)didTapDone:(id)sender {
     [self.locationManager stopUpdatingLocation];
-    self.itineraryDraft = [[Itinerary alloc] init];
+    //self.itineraryDraft = [[Itinerary alloc] init];
     self.itineraryDraft.creator = [User currentUser];
     self.endTime = CACurrentMediaTime() - self.startTime;
     long minutes = floor(self.endTime/60);
@@ -149,7 +151,8 @@
     else{
     self.itineraryDraft.timeStamp = [NSString stringWithFormat:@"%lu:%lu", minutes, seconds];
     }
-    [self addPinsToParse];
+    //[self addPinsToParse];
+    [self addPathsToParse];
 }
 
 - (IBAction)didTapCancel:(id)sender {
@@ -157,11 +160,6 @@
         [self.navigationController dismissViewControllerAnimated:YES completion:nil];
     }];
 }
-
-- (IBAction)didtapDone:(id)sender {
-    self.progressView.alpha=0;
-}
-
 #pragma mark - Private Methods
 
 - (void)addPinToMapView{
@@ -187,22 +185,19 @@
 
 
 - (void)addPinsToParse{
-    self.itineraryDraft.pinnedLocations = [[NSMutableArray alloc] init];
-    NSUInteger pinsCount = [self.pinCoordinates count];
-    for (int i = 0; i < pinsCount; i++) {
-        CLLocation *currentPin = [self.pinCoordinates objectAtIndex:i];
-        NSString *latitudeString = [[NSNumber numberWithDouble:currentPin.coordinate.latitude] stringValue];
-        NSString *longitudeString = [[NSNumber numberWithDouble:currentPin.coordinate.longitude] stringValue];
-//        //NSDictionary *dictionary = [NSDictionary dictionaryWithObjectsAndKeys:latitudeString, @"latitude", longitudeString, @"longitude", @"", @"name", nil];
-//        //NSMutableDictionary *dictionary = [NSMutableDictionary dictionaryWithObjectsAndKeys:latitudeString, @"latitude", longitudeString, @"longitude", @"", @"name", nil];
-        PFFile *pinTestPicture = [ItineraryPin getPFFileFromImage:[UIImage imageNamed:@"centralpark"]];
-        NSMutableDictionary *dictionary = [NSMutableDictionary dictionaryWithObjectsAndKeys:latitudeString, @"latitude", longitudeString, @"longitude", pinTestPicture, @"pictureData", nil];
-        [self.itineraryDraft.pinnedLocations addObject:dictionary];
+    NSUInteger pinsCount = [self.pinCoordinates count]-1;
+    CLLocation *currentPin = [self.pinCoordinates objectAtIndex:pinsCount];
+    NSString *latitudeString = [[NSNumber numberWithDouble:currentPin.coordinate.latitude] stringValue];
+    NSString *longitudeString = [[NSNumber numberWithDouble:currentPin.coordinate.longitude] stringValue];
+    PFFile *pictureData = nil;
+    if(imageByTheUser){
+        pictureData = [ItineraryPin getPFFileFromImage:imageByTheUser];
     }
-    [self addPathsToParse];
+    NSMutableDictionary *dictionary = [NSMutableDictionary dictionaryWithObjectsAndKeys:latitudeString, @"latitude", longitudeString, @"longitude", pictureData, @"pictureData", nil];
+    [self.itineraryDraft.pinnedLocations addObject:dictionary];
 }
 
-- (void)addPathsToParse{
+-(void)addPathsToParse{
     NSString *cgPointString = nil;
     self.itineraryDraft.paths = [[NSArray alloc] init];
     NSMutableArray *holderArray = [[NSMutableArray alloc] init];
@@ -241,19 +236,11 @@
     }
 }
 - (void)didTapViewCancel{
+    [self addPinsToParse];
     [self dismissView];
 }
 -(void) didTapViewShare{
-    self.itineraryDraft.pinnedLocations = [[NSMutableArray alloc] init];
-    NSUInteger pinsCount = [self.pinCoordinates count];
-    for (int i = 0; i < pinsCount; i++){
-        CLLocation *currentPin = [self.pinCoordinates objectAtIndex:i];
-        NSString *latitudeString = [[NSNumber numberWithDouble:currentPin.coordinate.latitude] stringValue];
-        NSString *longitudeString = [[NSNumber numberWithDouble:currentPin.coordinate.longitude] stringValue];
-        PFFile *pinTestPicture = [ItineraryPin getPFFileFromImage:imageByTheUser];
-        NSMutableDictionary *dictionary = [NSMutableDictionary dictionaryWithObjectsAndKeys:latitudeString, @"latitude", longitudeString, @"longitude", pinTestPicture, @"pictureData", nil];
-        [self.itineraryDraft.pinnedLocations addObject:dictionary];
-    }
+   [self addPinsToParse];
     [self dismissView];
 }
 
