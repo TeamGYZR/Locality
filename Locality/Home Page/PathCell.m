@@ -44,6 +44,11 @@
     NSUInteger fixedLength = [pinNames length] - 2;
     NSString *fixedPinNames = [pinNames substringToIndex:fixedLength];
     self.pinNames.text = fixedPinNames;
+    //[self.layer setCornerRadius:30.0f];
+    [self.layer setShadowColor:[UIColor blackColor].CGColor];
+    [self.layer setShadowOpacity:0.8];
+    [self.layer setShadowRadius:3.0];
+    [self.layer setShadowOffset:CGSizeMake(2.0, 2.0)];
 }
 
 

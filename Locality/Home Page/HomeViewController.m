@@ -133,6 +133,8 @@
             self.itineraries = iteneraries;
             [self sortItenerariesByDistance];
             [self.tableView reloadData];
+            NSIndexPath *topPath = [NSIndexPath indexPathForRow:0 inSection:0];
+            [self.tableView scrollToRowAtIndexPath:topPath atScrollPosition:UITableViewScrollPositionTop animated:NO];
         }
     }];
 }
