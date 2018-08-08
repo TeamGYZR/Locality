@@ -16,6 +16,9 @@
     }
     return self;
 }
+- (void)setDelegate:(id<AddPinInfoViewDelegate>)delegate{
+      _delegate=delegate;
+}
 -(IBAction)didTapCameraButton:(id)sender{
     UIImagePickerController *imagePicker = [UIImagePickerController new];
     imagePicker.delegate = self;
@@ -37,7 +40,7 @@
     [[NSBundle mainBundle] loadNibNamed:@"PinInfoView" owner:self options:nil];
     self.pinInfoCustomView.layer.shadowOffset=CGSizeZero;
     self.pinInfoCustomView.layer.shadowOpacity=0.8;
-   self.pinInfoCustomView.frame=self.bounds;
+    self.pinInfoCustomView.frame=self.bounds;
     [self addSubview:self.pinInfoCustomView];
 }
 - (BOOL)pointInside:(CGPoint)point withEvent:(UIEvent *)event{
@@ -49,7 +52,7 @@
     return NO;
 }
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info{
-    UIImage *pinneddeditedPicture = info[UIImagePickerControllerEditedImage];
+    self.pinneddeditedPicture = info[UIImagePickerControllerEditedImage];
     UIViewController *yourCurrentViewController = [UIApplication sharedApplication].keyWindow.rootViewController;
     while (yourCurrentViewController.presentedViewController)
     {
@@ -58,16 +61,15 @@
     [yourCurrentViewController dismissViewControllerAnimated:YES completion:^{
         NSLog(@"dismmising");
     }];
-    self.pinImageView.image=pinneddeditedPicture;
-    self.delegate.imageByTheUser=pinneddeditedPicture;
+    self.pinImageView.image=self.pinneddeditedPicture;
 }
-- (void)didTappedCancel{
-    [self.delegate didTapViewCancel];
-}
+//- (void)didTappedCancel{
+//    [self.delegate didTapViewCancel];
+//}
 - (IBAction)didTapCancel:(id)sender {
    [self.delegate didTapViewCancel];
 }
 - (IBAction)didTapShare:(id)sender {
-    [self.delegate didTapViewShare];
+    [self.delegate didTapViewShareWithImage:self.pinneddeditedPicture withName:self.pinNameField.text withDescription:self.pinDescriptionField.text];
 }
 @end
