@@ -13,7 +13,7 @@
 #import "CLLocationManagerSingleton.h"
 
 @interface LCMapView()<MKMapViewDelegate, CLLocationManagerDelegate>
-@property (strong, nonatomic) Itinerary *itinerary;
+@property (strong, nonatomic) NSArray *itineraries;
 @property (strong, nonatomic) CLLocation *currentLocation;
 @property (strong, nonatomic) MKPolyline *polyline;
 @property (strong, nonatomic) NSMutableArray *favoritedPaths;
@@ -28,6 +28,9 @@
 -(instancetype)initWithCoder:(NSCoder *)aDecoder{
     self = [super initWithCoder:aDecoder];
     if(self){
+        mapView = [[MKMapView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height)];
+        mapView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+        mapView.userInteractionEnabled = YES;
         return self;
     }
     return nil;
@@ -36,61 +39,81 @@
 #pragma mark - Public Methods
 
 -(void)configureWithItinerary:(Itinerary *)itinerary isStatic:(BOOL)move showCurrentLocation:(BOOL)showCurrent{
-    //move
-    mapView = [[MKMapView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height)];
-    mapView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-    mapView.userInteractionEnabled = YES;
     mapView.delegate = self;
-    //keep
+    //locationManager = [CLLocationManagerSingleton sharedSingleton].locationManager;
+    locationManager = [CLLocationManager new];
+    locationManager.delegate = self;
     isStatic = move;
     mapView.zoomEnabled = !isStatic;
     mapView.scrollEnabled = !isStatic;
     mapView.showsUserLocation = showCurrent;
-    locationManager = [CLLocationManagerSingleton sharedSingleton].locationManager;
-    locationManager.delegate = self;
-    self.itinerary = itinerary;
-    //move
+    self.itineraries = @[itinerary];
     [self addSubview:mapView];
-    //stay w location manager
     [locationManager requestLocation];
 }
 
-- (void)configureWithFavoritedPaths:(NSArray<Itinerary *> *)favoritedPaths{
-    self.favoritedPaths = [[NSMutableArray alloc] init];
-    mapView = [[MKMapView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height)];
-    mapView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-    mapView.userInteractionEnabled = YES;
+- (void)configureWithFavoritedPaths:(NSArray *)favoritedPaths{
     mapView.delegate = self;
-    mapView.zoomEnabled = YES;
-    mapView.scrollEnabled = YES;
-    mapView.showsUserLocation = YES;
-    locationManager = [[CLLocationManager alloc] init];
+    locationManager = [CLLocationManager new];
     locationManager.delegate = self;
     [self addSubview:mapView];
-    [locationManager requestLocation];
+    NSMutableArray *holderArray = [NSMutableArray new];
     for (int i = 0; i < [favoritedPaths count]; i++) {
-        [self.favoritedPaths addObject:favoritedPaths[i][@"itinerary"]];
+        [holderArray addObject:favoritedPaths[i][@"itinerary"]];
     }
+    self.itineraries = [holderArray copy];
+    [locationManager requestLocation];
+}
+
+//- (void)configureWithFavoritedPaths:(NSArray<Itinerary *> *)favoritedPaths{
+//    self.favoritedPaths = [[NSMutableArray alloc] init];
+//    mapView = [[MKMapView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height)];
+//    mapView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+//    mapView.userInteractionEnabled = YES;
+//    mapView.delegate = self;
+//    mapView.zoomEnabled = YES;
+//    mapView.scrollEnabled = YES;
+//    mapView.showsUserLocation = YES;
+//    locationManager = [[CLLocationManager alloc] init];
+//    locationManager.delegate = self;
+//    [self addSubview:mapView];
+//    //[self drawMapWithArray];
+//    [locationManager requestLocation];
+////    for (int i = 0; i < [favoritedPaths count]; i++) {
+////        [self.favoritedPaths addObject:favoritedPaths[i][@"itinerary"]];
+////    }
+//
+//}
+
+-(void)testDirectionsWithItinerary:(Itinerary *)itinerary{
+    self.itineraries = @[itinerary];
+    [self addSubview:mapView];
+    MKDirectionsRequest *request = [[MKDirectionsRequest alloc] init];
+    //request.source = self.currentLocation;
+    [self drawMapWithArray];
+}
+
+-(void)drawMapWithArray{
+    [locationManager requestLocation];
     
 }
 
 #pragma mark - Private Methods
 -(void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray<CLLocation *> *)locations{
     self.currentLocation = [locations lastObject];
-    if (self.itinerary) {
-        NSString* center = [self.itinerary.paths objectAtIndex:(self.itinerary.paths.count/2)];
+    double numPaths = [self.itineraries count];
+    if (numPaths == 1) {
+        Itinerary *itinerary = (Itinerary *)self.itineraries[0];
+        NSString* center = [itinerary.paths objectAtIndex:(itinerary.paths.count/2)];
         CGPoint centerPoint = CGPointFromString(center);
         MKCoordinateRegion currentRegion = MKCoordinateRegionMake(CLLocationCoordinate2DMake(centerPoint.x, centerPoint.y), MKCoordinateSpanMake(0.025, 0.025));
         [mapView setRegion:currentRegion animated:NO];
+        [self drawPathForItinerary:itinerary];
     } else {
         MKCoordinateRegion currentRegion = MKCoordinateRegionMake(CLLocationCoordinate2DMake(self.currentLocation.coordinate.latitude, self.currentLocation.coordinate.longitude), MKCoordinateSpanMake(0.7, 0.7));
         [mapView setRegion:currentRegion animated:NO];
-    }
-    if (!self.favoritedPaths) {
-        [self drawPathForItinerary:self.itinerary];
-    } else{
-        for (int i = 0; i < [self.favoritedPaths count]; i++) {
-            Itinerary *itinerary = self.favoritedPaths[i];
+        for (int i = 0; i < [self.itineraries count]; i++) {
+            Itinerary *itinerary = self.itineraries[i];
             [self drawPathForItinerary:itinerary];
         }
     }
@@ -139,7 +162,7 @@
     if ([overlay isKindOfClass:[MKPolyline class]])
     {
         MKPolylineRenderer *pathRenderer = [[MKPolylineRenderer alloc] initWithPolyline:overlay];
-        pathRenderer.fillColor = [[UIColor blackColor] colorWithAlphaComponent:0.2];
+        pathRenderer.fillColor = [[UIColor blueColor] colorWithAlphaComponent:0.2];
         pathRenderer.strokeColor = [[UIColor blueColor] colorWithAlphaComponent:0.7];
         pathRenderer.lineWidth = 3;
         return pathRenderer;

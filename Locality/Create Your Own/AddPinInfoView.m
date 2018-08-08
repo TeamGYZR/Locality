@@ -19,7 +19,12 @@
     }
     return self;
 }
-- (IBAction)didTapCameraButton:(id)sender{
+- (void)setDelegate:(id<AddPinInfoViewDelegate>)delegate{
+      _delegate=delegate;
+    //[self didTappedCancel];
+//   [self.delegate didTapViewCancel:self.delegate];
+}
+-(IBAction)didTapCameraButton:(id)sender{
     UIImagePickerController *imagePicker = [UIImagePickerController new];
     imagePicker.delegate = self;
     imagePicker.allowsEditing = YES;
@@ -40,8 +45,11 @@
     [[NSBundle mainBundle] loadNibNamed:@"PinInfoView" owner:self options:nil];
     self.pinInfoCustomView.layer.shadowOffset=CGSizeZero;
     self.pinInfoCustomView.layer.shadowOpacity=0.8;
-   [self addSubview:self.pinInfoCustomView];
-    self.pinInfoCustomView.frame=self.bounds;
+   self.pinInfoCustomView.frame=self.bounds;
+    [self addSubview:self.pinInfoCustomView];
+   
+   // [self.cancelButton addTarget:self.delegate action:@selector(didTappedCancel) forControlEvents:UIControlEventTouchUpInside];
+//    [self setDelegate:_delegate];
 }
 - (BOOL)pointInside:(CGPoint)point withEvent:(UIEvent *)event{
     for (UIView * view in [self subviews]) {
@@ -62,19 +70,25 @@
         NSLog(@"dismmising");
     }];
     self.pinImageView.image=pinneddeditedPicture;
+    self.delegate.imageByTheUser=pinneddeditedPicture;
+    self.delegate.check=true;
 }
-- (IBAction)didTapCancel:(id)sender{
-    self.createPath=[[CreateYourOwnViewController alloc]init];
-    [UIView beginAnimations:nil context:nil];
-    [UIView setAnimationDuration:1];
-    [self.pinInfoCustomView setAlpha:0.0];
-   [self.createPath.viewOverMapView setAlpha:0.0]; //couldn't dimiss the view, help???
+//- (IBAction)didTapCancel:(id)sender{
+//    self.createPath=(CreateYourOwnViewController*)[UIApplication sharedApplication].keyWindow.superview;
+//    //self.createPath=[[CreateYourOwnViewController alloc]init];
+//    [UIView beginAnimations:@"FadeOut" context:nil];
+//    [UIView setAnimationDuration:1];
+//    [self.pinInfoCustomView setAlpha:0.0];
+//    [self.createPath.viewOverMapView setAlpha:0.0]; //couldn't dimiss the view, help???
+//    [UIView commitAnimations];
+//}
+- (void)didTappedCancel{
+    [self.delegate didTapViewCancel];
+}
+- (IBAction)didTapCancel:(id)sender {
+   [self.delegate didTapViewCancel];
 }
 - (IBAction)didTapShare:(id)sender {
-    
-
+    [self.delegate didTapViewShare];
 }
-
-
-
 @end

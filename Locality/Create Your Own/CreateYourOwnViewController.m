@@ -24,7 +24,7 @@
 #import "pinVenueAnnotation.h"
 #import "pinVenueAnnotationView.h"
 
-@interface CreateYourOwnViewController () <MKMapViewDelegate, CLLocationManagerDelegate>
+@interface CreateYourOwnViewController () <MKMapViewDelegate, CLLocationManagerDelegate,AddPinInfoViewDelegate>
 
 @property (strong, nonatomic) CLLocationManager *locationManager;
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;
@@ -45,24 +45,28 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.viewOverMapView.alpha=0;
-    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismissView)];
-    [self.view addGestureRecognizer:tap];
-    self.progressView.alpha=0;
+   self.progressView.alpha=0;
     self.mapView.delegate = self;
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismissView)];
+    [self.viewOverMapView addGestureRecognizer:tap];
     self.locationManager = [CLLocationManagerSingleton sharedSingleton].locationManager;
-    self.locationManager.delegate = self;
     [self.locationManager requestWhenInUseAuthorization];
     self.pathCoordinates = [[NSMutableArray alloc] init];
     self.pinCoordinates = [[NSMutableArray alloc] init];
     self.mapView.showsUserLocation = YES;
     self.locationManager.distanceFilter = 5;
     self.locationManager.desiredAccuracy = kCLLocationAccuracyBest;
+    //[self didTapViewCancel];
 }
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     [self.mapView setUserTrackingMode:MKUserTrackingModeFollow animated:YES];
+    self.locationManager.delegate = self;
     [self.locationManager startUpdatingLocation];
     self.startTime = CACurrentMediaTime();
+}
+- (void)viewWillDisappear:(BOOL)animated{
+    self.locationManager.delegate = nil;
 }
 -(void) dismissView{
     [UIView beginAnimations:@"FadeIn" context:nil];
@@ -116,6 +120,7 @@
     }];
     UIAlertAction *continueAction = [UIAlertAction actionWithTitle:@"Add" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
       self.addpininfoview=[[AddPinInfoView alloc] init];
+      self.addpininfoview.delegate=self;
        [self.addpininfoview setAlpha:0.0];
        [self.view addSubview:self.addpininfoview];
         [UIView beginAnimations:@"FadeIn" context:nil];
@@ -148,7 +153,9 @@
 }
 
 - (IBAction)didTapCancel:(id)sender {
-    [self dismissViewControllerAnimated:YES completion:nil];
+    [self dismissViewControllerAnimated:YES completion:^{
+        [self.navigationController dismissViewControllerAnimated:YES completion:nil];
+    }];
 }
 
 - (IBAction)didtapDone:(id)sender {
@@ -178,6 +185,7 @@
     return nil;
 }
 
+
 - (void)addPinsToParse{
     self.itineraryDraft.pinnedLocations = [[NSMutableArray alloc] init];
     NSUInteger pinsCount = [self.pinCoordinates count];
@@ -193,6 +201,8 @@
     }
     [self addPathsToParse];
 }
+
+
 
 - (void)addPathsToParse{
     NSString *cgPointString = nil;
@@ -232,6 +242,26 @@
         pathFinalizationVC.pinInfo = self.pinInfo; 
     }
 }
+- (void)didTapViewCancel{
+    [self dismissView];
+}
+-(void) didTapViewShare{
+    self.itineraryDraft.pinnedLocations = [[NSMutableArray alloc] init];
+    NSUInteger pinsCount = [self.pinCoordinates count];
+    for (int i = 0; i < pinsCount; i++){
+        CLLocation *currentPin = [self.pinCoordinates objectAtIndex:i];
+        NSString *latitudeString = [[NSNumber numberWithDouble:currentPin.coordinate.latitude] stringValue];
+        NSString *longitudeString = [[NSNumber numberWithDouble:currentPin.coordinate.longitude] stringValue];
+        PFFile *pinTestPicture = [ItineraryPin getPFFileFromImage:imageByTheUser];
+        NSMutableDictionary *dictionary = [NSMutableDictionary dictionaryWithObjectsAndKeys:latitudeString, @"latitude", longitudeString, @"longitude", pinTestPicture, @"pictureData", nil];
+        [self.itineraryDraft.pinnedLocations addObject:dictionary];
+    }
+    [self dismissView];
+}
 
+
+@synthesize imageByTheUser;
+
+@synthesize check;
 
 @end

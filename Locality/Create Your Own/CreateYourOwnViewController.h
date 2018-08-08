@@ -15,8 +15,4 @@
 @property (weak, nonatomic) IBOutlet MKMapView *createPathMapView;
 @property (strong, nonatomic) IBOutlet UIView *viewOverMapView;
 -(void) dismissView;
-
-
-
-
 @end
