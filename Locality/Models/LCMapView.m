@@ -40,7 +40,8 @@
 
 -(void)configureWithItinerary:(Itinerary *)itinerary isStatic:(BOOL)move showCurrentLocation:(BOOL)showCurrent{
     mapView.delegate = self;
-    locationManager = [CLLocationManagerSingleton sharedSingleton].locationManager;
+    //locationManager = [CLLocationManagerSingleton sharedSingleton].locationManager;
+    locationManager = [CLLocationManager new];
     locationManager.delegate = self;
     isStatic = move;
     mapView.zoomEnabled = !isStatic;
@@ -48,27 +49,41 @@
     mapView.showsUserLocation = showCurrent;
     self.itineraries = @[itinerary];
     [self addSubview:mapView];
-    [self drawMapWithArray];
+    [locationManager requestLocation];
 }
 
 - (void)configureWithFavoritedPaths:(NSArray *)favoritedPaths{
-    self.itineraries = favoritedPaths;
-    mapView = [[MKMapView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height)];
-    mapView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-    mapView.userInteractionEnabled = YES;
     mapView.delegate = self;
-    mapView.zoomEnabled = YES;
-    mapView.scrollEnabled = YES;
-    mapView.showsUserLocation = YES;
-    locationManager = [[CLLocationManager alloc] init];
+    locationManager = [CLLocationManager new];
     locationManager.delegate = self;
     [self addSubview:mapView];
-    [self drawMapWithArray];
-//    for (int i = 0; i < [favoritedPaths count]; i++) {
-//        [self.favoritedPaths addObject:favoritedPaths[i][@"itinerary"]];
-//    }
-    
+    NSMutableArray *holderArray = [NSMutableArray new];
+    for (int i = 0; i < [favoritedPaths count]; i++) {
+        [holderArray addObject:favoritedPaths[i][@"itinerary"]];
+    }
+    self.itineraries = [holderArray copy];
+    [locationManager requestLocation];
 }
+
+//- (void)configureWithFavoritedPaths:(NSArray<Itinerary *> *)favoritedPaths{
+//    self.favoritedPaths = [[NSMutableArray alloc] init];
+//    mapView = [[MKMapView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height)];
+//    mapView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+//    mapView.userInteractionEnabled = YES;
+//    mapView.delegate = self;
+//    mapView.zoomEnabled = YES;
+//    mapView.scrollEnabled = YES;
+//    mapView.showsUserLocation = YES;
+//    locationManager = [[CLLocationManager alloc] init];
+//    locationManager.delegate = self;
+//    [self addSubview:mapView];
+//    //[self drawMapWithArray];
+//    [locationManager requestLocation];
+////    for (int i = 0; i < [favoritedPaths count]; i++) {
+////        [self.favoritedPaths addObject:favoritedPaths[i][@"itinerary"]];
+////    }
+//
+//}
 
 -(void)testDirectionsWithItinerary:(Itinerary *)itinerary{
     self.itineraries = @[itinerary];
@@ -79,7 +94,7 @@
 }
 
 -(void)drawMapWithArray{
-    [[CLLocationManagerSingleton sharedSingleton].locationManager requestLocation];
+    [locationManager requestLocation];
     
 }
 
@@ -97,12 +112,11 @@
     } else {
         MKCoordinateRegion currentRegion = MKCoordinateRegionMake(CLLocationCoordinate2DMake(self.currentLocation.coordinate.latitude, self.currentLocation.coordinate.longitude), MKCoordinateSpanMake(0.7, 0.7));
         [mapView setRegion:currentRegion animated:NO];
-        for (int i = 0; i < [self.favoritedPaths count]; i++) {
+        for (int i = 0; i < [self.itineraries count]; i++) {
             Itinerary *itinerary = self.itineraries[i];
             [self drawPathForItinerary:itinerary];
         }
     }
-   
 }
 
 -(void)drawPathForItinerary:(Itinerary *)itinerary{
@@ -148,7 +162,7 @@
     if ([overlay isKindOfClass:[MKPolyline class]])
     {
         MKPolylineRenderer *pathRenderer = [[MKPolylineRenderer alloc] initWithPolyline:overlay];
-        pathRenderer.fillColor = [[UIColor blackColor] colorWithAlphaComponent:0.2];
+        pathRenderer.fillColor = [[UIColor blueColor] colorWithAlphaComponent:0.2];
         pathRenderer.strokeColor = [[UIColor blueColor] colorWithAlphaComponent:0.7];
         pathRenderer.lineWidth = 3;
         return pathRenderer;

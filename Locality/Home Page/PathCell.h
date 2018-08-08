@@ -22,5 +22,6 @@
 @property (weak, nonatomic) IBOutlet LCMapView *lcMapView;
 @property (weak, nonatomic) IBOutlet PFImageView *mapViewImage;
 @property (weak, nonatomic) IBOutlet UILabel *pinNames;
+@property (weak, nonatomic) IBOutlet UIView *cellView;
 
 @end

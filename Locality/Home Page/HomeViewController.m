@@ -19,6 +19,9 @@
 #import "PlacesSearchTableViewController.h"
 #import "CLLocationManagerSingleton.h"
 
+//rounded edges and shadow
+#import <QuartzCore/QuartzCore.h>
+
 @interface HomeViewController () <UITableViewDelegate, UITableViewDataSource, CLLocationManagerDelegate>
 @property (strong, nonatomic) NSArray *itineraries;
 @property (strong, nonatomic) CLLocationManager *locationManager;
@@ -96,24 +99,24 @@
 #pragma mark - IBAction
 - (IBAction)didTapFoodie:(id)sender{
     [self loadPathsWithCategory:@"Foodie"];
-    [self.foodieButton setTitleColor:[UIColor colorWithRed:0 green:0.2 blue:0.453 alpha:1] forState:UIControlStateNormal];
-    [self.entertainmentButton setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
-    [self.natureButton setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
+    [self.foodieButton setTitleColor:[UIColor colorWithRed:.9254 green:.41176 blue:.30196 alpha:1] forState:UIControlStateNormal];
+    [self.entertainmentButton setTitleColor:[UIColor colorWithRed:.1843 green:.28235 blue:.34509 alpha:1] forState:UIControlStateNormal];
+    [self.natureButton setTitleColor:[UIColor colorWithRed:.1843 green:.28235 blue:.34509 alpha:1] forState:UIControlStateNormal];
 }
      
 
 - (IBAction)didTapEntertainment:(id)sender {
     [self loadPathsWithCategory:@"Entertainment"];
-    [self.entertainmentButton setTitleColor:[UIColor colorWithRed:0 green:0.2 blue:0.453 alpha:1] forState:UIControlStateNormal];
-    [self.foodieButton setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
-    [self.natureButton setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
+    [self.entertainmentButton setTitleColor:[UIColor colorWithRed:.9254 green:.41176 blue:.30196 alpha:1] forState:UIControlStateNormal];
+    [self.foodieButton setTitleColor:[UIColor colorWithRed:.1843 green:.28235 blue:.34509 alpha:1] forState:UIControlStateNormal];
+    [self.natureButton setTitleColor:[UIColor colorWithRed:.1843 green:.28235 blue:.34509 alpha:1] forState:UIControlStateNormal];
 }
 
 - (IBAction)didTapNature:(id)sender {
     [self loadPathsWithCategory:@"Nature"];
-    [self.natureButton setTitleColor:[UIColor colorWithRed:0 green:0.2 blue:0.453 alpha:1] forState:UIControlStateNormal];
-    [self.entertainmentButton setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
-    [self.foodieButton setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
+    [self.natureButton setTitleColor:[UIColor colorWithRed:.9254 green:.41176 blue:.30196 alpha:1] forState:UIControlStateNormal];
+    [self.entertainmentButton setTitleColor:[UIColor colorWithRed:.1843 green:.28235 blue:.34509 alpha:1] forState:UIControlStateNormal];
+    [self.foodieButton setTitleColor:[UIColor colorWithRed:.1843 green:.28235 blue:.34509 alpha:1] forState:UIControlStateNormal];
 }
 
 - (IBAction)didTapCreatePath:(id)sender {
@@ -175,6 +178,10 @@
 - (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
     PathCell *cell = [tableView dequeueReusableCellWithIdentifier:@"PathCell" forIndexPath:indexPath];
     cell.itinerary = self.itineraries[indexPath.row];
+    cell.cellView.layer.cornerRadius = 20.0;
+    cell.cellView.layer.borderWidth = 2.0;
+    cell.cellView.layer.borderColor = [UIColor lightGrayColor].CGColor;
+    cell.cellView.layer.masksToBounds = YES;
     return cell;
 }
 
