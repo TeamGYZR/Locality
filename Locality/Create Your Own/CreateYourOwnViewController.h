@@ -10,7 +10,6 @@
 #import <MapKit/MapKit.h>
 @interface CreateYourOwnViewController : UIViewController<UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 
-@property IBOutlet UIView *progressView;
 @property (weak, nonatomic) IBOutlet UIButton *addPhoto;
 @property (weak, nonatomic) IBOutlet MKMapView *createPathMapView;
 @property (strong, nonatomic) IBOutlet UIView *viewOverMapView;
