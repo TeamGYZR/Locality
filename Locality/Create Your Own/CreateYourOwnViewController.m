@@ -241,22 +241,22 @@
     [self dismissView];
 }
 -(void) didTapViewShare{
-    //self.addpininfoview=[[AddPinInfoView alloc] init];
     self.itineraryDraft.pinnedLocations = [[NSMutableArray alloc] init];
     NSUInteger pinsCount = [self.pinCoordinates count];
     for (int i = 0; i < pinsCount; i++){
         CLLocation *currentPin = [self.pinCoordinates objectAtIndex:i];
         NSString *latitudeString = [[NSNumber numberWithDouble:currentPin.coordinate.latitude] stringValue];
         NSString *longitudeString = [[NSNumber numberWithDouble:currentPin.coordinate.longitude] stringValue];
-        //        //NSDictionary *dictionary = [NSDictionary dictionaryWithObjectsAndKeys:latitudeString, @"latitude", longitudeString, @"longitude", @"", @"name", nil];
-        //        //NSMutableDictionary *dictionary = [NSMutableDictionary dictionaryWithObjectsAndKeys:latitudeString, @"latitude", longitudeString, @"longitude", @"", @"name", nil];
         PFFile *pinTestPicture = [ItineraryPin getPFFileFromImage:imageByTheUser];
         NSMutableDictionary *dictionary = [NSMutableDictionary dictionaryWithObjectsAndKeys:latitudeString, @"latitude", longitudeString, @"longitude", pinTestPicture, @"pictureData", nil];
         [self.itineraryDraft.pinnedLocations addObject:dictionary];
     }
+    [self dismissView];
 }
 
 
 @synthesize imageByTheUser;
+
+@synthesize check;
 
 @end
