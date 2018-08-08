@@ -52,9 +52,9 @@
                                 <color key="backgroundColor" red="1" green="0.9878943966" blue="0.95581895319999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dJ4-fi-VuN">
-                                <rect key="frame" x="15" y="555" width="50" height="51"/>
+                                <rect key="frame" x="15" y="547" width="59" height="59"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" image="emptyStar"/>
+                                <state key="normal" image="emptyBlueStar"/>
                                 <connections>
                                     <action selector="didTapFavorite:" destination="YfQ-gI-n7T" eventType="touchUpInside" id="qyW-Kr-lpZ"/>
                                 </connections>
@@ -70,81 +70,79 @@
                                         <color key="currentPageIndicatorTintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </pageControl>
                                 </subviews>
-                                <color key="backgroundColor" white="1" alpha="0.7096720950704225" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" red="1" green="0.9975459587296055" blue="0.99639076427593953" alpha="0.57376391267123283" colorSpace="custom" customColorSpace="displayP3"/>
                                 <gestureRecognizers/>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Eg3-iJ-lpq">
-                                <rect key="frame" x="0.0" y="64" width="375" height="175"/>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Eg3-iJ-lpq">
+                                <rect key="frame" x="0.0" y="64" width="375" height="204"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4vO-Gt-SUK">
-                                        <rect key="frame" x="65" y="138" width="300" height="19"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Path Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tRB-RC-YXt">
+                                        <rect key="frame" x="8" y="8" width="114" height="33"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" name="Dosis-SemiBold" family="Dosis" pointSize="26"/>
+                                        <color key="textColor" red="0.1843137255" green="0.28235294119999998" blue="0.34509803919999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="darkEyeIcon" translatesAutoresizingMaskIntoConstraints="NO" id="51O-of-Zyx">
+                                        <rect key="frame" x="267" y="110" width="33" height="34"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4vO-Gt-SUK">
+                                        <rect key="frame" x="72" y="168" width="159" height="19"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" name="Dosis-Light" family="Dosis" pointSize="15"/>
-                                        <nil key="textColor"/>
+                                        <color key="textColor" red="0.1843137255" green="0.28235294119999998" blue="0.34509803919999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Description" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YPr-eY-2pG">
-                                        <rect key="frame" x="15" y="40.5" width="350" height="79.5"/>
-                                        <fontDescription key="fontDescription" name="Dosis-Regular" family="Dosis" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="blankProfileimage" translatesAutoresizingMaskIntoConstraints="NO" id="bfP-ec-I1T" customClass="PFImageView">
-                                        <rect key="frame" x="15" y="125" width="45" height="45"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="45" id="UwN-Yw-opF"/>
-                                            <constraint firstAttribute="height" constant="45" id="wkd-3o-abh"/>
-                                        </constraints>
-                                    </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Path Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tRB-RC-YXt">
-                                        <rect key="frame" x="8" y="8" width="105" height="30.5"/>
-                                        <fontDescription key="fontDescription" name="Dosis-SemiBold" family="Dosis" pointSize="24"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="if_eye_226579" translatesAutoresizingMaskIntoConstraints="NO" id="51O-of-Zyx">
-                                        <rect key="frame" x="279" y="134" width="27" height="26"/>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="sxC-sW-n9d">
+                                        <rect key="frame" x="8" y="49" width="256" height="108"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="10" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2HF-Fx-RwW">
-                                        <rect key="frame" x="330" y="136" width="14" height="22"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" name="Dosis-Regular" family="Dosis" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
+                                        <color key="backgroundColor" red="0.87843137250000003" green="0.98431372549999996" blue="0.98823529409999999" alpha="0.39752782530000003" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <color key="textColor" red="0.89019607840000003" green="0.090196078430000007" blue="0.039215686270000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <fontDescription key="fontDescription" name="Dosis-Light" family="Dosis" pointSize="21"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                    </textView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Y0-m7-oxW">
-                                        <rect key="frame" x="279" y="99" width="65" height="22"/>
+                                        <rect key="frame" x="267" y="80" width="82" height="22"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" name="Dosis-Regular" family="Dosis" pointSize="20"/>
+                                        <color key="textColor" red="0.1843137255" green="0.28235294119999998" blue="0.34509803919999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Path Time:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5jp-v4-WQL">
+                                        <rect key="frame" x="267" y="49" width="82" height="26"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" name="Dosis-Regular" family="Dosis" pointSize="20"/>
+                                        <color key="textColor" red="0.1843137255" green="0.28235294119999998" blue="0.34509803919999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Creator:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GSK-uf-mfA">
+                                        <rect key="frame" x="8" y="165" width="52" height="22"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" name="Dosis-Regular" family="Dosis" pointSize="17"/>
-                                        <nil key="textColor"/>
+                                        <color key="textColor" red="0.1843137255" green="0.28235294119999998" blue="0.34509803919999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="10" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2HF-Fx-RwW">
+                                        <rect key="frame" x="308" y="116" width="26" height="22"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" name="Dosis-Regular" family="Dosis" pointSize="22"/>
+                                        <color key="textColor" red="0.1843137255" green="0.28235294119999998" blue="0.34509803919999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
-                                <color key="backgroundColor" white="1" alpha="0.4454997859589041" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstItem="4vO-Gt-SUK" firstAttribute="leading" secondItem="bfP-ec-I1T" secondAttribute="trailing" constant="5" id="1H2-9T-e4g"/>
-                                    <constraint firstItem="bfP-ec-I1T" firstAttribute="top" secondItem="YPr-eY-2pG" secondAttribute="bottom" constant="5" id="9xX-BN-mL9"/>
-                                    <constraint firstAttribute="trailing" secondItem="4vO-Gt-SUK" secondAttribute="trailing" constant="10" id="BVQ-bV-D9P"/>
-                                    <constraint firstItem="tRB-RC-YXt" firstAttribute="leading" secondItem="Eg3-iJ-lpq" secondAttribute="leading" constant="8" id="CLt-b9-YG3"/>
-                                    <constraint firstAttribute="height" constant="175" id="FZm-wU-gTn"/>
-                                    <constraint firstAttribute="bottom" secondItem="4vO-Gt-SUK" secondAttribute="bottom" constant="18" id="M6k-FA-iUc"/>
-                                    <constraint firstItem="bfP-ec-I1T" firstAttribute="leading" secondItem="Eg3-iJ-lpq" secondAttribute="leading" constant="15" id="Nne-rV-TTN"/>
-                                    <constraint firstItem="tRB-RC-YXt" firstAttribute="top" secondItem="Eg3-iJ-lpq" secondAttribute="top" constant="8" id="RMw-s4-Sgg"/>
-                                    <constraint firstAttribute="bottom" secondItem="bfP-ec-I1T" secondAttribute="bottom" constant="5" id="WLT-t6-WLA"/>
-                                    <constraint firstItem="YPr-eY-2pG" firstAttribute="leading" secondItem="Eg3-iJ-lpq" secondAttribute="leading" constant="15" id="i1t-IW-bHp"/>
-                                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="tRB-RC-YXt" secondAttribute="trailing" constant="10" id="mZU-lI-pYm"/>
-                                    <constraint firstAttribute="trailing" secondItem="YPr-eY-2pG" secondAttribute="trailing" constant="10" id="u63-RF-lPC"/>
-                                    <constraint firstItem="YPr-eY-2pG" firstAttribute="top" secondItem="tRB-RC-YXt" secondAttribute="bottom" constant="2" id="yGb-bw-ITL"/>
-                                </constraints>
+                                <color key="backgroundColor" white="1" alpha="0.68027611305479452" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="y5g-DC-h4o">
-                                <rect key="frame" x="260" y="570" width="105" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="y5g-DC-h4o">
+                                <rect key="frame" x="301" y="546" width="65" height="65"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.61175759881932212" green="1" blue="0.5846854583434995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                <fontDescription key="fontDescription" type="system" weight="thin" pointSize="15"/>
-                                <state key="normal" title="Start This Path">
+                                <state key="normal" image="goButton">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <segue destination="p3M-lz-JhV" kind="show" identifier="segueToDirections" id="1vj-s9-AVP"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -152,9 +150,6 @@
                             <constraint firstItem="fnK-CW-HBW" firstAttribute="leading" secondItem="D2D-RO-NBi" secondAttribute="leading" id="17Q-G8-L5a"/>
                             <constraint firstItem="fnK-CW-HBW" firstAttribute="top" secondItem="8HS-nu-lcR" secondAttribute="top" id="1Ux-Df-3Kp"/>
                             <constraint firstItem="fnK-CW-HBW" firstAttribute="trailing" secondItem="D2D-RO-NBi" secondAttribute="trailing" id="8WZ-Qk-IkX"/>
-                            <constraint firstItem="Eg3-iJ-lpq" firstAttribute="leading" secondItem="D2D-RO-NBi" secondAttribute="leading" id="aVb-Z9-g7K"/>
-                            <constraint firstItem="Eg3-iJ-lpq" firstAttribute="trailing" secondItem="D2D-RO-NBi" secondAttribute="trailing" id="b9s-H8-Y5j"/>
-                            <constraint firstItem="Eg3-iJ-lpq" firstAttribute="top" secondItem="D2D-RO-NBi" secondAttribute="top" id="qmf-UQ-dqK"/>
                             <constraint firstItem="fnK-CW-HBW" firstAttribute="bottom" secondItem="D2D-RO-NBi" secondAttribute="bottom" id="rsN-QI-N5N"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="D2D-RO-NBi"/>
@@ -168,11 +163,11 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="descriptionTextView" destination="sxC-sW-n9d" id="4AX-2e-Ijf"/>
                         <outlet property="favoriteButton" destination="dJ4-fi-VuN" id="PL7-Qz-TUt"/>
                         <outlet property="headerView" destination="Eg3-iJ-lpq" id="a4f-5Q-ign"/>
                         <outlet property="lcMapView" destination="fnK-CW-HBW" id="pIP-E7-BS0"/>
                         <outlet property="pageControl" destination="zlN-qP-p8e" id="RR4-Ud-130"/>
-                        <outlet property="pathDescriptionLabel" destination="YPr-eY-2pG" id="lSb-R1-v54"/>
                         <outlet property="pathNameLabel" destination="tRB-RC-YXt" id="A5Q-RD-NII"/>
                         <outlet property="pinDescriptionLabel" destination="5c7-gG-br9" id="rSg-IP-m4G"/>
                         <outlet property="pinTitleLabel" destination="JkV-P5-Ajh" id="dqG-Wu-kfj"/>
@@ -181,13 +176,20 @@
                         <outlet property="timeStampLabel" destination="7Y0-m7-oxW" id="CJr-f0-4fC"/>
                         <outlet property="uiImageView" destination="scV-cc-at7" id="Vka-0y-HxV"/>
                         <outlet property="userNameLabel" destination="4vO-Gt-SUK" id="aBf-0N-NVt"/>
-                        <outlet property="userProfileImageView" destination="bfP-ec-I1T" id="I6K-G9-q2E"/>
                         <outlet property="viewLabel" destination="2HF-Fx-RwW" id="Erq-Js-bAw"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qV2-d9-nnB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1031.2" y="85.907046476761622"/>
+        </scene>
+        <!--Storyboard Reference-->
+        <scene sceneID="35N-Kp-yRn">
+            <objects>
+                <viewControllerPlaceholder id="p3M-lz-JhV" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="frH-q6-zrd" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2172" y="68"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="nwB-GE-a9T">
@@ -209,8 +211,8 @@
         </scene>
     </scenes>
     <resources>
-        <image name="blankProfileimage" width="720" height="720"/>
-        <image name="emptyStar" width="64" height="64"/>
-        <image name="if_eye_226579" width="256" height="256"/>
+        <image name="darkEyeIcon" width="100" height="100"/>
+        <image name="emptyBlueStar" width="100" height="100"/>
+        <image name="goButton" width="100" height="100"/>
     </resources>
 </document>

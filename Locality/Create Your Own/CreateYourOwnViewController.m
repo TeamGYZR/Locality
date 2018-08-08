@@ -51,7 +51,6 @@
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismissView)];
     [self.viewOverMapView addGestureRecognizer:tap];
     self.locationManager = [CLLocationManagerSingleton sharedSingleton].locationManager;
-    self.locationManager.delegate = self;
     [self.locationManager requestWhenInUseAuthorization];
     self.pathCoordinates = [[NSMutableArray alloc] init];
     self.pinCoordinates = [[NSMutableArray alloc] init];
@@ -63,8 +62,12 @@
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     [self.mapView setUserTrackingMode:MKUserTrackingModeFollow animated:YES];
+    self.locationManager.delegate = self;
     [self.locationManager startUpdatingLocation];
     self.startTime = CACurrentMediaTime();
+}
+- (void)viewWillDisappear:(BOOL)animated{
+    self.locationManager.delegate = nil;
 }
 -(void) dismissView{
     [UIView beginAnimations:@"FadeIn" context:nil];
@@ -153,7 +156,9 @@
 }
 
 - (IBAction)didTapCancel:(id)sender {
-    [self dismissViewControllerAnimated:YES completion:nil];
+    [self dismissViewControllerAnimated:YES completion:^{
+        [self.navigationController dismissViewControllerAnimated:YES completion:nil];
+    }];
 }
 #pragma mark - Private Methods
 

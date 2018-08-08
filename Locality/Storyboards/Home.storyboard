@@ -34,19 +34,19 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="PathCell" rowHeight="301" id="br1-gT-nE4" customClass="PathCell">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="301"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="PathCell" rowHeight="292" id="br1-gT-nE4" customClass="PathCell">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="292"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="br1-gT-nE4" id="lxE-LU-myx">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="300.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="291.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VFV-Qa-PL4">
-                                                    <rect key="frame" x="3" y="3.5" width="369" height="286"/>
+                                                    <rect key="frame" x="3" y="3.5" width="369" height="284"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <subviews>
                                                         <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jOz-bV-egI" customClass="PFImageView">
-                                                            <rect key="frame" x="14" y="83" width="26" height="26"/>
+                                                            <rect key="frame" x="10" y="83" width="26" height="26"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                             <color key="backgroundColor" red="1" green="0.97387387020000005" blue="0.71572926849999996" alpha="0.31006528249999998" colorSpace="custom" customColorSpace="displayP3"/>
                                                         </view>
@@ -58,7 +58,7 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HT9-kf-aW1">
-                                                            <rect key="frame" x="48" y="87" width="316" height="18"/>
+                                                            <rect key="frame" x="45" y="91" width="316" height="18"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                             <fontDescription key="fontDescription" name="Dosis-Light" family="Dosis" pointSize="13"/>
                                                             <nil key="textColor"/>
@@ -69,18 +69,18 @@
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                             <color key="backgroundColor" red="0.60080752199999998" green="0.79725902270000004" blue="0.96867066619999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                         </view>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Pins include:" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pfd-gB-Eh0">
-                                                            <rect key="frame" x="18" y="241" width="342" height="32"/>
-                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                            <fontDescription key="fontDescription" name="Dosis-Regular" family="Dosis" pointSize="14"/>
-                                                            <nil key="textColor"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" fixedFrame="YES" text="Path Description" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Spi-tZ-sLK">
                                                             <rect key="frame" x="9" y="48" width="352" height="27"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                             <fontDescription key="fontDescription" name="Dosis-Regular" family="Dosis" pointSize="16"/>
                                                             <color key="textColor" red="0.93333333330000001" green="0.42352941179999998" blue="0.30196078430000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Pins include:" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pfd-gB-Eh0">
+                                                            <rect key="frame" x="18" y="241" width="342" height="32"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                            <fontDescription key="fontDescription" name="Dosis-Regular" family="Dosis" pointSize="14"/>
+                                                            <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                     </subviews>
@@ -128,13 +128,6 @@
                                     <action selector="didTapNature:" destination="yY6-fb-adc" eventType="touchUpInside" id="lQr-lC-jBr"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Locality" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PyZ-NW-wZ3">
-                                <rect key="frame" x="16" y="129" width="359" height="48"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="Dosis-Regular" family="Dosis" pointSize="34"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="x8x-Ou-yYw">
                                 <rect key="frame" x="6" y="205" width="118" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -146,6 +139,13 @@
                                     <action selector="didTapFoodie:" destination="yY6-fb-adc" eventType="touchUpInside" id="xP0-QC-H1V"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Locality" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PyZ-NW-wZ3">
+                                <rect key="frame" x="8" y="149" width="359" height="48"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="Dosis-Light" family="Dosis" pointSize="37"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" name="controlLightHighlightColor" catalog="System" colorSpace="catalog"/>
                         <viewLayoutGuide key="safeArea" id="Of1-DP-sed"/>
@@ -166,7 +166,7 @@
                         <outlet property="labefiled" destination="PyZ-NW-wZ3" id="fcK-iZ-MKZ"/>
                         <outlet property="natureButton" destination="iiU-l1-YUV" id="tdd-0x-adV"/>
                         <outlet property="tableView" destination="osb-fg-JPY" id="eaZ-wY-3Gs"/>
-                        <segue destination="ftd-6l-hoH" kind="show" identifier="createSegue" id="QYy-81-vMB"/>
+                        <segue destination="ftd-6l-hoH" kind="presentation" identifier="createSegue" id="QYy-81-vMB"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="am0-dH-P53" userLabel="First Responder" sceneMemberID="firstResponder"/>
