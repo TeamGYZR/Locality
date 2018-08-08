@@ -24,7 +24,7 @@
 #import "pinVenueAnnotation.h"
 #import "pinVenueAnnotationView.h"
 
-@interface CreateYourOwnViewController () <MKMapViewDelegate, CLLocationManagerDelegate>
+@interface CreateYourOwnViewController () <MKMapViewDelegate, CLLocationManagerDelegate,AddPinInfoViewDelegate>
 
 @property (strong, nonatomic) CLLocationManager *locationManager;
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;
@@ -45,10 +45,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.viewOverMapView.alpha=0;
-    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismissView)];
-    [self.view addGestureRecognizer:tap];
-    self.progressView.alpha=0;
+   self.progressView.alpha=0;
     self.mapView.delegate = self;
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismissView)];
+    [self.viewOverMapView addGestureRecognizer:tap];
     self.locationManager = [CLLocationManagerSingleton sharedSingleton].locationManager;
     self.locationManager.delegate = self;
     [self.locationManager requestWhenInUseAuthorization];
@@ -57,6 +57,7 @@
     self.mapView.showsUserLocation = YES;
     self.locationManager.distanceFilter = 5;
     self.locationManager.desiredAccuracy = kCLLocationAccuracyBest;
+    //[self didTapViewCancel];
 }
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
@@ -116,6 +117,7 @@
     }];
     UIAlertAction *continueAction = [UIAlertAction actionWithTitle:@"Add" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
       self.addpininfoview=[[AddPinInfoView alloc] init];
+      self.addpininfoview.delegate=self;
        [self.addpininfoview setAlpha:0.0];
        [self.view addSubview:self.addpininfoview];
         [UIView beginAnimations:@"FadeIn" context:nil];
@@ -178,6 +180,7 @@
     return nil;
 }
 
+
 - (void)addPinsToParse{
     self.itineraryDraft.pinnedLocations = [[NSMutableArray alloc] init];
     NSUInteger pinsCount = [self.pinCoordinates count];
@@ -188,11 +191,13 @@
 //        //NSDictionary *dictionary = [NSDictionary dictionaryWithObjectsAndKeys:latitudeString, @"latitude", longitudeString, @"longitude", @"", @"name", nil];
 //        //NSMutableDictionary *dictionary = [NSMutableDictionary dictionaryWithObjectsAndKeys:latitudeString, @"latitude", longitudeString, @"longitude", @"", @"name", nil];
         PFFile *pinTestPicture = [ItineraryPin getPFFileFromImage:[UIImage imageNamed:@"centralpark"]];
-        NSMutableDictionary *dictionary = [NSMutableDictionary dictionaryWithObjectsAndKeys:latitudeString, @"latitude", longitudeString, @"longitude", pinTestPicture, @"pilnjnbnjkttedcnvjfhibbubrhllchdjdihcdjenbgvrucjucbbcnrufikvifntljctureData", nil];
+        NSMutableDictionary *dictionary = [NSMutableDictionary dictionaryWithObjectsAndKeys:latitudeString, @"latitude", longitudeString, @"longitude", pinTestPicture, @"pictureData", nil];
         [self.itineraryDraft.pinnedLocations addObject:dictionary];
     }
     [self addPathsToParse];
 }
+
+
 
 - (void)addPathsToParse{
     NSString *cgPointString = nil;
@@ -241,6 +246,26 @@
         pathFinalizationVC.pinInfo = self.pinInfo; 
     }
 }
+- (void)didTapViewCancel{
+    [self dismissView];
+}
+-(void) didTapViewShare{
+    //self.addpininfoview=[[AddPinInfoView alloc] init];
+    self.itineraryDraft.pinnedLocations = [[NSMutableArray alloc] init];
+    NSUInteger pinsCount = [self.pinCoordinates count];
+    for (int i = 0; i < pinsCount; i++){
+        CLLocation *currentPin = [self.pinCoordinates objectAtIndex:i];
+        NSString *latitudeString = [[NSNumber numberWithDouble:currentPin.coordinate.latitude] stringValue];
+        NSString *longitudeString = [[NSNumber numberWithDouble:currentPin.coordinate.longitude] stringValue];
+        //        //NSDictionary *dictionary = [NSDictionary dictionaryWithObjectsAndKeys:latitudeString, @"latitude", longitudeString, @"longitude", @"", @"name", nil];
+        //        //NSMutableDictionary *dictionary = [NSMutableDictionary dictionaryWithObjectsAndKeys:latitudeString, @"latitude", longitudeString, @"longitude", @"", @"name", nil];
+        PFFile *pinTestPicture = [ItineraryPin getPFFileFromImage:imageByTheUser];
+        NSMutableDictionary *dictionary = [NSMutableDictionary dictionaryWithObjectsAndKeys:latitudeString, @"latitude", longitudeString, @"longitude", pinTestPicture, @"pictureData", nil];
+        [self.itineraryDraft.pinnedLocations addObject:dictionary];
+    }
+}
 
+
+@synthesize imageByTheUser;
 
 @end

@@ -44,8 +44,6 @@
             NSLog(@"Could not find any favorites - %@", error.localizedDescription);
         }
     }];
-    
-    
 }
 
 -(NSInteger)tableView:(UITableView *) tableView numberOfRowsInSection:(NSInteger)section{

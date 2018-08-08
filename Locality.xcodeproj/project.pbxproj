@@ -87,6 +87,7 @@
 		A831941E21153D3400CE7744 /* PinInfoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A831941D21153D3400CE7744 /* PinInfoView.xib */; };
 		A858D2DF21044E7C00637FAD /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A858D2DE21044E7C00637FAD /* AVFoundation.framework */; };
 		A8842AF22106A44F003ECD07 /* Uploadphotoviewcontroller.m in Sources */ = {isa = PBXBuildFile; fileRef = A8842AF12106A44F003ECD07 /* Uploadphotoviewcontroller.m */; };
+		A8A56484211ADC1800102775 /* Annotation.m in Sources */ = {isa = PBXBuildFile; fileRef = A8A56483211ADC1800102775 /* Annotation.m */; };
 		A8BF41C7210C110E001DAB81 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = A8BF41C6210C110E001DAB81 /* User.m */; };
 		A8BF41CA2110B1CE001DAB81 /* PathCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A8BF41C92110B1CE001DAB81 /* PathCell.m */; };
 		A8E26415210BB430002C0992 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A8E26414210BB430002C0992 /* HomeViewController.m */; };
@@ -251,6 +252,8 @@
 		A858D2DE21044E7C00637FAD /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		A8842AF02106A44F003ECD07 /* Uploadphotoviewcontroller.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Uploadphotoviewcontroller.h; sourceTree = "<group>"; };
 		A8842AF12106A44F003ECD07 /* Uploadphotoviewcontroller.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Uploadphotoviewcontroller.m; sourceTree = "<group>"; };
+		A8A56482211ADC1800102775 /* Annotation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Annotation.h; sourceTree = "<group>"; };
+		A8A56483211ADC1800102775 /* Annotation.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Annotation.m; sourceTree = "<group>"; };
 		A8BF41C5210C110E001DAB81 /* User.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
 		A8BF41C6210C110E001DAB81 /* User.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
 		A8BF41C82110B1CE001DAB81 /* PathCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PathCell.h; sourceTree = "<group>"; };
@@ -355,6 +358,8 @@
 				A831941A2115377B00CE7744 /* AddPinInfoView.h */,
 				A831941B2115377B00CE7744 /* AddPinInfoView.m */,
 				A831941D21153D3400CE7744 /* PinInfoView.xib */,
+				A8A56482211ADC1800102775 /* Annotation.h */,
+				A8A56483211ADC1800102775 /* Annotation.m */,
 			);
 			path = "Create Your Own";
 			sourceTree = "<group>";
@@ -908,6 +913,7 @@
 				4C81D0DD210F7FDE00064DBB /* CreateYourOwnViewController.m in Sources */,
 				4C771D722106A8EF0055A90D /* CommentCell.m in Sources */,
 				851C871C21014D0E007C32DD /* Favorite.m in Sources */,
+				A8A56484211ADC1800102775 /* Annotation.m in Sources */,
 				4C33B9BC21138D5900C72F4E /* pinVenueAnnotationView.m in Sources */,
 				8544B9A1210FAE260028D43F /* LCMapView.m in Sources */,
 				4C6EBC092118EA95000BA46B /* PathFavorite.m in Sources */,
