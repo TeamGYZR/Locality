@@ -16,7 +16,7 @@
 @interface AddPinInfoView : UIView<UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 @property (strong, nonatomic) IBOutlet UIView *pinInfoCustomView;
 @property (weak, nonatomic) IBOutlet UITextField *pinNameField;
-@property (weak, nonatomic) IBOutlet UITextField *pinDescriptionField;
+@property (weak, nonatomic) IBOutlet UITextView *pinDescriptionField;
 @property (weak, nonatomic) IBOutlet UIImageView *pinImageView;
 @property (weak, nonatomic) IBOutlet UIButton *cancelButton;
 @property (nonatomic,weak) id<AddPinInfoViewDelegate> delegate;

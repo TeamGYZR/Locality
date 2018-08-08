@@ -13,6 +13,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AddPinInfoView">
             <connections>
                 <outlet property="cancelButton" destination="afb-M8-jgv" id="DM2-z1-CWU"/>
+                <outlet property="pinDescriptionField" destination="QNd-2K-HSx" id="Kfm-ED-9Ol"/>
                 <outlet property="pinImageView" destination="Jrr-HQ-bqF" id="ckF-bM-AXg"/>
                 <outlet property="pinInfoCustomView" destination="iN0-l3-epB" id="Hxl-EW-5Wn"/>
                 <outlet property="pinNameField" destination="ayv-Du-kEj" id="1cV-ya-LZj"/>
@@ -58,14 +59,6 @@
                                 <action selector="didTapShare:" destination="-1" eventType="touchUpInside" id="jTM-Aw-fIp"/>
                             </connections>
                         </button>
-                        <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="Description..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3cU-GK-A9X">
-                            <rect key="frame" x="144" y="127" width="191" height="123"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            <nil key="textColor"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                            <textInputTraits key="textInputTraits"/>
-                        </textField>
                         <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Fcz-72-oh8">
                             <rect key="frame" x="0.0" y="0.0" width="350" height="73"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -91,6 +84,13 @@
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <textInputTraits key="textInputTraits"/>
                         </textField>
+                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="QNd-2K-HSx">
+                            <rect key="frame" x="144" y="127" width="191" height="123"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                        </textView>
                     </subviews>
                     <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                 </view>
