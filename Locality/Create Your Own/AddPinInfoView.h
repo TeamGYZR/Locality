@@ -21,6 +21,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *cancelButton;
 @property (nonatomic,weak) id<AddPinInfoViewDelegate> delegate;
 @property (strong, nonatomic) UIImage *pinneddeditedPicture;
+
 -(void) customnInt;
 
 @end

@@ -74,6 +74,14 @@
                                         <action selector="didTapCancel:" destination="-1" eventType="touchUpInside" id="aT9-cU-NeR"/>
                                     </connections>
                                 </button>
+                                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Msq-7p-0eU">
+                                    <rect key="frame" x="74" y="0.0" width="276" height="73"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <gestureRecognizers/>
+                                    <connections>
+                                        <outletCollection property="gestureRecognizers" destination="Ird-Dl-E8d" appends="YES" id="RlA-oi-PeP"/>
+                                    </connections>
+                                </view>
                             </subviews>
                             <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </view>
@@ -106,6 +114,11 @@
             <viewLayoutGuide key="safeArea" id="dsZ-d8-cRG"/>
             <point key="canvasLocation" x="378" y="-243"/>
         </view>
+        <tapGestureRecognizer id="Ird-Dl-E8d">
+            <connections>
+                <action selector="didTapUpperBlackBar:" destination="-1" id="r7R-Iq-Qjc"/>
+            </connections>
+        </tapGestureRecognizer>
     </objects>
     <resources>
         <image name="2000px-Missing_image_icon_with_camera_and_upload_arrow" width="1000" height="923"/>

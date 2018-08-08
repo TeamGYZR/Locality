@@ -192,8 +192,6 @@
 //    if (self.pinName) {
 //        [self.itineraryDraft.pinnedLocations[pinsCount] setObject:self.pinName forKey:@"name"];
 //    }
-    
-    
 }
 
 -(void)addPathsToParse{
