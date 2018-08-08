@@ -13,7 +13,7 @@
 #import "CLLocationManagerSingleton.h"
 
 @interface LCMapView()<MKMapViewDelegate, CLLocationManagerDelegate>
-@property (strong, nonatomic) Itinerary *itinerary;
+@property (strong, nonatomic) NSArray *itineraries;
 @property (strong, nonatomic) CLLocation *currentLocation;
 @property (strong, nonatomic) MKPolyline *polyline;
 @property (strong, nonatomic) NSMutableArray *favoritedPaths;
@@ -28,6 +28,9 @@
 -(instancetype)initWithCoder:(NSCoder *)aDecoder{
     self = [super initWithCoder:aDecoder];
     if(self){
+        mapView = [[MKMapView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height)];
+        mapView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+        mapView.userInteractionEnabled = YES;
         return self;
     }
     return nil;
@@ -36,23 +39,20 @@
 #pragma mark - Public Methods
 
 -(void)configureWithItinerary:(Itinerary *)itinerary isStatic:(BOOL)move showCurrentLocation:(BOOL)showCurrent{
-    mapView = [[MKMapView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height)];
-    mapView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-    mapView.userInteractionEnabled = YES;
     mapView.delegate = self;
+    locationManager = [CLLocationManagerSingleton sharedSingleton].locationManager;
+    locationManager.delegate = self;
     isStatic = move;
     mapView.zoomEnabled = !isStatic;
     mapView.scrollEnabled = !isStatic;
     mapView.showsUserLocation = showCurrent;
-    locationManager = [CLLocationManagerSingleton sharedSingleton].locationManager;
-    locationManager.delegate = self;
-    self.itinerary = itinerary;
+    self.itineraries = @[itinerary];
     [self addSubview:mapView];
-    [locationManager requestLocation];
+    [self drawMapWithArray];
 }
 
 - (void)configureWithFavoritedPaths:(NSArray *)favoritedPaths{
-    self.favoritedPaths = [[NSMutableArray alloc] init];
+    self.itineraries = favoritedPaths;
     mapView = [[MKMapView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height)];
     mapView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     mapView.userInteractionEnabled = YES;
@@ -63,32 +63,46 @@
     locationManager = [[CLLocationManager alloc] init];
     locationManager.delegate = self;
     [self addSubview:mapView];
-    [locationManager requestLocation];
-    for (int i = 0; i < [favoritedPaths count]; i++) {
-        [self.favoritedPaths addObject:favoritedPaths[i][@"itinerary"]];
-    }
+    [self drawMapWithArray];
+//    for (int i = 0; i < [favoritedPaths count]; i++) {
+//        [self.favoritedPaths addObject:favoritedPaths[i][@"itinerary"]];
+//    }
+    
+}
+
+-(void)testDirectionsWithItinerary:(Itinerary *)itinerary{
+    self.itineraries = @[itinerary];
+    [self addSubview:mapView];
+    MKDirectionsRequest *request = [[MKDirectionsRequest alloc] init];
+    //request.source = self.currentLocation;
+    [self drawMapWithArray];
+}
+
+-(void)drawMapWithArray{
+    [[CLLocationManagerSingleton sharedSingleton].locationManager requestLocation];
     
 }
 
 #pragma mark - Private Methods
 -(void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray<CLLocation *> *)locations{
     self.currentLocation = [locations lastObject];
-    if (self.itinerary) {
-        NSString* center = [self.itinerary.paths objectAtIndex:(self.itinerary.paths.count/2)];
+    double numPaths = [self.itineraries count];
+    if (numPaths == 1) {
+        Itinerary *itinerary = (Itinerary *)self.itineraries[0];
+        NSString* center = [itinerary.paths objectAtIndex:(itinerary.paths.count/2)];
         CGPoint centerPoint = CGPointFromString(center);
         MKCoordinateRegion currentRegion = MKCoordinateRegionMake(CLLocationCoordinate2DMake(centerPoint.x, centerPoint.y), MKCoordinateSpanMake(0.025, 0.025));
         [mapView setRegion:currentRegion animated:NO];
+        [self drawPathForItinerary:itinerary];
     } else {
         MKCoordinateRegion currentRegion = MKCoordinateRegionMake(CLLocationCoordinate2DMake(self.currentLocation.coordinate.latitude, self.currentLocation.coordinate.longitude), MKCoordinateSpanMake(0.7, 0.7));
         [mapView setRegion:currentRegion animated:NO];
+        for (int i = 0; i < [self.favoritedPaths count]; i++) {
+            Itinerary *itinerary = self.itineraries[i];
+            [self drawPathForItinerary:itinerary];
+        }
     }
-    if (!self.favoritedPaths) {
-        [self drawPathForItinerary:self.itinerary];
-    }
-    for (int i = 0; i < [self.favoritedPaths count]; i++) {
-        Itinerary *itinerary = self.favoritedPaths[i];
-         [self drawPathForItinerary:itinerary];
-    }
+   
 }
 
 -(void)drawPathForItinerary:(Itinerary *)itinerary{

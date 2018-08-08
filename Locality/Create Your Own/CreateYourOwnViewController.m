@@ -50,7 +50,6 @@
     self.progressView.alpha=0;
     self.mapView.delegate = self;
     self.locationManager = [CLLocationManagerSingleton sharedSingleton].locationManager;
-    self.locationManager.delegate = self;
     [self.locationManager requestWhenInUseAuthorization];
     self.pathCoordinates = [[NSMutableArray alloc] init];
     self.pinCoordinates = [[NSMutableArray alloc] init];
@@ -61,8 +60,12 @@
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     [self.mapView setUserTrackingMode:MKUserTrackingModeFollow animated:YES];
+    self.locationManager.delegate = self;
     [self.locationManager startUpdatingLocation];
     self.startTime = CACurrentMediaTime();
+}
+- (void)viewWillDisappear:(BOOL)animated{
+    self.locationManager.delegate = nil;
 }
 -(void) dismissView{
     [UIView beginAnimations:@"FadeIn" context:nil];
@@ -148,7 +151,9 @@
 }
 
 - (IBAction)didTapCancel:(id)sender {
-    [self dismissViewControllerAnimated:YES completion:nil];
+    [self dismissViewControllerAnimated:YES completion:^{
+        [self.navigationController dismissViewControllerAnimated:YES completion:nil];
+    }];
 }
 
 - (IBAction)didtapDone:(id)sender {
@@ -188,7 +193,7 @@
 //        //NSDictionary *dictionary = [NSDictionary dictionaryWithObjectsAndKeys:latitudeString, @"latitude", longitudeString, @"longitude", @"", @"name", nil];
 //        //NSMutableDictionary *dictionary = [NSMutableDictionary dictionaryWithObjectsAndKeys:latitudeString, @"latitude", longitudeString, @"longitude", @"", @"name", nil];
         PFFile *pinTestPicture = [ItineraryPin getPFFileFromImage:[UIImage imageNamed:@"centralpark"]];
-        NSMutableDictionary *dictionary = [NSMutableDictionary dictionaryWithObjectsAndKeys:latitudeString, @"latitude", longitudeString, @"longitude", pinTestPicture, @"pilnjnbnjkttedcnvjfhibbubrhllchdjdihcdjenbgvrucjucbbcnrufikvifntljctureData", nil];
+        NSMutableDictionary *dictionary = [NSMutableDictionary dictionaryWithObjectsAndKeys:latitudeString, @"latitude", longitudeString, @"longitude", pinTestPicture, @"pictureData", nil];
         [self.itineraryDraft.pinnedLocations addObject:dictionary];
     }
     [self addPathsToParse];

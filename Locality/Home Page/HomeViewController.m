@@ -69,6 +69,14 @@
     }
 }
 
+-(void)viewWillAppear:(BOOL)animated{
+    
+}
+
+- (void)viewWillDisappear:(BOOL)animated{
+    self.locationManager.delegate = nil;
+}
+
 - (void)reverseGeocode:(CLLocation *)location{
     if (!self.geoCoder){
         self.geoCoder = [[CLGeocoder alloc] init];
@@ -113,11 +121,12 @@
     UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
     }];
     UIAlertAction *continueAction = [UIAlertAction actionWithTitle:@"Let's Go!" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        [self performSegueWithIdentifier:@"createSegue" sender:nil];
+        [self performSegueWithIdentifier:@"createSegue" sender:self];
     }];
     [alert addAction:cancelAction];
     [alert addAction:continueAction];
     [self presentViewController:alert animated:YES completion:^{
+        NSLog(@"hey");
     }];
 }
 #pragma mark - Parse Query

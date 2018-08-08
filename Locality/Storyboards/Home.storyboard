@@ -165,7 +165,7 @@
                         <outlet property="labefiled" destination="PyZ-NW-wZ3" id="fcK-iZ-MKZ"/>
                         <outlet property="natureButton" destination="iiU-l1-YUV" id="tdd-0x-adV"/>
                         <outlet property="tableView" destination="osb-fg-JPY" id="eaZ-wY-3Gs"/>
-                        <segue destination="ftd-6l-hoH" kind="show" identifier="createSegue" id="QYy-81-vMB"/>
+                        <segue destination="ftd-6l-hoH" kind="presentation" identifier="createSegue" id="QYy-81-vMB"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="am0-dH-P53" userLabel="First Responder" sceneMemberID="firstResponder"/>

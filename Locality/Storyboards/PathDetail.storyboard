@@ -145,6 +145,9 @@
                                 <state key="normal" title="Start This Path">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <segue destination="p3M-lz-JhV" kind="show" identifier="segueToDirections" id="1vj-s9-AVP"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -188,6 +191,14 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qV2-d9-nnB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1031.2" y="85.907046476761622"/>
+        </scene>
+        <!--Storyboard Reference-->
+        <scene sceneID="35N-Kp-yRn">
+            <objects>
+                <viewControllerPlaceholder id="p3M-lz-JhV" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="frH-q6-zrd" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2172" y="68"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="nwB-GE-a9T">
