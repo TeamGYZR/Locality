@@ -7,6 +7,7 @@
 //
 
 #import "AddPinInfoView.h"
+
 @implementation AddPinInfoView
 - (instancetype)initWithFrame:(CGRect)frame{
   self=[super initWithFrame:frame];
@@ -17,7 +18,7 @@
     return self;
 }
 - (void)setDelegate:(id<AddPinInfoViewDelegate>)delegate{
-      _delegate=delegate;
+      _delegate = delegate;
 }
 -(IBAction)didTapCameraButton:(id)sender{
     UIImagePickerController *imagePicker = [UIImagePickerController new];
@@ -38,9 +39,9 @@
 }
 -(void) customnInt{
     [[NSBundle mainBundle] loadNibNamed:@"PinInfoView" owner:self options:nil];
-    self.pinInfoCustomView.layer.shadowOffset=CGSizeZero;
-    self.pinInfoCustomView.layer.shadowOpacity=0.8;
-    self.pinInfoCustomView.frame=self.bounds;
+    self.pinInfoCustomView.layer.shadowOffset = CGSizeZero;
+    self.pinInfoCustomView.layer.shadowOpacity = 0.8;
+    self.pinInfoCustomView.frame = self.bounds;
     [self addSubview:self.pinInfoCustomView];
 }
 - (BOOL)pointInside:(CGPoint)point withEvent:(UIEvent *)event{

@@ -119,8 +119,8 @@
         
     }];
     UIAlertAction *continueAction = [UIAlertAction actionWithTitle:@"Add" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        self.addpininfoview=[[AddPinInfoView alloc] init];
-        self.addpininfoview.delegate=self;
+        self.addpininfoview = [[AddPinInfoView alloc] init];
+        self.addpininfoview.delegate = self;
         [self.addpininfoview setAlpha:0.0];
         [self.view addSubview:self.addpininfoview];
         [UIView beginAnimations:@"FadeIn" context:nil];
