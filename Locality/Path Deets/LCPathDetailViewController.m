@@ -117,7 +117,15 @@
         }];
     }
 }
-
+- (IBAction)didTapSpeech:(id)sender {
+    if(!self.speech.isSpeaking){
+        AVSpeechUtterance *specchuttternce=[[AVSpeechUtterance alloc] initWithString:self.itinerary[@"name"]];
+        specchuttternce.rate=0.3;
+        specchuttternce.voice=[AVSpeechSynthesisVoice voiceWithLanguage:@"en_GB"];
+        self.speech=[[AVSpeechSynthesizer alloc] init];
+        [self.speech speakUtterance:specchuttternce];
+     }
+}
 #pragma mark - Handling Favorites
 
 -(void)setAFilledStar{
