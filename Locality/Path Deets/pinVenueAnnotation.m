@@ -17,7 +17,9 @@
     self.title = dictionary[@"name"];
     NSString *latitudeString = dictionary[@"latitude"];
     NSString *longitudeString = dictionary[@"longitude"];
-   self.coordinate = CLLocationCoordinate2DMake([latitudeString doubleValue], [longitudeString doubleValue]);
+    self.coordinate = CLLocationCoordinate2DMake([latitudeString doubleValue], [longitudeString doubleValue]);
+    self.picture = dictionary[@"pictureData"];
+    self.pinDescription = dictionary[@"description"];
     return self;
 }
 @end
