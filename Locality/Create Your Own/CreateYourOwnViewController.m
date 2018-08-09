@@ -187,12 +187,11 @@
     if(self.pinImage){
         pictureData = [ItineraryPin getPFFileFromImage:self.pinImage];
     }
-    NSMutableDictionary *dictionary = [NSMutableDictionary dictionaryWithObjectsAndKeys:latitudeString, @"latitude", longitudeString, @"longitude", pictureData, @"pictureData", nil];
+    NSMutableDictionary *dictionary = [NSMutableDictionary dictionaryWithObjectsAndKeys:latitudeString, @"latitude", longitudeString, @"longitude", pictureData, @"pictureData", self.pinName, @"name", self.pinDescription, @"description", nil];
     [self.itineraryDraft.pinnedLocations addObject:dictionary];
-    if (self.pinName) {
-        [self.itineraryDraft.pinnedLocations[pinsCount] setObject:self.pinName forKey:@"name"];
-    }
-    
+//    if (self.pinName) {
+//        [self.itineraryDraft.pinnedLocations[pinsCount] setObject:self.pinName forKey:@"name"];
+//    }
 }
 
 -(void)addPathsToParse{
@@ -221,6 +220,8 @@
 }
 
 -(void) didTapViewShareWithImage:(UIImage *)pinImage withName:(NSString *)pinName withDescription:(NSString *)pinDescription{
+    self.pinName = nil;
+    self.pinDescription = nil;
     self.pinImage = pinImage;
     self.pinName = pinName;
     self.pinDescription = pinDescription;

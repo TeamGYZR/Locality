@@ -248,7 +248,7 @@
     self.currentLocation = CLLocationCoordinate2DMake(currentLocation.coordinate.latitude, currentLocation.coordinate.longitude);
     CLLocation *location =[[CLLocation alloc] initWithLatitude:self.currentLocation.latitude longitude:self.currentLocation.longitude];
     [self reverseGeocode:location];
-    [self loadPathsWithCategory:@"Foodie"];
+    //[self loadPathsWithCategory:@"Foodie"];
     self.imageView.image = [UIImage imageNamed:@"menlopark"];
     //[self photoFecth];
 }

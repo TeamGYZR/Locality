@@ -161,7 +161,13 @@
         pinVenueAnnotationView *annotationView = (pinVenueAnnotationView *)[mapView dequeueReusableAnnotationViewWithIdentifier:@"PlacePin"];
         if (annotationView == nil) {
             annotationView = [[pinVenueAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"PlacePin"];
-            annotationView.canShowCallout = true;
+            UIImageView * iconView=[[UIImageView alloc]init];
+           iconView.image=[UIImage imageNamed:@"golgenGate"];
+          annotationView.leftCalloutAccessoryView = iconView;
+            annotationView.leftCalloutAccessoryView.frame= CGRectMake(0, 0, 50, 50);
+            annotationView.leftCalloutAccessoryView.opaque=YES;
+            annotationView.leftCalloutAccessoryView.userInteractionEnabled=YES;
+         annotationView.canShowCallout = YES;
         }
         return annotationView;
     }

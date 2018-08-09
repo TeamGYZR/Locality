@@ -72,4 +72,9 @@
 - (IBAction)didTapShare:(id)sender {
     [self.delegate didTapViewShareWithImage:self.pinneddeditedPicture withName:self.pinNameField.text withDescription:self.pinDescriptionField.text];
 }
+- (IBAction)didTapUpperBlackBar:(id)sender {
+    [self.pinNameField resignFirstResponder];
+    [self.pinDescriptionField resignFirstResponder];
+}
+
 @end

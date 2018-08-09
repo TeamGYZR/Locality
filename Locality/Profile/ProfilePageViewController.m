@@ -36,6 +36,10 @@
     [self.navigationItem setTitle:@"Profile"];
     UIBarButtonItem *logoutButton = [[UIBarButtonItem alloc] initWithTitle:@"Logout" style:UIBarButtonItemStylePlain target:self action:@selector(onTapLogout:)];
     [self.navigationItem setLeftBarButtonItem:logoutButton];
+    logoutButton.tintColor = [UIColor whiteColor];
+    UIBarButtonItem *settingButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"settingIcon"] style:UIBarButtonItemStylePlain target:self action:@selector(onTapSetting:)];
+    settingButton.tintColor = [UIColor whiteColor];
+    [self.navigationItem setRightBarButtonItem:settingButton];
     self.user = [User currentUser];
     self.fullName.text = self.user.name;
     [self.fullName sizeToFit];
@@ -103,6 +107,10 @@
         }];
         self.showFavorites = YES;
     }
+}
+
+- (void)onTapSetting:(UIBarButtonItem *)settingButton{
+    
 }
 
 #pragma mark - UITableView Methods

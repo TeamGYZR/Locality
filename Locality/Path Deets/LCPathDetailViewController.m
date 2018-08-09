@@ -143,48 +143,19 @@
         self.pageControl.currentPage --;
     }
     if (self.currentPhotoIndex == 0) {
-        [self.lcMapView configureWithItinerary:self.itinerary isStatic:NO showCurrentLocation:YES];
-        [self.view bringSubviewToFront:self.lcMapView];
-        [self.view bringSubviewToFront:self.slideBarView];
-        [self.view bringSubviewToFront:self.headerView];
-        [self.view bringSubviewToFront:self.pathNameLabel];
-        [self.view bringSubviewToFront:self.startButton];
-        [self.view bringSubviewToFront:self.favoriteButton];
-    } else {
-        [self.view bringSubviewToFront:self.pfImageView];
-        [self.view bringSubviewToFront:self.slideBarView];
-        [self.view bringSubviewToFront:self.pinTitleLabel];
-        [self.view bringSubviewToFront:self.pinDescriptionLabel];
-        [UIView transitionWithView:self.pfImageView duration:1 options:UIViewAnimationOptionTransitionCrossDissolve animations:^{
-            self.pfImageView.file = self.photosForSlideshow[self.currentPhotoIndex - 1];
-            [self.pfImageView loadInBackground];
-        } completion:^(BOOL finished) {
-        }];
+        [self setMap];
+    } else{
+        [self setImage];
     }
 }
 - (void)leftSwipe{
     if (self.currentPhotoIndex != [self.photosForSlideshow count]) {
         self.currentPhotoIndex ++;
         self.pageControl.currentPage ++;
+        [self setImage];
     }
-    [self.view bringSubviewToFront:self.pfImageView];
-    [self.view bringSubviewToFront:self.slideBarView];
-    [self.view bringSubviewToFront:self.pinTitleLabel];
-    [self.view bringSubviewToFront:self.pinDescriptionLabel];
-    [UIView transitionWithView:self.pfImageView duration:1 options:UIViewAnimationOptionTransitionCrossDissolve animations:^{
-        self.pfImageView.file = self.photosForSlideshow[self.currentPhotoIndex - 1];
-        [self.pfImageView loadInBackground];
-    } completion:^(BOOL finished) {
-    }];
 }
-#pragma mark - Image Array Seeder
--(void)seedTesterImageArray{
-    self.photosForSlideshow = [[NSMutableArray alloc] init];
-    [self.photosForSlideshow addObject:[UIImage imageNamed:@"golgenGate"]];
-    [self.photosForSlideshow addObject:[UIImage imageNamed:@"centralpark"]];
-    [self.photosForSlideshow addObject:[UIImage imageNamed:@"frenchfries"]];
-    [self.photosForSlideshow addObject:[UIImage imageNamed:@"macaroons"]];
-}
+#pragma mark - Private Methods
 - (void)setImageArray{
     self.photosForSlideshow = [[NSMutableArray alloc] init];
     for (int i = 0; i < [self.itinerary.pinnedLocations count]; i++) {
@@ -192,7 +163,30 @@
             [self.photosForSlideshow addObject:self.itinerary.pinnedLocations[i][@"pictureData"]];
         }
     }
-    
+}
+
+- (void)setMap{
+    [self.lcMapView configureWithItinerary:self.itinerary isStatic:NO showCurrentLocation:YES];
+    [self.view bringSubviewToFront:self.lcMapView];
+    [self.view bringSubviewToFront:self.slideBarView];
+    [self.view bringSubviewToFront:self.headerView];
+    [self.view bringSubviewToFront:self.pathNameLabel];
+    [self.view bringSubviewToFront:self.startButton];
+    [self.view bringSubviewToFront:self.favoriteButton];
+}
+- (void)setImage{
+    [self.view bringSubviewToFront:self.pfImageView];
+    [self.view bringSubviewToFront:self.slideBarView];
+    [self.view bringSubviewToFront:self.pinTitleLabel];
+    [self.view bringSubviewToFront:self.pinDescriptionLabel];
+    self.pinTitleLabel.text = self.itinerary.pinnedLocations[self.currentPhotoIndex - 1][@"name"];
+    [self.pinTitleLabel sizeToFit];
+    self.pinDescriptionLabel.text = self.itinerary.pinnedLocations[self.currentPhotoIndex - 1][@"description"];
+    [UIView transitionWithView:self.pfImageView duration:1 options:UIViewAnimationOptionTransitionCrossDissolve animations:^{
+        self.pfImageView.file = self.photosForSlideshow[self.currentPhotoIndex - 1];
+        [self.pfImageView loadInBackground];
+    } completion:^(BOOL finished) {
+    }];
 }
 #pragma mark - Navigation
 // In a storyboard-based application, you will often want to do a little preparation before navigation
@@ -201,9 +195,7 @@
     // Pass the selected object to the new view controller.
     if([[segue identifier] isEqualToString:@"segueToDirections"]){
         StartPathViewController *nextViewController = (StartPathViewController *)[segue destinationViewController];
-        nextViewController.itinerary = self.itinerary; 
+        nextViewController.itinerary = self.itinerary;
     }
 }
-
-
 @end
