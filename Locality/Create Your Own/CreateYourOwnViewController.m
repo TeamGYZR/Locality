@@ -148,6 +148,7 @@
     else{
     self.itineraryDraft.timeStamp = [NSString stringWithFormat:@"%lu:%lu", minutes, seconds];
     }
+    NSLog(@"%lu", [self.itineraryDraft.pinnedLocations[0] count]);
     [self addPathsToParse];
 }
 

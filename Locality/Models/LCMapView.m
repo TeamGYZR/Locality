@@ -118,8 +118,9 @@
         }
     }
 }
-
 -(void)drawPathForItinerary:(Itinerary *)itinerary{
+    self.myItinerary=[[Itinerary alloc]init];
+    self.myItinerary=itinerary;
     NSUInteger numPoints = [itinerary.paths count];
     if (numPoints > 1)
     {
@@ -137,33 +138,41 @@
         [mapView setNeedsDisplay];
         
     }
-    
     NSUInteger numPins = [itinerary.pinnedLocations count];
+    self.pinsCount=numPins;
     for(int i = 0; i< numPins; i++){
         pinVenueAnnotation *pinAnnotation = [[pinVenueAnnotation alloc] initWithDictionary:itinerary.pinnedLocations[i]];
         [mapView addAnnotation:pinAnnotation];
-    }
+     }
 }
-
-- (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation{
+-(MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation{
     if ([annotation isKindOfClass:[pinVenueAnnotation class]]) {
+         PFFile *eventImage=nil;
+        __block UIImageView * iconView=nil;
+        NSString * string=annotation.title;
         pinVenueAnnotationView *annotationView = (pinVenueAnnotationView *)[mapView dequeueReusableAnnotationViewWithIdentifier:@"PlacePin"];
         if (annotationView == nil) {
             annotationView = [[pinVenueAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"PlacePin"];
-            UIImageView * iconView=[[UIImageView alloc]init];
-           iconView.image=[UIImage imageNamed:@"golgenGate"];
-          annotationView.leftCalloutAccessoryView = iconView;
-            annotationView.leftCalloutAccessoryView.frame= CGRectMake(0, 0, 50, 50);
-            annotationView.leftCalloutAccessoryView.opaque=YES;
-            annotationView.leftCalloutAccessoryView.userInteractionEnabled=YES;
-         annotationView.canShowCallout = YES;
+            for(int i=0; i<self.pinsCount; i++){
+                if([string isEqualToString:self.myItinerary.pinnedLocations[i][@"name"]]){
+                   eventImage=self.myItinerary.pinnedLocations[i][@"pictureData"];
+                    [eventImage getDataInBackgroundWithBlock:^(NSData * _Nullable data, NSError * _Nullable error) {
+                        UIImage *tempholdImage=[UIImage imageWithData:data];
+                        iconView=[[UIImageView alloc] initWithImage:tempholdImage];
+                        annotationView.leftCalloutAccessoryView = iconView;
+                        annotationView.leftCalloutAccessoryView.frame= CGRectMake(0, 0, 50, 50);
+                        annotationView.leftCalloutAccessoryView.opaque=YES;
+                        annotationView.leftCalloutAccessoryView.userInteractionEnabled=YES;
+                        annotationView.canShowCallout = YES;
+                    }];
+                }
+           }
         }
         return annotationView;
     }
     return nil;
 }
-
-- (MKOverlayRenderer *)mapView:(MKMapView *)mapView
+-(MKOverlayRenderer *)mapView:(MKMapView *)mapView
             rendererForOverlay:(id<MKOverlay>)overlay{
     if ([overlay isKindOfClass:[MKPolyline class]])
     {

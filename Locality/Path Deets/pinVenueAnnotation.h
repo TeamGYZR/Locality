@@ -9,6 +9,8 @@
 #import <Foundation/Foundation.h>
 #import <MapKit/MapKit.h>
 #import "ItineraryPin.h"
+#import <ParseUI/ParseUI.h>
+#import <Parse/Parse.h>
 
 @interface pinVenueAnnotation : NSObject <MKAnnotation>
 
@@ -17,6 +19,4 @@
 @property (nonatomic,copy) NSString *subtitle;
 - (id)initWithDictionary:(NSDictionary *)dictionary;
 - (id)initWithItineraryPin:(Itinerary *)itineraryPin;
-//- (MKAnnotationView *)annotationView;
-
 @end

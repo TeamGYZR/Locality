@@ -17,15 +17,7 @@
     self.title = dictionary[@"name"];
     NSString *latitudeString = dictionary[@"latitude"];
     NSString *longitudeString = dictionary[@"longitude"];
-    self.coordinate = CLLocationCoordinate2DMake([latitudeString doubleValue], [longitudeString doubleValue]);
+   self.coordinate = CLLocationCoordinate2DMake([latitudeString doubleValue], [longitudeString doubleValue]);
     return self;
 }
-
-//- (MKAnnotationView *)annotationView{
-//    MKAnnotationView *annotationView = [[MKPinAnnotationView alloc] initWithAnnotation:self reuseIdentifier:@"Pin"];
-//   annotationView.enabled = YES;
-//    annotationView.canShowCallout = YES;
-//    return annotationView;
-//}
-
 @end
