@@ -43,6 +43,14 @@
     self.descriptionTextView.layer.borderWidth = 2.0;
     self.descriptionTextView.layer.borderColor = [UIColor colorWithRed:.1843 green:.28235 blue:.34509 alpha:.7].CGColor;
     self.descriptionTextView.clipsToBounds= YES;
+    self.pinTitleLabel.layer.cornerRadius = 2.0f;
+    self.pinTitleLabel.layer.borderWidth = 1.0;
+    self.pinTitleLabel.layer.borderColor = [UIColor colorWithRed:.1843 green:.28235 blue:.34509 alpha:.7].CGColor;
+    self.pinTitleLabel.clipsToBounds= YES;
+    self.pinDescriptionLabel.layer.cornerRadius = 10.0f;
+    self.pinDescriptionLabel.layer.borderWidth = 1.0;
+    self.pinDescriptionLabel.layer.borderColor = [UIColor colorWithRed:.1843 green:.28235 blue:.34509 alpha:.7].CGColor;
+    self.pinDescriptionLabel.clipsToBounds= YES;
     self.userNameLabel.text = self.itinerary.creator.name;
     self.viewLabel.text = [NSString stringWithFormat:@"%lu", [self.itinerary.uniqueUserViews count]];
     User *currentUser = (User *)[PFUser currentUser];
