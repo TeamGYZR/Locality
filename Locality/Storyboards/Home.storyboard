@@ -61,7 +61,7 @@
                                                             <rect key="frame" x="45" y="91" width="316" height="18"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                             <fontDescription key="fontDescription" name="Dosis-Light" family="Dosis" pointSize="13"/>
-                                                            <nil key="textColor"/>
+                                                            <color key="textColor" red="0.1843137255" green="0.28235294119999998" blue="0.34509803919999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <view clipsSubviews="YES" contentMode="scaleAspectFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ra0-4F-OWh" customClass="PFImageView">
