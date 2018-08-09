@@ -83,6 +83,13 @@
                                                             <color key="textColor" red="0.1843137255" green="0.28235294119999998" blue="0.34509803919999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Distance to first pin: 5 miles" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tt6-mF-gnP">
+                                                            <rect key="frame" x="164" y="91" width="196" height="19"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                            <fontDescription key="fontDescription" name="Dosis-Regular" family="Dosis" pointSize="15"/>
+                                                            <color key="textColor" red="0.1843137255" green="0.28235294119999998" blue="0.34509803919999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
                                                     </subviews>
                                                     <color key="backgroundColor" red="0.8862745098" green="0.90980392160000001" blue="0.89411764709999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                 </view>
@@ -91,6 +98,7 @@
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="cellView" destination="VFV-Qa-PL4" id="YD4-Qv-2AW"/>
+                                            <outlet property="distanceLabel" destination="tt6-mF-gnP" id="ZsF-2l-3qA"/>
                                             <outlet property="mapViewImage" destination="Ra0-4F-OWh" id="79a-co-oUx"/>
                                             <outlet property="pathDescriptionField" destination="Spi-tZ-sLK" id="Tgf-a5-gCL"/>
                                             <outlet property="pathNameField" destination="S7X-PT-Ova" id="cGA-88-JJh"/>

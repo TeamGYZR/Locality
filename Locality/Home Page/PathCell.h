@@ -23,5 +23,6 @@
 @property (weak, nonatomic) IBOutlet PFImageView *mapViewImage;
 @property (weak, nonatomic) IBOutlet UILabel *pinNames;
 @property (weak, nonatomic) IBOutlet UIView *cellView;
+@property (weak, nonatomic) IBOutlet UILabel *distanceLabel;
 
 @end
