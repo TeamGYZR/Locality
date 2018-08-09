@@ -12,7 +12,7 @@
 
 @implementation pinVenueAnnotation
 
-- (id)initWithDictionary:(NSDictionary *)dictionary{
+-(id)initWithDictionary:(NSDictionary *)dictionary{
     self = [super init];
     self.title = dictionary[@"name"];
     NSString *latitudeString = dictionary[@"latitude"];
@@ -21,12 +21,11 @@
     return self;
 }
 
-- (MKAnnotationView *)annotationView{
-    MKAnnotationView *annotationView = [[MKPinAnnotationView alloc] initWithAnnotation:self reuseIdentifier:@"Pin"];
-    annotationView.enabled = YES;
-    annotationView.canShowCallout = YES;
-    return annotationView;
-    
-}
+//- (MKAnnotationView *)annotationView{
+//    MKAnnotationView *annotationView = [[MKPinAnnotationView alloc] initWithAnnotation:self reuseIdentifier:@"Pin"];
+//   annotationView.enabled = YES;
+//    annotationView.canShowCallout = YES;
+//    return annotationView;
+//}
 
 @end

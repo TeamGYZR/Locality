@@ -13,10 +13,10 @@
 @interface pinVenueAnnotation : NSObject <MKAnnotation>
 
 @property (nonatomic) CLLocationCoordinate2D coordinate;
-@property (strong, nonatomic) NSString *title;
-
+@property (nonatomic,copy) NSString *title;
+@property (nonatomic,copy) NSString *subtitle;
 - (id)initWithDictionary:(NSDictionary *)dictionary;
 - (id)initWithItineraryPin:(Itinerary *)itineraryPin;
-- (MKAnnotationView *)annotationView;
+//- (MKAnnotationView *)annotationView;
 
 @end
