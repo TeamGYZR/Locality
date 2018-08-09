@@ -17,5 +17,5 @@
 - (void)configureWithFavoritedPaths:(NSArray *)favoritedPaths;
 @property  NSUInteger pinsCount;
 @property (strong, nonatomic) Itinerary * myItinerary;
-
+- (void)directionsWithItinerary:(Itinerary *)itinerary;
 @end

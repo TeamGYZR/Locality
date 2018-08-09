@@ -11,6 +11,7 @@
 #import "Parse.h"             
 #import "PathFavorite.h"
 #import "User.h"
+#import "StartPathViewController.h"
 
 @interface LCPathDetailViewController ()
 @property (weak, nonatomic) IBOutlet LCMapView *lcMapView;
@@ -30,6 +31,9 @@
 @property (strong, nonatomic) IBOutlet UILabel *timeStampLabel;
 @property (nonatomic) BOOL favorited;
 @property (weak, nonatomic) IBOutlet UITextView *descriptionTextView;
+
+@property (weak, nonatomic) IBOutlet UIView *pinnedLocationView;
+
 @end
 
 @implementation LCPathDetailViewController
@@ -43,6 +47,14 @@
     self.descriptionTextView.layer.borderWidth = 2.0;
     self.descriptionTextView.layer.borderColor = [UIColor colorWithRed:.1843 green:.28235 blue:.34509 alpha:.7].CGColor;
     self.descriptionTextView.clipsToBounds= YES;
+    self.pinTitleLabel.layer.cornerRadius = 2.0f;
+    self.pinTitleLabel.layer.borderWidth = 1.0;
+    self.pinTitleLabel.layer.borderColor = [UIColor colorWithRed:.1843 green:.28235 blue:.34509 alpha:.7].CGColor;
+    self.pinTitleLabel.clipsToBounds= YES;
+    self.pinDescriptionLabel.layer.cornerRadius = 10.0f;
+    self.pinDescriptionLabel.layer.borderWidth = 1.0;
+    self.pinDescriptionLabel.layer.borderColor = [UIColor colorWithRed:.1843 green:.28235 blue:.34509 alpha:.7].CGColor;
+    self.pinDescriptionLabel.clipsToBounds= YES;
     self.userNameLabel.text = self.itinerary.creator.name;
     self.viewLabel.text = [NSString stringWithFormat:@"%lu", [self.itinerary.uniqueUserViews count]];
     User *currentUser = (User *)[PFUser currentUser];
@@ -174,25 +186,22 @@
     [self.view bringSubviewToFront:self.favoriteButton];
 }
 - (void)setImage{
-    [self.view bringSubviewToFront:self.pfImageView];
+    [self.view bringSubviewToFront:self.pinnedLocationView];
     [self.view bringSubviewToFront:self.slideBarView];
-    [self.view bringSubviewToFront:self.pinTitleLabel];
-    [self.view bringSubviewToFront:self.pinDescriptionLabel];
     self.pinTitleLabel.text = self.itinerary.pinnedLocations[self.currentPhotoIndex - 1][@"name"];
     [self.pinTitleLabel sizeToFit];
     self.pinDescriptionLabel.text = self.itinerary.pinnedLocations[self.currentPhotoIndex - 1][@"description"];
-    [UIView transitionWithView:self.pfImageView duration:1 options:UIViewAnimationOptionTransitionCrossDissolve animations:^{
+    [UIView transitionWithView:self.pinnedLocationView duration:1 options:UIViewAnimationOptionCurveLinear animations:^{
         self.pfImageView.file = self.photosForSlideshow[self.currentPhotoIndex - 1];
         [self.pfImageView loadInBackground];
     } completion:^(BOOL finished) {
     }];
 }
 #pragma mark - Navigation
-// In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
     if([[segue identifier] isEqualToString:@"segueToDirections"]){
+        StartPathViewController *nextViewController = (StartPathViewController *)[segue destinationViewController];
+        nextViewController.itinerary = self.itinerary;
     }
 }
 @end

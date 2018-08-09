@@ -39,7 +39,6 @@
 @property (strong, nonatomic) NSString *pinName;
 @property (strong, nonatomic) NSString *pinDescription;
 @end
-
 @implementation CreateYourOwnViewController
 #pragma mark - View Controller
 - (void)viewDidLoad {
@@ -54,6 +53,7 @@
     [self.locationManager requestWhenInUseAuthorization];
     self.pathCoordinates = [[NSMutableArray alloc] init];
     self.pinCoordinates = [[NSMutableArray alloc] init];
+    self.startTime = CACurrentMediaTime();
     self.mapView.showsUserLocation = YES;
     self.locationManager.distanceFilter = 5;
     self.locationManager.desiredAccuracy = kCLLocationAccuracyBest;
@@ -63,7 +63,6 @@
     [self.mapView setUserTrackingMode:MKUserTrackingModeFollow animated:YES];
     self.locationManager.delegate = self;
     [self.locationManager startUpdatingLocation];
-    self.startTime = CACurrentMediaTime();
 }
 - (void)viewWillDisappear:(BOOL)animated{
     self.locationManager.delegate = nil;
