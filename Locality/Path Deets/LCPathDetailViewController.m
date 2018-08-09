@@ -31,6 +31,9 @@
 @property (strong, nonatomic) IBOutlet UILabel *timeStampLabel;
 @property (nonatomic) BOOL favorited;
 @property (weak, nonatomic) IBOutlet UITextView *descriptionTextView;
+
+@property (weak, nonatomic) IBOutlet UIView *pinnedLocationView;
+
 @end
 
 @implementation LCPathDetailViewController
@@ -183,24 +186,19 @@
     [self.view bringSubviewToFront:self.favoriteButton];
 }
 - (void)setImage{
-    [self.view bringSubviewToFront:self.pfImageView];
+    [self.view bringSubviewToFront:self.pinnedLocationView];
     [self.view bringSubviewToFront:self.slideBarView];
-    [self.view bringSubviewToFront:self.pinTitleLabel];
-    [self.view bringSubviewToFront:self.pinDescriptionLabel];
     self.pinTitleLabel.text = self.itinerary.pinnedLocations[self.currentPhotoIndex - 1][@"name"];
     [self.pinTitleLabel sizeToFit];
     self.pinDescriptionLabel.text = self.itinerary.pinnedLocations[self.currentPhotoIndex - 1][@"description"];
-    [UIView transitionWithView:self.pfImageView duration:1 options:UIViewAnimationOptionTransitionCrossDissolve animations:^{
+    [UIView transitionWithView:self.pinnedLocationView duration:1 options:UIViewAnimationOptionCurveLinear animations:^{
         self.pfImageView.file = self.photosForSlideshow[self.currentPhotoIndex - 1];
         [self.pfImageView loadInBackground];
     } completion:^(BOOL finished) {
     }];
 }
 #pragma mark - Navigation
-// In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
     if([[segue identifier] isEqualToString:@"segueToDirections"]){
         StartPathViewController *nextViewController = (StartPathViewController *)[segue destinationViewController];
         nextViewController.itinerary = self.itinerary;
