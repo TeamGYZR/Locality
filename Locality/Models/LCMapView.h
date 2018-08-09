@@ -15,4 +15,5 @@
 @interface LCMapView : UIView
 - (void)configureWithItinerary:(Itinerary *)itinerary isStatic:(BOOL)move showCurrentLocation:(BOOL)showCurrent;
 - (void)configureWithFavoritedPaths:(NSArray *)favoritedPaths;
+- (void)directionsWithItinerary:(Itinerary *)itinerary;
 @end

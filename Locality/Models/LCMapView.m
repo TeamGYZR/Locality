@@ -17,6 +17,7 @@
 @property (strong, nonatomic) CLLocation *currentLocation;
 @property (strong, nonatomic) MKPolyline *polyline;
 @property (strong, nonatomic) NSMutableArray *favoritedPaths;
+@property (nonatomic) BOOL testDirections;
 @end
 
 @implementation LCMapView {
@@ -49,6 +50,7 @@
     mapView.showsUserLocation = showCurrent;
     self.itineraries = @[itinerary];
     [self addSubview:mapView];
+    self.testDirections = NO;
     [locationManager requestLocation];
 }
 
@@ -62,35 +64,34 @@
         [holderArray addObject:favoritedPaths[i][@"itinerary"]];
     }
     self.itineraries = [holderArray copy];
+    self.testDirections = NO;
     [locationManager requestLocation];
 }
 
-//- (void)configureWithFavoritedPaths:(NSArray<Itinerary *> *)favoritedPaths{
-//    self.favoritedPaths = [[NSMutableArray alloc] init];
-//    mapView = [[MKMapView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height)];
-//    mapView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-//    mapView.userInteractionEnabled = YES;
-//    mapView.delegate = self;
-//    mapView.zoomEnabled = YES;
-//    mapView.scrollEnabled = YES;
-//    mapView.showsUserLocation = YES;
-//    locationManager = [[CLLocationManager alloc] init];
-//    locationManager.delegate = self;
-//    [self addSubview:mapView];
-//    //[self drawMapWithArray];
-//    [locationManager requestLocation];
-////    for (int i = 0; i < [favoritedPaths count]; i++) {
-////        [self.favoritedPaths addObject:favoritedPaths[i][@"itinerary"]];
-////    }
-//
-//}
-
--(void)testDirectionsWithItinerary:(Itinerary *)itinerary{
+-(void)directionsWithItinerary:(Itinerary *)itinerary{
     self.itineraries = @[itinerary];
+    mapView.delegate = self;
+    locationManager = [CLLocationManager new];
+    locationManager.delegate = self;
+    mapView.showsUserLocation = YES; 
     [self addSubview:mapView];
     MKDirectionsRequest *request = [[MKDirectionsRequest alloc] init];
-    //request.source = self.currentLocation;
-    [self drawMapWithArray];
+    request.source = [MKMapItem mapItemForCurrentLocation];
+    NSString* current = [itinerary.paths objectAtIndex:0];
+    CGPoint currentPoint = CGPointFromString(current);
+    CLLocationCoordinate2D destinationPoint = CLLocationCoordinate2DMake(currentPoint.x, currentPoint.y);
+    MKPlacemark *destinationPlacemark = [[MKPlacemark alloc] initWithCoordinate:destinationPoint];
+    MKMapItem *destination = [[MKMapItem alloc] initWithPlacemark:destinationPlacemark];
+    request.destination = destination;
+    request.transportType = MKDirectionsTransportTypeWalking;
+    MKDirections *walkingDirections = [[MKDirections alloc] initWithRequest:request];
+    self.testDirections = YES;
+    [walkingDirections calculateDirectionsWithCompletionHandler:^(MKDirectionsResponse * _Nullable response, NSError * _Nullable error){
+        NSLog(@"%@", response.routes[0].description);
+        self.polyline = response.routes[0].polyline;
+        [self->locationManager requestLocation];
+    }];
+    //[self drawMapWithArray];
 }
 
 -(void)drawMapWithArray{
@@ -102,6 +103,16 @@
 -(void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray<CLLocation *> *)locations{
     self.currentLocation = [locations lastObject];
     double numPaths = [self.itineraries count];
+    if(numPaths == 1 && self.testDirections){
+        Itinerary *itinerary = (Itinerary *)self.itineraries[0];
+        MKCoordinateRegion currentRegion = MKCoordinateRegionMake(CLLocationCoordinate2DMake(self.currentLocation.coordinate.latitude, self.currentLocation.coordinate.longitude), MKCoordinateSpanMake(0.025, 0.025));
+        [mapView setRegion:currentRegion animated:NO];
+        [mapView addOverlay:self.polyline];
+        self.testDirections = NO;
+        [self drawPathForItinerary:itinerary];
+        [mapView setNeedsDisplay];
+        return;
+    }
     if (numPaths == 1) {
         Itinerary *itinerary = (Itinerary *)self.itineraries[0];
         NSString* center = [itinerary.paths objectAtIndex:(itinerary.paths.count/2)];
@@ -150,7 +161,13 @@
         pinVenueAnnotationView *annotationView = (pinVenueAnnotationView *)[mapView dequeueReusableAnnotationViewWithIdentifier:@"PlacePin"];
         if (annotationView == nil) {
             annotationView = [[pinVenueAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"PlacePin"];
-            annotationView.canShowCallout = true;
+            UIImageView * iconView=[[UIImageView alloc]init];
+           iconView.image=[UIImage imageNamed:@"golgenGate"];
+          annotationView.leftCalloutAccessoryView = iconView;
+            annotationView.leftCalloutAccessoryView.frame= CGRectMake(0, 0, 50, 50);
+            annotationView.leftCalloutAccessoryView.opaque=YES;
+            annotationView.leftCalloutAccessoryView.userInteractionEnabled=YES;
+         annotationView.canShowCallout = YES;
         }
         return annotationView;
     }
@@ -162,8 +179,13 @@
     if ([overlay isKindOfClass:[MKPolyline class]])
     {
         MKPolylineRenderer *pathRenderer = [[MKPolylineRenderer alloc] initWithPolyline:overlay];
-        pathRenderer.fillColor = [[UIColor blueColor] colorWithAlphaComponent:0.2];
-        pathRenderer.strokeColor = [[UIColor blueColor] colorWithAlphaComponent:0.7];
+        if(self.testDirections){
+            pathRenderer.fillColor = [[UIColor blueColor] colorWithAlphaComponent:0.2];
+            pathRenderer.strokeColor = [[UIColor magentaColor] colorWithAlphaComponent:0.7];
+        } else {
+            pathRenderer.fillColor = [[UIColor blueColor] colorWithAlphaComponent:0.2];
+            pathRenderer.strokeColor = [[UIColor blueColor] colorWithAlphaComponent:0.7];
+        }
         pathRenderer.lineWidth = 3;
         return pathRenderer;
     }

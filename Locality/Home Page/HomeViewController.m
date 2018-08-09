@@ -129,7 +129,7 @@
     [alert addAction:cancelAction];
     [alert addAction:continueAction];
     [self presentViewController:alert animated:YES completion:^{
-        NSLog(@"hey");
+        
     }];
 }
 #pragma mark - Parse Query

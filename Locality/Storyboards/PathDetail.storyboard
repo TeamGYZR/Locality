@@ -185,10 +185,10 @@
             </objects>
             <point key="canvasLocation" x="1031.2" y="85.907046476761622"/>
         </scene>
-        <!--Storyboard Reference-->
+        <!--StartPathStoryboard-->
         <scene sceneID="35N-Kp-yRn">
             <objects>
-                <viewControllerPlaceholder id="p3M-lz-JhV" sceneMemberID="viewController"/>
+                <viewControllerPlaceholder storyboardName="StartPathStoryboard" id="p3M-lz-JhV" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="frH-q6-zrd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2172" y="68"/>
