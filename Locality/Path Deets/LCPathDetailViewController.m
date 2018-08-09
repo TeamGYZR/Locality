@@ -157,6 +157,7 @@
         [self setMap];
     } else{
         [self setImage];
+        [self transitionToImageFromDirectionRight:NO];
     }
 }
 - (void)leftSwipe{
@@ -164,13 +165,14 @@
         self.currentPhotoIndex ++;
         self.pageControl.currentPage ++;
         [self setImage];
+        [self transitionToImageFromDirectionRight:YES];
     }
 }
 #pragma mark - Private Methods
 - (void)setImageArray{
     self.photosForSlideshow = [[NSMutableArray alloc] init];
     for (int i = 0; i < [self.itinerary.pinnedLocations count]; i++) {
-        if (self.itinerary.pinnedLocations[i][@"pictureData"]) {
+        if (self.itinerary.pinnedLocations[i][@"pictureData"] != nil) {
             [self.photosForSlideshow addObject:self.itinerary.pinnedLocations[i][@"pictureData"]];
         }
     }
@@ -186,16 +188,27 @@
     [self.view bringSubviewToFront:self.favoriteButton];
 }
 - (void)setImage{
-    [self.view bringSubviewToFront:self.pinnedLocationView];
-    [self.view bringSubviewToFront:self.slideBarView];
     self.pinTitleLabel.text = self.itinerary.pinnedLocations[self.currentPhotoIndex - 1][@"name"];
     [self.pinTitleLabel sizeToFit];
     self.pinDescriptionLabel.text = self.itinerary.pinnedLocations[self.currentPhotoIndex - 1][@"description"];
-    [UIView transitionWithView:self.pinnedLocationView duration:1 options:UIViewAnimationOptionCurveLinear animations:^{
-        self.pfImageView.file = self.photosForSlideshow[self.currentPhotoIndex - 1];
-        [self.pfImageView loadInBackground];
-    } completion:^(BOOL finished) {
-    }];
+    self.pfImageView.file = self.photosForSlideshow[self.currentPhotoIndex - 1];
+    [self.pfImageView loadInBackground];
+}
+
+- (void) transitionToImageFromDirectionRight:(BOOL)right{
+    CATransition *transition = [CATransition animation];
+    if (right) {
+        transition.subtype = kCATransitionFromRight;
+    } else {
+        transition.subtype = kCATransitionFromLeft;
+    }
+    transition.duration = .5;
+    transition.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
+    transition.type = kCATransitionPush;
+    [self.view.window.layer addAnimation:transition forKey:nil];
+    [self.view bringSubviewToFront:self.pinnedLocationView];
+    [self.view bringSubviewToFront:self.slideBarView];
+    
 }
 #pragma mark - Navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
