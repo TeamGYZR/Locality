@@ -42,7 +42,6 @@
     [super viewDidLoad];
     self.tableView.dataSource=self;
     self.tableView.delegate=self;
-    [self loadPathsWithCategory:@"Foodie"];
     self.labefiled.alpha=0;
     //self.tableView.rowHeight=UITableViewAutomaticDimension;
     //self.tableView.rowHeight=UITableViewAutomaticDimension;
@@ -248,7 +247,7 @@
     self.currentLocation = CLLocationCoordinate2DMake(currentLocation.coordinate.latitude, currentLocation.coordinate.longitude);
     CLLocation *location =[[CLLocation alloc] initWithLatitude:self.currentLocation.latitude longitude:self.currentLocation.longitude];
     [self reverseGeocode:location];
-    //[self loadPathsWithCategory:@"Foodie"];
+    [self loadPathsWithCategory:@"Foodie"];
     self.imageView.image = [UIImage imageNamed:@"menlopark"];
     //[self photoFecth];
 }

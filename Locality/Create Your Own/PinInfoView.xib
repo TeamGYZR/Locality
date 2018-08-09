@@ -9,12 +9,20 @@
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="Dosis-Bold.ttf">
+            <string>Dosis-Bold</string>
+        </array>
+        <array key="Dosis-Regular.ttf">
+            <string>Dosis-Regular</string>
+        </array>
+    </customFonts>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AddPinInfoView">
             <connections>
                 <outlet property="cancelButton" destination="afb-M8-jgv" id="DM2-z1-CWU"/>
                 <outlet property="pinDescriptionField" destination="QNd-2K-HSx" id="Kfm-ED-9Ol"/>
-                <outlet property="pinImageView" destination="Jrr-HQ-bqF" id="ckF-bM-AXg"/>
+                <outlet property="pinImageView" destination="KNc-d6-r9K" id="hQj-kn-bUr"/>
                 <outlet property="pinInfoCustomView" destination="iN0-l3-epB" id="Hxl-EW-5Wn"/>
                 <outlet property="pinNameField" destination="ayv-Du-kEj" id="1cV-ya-LZj"/>
             </connections>
@@ -25,46 +33,23 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GKB-yC-Nms">
-                    <rect key="frame" x="9" y="202" width="350" height="316"/>
+                    <rect key="frame" x="9" y="202" width="350" height="270"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <subviews>
-                        <imageView opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="2000px-Missing_image_icon_with_camera_and_upload_arrow" translatesAutoresizingMaskIntoConstraints="NO" id="Jrr-HQ-bqF">
-                            <rect key="frame" x="6" y="81" width="136" height="144"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
-                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        </imageView>
-                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rhk-PW-Q9e">
-                            <rect key="frame" x="6" y="81" width="122" height="144"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <connections>
-                                <action selector="didTapCameraButton:" destination="-1" eventType="touchUpInside" id="UgR-cO-LCA"/>
-                            </connections>
-                        </button>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Upload Picture" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xi1-No-yVt">
-                            <rect key="frame" x="4" y="204" width="132" height="21"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                            <nil key="textColor"/>
-                            <nil key="highlightedColor"/>
-                        </label>
-                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4sd-jM-Uqb">
-                            <rect key="frame" x="0.0" y="258" width="350" height="58"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            <state key="normal" title="Share">
-                                <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </state>
-                            <connections>
-                                <action selector="didTapShare:" destination="-1" eventType="touchUpInside" id="jTM-Aw-fIp"/>
-                            </connections>
-                        </button>
                         <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Fcz-72-oh8">
-                            <rect key="frame" x="0.0" y="0.0" width="350" height="73"/>
+                            <rect key="frame" x="0.0" y="0.0" width="350" height="55"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
+                                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Msq-7p-0eU">
+                                    <rect key="frame" x="74" y="0.0" width="189" height="55"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <gestureRecognizers/>
+                                    <connections>
+                                        <outletCollection property="gestureRecognizers" destination="Ird-Dl-E8d" appends="YES" id="RlA-oi-PeP"/>
+                                    </connections>
+                                </view>
                                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="afb-M8-jgv">
-                                    <rect key="frame" x="8" y="19" width="58" height="35"/>
+                                    <rect key="frame" x="8" y="10" width="58" height="35"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                     <state key="normal" title="Cancel">
@@ -74,31 +59,55 @@
                                         <action selector="didTapCancel:" destination="-1" eventType="touchUpInside" id="aT9-cU-NeR"/>
                                     </connections>
                                 </button>
-                                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Msq-7p-0eU">
-                                    <rect key="frame" x="74" y="0.0" width="276" height="73"/>
+                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4sd-jM-Uqb">
+                                    <rect key="frame" x="262" y="0.0" width="88" height="55"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <gestureRecognizers/>
+                                    <color key="backgroundColor" red="0.59607843140000005" green="0.75686274509999996" blue="0.85098039219999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                    <state key="normal" title="Share">
+                                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </state>
                                     <connections>
-                                        <outletCollection property="gestureRecognizers" destination="Ird-Dl-E8d" appends="YES" id="RlA-oi-PeP"/>
+                                        <action selector="didTapShare:" destination="-1" eventType="touchUpInside" id="jTM-Aw-fIp"/>
                                     </connections>
-                                </view>
+                                </button>
                             </subviews>
-                            <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <color key="backgroundColor" red="0.59607843140000005" green="0.75686274509999996" blue="0.85098039219999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         </view>
                         <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ayv-Du-kEj">
-                            <rect key="frame" x="144" y="89" width="191" height="30"/>
+                            <rect key="frame" x="144" y="72" width="191" height="30"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <nil key="textColor"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <color key="textColor" red="0.1843137255" green="0.28235294119999998" blue="0.34509803919999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            <fontDescription key="fontDescription" name="Dosis-Bold" family="Dosis" pointSize="17"/>
                             <textInputTraits key="textInputTraits"/>
                         </textField>
                         <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="QNd-2K-HSx">
-                            <rect key="frame" x="144" y="127" width="191" height="123"/>
+                            <rect key="frame" x="144" y="119" width="191" height="131"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <color key="textColor" red="0.1843137255" green="0.28235294119999998" blue="0.34509803919999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            <fontDescription key="fontDescription" name="Dosis-Regular" family="Dosis" pointSize="17"/>
                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                         </textView>
+                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jcp-Za-a35">
+                            <rect key="frame" x="17" y="212" width="40" height="34"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <state key="normal" image="photoGalleryIcon"/>
+                            <connections>
+                                <action selector="didTapGalleryButton:" destination="-1" eventType="touchUpInside" id="nwr-ht-8Fy"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jUa-Nd-l6j">
+                            <rect key="frame" x="83" y="212" width="34" height="38"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <state key="normal" image="photoCameraIcon"/>
+                            <connections>
+                                <action selector="didTapCameraButton:" destination="-1" eventType="touchUpInside" id="Jn8-v7-xYC"/>
+                            </connections>
+                        </button>
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="defaultImage" translatesAutoresizingMaskIntoConstraints="NO" id="KNc-d6-r9K">
+                            <rect key="frame" x="8" y="72" width="121" height="127"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        </imageView>
                     </subviews>
                     <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                 </view>
@@ -121,6 +130,8 @@
         </tapGestureRecognizer>
     </objects>
     <resources>
-        <image name="2000px-Missing_image_icon_with_camera_and_upload_arrow" width="1000" height="923"/>
+        <image name="defaultImage" width="570" height="321"/>
+        <image name="photoCameraIcon" width="100" height="100"/>
+        <image name="photoGalleryIcon" width="100" height="100"/>
     </resources>
 </document>

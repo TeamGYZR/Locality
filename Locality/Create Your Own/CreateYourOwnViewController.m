@@ -39,7 +39,6 @@
 @property (strong, nonatomic) NSString *pinName;
 @property (strong, nonatomic) NSString *pinDescription;
 @end
-
 @implementation CreateYourOwnViewController
 #pragma mark - View Controller
 - (void)viewDidLoad {
@@ -148,6 +147,7 @@
     else{
     self.itineraryDraft.timeStamp = [NSString stringWithFormat:@"%lu:%lu", minutes, seconds];
     }
+    NSLog(@"%lu", [self.itineraryDraft.pinnedLocations[0] count]);
     [self addPathsToParse];
 }
 

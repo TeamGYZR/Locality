@@ -20,6 +20,7 @@
 
 @interface LCMapView : UIView
 @property (nonatomic, weak) id<LCMapViewDelegate> delegate;
+@property  NSUInteger pinsCount;
 - (void)configureWithItinerary:(Itinerary *)itinerary isStatic:(BOOL)move showCurrentLocation:(BOOL)showCurrent;
 - (void)configureWithFavoritedPaths:(NSArray *)favoritedPaths;
 - (void)configureDirectionsWithItinerary:(Itinerary *)itinerary;

@@ -20,23 +20,31 @@
 - (void)setDelegate:(id<AddPinInfoViewDelegate>)delegate{
       _delegate = delegate;
 }
+- (IBAction)didTapGalleryButton:(id)sender {
+    [self setImagePickerWithTypeGallery:YES];
+}
+
 -(IBAction)didTapCameraButton:(id)sender{
+    [self setImagePickerWithTypeGallery:NO]; 
+}
+
+- (void) setImagePickerWithTypeGallery:(BOOL)gallery{
     UIImagePickerController *imagePicker = [UIImagePickerController new];
     imagePicker.delegate = self;
     imagePicker.allowsEditing = YES;
-    if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
-        imagePicker.sourceType = UIImagePickerControllerSourceTypeCamera;
-    }
-    else{
+    if (gallery) {
         imagePicker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+    } else {
+        imagePicker.sourceType = UIImagePickerControllerSourceTypeCamera;
     }
     UIViewController *yourCurrentViewController = [UIApplication sharedApplication].keyWindow.rootViewController;
     while (yourCurrentViewController.presentedViewController)
     {
-    yourCurrentViewController = yourCurrentViewController.presentedViewController;
+        yourCurrentViewController = yourCurrentViewController.presentedViewController;
     }
     [yourCurrentViewController presentViewController:imagePicker animated:YES completion:nil];
 }
+
 -(void) customnInt{
     [[NSBundle mainBundle] loadNibNamed:@"PinInfoView" owner:self options:nil];
     self.pinInfoCustomView.layer.shadowOffset = CGSizeZero;
@@ -64,9 +72,6 @@
     }];
     self.pinImageView.image=self.pinneddeditedPicture;
 }
-//- (void)didTappedCancel{
-//    [self.delegate didTapViewCancel];
-//}
 - (IBAction)didTapCancel:(id)sender {
    [self.delegate didTapViewCancel];
 }

@@ -13,13 +13,10 @@
 
 - (void)awakeFromNib {
     [super awakeFromNib];
-    // Initialization code
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
-
-    // Configure the view for the selected state
 }
 - (void)setItinerary:(Itinerary *)itinerary{
     _itinerary = itinerary;
@@ -41,6 +38,9 @@
         pinNames = [pinNames stringByAppendingString:[itinerary.pinnedLocations[i][@"name"] stringByAppendingString:@", "]] ;
         }
     }
+    float distanceInMiles = ([itinerary.distanceFromFirstPinnedLocation doubleValue]  * .00062137);
+    NSString *distanceString = [NSString stringWithFormat:@"%.02f", distanceInMiles];
+    self.distanceLabel.text = [[@"Distance to first pin: " stringByAppendingString:distanceString] stringByAppendingString:@" miles"];
     NSUInteger fixedLength = [pinNames length] - 2;
     NSString *fixedPinNames = [pinNames substringToIndex:fixedLength];
     self.pinNames.text = fixedPinNames;
