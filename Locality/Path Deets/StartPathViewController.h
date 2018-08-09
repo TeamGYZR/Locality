@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "Itinerary.h"
 @interface StartPathViewController : UIViewController
-
+@property (strong, nonatomic) Itinerary *itinerary;
 @end

@@ -11,6 +11,7 @@
 #import "Parse.h"             
 #import "PathFavorite.h"
 #import "User.h"
+#import "StartPathViewController.h"
 
 @interface LCPathDetailViewController ()
 @property (weak, nonatomic) IBOutlet LCMapView *lcMapView;
@@ -199,7 +200,8 @@
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
     if([[segue identifier] isEqualToString:@"segueToDirections"]){
-        
+        StartPathViewController *nextViewController = (StartPathViewController *)[segue destinationViewController];
+        nextViewController.itinerary = self.itinerary; 
     }
 }
 
