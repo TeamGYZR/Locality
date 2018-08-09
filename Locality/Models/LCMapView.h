@@ -12,8 +12,16 @@
 #import "Itinerary.h"
 #import "User.h"
 
+@protocol LCMapViewDelegate
+
+- (void)userDidEnterStartRegion;
+
+@end
+
 @interface LCMapView : UIView
+@property (nonatomic, weak) id<LCMapViewDelegate> delegate;
+@property  NSUInteger pinsCount;
 - (void)configureWithItinerary:(Itinerary *)itinerary isStatic:(BOOL)move showCurrentLocation:(BOOL)showCurrent;
 - (void)configureWithFavoritedPaths:(NSArray *)favoritedPaths;
-- (void)directionsWithItinerary:(Itinerary *)itinerary;
+- (void)configureDirectionsWithItinerary:(Itinerary *)itinerary;
 @end

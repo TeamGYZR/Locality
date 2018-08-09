@@ -9,8 +9,9 @@
 #import "StartPathViewController.h"
 #import "LCMapView.h"
 
-@interface StartPathViewController ()
+@interface StartPathViewController () <LCMapViewDelegate>
 @property (strong, nonatomic) IBOutlet LCMapView *mapView;
+@property (strong, nonatomic) IBOutlet UILabel *commandTextField;
 
 @end
 
@@ -19,13 +20,19 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    [self.mapView directionsWithItinerary:self.itinerary];
+    [self.mapView configureDirectionsWithItinerary:self.itinerary];
+    self.mapView.delegate = self;
     
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)userDidEnterStartRegion{
+    self.commandTextField.text = @"You're on the path! Have fun!";
+    
 }
 
 /*

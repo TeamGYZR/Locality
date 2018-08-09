@@ -39,7 +39,6 @@
 @property (strong, nonatomic) NSString *pinName;
 @property (strong, nonatomic) NSString *pinDescription;
 @end
-
 @implementation CreateYourOwnViewController
 #pragma mark - View Controller
 - (void)viewDidLoad {
@@ -119,8 +118,8 @@
         
     }];
     UIAlertAction *continueAction = [UIAlertAction actionWithTitle:@"Add" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        self.addpininfoview=[[AddPinInfoView alloc] init];
-        self.addpininfoview.delegate=self;
+        self.addpininfoview = [[AddPinInfoView alloc] init];
+        self.addpininfoview.delegate = self;
         [self.addpininfoview setAlpha:0.0];
         [self.view addSubview:self.addpininfoview];
         [UIView beginAnimations:@"FadeIn" context:nil];
@@ -148,6 +147,7 @@
     else{
     self.itineraryDraft.timeStamp = [NSString stringWithFormat:@"%lu:%lu", minutes, seconds];
     }
+    NSLog(@"%lu", [self.itineraryDraft.pinnedLocations[0] count]);
     [self addPathsToParse];
 }
 

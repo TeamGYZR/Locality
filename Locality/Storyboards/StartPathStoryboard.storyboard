@@ -51,6 +51,7 @@
                         <viewLayoutGuide key="safeArea" id="jcL-Vv-ahe"/>
                     </view>
                     <connections>
+                        <outlet property="commandTextField" destination="IgJ-em-i6b" id="rkU-WT-PIo"/>
                         <outlet property="mapView" destination="pwj-X7-U71" id="TlE-vj-hKW"/>
                     </connections>
                 </viewController>
