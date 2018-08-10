@@ -2,11 +2,11 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "Rose Water.jpg",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
+      "filename" : "Rose Water.jpg",
       "scale" : "2x"
     },
     {

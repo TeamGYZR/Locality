@@ -42,9 +42,8 @@
     [super viewDidLoad];
     self.tableView.dataSource=self;
     self.tableView.delegate=self;
+    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     self.labefiled.alpha=0;
-    //self.tableView.rowHeight=UITableViewAutomaticDimension;
-    //self.tableView.rowHeight=UITableViewAutomaticDimension;
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Home" bundle:[NSBundle mainBundle]];
     PlacesSearchTableViewController *pathsSearchTable = [storyboard instantiateViewControllerWithIdentifier:@"ResultsTable"];
     self.searchController = [[UISearchController alloc] initWithSearchResultsController:pathsSearchTable];
@@ -56,7 +55,6 @@
     [searchBar sizeToFit];
     searchBar.placeholder = @"Search by pins";
     searchBar.delegate = self;
-    //searchBar.barTintColor = [UIColor colorWithRed:0.96078 green:1.0 blue:0.8039 alpha:0.5];
     self.navigationItem.titleView = self.searchController.searchBar;
     self.searchController.obscuresBackgroundDuringPresentation = YES;
     self.definesPresentationContext = YES;
