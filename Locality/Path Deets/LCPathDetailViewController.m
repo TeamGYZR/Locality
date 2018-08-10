@@ -24,15 +24,17 @@
 @property (weak, nonatomic) IBOutlet PFImageView *pfImageView;
 @property (weak, nonatomic) IBOutlet UIPageControl *pageControl;
 @property (weak, nonatomic) IBOutlet UILabel *pinTitleLabel;
-@property (weak, nonatomic) IBOutlet UILabel *pinDescriptionLabel;
 @property (weak, nonatomic) IBOutlet UIButton *startButton;
 @property (strong, nonatomic) IBOutlet UILabel *viewLabel;
 @property (weak, nonatomic) IBOutlet UIButton *favoriteButton;
 @property (strong, nonatomic) IBOutlet UILabel *timeStampLabel;
 @property (nonatomic) BOOL favorited;
 @property (weak, nonatomic) IBOutlet UITextView *descriptionTextView;
+@property (weak, nonatomic) IBOutlet UIView *pinDescriptionView;
+@property (weak, nonatomic) IBOutlet UIView *pinNameView;
 
 @property (weak, nonatomic) IBOutlet UIView *pinnedLocationView;
+@property (weak, nonatomic) IBOutlet UITextView *pinDescriptionTextView;
 
 @end
 
@@ -47,14 +49,14 @@
     self.descriptionTextView.layer.borderWidth = 2.0;
     self.descriptionTextView.layer.borderColor = [UIColor colorWithRed:.1843 green:.28235 blue:.34509 alpha:.7].CGColor;
     self.descriptionTextView.clipsToBounds= YES;
-    self.pinTitleLabel.layer.cornerRadius = 2.0f;
-    self.pinTitleLabel.layer.borderWidth = 1.0;
-    self.pinTitleLabel.layer.borderColor = [UIColor colorWithRed:.1843 green:.28235 blue:.34509 alpha:.7].CGColor;
-    self.pinTitleLabel.clipsToBounds= YES;
-    self.pinDescriptionLabel.layer.cornerRadius = 10.0f;
-    self.pinDescriptionLabel.layer.borderWidth = 1.0;
-    self.pinDescriptionLabel.layer.borderColor = [UIColor colorWithRed:.1843 green:.28235 blue:.34509 alpha:.7].CGColor;
-    self.pinDescriptionLabel.clipsToBounds= YES;
+    self.pinNameView.layer.cornerRadius = 10.0f;
+    self.pinNameView.layer.borderWidth = 1.0;
+    self.pinNameView.layer.borderColor = [UIColor colorWithRed:.1843 green:.28235 blue:.34509 alpha:.7].CGColor;
+    self.pinNameView.clipsToBounds= YES;
+    self.pinDescriptionView.layer.cornerRadius = 10.0f;
+    self.pinDescriptionView.layer.borderWidth = 1.0;
+    self.pinDescriptionView.layer.borderColor = [UIColor colorWithRed:.1843 green:.28235 blue:.34509 alpha:.7].CGColor;
+    self.pinDescriptionView.clipsToBounds= YES;
     self.userNameLabel.text = self.itinerary.creator.name;
     self.viewLabel.text = [NSString stringWithFormat:@"%lu", [self.itinerary.uniqueUserViews count]];
     User *currentUser = (User *)[PFUser currentUser];
@@ -70,7 +72,6 @@
     [self.lcMapView configureWithItinerary:self.itinerary isStatic:NO showCurrentLocation:YES];
     [self setImageArray];
     [self queryForPathFavorite];
-    
     UISwipeGestureRecognizer *leftSwipe = [[UISwipeGestureRecognizer alloc]initWithTarget:self action:@selector(swipeHandler:)];
     UISwipeGestureRecognizer *rightSwipe = [[UISwipeGestureRecognizer alloc]initWithTarget:self action:@selector(swipeHandler:)];
     rightSwipe.direction = UISwipeGestureRecognizerDirectionRight;
@@ -79,6 +80,12 @@
     [self.slideBarView addGestureRecognizer:rightSwipe];
     self.pageControl.numberOfPages = ([self.photosForSlideshow count] + 1);
     self.currentPhotoIndex = 0;
+    
+    //adding a long tap gesture recognizer
+    UILongPressGestureRecognizer *longPress = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(handleLongPress:)];
+    longPress.minimumPressDuration = 1.0;
+    [self.pathNameLabel addGestureRecognizer:longPress];
+    //longPress release
 }
 
 #pragma mark - Actions
@@ -115,6 +122,24 @@
                 NSLog(@"succesfully favorited path");
             }
         }];
+    }
+}
+- (IBAction)didTapSpeech:(id)sender {
+    if(!self.speech.isSpeaking){
+        AVSpeechUtterance *specchuttternce=[[AVSpeechUtterance alloc] initWithString:self.itinerary[@"name"]];
+        specchuttternce.rate=0.3;
+        specchuttternce.voice=[AVSpeechSynthesisVoice voiceWithLanguage:@"en_GB"];
+        self.speech=[[AVSpeechSynthesizer alloc] init];
+        [self.speech speakUtterance:specchuttternce];
+     }
+}
+
+-  (void)handleLongPress:(UILongPressGestureRecognizer*)sender {
+    if (sender.state == UIGestureRecognizerStateEnded) {
+        NSLog(@"UIGestureRecognizerStateEnded");
+    }
+    else if (sender.state == UIGestureRecognizerStateBegan){
+        NSLog(@"UIGestureRecognizerStateBegan.");
     }
 }
 
@@ -157,6 +182,7 @@
         [self setMap];
     } else{
         [self setImage];
+        [self transitionToImageFromDirectionRight:NO];
     }
 }
 - (void)leftSwipe{
@@ -164,13 +190,14 @@
         self.currentPhotoIndex ++;
         self.pageControl.currentPage ++;
         [self setImage];
+        [self transitionToImageFromDirectionRight:YES];
     }
 }
 #pragma mark - Private Methods
 - (void)setImageArray{
     self.photosForSlideshow = [[NSMutableArray alloc] init];
     for (int i = 0; i < [self.itinerary.pinnedLocations count]; i++) {
-        if (self.itinerary.pinnedLocations[i][@"pictureData"]) {
+        if (self.itinerary.pinnedLocations[i][@"pictureData"] != nil) {
             [self.photosForSlideshow addObject:self.itinerary.pinnedLocations[i][@"pictureData"]];
         }
     }
@@ -186,16 +213,26 @@
     [self.view bringSubviewToFront:self.favoriteButton];
 }
 - (void)setImage{
-    [self.view bringSubviewToFront:self.pinnedLocationView];
-    [self.view bringSubviewToFront:self.slideBarView];
     self.pinTitleLabel.text = self.itinerary.pinnedLocations[self.currentPhotoIndex - 1][@"name"];
     [self.pinTitleLabel sizeToFit];
-    self.pinDescriptionLabel.text = self.itinerary.pinnedLocations[self.currentPhotoIndex - 1][@"description"];
-    [UIView transitionWithView:self.pinnedLocationView duration:1 options:UIViewAnimationOptionCurveLinear animations:^{
-        self.pfImageView.file = self.photosForSlideshow[self.currentPhotoIndex - 1];
-        [self.pfImageView loadInBackground];
-    } completion:^(BOOL finished) {
-    }];
+    self.pinDescriptionTextView.text = self.itinerary.pinnedLocations[self.currentPhotoIndex - 1][@"description"];
+    self.pfImageView.file = self.photosForSlideshow[self.currentPhotoIndex - 1];
+    [self.pfImageView loadInBackground];
+}
+
+- (void) transitionToImageFromDirectionRight:(BOOL)right{
+    CATransition *transition = [CATransition animation];
+    if (right) {
+        transition.subtype = kCATransitionFromRight;
+    } else {
+        transition.subtype = kCATransitionFromLeft;
+    }
+    transition.duration = .5;
+    transition.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
+    transition.type = kCATransitionPush;
+    [self.view.window.layer addAnimation:transition forKey:nil];
+    [self.view bringSubviewToFront:self.pinnedLocationView];
+    [self.view bringSubviewToFront:self.slideBarView];
 }
 #pragma mark - Navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {

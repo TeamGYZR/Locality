@@ -38,7 +38,9 @@
 @property (strong, nonatomic) UIImage *pinImage;
 @property (strong, nonatomic) NSString *pinName;
 @property (strong, nonatomic) NSString *pinDescription;
+@property (strong, nonatomic) NSString *pinCategory;
 @end
+
 @implementation CreateYourOwnViewController
 #pragma mark - View Controller
 - (void)viewDidLoad {
@@ -184,14 +186,23 @@
     NSString *latitudeString = [[NSNumber numberWithDouble:currentPin.coordinate.latitude] stringValue];
     NSString *longitudeString = [[NSNumber numberWithDouble:currentPin.coordinate.longitude] stringValue];
     PFFile *pictureData = nil;
+    NSMutableDictionary *dictionary = [NSMutableDictionary dictionaryWithObjectsAndKeys:latitudeString, @"latitude", longitudeString, @"longitude", nil];
+    [self.itineraryDraft.pinnedLocations addObject:dictionary];
     if(self.pinImage){
         pictureData = [ItineraryPin getPFFileFromImage:self.pinImage];
+    } else{
+        pictureData = [ItineraryPin getPFFileFromImage:[UIImage imageNamed:@"defaultImage"]];
     }
-    NSMutableDictionary *dictionary = [NSMutableDictionary dictionaryWithObjectsAndKeys:latitudeString, @"latitude", longitudeString, @"longitude", pictureData, @"pictureData", self.pinName, @"name", self.pinDescription, @"description", nil];
-    [self.itineraryDraft.pinnedLocations addObject:dictionary];
-//    if (self.pinName) {
-//        [self.itineraryDraft.pinnedLocations[pinsCount] setObject:self.pinName forKey:@"name"];
-//    }
+    [self.itineraryDraft.pinnedLocations[pinsCount] setObject:pictureData forKey:@"pictureData"];
+    if (self.pinDescription) {
+        [self.itineraryDraft.pinnedLocations[pinsCount] setObject:self.pinDescription forKey:@"description"];
+    }
+    if (self.pinName) {
+        [self.itineraryDraft.pinnedLocations[pinsCount] setObject:self.pinName forKey:@"name"];
+    }
+    if (self.pinCategory) {
+        [self.itineraryDraft.pinnedLocations[pinsCount] setObject:self.pinCategory forKey:@"category"];
+    }
 }
 
 -(void)addPathsToParse{
@@ -219,12 +230,14 @@
     [self dismissView];
 }
 
--(void) didTapViewShareWithImage:(UIImage *)pinImage withName:(NSString *)pinName withDescription:(NSString *)pinDescription{
+-(void) didTapViewShareWithImage:(UIImage *)pinImage withName:(NSString *)pinName withDescription:(NSString *)pinDescription withCategory:(NSString *)category{
     self.pinName = nil;
     self.pinDescription = nil;
+    self.pinCategory = nil;
     self.pinImage = pinImage;
     self.pinName = pinName;
     self.pinDescription = pinDescription;
+    self.pinCategory = category;
     [self dismissView];
 }
 

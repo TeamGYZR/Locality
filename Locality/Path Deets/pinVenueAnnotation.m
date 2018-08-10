@@ -20,6 +20,7 @@
     self.coordinate = CLLocationCoordinate2DMake([latitudeString doubleValue], [longitudeString doubleValue]);
     self.picture = dictionary[@"pictureData"];
     self.pinDescription = dictionary[@"description"];
+    self.pinCategory = dictionary[@"category"];
     return self;
 }
 @end

@@ -10,9 +10,10 @@
 #import "Itinerary.h"
 #import <Parse/Parse.h>
 #import <ParseUI/ParseUI.h>
+#import <AVFoundation/AVFoundation.h>
 
 @interface LCPathDetailViewController : UIViewController
-
+@property AVSpeechSynthesizer *speech;
 @property (strong, nonatomic) Itinerary *itinerary;
 
 @end
