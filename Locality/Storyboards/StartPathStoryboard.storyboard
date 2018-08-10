@@ -32,7 +32,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="175"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="walking" translatesAutoresizingMaskIntoConstraints="NO" id="JQ2-kG-Tfw">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="icons8-walking-theme" translatesAutoresizingMaskIntoConstraints="NO" id="JQ2-kG-Tfw">
                                         <rect key="frame" x="8" y="78" width="96" height="84"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     </imageView>
@@ -44,7 +44,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
-                                <color key="backgroundColor" red="0.026936167988393066" green="0.76140149111675126" blue="0.69849920486246808" alpha="0.39150791952054792" colorSpace="custom" customColorSpace="displayP3"/>
+                                <color key="backgroundColor" red="0.59999999999999998" green="0.79607843137254897" blue="0.96862745098039216" alpha="0.39150791952054792" colorSpace="custom" customColorSpace="displayP3"/>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -61,6 +61,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="walking" width="100" height="100"/>
+        <image name="icons8-walking-theme" width="100" height="100"/>
     </resources>
 </document>
