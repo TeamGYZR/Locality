@@ -137,7 +137,7 @@
 }
 
 -(void)setUpGeofenceForStartPoint:(CLLocationCoordinate2D)startCoordinate{
-    self.startRegion = [[CLCircularRegion alloc]initWithCenter:startCoordinate radius:50.0 identifier:@"Start"];
+    self.startRegion = [[CLCircularRegion alloc]initWithCenter:startCoordinate radius:20.0 identifier:@"Start"];
     //[mapView addOverlay:[MKCircle circleWithCenterCoordinate:startCoordinate radius:50.0]];
     [locationManager startMonitoringForRegion:self.startRegion];
 }
