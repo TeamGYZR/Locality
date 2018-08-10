@@ -112,7 +112,7 @@
 }
 
 - (IBAction)didTapNature:(id)sender {
-    [self loadPathsWithSortingSelector:@selector(sortItenerariesByDistance)];
+    [self loadPathsWithSortingSelector:@selector(sortItinerariesByViews)];
     [self.natureButton setTitleColor:[UIColor colorWithRed:.9254 green:.41176 blue:.30196 alpha:1] forState:UIControlStateNormal];
     [self.entertainmentButton setTitleColor:[UIColor colorWithRed:.1843 green:.28235 blue:.34509 alpha:1] forState:UIControlStateNormal];
     [self.foodieButton setTitleColor:[UIColor colorWithRed:.1843 green:.28235 blue:.34509 alpha:1] forState:UIControlStateNormal];
@@ -206,6 +206,19 @@
             return NSOrderedSame;
     }];
     
+}
+
+-(void)sortItinerariesByViews{
+    self.itineraries = [self.itineraries sortedArrayUsingComparator:^NSComparisonResult(Itinerary *a, Itinerary *b){
+        double aViews = [a.uniqueUserViews count];
+        double bViews = [b.uniqueUserViews count];
+        if (aViews > bViews)
+            return NSOrderedAscending;
+        else if (aViews < bViews)
+            return NSOrderedDescending;
+        else
+            return NSOrderedSame;
+    }];
 }
                         
 
