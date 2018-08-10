@@ -36,7 +36,4 @@
 @property  UIImage * image1;
 @property  UIImage * image2;
 @property UIImage * image3;
-
-
-
 @end

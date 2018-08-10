@@ -59,7 +59,7 @@
     NSString *searchText = searchController.searchBar.text;
     if (searchText.length != 0) {
         
-        NSPredicate *predicate = [NSPredicate predicateWithBlock:^BOOL(NSDictionary *evaluatedObject, NSDictionary *bindings) {
+        NSPredicate *predicate =[NSPredicate predicateWithBlock:^BOOL(NSDictionary *evaluatedObject, NSDictionary *bindings) {
             NSMutableArray * pins = evaluatedObject[@"pinnedLocations"];
             for(NSDictionary * pin in pins){
                 if([pin[@"name"] containsString:searchText]){
