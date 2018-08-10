@@ -13,6 +13,9 @@
         <array key="Dosis-Light.ttf">
             <string>Dosis-Light</string>
         </array>
+        <array key="Dosis-Medium.ttf">
+            <string>Dosis-Medium</string>
+        </array>
         <array key="Dosis-Regular.ttf">
             <string>Dosis-Regular</string>
         </array>
@@ -37,22 +40,34 @@
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Path Description" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5c7-gG-br9">
-                                        <rect key="frame" x="8" y="499" width="343" height="86"/>
+                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Mbq-5l-8pZ">
+                                        <rect key="frame" x="22" y="521" width="331" height="80"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <color key="backgroundColor" white="1" alpha="0.79845355316849309" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <fontDescription key="fontDescription" name="Dosis-Regular" family="Dosis" pointSize="17"/>
-                                        <color key="textColor" red="0.1843137255" green="0.28235294119999998" blue="0.34509803919999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Path Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JkV-P5-Ajh">
-                                        <rect key="frame" x="8" y="449" width="129" height="32"/>
+                                        <subviews>
+                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="biP-6j-91U">
+                                                <rect key="frame" x="8" y="8" width="315" height="64"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <color key="textColor" red="0.1843137255" green="0.28235294119999998" blue="0.34509803919999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                <fontDescription key="fontDescription" name="Dosis-Medium" family="Dosis" pointSize="16"/>
+                                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                            </textView>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="0.88703981164383561" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </view>
+                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zez-qP-C03">
+                                        <rect key="frame" x="22" y="478" width="185" height="35"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <color key="backgroundColor" red="0.67394816234317123" green="0.86125946566298528" blue="0.9734819784944162" alpha="0.89292594182465757" colorSpace="custom" customColorSpace="displayP3"/>
-                                        <fontDescription key="fontDescription" name="Dosis-SemiBold" family="Dosis" pointSize="19"/>
-                                        <color key="textColor" red="0.1843137255" green="0.28235294119999998" blue="0.34509803919999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Path Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JkV-P5-Ajh">
+                                                <rect key="frame" x="8" y="4" width="129" height="27"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" name="Dosis-SemiBold" family="Dosis" pointSize="19"/>
+                                                <color key="textColor" red="0.1843137255" green="0.28235294119999998" blue="0.34509803919999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" red="0.6625543129" green="0.84669890849999996" blue="0.95702417390000005" alpha="0.8867722603178082" colorSpace="custom" customColorSpace="displayP3"/>
+                                    </view>
                                 </subviews>
                             </view>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fnK-CW-HBW" customClass="LCMapView">
@@ -108,7 +123,7 @@
                                         <rect key="frame" x="8" y="49" width="256" height="108"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" red="0.87843137250000003" green="0.98431372549999996" blue="0.98823529409999999" alpha="0.39752782530000003" colorSpace="custom" customColorSpace="displayP3"/>
-                                        <color key="textColor" red="0.89019607840000003" green="0.090196078430000007" blue="0.039215686270000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <color key="textColor" red="0.93333333330000001" green="0.42352941179999998" blue="0.30196078430000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <fontDescription key="fontDescription" name="Dosis-Light" family="Dosis" pointSize="21"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
@@ -173,7 +188,9 @@
                         <outlet property="pageControl" destination="zlN-qP-p8e" id="RR4-Ud-130"/>
                         <outlet property="pathNameLabel" destination="tRB-RC-YXt" id="A5Q-RD-NII"/>
                         <outlet property="pfImageView" destination="scV-cc-at7" id="7es-bJ-IUb"/>
-                        <outlet property="pinDescriptionLabel" destination="5c7-gG-br9" id="rSg-IP-m4G"/>
+                        <outlet property="pinDescriptionTextView" destination="biP-6j-91U" id="odY-Lr-l6j"/>
+                        <outlet property="pinDescriptionView" destination="Mbq-5l-8pZ" id="dHj-Cg-FTQ"/>
+                        <outlet property="pinNameView" destination="zez-qP-C03" id="AAb-Qj-amP"/>
                         <outlet property="pinTitleLabel" destination="JkV-P5-Ajh" id="dqG-Wu-kfj"/>
                         <outlet property="pinnedLocationView" destination="t6l-tR-8O5" id="uJb-xc-qSv"/>
                         <outlet property="slideBarView" destination="i0k-8E-Ppq" id="pa4-pR-eH6"/>
