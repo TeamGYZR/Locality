@@ -19,5 +19,6 @@
 @property (nonatomic,copy) NSString *subtitle;
 @property (strong, nonatomic) PFFile *picture;
 @property (nonatomic, strong) NSString *pinDescription;
+@property (nonatomic, strong) NSString *pinCategory;
 - (id)initWithDictionary:(NSDictionary *)dictionary;
 @end

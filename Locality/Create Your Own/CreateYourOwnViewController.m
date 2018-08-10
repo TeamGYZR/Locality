@@ -190,8 +190,10 @@
     [self.itineraryDraft.pinnedLocations addObject:dictionary];
     if(self.pinImage){
         pictureData = [ItineraryPin getPFFileFromImage:self.pinImage];
-        [self.itineraryDraft.pinnedLocations[pinsCount] setObject:pictureData forKey:@"pictureData"];
+    } else{
+        pictureData = [ItineraryPin getPFFileFromImage:[UIImage imageNamed:@"defaultImage"]];
     }
+    [self.itineraryDraft.pinnedLocations[pinsCount] setObject:pictureData forKey:@"pictureData"];
     if (self.pinDescription) {
         [self.itineraryDraft.pinnedLocations[pinsCount] setObject:self.pinDescription forKey:@"description"];
     }
