@@ -247,8 +247,14 @@
     NSLog(@"GEOFENCING FAILED - %@", error.localizedDescription);
 }
 - (void)locationManager:(CLLocationManager *)manager didEnterRegion:(CLRegion *)region{
-    [mapView removeOverlay:self.directionPolyline];
-    [self.delegate userDidEnterStartRegion];
+    if([region.identifier isEqualToString:@"Start"]){
+        [mapView removeOverlay:self.directionPolyline];
+        [self.delegate userDidEnterStartRegion];
+    } else {
+        
+    }
+    
+
 }
 - (void)locationManager:(CLLocationManager *)manager didStartMonitoringForRegion:(CLRegion *)region{
     NSLog(@"started monitoring for geofencing");

@@ -23,8 +23,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" alpha="0.69999999999999996" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="centralpark" translatesAutoresizingMaskIntoConstraints="NO" id="cfE-LL-oy1">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            <imageView userInteractionEnabled="NO" alpha="0.69999999999999996" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="nyc_highline" translatesAutoresizingMaskIntoConstraints="NO" id="cfE-LL-oy1">
+                                <rect key="frame" x="0.0" y="0.0" width="601" height="667"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ySu-GW-GJ3">
@@ -68,6 +68,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="centralpark" width="998" height="1342"/>
+        <image name="nyc_highline" width="1500" height="1000"/>
     </resources>
 </document>
