@@ -76,7 +76,9 @@
    [self.delegate didTapViewCancel];
 }
 - (IBAction)didTapShare:(id)sender {
-    [self.delegate didTapViewShareWithImage:self.pinneddeditedPicture withName:self.pinNameField.text withDescription:self.pinDescriptionField.text];
+    NSArray *categories = @[@"Foodie", @"Entertainment", @"Nature"];
+    NSString *selectedCategory = categories[self.categorySegmentedControl.selectedSegmentIndex];
+    [self.delegate didTapViewShareWithImage:self.pinneddeditedPicture withName:self.pinNameField.text withDescription:self.pinDescriptionField.text withCategory:selectedCategory];
 }
 - (IBAction)didTapUpperBlackBar:(id)sender {
     [self.pinNameField resignFirstResponder];

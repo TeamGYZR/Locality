@@ -11,7 +11,7 @@
 
 @protocol AddPinInfoViewDelegate
 -(void)didTapViewCancel;
--(void)didTapViewShareWithImage:(UIImage *)pinImage withName:(NSString *)pinName withDescription:(NSString *)pinDescription;
+-(void)didTapViewShareWithImage:(UIImage *)pinImage withName:(NSString *)pinName withDescription:(NSString *)pinDescription withCategory:(NSString *)category;
 @end
 @interface AddPinInfoView : UIView<UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 @property (strong, nonatomic) IBOutlet UIView *pinInfoCustomView;
@@ -21,6 +21,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *cancelButton;
 @property (nonatomic,weak) id<AddPinInfoViewDelegate> delegate;
 @property (strong, nonatomic) UIImage *pinneddeditedPicture;
+@property (weak, nonatomic) IBOutlet UISegmentedControl *categorySegmentedControl;
 
 -(void) customnInt;
 

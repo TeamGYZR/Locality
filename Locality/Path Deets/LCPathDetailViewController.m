@@ -72,7 +72,6 @@
     [self.lcMapView configureWithItinerary:self.itinerary isStatic:NO showCurrentLocation:YES];
     [self setImageArray];
     [self queryForPathFavorite];
-    
     UISwipeGestureRecognizer *leftSwipe = [[UISwipeGestureRecognizer alloc]initWithTarget:self action:@selector(swipeHandler:)];
     UISwipeGestureRecognizer *rightSwipe = [[UISwipeGestureRecognizer alloc]initWithTarget:self action:@selector(swipeHandler:)];
     rightSwipe.direction = UISwipeGestureRecognizerDirectionRight;
@@ -81,6 +80,12 @@
     [self.slideBarView addGestureRecognizer:rightSwipe];
     self.pageControl.numberOfPages = ([self.photosForSlideshow count] + 1);
     self.currentPhotoIndex = 0;
+    
+    //adding a long tap gesture recognizer
+    UILongPressGestureRecognizer *longPress = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(handleLongPress:)];
+    longPress.minimumPressDuration = 1.0;
+    [self.pathNameLabel addGestureRecognizer:longPress];
+    //longPress release
 }
 
 #pragma mark - Actions
@@ -128,6 +133,16 @@
         [self.speech speakUtterance:specchuttternce];
      }
 }
+
+-  (void)handleLongPress:(UILongPressGestureRecognizer*)sender {
+    if (sender.state == UIGestureRecognizerStateEnded) {
+        NSLog(@"UIGestureRecognizerStateEnded");
+    }
+    else if (sender.state == UIGestureRecognizerStateBegan){
+        NSLog(@"UIGestureRecognizerStateBegan.");
+    }
+}
+
 #pragma mark - Handling Favorites
 
 -(void)setAFilledStar{
@@ -218,7 +233,6 @@
     [self.view.window.layer addAnimation:transition forKey:nil];
     [self.view bringSubviewToFront:self.pinnedLocationView];
     [self.view bringSubviewToFront:self.slideBarView];
-    
 }
 #pragma mark - Navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {

@@ -21,6 +21,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AddPinInfoView">
             <connections>
                 <outlet property="cancelButton" destination="afb-M8-jgv" id="DM2-z1-CWU"/>
+                <outlet property="categorySegmentedControl" destination="I8I-hN-pYq" id="YVK-o0-Sdb"/>
                 <outlet property="pinDescriptionField" destination="QNd-2K-HSx" id="Kfm-ED-9Ol"/>
                 <outlet property="pinImageView" destination="KNc-d6-r9K" id="hQj-kn-bUr"/>
                 <outlet property="pinInfoCustomView" destination="iN0-l3-epB" id="Hxl-EW-5Wn"/>
@@ -74,30 +75,22 @@
                             <color key="backgroundColor" red="0.59607843140000005" green="0.75686274509999996" blue="0.85098039219999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         </view>
                         <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ayv-Du-kEj">
-                            <rect key="frame" x="144" y="72" width="191" height="30"/>
+                            <rect key="frame" x="144" y="79" width="191" height="30"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <color key="textColor" red="0.1843137255" green="0.28235294119999998" blue="0.34509803919999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             <fontDescription key="fontDescription" name="Dosis-Bold" family="Dosis" pointSize="17"/>
                             <textInputTraits key="textInputTraits"/>
                         </textField>
                         <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="QNd-2K-HSx">
-                            <rect key="frame" x="144" y="119" width="191" height="131"/>
+                            <rect key="frame" x="144" y="117" width="191" height="109"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <color key="textColor" red="0.1843137255" green="0.28235294119999998" blue="0.34509803919999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             <fontDescription key="fontDescription" name="Dosis-Regular" family="Dosis" pointSize="17"/>
                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                         </textView>
-                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jcp-Za-a35">
-                            <rect key="frame" x="17" y="212" width="40" height="34"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <state key="normal" image="photoGalleryIcon"/>
-                            <connections>
-                                <action selector="didTapGalleryButton:" destination="-1" eventType="touchUpInside" id="nwr-ht-8Fy"/>
-                            </connections>
-                        </button>
                         <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jUa-Nd-l6j">
-                            <rect key="frame" x="83" y="212" width="34" height="38"/>
+                            <rect key="frame" x="83" y="194" width="34" height="38"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <state key="normal" image="photoCameraIcon"/>
                             <connections>
@@ -105,9 +98,27 @@
                             </connections>
                         </button>
                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="defaultImage" translatesAutoresizingMaskIntoConstraints="NO" id="KNc-d6-r9K">
-                            <rect key="frame" x="8" y="72" width="121" height="127"/>
+                            <rect key="frame" x="8" y="63" width="121" height="127"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         </imageView>
+                        <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="I8I-hN-pYq">
+                            <rect key="frame" x="8" y="234" width="334" height="29"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <segments>
+                                <segment title="Foodie"/>
+                                <segment title="Entertainment"/>
+                                <segment title="Nature"/>
+                            </segments>
+                            <color key="tintColor" red="0.1843137255" green="0.28235294119999998" blue="0.34509803919999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        </segmentedControl>
+                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jcp-Za-a35">
+                            <rect key="frame" x="17" y="196" width="40" height="34"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <state key="normal" image="photoGalleryIcon"/>
+                            <connections>
+                                <action selector="didTapGalleryButton:" destination="-1" eventType="touchUpInside" id="nwr-ht-8Fy"/>
+                            </connections>
+                        </button>
                     </subviews>
                     <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                 </view>
