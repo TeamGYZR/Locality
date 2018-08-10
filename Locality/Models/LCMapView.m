@@ -75,6 +75,7 @@
     mapView.delegate = self;
     locationManager = [CLLocationManager new];
     locationManager.delegate = self;
+    [locationManager requestAlwaysAuthorization];
     mapView.showsUserLocation = YES;
     [mapView setUserTrackingMode:MKUserTrackingModeFollow animated:YES];
     [self addSubview:mapView];
@@ -136,8 +137,8 @@
 }
 
 -(void)setUpGeofenceForStartPoint:(CLLocationCoordinate2D)startCoordinate{
-    self.startRegion = [[CLCircularRegion alloc]initWithCenter:startCoordinate radius:100.0 identifier:@"Start"];
-    [mapView addOverlay:[MKCircle circleWithCenterCoordinate:startCoordinate radius:100.0]];
+    self.startRegion = [[CLCircularRegion alloc]initWithCenter:startCoordinate radius:50.0 identifier:@"Start"];
+    [mapView addOverlay:[MKCircle circleWithCenterCoordinate:startCoordinate radius:50.0]];
     [locationManager startMonitoringForRegion:self.startRegion];
 }
 
@@ -157,7 +158,6 @@
                 annotationView.leftCalloutAccessoryView.frame= CGRectMake(0, 0, 50, 50);
                 annotationView.leftCalloutAccessoryView.opaque=YES;
                 annotationView.leftCalloutAccessoryView.userInteractionEnabled=YES;
-                annotationView.canShowCallout = YES;
             }];
             if ([pinAnnotation.pinCategory isEqualToString:@"Foodie"]) {
                 annotationView.pinTintColor = [UIColor blueColor];
@@ -213,6 +213,9 @@
         self.testDirections = NO;
         [self drawPathForItinerary:itinerary];
         [mapView setNeedsDisplay];
+//        if(CLLocationManager.authorizationStatus != kCLAuthorizationStatusAuthorizedAlways){
+//            [self.delegate userDeniedAlwaysLocation];
+//        }
         return;
     }
     if (numPaths == 1) {
