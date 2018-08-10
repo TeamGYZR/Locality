@@ -97,7 +97,7 @@
 }
 #pragma mark - IBAction
 - (IBAction)didTapFoodie:(id)sender{
-    [self loadPathsWithCategory:@"Foodie"];
+    [self loadPathsWithSortingSelector:@selector(sortItenerariesByDistance)];
     [self.foodieButton setTitleColor:[UIColor colorWithRed:.9254 green:.41176 blue:.30196 alpha:1] forState:UIControlStateNormal];
     [self.entertainmentButton setTitleColor:[UIColor colorWithRed:.1843 green:.28235 blue:.34509 alpha:1] forState:UIControlStateNormal];
     [self.natureButton setTitleColor:[UIColor colorWithRed:.1843 green:.28235 blue:.34509 alpha:1] forState:UIControlStateNormal];
@@ -105,14 +105,14 @@
      
 
 - (IBAction)didTapEntertainment:(id)sender {
-    [self loadPathsWithCategory:@"Entertainment"];
+    [self loadPathsWithSortingSelector:@selector(sortItinerariesByTime)];
     [self.entertainmentButton setTitleColor:[UIColor colorWithRed:.9254 green:.41176 blue:.30196 alpha:1] forState:UIControlStateNormal];
     [self.foodieButton setTitleColor:[UIColor colorWithRed:.1843 green:.28235 blue:.34509 alpha:1] forState:UIControlStateNormal];
     [self.natureButton setTitleColor:[UIColor colorWithRed:.1843 green:.28235 blue:.34509 alpha:1] forState:UIControlStateNormal];
 }
 
 - (IBAction)didTapNature:(id)sender {
-    [self loadPathsWithCategory:@"Nature"];
+    [self loadPathsWithSortingSelector:@selector(sortItenerariesByDistance)];
     [self.natureButton setTitleColor:[UIColor colorWithRed:.9254 green:.41176 blue:.30196 alpha:1] forState:UIControlStateNormal];
     [self.entertainmentButton setTitleColor:[UIColor colorWithRed:.1843 green:.28235 blue:.34509 alpha:1] forState:UIControlStateNormal];
     [self.foodieButton setTitleColor:[UIColor colorWithRed:.1843 green:.28235 blue:.34509 alpha:1] forState:UIControlStateNormal];
@@ -132,9 +132,9 @@
     }];
 }
 #pragma mark - Parse Query
-- (void) loadPathsWithCategory:(NSString *)category{
+- (void) loadPathsWithSortingSelector:(SEL)comparator{
     PFQuery *query = [PFQuery queryWithClassName:@"Itinerary"];
-    [query whereKey:@"category" equalTo:category];
+    //[query whereKey:@"category" equalTo:category];
     [query includeKey:@"path"];
     [query includeKey:@"creator"];
     [query findObjectsInBackgroundWithBlock:^(NSArray *iteneraries, NSError *error){
@@ -142,7 +142,8 @@
             NSLog(@"error loading paths from Parse");
         } else {
             self.itineraries = iteneraries;
-            [self sortItenerariesByDistance];
+            //[self sortItenerariesByDistance];
+            [self performSelectorOnMainThread:comparator withObject:nil waitUntilDone:YES];
             [self.tableView reloadData];
             NSIndexPath *topPath = [NSIndexPath indexPathForRow:0 inSection:0];
             [self.tableView scrollToRowAtIndexPath:topPath atScrollPosition:UITableViewScrollPositionTop animated:NO];
@@ -172,6 +173,42 @@
     sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"distanceFromFirstPinnedLocation" ascending:YES];
     self.itineraries = [self.itineraries sortedArrayUsingDescriptors:@[sortDescriptor]];
 }
+
+- (void)sortItinerariesByTime{
+    self.itineraries = [self.itineraries sortedArrayUsingComparator:^NSComparisonResult(Itinerary *a, Itinerary *b){
+        double aMinutes;
+        double aSeconds;
+        double bMinutes;
+        double bSeconds;
+        if([a.timeStamp length] == 4){
+            aMinutes = [[a.timeStamp substringWithRange:NSMakeRange(0, 1)] doubleValue];
+            aSeconds = [[a.timeStamp substringWithRange:NSMakeRange(2, 2)] doubleValue];
+        } else {
+            aMinutes = [[a.timeStamp substringWithRange:NSMakeRange(0, 2)] doubleValue];
+            aSeconds = [[a.timeStamp substringWithRange:NSMakeRange(3, 2)] doubleValue];
+        }
+        if([b.timeStamp length] == 4){
+            bMinutes = [[b.timeStamp substringWithRange:NSMakeRange(0, 1)] doubleValue];
+            bSeconds = [[b.timeStamp substringWithRange:NSMakeRange(2, 2)] doubleValue];
+        } else {
+            bMinutes = [[b.timeStamp substringWithRange:NSMakeRange(0, 2)] doubleValue];
+            bSeconds = [[b.timeStamp substringWithRange:NSMakeRange(3, 2)] doubleValue];
+        }
+        if (aMinutes < bMinutes)
+            return NSOrderedAscending;
+        else if (aMinutes > bMinutes)
+            return NSOrderedDescending;
+        else if (aSeconds < bSeconds)
+            return NSOrderedAscending;
+        else if (aSeconds > bSeconds)
+            return NSOrderedDescending;
+        else
+            return NSOrderedSame;
+    }];
+    
+}
+                        
+
 
 #pragma mark - UITableView
 - (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
@@ -247,7 +284,7 @@
     self.currentLocation = CLLocationCoordinate2DMake(currentLocation.coordinate.latitude, currentLocation.coordinate.longitude);
     CLLocation *location =[[CLLocation alloc] initWithLatitude:self.currentLocation.latitude longitude:self.currentLocation.longitude];
     [self reverseGeocode:location];
-    [self loadPathsWithCategory:@"Foodie"];
+    [self loadPathsWithSortingSelector:@selector(sortItenerariesByDistance)];
     self.imageView.image = [UIImage imageNamed:@"menlopark"];
     //[self photoFecth];
 }

@@ -58,9 +58,9 @@
 	<key>NSCameraUsageDescription</key>
 	<string>Profile Picture</string>
 	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
-	<string>Location services are needed to display the current location and points of interest.</string>
+	<string>Location services are needed to detect activity near paths.</string>
 	<key>NSLocationAlwaysUsageDescription</key>
-	<string>Location services are needed to display the current location and points of interest.</string>
+	<string>Location services are needed to detect activity near paths.</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>Location services are needed to display the current location and points of interest.</string>
 	<key>NSPhotoLibraryUsageDescription</key>
