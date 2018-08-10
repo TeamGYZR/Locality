@@ -159,6 +159,13 @@
                 annotationView.leftCalloutAccessoryView.userInteractionEnabled=YES;
                 annotationView.canShowCallout = YES;
             }];
+            if ([pinAnnotation.pinCategory isEqualToString:@"Foodie"]) {
+                annotationView.pinTintColor = [UIColor blueColor];
+            } else if ([pinAnnotation.pinCategory isEqualToString:@"Entertainment"]){
+                annotationView.pinTintColor = [UIColor redColor];
+            } else if ([pinAnnotation.pinCategory isEqualToString:@"Nature"]){
+                annotationView.pinTintColor = [UIColor grayColor];
+            }
         }
         return annotationView;
     }
