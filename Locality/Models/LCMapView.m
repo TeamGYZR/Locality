@@ -138,7 +138,7 @@
 
 -(void)setUpGeofenceForStartPoint:(CLLocationCoordinate2D)startCoordinate{
     self.startRegion = [[CLCircularRegion alloc]initWithCenter:startCoordinate radius:50.0 identifier:@"Start"];
-    [mapView addOverlay:[MKCircle circleWithCenterCoordinate:startCoordinate radius:50.0]];
+    //[mapView addOverlay:[MKCircle circleWithCenterCoordinate:startCoordinate radius:50.0]];
     [locationManager startMonitoringForRegion:self.startRegion];
 }
 
@@ -177,13 +177,13 @@
     {
         MKPolylineRenderer *pathRenderer = [[MKPolylineRenderer alloc] initWithPolyline:overlay];
         if(self.testDirections){
-            pathRenderer.fillColor = [[UIColor blueColor] colorWithAlphaComponent:0.2];
-            pathRenderer.strokeColor = [[UIColor magentaColor] colorWithAlphaComponent:0.7];
+            pathRenderer.fillColor = [[UIColor colorWithRed:.9254 green:.41176 blue:.30196 alpha:1] colorWithAlphaComponent:0.2];
+            pathRenderer.strokeColor = [[UIColor colorWithRed:.9254 green:.41176 blue:.30196 alpha:1] colorWithAlphaComponent:0.7];
         } else {
-            pathRenderer.fillColor = [[UIColor blueColor] colorWithAlphaComponent:0.2];
-            pathRenderer.strokeColor = [[UIColor blueColor] colorWithAlphaComponent:0.7];
+            pathRenderer.fillColor = [[UIColor colorWithRed:0.6 green:0.796 blue:0.9686 alpha:1.0] colorWithAlphaComponent:0.2];
+            pathRenderer.strokeColor = [[UIColor colorWithRed:.1843 green:.28235 blue:.34509 alpha:1] colorWithAlphaComponent:0.7];
         }
-        pathRenderer.lineWidth = 3;
+        pathRenderer.lineWidth = 2;
         return pathRenderer;
     }
     if ([overlay isKindOfClass:[MKCircle class]]){

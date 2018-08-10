@@ -174,7 +174,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="8sE-tU-VGp">
                         <barButtonItem key="leftBarButtonItem" title="Back" id="krf-2U-nhg">
-                            <color key="tintColor" red="0.0" green="0.32852089410000002" blue="0.57488495110000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <color key="tintColor" red="0.1843137255" green="0.28235294119999998" blue="0.34509803919999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>
                                 <action selector="didTapBack:" destination="YfQ-gI-n7T" id="aTq-Tw-o3a"/>
                             </connections>
