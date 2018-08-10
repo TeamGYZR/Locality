@@ -35,6 +35,7 @@
 
 @property (weak, nonatomic) IBOutlet UIView *pinnedLocationView;
 @property (weak, nonatomic) IBOutlet UITextView *pinDescriptionTextView;
+@property (strong, nonatomic) IBOutlet UILongPressGestureRecognizer *titleLongPressGesture;
 
 @end
 
@@ -80,12 +81,8 @@
     [self.slideBarView addGestureRecognizer:rightSwipe];
     self.pageControl.numberOfPages = ([self.photosForSlideshow count] + 1);
     self.currentPhotoIndex = 0;
+    [self.titleLongPressGesture setMinimumPressDuration:.5];
     
-    //adding a long tap gesture recognizer
-    UILongPressGestureRecognizer *longPress = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(handleLongPress:)];
-    longPress.minimumPressDuration = 1.0;
-    [self.pathNameLabel addGestureRecognizer:longPress];
-    //longPress release
 }
 
 #pragma mark - Actions
@@ -124,22 +121,15 @@
         }];
     }
 }
-- (IBAction)didTapSpeech:(id)sender {
-    if(!self.speech.isSpeaking){
-        AVSpeechUtterance *specchuttternce=[[AVSpeechUtterance alloc] initWithString:self.itinerary[@"name"]];
-        specchuttternce.rate=0.3;
-        specchuttternce.voice=[AVSpeechSynthesisVoice voiceWithLanguage:@"en_GB"];
-        self.speech=[[AVSpeechSynthesizer alloc] init];
-        [self.speech speakUtterance:specchuttternce];
-     }
-}
 
--  (void)handleLongPress:(UILongPressGestureRecognizer*)sender {
+- (IBAction)handleLongPress:(UILongPressGestureRecognizer *)sender {
     if (sender.state == UIGestureRecognizerStateEnded) {
         NSLog(@"UIGestureRecognizerStateEnded");
     }
     else if (sender.state == UIGestureRecognizerStateBegan){
         NSLog(@"UIGestureRecognizerStateBegan.");
+        [self beginTextToSpeech];
+        
     }
 }
 
@@ -234,6 +224,17 @@
     [self.view bringSubviewToFront:self.pinnedLocationView];
     [self.view bringSubviewToFront:self.slideBarView];
 }
+
+- (void) beginTextToSpeech{
+    if(!self.speech.isSpeaking){
+        AVSpeechUtterance *speechUtterance=[[AVSpeechUtterance alloc] initWithString:self.itinerary[@"name"]];
+        speechUtterance.rate=0.5;
+        speechUtterance.voice=[AVSpeechSynthesisVoice voiceWithLanguage:@"en_IE"];
+        self.speech=[[AVSpeechSynthesizer alloc] init];
+        [self.speech speakUtterance:speechUtterance];
+    }
+}
+
 #pragma mark - Navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if([[segue identifier] isEqualToString:@"segueToDirections"]){

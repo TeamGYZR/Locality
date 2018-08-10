@@ -70,6 +70,9 @@
     self.locationManager.delegate = nil;
 }
 -(void) dismissView{
+    //add pin to mapview before the view dismisses
+    [self addPinToMapView];
+    
     [UIView beginAnimations:@"FadeIn" context:nil];
     [UIView setAnimationDuration:1];
     [self.addpininfoview setAlpha:0.0];
@@ -130,7 +133,8 @@
         [self.addpininfoview setAlpha:1.0];
         self.viewOverMapView.alpha=0.8;
         [UIView commitAnimations];
-        [self addPinToMapView];
+        //[self addPinToMapView];
+        [self addCoordinatesToPinAndPathArray];
        }];
     [alert addAction:cancelAction];
     [alert addAction:continueAction];
@@ -160,13 +164,18 @@
 }
 #pragma mark - Private Methods
 
-- (void)addPinToMapView{
-    MKPointAnnotation *annotation = [MKPointAnnotation new];
-    annotation.coordinate = self.currentLocation.coordinate;
-    annotation.title = @"Location";
-    [self.mapView addAnnotation:annotation];
+- (void) addCoordinatesToPinAndPathArray{
     [self.pinCoordinates addObject:self.currentLocation];
     [self.pathCoordinates addObject:self.currentLocation];
+}
+
+- (void)addPinToMapView{
+    MKPointAnnotation *annotation = [MKPointAnnotation new];
+    NSInteger pinsCount = ([self.pinCoordinates count] - 1);
+    CLLocation *currentPinLocation = [self.pinCoordinates objectAtIndex:pinsCount];
+    annotation.coordinate = currentPinLocation.coordinate;
+    annotation.title = @"Location";
+    [self.mapView addAnnotation:annotation];
 }
 
 - (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation{
@@ -176,10 +185,18 @@
             annotationView = [[pinVenueAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"PlacePin"];
             annotationView.canShowCallout = true;
         }
+        if ([self.pinCategory isEqualToString:@"Foodie"]) {
+            annotationView.pinTintColor = [UIColor blueColor];
+        } else if ([self.pinCategory isEqualToString:@"Entertainment"]){
+            annotationView.pinTintColor = [UIColor redColor];
+        } else {
+            annotationView.pinTintColor = [UIColor grayColor];
+        }
         return annotationView;
     }
     return nil;
 }
+
 -(void)addPinsToParse{
     NSUInteger pinsCount = [self.pinCoordinates count]-1;
     CLLocation *currentPin = [self.pinCoordinates objectAtIndex:pinsCount];
