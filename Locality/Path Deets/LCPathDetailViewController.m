@@ -133,6 +133,17 @@
     }
 }
 
+- (IBAction)didTapShare:(id)sender {
+    UIImage *uploadImage = [UIImage imageNamed:@"defaultImage"];
+    NSArray *activityItem = @[uploadImage];
+    UIActivityViewController *activityViewController = [[UIActivityViewController alloc] initWithActivityItems:activityItem applicationActivities:nil];
+    activityViewController.excludedActivityTypes = @[];
+    activityViewController.popoverPresentationController.sourceView = self.view;
+    activityViewController.popoverPresentationController.sourceRect = CGRectMake(self.view.bounds.size.width/2, self.view.bounds.size.height/4, 0, 0);
+    [self presentViewController:activityViewController animated:true completion:nil];
+}
+
+
 #pragma mark - Handling Favorites
 
 -(void)setAFilledStar{
