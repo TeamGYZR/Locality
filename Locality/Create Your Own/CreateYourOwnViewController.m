@@ -38,6 +38,7 @@
 @property (strong, nonatomic) UIImage *pinImage;
 @property (strong, nonatomic) NSString *pinName;
 @property (strong, nonatomic) NSString *pinDescription;
+@property (weak, nonatomic) IBOutlet UIView *buttonView;
 @property (strong, nonatomic) NSString *pinCategory;
 @end
 
@@ -59,6 +60,9 @@
     self.mapView.showsUserLocation = YES;
     self.locationManager.distanceFilter = 5;
     self.locationManager.desiredAccuracy = kCLLocationAccuracyBest;
+    
+    self.buttonView.layer.cornerRadius = self.buttonView.frame.size.width / 2;
+    self.buttonView.clipsToBounds = YES;
 }
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];

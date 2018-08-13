@@ -18,7 +18,7 @@
         </array>
     </customFonts>
     <scenes>
-        <!--Create Your Own View Controller-->
+        <!--Tracking Path-->
         <scene sceneID="SKf-3r-G5b">
             <objects>
                 <viewController storyboardIdentifier="CreateYourOwn" id="cTa-YV-odr" customClass="CreateYourOwnViewController" sceneMemberID="viewController">
@@ -30,16 +30,23 @@
                                 <rect key="frame" x="0.0" y="66" width="375" height="601"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </mapView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="X92-CV-xAl">
-                                <rect key="frame" x="327" y="80" width="32" height="39"/>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7Mg-yU-wNw">
+                                <rect key="frame" x="167" y="576" width="64" height="64"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" image="Add location">
-                                    <color key="titleShadowColor" red="0.0" green="0.32852089410000002" blue="0.57488495110000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="didTapAddPin:" destination="cTa-YV-odr" eventType="touchUpInside" id="o65-uz-bW3"/>
-                                </connections>
-                            </button>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="X92-CV-xAl">
+                                        <rect key="frame" x="1" y="-4" width="63" height="73"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" image="Add location">
+                                            <color key="titleShadowColor" red="0.0" green="0.32852089410000002" blue="0.57488495110000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="didTapAddPin:" destination="cTa-YV-odr" eventType="touchUpInside" id="o65-uz-bW3"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" red="0.93333333330000001" green="0.42352941179999998" blue="0.30196078430000001" alpha="0.77036065924657537" colorSpace="custom" customColorSpace="displayP3"/>
+                            </view>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DMb-aF-wSn">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -50,7 +57,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="gOo-5U-0Ck"/>
                     </view>
-                    <navigationItem key="navigationItem" id="6X8-Tw-P5y">
+                    <navigationItem key="navigationItem" title="Tracking Path" id="6X8-Tw-P5y">
                         <barButtonItem key="leftBarButtonItem" title="Cancel" id="XsX-0f-FME">
                             <color key="tintColor" red="0.1843137255" green="0.28235294119999998" blue="0.34509803919999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>
@@ -65,6 +72,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="buttonView" destination="7Mg-yU-wNw" id="cxo-yX-wLq"/>
                         <outlet property="createPathMapView" destination="VXO-VP-8yd" id="Hto-rv-YIu"/>
                         <outlet property="mapView" destination="VXO-VP-8yd" id="tuV-N1-Bub"/>
                         <outlet property="viewOverMapView" destination="DMb-aF-wSn" id="eZP-mp-1Bp"/>
@@ -75,7 +83,7 @@
             </objects>
             <point key="canvasLocation" x="968.79999999999995" y="175.86206896551727"/>
         </scene>
-        <!--Path Finalization View Controller-->
+        <!--Path Draft-->
         <scene sceneID="me4-qh-8Ec">
             <objects>
                 <viewController id="qmT-8e-wbo" customClass="PathFinalizationViewController" sceneMemberID="viewController">
@@ -94,6 +102,13 @@
                                         <color key="textColor" red="0.1843137255" green="0.28235294119999998" blue="0.34509803919999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="MuI-hO-drf">
+                                        <rect key="frame" x="107" y="56" width="237" height="65"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" cocoaTouchSystemColor="lightTextColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                    </textView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Description:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t65-kr-FBz">
                                         <rect key="frame" x="8" y="56" width="81" height="22"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -177,13 +192,6 @@
                                             <action selector="didTapUpButton:" destination="qmT-8e-wbo" eventType="touchUpInside" id="zpQ-hG-36X"/>
                                         </connections>
                                     </button>
-                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="MuI-hO-drf">
-                                        <rect key="frame" x="107" y="56" width="237" height="65"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <color key="backgroundColor" cocoaTouchSystemColor="lightTextColor"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                    </textView>
                                 </subviews>
                                 <color key="backgroundColor" red="0.8862745098" green="0.90980392160000001" blue="0.89411764709999997" alpha="0.45828874143835618" colorSpace="custom" customColorSpace="displayP3"/>
                             </scrollView>
@@ -191,7 +199,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="r7m-RQ-emE"/>
                     </view>
-                    <navigationItem key="navigationItem" id="maf-4C-TT3">
+                    <navigationItem key="navigationItem" title="Path Draft" id="maf-4C-TT3">
                         <barButtonItem key="leftBarButtonItem" title="&lt; Back" id="Fdr-D6-eVX">
                             <color key="tintColor" red="0.1843137255" green="0.28235294119999998" blue="0.34509803919999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>
