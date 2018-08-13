@@ -173,29 +173,9 @@
 
 - (void)sortItinerariesByTime{
     self.itineraries = [self.itineraries sortedArrayUsingComparator:^NSComparisonResult(Itinerary *a, Itinerary *b){
-        double aMinutes;
-        double aSeconds;
-        double bMinutes;
-        double bSeconds;
-        if([a.timeStamp length] == 4){
-            aMinutes = [[a.timeStamp substringWithRange:NSMakeRange(0, 1)] doubleValue];
-            aSeconds = [[a.timeStamp substringWithRange:NSMakeRange(2, 2)] doubleValue];
-        } else {
-            aMinutes = [[a.timeStamp substringWithRange:NSMakeRange(0, 2)] doubleValue];
-            aSeconds = [[a.timeStamp substringWithRange:NSMakeRange(3, 2)] doubleValue];
-        }
-        if([b.timeStamp length] == 4){
-            bMinutes = [[b.timeStamp substringWithRange:NSMakeRange(0, 1)] doubleValue];
-            bSeconds = [[b.timeStamp substringWithRange:NSMakeRange(2, 2)] doubleValue];
-        } else {
-            bMinutes = [[b.timeStamp substringWithRange:NSMakeRange(0, 2)] doubleValue];
-            bSeconds = [[b.timeStamp substringWithRange:NSMakeRange(3, 2)] doubleValue];
-        }
-        if (aMinutes < bMinutes)
-            return NSOrderedAscending;
-        else if (aMinutes > bMinutes)
-            return NSOrderedDescending;
-        else if (aSeconds < bSeconds)
+        double aSeconds = [self secondsForItinerary:a];
+        double bSeconds = [self secondsForItinerary:b];
+        if (aSeconds < bSeconds)
             return NSOrderedAscending;
         else if (aSeconds > bSeconds)
             return NSOrderedDescending;
@@ -203,6 +183,20 @@
             return NSOrderedSame;
     }];
     
+}
+
+-(double)secondsForItinerary:(Itinerary *)itinerary{
+    double itineraryMinutesInSeconds;
+    double timeInSeconds;
+    if([itinerary.timeStamp length] == 4){
+        itineraryMinutesInSeconds = [[itinerary.timeStamp substringWithRange:NSMakeRange(0, 1)] doubleValue] * 60;
+        timeInSeconds = [[itinerary.timeStamp substringWithRange:NSMakeRange(2, 2)] doubleValue] + itineraryMinutesInSeconds;
+    } else {
+        itineraryMinutesInSeconds = [[itinerary.timeStamp substringWithRange:NSMakeRange(0, 2)] doubleValue] * 60;
+        timeInSeconds = [[itinerary.timeStamp substringWithRange:NSMakeRange(3, 2)] doubleValue] + itineraryMinutesInSeconds;
+    }
+    
+    return timeInSeconds;
 }
 
 -(void)sortItinerariesByViews{
@@ -308,21 +302,6 @@
 
 #pragma mark - Search Controller Delegate
 
-//- (void)didPresentSearchController:(UISearchController *)searchController{
-//    CGRect createPathFrame = self.createPathBarButton.accessibilityFrame;
-//    createPathFrame.origin.x += 60;
-//    [UIView animateWithDuration:1.0 animations:^{
-//        self.navigationItem.rightBarButtonItem.accessibilityFrame = createPathFrame;
-//    }];
-//
-//}
-
--(void)didDismissSearchController:(UISearchController *)searchController{
-    self.searchController.searchBar.text = @"";
-    [self.tableView reloadData];
-    [self.searchController.searchBar resignFirstResponder];
-    self.navigationItem.rightBarButtonItem = self.createPathBarButton;
-}
 
 #pragma mark - Search Bar Delegate
 - (void)searchBarTextDidBeginEditing:(UISearchBar *)searchBar{
@@ -332,12 +311,12 @@
 
 }
 
-- (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar
-{
+-(void) searchBarTextDidEndEditing:(UISearchBar *)searchBar{
     self.searchController.searchBar.text = @"";
     [self.tableView reloadData];
     [self.searchController.searchBar resignFirstResponder];
     self.navigationItem.rightBarButtonItem = self.createPathBarButton;
+    
 }
 #pragma mark - Navigation
 
