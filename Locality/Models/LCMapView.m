@@ -225,12 +225,8 @@
     }
     if (numPaths == 1) {
         Itinerary *itinerary = (Itinerary *)self.itineraries[0];
-        NSString* center = [itinerary.paths objectAtIndex:(itinerary.paths.count/2)];
-        CGPoint centerPoint = CGPointFromString(center);
-        MKCoordinateRegion currentRegion = MKCoordinateRegionMake(CLLocationCoordinate2DMake(centerPoint.x, centerPoint.y), MKCoordinateSpanMake(0.025, 0.025));
-        [mapView setRegion:currentRegion animated:NO];
-        //[mapView setVisibleMapRect:[self.directionPolyline boundingMapRect] edgePadding:UIEdgeInsetsMake(10.0, 10.0, 10.0, 10.0) animated:NO];
         [self drawPathForItinerary:itinerary];
+        [mapView setVisibleMapRect:[self.polyline boundingMapRect] edgePadding:UIEdgeInsetsMake(300.0, 50.0, 50.0, 50.0) animated:NO];
     } else {
         MKCoordinateRegion currentRegion = MKCoordinateRegionMake(CLLocationCoordinate2DMake(self.currentLocation.coordinate.latitude, self.currentLocation.coordinate.longitude), MKCoordinateSpanMake(0.7, 0.7));
         [mapView setRegion:currentRegion animated:NO];
