@@ -15,6 +15,7 @@
 #import "User.h"
 #import <MapKit/MapKit.h>
 #import <CoreLocation/CoreLocation.h>
+#import "NewTableViewController.h"
 
 
 
@@ -36,7 +37,4 @@
 @property  UIImage * image1;
 @property  UIImage * image2;
 @property UIImage * image3;
-
-
-
 @end

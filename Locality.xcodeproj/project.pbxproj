@@ -89,10 +89,14 @@
 		A831941E21153D3400CE7744 /* PinInfoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A831941D21153D3400CE7744 /* PinInfoView.xib */; };
 		A858D2DF21044E7C00637FAD /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A858D2DE21044E7C00637FAD /* AVFoundation.framework */; };
 		A8842AF22106A44F003ECD07 /* Uploadphotoviewcontroller.m in Sources */ = {isa = PBXBuildFile; fileRef = A8842AF12106A44F003ECD07 /* Uploadphotoviewcontroller.m */; };
+		A8B95DF7211EF07F00B04D40 /* NewTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A8B95DF6211EF07F00B04D40 /* NewTableViewController.m */; };
+		A8B95DFA211EF86F00B04D40 /* NewAutoCompleteCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A8B95DF9211EF86F00B04D40 /* NewAutoCompleteCell.m */; };
+		A8B95DFB211F05B800B04D40 /* NewAutoCompleteCell.h in Sources */ = {isa = PBXBuildFile; fileRef = A8B95DF8211EF86F00B04D40 /* NewAutoCompleteCell.h */; };
+		A8B95DFC211F05DA00B04D40 /* NewTableViewController.h in Sources */ = {isa = PBXBuildFile; fileRef = A8B95DF5211EF07F00B04D40 /* NewTableViewController.h */; };
+		A8B95DFE211F076900B04D40 /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A8E26418210BB48C002C0992 /* Home.storyboard */; };
 		A8BF41C7210C110E001DAB81 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = A8BF41C6210C110E001DAB81 /* User.m */; };
 		A8BF41CA2110B1CE001DAB81 /* PathCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A8BF41C92110B1CE001DAB81 /* PathCell.m */; };
 		A8E26415210BB430002C0992 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A8E26414210BB430002C0992 /* HomeViewController.m */; };
-		A8E26419210BB48C002C0992 /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A8E26418210BB48C002C0992 /* Home.storyboard */; };
 		A8F8E7E2210951CF00684142 /* FlickrAuthorizationAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A8F8E7E1210951CF00684142 /* FlickrAuthorizationAppDelegate.m */; };
 /* End PBXBuildFile section */
 
@@ -256,13 +260,17 @@
 		A858D2DE21044E7C00637FAD /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		A8842AF02106A44F003ECD07 /* Uploadphotoviewcontroller.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Uploadphotoviewcontroller.h; sourceTree = "<group>"; };
 		A8842AF12106A44F003ECD07 /* Uploadphotoviewcontroller.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Uploadphotoviewcontroller.m; sourceTree = "<group>"; };
+		A8B95DF5211EF07F00B04D40 /* NewTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NewTableViewController.h; sourceTree = "<group>"; };
+		A8B95DF6211EF07F00B04D40 /* NewTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NewTableViewController.m; sourceTree = "<group>"; };
+		A8B95DF8211EF86F00B04D40 /* NewAutoCompleteCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NewAutoCompleteCell.h; sourceTree = "<group>"; };
+		A8B95DF9211EF86F00B04D40 /* NewAutoCompleteCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NewAutoCompleteCell.m; sourceTree = "<group>"; };
 		A8BF41C5210C110E001DAB81 /* User.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
 		A8BF41C6210C110E001DAB81 /* User.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
 		A8BF41C82110B1CE001DAB81 /* PathCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PathCell.h; sourceTree = "<group>"; };
 		A8BF41C92110B1CE001DAB81 /* PathCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PathCell.m; sourceTree = "<group>"; };
 		A8E26413210BB430002C0992 /* HomeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
 		A8E26414210BB430002C0992 /* HomeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeViewController.m; sourceTree = "<group>"; };
-		A8E26418210BB48C002C0992 /* Home.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Home.storyboard; sourceTree = "<group>"; };
+		A8E26418210BB48C002C0992 /* Home.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Home.storyboard; path = Locality/Storyboards/Home.storyboard; sourceTree = SOURCE_ROOT; };
 		A8F8E7E0210951CF00684142 /* FlickrAuthorizationAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FlickrAuthorizationAppDelegate.h; sourceTree = "<group>"; };
 		A8F8E7E1210951CF00684142 /* FlickrAuthorizationAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FlickrAuthorizationAppDelegate.m; sourceTree = "<group>"; };
 		C01F5B3A004D967BDF2A1867 /* Pods-Locality.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Locality.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Locality/Pods-Locality.debug.xcconfig"; sourceTree = "<group>"; };
@@ -495,6 +503,7 @@
 		4CDAC17620F4424100B3E7D4 /* Locality */ = {
 			isa = PBXGroup;
 			children = (
+				A8B95E03211F20C600B04D40 /* Future Implementation For Mutiple Table Views */,
 				4C6EBC002118CF75000BA46B /* Profile */,
 				4C81D0DA210F7FA500064DBB /* Create Your Own */,
 				4C51C93D210BE316007B389F /* Dummy Data */,
@@ -631,6 +640,17 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		A8B95E03211F20C600B04D40 /* Future Implementation For Mutiple Table Views */ = {
+			isa = PBXGroup;
+			children = (
+				A8B95DF5211EF07F00B04D40 /* NewTableViewController.h */,
+				A8B95DF6211EF07F00B04D40 /* NewTableViewController.m */,
+				A8B95DF8211EF86F00B04D40 /* NewAutoCompleteCell.h */,
+				A8B95DF9211EF86F00B04D40 /* NewAutoCompleteCell.m */,
+			);
+			path = "Future Implementation For Mutiple Table Views";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -739,6 +759,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4CA36B6320FFF2FD0056EB44 /* Login.storyboard in Resources */,
+				A8B95DFE211F076900B04D40 /* Home.storyboard in Resources */,
 				A831941E21153D3400CE7744 /* PinInfoView.xib in Resources */,
 				8597DB2120FE7BA200BA261A /* YMapView.storyboard in Resources */,
 				4C6EBBFF2118CF52000BA46B /* Profile.storyboard in Resources */,
@@ -746,7 +767,6 @@
 				8593ADF02118A9B700124B93 /* Dosis-Bold.ttf in Resources */,
 				4C81D0D9210F7C8800064DBB /* CreateYourOwn.storyboard in Resources */,
 				A80F646920FF3BB500C105D0 /* collectionview.storyboard in Resources */,
-				A8E26419210BB48C002C0992 /* Home.storyboard in Resources */,
 				8544B992210BBE040028D43F /* PathDetail.storyboard in Resources */,
 				4CDAC18420F4424100B3E7D4 /* LaunchScreen.storyboard in Resources */,
 				4CEF1C43210B8B6500C69B15 /* Interstitial.storyboard in Resources */,
@@ -869,6 +889,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A8B95DFC211F05DA00B04D40 /* NewTableViewController.h in Sources */,
+				A8B95DFB211F05B800B04D40 /* NewAutoCompleteCell.h in Sources */,
 				A8F8E7E2210951CF00684142 /* FlickrAuthorizationAppDelegate.m in Sources */,
 				853A48C2211517C6005BCDEF /* ItineraryPin.m in Sources */,
 				8544B999210BC2DB0028D43F /* InterstitialViewController.m in Sources */,
@@ -890,6 +912,7 @@
 				859A1AA720FF1A1800E13EBC /* VenueAnnotationView.m in Sources */,
 				8597DB2220FE7BA200BA261A /* ExploreMapViewController.m in Sources */,
 				4C17BCA92111179900F74677 /* PinCell.m in Sources */,
+				A8B95DFA211EF86F00B04D40 /* NewAutoCompleteCell.m in Sources */,
 				859A1AA120FF121300E13EBC /* VenueAnnotation.m in Sources */,
 				4C771D69210665CA0055A90D /* SignUpViewController.m in Sources */,
 				4CEF1C41210A786D00C69B15 /* Follow.m in Sources */,
@@ -906,6 +929,7 @@
 				4CEF1C50210BAE5600C69B15 /* Path.m in Sources */,
 				4CA36B5420FE90340056EB44 /* Venue.m in Sources */,
 				4CA36B5B20FE9F8A0056EB44 /* APIManager.m in Sources */,
+				A8B95DF7211EF07F00B04D40 /* NewTableViewController.m in Sources */,
 				8544B996210BBE630028D43F /* PathDetailsViewController.m in Sources */,
 				4C771D752107999F0055A90D /* DetailsCollectionViewController.m in Sources */,
 				A8BF41CA2110B1CE001DAB81 /* PathCell.m in Sources */,

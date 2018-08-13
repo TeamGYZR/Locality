@@ -52,7 +52,7 @@
     self.pinInfoCustomView.frame = self.bounds;
     [self addSubview:self.pinInfoCustomView];
 }
-- (BOOL)pointInside:(CGPoint)point withEvent:(UIEvent *)event{
+-(BOOL)pointInside:(CGPoint)point withEvent:(UIEvent *)event{
     for (UIView * view in [self subviews]) {
         if (view.userInteractionEnabled && [view pointInside:[self convertPoint:point toView:view] withEvent:event]) {
             return YES;

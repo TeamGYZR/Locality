@@ -185,27 +185,50 @@
         <scene sceneID="ogI-Li-hHV">
             <objects>
                 <tableViewController storyboardIdentifier="ResultsTable" id="vJ4-Rp-soP" customClass="PlacesSearchTableViewController" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="292" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="HfR-Ze-CDj">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="311" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="HfR-Ze-CDj">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="0.1843137255" green="0.28235294119999998" blue="0.34509803919999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <view key="tableHeaderView" clipsSubviews="YES" contentMode="scaleToFill" id="QfR-jG-RzX">
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="73"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            <subviews>
+                                <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Mt3-gk-WKZ">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="83"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <prototypes>
+                                        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="47" id="OgN-L3-Lyr">
+                                            <rect key="frame" x="0.0" y="28" width="375" height="47"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="OgN-L3-Lyr" id="poe-xK-78C">
+                                                <rect key="frame" x="0.0" y="0.0" width="375" height="46.5"/>
+                                                <autoresizingMask key="autoresizingMask"/>
+                                            </tableViewCellContentView>
+                                        </tableViewCell>
+                                    </prototypes>
+                                    <sections/>
+                                    <connections>
+                                        <outlet property="dataSource" destination="vJ4-Rp-soP" id="zFC-Wn-U11"/>
+                                        <outlet property="delegate" destination="vJ4-Rp-soP" id="p7g-73-sYD"/>
+                                    </connections>
+                                </tableView>
+                            </subviews>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <rect key="contentStretch" x="0.0" y="0.0" width="0.0" height="0.0"/>
+                        </view>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="PathCell" rowHeight="292" id="9wr-vm-U3b" customClass="PathCell">
-                                <rect key="frame" x="0.0" y="28" width="375" height="292"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="PathCell" rowHeight="311" id="9wr-vm-U3b" customClass="PathCell">
+                                <rect key="frame" x="0.0" y="101" width="375" height="311"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="9wr-vm-U3b" id="isD-sq-18z">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="291.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="310.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XjL-Mh-ZRt">
-                                            <rect key="frame" x="3" y="3" width="369" height="284"/>
+                                            <rect key="frame" x="3" y="7" width="369" height="293"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <subviews>
-                                                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FqA-Xp-7BD" customClass="PFImageView">
-                                                    <rect key="frame" x="14" y="83" width="26" height="26"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <color key="backgroundColor" red="1" green="0.97387387020000005" blue="0.71572926849999996" alpha="0.31006528249999998" colorSpace="custom" customColorSpace="displayP3"/>
-                                                </view>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" fixedFrame="YES" text="Path Description" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uCW-6i-rQW">
                                                     <rect key="frame" x="14" y="37" width="350" height="42"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -246,6 +269,11 @@
                                                     <color key="textColor" red="0.1843137255" green="0.28235294119999998" blue="0.34509803919999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FqA-Xp-7BD" customClass="PFImageView">
+                                                    <rect key="frame" x="14" y="83" width="26" height="26"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <color key="backgroundColor" red="1" green="0.97387387020000005" blue="0.71572926849999996" alpha="0.31006528249999998" colorSpace="custom" customColorSpace="displayP3"/>
+                                                </view>
                                             </subviews>
                                             <color key="backgroundColor" red="0.8862745098" green="0.90980392160000001" blue="0.89411764709999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         </view>
@@ -266,14 +294,19 @@
                             </tableViewCell>
                         </prototypes>
                         <connections>
-                            <outlet property="dataSource" destination="vJ4-Rp-soP" id="0fz-ri-klj"/>
-                            <outlet property="delegate" destination="vJ4-Rp-soP" id="DQ0-65-Jw2"/>
+                            <outlet property="dataSource" destination="vJ4-Rp-soP" id="VOT-pc-B2K"/>
+                            <outlet property="delegate" destination="vJ4-Rp-soP" id="cMh-PU-uCq"/>
                         </connections>
                     </tableView>
+                    <navigationItem key="navigationItem" id="G8F-WB-JBy"/>
+                    <connections>
+                        <outlet property="autoCompleteTableView" destination="Mt3-gk-WKZ" id="q8S-SL-k1e"/>
+                        <outlet property="autoCompleteView" destination="QfR-jG-RzX" id="nLJ-J3-PeY"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fJ5-pW-Nqu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="188" y="-273.01349325337333"/>
+            <point key="canvasLocation" x="1127.2" y="-273.01349325337333"/>
         </scene>
         <!--PathDetail-->
         <scene sceneID="NTG-AL-Lbo">
@@ -281,7 +314,7 @@
                 <viewControllerPlaceholder storyboardName="PathDetail" id="SM7-ZE-klK" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hNb-yw-AbT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="813" y="-244"/>
+            <point key="canvasLocation" x="1751.2" y="-244.6776611694153"/>
         </scene>
         <!--PathDetail-->
         <scene sceneID="Uxq-0H-oLb">
@@ -369,6 +402,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OTn-Om-vSo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-770.39999999999998" y="-1157.2713643178411"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="BCM-Y9-nzm">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="EzX-of-3li" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="z2I-ic-UMN">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="vJ4-Rp-soP" kind="relationship" relationship="rootViewController" id="ZT2-8N-QfB"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zcp-LU-9mx" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="188" y="-273.01349325337333"/>
         </scene>
     </scenes>
     <resources>
