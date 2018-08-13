@@ -78,6 +78,7 @@
     [UIView beginAnimations:@"FadeIn" context:nil];
     [UIView setAnimationDuration:1];
     [self.addpininfoview setAlpha:0.0];
+    [self.addpininfoview removeFromSuperview];
     [self.viewOverMapView setAlpha:0.0];
     [UIView commitAnimations];
 }
