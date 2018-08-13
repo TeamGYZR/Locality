@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import <CoreLocation/CoreLocation.h>
 #import "NewAutoCompleteCell.h"
-@interface PlacesSearchTableViewController : UITableViewController <UISearchResultsUpdating>
+@interface PlacesSearchTableViewController : UITableViewController <UISearchResultsUpdating,UIScrollViewDelegate>
 @property (strong, nonatomic) NSArray *matchingItems;
 @property (strong, nonatomic) NSArray *itineraries;
 @property (strong, nonatomic)  NSMutableArray *listOfTemArray;

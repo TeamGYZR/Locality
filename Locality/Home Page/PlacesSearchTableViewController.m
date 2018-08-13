@@ -11,14 +11,23 @@
 #import "Itinerary.h"
 #import "LCPathDetailViewController.h"
 @interface PlacesSearchTableViewController ()<UITableViewDataSource, UITableViewDataSource>
-
+@property (strong, nonatomic) UISearchController * customSearchBar;
 @end
 
 @implementation PlacesSearchTableViewController
 -(void)viewDidLoad {
     [super viewDidLoad];
-    self.autoCompleteTableView.separatorColor = [UIColor clearColor];
-    self.tableView.separatorColor=[UIColor clearColor];
+    self.autoCompleteTableView.separatorColor=[UIColor clearColor];
+      self.tableView.separatorColor=[UIColor clearColor];
+        self.autoCompleteTableView.tableFooterView=[[UIView alloc] initWithFrame:CGRectZero];
+ self.autoCompleteTableView.userInteractionEnabled=YES;
+    [self.autoCompleteView sizeToFit];
+    //self.autoCompleteView.s
+    if(self.tableView.isDragging && self.tableView.isDecelerating){
+        //self.autoCompleteView.
+    }
+    
+    
   PFQuery *query = [PFQuery queryWithClassName:@"Itinerary"];
     [query includeKey:@"path"];
     [query includeKey:@"creator"];
@@ -41,7 +50,7 @@
         [UIView animateWithDuration:100
                          animations:^{
                              self.autoCompleteView.hidden=NO;
-                             self.autoCompleteView.frame = CGRectMake(0, 0, 10, 10);
+                           [self.autoCompleteView sizeToFit];
                              }];
         return self.listOfTemArray.count;
     }
@@ -52,12 +61,12 @@
     UITableViewCell * autoCell=[tableView dequeueReusableCellWithIdentifier:@"cell"];
     if(!autoCell){
         autoCell=[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"];
-        autoCell.frame=CGRectMake(0, 0, 10, 10);
+        autoCell.layer.masksToBounds=YES;
     }
     if(tableView==self.autoCompleteTableView){
         autoCell.textLabel.text=[NSString stringWithFormat:self.listOfTemArray[indexPath.row], indexPath.row];
-        [autoCell.textLabel sizeToFit];
-        return autoCell;
+        
+      return autoCell;
         
     }else{
     PathCell *cell = [tableView dequeueReusableCellWithIdentifier:@"PathCell" forIndexPath:indexPath];
@@ -70,11 +79,15 @@
         return cell;
     }
 }
-
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    self.customSearchBar.searchBar.text=[NSString stringWithFormat:self.listOfTemArray[indexPath.row], indexPath.row];
+    
+}
 -(void) dismissView{
   self.autoCompleteView.hidden=YES;
 }
 -(void)updateSearchResultsForSearchController:(UISearchController *)searchController{
+    self.customSearchBar=searchController;
   NSString *searchText = searchController.searchBar.text;
    __block NSString * name=nil;
    __block NSString *firstLetter=nil;
@@ -112,6 +125,7 @@
         self.matchingItems = nil;
       }
     if(self.listOfTemArray!= nil){
+    
   [self.autoCompleteTableView reloadData];
         [self.tableView reloadData];
     }else{
@@ -121,8 +135,8 @@
 }
 #pragma mark - Navigation
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismissView)];
-    [self.tableView addGestureRecognizer:tap];
+//    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismissView)];
+//    [self.tableView addGestureRecognizer:tap];
     if ([[segue identifier] isEqualToString:@"searchToPath"]) {
         PathCell *tappedCell = sender;
         NSIndexPath * indexPath = [self.tableView indexPathForCell:tappedCell];

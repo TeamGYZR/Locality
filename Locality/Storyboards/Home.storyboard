@@ -189,14 +189,25 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <view key="tableHeaderView" contentMode="scaleToFill" id="QfR-jG-RzX">
-                            <rect key="frame" x="0.0" y="0.0" width="375" height="149"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <view key="tableHeaderView" clipsSubviews="YES" contentMode="scaleToFill" id="QfR-jG-RzX">
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="73"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <subviews>
                                 <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Mt3-gk-WKZ">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="149"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="83"/>
+                                    <autoresizingMask key="autoresizingMask"/>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <prototypes>
+                                        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="47" id="OgN-L3-Lyr">
+                                            <rect key="frame" x="0.0" y="28" width="375" height="47"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="OgN-L3-Lyr" id="poe-xK-78C">
+                                                <rect key="frame" x="0.0" y="0.0" width="375" height="46.5"/>
+                                                <autoresizingMask key="autoresizingMask"/>
+                                            </tableViewCellContentView>
+                                        </tableViewCell>
+                                    </prototypes>
+                                    <sections/>
                                     <connections>
                                         <outlet property="dataSource" destination="vJ4-Rp-soP" id="zFC-Wn-U11"/>
                                         <outlet property="delegate" destination="vJ4-Rp-soP" id="p7g-73-sYD"/>
@@ -204,11 +215,11 @@
                                 </tableView>
                             </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <rect key="contentStretch" x="0.0" y="0.0" width="0.0" height="0.0"/>
                         </view>
-                        <color key="backgroundColor" red="0.1843137255" green="0.28235294119999998" blue="0.34509803919999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="PathCell" rowHeight="311" id="9wr-vm-U3b" customClass="PathCell">
-                                <rect key="frame" x="0.0" y="177" width="375" height="311"/>
+                                <rect key="frame" x="0.0" y="101" width="375" height="311"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="9wr-vm-U3b" id="isD-sq-18z">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="310.5"/>
