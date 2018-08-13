@@ -19,6 +19,7 @@
 #import "PlacesSearchTableViewController.h"
 #import "CLLocationManagerSingleton.h"
 
+
 //rounded edges and shadow
 #import <QuartzCore/QuartzCore.h>
 
@@ -31,6 +32,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *entertainmentButton;
 @property (weak, nonatomic) IBOutlet UIButton *natureButton;
 @property (strong, nonatomic) PlacesSearchTableViewController *searchTableViewController;
+@property (strong, nonatomic) NewTableViewController * newautoresult;
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *createPathBarButton;
 
 @end
@@ -50,7 +52,7 @@
     self.searchController.searchResultsUpdater = pathsSearchTable;
     pathsSearchTable.tableView.delegate = self;
     pathsSearchTable.itineraries = nil;
-    self.searchTableViewController = pathsSearchTable;
+  self.searchTableViewController = pathsSearchTable;
     UISearchBar *searchBar = self.searchController.searchBar;
     [searchBar sizeToFit];
     searchBar.placeholder = @"Search by pins";
@@ -216,7 +218,7 @@
 
 #pragma mark - UITableView
 - (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
-    PathCell *cell = [tableView dequeueReusableCellWithIdentifier:@"PathCell" forIndexPath:indexPath];
+   PathCell *cell = [tableView dequeueReusableCellWithIdentifier:@"PathCell" forIndexPath:indexPath];
     cell.itinerary = self.itineraries[indexPath.row];
     cell.cellView.layer.cornerRadius = 20.0;
     cell.cellView.layer.borderWidth = 2.0;
@@ -226,6 +228,7 @@
 }
 
 - (NSInteger)tableView:(nonnull UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+ 
     return self.itineraries.count;
     //return 20;
 }
@@ -310,7 +313,6 @@
     }];
 
 }
-
 -(void) searchBarTextDidEndEditing:(UISearchBar *)searchBar{
     self.searchController.searchBar.text = @"";
     [self.tableView reloadData];
@@ -319,7 +321,6 @@
     
 }
 #pragma mark - Navigation
-
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if([[segue identifier] isEqualToString:@"segueToDetails"]){
