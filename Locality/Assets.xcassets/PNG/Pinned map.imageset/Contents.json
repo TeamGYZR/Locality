@@ -2,11 +2,11 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "Pinned map.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
+      "filename" : "Pinned map.png",
       "scale" : "2x"
     },
     {

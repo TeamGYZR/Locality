@@ -32,7 +32,7 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="TWT-eZ-fJN">
-                                <rect key="frame" x="0.0" y="432" width="375" height="235"/>
+                                <rect key="frame" x="0.0" y="444" width="375" height="223"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.87843137250000003" green="0.98431372549999996" blue="0.98823529409999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <prototypes>
@@ -85,18 +85,6 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tJa-cQ-MUD">
-                                <rect key="frame" x="263" y="219" width="112" height="32"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.69879066779999999" colorSpace="custom" customColorSpace="displayP3"/>
-                                <fontDescription key="fontDescription" name="Dosis-Regular" family="Dosis" pointSize="17"/>
-                                <state key="normal" title="Saved Paths">
-                                    <color key="titleColor" red="0.93333333330000001" green="0.42352941179999998" blue="0.30196078430000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                </state>
-                                <connections>
-                                    <action selector="didTapSavedPaths:" destination="mP5-vG-ggF" eventType="touchUpInside" id="aGu-LA-JUV"/>
-                                </connections>
-                            </button>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FAD-vK-Ji5">
                                 <rect key="frame" x="0.0" y="64" width="375" height="156"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -127,6 +115,14 @@
                                             <color key="titleColor" red="0.93333333330000001" green="0.42352941179999998" blue="0.30196078430000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         </state>
                                     </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kVa-CR-Y4a">
+                                        <rect key="frame" x="332" y="24" width="35" height="42"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" image="thememenu"/>
+                                        <connections>
+                                            <action selector="didTapSavedPaths:" destination="mP5-vG-ggF" eventType="touchUpInside" id="0A7-aO-fGk"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.69879066779999999" colorSpace="custom" customColorSpace="displayP3"/>
                             </view>
@@ -136,6 +132,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="2sD-Fa-pNo"/>
                     <connections>
+                        <outlet property="bringTableView" destination="kVa-CR-Y4a" id="tFN-tL-7BY"/>
                         <outlet property="fullName" destination="bob-ZV-sw9" id="2px-SW-gVC"/>
                         <outlet property="lcMapView" destination="g7D-ac-RRD" id="bgJ-kD-9nJ"/>
                         <outlet property="profilePicture" destination="e1A-1w-4dC" id="btK-yv-McE"/>
@@ -148,4 +145,7 @@
             <point key="canvasLocation" x="1941.5999999999999" y="192.95352323838082"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="thememenu" width="50" height="50"/>
+    </resources>
 </document>

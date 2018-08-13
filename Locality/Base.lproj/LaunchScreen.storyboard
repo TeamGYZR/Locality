@@ -31,7 +31,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="icons8-walking-theme" translatesAutoresizingMaskIntoConstraints="NO" id="PIL-rA-K4w">
-                                <rect key="frame" x="117" y="207" width="140" height="112"/>
+                                <rect key="frame" x="126" y="207" width="123" height="112"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                         </subviews>

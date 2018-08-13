@@ -2,11 +2,11 @@
   "images" : [
     {
       "idiom" : "universal",
+      "filename" : "facebook_flowers.jpg",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "Menu-1.png",
       "scale" : "2x"
     },
     {

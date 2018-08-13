@@ -118,7 +118,7 @@
 -(void)getDirectionsForItinerary:(Itinerary *)itinerary{
     MKDirectionsRequest *request = [[MKDirectionsRequest alloc] init];
     request.source = [MKMapItem mapItemForCurrentLocation];
-    NSString* first = [itinerary.paths objectAtIndex:0];
+    NSString *first = [itinerary.paths objectAtIndex:0];
     CGPoint firstPoint = CGPointFromString(first);
     CLLocationCoordinate2D destinationPoint = CLLocationCoordinate2DMake(firstPoint.x, firstPoint.y);
     MKPlacemark *destinationPlacemark = [[MKPlacemark alloc] initWithCoordinate:destinationPoint];
@@ -130,16 +130,22 @@
     [walkingDirections calculateDirectionsWithCompletionHandler:^(MKDirectionsResponse * _Nullable response, NSError * _Nullable error){
         NSLog(@"%@", response.routes[0].description);
         self.directionPolyline = response.routes[0].polyline;
-        [self setUpGeofenceForStartPoint:destinationPoint];
+        [self setUpGeofenceForStartPoint:destinationPoint AndItinerary:itinerary];
         [self->locationManager requestLocation];
     }];
     
 }
 
--(void)setUpGeofenceForStartPoint:(CLLocationCoordinate2D)startCoordinate{
+-(void)setUpGeofenceForStartPoint:(CLLocationCoordinate2D)startCoordinate AndItinerary:(Itinerary *)itinerary {
     self.startRegion = [[CLCircularRegion alloc]initWithCenter:startCoordinate radius:20.0 identifier:@"Start"];
-    //[mapView addOverlay:[MKCircle circleWithCenterCoordinate:startCoordinate radius:50.0]];
     [locationManager startMonitoringForRegion:self.startRegion];
+    for(int i = 0; i < [itinerary.pinnedLocations count]; i++){
+        NSDictionary *current = [itinerary.pinnedLocations objectAtIndex:i];
+        CLLocationCoordinate2D currentPoint = CLLocationCoordinate2DMake([current[@"latitude"] doubleValue], [current[@"longitude"] doubleValue]);
+       CLCircularRegion *pinRegion = [[CLCircularRegion alloc] initWithCenter:currentPoint radius:30.0 identifier:@"pinRegion"];
+        [locationManager startMonitoringForRegion:pinRegion];
+    }
+    
 }
 
 #pragma mark - MapView delegate methods
@@ -198,13 +204,14 @@
 }
 
 #pragma  mark - CLLocationManager delegate methods
+
 -(void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray<CLLocation *> *)locations{
     self.currentLocation = [locations lastObject];
     double numPaths = [self.itineraries count];
     if(numPaths == 1 && self.testDirections){
         Itinerary *itinerary = (Itinerary *)self.itineraries[0];
-        MKCoordinateRegion currentRegion = MKCoordinateRegionMake(CLLocationCoordinate2DMake(self.currentLocation.coordinate.latitude, self.currentLocation.coordinate.longitude), MKCoordinateSpanMake(0.025, 0.025));
-        [mapView setRegion:currentRegion animated:NO];
+//        MKCoordinateRegion currentRegion = MKCoordinateRegionMake(CLLocationCoordinate2DMake(self.currentLocation.coordinate.latitude, self.currentLocation.coordinate.longitude), MKCoordinateSpanMake(0.025, 0.025));
+//        [mapView setRegion:currentRegion animated:NO];
         if([self.startRegion containsCoordinate:self.currentLocation.coordinate]){
             [self.delegate userDidEnterStartRegion];
         } else{
@@ -213,9 +220,7 @@
         self.testDirections = NO;
         [self drawPathForItinerary:itinerary];
         [mapView setNeedsDisplay];
-//        if(CLLocationManager.authorizationStatus != kCLAuthorizationStatusAuthorizedAlways){
-//            [self.delegate userDeniedAlwaysLocation];
-//        }
+        [mapView setVisibleMapRect:[self.directionPolyline boundingMapRect] edgePadding:UIEdgeInsetsMake(10.0, 10.0, 10.0, 10.0) animated:NO];
         return;
     }
     if (numPaths == 1) {
@@ -224,6 +229,7 @@
         CGPoint centerPoint = CGPointFromString(center);
         MKCoordinateRegion currentRegion = MKCoordinateRegionMake(CLLocationCoordinate2DMake(centerPoint.x, centerPoint.y), MKCoordinateSpanMake(0.025, 0.025));
         [mapView setRegion:currentRegion animated:NO];
+        //[mapView setVisibleMapRect:[self.directionPolyline boundingMapRect] edgePadding:UIEdgeInsetsMake(10.0, 10.0, 10.0, 10.0) animated:NO];
         [self drawPathForItinerary:itinerary];
     } else {
         MKCoordinateRegion currentRegion = MKCoordinateRegionMake(CLLocationCoordinate2DMake(self.currentLocation.coordinate.latitude, self.currentLocation.coordinate.longitude), MKCoordinateSpanMake(0.7, 0.7));

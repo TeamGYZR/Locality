@@ -71,14 +71,11 @@
 }
 -(void) dismissView{
     //add pin to mapview before the view dismisses
-    [self addPinToMapView];
-    
     [UIView beginAnimations:@"FadeIn" context:nil];
     [UIView setAnimationDuration:1];
     [self.addpininfoview setAlpha:0.0];
     [self.viewOverMapView setAlpha:0.0];
     [UIView commitAnimations];
-    [self addPinsToParse];
 }
 #pragma mark - Location Updates
 - (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray<CLLocation *> *)locations{
@@ -131,10 +128,9 @@
         [UIView setAnimationDelegate:self];
         [UIView setAnimationDuration:1];
         [self.addpininfoview setAlpha:1.0];
-        self.viewOverMapView.alpha=0.8;
+        self.viewOverMapView.alpha=0.4;
         [UIView commitAnimations];
         //[self addPinToMapView];
-        [self addCoordinatesToPinAndPathArray];
        }];
     [alert addAction:cancelAction];
     [alert addAction:continueAction];
@@ -255,7 +251,10 @@
     self.pinName = pinName;
     self.pinDescription = pinDescription;
     self.pinCategory = category;
+    [self addCoordinatesToPinAndPathArray];
+    [self addPinToMapView];
     [self dismissView];
+    [self addPinsToParse];
 }
 
 #pragma mark - Error Handling

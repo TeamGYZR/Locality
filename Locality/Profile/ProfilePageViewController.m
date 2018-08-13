@@ -25,6 +25,7 @@
 @property (strong, nonatomic) NSArray *favoritedPaths;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic) BOOL showFavorites;
+@property (strong, nonatomic) IBOutlet UIButton *bringTableView;
 
 @end
 
@@ -100,12 +101,14 @@
             [self.tableView setFrame:CGRectMake(0, self.view.bounds.size.height, self.tableView.bounds.size.width, self.tableView.bounds.size.height)];
             self.showFavorites = NO;
         }];
+        [self.bringTableView setImage:[UIImage imageNamed:@"thememenu"] forState:UIControlStateNormal];
     } else{
         [self.tableView reloadData];
         [UIView animateWithDuration:0.4 animations:^{
-            [self.tableView setFrame:CGRectMake(0, 432, 375, 235)];
+            [self.tableView setFrame:CGRectMake(0, 220, 375, 447)];
         }];
         self.showFavorites = YES;
+        [self.bringTableView setImage:[UIImage imageNamed:@"mapmarker-filled"] forState:UIControlStateNormal];
     }
 }
 

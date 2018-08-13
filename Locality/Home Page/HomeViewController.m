@@ -296,7 +296,7 @@
     CLLocation *location =[[CLLocation alloc] initWithLatitude:self.currentLocation.latitude longitude:self.currentLocation.longitude];
     [self reverseGeocode:location];
     [self loadPathsWithSortingSelector:@selector(sortItenerariesByDistance)];
-    self.imageView.image = [UIImage imageNamed:@"menlopark"];
+    self.imageView.image = [UIImage imageNamed:@"facebook_flowers"];
     //[self photoFecth];
 }
 - (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error{
