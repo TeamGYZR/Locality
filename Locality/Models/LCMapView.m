@@ -75,6 +75,7 @@
     mapView.delegate = self;
     locationManager = [CLLocationManager new];
     locationManager.delegate = self;
+    [locationManager requestAlwaysAuthorization];
     mapView.showsUserLocation = YES;
     [mapView setUserTrackingMode:MKUserTrackingModeFollow animated:YES];
     [self addSubview:mapView];
@@ -117,7 +118,7 @@
 -(void)getDirectionsForItinerary:(Itinerary *)itinerary{
     MKDirectionsRequest *request = [[MKDirectionsRequest alloc] init];
     request.source = [MKMapItem mapItemForCurrentLocation];
-    NSString* first = [itinerary.paths objectAtIndex:0];
+    NSString *first = [itinerary.paths objectAtIndex:0];
     CGPoint firstPoint = CGPointFromString(first);
     CLLocationCoordinate2D destinationPoint = CLLocationCoordinate2DMake(firstPoint.x, firstPoint.y);
     MKPlacemark *destinationPlacemark = [[MKPlacemark alloc] initWithCoordinate:destinationPoint];
@@ -129,16 +130,22 @@
     [walkingDirections calculateDirectionsWithCompletionHandler:^(MKDirectionsResponse * _Nullable response, NSError * _Nullable error){
         NSLog(@"%@", response.routes[0].description);
         self.directionPolyline = response.routes[0].polyline;
-        [self setUpGeofenceForStartPoint:destinationPoint];
+        [self setUpGeofenceForStartPoint:destinationPoint AndItinerary:itinerary];
         [self->locationManager requestLocation];
     }];
     
 }
 
--(void)setUpGeofenceForStartPoint:(CLLocationCoordinate2D)startCoordinate{
-    self.startRegion = [[CLCircularRegion alloc]initWithCenter:startCoordinate radius:100.0 identifier:@"Start"];
-    [mapView addOverlay:[MKCircle circleWithCenterCoordinate:startCoordinate radius:100.0]];
+-(void)setUpGeofenceForStartPoint:(CLLocationCoordinate2D)startCoordinate AndItinerary:(Itinerary *)itinerary {
+    self.startRegion = [[CLCircularRegion alloc]initWithCenter:startCoordinate radius:20.0 identifier:@"Start"];
     [locationManager startMonitoringForRegion:self.startRegion];
+    for(int i = 0; i < [itinerary.pinnedLocations count]; i++){
+        NSDictionary *current = [itinerary.pinnedLocations objectAtIndex:i];
+        CLLocationCoordinate2D currentPoint = CLLocationCoordinate2DMake([current[@"latitude"] doubleValue], [current[@"longitude"] doubleValue]);
+       CLCircularRegion *pinRegion = [[CLCircularRegion alloc] initWithCenter:currentPoint radius:30.0 identifier:@"pinRegion"];
+        [locationManager startMonitoringForRegion:pinRegion];
+    }
+    
 }
 
 #pragma mark - MapView delegate methods
@@ -157,8 +164,14 @@
                 annotationView.leftCalloutAccessoryView.frame= CGRectMake(0, 0, 50, 50);
                 annotationView.leftCalloutAccessoryView.opaque=YES;
                 annotationView.leftCalloutAccessoryView.userInteractionEnabled=YES;
-                annotationView.canShowCallout = YES;
             }];
+            if ([pinAnnotation.pinCategory isEqualToString:@"Foodie"]) {
+                annotationView.pinTintColor = [UIColor blueColor];
+            } else if ([pinAnnotation.pinCategory isEqualToString:@"Entertainment"]){
+                annotationView.pinTintColor = [UIColor redColor];
+            } else if ([pinAnnotation.pinCategory isEqualToString:@"Nature"]){
+                annotationView.pinTintColor = [UIColor grayColor];
+            }
         }
         return annotationView;
     }
@@ -170,13 +183,13 @@
     {
         MKPolylineRenderer *pathRenderer = [[MKPolylineRenderer alloc] initWithPolyline:overlay];
         if(self.testDirections){
-            pathRenderer.fillColor = [[UIColor blueColor] colorWithAlphaComponent:0.2];
-            pathRenderer.strokeColor = [[UIColor magentaColor] colorWithAlphaComponent:0.7];
+            pathRenderer.fillColor = [[UIColor colorWithRed:.9254 green:.41176 blue:.30196 alpha:1] colorWithAlphaComponent:0.2];
+            pathRenderer.strokeColor = [[UIColor colorWithRed:.9254 green:.41176 blue:.30196 alpha:1] colorWithAlphaComponent:0.7];
         } else {
-            pathRenderer.fillColor = [[UIColor blueColor] colorWithAlphaComponent:0.2];
-            pathRenderer.strokeColor = [[UIColor blueColor] colorWithAlphaComponent:0.7];
+            pathRenderer.fillColor = [[UIColor colorWithRed:0.6 green:0.796 blue:0.9686 alpha:1.0] colorWithAlphaComponent:0.2];
+            pathRenderer.strokeColor = [[UIColor colorWithRed:.1843 green:.28235 blue:.34509 alpha:1] colorWithAlphaComponent:0.7];
         }
-        pathRenderer.lineWidth = 3;
+        pathRenderer.lineWidth = 2;
         return pathRenderer;
     }
     if ([overlay isKindOfClass:[MKCircle class]]){
@@ -191,13 +204,14 @@
 }
 
 #pragma  mark - CLLocationManager delegate methods
+
 -(void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray<CLLocation *> *)locations{
     self.currentLocation = [locations lastObject];
     double numPaths = [self.itineraries count];
     if(numPaths == 1 && self.testDirections){
         Itinerary *itinerary = (Itinerary *)self.itineraries[0];
-        MKCoordinateRegion currentRegion = MKCoordinateRegionMake(CLLocationCoordinate2DMake(self.currentLocation.coordinate.latitude, self.currentLocation.coordinate.longitude), MKCoordinateSpanMake(0.025, 0.025));
-        [mapView setRegion:currentRegion animated:NO];
+//        MKCoordinateRegion currentRegion = MKCoordinateRegionMake(CLLocationCoordinate2DMake(self.currentLocation.coordinate.latitude, self.currentLocation.coordinate.longitude), MKCoordinateSpanMake(0.025, 0.025));
+//        [mapView setRegion:currentRegion animated:NO];
         if([self.startRegion containsCoordinate:self.currentLocation.coordinate]){
             [self.delegate userDidEnterStartRegion];
         } else{
@@ -206,15 +220,13 @@
         self.testDirections = NO;
         [self drawPathForItinerary:itinerary];
         [mapView setNeedsDisplay];
+        [mapView setVisibleMapRect:[self.directionPolyline boundingMapRect] edgePadding:UIEdgeInsetsMake(10.0, 10.0, 10.0, 10.0) animated:NO];
         return;
     }
     if (numPaths == 1) {
         Itinerary *itinerary = (Itinerary *)self.itineraries[0];
-        NSString* center = [itinerary.paths objectAtIndex:(itinerary.paths.count/2)];
-        CGPoint centerPoint = CGPointFromString(center);
-        MKCoordinateRegion currentRegion = MKCoordinateRegionMake(CLLocationCoordinate2DMake(centerPoint.x, centerPoint.y), MKCoordinateSpanMake(0.025, 0.025));
-        [mapView setRegion:currentRegion animated:NO];
         [self drawPathForItinerary:itinerary];
+        [mapView setVisibleMapRect:[self.polyline boundingMapRect] edgePadding:UIEdgeInsetsMake(300.0, 50.0, 50.0, 50.0) animated:NO];
     } else {
         MKCoordinateRegion currentRegion = MKCoordinateRegionMake(CLLocationCoordinate2DMake(self.currentLocation.coordinate.latitude, self.currentLocation.coordinate.longitude), MKCoordinateSpanMake(0.7, 0.7));
         [mapView setRegion:currentRegion animated:NO];
@@ -237,8 +249,14 @@
     NSLog(@"GEOFENCING FAILED - %@", error.localizedDescription);
 }
 - (void)locationManager:(CLLocationManager *)manager didEnterRegion:(CLRegion *)region{
-    [mapView removeOverlay:self.directionPolyline];
-    [self.delegate userDidEnterStartRegion];
+    if([region.identifier isEqualToString:@"Start"]){
+        [mapView removeOverlay:self.directionPolyline];
+        [self.delegate userDidEnterStartRegion];
+    } else {
+        
+    }
+    
+
 }
 - (void)locationManager:(CLLocationManager *)manager didStartMonitoringForRegion:(CLRegion *)region{
     NSLog(@"started monitoring for geofencing");

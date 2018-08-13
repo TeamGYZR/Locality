@@ -15,6 +15,7 @@
 @protocol LCMapViewDelegate
 
 - (void)userDidEnterStartRegion;
+- (void)userDeniedAlwaysLocation;
 
 @end
 

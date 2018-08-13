@@ -18,7 +18,7 @@
         </array>
     </customFonts>
     <scenes>
-        <!--Create Your Own View Controller-->
+        <!--Tracking Path-->
         <scene sceneID="SKf-3r-G5b">
             <objects>
                 <viewController storyboardIdentifier="CreateYourOwn" id="cTa-YV-odr" customClass="CreateYourOwnViewController" sceneMemberID="viewController">
@@ -30,41 +30,49 @@
                                 <rect key="frame" x="0.0" y="66" width="375" height="601"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </mapView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="X92-CV-xAl">
-                                <rect key="frame" x="327" y="80" width="32" height="39"/>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7Mg-yU-wNw">
+                                <rect key="frame" x="167" y="576" width="64" height="64"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" image="Add location">
-                                    <color key="titleShadowColor" red="0.0" green="0.32852089410000002" blue="0.57488495110000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="didTapAddPin:" destination="cTa-YV-odr" eventType="touchUpInside" id="o65-uz-bW3"/>
-                                </connections>
-                            </button>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="X92-CV-xAl">
+                                        <rect key="frame" x="1" y="-4" width="63" height="73"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" image="Add location">
+                                            <color key="titleShadowColor" red="0.0" green="0.32852089410000002" blue="0.57488495110000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="didTapAddPin:" destination="cTa-YV-odr" eventType="touchUpInside" id="o65-uz-bW3"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" red="0.93333333330000001" green="0.42352941179999998" blue="0.30196078430000001" alpha="0.77036065924657537" colorSpace="custom" customColorSpace="displayP3"/>
+                            </view>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DMb-aF-wSn">
-                                <rect key="frame" x="0.0" y="66" width="375" height="601"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <gestureRecognizers/>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="gOo-5U-0Ck"/>
                     </view>
-                    <navigationItem key="navigationItem" id="6X8-Tw-P5y">
+                    <navigationItem key="navigationItem" title="Tracking Path" id="6X8-Tw-P5y">
                         <barButtonItem key="leftBarButtonItem" title="Cancel" id="XsX-0f-FME">
-                            <color key="tintColor" red="0.0" green="0.32852089410000002" blue="0.57488495110000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <color key="tintColor" red="0.1843137255" green="0.28235294119999998" blue="0.34509803919999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>
                                 <action selector="didTapCancel:" destination="cTa-YV-odr" id="TIz-fp-vkx"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Done" id="frB-6M-vHP">
-                            <color key="tintColor" red="0.0" green="0.32852089410000002" blue="0.57488495110000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <color key="tintColor" red="0.1843137255" green="0.28235294119999998" blue="0.34509803919999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>
                                 <action selector="didTapDone:" destination="cTa-YV-odr" id="gZp-sR-AaX"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="buttonView" destination="7Mg-yU-wNw" id="cxo-yX-wLq"/>
                         <outlet property="createPathMapView" destination="VXO-VP-8yd" id="Hto-rv-YIu"/>
                         <outlet property="mapView" destination="VXO-VP-8yd" id="tuV-N1-Bub"/>
                         <outlet property="viewOverMapView" destination="DMb-aF-wSn" id="eZP-mp-1Bp"/>
@@ -75,7 +83,7 @@
             </objects>
             <point key="canvasLocation" x="968.79999999999995" y="175.86206896551727"/>
         </scene>
-        <!--Path Finalization View Controller-->
+        <!--Path Draft-->
         <scene sceneID="me4-qh-8Ec">
             <objects>
                 <viewController id="qmT-8e-wbo" customClass="PathFinalizationViewController" sceneMemberID="viewController">
@@ -94,6 +102,13 @@
                                         <color key="textColor" red="0.1843137255" green="0.28235294119999998" blue="0.34509803919999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="MuI-hO-drf">
+                                        <rect key="frame" x="107" y="56" width="237" height="65"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" cocoaTouchSystemColor="lightTextColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                    </textView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Description:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t65-kr-FBz">
                                         <rect key="frame" x="8" y="56" width="81" height="22"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -101,24 +116,6 @@
                                         <color key="textColor" red="0.1843137255" green="0.28235294119999998" blue="0.34509803919999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="10s-j0-N9m">
-                                        <rect key="frame" x="107" y="53" width="237" height="30"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <color key="backgroundColor" red="0.96486357869999995" green="0.96486357869999995" blue="0.96486357869999995" alpha="0.89568172089999998" colorSpace="custom" customColorSpace="displayP3"/>
-                                        <color key="textColor" red="0.1843137255" green="0.28235294119999998" blue="0.34509803919999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                        <fontDescription key="fontDescription" name="Dosis-Regular" family="Dosis" pointSize="17"/>
-                                        <textInputTraits key="textInputTraits"/>
-                                    </textField>
-                                    <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="UFO-yD-pYU">
-                                        <rect key="frame" x="96" y="94" width="275" height="29"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <segments>
-                                            <segment title="Foodie"/>
-                                            <segment title="Entertainment"/>
-                                            <segment title="Nature"/>
-                                        </segments>
-                                        <color key="tintColor" red="0.0" green="0.32852089410000002" blue="0.57488495110000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    </segmentedControl>
                                     <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="py5-wM-uVf">
                                         <rect key="frame" x="107" y="15" width="237" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -127,13 +124,6 @@
                                         <fontDescription key="fontDescription" name="Dosis-Regular" family="Dosis" pointSize="17"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Category:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sv1-nl-bQj">
-                                        <rect key="frame" x="8" y="99" width="65" height="22"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" name="Dosis-SemiBold" family="Dosis" pointSize="17"/>
-                                        <color key="textColor" red="0.1843137255" green="0.28235294119999998" blue="0.34509803919999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Pins:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LHw-5n-sCK">
                                         <rect key="frame" x="8" y="345" width="31" height="22"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -209,15 +199,15 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="r7m-RQ-emE"/>
                     </view>
-                    <navigationItem key="navigationItem" id="maf-4C-TT3">
+                    <navigationItem key="navigationItem" title="Path Draft" id="maf-4C-TT3">
                         <barButtonItem key="leftBarButtonItem" title="&lt; Back" id="Fdr-D6-eVX">
-                            <color key="tintColor" red="0.0" green="0.32852089410000002" blue="0.57488495110000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <color key="tintColor" red="0.1843137255" green="0.28235294119999998" blue="0.34509803919999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>
                                 <action selector="didTapBack:" destination="qmT-8e-wbo" id="eJb-Km-t82"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Post" id="NlJ-Tl-2zS">
-                            <color key="tintColor" red="0.0" green="0.32852089410000002" blue="0.57488495110000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <color key="tintColor" red="0.1843137255" green="0.28235294119999998" blue="0.34509803919999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>
                                 <action selector="didTapPost:" destination="qmT-8e-wbo" id="bVb-0t-vzP"/>
                             </connections>
@@ -225,9 +215,8 @@
                     </navigationItem>
                     <connections>
                         <outlet property="LCMapView" destination="zBa-l2-rri" id="tRp-fy-8Sl"/>
-                        <outlet property="categoryController" destination="UFO-yD-pYU" id="wvH-qU-tqI"/>
                         <outlet property="createYourOwnView" destination="72V-Ch-AaG" id="Z3J-F6-q9I"/>
-                        <outlet property="itineraryDescription" destination="10s-j0-N9m" id="exP-Mx-hDH"/>
+                        <outlet property="itineraryDescription" destination="MuI-hO-drf" id="iC9-jW-uWC"/>
                         <outlet property="itineraryTitle" destination="py5-wM-uVf" id="V8p-Xw-h3C"/>
                         <outlet property="scrollView" destination="ewl-Df-VIC" id="AX2-iv-Dc7"/>
                         <outlet property="tableView" destination="2Up-cJ-eR0" id="jCd-Cp-4UR"/>

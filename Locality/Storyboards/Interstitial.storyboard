@@ -23,8 +23,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" alpha="0.69999999999999996" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="centralpark" translatesAutoresizingMaskIntoConstraints="NO" id="cfE-LL-oy1">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            <imageView userInteractionEnabled="NO" alpha="0.69999999999999996" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="nyc_highline" translatesAutoresizingMaskIntoConstraints="NO" id="cfE-LL-oy1">
+                                <rect key="frame" x="0.0" y="0.0" width="601" height="667"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ySu-GW-GJ3">
@@ -33,7 +33,7 @@
                                 <color key="backgroundColor" red="0.97429201227993889" green="0.97273087832317329" blue="1" alpha="0.60472601232394363" colorSpace="custom" customColorSpace="displayP3"/>
                                 <fontDescription key="fontDescription" name="Dosis-Regular" family="Dosis" pointSize="17"/>
                                 <state key="normal" title="Continue">
-                                    <color key="titleColor" red="0.0" green="0.32852089410000002" blue="0.57488495110000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="titleColor" red="0.1843137255" green="0.28235294119999998" blue="0.34509803919999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
                                     <action selector="didTapContinue:" destination="QRq-tD-nKQ" eventType="touchUpInside" id="Ujh-vt-tZH"/>
@@ -68,6 +68,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="centralpark" width="998" height="1342"/>
+        <image name="nyc_highline" width="1500" height="1000"/>
     </resources>
 </document>

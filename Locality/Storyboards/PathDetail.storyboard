@@ -101,15 +101,19 @@
                                 <rect key="frame" x="0.0" y="64" width="375" height="204"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Path Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tRB-RC-YXt">
+                                    <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Path Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tRB-RC-YXt">
                                         <rect key="frame" x="8" y="8" width="114" height="33"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <gestureRecognizers/>
                                         <fontDescription key="fontDescription" name="Dosis-SemiBold" family="Dosis" pointSize="26"/>
                                         <color key="textColor" red="0.1843137255" green="0.28235294119999998" blue="0.34509803919999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <nil key="highlightedColor"/>
+                                        <connections>
+                                            <outletCollection property="gestureRecognizers" destination="hFb-D9-g7Q" appends="YES" id="uJC-28-PaD"/>
+                                        </connections>
                                     </label>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="darkEyeIcon" translatesAutoresizingMaskIntoConstraints="NO" id="51O-of-Zyx">
-                                        <rect key="frame" x="267" y="110" width="33" height="34"/>
+                                        <rect key="frame" x="154" y="41" width="27" height="28"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4vO-Gt-SUK">
@@ -120,7 +124,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="sxC-sW-n9d">
-                                        <rect key="frame" x="8" y="49" width="256" height="108"/>
+                                        <rect key="frame" x="8" y="77" width="359" height="80"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" red="0.87843137250000003" green="0.98431372549999996" blue="0.98823529409999999" alpha="0.39752782530000003" colorSpace="custom" customColorSpace="displayP3"/>
                                         <color key="textColor" red="0.93333333330000001" green="0.42352941179999998" blue="0.30196078430000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -128,16 +132,16 @@
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Y0-m7-oxW">
-                                        <rect key="frame" x="267" y="80" width="82" height="22"/>
+                                        <rect key="frame" x="84" y="44" width="82" height="22"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" name="Dosis-Regular" family="Dosis" pointSize="20"/>
+                                        <fontDescription key="fontDescription" name="Dosis-Regular" family="Dosis" pointSize="14"/>
                                         <color key="textColor" red="0.1843137255" green="0.28235294119999998" blue="0.34509803919999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Path Time:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5jp-v4-WQL">
-                                        <rect key="frame" x="267" y="49" width="82" height="26"/>
+                                        <rect key="frame" x="8" y="42" width="82" height="26"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" name="Dosis-Regular" family="Dosis" pointSize="20"/>
+                                        <fontDescription key="fontDescription" name="Dosis-Regular" family="Dosis" pointSize="14"/>
                                         <color key="textColor" red="0.1843137255" green="0.28235294119999998" blue="0.34509803919999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -149,9 +153,9 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="10" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2HF-Fx-RwW">
-                                        <rect key="frame" x="308" y="116" width="26" height="22"/>
+                                        <rect key="frame" x="195" y="44" width="26" height="22"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" name="Dosis-Regular" family="Dosis" pointSize="22"/>
+                                        <fontDescription key="fontDescription" name="Dosis-Regular" family="Dosis" pointSize="14"/>
                                         <color key="textColor" red="0.1843137255" green="0.28235294119999998" blue="0.34509803919999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -174,7 +178,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="8sE-tU-VGp">
                         <barButtonItem key="leftBarButtonItem" title="Back" id="krf-2U-nhg">
-                            <color key="tintColor" red="0.0" green="0.32852089410000002" blue="0.57488495110000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <color key="tintColor" red="0.1843137255" green="0.28235294119999998" blue="0.34509803919999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>
                                 <action selector="didTapBack:" destination="YfQ-gI-n7T" id="aTq-Tw-o3a"/>
                             </connections>
@@ -196,11 +200,17 @@
                         <outlet property="slideBarView" destination="i0k-8E-Ppq" id="pa4-pR-eH6"/>
                         <outlet property="startButton" destination="y5g-DC-h4o" id="n75-Jh-mcf"/>
                         <outlet property="timeStampLabel" destination="7Y0-m7-oxW" id="CJr-f0-4fC"/>
+                        <outlet property="titleLongPressGesture" destination="hFb-D9-g7Q" id="Kkb-zg-LFx"/>
                         <outlet property="userNameLabel" destination="4vO-Gt-SUK" id="aBf-0N-NVt"/>
                         <outlet property="viewLabel" destination="2HF-Fx-RwW" id="Erq-Js-bAw"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qV2-d9-nnB" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <pongPressGestureRecognizer allowableMovement="10" minimumPressDuration="0.5" id="hFb-D9-g7Q">
+                    <connections>
+                        <action selector="handleLongPress:" destination="YfQ-gI-n7T" id="XnR-wd-KYA"/>
+                    </connections>
+                </pongPressGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="1031.2" y="85.907046476761622"/>
         </scene>

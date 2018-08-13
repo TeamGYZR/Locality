@@ -33,7 +33,7 @@
 @property (strong, nonatomic) NSString *cityName;
 @property (weak, nonatomic) IBOutlet UILabel *labefiled;
 -(void) photoFecth;
-- (void) loadPathsWithCategory:(NSString *)category;
+- (void) loadPathsWithSortingSelector:(SEL)comparator;
 @property  UIImage * image1;
 @property  UIImage * image2;
 @property UIImage * image3;

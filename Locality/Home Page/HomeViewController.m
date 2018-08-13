@@ -44,6 +44,7 @@
     [super viewDidLoad];
     self.tableView.dataSource=self;
     self.tableView.delegate=self;
+    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     self.labefiled.alpha=0;
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Home" bundle:[NSBundle mainBundle]];
     PlacesSearchTableViewController *pathsSearchTable = [storyboard instantiateViewControllerWithIdentifier:@"ResultsTable"];
@@ -96,7 +97,7 @@
 }
 #pragma mark - IBAction
 - (IBAction)didTapFoodie:(id)sender{
-    [self loadPathsWithCategory:@"Foodie"];
+    [self loadPathsWithSortingSelector:@selector(sortItenerariesByDistance)];
     [self.foodieButton setTitleColor:[UIColor colorWithRed:.9254 green:.41176 blue:.30196 alpha:1] forState:UIControlStateNormal];
     [self.entertainmentButton setTitleColor:[UIColor colorWithRed:.1843 green:.28235 blue:.34509 alpha:1] forState:UIControlStateNormal];
     [self.natureButton setTitleColor:[UIColor colorWithRed:.1843 green:.28235 blue:.34509 alpha:1] forState:UIControlStateNormal];
@@ -104,14 +105,14 @@
      
 
 - (IBAction)didTapEntertainment:(id)sender {
-    [self loadPathsWithCategory:@"Entertainment"];
+    [self loadPathsWithSortingSelector:@selector(sortItinerariesByTime)];
     [self.entertainmentButton setTitleColor:[UIColor colorWithRed:.9254 green:.41176 blue:.30196 alpha:1] forState:UIControlStateNormal];
     [self.foodieButton setTitleColor:[UIColor colorWithRed:.1843 green:.28235 blue:.34509 alpha:1] forState:UIControlStateNormal];
     [self.natureButton setTitleColor:[UIColor colorWithRed:.1843 green:.28235 blue:.34509 alpha:1] forState:UIControlStateNormal];
 }
 
 - (IBAction)didTapNature:(id)sender {
-    [self loadPathsWithCategory:@"Nature"];
+    [self loadPathsWithSortingSelector:@selector(sortItinerariesByViews)];
     [self.natureButton setTitleColor:[UIColor colorWithRed:.9254 green:.41176 blue:.30196 alpha:1] forState:UIControlStateNormal];
     [self.entertainmentButton setTitleColor:[UIColor colorWithRed:.1843 green:.28235 blue:.34509 alpha:1] forState:UIControlStateNormal];
     [self.foodieButton setTitleColor:[UIColor colorWithRed:.1843 green:.28235 blue:.34509 alpha:1] forState:UIControlStateNormal];
@@ -131,9 +132,9 @@
     }];
 }
 #pragma mark - Parse Query
-- (void) loadPathsWithCategory:(NSString *)category{
+- (void) loadPathsWithSortingSelector:(SEL)comparator{
     PFQuery *query = [PFQuery queryWithClassName:@"Itinerary"];
-    [query whereKey:@"category" equalTo:category];
+    //[query whereKey:@"category" equalTo:category];
     [query includeKey:@"path"];
     [query includeKey:@"creator"];
     [query findObjectsInBackgroundWithBlock:^(NSArray *iteneraries, NSError *error){
@@ -141,7 +142,8 @@
             NSLog(@"error loading paths from Parse");
         } else {
             self.itineraries = iteneraries;
-            [self sortItenerariesByDistance];
+            //[self sortItenerariesByDistance];
+            [self performSelectorOnMainThread:comparator withObject:nil waitUntilDone:YES];
             [self.tableView reloadData];
             NSIndexPath *topPath = [NSIndexPath indexPathForRow:0 inSection:0];
             [self.tableView scrollToRowAtIndexPath:topPath atScrollPosition:UITableViewScrollPositionTop animated:NO];
@@ -158,7 +160,6 @@
         CLLocation *venueLocation = [[CLLocation alloc] initWithLatitude:venueCoordinate.latitude longitude:venueCoordinate.longitude];
         CLLocationDistance distance = [currentLocation distanceFromLocation:venueLocation];
         self.itineraries[i][@"distanceFromFirstPinnedLocation"] = [NSNumber numberWithDouble:distance];
-        //NSLog(@"%@", self.itineraries[i][@"distanceFromFirstPinnedLocation"]);
         [self.itineraries[i] saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
             if (error) {
                 NSLog(@"error saving distance to parse");
@@ -171,6 +172,55 @@
     sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"distanceFromFirstPinnedLocation" ascending:YES];
     self.itineraries = [self.itineraries sortedArrayUsingDescriptors:@[sortDescriptor]];
 }
+
+- (void)sortItinerariesByTime{
+    self.itineraries = [self.itineraries sortedArrayUsingComparator:^NSComparisonResult(Itinerary *a, Itinerary *b){
+        double aMinutes;
+        double aSeconds;
+        double bMinutes;
+        double bSeconds;
+        if([a.timeStamp length] == 4){
+            aMinutes = [[a.timeStamp substringWithRange:NSMakeRange(0, 1)] doubleValue];
+            aSeconds = [[a.timeStamp substringWithRange:NSMakeRange(2, 2)] doubleValue];
+        } else {
+            aMinutes = [[a.timeStamp substringWithRange:NSMakeRange(0, 2)] doubleValue];
+            aSeconds = [[a.timeStamp substringWithRange:NSMakeRange(3, 2)] doubleValue];
+        }
+        if([b.timeStamp length] == 4){
+            bMinutes = [[b.timeStamp substringWithRange:NSMakeRange(0, 1)] doubleValue];
+            bSeconds = [[b.timeStamp substringWithRange:NSMakeRange(2, 2)] doubleValue];
+        } else {
+            bMinutes = [[b.timeStamp substringWithRange:NSMakeRange(0, 2)] doubleValue];
+            bSeconds = [[b.timeStamp substringWithRange:NSMakeRange(3, 2)] doubleValue];
+        }
+        if (aMinutes < bMinutes)
+            return NSOrderedAscending;
+        else if (aMinutes > bMinutes)
+            return NSOrderedDescending;
+        else if (aSeconds < bSeconds)
+            return NSOrderedAscending;
+        else if (aSeconds > bSeconds)
+            return NSOrderedDescending;
+        else
+            return NSOrderedSame;
+    }];
+    
+}
+
+-(void)sortItinerariesByViews{
+    self.itineraries = [self.itineraries sortedArrayUsingComparator:^NSComparisonResult(Itinerary *a, Itinerary *b){
+        double aViews = [a.uniqueUserViews count];
+        double bViews = [b.uniqueUserViews count];
+        if (aViews > bViews)
+            return NSOrderedAscending;
+        else if (aViews < bViews)
+            return NSOrderedDescending;
+        else
+            return NSOrderedSame;
+    }];
+}
+                        
+
 
 #pragma mark - UITableView
 - (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
@@ -247,8 +297,8 @@
     self.currentLocation = CLLocationCoordinate2DMake(currentLocation.coordinate.latitude, currentLocation.coordinate.longitude);
     CLLocation *location =[[CLLocation alloc] initWithLatitude:self.currentLocation.latitude longitude:self.currentLocation.longitude];
     [self reverseGeocode:location];
-    [self loadPathsWithCategory:@"Foodie"];
-    self.imageView.image = [UIImage imageNamed:@"menlopark"];
+    [self loadPathsWithSortingSelector:@selector(sortItenerariesByDistance)];
+    self.imageView.image = [UIImage imageNamed:@"facebook_flowers"];
     //[self photoFecth];
 }
 - (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error{
@@ -261,13 +311,20 @@
 
 #pragma mark - Search Controller Delegate
 
-- (void)didPresentSearchController:(UISearchController *)searchController{
-    CGRect createPathFrame = self.createPathBarButton.accessibilityFrame;
-    createPathFrame.origin.x += 60;
-    [UIView animateWithDuration:1.0 animations:^{
-        self.navigationItem.rightBarButtonItem.accessibilityFrame = createPathFrame; 
-    }];
-    
+//- (void)didPresentSearchController:(UISearchController *)searchController{
+//    CGRect createPathFrame = self.createPathBarButton.accessibilityFrame;
+//    createPathFrame.origin.x += 60;
+//    [UIView animateWithDuration:1.0 animations:^{
+//        self.navigationItem.rightBarButtonItem.accessibilityFrame = createPathFrame;
+//    }];
+//
+//}
+
+-(void)didDismissSearchController:(UISearchController *)searchController{
+    self.searchController.searchBar.text = @"";
+    [self.tableView reloadData];
+    [self.searchController.searchBar resignFirstResponder];
+    self.navigationItem.rightBarButtonItem = self.createPathBarButton;
 }
 
 #pragma mark - Search Bar Delegate
@@ -277,6 +334,7 @@
     }];
 
 }
+
 - (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar
 {
  

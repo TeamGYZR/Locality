@@ -2,11 +2,11 @@
   "images" : [
     {
       "idiom" : "universal",
+      "filename" : "nyc_highline.jpg",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "Menu-1.png",
       "scale" : "2x"
     },
     {

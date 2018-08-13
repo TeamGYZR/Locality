@@ -12,6 +12,7 @@
 @interface StartPathViewController () <LCMapViewDelegate>
 @property (strong, nonatomic) IBOutlet LCMapView *mapView;
 @property (strong, nonatomic) IBOutlet UILabel *commandTextField;
+@property (weak, nonatomic) IBOutlet UIView *enteredPathView;
 
 @end
 
@@ -22,7 +23,7 @@
     // Do any additional setup after loading the view.
     [self.mapView configureDirectionsWithItinerary:self.itinerary];
     self.mapView.delegate = self;
-    
+    [self.enteredPathView setFrame:CGRectMake(0, self.view.bounds.size.height, self.enteredPathView.bounds.size.width, self.enteredPathView.bounds.size.height)];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -31,10 +32,15 @@
 }
 
 - (void)userDidEnterStartRegion{
-    self.commandTextField.text = @"You're on the path! Have fun!";
-    
+    NSLog(@"user is on the path");
+    [UIView animateWithDuration:0.4 animations:^{
+        [self.enteredPathView setFrame:CGRectMake(0, 522, 375, 145)];
+    }];
 }
 
+- (void)userDeniedAlwaysLocation{
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
 /*
 #pragma mark - Navigation
 
