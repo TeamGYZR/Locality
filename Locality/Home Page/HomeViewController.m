@@ -158,7 +158,6 @@
         CLLocation *venueLocation = [[CLLocation alloc] initWithLatitude:venueCoordinate.latitude longitude:venueCoordinate.longitude];
         CLLocationDistance distance = [currentLocation distanceFromLocation:venueLocation];
         self.itineraries[i][@"distanceFromFirstPinnedLocation"] = [NSNumber numberWithDouble:distance];
-        //NSLog(@"%@", self.itineraries[i][@"distanceFromFirstPinnedLocation"]);
         [self.itineraries[i] saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
             if (error) {
                 NSLog(@"error saving distance to parse");
@@ -309,13 +308,20 @@
 
 #pragma mark - Search Controller Delegate
 
-- (void)didPresentSearchController:(UISearchController *)searchController{
-    CGRect createPathFrame = self.createPathBarButton.accessibilityFrame;
-    createPathFrame.origin.x += 60;
-    [UIView animateWithDuration:1.0 animations:^{
-        self.navigationItem.rightBarButtonItem.accessibilityFrame = createPathFrame; 
-    }];
-    
+//- (void)didPresentSearchController:(UISearchController *)searchController{
+//    CGRect createPathFrame = self.createPathBarButton.accessibilityFrame;
+//    createPathFrame.origin.x += 60;
+//    [UIView animateWithDuration:1.0 animations:^{
+//        self.navigationItem.rightBarButtonItem.accessibilityFrame = createPathFrame;
+//    }];
+//
+//}
+
+-(void)didDismissSearchController:(UISearchController *)searchController{
+    self.searchController.searchBar.text = @"";
+    [self.tableView reloadData];
+    [self.searchController.searchBar resignFirstResponder];
+    self.navigationItem.rightBarButtonItem = self.createPathBarButton;
 }
 
 #pragma mark - Search Bar Delegate
@@ -325,6 +331,7 @@
     }];
 
 }
+
 - (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar
 {
     self.searchController.searchBar.text = @"";

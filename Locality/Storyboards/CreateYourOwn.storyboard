@@ -208,6 +208,7 @@
                     <connections>
                         <outlet property="LCMapView" destination="zBa-l2-rri" id="tRp-fy-8Sl"/>
                         <outlet property="createYourOwnView" destination="72V-Ch-AaG" id="Z3J-F6-q9I"/>
+                        <outlet property="itineraryDescription" destination="MuI-hO-drf" id="iC9-jW-uWC"/>
                         <outlet property="itineraryTitle" destination="py5-wM-uVf" id="V8p-Xw-h3C"/>
                         <outlet property="scrollView" destination="ewl-Df-VIC" id="AX2-iv-Dc7"/>
                         <outlet property="tableView" destination="2Up-cJ-eR0" id="jCd-Cp-4UR"/>

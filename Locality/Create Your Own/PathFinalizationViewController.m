@@ -14,8 +14,7 @@
 
 @interface PathFinalizationViewController () <UITableViewDelegate, UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UITextField *itineraryTitle;
-@property (weak, nonatomic) IBOutlet UITextField *itineraryDescription;
-@property (weak, nonatomic) IBOutlet UISegmentedControl *categoryController;
+@property (strong, nonatomic) IBOutlet UITextView *itineraryDescription;
 @property (weak, nonatomic) IBOutlet LCMapView *LCMapView;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
@@ -77,8 +76,6 @@
     self.hud.contentColor = [UIColor colorWithRed:0 green:0.2 blue:0.453 alpha:1];
     self.itinerary.name = self.itineraryTitle.text;
     self.itinerary.pathDescription = self.itineraryDescription.text;
-    NSArray *categories = @[@"Foodie", @"Entertainment", @"Nature"];
-    self.itinerary.category = categories[self.categoryController.selectedSegmentIndex];
     [self.tableView reloadData];
     [self takeSnapshot];
     [self.itinerary setObject:self.itinerary.pinnedLocations forKey:@"pinnedLocations"];
