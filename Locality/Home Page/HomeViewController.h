@@ -15,6 +15,7 @@
 #import "User.h"
 #import <MapKit/MapKit.h>
 #import <CoreLocation/CoreLocation.h>
+#import "NewTableViewController.h"
 
 
 

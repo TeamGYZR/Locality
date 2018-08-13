@@ -19,6 +19,7 @@
 #import "PlacesSearchTableViewController.h"
 #import "CLLocationManagerSingleton.h"
 
+
 //rounded edges and shadow
 #import <QuartzCore/QuartzCore.h>
 
@@ -31,6 +32,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *entertainmentButton;
 @property (weak, nonatomic) IBOutlet UIButton *natureButton;
 @property (strong, nonatomic) PlacesSearchTableViewController *searchTableViewController;
+@property (strong, nonatomic) NewTableViewController * newautoresult;
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *createPathBarButton;
 
 @end
@@ -43,20 +45,17 @@
     self.tableView.dataSource=self;
     self.tableView.delegate=self;
     self.labefiled.alpha=0;
-    //self.tableView.rowHeight=UITableViewAutomaticDimension;
-    //self.tableView.rowHeight=UITableViewAutomaticDimension;
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Home" bundle:[NSBundle mainBundle]];
     PlacesSearchTableViewController *pathsSearchTable = [storyboard instantiateViewControllerWithIdentifier:@"ResultsTable"];
     self.searchController = [[UISearchController alloc] initWithSearchResultsController:pathsSearchTable];
     self.searchController.searchResultsUpdater = pathsSearchTable;
     pathsSearchTable.tableView.delegate = self;
     pathsSearchTable.itineraries = nil;
-    self.searchTableViewController = pathsSearchTable;
+  self.searchTableViewController = pathsSearchTable;
     UISearchBar *searchBar = self.searchController.searchBar;
     [searchBar sizeToFit];
     searchBar.placeholder = @"Search by pins";
     searchBar.delegate = self;
-    //searchBar.barTintColor = [UIColor colorWithRed:0.96078 green:1.0 blue:0.8039 alpha:0.5];
     self.navigationItem.titleView = self.searchController.searchBar;
     self.searchController.obscuresBackgroundDuringPresentation = YES;
     self.definesPresentationContext = YES;
@@ -175,7 +174,7 @@
 
 #pragma mark - UITableView
 - (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
-    PathCell *cell = [tableView dequeueReusableCellWithIdentifier:@"PathCell" forIndexPath:indexPath];
+   PathCell *cell = [tableView dequeueReusableCellWithIdentifier:@"PathCell" forIndexPath:indexPath];
     cell.itinerary = self.itineraries[indexPath.row];
     cell.cellView.layer.cornerRadius = 20.0;
     cell.cellView.layer.borderWidth = 2.0;
@@ -185,6 +184,7 @@
 }
 
 - (NSInteger)tableView:(nonnull UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+ 
     return self.itineraries.count;
     //return 20;
 }
@@ -279,6 +279,7 @@
 }
 - (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar
 {
+ 
     self.searchController.searchBar.text = @"";
     [self.tableView reloadData];
     [self.searchController.searchBar resignFirstResponder];

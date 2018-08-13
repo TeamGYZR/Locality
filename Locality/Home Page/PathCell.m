@@ -50,6 +50,13 @@
     [self.layer setShadowRadius:3.0];
     [self.layer setShadowOffset:CGSizeMake(2.0, 2.0)];
 }
-
+- (void)setList:(NSString *)list{
+    _list=list;
+    self.pathNameField.text=self.list;
+    [self.layer setShadowColor:[UIColor blackColor].CGColor];
+    [self.layer setShadowOpacity:0.8];
+    [self.layer setShadowRadius:3.0];
+    [self.layer setShadowOffset:CGSizeMake(2.0, 2.0)];
+}
 
 @end

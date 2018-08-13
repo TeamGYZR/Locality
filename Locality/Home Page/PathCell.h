@@ -15,6 +15,8 @@
 
 @interface PathCell : UITableViewCell
 @property (strong, nonatomic) Itinerary * itinerary;
+@property (strong, nonatomic) NSString * list;
+@property (strong, nonatomic) NSDictionary * lists;
 @property (weak, nonatomic) IBOutlet PFImageView *profileImageView;
 @property (weak, nonatomic) IBOutlet UILabel *profileNameField;
 @property (weak, nonatomic) IBOutlet UILabel *pathNameField;
