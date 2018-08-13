@@ -12,7 +12,8 @@
 @interface StartPathViewController () <LCMapViewDelegate>
 @property (strong, nonatomic) IBOutlet LCMapView *mapView;
 @property (strong, nonatomic) IBOutlet UILabel *commandTextField;
-@property (weak, nonatomic) IBOutlet UIView *enteredPathView;
+@property (weak, nonatomic) IBOutlet UIImageView *iconImageView;
+@property (weak, nonatomic) IBOutlet UIView *confettiView;
 
 @end
 
@@ -23,7 +24,7 @@
     // Do any additional setup after loading the view.
     [self.mapView configureDirectionsWithItinerary:self.itinerary];
     self.mapView.delegate = self;
-    [self.enteredPathView setFrame:CGRectMake(0, self.view.bounds.size.height, self.enteredPathView.bounds.size.width, self.enteredPathView.bounds.size.height)];
+    self.confettiView.frame = CGRectMake(0, -530, 375, 490);
 }
 
 - (void)didReceiveMemoryWarning {
@@ -32,9 +33,10 @@
 }
 
 - (void)userDidEnterStartRegion{
-    NSLog(@"user is on the path");
-    [UIView animateWithDuration:0.4 animations:^{
-        [self.enteredPathView setFrame:CGRectMake(0, 522, 375, 145)];
+    self.commandTextField.text = @"You are at the start of the path!";
+    self.iconImageView.image = [UIImage imageNamed:@"confettiIcon"];
+    [UIView animateWithDuration:3.5 animations:^{
+        [self.confettiView setFrame:CGRectMake(0, 177, 375, 490)];
     }];
 }
 
