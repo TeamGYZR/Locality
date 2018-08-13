@@ -134,8 +134,12 @@
 }
 
 - (IBAction)didTapShare:(id)sender {
-    UIImage *uploadImage = [UIImage imageNamed:@"defaultImage"];
-    NSArray *activityItem = @[uploadImage];
+    UIGraphicsBeginImageContextWithOptions(self.view.bounds.size, YES, 0.0f);
+    CGContextRef context = UIGraphicsGetCurrentContext();
+    [self.view.layer renderInContext:context];
+    UIImage *snapshotImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    NSArray *activityItem = @[snapshotImage];
     UIActivityViewController *activityViewController = [[UIActivityViewController alloc] initWithActivityItems:activityItem applicationActivities:nil];
     activityViewController.excludedActivityTypes = @[];
     activityViewController.popoverPresentationController.sourceView = self.view;
