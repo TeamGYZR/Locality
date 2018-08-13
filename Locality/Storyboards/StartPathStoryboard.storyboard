@@ -28,19 +28,119 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ntO-tc-GCq">
-                                <rect key="frame" x="0.0" y="522" width="375" height="145"/>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KkY-AP-x7S">
+                                <rect key="frame" x="0.0" y="177" width="375" height="490"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="You're at the start of the path, have fun!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="prc-4C-lgd">
-                                        <rect key="frame" x="39" y="59" width="297" height="26"/>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="colorfulConfetti" translatesAutoresizingMaskIntoConstraints="NO" id="fgO-1q-tcJ">
+                                        <rect key="frame" x="0.0" y="0.0" width="92" height="87"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" name="Dosis-Regular" family="Dosis" pointSize="20"/>
-                                        <color key="textColor" red="0.1843137255" green="0.28235294119999998" blue="0.34509803919999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
+                                    </imageView>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="colorfulConfetti" translatesAutoresizingMaskIntoConstraints="NO" id="7xG-1S-WQy">
+                                        <rect key="frame" x="100" y="0.0" width="88" height="87"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </imageView>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="colorfulConfetti" translatesAutoresizingMaskIntoConstraints="NO" id="T0l-nF-FJy">
+                                        <rect key="frame" x="210" y="0.0" width="77" height="95"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </imageView>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="colorfulConfetti" translatesAutoresizingMaskIntoConstraints="NO" id="Z9y-XG-tt9">
+                                        <rect key="frame" x="295" y="0.0" width="78" height="95"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </imageView>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="colorfulConfetti" translatesAutoresizingMaskIntoConstraints="NO" id="8ca-8J-Lmj">
+                                        <rect key="frame" x="44" y="95" width="80" height="85"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </imageView>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="colorfulConfetti" translatesAutoresizingMaskIntoConstraints="NO" id="E4G-2m-HGX">
+                                        <rect key="frame" x="151" y="73" width="73" height="93"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </imageView>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="colorfulConfetti" translatesAutoresizingMaskIntoConstraints="NO" id="CSE-UR-k2k">
+                                        <rect key="frame" x="232" y="95" width="73" height="85"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </imageView>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="colorfulConfetti" translatesAutoresizingMaskIntoConstraints="NO" id="bsr-NO-8xg">
+                                        <rect key="frame" x="-24" y="95" width="68" height="86"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </imageView>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="colorfulConfetti" translatesAutoresizingMaskIntoConstraints="NO" id="d10-1n-nBJ">
+                                        <rect key="frame" x="313" y="103" width="71" height="94"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </imageView>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="colorfulConfetti" translatesAutoresizingMaskIntoConstraints="NO" id="deS-Yu-ODn">
+                                        <rect key="frame" x="246" y="177" width="59" height="77"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </imageView>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="colorfulConfetti" translatesAutoresizingMaskIntoConstraints="NO" id="Bxz-OX-phI">
+                                        <rect key="frame" x="132" y="149" width="73" height="87"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </imageView>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="colorfulConfetti" translatesAutoresizingMaskIntoConstraints="NO" id="7DU-Kn-HtB">
+                                        <rect key="frame" x="68" y="161" width="56" height="108"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </imageView>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="colorfulConfetti" translatesAutoresizingMaskIntoConstraints="NO" id="K9W-7z-lfj">
+                                        <rect key="frame" x="0.0" y="177" width="64" height="105"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </imageView>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="colorfulConfetti" translatesAutoresizingMaskIntoConstraints="NO" id="Ha1-Ae-mN7">
+                                        <rect key="frame" x="313" y="193" width="61" height="107"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </imageView>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="colorfulConfetti" translatesAutoresizingMaskIntoConstraints="NO" id="KJK-QH-Xnw">
+                                        <rect key="frame" x="321" y="308" width="53" height="112"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </imageView>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="colorfulConfetti" translatesAutoresizingMaskIntoConstraints="NO" id="6QE-sk-kVX">
+                                        <rect key="frame" x="-3" y="284" width="67" height="104"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </imageView>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="colorfulConfetti" translatesAutoresizingMaskIntoConstraints="NO" id="xG3-7T-IBh">
+                                        <rect key="frame" x="255" y="343" width="59" height="105"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </imageView>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="colorfulConfetti" translatesAutoresizingMaskIntoConstraints="NO" id="yRR-h5-QSg">
+                                        <rect key="frame" x="200" y="188" width="50" height="104"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </imageView>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="colorfulConfetti" translatesAutoresizingMaskIntoConstraints="NO" id="hol-rb-bDw">
+                                        <rect key="frame" x="52" y="258" width="65" height="86"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </imageView>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="colorfulConfetti" translatesAutoresizingMaskIntoConstraints="NO" id="9n1-ks-nsa">
+                                        <rect key="frame" x="237" y="250" width="77" height="103"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </imageView>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="colorfulConfetti" translatesAutoresizingMaskIntoConstraints="NO" id="TRx-gP-QZD">
+                                        <rect key="frame" x="125" y="221" width="57" height="92"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </imageView>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="colorfulConfetti" translatesAutoresizingMaskIntoConstraints="NO" id="5Jb-hb-2BS">
+                                        <rect key="frame" x="318" y="413" width="59" height="99"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </imageView>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="colorfulConfetti" translatesAutoresizingMaskIntoConstraints="NO" id="uDa-K1-yUK">
+                                        <rect key="frame" x="-24" y="484" width="73" height="114"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </imageView>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="colorfulConfetti" translatesAutoresizingMaskIntoConstraints="NO" id="Rvq-PB-0bY">
+                                        <rect key="frame" x="-16" y="393" width="52" height="97"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </imageView>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="colorfulConfetti" translatesAutoresizingMaskIntoConstraints="NO" id="ajh-3D-3cY">
+                                        <rect key="frame" x="323" y="508" width="48" height="90"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </imageView>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="colorfulConfetti" translatesAutoresizingMaskIntoConstraints="NO" id="ML7-dQ-H2u">
+                                        <rect key="frame" x="91" y="307" width="60" height="81"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </imageView>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="colorfulConfetti" translatesAutoresizingMaskIntoConstraints="NO" id="oiK-I4-b2x">
+                                        <rect key="frame" x="23" y="352" width="69" height="105"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </imageView>
                                 </subviews>
-                                <color key="backgroundColor" red="0.6625543129" green="0.84669890849999996" blue="0.95702417390000005" alpha="0.64212328771506855" colorSpace="custom" customColorSpace="displayP3"/>
                             </view>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ny1-aJ-5Mg">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="175"/>
@@ -66,7 +166,8 @@
                     </view>
                     <connections>
                         <outlet property="commandTextField" destination="IgJ-em-i6b" id="rkU-WT-PIo"/>
-                        <outlet property="enteredPathView" destination="ntO-tc-GCq" id="qyP-0f-3eZ"/>
+                        <outlet property="confettiView" destination="KkY-AP-x7S" id="mFm-vx-PPy"/>
+                        <outlet property="iconImageView" destination="JQ2-kG-Tfw" id="deZ-em-Cdj"/>
                         <outlet property="mapView" destination="pwj-X7-U71" id="TlE-vj-hKW"/>
                     </connections>
                 </viewController>
@@ -76,6 +177,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="colorfulConfetti" width="128" height="128"/>
         <image name="icons8-walking-theme" width="100" height="100"/>
     </resources>
 </document>
