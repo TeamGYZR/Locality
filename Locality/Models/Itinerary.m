@@ -18,7 +18,8 @@
 @dynamic paths;
 @dynamic distanceFromFirstPinnedLocation;
 @dynamic mapImageFile;
-@dynamic uniqueUserViews; 
+@dynamic uniqueUserViews;
+@dynamic timeStamp; 
 
 + (nonnull NSString *)parseClassName {
     return @"Itinerary";
