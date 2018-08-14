@@ -104,6 +104,10 @@
                 }
                 
             }
+            NSArray * temporaryArray=[self.listOfTemArray copy];
+            NSOrderedSet *orderedSet = [NSOrderedSet orderedSetWithArray:temporaryArray];
+             temporaryArray=[orderedSet array];
+            self.listOfTemArray=[NSMutableArray arrayWithArray:temporaryArray];
             for(NSDictionary * pin in pins){
                 if([pin[@"name"] containsString:searchText]){
                     return YES;
