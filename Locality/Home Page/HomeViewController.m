@@ -234,7 +234,7 @@
 - (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
    PathCell *cell = [tableView dequeueReusableCellWithIdentifier:@"PathCell" forIndexPath:indexPath];
     cell.itinerary = self.itineraries[indexPath.row];
-    cell.cellView.layer.cornerRadius = 20.0;
+    cell.cellView.layer.cornerRadius = 2.0;
     cell.cellView.layer.borderWidth = 2.0;
     cell.cellView.layer.borderColor = [UIColor lightGrayColor].CGColor;
     cell.cellView.layer.masksToBounds = YES;

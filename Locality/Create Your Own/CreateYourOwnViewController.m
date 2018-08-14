@@ -188,7 +188,6 @@
 }
 
 - (void)handleTapOnOverlay{
-    [self didTapViewShareWithImage:nil withName:nil withDescription:nil withCategory:@"Foodie"];
     [self dismissView];
 }
 #pragma mark - Private Methods
