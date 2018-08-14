@@ -314,12 +314,23 @@
     }];
 
 }
--(void) searchBarTextDidEndEditing:(UISearchBar *)searchBar{
+//-(void) searchBarTextDidEndEditing:(UISearchBar *)searchBar{
+//    self.searchController.searchBar.text = @"";
+//    [self.tableView reloadData];
+//    [self.searchController.searchBar resignFirstResponder];
+//    self.navigationItem.rightBarButtonItem = self.createPathBarButton;
+//
+//}
+
+-(void)searchBarResultsListButtonClicked:(UISearchBar *)searchBar{
+    NSLog(@"testing stuff");
+    
+}
+-(void)searchBarCancelButtonClicked:(UISearchBar *)searchBar{
     self.searchController.searchBar.text = @"";
     [self.tableView reloadData];
     [self.searchController.searchBar resignFirstResponder];
     self.navigationItem.rightBarButtonItem = self.createPathBarButton;
-    
 }
 #pragma mark - Navigation
 // In a storyboard-based application, you will often want to do a little preparation before navigation
