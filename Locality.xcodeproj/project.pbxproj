@@ -496,9 +496,9 @@
 		4CDAC17620F4424100B3E7D4 /* Locality */ = {
 			isa = PBXGroup;
 			children = (
+				4C7E0ABF212232230086546D /* Locality.entitlements */,
 4C7E0ABF212232230086546D /* Locality.entitlements */,
 				A8B95E03211F20C600B04D40 /* Future Implementation For Mutiple Table Views */,
-
 				4C6EBC002118CF75000BA46B /* Profile */,
 				4C81D0DA210F7FA500064DBB /* Create Your Own */,
 				4C51C93D210BE316007B389F /* Dummy Data */,

@@ -19,7 +19,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.tableView.rowHeight=311;
+    self.tableView.rowHeight = 300;
     self.tableView.separatorColor=[UIColor clearColor];
    PFQuery *query = [PFQuery queryWithClassName:@"Itinerary"];
     [query includeKey:@"path"];
@@ -53,15 +53,23 @@
      }
     if(self.segmentedControl.selectedSegmentIndex==1){
         autoCell.textLabel.text=[NSString stringWithFormat:self.listOfTemArray[indexPath.row], indexPath.row];
-        self.tableView.rowHeight=30;
+        autoCell.textLabel.textColor = [UIColor colorWithRed:.1843 green:.28235 blue:.34509 alpha:1];
+        autoCell.textLabel.font = [UIFont fontWithName:@"Dosis-Regular" size:20];
+        self.tableView.rowHeight=50;
+        self.tableView.backgroundColor = [UIColor colorWithRed:.1843 green:.28235 blue:.34509 alpha:1];
+        autoCell.layer.borderWidth = .6;
+        autoCell.layer.borderColor = [UIColor grayColor].CGColor;
+        autoCell.layer.masksToBounds = YES;
+        autoCell.backgroundColor = [UIColor colorWithRed:.88627 green:.90980 blue:.894117 alpha:1];
+        self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     return autoCell;
 
     }else{
         PathCell *cell = [tableView dequeueReusableCellWithIdentifier:@"PathCell" forIndexPath:indexPath];
         Itinerary * result = self.matchingItems[indexPath.row];
-        self.tableView.rowHeight=311;
+        self.tableView.rowHeight = 300;
         cell.itinerary = result;
-        cell.cellView.layer.cornerRadius = 20.0;
+        cell.cellView.layer.cornerRadius = 2.0;
         cell.cellView.layer.borderWidth = 2.0;
         cell.cellView.layer.borderColor = [UIColor lightGrayColor].CGColor;
         cell.cellView.layer.masksToBounds = YES;

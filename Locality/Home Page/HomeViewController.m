@@ -53,10 +53,23 @@
     self.searchController.searchResultsUpdater = pathsSearchTable;
     pathsSearchTable.tableView.delegate = self;
     pathsSearchTable.itineraries = nil;
-  self.searchViewController = pathsSearchTable;
+    self.searchController.delegate = self;
     UISearchBar *searchBar = self.searchController.searchBar;
     [searchBar sizeToFit];
     searchBar.placeholder = @"Search by pins";
+    //changing search bar appearance
+    for (UIView *subView in searchBar.subviews)
+    {
+        for (UIView *secondLevelSubview in subView.subviews){
+            if ([secondLevelSubview isKindOfClass:[UITextField class]])
+            {
+                UITextField *searchBarTextField = (UITextField *)secondLevelSubview;
+                searchBarTextField.textColor = [UIColor colorWithRed:.1843 green:.28235 blue:.34509 alpha:1];
+                searchBarTextField.font = [UIFont fontWithName:@"Dosis-Regular" size:18];
+                break;
+            }
+        }
+    }
     searchBar.delegate = self;
     self.navigationItem.titleView = self.searchController.searchBar;
     self.searchController.obscuresBackgroundDuringPresentation = YES;
@@ -221,7 +234,7 @@
 - (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
    PathCell *cell = [tableView dequeueReusableCellWithIdentifier:@"PathCell" forIndexPath:indexPath];
     cell.itinerary = self.itineraries[indexPath.row];
-    cell.cellView.layer.cornerRadius = 20.0;
+    cell.cellView.layer.cornerRadius = 2.0;
     cell.cellView.layer.borderWidth = 2.0;
     cell.cellView.layer.borderColor = [UIColor lightGrayColor].CGColor;
     cell.cellView.layer.masksToBounds = YES;
@@ -306,6 +319,12 @@
 
 #pragma mark - Search Controller Delegate
 
+-(void)didDismissSearchController:(UISearchController *)searchController{
+    self.searchController.searchBar.text = @"";
+    [self.tableView reloadData];
+    [self.searchController.searchBar resignFirstResponder];
+    self.navigationItem.rightBarButtonItem = self.createPathBarButton;
+}
 
 #pragma mark - Search Bar Delegate
 - (void)searchBarTextDidBeginEditing:(UISearchBar *)searchBar{
@@ -314,13 +333,7 @@
     }];
 
 }
--(void) searchBarTextDidEndEditing:(UISearchBar *)searchBar{
-    self.searchController.searchBar.text = @"";
-    [self.tableView reloadData];
-    [self.searchController.searchBar resignFirstResponder];
-    self.navigationItem.rightBarButtonItem = self.createPathBarButton;
-    
-}
+
 #pragma mark - Navigation
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {

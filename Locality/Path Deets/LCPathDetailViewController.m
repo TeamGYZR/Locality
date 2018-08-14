@@ -46,15 +46,12 @@
     self.pathNameLabel.text = self.itinerary.name;
     [self.pathNameLabel sizeToFit];
     self.descriptionTextView.text = self.itinerary.pathDescription;
-    self.descriptionTextView.layer.cornerRadius = 10.0f;
     self.descriptionTextView.layer.borderWidth = 2.0;
     self.descriptionTextView.layer.borderColor = [UIColor colorWithRed:.1843 green:.28235 blue:.34509 alpha:.7].CGColor;
     self.descriptionTextView.clipsToBounds= YES;
-    self.pinNameView.layer.cornerRadius = 10.0f;
     self.pinNameView.layer.borderWidth = 1.0;
     self.pinNameView.layer.borderColor = [UIColor colorWithRed:.1843 green:.28235 blue:.34509 alpha:.7].CGColor;
     self.pinNameView.clipsToBounds= YES;
-    self.pinDescriptionView.layer.cornerRadius = 10.0f;
     self.pinDescriptionView.layer.borderWidth = 1.0;
     self.pinDescriptionView.layer.borderColor = [UIColor colorWithRed:.1843 green:.28235 blue:.34509 alpha:.7].CGColor;
     self.pinDescriptionView.clipsToBounds= YES;
@@ -139,12 +136,21 @@
     [self.view.layer renderInContext:context];
     UIImage *snapshotImage = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
-    NSArray *activityItem = @[snapshotImage];
-    UIActivityViewController *activityViewController = [[UIActivityViewController alloc] initWithActivityItems:activityItem applicationActivities:nil];
+    UIActivityViewController *activityViewController = [[UIActivityViewController alloc] initWithActivityItems:@[snapshotImage] applicationActivities:nil];
     activityViewController.excludedActivityTypes = @[];
     activityViewController.popoverPresentationController.sourceView = self.view;
     activityViewController.popoverPresentationController.sourceRect = CGRectMake(self.view.bounds.size.width/2, self.view.bounds.size.height/4, 0, 0);
     [self presentViewController:activityViewController animated:true completion:nil];
+    [activityViewController setCompletionWithItemsHandler:^(UIActivityType  _Nullable activityType, BOOL completed, NSArray * _Nullable returnedItems, NSError * _Nullable activityError) {
+        if (completed) {
+            NSLog(@"Activity type: %@", activityType);
+        } else {
+            NSLog(@"User cancelled out of share");
+        }
+        if (activityError) {
+            NSLog(@"error regarding sharing with Activity VC");
+        }
+    }];
 }
 
 

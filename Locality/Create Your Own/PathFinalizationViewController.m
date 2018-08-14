@@ -84,7 +84,7 @@
         if (error) {
             NSLog(@"Error saving Path info to Parse");
         } else{
-            NSLog(@"Successfulyy saved path to Parse");
+            NSLog(@"Successfully saved path to Parse");
             [self.hud hideAnimated:YES];
             [self performSegueWithIdentifier:@"cyoToHomeSegue" sender:nil];
         }
