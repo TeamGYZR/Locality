@@ -160,10 +160,14 @@
             [pinAnnotation.picture getDataInBackgroundWithBlock:^(NSData * _Nullable data, NSError * _Nullable error) {
                 UIImage *tempholdImage=[UIImage imageWithData:data];
                 iconView=[[UIImageView alloc] initWithImage:tempholdImage];
-                annotationView.leftCalloutAccessoryView = iconView;
-                annotationView.leftCalloutAccessoryView.frame= CGRectMake(0, 0, 50, 50);
-                annotationView.leftCalloutAccessoryView.opaque=YES;
-                annotationView.leftCalloutAccessoryView.userInteractionEnabled=YES;
+//                annotationView.leftCalloutAccessoryView = iconView;
+//                annotationView.leftCalloutAccessoryView.frame= CGRectMake(0, 0, 50, 50);
+//                annotationView.leftCalloutAccessoryView.opaque=YES;
+//                annotationView.leftCalloutAccessoryView.userInteractionEnabled=YES;
+                iconView.frame = CGRectMake(0, 0, 50, 50);
+                annotationView.detailCalloutAccessoryView = iconView;
+                annotationView.detailCalloutAccessoryView.opaque=YES;
+                annotationView.detailCalloutAccessoryView.userInteractionEnabled=YES;
             }];
             if ([pinAnnotation.pinCategory isEqualToString:@"Foodie"]) {
                 annotationView.pinTintColor = [UIColor blueColor];
@@ -252,11 +256,7 @@
     if([region.identifier isEqualToString:@"Start"]){
         [mapView removeOverlay:self.directionPolyline];
         [self.delegate userDidEnterStartRegion];
-    } else {
-        
     }
-    
-
 }
 - (void)locationManager:(CLLocationManager *)manager didStartMonitoringForRegion:(CLRegion *)region{
     NSLog(@"started monitoring for geofencing");

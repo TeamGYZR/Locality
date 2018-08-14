@@ -16,8 +16,8 @@
 #import "LCPathDetailViewController.h"
 #import "MBProgressHUD.h"
 #import <AFNetworking/UIImageView+AFNetworking.h>
-#import "PlacesSearchTableViewController.h"
 #import "CLLocationManagerSingleton.h"
+#import "PlacesSearchViewController.h"
 
 
 //rounded edges and shadow
@@ -31,8 +31,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *foodieButton;
 @property (weak, nonatomic) IBOutlet UIButton *entertainmentButton;
 @property (weak, nonatomic) IBOutlet UIButton *natureButton;
-@property (strong, nonatomic) PlacesSearchTableViewController *searchTableViewController;
-@property (strong, nonatomic) NewTableViewController * newautoresult;
+@property (strong, nonatomic) PlacesSearchViewController * searchViewController;
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *createPathBarButton;
 
 @end
@@ -46,16 +45,31 @@
     self.tableView.delegate=self;
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     self.labefiled.alpha=0;
+//    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Home" bundle:[NSBundle mainBundle]];
+//    PlacesSearchTableViewController *pathsSearchTable = [storyboard instantiateViewControllerWithIdentifier:@"ResultsTable"];
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Home" bundle:[NSBundle mainBundle]];
-    PlacesSearchTableViewController *pathsSearchTable = [storyboard instantiateViewControllerWithIdentifier:@"ResultsTable"];
+    PlacesSearchViewController *pathsSearchTable = [storyboard instantiateViewControllerWithIdentifier:@"ResultsTable"];
     self.searchController = [[UISearchController alloc] initWithSearchResultsController:pathsSearchTable];
     self.searchController.searchResultsUpdater = pathsSearchTable;
     pathsSearchTable.tableView.delegate = self;
     pathsSearchTable.itineraries = nil;
-  self.searchTableViewController = pathsSearchTable;
+  self.searchViewController = pathsSearchTable;
     UISearchBar *searchBar = self.searchController.searchBar;
     [searchBar sizeToFit];
     searchBar.placeholder = @"Search by pins";
+    //changing search bar appearance
+    for (UIView *subView in searchBar.subviews)
+    {
+        for (UIView *secondLevelSubview in subView.subviews){
+            if ([secondLevelSubview isKindOfClass:[UITextField class]])
+            {
+                UITextField *searchBarTextField = (UITextField *)secondLevelSubview;
+                searchBarTextField.textColor = [UIColor colorWithRed:.1843 green:.28235 blue:.34509 alpha:1];
+                searchBarTextField.font = [UIFont fontWithName:@"Dosis-Regular" size:18];
+                break;
+            }
+        }
+    }
     searchBar.delegate = self;
     self.navigationItem.titleView = self.searchController.searchBar;
     self.searchController.obscuresBackgroundDuringPresentation = YES;

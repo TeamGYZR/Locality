@@ -77,7 +77,7 @@
     //add pin to mapview before the view dismisses
     [UIView beginAnimations:@"FadeIn" context:nil];
     [UIView setAnimationDuration:1];
-    [self.addpininfoview setAlpha:0.0];
+    [self.addpininfoview removeFromSuperview];
     [self.viewOverMapView setAlpha:0.0];
     [UIView commitAnimations];
 }
@@ -169,6 +169,10 @@
 }
 #pragma mark - Private Methods
 
+-(void)didTapOutOfOverlay{
+    
+    
+}
 - (void) addCoordinatesToPinAndPathArray{
     [self.pinCoordinates addObject:self.currentLocation];
     [self.pathCoordinates addObject:self.currentLocation];
