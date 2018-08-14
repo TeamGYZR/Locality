@@ -185,6 +185,9 @@
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="action" id="Xf2-37-F14">
                             <color key="tintColor" red="0.1843137255" green="0.28235294119999998" blue="0.34509803919999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            <connections>
+                                <action selector="didTapShare:" destination="YfQ-gI-n7T" id="MIs-eQ-QPv"/>
+                            </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>

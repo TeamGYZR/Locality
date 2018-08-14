@@ -133,6 +133,21 @@
     }
 }
 
+- (IBAction)didTapShare:(id)sender {
+    UIGraphicsBeginImageContextWithOptions(self.view.bounds.size, YES, 0.0f);
+    CGContextRef context = UIGraphicsGetCurrentContext();
+    [self.view.layer renderInContext:context];
+    UIImage *snapshotImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    NSArray *activityItem = @[snapshotImage];
+    UIActivityViewController *activityViewController = [[UIActivityViewController alloc] initWithActivityItems:activityItem applicationActivities:nil];
+    activityViewController.excludedActivityTypes = @[];
+    activityViewController.popoverPresentationController.sourceView = self.view;
+    activityViewController.popoverPresentationController.sourceRect = CGRectMake(self.view.bounds.size.width/2, self.view.bounds.size.height/4, 0, 0);
+    [self presentViewController:activityViewController animated:true completion:nil];
+}
+
+
 #pragma mark - Handling Favorites
 
 -(void)setAFilledStar{
