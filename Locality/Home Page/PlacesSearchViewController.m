@@ -80,6 +80,7 @@
     self.autoCompleteView.hidden=YES;
 }
 -(void)updateSearchResultsForSearchController:(UISearchController *)searchController{
+        self.segmentedControl.selectedSegmentIndex=1;
     self.customSearchBar=searchController;
     NSString *searchText = searchController.searchBar.text;
     __block NSString * name=nil;
