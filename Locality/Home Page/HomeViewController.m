@@ -16,8 +16,8 @@
 #import "LCPathDetailViewController.h"
 #import "MBProgressHUD.h"
 #import <AFNetworking/UIImageView+AFNetworking.h>
-#import "PlacesSearchTableViewController.h"
 #import "CLLocationManagerSingleton.h"
+#import "PlacesSearchViewController.h"
 
 
 //rounded edges and shadow
@@ -31,8 +31,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *foodieButton;
 @property (weak, nonatomic) IBOutlet UIButton *entertainmentButton;
 @property (weak, nonatomic) IBOutlet UIButton *natureButton;
-@property (strong, nonatomic) PlacesSearchTableViewController *searchTableViewController;
-@property (strong, nonatomic) NewTableViewController * newautoresult;
+@property (strong, nonatomic) PlacesSearchViewController * searchViewController;
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *createPathBarButton;
 
 @end
@@ -46,13 +45,15 @@
     self.tableView.delegate=self;
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     self.labefiled.alpha=0;
+//    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Home" bundle:[NSBundle mainBundle]];
+//    PlacesSearchTableViewController *pathsSearchTable = [storyboard instantiateViewControllerWithIdentifier:@"ResultsTable"];
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Home" bundle:[NSBundle mainBundle]];
-    PlacesSearchTableViewController *pathsSearchTable = [storyboard instantiateViewControllerWithIdentifier:@"ResultsTable"];
+    PlacesSearchViewController *pathsSearchTable = [storyboard instantiateViewControllerWithIdentifier:@"ResultsTable"];
     self.searchController = [[UISearchController alloc] initWithSearchResultsController:pathsSearchTable];
     self.searchController.searchResultsUpdater = pathsSearchTable;
     pathsSearchTable.tableView.delegate = self;
     pathsSearchTable.itineraries = nil;
-  self.searchTableViewController = pathsSearchTable;
+  self.searchViewController = pathsSearchTable;
     UISearchBar *searchBar = self.searchController.searchBar;
     [searchBar sizeToFit];
     searchBar.placeholder = @"Search by pins";

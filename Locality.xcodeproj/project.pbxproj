@@ -80,7 +80,6 @@
 		8597DB2220FE7BA200BA261A /* ExploreMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8597DB2020FE7BA200BA261A /* ExploreMapViewController.m */; };
 		859A1AA120FF121300E13EBC /* VenueAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 859A1AA020FF121300E13EBC /* VenueAnnotation.m */; };
 		859A1AA720FF1A1800E13EBC /* VenueAnnotationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 859A1AA620FF1A1800E13EBC /* VenueAnnotationView.m */; };
-		85CCE6F921127F22004727E2 /* PlacesSearchTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 85CCE6F821127F22004727E2 /* PlacesSearchTableViewController.m */; };
 		93F8CAE4531E84E7DBB01E8D /* libPods-LocalityTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 85AAA040A6699A174EA32C3D /* libPods-LocalityTests.a */; };
 		A80F646920FF3BB500C105D0 /* collectionview.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A80F646820FF3BB500C105D0 /* collectionview.storyboard */; };
 		A80F646C20FF3BF000C105D0 /* CollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A80F646B20FF3BF000C105D0 /* CollectionViewController.m */; };
@@ -89,11 +88,8 @@
 		A831941E21153D3400CE7744 /* PinInfoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A831941D21153D3400CE7744 /* PinInfoView.xib */; };
 		A858D2DF21044E7C00637FAD /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A858D2DE21044E7C00637FAD /* AVFoundation.framework */; };
 		A8842AF22106A44F003ECD07 /* Uploadphotoviewcontroller.m in Sources */ = {isa = PBXBuildFile; fileRef = A8842AF12106A44F003ECD07 /* Uploadphotoviewcontroller.m */; };
-		A8B95DF7211EF07F00B04D40 /* NewTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A8B95DF6211EF07F00B04D40 /* NewTableViewController.m */; };
-		A8B95DFA211EF86F00B04D40 /* NewAutoCompleteCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A8B95DF9211EF86F00B04D40 /* NewAutoCompleteCell.m */; };
-		A8B95DFB211F05B800B04D40 /* NewAutoCompleteCell.h in Sources */ = {isa = PBXBuildFile; fileRef = A8B95DF8211EF86F00B04D40 /* NewAutoCompleteCell.h */; };
-		A8B95DFC211F05DA00B04D40 /* NewTableViewController.h in Sources */ = {isa = PBXBuildFile; fileRef = A8B95DF5211EF07F00B04D40 /* NewTableViewController.h */; };
 		A8B95DFE211F076900B04D40 /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A8E26418210BB48C002C0992 /* Home.storyboard */; };
+		A8B95E5121223CE700B04D40 /* PlacesSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A8B95E5021223CE700B04D40 /* PlacesSearchViewController.m */; };
 		A8BF41C7210C110E001DAB81 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = A8BF41C6210C110E001DAB81 /* User.m */; };
 		A8BF41CA2110B1CE001DAB81 /* PathCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A8BF41C92110B1CE001DAB81 /* PathCell.m */; };
 		A8E26415210BB430002C0992 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A8E26414210BB430002C0992 /* HomeViewController.m */; };
@@ -150,6 +146,7 @@
 		4C771D7A21079A690055A90D /* CommentCollectionCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CommentCollectionCell.m; sourceTree = "<group>"; };
 		4C7C6C9B211A06C50057A3EF /* FavoritedPathCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FavoritedPathCell.h; sourceTree = "<group>"; };
 		4C7C6C9C211A06C50057A3EF /* FavoritedPathCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FavoritedPathCell.m; sourceTree = "<group>"; };
+		4C7E0ABF212232230086546D /* Locality.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Locality.entitlements; sourceTree = "<group>"; };
 		4C81D0D8210F7C8800064DBB /* CreateYourOwn.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CreateYourOwn.storyboard; sourceTree = "<group>"; };
 		4C81D0DB210F7FDE00064DBB /* CreateYourOwnViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CreateYourOwnViewController.h; sourceTree = "<group>"; };
 		4C81D0DC210F7FDE00064DBB /* CreateYourOwnViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CreateYourOwnViewController.m; sourceTree = "<group>"; };
@@ -247,8 +244,6 @@
 		859A1AA520FF1A1800E13EBC /* VenueAnnotationView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VenueAnnotationView.h; sourceTree = "<group>"; };
 		859A1AA620FF1A1800E13EBC /* VenueAnnotationView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VenueAnnotationView.m; sourceTree = "<group>"; };
 		85AAA040A6699A174EA32C3D /* libPods-LocalityTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-LocalityTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		85CCE6F721127F22004727E2 /* PlacesSearchTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PlacesSearchTableViewController.h; sourceTree = "<group>"; };
-		85CCE6F821127F22004727E2 /* PlacesSearchTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PlacesSearchTableViewController.m; sourceTree = "<group>"; };
 		A80F646820FF3BB500C105D0 /* collectionview.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = collectionview.storyboard; sourceTree = "<group>"; };
 		A80F646A20FF3BF000C105D0 /* CollectionViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CollectionViewController.h; sourceTree = "<group>"; };
 		A80F646B20FF3BF000C105D0 /* CollectionViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CollectionViewController.m; sourceTree = "<group>"; };
@@ -260,10 +255,8 @@
 		A858D2DE21044E7C00637FAD /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		A8842AF02106A44F003ECD07 /* Uploadphotoviewcontroller.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Uploadphotoviewcontroller.h; sourceTree = "<group>"; };
 		A8842AF12106A44F003ECD07 /* Uploadphotoviewcontroller.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Uploadphotoviewcontroller.m; sourceTree = "<group>"; };
-		A8B95DF5211EF07F00B04D40 /* NewTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NewTableViewController.h; sourceTree = "<group>"; };
-		A8B95DF6211EF07F00B04D40 /* NewTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NewTableViewController.m; sourceTree = "<group>"; };
-		A8B95DF8211EF86F00B04D40 /* NewAutoCompleteCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NewAutoCompleteCell.h; sourceTree = "<group>"; };
-		A8B95DF9211EF86F00B04D40 /* NewAutoCompleteCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NewAutoCompleteCell.m; sourceTree = "<group>"; };
+		A8B95E4F21223CE700B04D40 /* PlacesSearchViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PlacesSearchViewController.h; sourceTree = "<group>"; };
+		A8B95E5021223CE700B04D40 /* PlacesSearchViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PlacesSearchViewController.m; sourceTree = "<group>"; };
 		A8BF41C5210C110E001DAB81 /* User.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
 		A8BF41C6210C110E001DAB81 /* User.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
 		A8BF41C82110B1CE001DAB81 /* PathCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PathCell.h; sourceTree = "<group>"; };
@@ -326,8 +319,8 @@
 		4C51C939210BC106007B389F /* Home Page */ = {
 			isa = PBXGroup;
 			children = (
-				85CCE6F721127F22004727E2 /* PlacesSearchTableViewController.h */,
-				85CCE6F821127F22004727E2 /* PlacesSearchTableViewController.m */,
+				A8B95E4F21223CE700B04D40 /* PlacesSearchViewController.h */,
+				A8B95E5021223CE700B04D40 /* PlacesSearchViewController.m */,
 				A8E26413210BB430002C0992 /* HomeViewController.h */,
 				A8E26414210BB430002C0992 /* HomeViewController.m */,
 				A8BF41C82110B1CE001DAB81 /* PathCell.h */,
@@ -503,7 +496,9 @@
 		4CDAC17620F4424100B3E7D4 /* Locality */ = {
 			isa = PBXGroup;
 			children = (
+4C7E0ABF212232230086546D /* Locality.entitlements */,
 				A8B95E03211F20C600B04D40 /* Future Implementation For Mutiple Table Views */,
+
 				4C6EBC002118CF75000BA46B /* Profile */,
 				4C81D0DA210F7FA500064DBB /* Create Your Own */,
 				4C51C93D210BE316007B389F /* Dummy Data */,
@@ -640,17 +635,6 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
-		A8B95E03211F20C600B04D40 /* Future Implementation For Mutiple Table Views */ = {
-			isa = PBXGroup;
-			children = (
-				A8B95DF5211EF07F00B04D40 /* NewTableViewController.h */,
-				A8B95DF6211EF07F00B04D40 /* NewTableViewController.m */,
-				A8B95DF8211EF86F00B04D40 /* NewAutoCompleteCell.h */,
-				A8B95DF9211EF86F00B04D40 /* NewAutoCompleteCell.m */,
-			);
-			path = "Future Implementation For Mutiple Table Views";
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -722,6 +706,11 @@
 				TargetAttributes = {
 					4CDAC17320F4424100B3E7D4 = {
 						CreatedOnToolsVersion = 9.4.1;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 0;
+							};
+						};
 					};
 					4CDAC18B20F4424100B3E7D4 = {
 						CreatedOnToolsVersion = 9.4.1;
@@ -889,8 +878,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A8B95DFC211F05DA00B04D40 /* NewTableViewController.h in Sources */,
-				A8B95DFB211F05B800B04D40 /* NewAutoCompleteCell.h in Sources */,
+				A8B95E5121223CE700B04D40 /* PlacesSearchViewController.m in Sources */,
 				A8F8E7E2210951CF00684142 /* FlickrAuthorizationAppDelegate.m in Sources */,
 				853A48C2211517C6005BCDEF /* ItineraryPin.m in Sources */,
 				8544B999210BC2DB0028D43F /* InterstitialViewController.m in Sources */,
@@ -912,7 +900,6 @@
 				859A1AA720FF1A1800E13EBC /* VenueAnnotationView.m in Sources */,
 				8597DB2220FE7BA200BA261A /* ExploreMapViewController.m in Sources */,
 				4C17BCA92111179900F74677 /* PinCell.m in Sources */,
-				A8B95DFA211EF86F00B04D40 /* NewAutoCompleteCell.m in Sources */,
 				859A1AA120FF121300E13EBC /* VenueAnnotation.m in Sources */,
 				4C771D69210665CA0055A90D /* SignUpViewController.m in Sources */,
 				4CEF1C41210A786D00C69B15 /* Follow.m in Sources */,
@@ -929,13 +916,11 @@
 				4CEF1C50210BAE5600C69B15 /* Path.m in Sources */,
 				4CA36B5420FE90340056EB44 /* Venue.m in Sources */,
 				4CA36B5B20FE9F8A0056EB44 /* APIManager.m in Sources */,
-				A8B95DF7211EF07F00B04D40 /* NewTableViewController.m in Sources */,
 				8544B996210BBE630028D43F /* PathDetailsViewController.m in Sources */,
 				4C771D752107999F0055A90D /* DetailsCollectionViewController.m in Sources */,
 				A8BF41CA2110B1CE001DAB81 /* PathCell.m in Sources */,
 				4CDAC17920F4424100B3E7D4 /* AppDelegate.m in Sources */,
 				85526A0A2119EBC8003B0ED9 /* CLLocationManagerSingleton.m in Sources */,
-				85CCE6F921127F22004727E2 /* PlacesSearchTableViewController.m in Sources */,
 				4CA36B74210128F20056EB44 /* EditProfileViewController.m in Sources */,
 				4C771D7B21079A690055A90D /* CommentCollectionCell.m in Sources */,
 				4CA36B6120FEB5540056EB44 /* DetailsViewController.m in Sources */,
