@@ -50,7 +50,6 @@
     self.itineraryDraft.pinnedLocations = [[NSMutableArray alloc] init];
     self.viewOverMapView.alpha=0;
     self.mapView.delegate = self;
-    //UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismissView)];
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleTapOnOverlay)];
     [self.viewOverMapView addGestureRecognizer:tap];
     self.locationManager = [CLLocationManagerSingleton sharedSingleton].locationManager;
