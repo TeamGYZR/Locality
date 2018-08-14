@@ -69,7 +69,7 @@
     }
     self.itineraries = [holderArray copy];
     self.testDirections = NO;
-    [locationManager requestLocation];
+    [locationManager startUpdatingLocation];
 }
 
 -(void)configureDirectionsWithItinerary:(Itinerary *)itinerary{
@@ -85,7 +85,7 @@
 }
 
 -(void)drawMapWithArray{
-    [locationManager requestLocation];
+    [locationManager startUpdatingLocation];
     
 }
 
@@ -133,7 +133,7 @@
         NSLog(@"%@", response.routes[0].description);
         self.directionPolyline = response.routes[0].polyline;
         [self setUpGeofenceForStartPoint:destinationPoint AndItinerary:itinerary];
-        [self->locationManager requestLocation];
+        [self->locationManager startUpdatingLocation];
     }];
     
 }
@@ -176,7 +176,6 @@
                 annotationView.detailCalloutAccessoryView = iconView;
                 annotationView.detailCalloutAccessoryView.opaque=YES;
                 annotationView.detailCalloutAccessoryView.userInteractionEnabled=YES;
-                annotationView.image = [UIImage imageNamed:@"dummy_annotation"];
             }];
             if ([pinAnnotation.pinCategory isEqualToString:@"Foodie"]) {
                 annotationView.pinTintColor = [UIColor blueColor];
