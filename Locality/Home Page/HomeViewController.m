@@ -53,7 +53,7 @@
     self.searchController.searchResultsUpdater = pathsSearchTable;
     pathsSearchTable.tableView.delegate = self;
     pathsSearchTable.itineraries = nil;
-  self.searchViewController = pathsSearchTable;
+    self.searchController.delegate = self;
     UISearchBar *searchBar = self.searchController.searchBar;
     [searchBar sizeToFit];
     searchBar.placeholder = @"Search by pins";
@@ -306,6 +306,12 @@
 
 #pragma mark - Search Controller Delegate
 
+-(void)didDismissSearchController:(UISearchController *)searchController{
+    self.searchController.searchBar.text = @"";
+    [self.tableView reloadData];
+    [self.searchController.searchBar resignFirstResponder];
+    self.navigationItem.rightBarButtonItem = self.createPathBarButton;
+}
 
 #pragma mark - Search Bar Delegate
 - (void)searchBarTextDidBeginEditing:(UISearchBar *)searchBar{
@@ -314,24 +320,7 @@
     }];
 
 }
-//-(void) searchBarTextDidEndEditing:(UISearchBar *)searchBar{
-//    self.searchController.searchBar.text = @"";
-//    [self.tableView reloadData];
-//    [self.searchController.searchBar resignFirstResponder];
-//    self.navigationItem.rightBarButtonItem = self.createPathBarButton;
-//
-//}
 
--(void)searchBarResultsListButtonClicked:(UISearchBar *)searchBar{
-    NSLog(@"testing stuff");
-    
-}
--(void)searchBarCancelButtonClicked:(UISearchBar *)searchBar{
-    self.searchController.searchBar.text = @"";
-    [self.tableView reloadData];
-    [self.searchController.searchBar resignFirstResponder];
-    self.navigationItem.rightBarButtonItem = self.createPathBarButton;
-}
 #pragma mark - Navigation
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
