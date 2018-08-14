@@ -19,7 +19,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.tableView.rowHeight=311;
+    self.tableView.rowHeight = 300;
     self.tableView.separatorColor=[UIColor clearColor];
    PFQuery *query = [PFQuery queryWithClassName:@"Itinerary"];
     [query includeKey:@"path"];
@@ -67,9 +67,9 @@
     }else{
         PathCell *cell = [tableView dequeueReusableCellWithIdentifier:@"PathCell" forIndexPath:indexPath];
         Itinerary * result = self.matchingItems[indexPath.row];
-        self.tableView.rowHeight=311;
+        self.tableView.rowHeight = 300;
         cell.itinerary = result;
-        cell.cellView.layer.cornerRadius = 20.0;
+        cell.cellView.layer.cornerRadius = 2.0;
         cell.cellView.layer.borderWidth = 2.0;
         cell.cellView.layer.borderColor = [UIColor lightGrayColor].CGColor;
         cell.cellView.layer.masksToBounds = YES;

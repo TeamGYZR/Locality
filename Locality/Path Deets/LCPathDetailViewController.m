@@ -46,15 +46,12 @@
     self.pathNameLabel.text = self.itinerary.name;
     [self.pathNameLabel sizeToFit];
     self.descriptionTextView.text = self.itinerary.pathDescription;
-    self.descriptionTextView.layer.cornerRadius = 10.0f;
     self.descriptionTextView.layer.borderWidth = 2.0;
     self.descriptionTextView.layer.borderColor = [UIColor colorWithRed:.1843 green:.28235 blue:.34509 alpha:.7].CGColor;
     self.descriptionTextView.clipsToBounds= YES;
-    self.pinNameView.layer.cornerRadius = 10.0f;
     self.pinNameView.layer.borderWidth = 1.0;
     self.pinNameView.layer.borderColor = [UIColor colorWithRed:.1843 green:.28235 blue:.34509 alpha:.7].CGColor;
     self.pinNameView.clipsToBounds= YES;
-    self.pinDescriptionView.layer.cornerRadius = 10.0f;
     self.pinDescriptionView.layer.borderWidth = 1.0;
     self.pinDescriptionView.layer.borderColor = [UIColor colorWithRed:.1843 green:.28235 blue:.34509 alpha:.7].CGColor;
     self.pinDescriptionView.clipsToBounds= YES;
