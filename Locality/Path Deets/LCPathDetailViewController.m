@@ -139,12 +139,21 @@
     [self.view.layer renderInContext:context];
     UIImage *snapshotImage = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
-    NSArray *activityItem = @[snapshotImage];
-    UIActivityViewController *activityViewController = [[UIActivityViewController alloc] initWithActivityItems:activityItem applicationActivities:nil];
+    UIActivityViewController *activityViewController = [[UIActivityViewController alloc] initWithActivityItems:@[snapshotImage] applicationActivities:nil];
     activityViewController.excludedActivityTypes = @[];
     activityViewController.popoverPresentationController.sourceView = self.view;
     activityViewController.popoverPresentationController.sourceRect = CGRectMake(self.view.bounds.size.width/2, self.view.bounds.size.height/4, 0, 0);
     [self presentViewController:activityViewController animated:true completion:nil];
+    [activityViewController setCompletionWithItemsHandler:^(UIActivityType  _Nullable activityType, BOOL completed, NSArray * _Nullable returnedItems, NSError * _Nullable activityError) {
+        if (completed) {
+            NSLog(@"Activity type: %@", activityType);
+        } else {
+            NSLog(@"User cancelled out of share");
+        }
+        if (activityError) {
+            NSLog(@"error regarding sharing with Activity VC");
+        }
+    }];
 }
 
 
