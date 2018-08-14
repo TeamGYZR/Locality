@@ -52,6 +52,7 @@
     self.mapView.delegate = self;
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleTapOnOverlay)];
     [self.viewOverMapView addGestureRecognizer:tap];
+    [self.navigationController.view addSubview:self.viewOverMapView];
     self.locationManager = [CLLocationManagerSingleton sharedSingleton].locationManager;
     [self.locationManager requestWhenInUseAuthorization];
     self.pathCoordinates = [[NSMutableArray alloc] init];
@@ -60,9 +61,10 @@
     self.mapView.showsUserLocation = YES;
     self.locationManager.distanceFilter = 5;
     self.locationManager.desiredAccuracy = kCLLocationAccuracyBest;
-    
     self.buttonView.layer.cornerRadius = self.buttonView.frame.size.width / 2;
     self.buttonView.clipsToBounds = YES;
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow) name:UIKeyboardWillShowNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide) name:UIKeyboardWillHideNotification object:nil];
 }
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
@@ -80,6 +82,20 @@
     [self.addpininfoview removeFromSuperview];
     [self.viewOverMapView setAlpha:0.0];
     [UIView commitAnimations];
+}
+-(void)keyboardWillShow{
+    CGRect addPinFrame = self.addpininfoview.frame;
+    addPinFrame.origin.y -= 100;
+    [UIView animateWithDuration:0.5 animations:^{
+        self.addpininfoview.frame = addPinFrame; 
+    }];
+}
+-(void)keyboardWillHide{
+    CGRect addPinFrame = self.addpininfoview.frame;
+    addPinFrame.origin.y += 100;
+    [UIView animateWithDuration:0.5 animations:^{
+        self.addpininfoview.frame = addPinFrame;
+    }];
 }
 #pragma mark - Location Updates
 - (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray<CLLocation *> *)locations{
@@ -127,7 +143,7 @@
         self.addpininfoview = [[AddPinInfoView alloc] init];
         self.addpininfoview.delegate = self;
         [self.addpininfoview setAlpha:0.0];
-        [self.view addSubview:self.addpininfoview];
+        [self.navigationController.view addSubview:self.addpininfoview];
         [UIView beginAnimations:@"FadeIn" context:nil];
         [UIView setAnimationDelegate:self];
         [UIView setAnimationDuration:1];
@@ -153,7 +169,6 @@
     else{
     self.itineraryDraft.timeStamp = [NSString stringWithFormat:@"%lu:%lu", minutes, seconds];
     }
-    NSLog(@"%lu", [self.itineraryDraft.pinnedLocations[0] count]);
     [self addPathsToParse];
 }
 

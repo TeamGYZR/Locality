@@ -164,8 +164,10 @@
 //                annotationView.leftCalloutAccessoryView.frame= CGRectMake(0, 0, 50, 50);
 //                annotationView.leftCalloutAccessoryView.opaque=YES;
 //                annotationView.leftCalloutAccessoryView.userInteractionEnabled=YES;
-                iconView.frame = CGRectMake(0, 0, 50, 50);
+               // iconView.image = CGRectMake(0, 0, 50, 50);
                 annotationView.detailCalloutAccessoryView = iconView;
+                annotationView.detailCalloutAccessoryView.bounds = CGRectMake(0, 0, 50, 50);
+                //annotationView.detailCalloutAccessoryView.intrinsicContentSize = CGSizeMake(50, 50);
                 annotationView.detailCalloutAccessoryView.opaque=YES;
                 annotationView.detailCalloutAccessoryView.userInteractionEnabled=YES;
             }];
