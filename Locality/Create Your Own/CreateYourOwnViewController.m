@@ -40,6 +40,8 @@
 @property (strong, nonatomic) NSString *pinDescription;
 @property (weak, nonatomic) IBOutlet UIView *buttonView;
 @property (strong, nonatomic) NSString *pinCategory;
+@property (nonatomic) BOOL keyboardUp;
+
 @end
 
 @implementation CreateYourOwnViewController
@@ -65,6 +67,7 @@
     self.buttonView.clipsToBounds = YES;
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow) name:UIKeyboardWillShowNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide) name:UIKeyboardWillHideNotification object:nil];
+    self.keyboardUp = NO;
 }
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
@@ -78,24 +81,30 @@
 -(void) dismissView{
     //add pin to mapview before the view dismisses
     [UIView beginAnimations:@"FadeIn" context:nil];
-    [UIView setAnimationDuration:1];
+    [UIView setAnimationDuration:0.1];
     [self.addpininfoview removeFromSuperview];
     [self.viewOverMapView setAlpha:0.0];
     [UIView commitAnimations];
 }
 -(void)keyboardWillShow{
-    CGRect addPinFrame = self.addpininfoview.frame;
-    addPinFrame.origin.y -= 100;
-    [UIView animateWithDuration:0.5 animations:^{
-        self.addpininfoview.frame = addPinFrame; 
-    }];
+    if(!self.keyboardUp){
+        CGRect addPinFrame = self.addpininfoview.frame;
+        addPinFrame.origin.y -= 100;
+        [UIView animateWithDuration:0.5 animations:^{
+            self.addpininfoview.frame = addPinFrame;
+        }];
+        self.keyboardUp = YES;
+    }
 }
 -(void)keyboardWillHide{
-    CGRect addPinFrame = self.addpininfoview.frame;
-    addPinFrame.origin.y += 100;
-    [UIView animateWithDuration:0.5 animations:^{
-        self.addpininfoview.frame = addPinFrame;
-    }];
+    if(self.keyboardUp){
+        CGRect addPinFrame = self.addpininfoview.frame;
+        addPinFrame.origin.y += 100;
+        [UIView animateWithDuration:0.5 animations:^{
+            self.addpininfoview.frame = addPinFrame;
+        }];
+        self.keyboardUp = NO;
+    }
 }
 #pragma mark - Location Updates
 - (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray<CLLocation *> *)locations{

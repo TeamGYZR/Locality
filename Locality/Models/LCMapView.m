@@ -46,6 +46,8 @@
     //locationManager = [CLLocationManagerSingleton sharedSingleton].locationManager;
     locationManager = [CLLocationManager new];
     locationManager.delegate = self;
+    locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters;
+    locationManager.distanceFilter = 10;
     isStatic = move;
     mapView.zoomEnabled = !isStatic;
     mapView.scrollEnabled = !isStatic;
@@ -53,7 +55,7 @@
     self.itineraries = @[itinerary];
     [self addSubview:mapView];
     self.testDirections = NO;
-    [locationManager requestLocation];
+    [locationManager startUpdatingLocation];
 }
 
 - (void)configureWithFavoritedPaths:(NSArray *)favoritedPaths{
@@ -159,17 +161,22 @@
             annotationView = [[pinVenueAnnotationView alloc] initWithAnnotation:pinAnnotation reuseIdentifier:@"PlacePin"];
             [pinAnnotation.picture getDataInBackgroundWithBlock:^(NSData * _Nullable data, NSError * _Nullable error) {
                 UIImage *tempholdImage=[UIImage imageWithData:data];
-                iconView=[[UIImageView alloc] initWithImage:tempholdImage];
+                
+                CGSize size = CGSizeMake(150, 150);
+                UIGraphicsBeginImageContext(size);
+                [tempholdImage drawInRect:CGRectMake(0, 0, size.width, size.height)];
+                UIImage *resizedImage = UIGraphicsGetImageFromCurrentImageContext();
+                
+                iconView=[[UIImageView alloc] initWithImage:resizedImage];
 //                annotationView.leftCalloutAccessoryView = iconView;
 //                annotationView.leftCalloutAccessoryView.frame= CGRectMake(0, 0, 50, 50);
 //                annotationView.leftCalloutAccessoryView.opaque=YES;
 //                annotationView.leftCalloutAccessoryView.userInteractionEnabled=YES;
-               // iconView.image = CGRectMake(0, 0, 50, 50);
+                iconView.frame = CGRectMake(0, 0, 150, 150);
                 annotationView.detailCalloutAccessoryView = iconView;
-                annotationView.detailCalloutAccessoryView.bounds = CGRectMake(0, 0, 50, 50);
-                //annotationView.detailCalloutAccessoryView.intrinsicContentSize = CGSizeMake(50, 50);
                 annotationView.detailCalloutAccessoryView.opaque=YES;
                 annotationView.detailCalloutAccessoryView.userInteractionEnabled=YES;
+                annotationView.image = [UIImage imageNamed:@"dummy_annotation"];
             }];
             if ([pinAnnotation.pinCategory isEqualToString:@"Foodie"]) {
                 annotationView.pinTintColor = [UIColor blueColor];
