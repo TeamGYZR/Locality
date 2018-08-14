@@ -24,7 +24,7 @@
         </array>
     </customFonts>
     <scenes>
-        <!--Details-->
+        <!--Path Detail View Controller-->
         <scene sceneID="08G-DU-xtg">
             <objects>
                 <viewController id="YfQ-gI-n7T" customClass="LCPathDetailViewController" sceneMemberID="viewController">
@@ -176,15 +176,12 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="D2D-RO-NBi"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Details" id="8sE-tU-VGp">
+                    <navigationItem key="navigationItem" id="8sE-tU-VGp">
                         <barButtonItem key="leftBarButtonItem" title="Back" id="krf-2U-nhg">
                             <color key="tintColor" red="0.1843137255" green="0.28235294119999998" blue="0.34509803919999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>
                                 <action selector="didTapBack:" destination="YfQ-gI-n7T" id="aTq-Tw-o3a"/>
                             </connections>
-                        </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" systemItem="action" id="Xf2-37-F14">
-                            <color key="tintColor" red="0.1843137255" green="0.28235294119999998" blue="0.34509803919999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
@@ -215,7 +212,7 @@
                     </connections>
                 </pongPressGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="1031.2" y="85.907046476761622"/>
+            <point key="canvasLocation" x="993" y="86"/>
         </scene>
         <!--StartPathStoryboard-->
         <scene sceneID="35N-Kp-yRn">

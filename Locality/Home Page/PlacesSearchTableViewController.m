@@ -31,11 +31,11 @@
   PFQuery *query = [PFQuery queryWithClassName:@"Itinerary"];
     [query includeKey:@"path"];
     [query includeKey:@"creator"];
-    [query findObjectsInBackgroundWithBlock:^(NSArray *iteneraries, NSError *error){
+    [query findObjectsInBackgroundWithBlock:^(NSArray *itineraries, NSError *error){
         if (error) {
             NSLog(@"error loading paths from Parse");
         } else {
-            self.itineraries = iteneraries;
+            self.itineraries = itineraries;
             [self.tableView reloadData];
         }
     }];
