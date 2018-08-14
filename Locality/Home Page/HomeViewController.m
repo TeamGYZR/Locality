@@ -81,7 +81,7 @@
         self.hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
         self.hud.label.text = @"Fetching paths...";
         self.hud.contentColor = [UIColor colorWithRed:0 green:0.2 blue:0.453 alpha:1];
-        [self.locationManager requestLocation];
+        [self.locationManager startUpdatingLocation];
     }
 }
 

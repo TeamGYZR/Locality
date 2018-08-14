@@ -223,8 +223,6 @@
     double numPaths = [self.itineraries count];
     if(numPaths == 1 && self.testDirections){
         Itinerary *itinerary = (Itinerary *)self.itineraries[0];
-//        MKCoordinateRegion currentRegion = MKCoordinateRegionMake(CLLocationCoordinate2DMake(self.currentLocation.coordinate.latitude, self.currentLocation.coordinate.longitude), MKCoordinateSpanMake(0.025, 0.025));
-//        [mapView setRegion:currentRegion animated:NO];
         if([self.startRegion containsCoordinate:self.currentLocation.coordinate]){
             [self.delegate userDidEnterStartRegion];
         } else{
