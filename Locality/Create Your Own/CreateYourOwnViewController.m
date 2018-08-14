@@ -50,7 +50,8 @@
     self.itineraryDraft.pinnedLocations = [[NSMutableArray alloc] init];
     self.viewOverMapView.alpha=0;
     self.mapView.delegate = self;
-    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismissView)];
+    //UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismissView)];
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleTapOnOverlay)];
     [self.viewOverMapView addGestureRecognizer:tap];
     self.locationManager = [CLLocationManagerSingleton sharedSingleton].locationManager;
     [self.locationManager requestWhenInUseAuthorization];
@@ -161,6 +162,11 @@
     [self dismissViewControllerAnimated:YES completion:^{
         [self.navigationController dismissViewControllerAnimated:YES completion:nil];
     }];
+}
+
+- (void)handleTapOnOverlay{
+    [self didTapViewShareWithImage:nil withName:nil withDescription:nil withCategory:@"Foodie"];
+    [self dismissView];
 }
 #pragma mark - Private Methods
 
