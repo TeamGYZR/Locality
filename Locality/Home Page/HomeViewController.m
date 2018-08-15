@@ -45,8 +45,6 @@
     self.tableView.delegate=self;
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     self.labefiled.alpha=0;
-//    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Home" bundle:[NSBundle mainBundle]];
-//    PlacesSearchTableViewController *pathsSearchTable = [storyboard instantiateViewControllerWithIdentifier:@"ResultsTable"];
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Home" bundle:[NSBundle mainBundle]];
     PlacesSearchViewController *pathsSearchTable = [storyboard instantiateViewControllerWithIdentifier:@"ResultsTable"];
     self.searchController = [[UISearchController alloc] initWithSearchResultsController:pathsSearchTable];
