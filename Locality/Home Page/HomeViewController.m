@@ -77,11 +77,12 @@
     self.searchController.hidesNavigationBarDuringPresentation = NO;
     self.locationManager = [CLLocationManagerSingleton sharedSingleton].locationManager;
     self.locationManager.delegate = self;
+    self.locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters;
     if(CLLocationManager.locationServicesEnabled){
         self.hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
         self.hud.label.text = @"Fetching paths...";
         self.hud.contentColor = [UIColor colorWithRed:0 green:0.2 blue:0.453 alpha:1];
-        [self.locationManager startUpdatingLocation];
+        [self.locationManager requestLocation];
     }
 }
 
