@@ -65,7 +65,7 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <view clipsSubviews="YES" contentMode="scaleAspectFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ra0-4F-OWh" customClass="PFImageView">
-                                                            <rect key="frame" x="18" y="117" width="342" height="116"/>
+                                                            <rect key="frame" x="12" y="117" width="342" height="116"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                             <color key="backgroundColor" red="0.60080752199999998" green="0.79725902270000004" blue="0.96867066619999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                         </view>
@@ -235,7 +235,7 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <view clipsSubviews="YES" contentMode="scaleAspectFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ceM-dz-Tos" customClass="PFImageView">
-                                                            <rect key="frame" x="18" y="117" width="342" height="116"/>
+                                                            <rect key="frame" x="15" y="117" width="342" height="116"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                             <color key="backgroundColor" red="0.60080752199999998" green="0.79725902270000004" blue="0.96867066619999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                         </view>
