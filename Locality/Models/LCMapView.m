@@ -152,21 +152,24 @@
             annotationView = [[pinVenueAnnotationView alloc] initWithAnnotation:pinAnnotation reuseIdentifier:@"PlacePin"];
             [pinAnnotation.picture getDataInBackgroundWithBlock:^(NSData * _Nullable data, NSError * _Nullable error) {
                 UIImage *tempholdImage=[UIImage imageWithData:data];
-                
-                CGSize size = CGSizeMake(150, 150);
+                CGSize size = CGSizeMake(100, 100);
                 UIGraphicsBeginImageContext(size);
                 [tempholdImage drawInRect:CGRectMake(0, 0, size.width, size.height)];
                 UIImage *resizedImage = UIGraphicsGetImageFromCurrentImageContext();
-                
                 iconView=[[UIImageView alloc] initWithImage:resizedImage];
-//                annotationView.leftCalloutAccessoryView = iconView;
-//                annotationView.leftCalloutAccessoryView.frame= CGRectMake(0, 0, 50, 50);
-//                annotationView.leftCalloutAccessoryView.opaque=YES;
-//                annotationView.leftCalloutAccessoryView.userInteractionEnabled=YES;
-                iconView.frame = CGRectMake(0, 0, 150, 150);
                 annotationView.detailCalloutAccessoryView = iconView;
                 annotationView.detailCalloutAccessoryView.opaque=YES;
                 annotationView.detailCalloutAccessoryView.userInteractionEnabled=YES;
+                
+                UIButton *collectionButton = [UIButton buttonWithType:UIButtonTypeSystem];
+                [collectionButton setTitle:@"Info" forState:UIControlStateNormal];
+                collectionButton.frame = CGRectMake(0.0, 0.0, 50.0, 150.0);
+                [collectionButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+                [collectionButton setBackgroundColor:[UIColor colorWithRed:.1843 green:.28235 blue:.34509 alpha:1]];
+                collectionButton.titleLabel.font = [UIFont fontWithName:@"Dosis-Regular" size:12];
+                [annotationView.rightCalloutAccessoryView setUserInteractionEnabled:YES];
+                annotationView.rightCalloutAccessoryView = collectionButton;
+                
             }];
             if ([pinAnnotation.pinCategory isEqualToString:@"Foodie"]) {
                 annotationView.pinTintColor = [UIColor blueColor];

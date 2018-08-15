@@ -8,6 +8,8 @@
 
 #import "pinVenueAnnotationView.h"
 
+
+
 @implementation pinVenueAnnotationView
 
 - (instancetype)initWithAnnotation:(id<MKAnnotation>)annotation reuseIdentifier:(NSString *)reuseIdentifier{
@@ -15,6 +17,7 @@
     if (self) {
         self.enabled = YES;
         self.canShowCallout = YES;
+
     }
     return self;
 }
