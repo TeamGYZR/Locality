@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="G2g-LK-Zly">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="JbI-4E-OUT">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -15,7 +15,7 @@
         </array>
     </customFonts>
     <scenes>
-        <!--Start Path View Controller-->
+        <!--Start Path-->
         <scene sceneID="EdM-Xu-lYj">
             <objects>
                 <viewController id="G2g-LK-Zly" customClass="StartPathViewController" sceneMemberID="viewController">
@@ -164,6 +164,14 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="jcL-Vv-ahe"/>
                     </view>
+                    <navigationItem key="navigationItem" title="Start Path" id="cqm-Pk-ujD">
+                        <barButtonItem key="leftBarButtonItem" title="Back" id="FDk-kg-wFF">
+                            <color key="tintColor" red="0.1843137255" green="0.28235294119999998" blue="0.34509803919999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            <connections>
+                                <action selector="didTapBack:" destination="G2g-LK-Zly" id="ReK-jO-asq"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="commandTextField" destination="IgJ-em-i6b" id="rkU-WT-PIo"/>
                         <outlet property="confettiView" destination="KkY-AP-x7S" id="mFm-vx-PPy"/>
@@ -172,6 +180,25 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FWF-Vu-u7T" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1013.6" y="83.208395802098963"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="jaV-tb-X7Y">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="JbI-4E-OUT" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="7vb-Zq-eYb">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="0.63921568630000003" green="0.81568627449999997" blue="0.92156862750000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="G2g-LK-Zly" kind="relationship" relationship="rootViewController" id="L1u-cH-mUM"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fs2-xV-zC3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="74.400000000000006" y="83.208395802098963"/>
         </scene>

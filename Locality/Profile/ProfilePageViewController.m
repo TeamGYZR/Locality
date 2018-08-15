@@ -49,6 +49,8 @@
     [self loadProfilePicture];
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
+    [self.navigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor colorWithRed:.1843 green:.28235 blue:.34509 alpha:1], NSFontAttributeName:[UIFont fontWithName:@"Dosis-Bold" size:21]}];
+    [[UIBarButtonItem appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor colorWithRed:.1843 green:.28235 blue:.34509 alpha:1], NSFontAttributeName:[UIFont fontWithName:@"Dosis-Regular" size:21]} forState:UIControlStateNormal];
 }
 
 - (void)viewWillAppear:(BOOL)animated{

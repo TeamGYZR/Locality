@@ -32,6 +32,8 @@
             [self.tableView reloadData];
         }
     }];
+    [self.segmentedControl setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor colorWithRed:.1843 green:.28235 blue:.34509 alpha:1], NSFontAttributeName:[UIFont fontWithName:@"Dosis-Regular" size:15]} forState:UIControlStateNormal];
+    [self.segmentedControl setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor whiteColor], NSFontAttributeName:[UIFont fontWithName:@"Dosis-Regular" size:15]} forState:UIControlStateHighlighted];
 }
 
 - (void)didReceiveMemoryWarning {

@@ -79,7 +79,8 @@
     self.pageControl.numberOfPages = ([self.photosForSlideshow count] + 1);
     self.currentPhotoIndex = 0;
     [self.titleLongPressGesture setMinimumPressDuration:.5];
-    
+    [self.navigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor colorWithRed:.1843 green:.28235 blue:.34509 alpha:1], NSFontAttributeName:[UIFont fontWithName:@"Dosis-Bold" size:21]}];
+    [[UIBarButtonItem appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor colorWithRed:.1843 green:.28235 blue:.34509 alpha:1], NSFontAttributeName:[UIFont fontWithName:@"Dosis-Regular" size:21]} forState:UIControlStateNormal];
 }
 
 #pragma mark - Actions
@@ -259,7 +260,8 @@
 #pragma mark - Navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if([[segue identifier] isEqualToString:@"segueToDirections"]){
-        StartPathViewController *nextViewController = (StartPathViewController *)[segue destinationViewController];
+        UINavigationController *navigationController = [segue destinationViewController];
+        StartPathViewController *nextViewController = (StartPathViewController*)navigationController.topViewController;
         nextViewController.itinerary = self.itinerary;
     }
 }

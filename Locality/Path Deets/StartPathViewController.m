@@ -25,6 +25,9 @@
     [self.mapView configureDirectionsWithItinerary:self.itinerary];
     self.mapView.delegate = self;
     self.confettiView.frame = CGRectMake(0, -530, 375, 490);
+    [self.navigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor colorWithRed:.1843 green:.28235 blue:.34509 alpha:1], NSFontAttributeName:[UIFont fontWithName:@"Dosis-Bold" size:21]}];
+    [[UIBarButtonItem appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor colorWithRed:.1843 green:.28235 blue:.34509 alpha:1], NSFontAttributeName:[UIFont fontWithName:@"Dosis-Regular" size:21]} forState:UIControlStateNormal];
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -38,6 +41,9 @@
     [UIView animateWithDuration:3.5 animations:^{
         [self.confettiView setFrame:CGRectMake(0, 177, 375, 490)];
     }];
+}
+- (IBAction)didTapBack:(id)sender {
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (void)userDeniedAlwaysLocation{

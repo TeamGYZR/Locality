@@ -50,6 +50,8 @@
     self.pinInfoCustomView.layer.shadowOffset = CGSizeZero;
     self.pinInfoCustomView.layer.shadowOpacity = 0.8;
     self.pinInfoCustomView.frame = self.bounds;
+    [self.categorySegmentedControl setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor colorWithRed:.1843 green:.28235 blue:.34509 alpha:1], NSFontAttributeName:[UIFont fontWithName:@"Dosis-Regular" size:15]} forState:UIControlStateNormal];
+    [self.categorySegmentedControl setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor whiteColor], NSFontAttributeName:[UIFont fontWithName:@"Dosis-Regular" size:15]} forState:UIControlStateHighlighted];
     [self addSubview:self.pinInfoCustomView];
 }
 -(BOOL)pointInside:(CGPoint)point withEvent:(UIEvent *)event{

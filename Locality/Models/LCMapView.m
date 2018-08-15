@@ -33,7 +33,14 @@
     if(self){
         mapView = [[MKMapView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height)];
         mapView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+        mapView.delegate = self;
         mapView.userInteractionEnabled = YES;
+        //locationManager = [CLLocationManagerSingleton sharedSingleton].locationManager;
+        locationManager = [CLLocationManager new];
+        locationManager.delegate = self;
+        locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters;
+        locationManager.distanceFilter = 10;
+        
         return self;
     }
     return nil;
@@ -42,12 +49,6 @@
 #pragma mark - Public Methods
 
 -(void)configureWithItinerary:(Itinerary *)itinerary isStatic:(BOOL)move showCurrentLocation:(BOOL)showCurrent{
-    mapView.delegate = self;
-    //locationManager = [CLLocationManagerSingleton sharedSingleton].locationManager;
-    locationManager = [CLLocationManager new];
-    locationManager.delegate = self;
-    locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters;
-    locationManager.distanceFilter = 10;
     isStatic = move;
     mapView.zoomEnabled = !isStatic;
     mapView.scrollEnabled = !isStatic;
@@ -59,9 +60,6 @@
 }
 
 - (void)configureWithFavoritedPaths:(NSArray *)favoritedPaths{
-    mapView.delegate = self;
-    locationManager = [CLLocationManager new];
-    locationManager.delegate = self;
     [self addSubview:mapView];
     NSMutableArray *holderArray = [NSMutableArray new];
     for (int i = 0; i < [favoritedPaths count]; i++) {
@@ -74,9 +72,6 @@
 
 -(void)configureDirectionsWithItinerary:(Itinerary *)itinerary{
     self.itineraries = @[itinerary];
-    mapView.delegate = self;
-    locationManager = [CLLocationManager new];
-    locationManager.delegate = self;
     [locationManager requestAlwaysAuthorization];
     mapView.showsUserLocation = YES;
     [mapView setUserTrackingMode:MKUserTrackingModeFollow animated:YES];
@@ -84,10 +79,6 @@
     [self getDirectionsForItinerary:itinerary];
 }
 
--(void)drawMapWithArray{
-    [locationManager startUpdatingLocation];
-    
-}
 
 #pragma mark - Private Methods
 
@@ -209,7 +200,6 @@
         circleRenderer.fillColor = [[UIColor cyanColor] colorWithAlphaComponent:0.5];
         circleRenderer.strokeColor = [[UIColor blueColor] colorWithAlphaComponent:0.7];
         circleRenderer.lineWidth = 3;
-        //circleRenderer.lineDashPhase = 2;
         return circleRenderer;
     }
     return nil;
@@ -220,23 +210,25 @@
 -(void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray<CLLocation *> *)locations{
     self.currentLocation = [locations lastObject];
     double numPaths = [self.itineraries count];
-    if(numPaths == 1 && self.testDirections){
-        Itinerary *itinerary = (Itinerary *)self.itineraries[0];
-        if([self.startRegion containsCoordinate:self.currentLocation.coordinate]){
-            [self.delegate userDidEnterStartRegion];
-        } else{
-            [mapView addOverlay:self.directionPolyline];
+    if(self.delegate){
+        if(numPaths == 1 && self.testDirections){
+            Itinerary *itinerary = (Itinerary *)self.itineraries[0];
+            if([self.startRegion containsCoordinate:self.currentLocation.coordinate]){
+                [self.delegate userDidEnterStartRegion];
+            } else{
+                [mapView addOverlay:self.directionPolyline];
+            }
+            self.testDirections = NO;
+            [self drawPathForItinerary:itinerary];
+            [mapView setNeedsDisplay];
+            [mapView setVisibleMapRect:[self.directionPolyline boundingMapRect] edgePadding:UIEdgeInsetsMake(10.0, 10.0, 10.0, 10.0) animated:NO];
         }
-        self.testDirections = NO;
-        [self drawPathForItinerary:itinerary];
-        [mapView setNeedsDisplay];
-        [mapView setVisibleMapRect:[self.directionPolyline boundingMapRect] edgePadding:UIEdgeInsetsMake(10.0, 10.0, 10.0, 10.0) animated:NO];
         return;
     }
-    if (numPaths == 1) {
+    else if (numPaths == 1) {
         Itinerary *itinerary = (Itinerary *)self.itineraries[0];
         [self drawPathForItinerary:itinerary];
-        [mapView setVisibleMapRect:[self.polyline boundingMapRect] edgePadding:UIEdgeInsetsMake(300.0, 50.0, 50.0, 50.0) animated:NO];
+        [mapView setVisibleMapRect:[self.polyline boundingMapRect] edgePadding:UIEdgeInsetsMake(300.0, 50.0, 70.0, 50.0) animated:NO];
     } else {
         MKCoordinateRegion currentRegion = MKCoordinateRegionMake(CLLocationCoordinate2DMake(self.currentLocation.coordinate.latitude, self.currentLocation.coordinate.longitude), MKCoordinateSpanMake(0.7, 0.7));
         [mapView setRegion:currentRegion animated:NO];
